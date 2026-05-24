@@ -1,0 +1,806 @@
+{% schema %}
+{
+  "name": "Sustainability Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SUSTAINABILITY"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "The Yoé production process and refillable packaging system are designed to minimize our carbon footprint and overall environmental impact throughout the product life cycle."
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_1",
+      "label": "Badge 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_2",
+      "label": "Badge 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_3",
+      "label": "Badge 3"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Icons"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_mobile_1",
+      "label": "Badge Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_mobile_2",
+      "label": "Badge Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_mobile_3",
+      "label": "Badge Icon"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "LEARN MORE ABOUT IMPACT"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Content"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "SUSTAINABILITY FEATURES"
+    },
+    {
+      "type": "text",
+      "id": "feature_title_mobile_1",
+      "label": "Feature Title",
+      "default": "NO ADHESIVES"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_text_mobile_1",
+      "label": "Feature Description",
+      "default": "Yoé emblem heat-fused into the cap, eliminating the need for adhesive."
+    },
+    {
+      "type": "text",
+      "id": "feature_title_mobile_2",
+      "label": "Feature Title",
+      "default": "ECO MATERIALS"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_text_mobile_2",
+      "label": "Feature Description",
+      "default": "Packaging designed with sustainable, recyclable materials."
+    },
+    {
+      "type": "text",
+      "id": "feature_title_mobile_3",
+      "label": "Feature Title",
+      "default": "REFILL SYSTEM"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_text_mobile_3",
+      "label": "Feature Description",
+      "default": "Refillable design reduces single-use packaging."
+    },
+    {
+      "type": "text",
+      "id": "feature_title_mobile_4",
+      "label": "Feature Title",
+      "default": "LOW CARBON"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_text_mobile_4",
+      "label": "Feature Description",
+      "default": "Production process optimized for a minimal carbon footprint."
+    },
+    {
+      "type": "text",
+      "id": "feature_title_mobile_5",
+      "label": "Feature Title",
+      "default": "RECYCLABLE"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_text_mobile_5",
+      "label": "Feature Description",
+      "default": "Designed for recyclability at end-of-life."
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image_1",
+      "label": "Feature Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image_2",
+      "label": "Feature Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image_3",
+      "label": "Feature Image 3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "Feature Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Sustainability Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="sustainability-section">
+    <div class="page-width">
+        <div class="container-section-desktop">
+            <div class="left-col">
+                <h5 class="caption-section-heading">Delivery System</h5>
+                <h2>{{ section.settings.heading }}</h2>
+                <p>{{ section.settings.description }}</p>
+                <div class="badges desktop-icon">
+                    {% if section.settings.badge_1 != blank %}
+                        <img src="{{ section.settings.badge_1 | img_url: 'master' }}" alt="badge 1">
+                    {% endif %}
+                    {% if section.settings.badge_2 != blank %}
+                        <img src="{{ section.settings.badge_2 | img_url: 'master' }}" alt="badge 2">
+                    {% endif %}
+                    {% if section.settings.badge_3 != blank %}
+                        <img src="{{ section.settings.badge_3 | img_url: 'master' }}" alt="badge 3">
+                    {% endif %}
+                </div>
+                {% comment %} Mobile icons {% endcomment %}
+                <div class="badges mobile-icon">
+                    {% if section.settings.badge_mobile_1 != blank %}
+                        <img src="{{ section.settings.badge_mobile_1 | img_url: 'master' }}" alt="badge 1">
+                    {% endif %}
+                    {% if section.settings.badge_mobile_2 != blank %}
+                        <img src="{{ section.settings.badge_mobile_2 | img_url: 'master' }}" alt="badge 2">
+                    {% endif %}
+                    {% if section.settings.badge_mobile_3 != blank %}
+                        <img src="{{ section.settings.badge_mobile_3 | img_url: 'master' }}" alt="badge 3">
+                    {% endif %}
+                </div>
+                {% comment %} End here {% endcomment %}
+
+                <a href="{{ section.settings.button_link }}" class="cta-btn">{{ section.settings.button_text }}</a>
+
+            </div>
+            <div class="right-col">
+                {% for block in section.blocks %}
+                    <div class="feature-item featured-item-{{ forloop.index }}">
+                        <div class="feature-text">
+                            <div class="content-section">
+                                <h4>{{ block.settings.title_1 }}</h4>
+                                <p>{{ block.settings.text_1 }}</p>
+                            </div>
+                        </div>
+                        {% if block.settings.image != blank %}
+                            <img src="{{ block.settings.image | img_url: 'master' }}"
+                                 alt="{{ block.settings.title_1 }}">
+                        {% endif %}
+                        <div class="feature-text">
+                            <h4>{{ block.settings.title_2 }}</h4>
+                            <p>{{ block.settings.text_2 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %} Mobile section {% endcomment %}
+<section class="vertical-features-mobile-section">
+    <div class="page-width">
+        <div class="container-section-mobile">
+            {% if section.settings.section_heading != blank %}
+                <h2 class="section-heading">{{ section.settings.section_heading }}</h2>
+            {% endif %}
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-text">
+                        <h4>{{ section.settings.feature_title_mobile_1 }}</h4>
+                        <p>{{ section.settings.feature_text_mobile_1 }}</p>
+                    </div>
+                    <div class="feature-text">
+                        <h4>{{ section.settings.feature_title_mobile_2 }}</h4>
+                        <p>{{ section.settings.feature_text_mobile_2 }}</p>
+                    </div>
+                    <div class="feature-text">
+                        <h4>{{ section.settings.feature_title_mobile_3 }}</h4>
+                        <p>{{ section.settings.feature_text_mobile_3 }}</p>
+                    </div>
+                    <div class="feature-text">
+                        <h4>{{ section.settings.feature_title_mobile_4 }}</h4>
+                        <p>{{ section.settings.feature_text_mobile_4 }}</p>
+                    </div>
+                    <div class="feature-text">
+                        <h4>{{ section.settings.feature_title_mobile_5 }}</h4>
+                        <p>{{ section.settings.feature_text_mobile_5 }}</p>
+                    </div>
+
+                </div>
+                <div class="feature-image">
+                    {% if section.settings.feature_image_1 != blank %}
+                        <img src="{{ section.settings.feature_image_1 | img_url: 'master' }}" alt="Feature image 1">
+                    {% endif %}
+                    {% if section.settings.feature_image_2 != blank %}
+                        <img src="{{ section.settings.feature_image_2 | img_url: 'master' }}" alt="Feature image 2">
+                    {% endif %}
+                    {% if section.settings.feature_image_3 != blank %}
+                        <img src="{{ section.settings.feature_image_3 | img_url: 'master' }}" alt="Feature image 3">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% comment %} End here {% endcomment %}
+
+
+<style>
+
+    .feature-item.featured-item-1, .feature-item.featured-item-2 {
+        width: 31% !IMPORTANT;
+    }
+
+    .sustainability-section .page-width {
+        padding: 106px 80px 80px;
+        background: rgba(247, 246, 245, 1);
+    }
+
+    .feature-item.featured-item-3 {
+        width: 60% !IMPORTANT;
+    }
+
+    .vertical-features {
+        padding: 60px 20px;
+        background: #fff;
+    }
+
+    .vertical-features .container-section-mobile {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .feature-item.featured-item-2 .content-section {
+        position: absolute;
+        right: unset;
+        left: 4.8rem;
+        width: 100%;
+    }
+
+    .feature-item.featured-item-2 {
+        position: relative;
+    }
+
+    .section-heading {
+        text-align: center;
+        font-size: 20px;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+        color: #333;
+    }
+
+    .features-list {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .feature-text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .feature-text h4 {
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+    }
+
+    .feature-text p {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .feature-image {
+        flex: 1;
+        text-align: left;
+    }
+
+    .feature-image img {
+        max-width: 105px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .feature-image img:first-child {
+            transform: rotate(-15.6deg);
+            max-width: 100%;
+        }
+    }
+
+    .sustainability-section {
+        padding: 0px 20px;
+        background: #fff;
+
+    }
+
+    .sustainability-section .container-section-desktop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .feature-item.featured-item-3 .feature-text:first-child {
+        padding-left: 0;
+        max-width: 13rem;
+        left: 6.2rem;
+    }
+
+    .sustainability-section .left-col {
+        flex: 1 40%;
+    }
+
+    .sustainability-section .left-col h2 {
+        font-size: 1.94rem;
+        margin: 0px;
+        color: #666460;
+        letter-spacing: 5px;
+        font-weight: 300;
+    }
+
+    .badges {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 38px 0px 20px;
+    }
+
+    .sustainability-section .left-col p {
+        font-size: 1rem;
+        margin: 12px 0;
+        line-height: 130%;
+        color: #666460;
+        width: 100%;
+        max-width: 22rem;
+        font-weight: 340;
+        font-family: "Open Sans", sans-serif;
+        letter-spacing: 0.04rem;
+    }
+
+    .sustainability-section .badges img {
+        margin-right: 0px;
+        height: 3.5rem;
+        object-fit: scale-down;
+    }
+
+    .sustainability-section .cta-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border: 1px solid #666460;
+        text-decoration: none;
+        margin-top: 41px;
+        width: 100%;
+        min-width: 240px;
+        text-align: center;
+        line-height: 34px;
+        color: #666460;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-size: 15px;
+        max-width: 15rem;
+    }
+
+    .sustainability-section .right-col {
+        flex: 1 78%;
+        display: flex;
+        justify-content: space-between;
+        gap: 0px;
+    }
+
+    {% comment %} .sustainability-section .feature-item.featured-item-1:after {
+        position: absolute;
+        content: "";
+        background: #000;
+        height: 73px;
+        width: 2px;
+        top: 129px;
+        z-index: 2;
+        left: 96px;
+    } {% endcomment %}
+    .sustainability-section .feature-item {
+        width: 45%;
+        margin-bottom: 20px;
+        text-align: center;
+        flex-direction: column;
+        gap: 0rem;
+        position: relative;
+    }
+
+    .sustainability-section .feature-item img {
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .sustainability-section .feature-item h4 {
+        font-size: 1rem;
+        letter-spacing: 0.2rem;
+        margin: 0px;
+        font-weight: 520;
+    }
+
+    .sustainability-section .feature-item p {
+        font-size: 1rem;
+        color: #666460;
+        line-height: 120%;
+        margin: 7px 0px 14px;
+        width: 100%;
+        max-width: 13rem;
+        font-weight: 350;
+    }
+
+    section.vertical-features-mobile-section {
+        display: none;
+    }
+
+    .badges.mobile-icon {
+        display: none;
+    }
+
+    h5.caption-section-heading {
+        display: none;
+    }
+
+
+    .feature-item.featured-item-3 .feature-text {
+        position: relative;
+        left: 0;
+    }
+
+    .feature-item.featured-item-2 img {
+        position: relative;
+        left: -2.5rem;
+    }
+
+    .feature-item.featured-item-3 img {
+        left: -3.5rem;
+        top: -0.3rem;
+        position: relative;
+    }
+
+    .feature-item.featured-item-2 .content-section p {
+        max-width: 12rem;
+    }
+
+    .feature-item.featured-item-3 .feature-text:last-child {
+        margin-left: -8.2rem;
+        left: 0;
+    }
+
+    .feature-item.featured-item-1 .feature-text {
+        position: relative;
+        left: 2.3rem;
+    }
+
+    .feature-item.featured-item-1 .feature-text:last-child {
+        left: 1.5rem;
+        margin-left: 0;
+    }
+
+    .feature-item.featured-item-1 .feature-text:last-child p {
+        max-width: 100%;
+    }
+
+    /* Mobile Responsive */
+
+    @media (max-width: 991px) {
+        .sustainability-section .page-width {
+            padding: 106px 20px 80px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        h5.caption-section-heading {
+            display: block;
+        }
+
+        .sustainability-section .cta-btn {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: #666460;
+            border: 1.17px solid #666460;
+            padding: 10px 18px;
+            max-width: 240px;
+            font-size: 14px;
+        }
+
+        .badges.mobile-icon {
+            justify-content: center;
+            display: flex;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .badges.desktop-icon {
+            display: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            width: 54%;
+            max-width: 54%;
+            flex-direction: column;
+        }
+
+        .feature-image {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container-section-mobile {
+            padding: 20px 0px 50px;
+        }
+
+        .features-list {
+            gap: 0px;
+            flex-direction: row;
+        }
+
+        .sustainability-section .left-col p {
+            font-size: 15px;
+            line-height: 23px;
+            width: 100%;
+            max-width: 265px;
+            margin: 5px auto;
+            font-weight: 390;
+        }
+
+        .sustainability-section .left-col {
+            flex: 100%;
+            text-align: center;
+        }
+
+        .badges {
+            margin: 38px 0px 0px;
+            width: max-content;
+        }
+
+        .sustainability-section .badges img {
+            margin-right: 10px;
+            object-fit: contain;
+            height: 42px;
+        }
+
+        .sustainability-section {
+            padding: 0px 15px 0px;
+        }
+
+        .sustainability-section .right-col {
+            display: none;
+        }
+
+        .sustainability-section .left-col h2 {
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 'Open Sans Condensed', sans-serif;
+            letter-spacing: 0.15em;
+        }
+
+        section.vertical-features-mobile-section {
+            display: block;
+            padding-bottom: 2rem;
+            padding-left: 1.7rem;
+            padding-right: 1.7rem;
+            background: #F7F6F5;
+            margin: auto;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .sustainability-section .right-col {
+            display: none;
+        }
+
+        .feature-text p {
+            font-size: 12.5px;
+            color: #666460;
+            text-align: left;
+            line-height: 1.3em;
+            font-family: 'Open Sans Condensed';
+            letter-spacing: 0.02em;
+            margin: 4px 0px 0px;
+        }
+
+        .feature-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .sustainability-section .container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sustainability-section .right-col {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .sustainability-section .feature-item {
+            width: 100%;
+        }
+
+        .feature-text h4 {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-size: 14.61px;
+            letter-spacing: 0.2em;
+            line-height: 1.2em;
+            color: #666460;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        h5.caption-section-heading {
+            margin: 0px;
+            font-size: 16px;
+            color: #666460;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding-bottom: 8px;
+        }
+
+        .sustainability-section .page-width {
+            padding: 50px 13px 0px;
+        }
+
+        section.vertical-features-mobile-section {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+            background: #fff;
+        }
+
+        .vertical-features-mobile-section .page-width {
+            background: #f7f6f5;
+            margin-left: 15px;
+            margin-right: 15px;
+            padding-left: 40px;
+            padding-right: 30px;
+        }
+
+        .features-list .feature-item .feature-text {
+            width: 100%;
+            margin-left: 0;
+            padding-right: 10px;
+        }
+
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+        .sustainability-section .container-section-desktop {
+            gap: 30px;
+        }
+
+        .sustainability-section .left-col h2 {
+            font-size: 30px;
+        }
+
+        .sustainability-section .left-col p {
+            font-size: 18px;
+            line-height: 30px;
+        }
+
+
+        .feature-item.featured-item-1, .feature-item.featured-item-2 {
+            width: 42% !IMPORTANT;
+        }
+
+    }
+
+    @media (max-width: 1200px) and (min-width: 992px) {
+        section.sustainability-section .page-width {
+            padding: 106px 20px 80px;
+        }
+
+        .sustainability-section .left-col h2 {
+            font-size: 30px;
+        }
+
+        .sustainability-section .left-col p {
+            font-size: 17px;
+            line-height: 27px;
+        }
+
+        .sustainability-section .badges img {
+            width: 100%;
+        }
+
+
+    }
+
+    @media (max-width: 380px) {
+        .vertical-features-mobile-section .page-width {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+
+
+</style>

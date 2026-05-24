@@ -1,0 +1,75 @@
+{% comment %}
+  Landing page efficacy quote – single white row: quote (italic serif) + attribution (right).
+  Pixel-perfect to Figma. Namespaced lp-efficacy-quote.
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Landing Efficacy Quote",
+  "tag": "section",
+  "class": "lp-efficacy-quote-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "quote_text",
+      "label": "Quote",
+      "default": "Acts as a gentle retinol alternative"
+    },
+    {
+      "type": "text",
+      "id": "quote_attribution",
+      "label": "Quote attribution",
+      "default": "THE SUNDAY TIMES"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text color",
+      "default": "#8B3A35"
+    },
+    {
+      "type": "color",
+      "id": "attribution_color",
+      "label": "Attribution text color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Bottom border color",
+      "default": "#E0E0E0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Efficacy Quote",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}
+
+{% liquid
+  assign border_color = section.settings.border_color | default: '#E0E0E0'
+%}
+
+{%- comment -%} Figma 2452:1261 (desktop) / 2452:412 (mobile). Mobile: #f9f6f3, no border. Desktop: white, bottom border. {%- endcomment -%}
+<section
+  class="lp-efficacy-quote-section w-full"
+  aria-label="Press quote"
+>
+  <div class="lp-efficacy-quote-section__inner w-full max-w-[1920px] mx-auto box-border border-b px-5 md:px-10 py-[40px] lg:px-16" style="border-color: {{ border_color }}; border-bottom-width: 1px;">
+    <div class="flex flex-row flex-wrap items-center justify-center md:justify-between gap-x-6 md:gap-x-[38px] lg:gap-x-[65px] gap-y-3 w-fit text-center mx-auto scroll-trigger animate--slide-in">
+      {%- if section.settings.quote_text != blank -%}
+        <span class="lp-efficacy-quote__text m-0 max-w-[85%] md:max-w-[78%]">
+          "{{ section.settings.quote_text }}"
+        </span>
+      {%- endif -%}
+      {%- if section.settings.quote_attribution != blank -%}
+        <span class="lp-efficacy-quote__attribution shrink-0">
+          {{ section.settings.quote_attribution }}
+        </span>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

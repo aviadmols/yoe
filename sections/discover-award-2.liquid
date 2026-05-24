@@ -1,0 +1,376 @@
+{% schema %}
+{
+  "name": "Discover Awards 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Highlight Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "mention",
+      "name": "Press Mention",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Publication Logo"
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Source Name"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discover Awards 2",
+      "category": "Awards"
+    }
+  ]
+}
+{% endschema %}
+
+
+<div class="page-width">
+<div class="discover-awards">
+  <h2 class="section-title">{{ section.settings.title }}</h2>
+
+  <div class="award-highlights">
+    {% for block in section.blocks %}
+      {% if block.type == 'highlight' %}
+        <div class="highlight-box">
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.subtitle }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+<div class="awardSlider">
+  <div class=" swiper-wrapper">
+    {% for block in section.blocks %}
+      {% if block.type == 'mention' %}
+        <div class="swiper-slide mention">
+          <div class="mention-wrapper">
+            <h3>{{ block.settings.source }}</h3>
+            <p>{{ block.settings.quote }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+   <!-- Pagination Dots -->
+  <div class="swiper-pagination"></div>
+</div>
+</div>
+</div>
+{% stylesheet %}
+.discover-awards.padding-right-left {
+    padding-top: 0px;
+}
+.discover-awards {
+    padding-bottom: 4rem;
+    text-align: center;
+}
+.section-title {
+  color: #666460;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 2.75rem;
+  font-style: normal;
+      margin-top: 0px;
+  font-weight: 400;
+margin-bottom: 5rem;
+  line-height: 3.3275rem; /* 66.55px */
+  letter-spacing: 0.2475rem;
+  text-transform: uppercase;
+
+}
+
+.section-title {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.award-highlights {
+  display: flex;
+  flex-wrap: wrap;
+justify-content: center;
+  gap: 3rem;
+}
+
+.highlight-box {
+  width: 33rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.highlight-box img {
+  width: 27.55rem;
+    height: 8rem;
+  max-width: 100%;
+  max-height: 7rem;
+  margin-bottom: 1rem;
+  object-fit: contain;
+}
+
+.mention:nth-child(2)  img{
+  height: 5rem;
+  margin-bottom: 0;
+}
+
+.highlight-box h3 {
+
+  color: #666460;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.165rem;
+  text-transform: uppercase;
+
+}
+
+.highlight-box p {
+  color: #666460;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 1.39115rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.97545rem; /* 39.509px */
+
+}
+
+.mentions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+.mention {
+    max-width: 33.33%;
+    text-align: center;
+    border-right: 1px solid #a4a2a2;
+}
+.mention:last-child {
+    border-right: none;
+}
+.mention-wrapper {
+    padding: 16px 20px;
+    min-height: 170px;
+}
+  .highlight-box:last-child img {
+     width: 7rem;
+  }
+.mention img {
+  height: 2.72rem;
+  margin-bottom: 2rem;
+}
+.mention h3 {
+    color: #666460;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: .165rem;
+    text-transform: uppercase;
+    line-height: 100%;
+    margin-top: 0;
+}
+.mention p {
+    color: #666460;
+    text-align: center;
+    font-family: Open Sans;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 36px;
+    max-width: 470px;
+    margin: auto;
+    font-size: 1.7rem;
+}
+.swiper-pagination {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #999;
+  opacity: 0.5;
+  margin: 0 5px;
+  border-radius: 100%;
+  transition: opacity 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000;
+  opacity: 1;
+}
+.awardSlider {
+    position: relative;
+    padding-bottom: 30px;
+}
+.awardSlider .swiper-pagination-bullet-active {
+    background: #666460;
+}
+
+@media(max-width: 1190px) {
+.mention-wrapper br {
+    display: none;
+}
+}
+
+
+@media(max-width: 768px) {
+     .section-template--20115878281464__award_winnings_3emf6Y-padding {
+        padding-bottom: 0px!important;
+    }
+  .mention-wrapper {
+    padding-bottom: 20px;
+}
+  .mention {
+    border-right: none;
+}
+
+
+  .award-highlights {
+    gap: 2rem;
+  }
+
+  .highlight-box {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .highlight-box img {
+    width: 90px;
+  }
+
+  .mention h3 {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .mention p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+ .discover-awards .section-title {
+  margin-bottom: 50px !important;
+  color: #666460 !important;
+  text-align: center !important;
+  font-size: 28px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 120% !important;
+  max-width: 100% !important;
+  letter-spacing: 2.8px !important;
+  text-transform: uppercase !important;
+}
+
+
+.highlight-box h3 {
+  color: #666460 !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 120% !important;
+  letter-spacing: 2.25px !important;
+  text-transform: uppercase !important;
+}
+
+.highlight-box p {
+  color: #666460 !important;
+  text-align: center !important;
+  font-size: 20px !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  line-height: 142% !important;
+}
+
+.highlight-box img {
+  width: auto !important;
+}
+
+.mention {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.mention img {
+  margin-bottom: 0 !important;
+}
+
+.mention p {
+  color: #666460 !important;
+  text-align: center !important;
+  font-size: 2rem !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  line-height: 142% !important;
+}
+
+.mention h3 {
+    color: #666460!important;
+    text-align: center!important;
+    font-size: 33px!important;
+    font-style: normal!important;
+    font-weight: 484!important;
+    line-height: 142%;
+    margin-bottom: 10px;
+}
+
+.highlight-box:last-child img {
+    max-height: 48px;
+}
+
+.award-highlights .highlight-box:nth-of-type(2) img {
+max-height: 40px !important;
+}
+}
+
+@media(max-width: 768px){
+    .template-page-dou-shop .discover-awards{
+        padding: 2rem 1.75rem !important;
+    }
+}
+
+{% endstylesheet %} 

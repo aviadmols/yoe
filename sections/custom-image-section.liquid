@@ -1,0 +1,50 @@
+<div class="custom-image-section padding-right-left page-width scroll-trigger animate--slide-in">
+  {%- if section.settings.desktop_image -%}
+    <img src="{{ section.settings.desktop_image | img_url: '' }}" alt="{{ section.settings.desktop_image.alt | escape }}" class="hide-mobile">
+  {%- endif -%}
+  
+  {%- if section.settings.mobile_image -%}
+    <img src="{{ section.settings.mobile_image | img_url: '' }}" alt="{{ section.settings.mobile_image.alt | escape }}" class="hide-pc">
+  {%- endif -%}
+</div>
+
+
+
+<style>
+  .custom-image-section {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .custom-image-section img, .custom-image-section source {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+
+</style>
+
+<!-- Schema for theme editor settings -->
+{% schema %}
+{
+  "name": "Custom Image Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image" 
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image Section"
+    }
+  ]
+}
+{% endschema %}

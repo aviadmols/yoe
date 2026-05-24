@@ -1,0 +1,690 @@
+{% comment %}
+  Renders a product media gallery. Should be used with 'media-gallery.js'
+  Also see 'product-media-modal'
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+  - is_duplicate: {Boolean} Prevents rendering uneeded elements and duplicate ids for subsequent instances
+
+  Usage:
+  {% render 'product-media-gallery', is_duplicate: true %}
+{% endcomment %}
+
+{%- liquid
+  assign hidden_media = product.media.first
+  assign hidden_media_id = hidden_media.id
+  assign desktop_gallery_first_setting = 'desktop_gallery_image_1'
+  assign desktop_gallery_first_image = section.settings[desktop_gallery_first_setting]
+  assign desktop_gallery_count = 0
+  assign show_desktop_gallery_override = false
+  if desktop_gallery_first_image != blank
+    assign show_desktop_gallery_override = true
+    for index in (1..10)
+      assign desktop_gallery_setting = 'desktop_gallery_image_' | append: index
+      if section.settings[desktop_gallery_setting] != blank
+        assign desktop_gallery_count = desktop_gallery_count | plus: 1
+      endif
+    endfor
+  endif
+  assign effective_featured_media = product.selected_or_first_available_variant.featured_media
+  if effective_featured_media.id == hidden_media_id
+    assign effective_featured_media = null
+  endif
+
+  if section.settings.hide_variants and variant_images.size == product.media.size
+    assign single_media_visible = true
+  endif
+
+  assign media_count = product.media.size
+  if media_count > 0
+    assign media_count = media_count | minus: 1
+  endif
+  if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+    assign variant_media_count = variant_images.size
+    if variant_images contains hidden_media.src
+      assign variant_media_count = variant_media_count | minus: 1
+    endif
+    assign media_count = media_count | minus: variant_media_count | plus: 1
+  endif
+
+  if media_count == 1 or single_media_visible
+    assign single_media_visible_mobile = true
+  endif
+
+  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+    assign hide_mobile_slider = true
+  endif
+
+  assign thumbnail_media_count = media_count
+  if show_desktop_gallery_override
+    assign thumbnail_media_count = desktop_gallery_count
+  endif
+  assign desktop_image_class = 'image-magnify-' | append: section.settings.image_zoom
+
+  if section.settings.media_size == 'large'
+    assign media_width = 0.65
+  elsif section.settings.media_size == 'medium'
+    assign media_width = 0.55
+  elsif section.settings.media_size == 'small'
+    assign media_width = 0.45
+  endif
+
+  assign id_append = ''
+  if is_duplicate
+    assign id_append = '-duplicate'
+  endif
+
+  assign award_cover_media_id = ''
+  if show_desktop_gallery_override and desktop_gallery_count > 0
+    assign award_cover_media_id = section.id | append: '-desktop-gallery-1'
+  elsif effective_featured_media != null
+    assign award_cover_media_id = section.id | append: '-' | append: effective_featured_media.id
+  else
+    for media in product.media
+      if media.id == hidden_media_id
+        continue
+      endif
+      assign award_cover_media_id = section.id | append: '-' | append: media.id
+      break
+    endfor
+  endif
+
+  assign award_overlay_products = false
+  if product.title == 'Ympossible Cream' or product.title == 'Ympossible Cream Light' or product.title == 'Discovery Duo'
+    assign award_overlay_products = true
+  endif
+-%}
+
+<media-gallery
+  id="MediaGallery-{{ section.id }}{{ id_append }}"
+  role="region"
+  data-section-id="{{ section.id }}"
+  {% if section.settings.enable_sticky_info %}
+    class="product__column-sticky scroll-trigger animate--slide-in"
+  {% endif %}
+  aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+  data-desktop-layout="{{ section.settings.gallery_layout }}"
+  {% if award_overlay_products and award_cover_media_id != blank %}data-award-cover-id="{{ award_cover_media_id }}"{% endif %}
+>
+  <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+  <slider-component id="GalleryViewer-{{ section.id }}{{ id_append }}" class="slider-mobile-gutter slider-right-thumnail">
+    {%- unless is_duplicate -%}
+      <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
+        {{ 'accessibility.skip_to_product_info' | t }}
+      </a>
+    {%- endunless -%}
+    <ul
+      id="Slider-Gallery-{{ section.id }}{{ id_append }}"
+      class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
+      role="list"
+    >
+
+      {%- if show_desktop_gallery_override -%}
+        {%- capture desktop_sizes -%}
+          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | round }}px, (min-width: 990px) calc({{ media_width | times: 100 }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2)
+        {%- endcapture -%}
+        {%- assign desktop_position = 0 -%}
+        {%- for index in (1..10) -%}
+          {%- assign desktop_gallery_setting = 'desktop_gallery_image_' | append: index -%}
+          {%- assign desktop_image = section.settings[desktop_gallery_setting] -%}
+          {%- if desktop_image != blank -%}
+            {%- assign desktop_position = desktop_position | plus: 1 -%}
+            <li
+              id="Slide-{{ section.id }}-desktop-gallery-{{ desktop_position }}{{ id_append }}"
+              class="product__media-item grid__item slider__slide small-hide{% if desktop_position == 1 %} is-active{% endif %}{% if single_media_visible %} product__media-item--single{% endif %}{% if settings.animations_reveal_on_scroll %} {% endif %}"
+              data-media-id="{{ section.id }}-desktop-gallery-{{ desktop_position }}"
+            >
+              <div
+                class="product-media-container media-type-image media-fit-{{ section.settings.media_fit }} global-media-settings gradient{% if section.settings.constrain_to_viewport %} constrain-height{% endif %}"
+                style="--ratio: {{ desktop_image.aspect_ratio | default: 1.0 }}; --preview-ratio: {{ desktop_image.aspect_ratio | default: 1.0 }};"
+              >
+                <div class="product__media media media--transparent">
+                  {{
+                    desktop_image
+                    | image_url: width: 1946
+                    | image_tag:
+                      class: desktop_image_class,
+                      loading: 'lazy',
+                      sizes: desktop_sizes,
+                      widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+                      alt: desktop_image.alt
+                  }}
+                </div>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      <li
+        id="Slide-{{ section.id }}-variant-metafield-image{{ id_append }}"
+        class="product__media-item grid__item slider__slide small-hide variant-metafield-media"
+        data-media-id="{{ section.id }}-variant-metafield-image"
+        hidden
+      >
+        <div
+          class="product-media-container media-type-image media-fit-{{ section.settings.media_fit }} global-media-settings gradient{% if section.settings.constrain_to_viewport %} constrain-height{% endif %}"
+          style="--ratio: 1.0; --preview-ratio: 1.0;"
+        >
+          <div class="product__media media media--transparent">
+            <img
+              class="{{ desktop_image_class }} variant-metafield-media__image"
+              width="1946"
+              height="1946"
+              loading="lazy"
+              alt=""
+            >
+          </div>
+        </div>
+      </li>
+              
+      {%- if effective_featured_media != null -%}
+        {%- assign featured_media = effective_featured_media -%}
+        <li
+          id="Slide-{{ section.id }}-{{ featured_media.id }}{{ id_append }}"
+          class="product__media-item grid__item slider__slide{% if show_desktop_gallery_override %} medium-hide large-up-hide{% endif %} is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} product__media-item--variant{% endif %}{% if settings.animations_reveal_on_scroll %}{% endif %}"
+          data-media-id="{{ section.id }}-{{ featured_media.id }}"
+        >
+          {%- assign media_position = 1 -%}
+          {% render 'product-thumbnail',
+            media: featured_media,
+            media_count: media_count,
+            position: media_position,
+            desktop_layout: section.settings.gallery_layout,
+            mobile_layout: section.settings.mobile_thumbnails,
+            loop: section.settings.enable_video_looping,
+            modal_id: section.id,
+            xr_button: true,
+            media_width: media_width,
+            media_fit: section.settings.media_fit,
+            constrain_to_viewport: section.settings.constrain_to_viewport,
+            lazy_load: false
+          %}
+        </li>
+      {%- endif -%}
+      {%- assign visible_index = 0 -%}
+      {%- for media in product.media -%}
+        {%- if media.id == hidden_media_id -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- unless media.id == effective_featured_media.id -%}
+          {%- assign visible_index = visible_index | plus: 1 -%}
+          <li
+            id="Slide-{{ section.id }}-{{ media.id }}{{ id_append }}"
+            class="product__media-item grid__item slider__slide{% if show_desktop_gallery_override %} medium-hide large-up-hide{% endif %}{% if single_media_visible %} product__media-item--single{% endif %}{% if effective_featured_media == null and visible_index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}{% if settings.animations_reveal_on_scroll %} {% endif %}"
+            data-media-id="{{ section.id }}-{{ media.id }}"
+          >
+            {%- liquid
+              assign media_position = media_position | default: 0 | plus: 1
+              assign lazy_load = false
+              if media_position > 1
+                assign lazy_load = true
+              endif
+            -%}
+            {% render 'product-thumbnail',
+              media: media,
+              media_count: media_count,
+              position: media_position,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: lazy_load
+            %}
+          </li>
+        {%- endunless -%}
+      {%- endfor -%}
+    </ul>
+
+    {%- unless is_duplicate -%}
+      {%- if award_overlay_products -%}
+        <div class="product-gallery-award-overlay-layer small-hide" data-award-overlay-root aria-hidden="true">
+          {% render 'product-gallery-award-overlays', product: product %}
+        </div>
+      {%- endif -%}
+    {%- endunless -%}
+
+    <div class="dot-gallery" aria-label="Gallery navigation" role="tablist"></div>
+
+    {%- unless is_duplicate -%}
+      <div class="slider-buttons no-js-hidden quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
+        <button
+          type="button"
+          class="slider-button slider-button--prev"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+        >
+          {% render 'icon-caret' %}
+        </button>
+        {% comment %} <div class="slider-counter caption">
+          <span class="slider-counter--current">1</span>
+          <span aria-hidden="true"> / </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+          <span class="slider-counter--total">{{ media_count }}</span>
+        </div> {% endcomment %}
+        <button
+          type="button"
+          class="slider-button slider-button--next"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+        >
+          {% render 'icon-caret' %}
+        </button>
+        
+      </div>
+    {%- endunless -%}
+  </slider-component>
+  {%- if first_3d_model -%}
+    <button
+      class="button button--full-width product__xr-button"
+      type="button"
+      aria-label="{{ 'products.product.xr_button_label' | t }}"
+      data-shopify-xr
+      data-shopify-model3d-id="{{ first_3d_model.id }}"
+      data-shopify-title="{{ product.title | escape }}"
+      data-shopify-xr-hidden
+    >
+      {% render 'icon-3d-model' %}
+      {{ 'products.product.xr_button' | t }}
+    </button>
+  {%- endif -%}
+  {%- if show_desktop_gallery_override and desktop_gallery_count > 1
+    or media_count > 1
+    and section.settings.gallery_layout contains 'thumbnail'
+    or section.settings.mobile_thumbnails == 'show'
+  -%}
+  <span class="explore">Explore</span>
+    <slider-component
+      id="GalleryThumbnails-{{ section.id }}{{ id_append }}"
+      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if thumbnail_media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
+    >
+      <button
+        type="button"
+        class="slider-button slider-button--prev{% if thumbnail_media_count <= 3 %} small-hide{% endif %}{% if thumbnail_media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+        aria-controls="GalleryThumbnails-{{ section.id }}"
+        data-step="3"
+      >
+        {% render 'icon-caret' %}
+      </button>
+      <ul
+        id="Slider-Thumbnails-{{ section.id }}{{ id_append }}"
+        class="thumbnail-list list-unstyled slider slider--mobile{% if section.settings.gallery_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
+      >
+        {%- capture sizes -%}
+          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
+          (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4),
+          (min-width: 750px) calc((100vw - 15rem) / 8),
+          calc((100vw - 8rem) / 3)
+        {%- endcapture -%}
+
+        {%- if show_desktop_gallery_override -%}
+          {%- assign desktop_thumbnail_position = 0 -%}
+          {%- for index in (1..10) -%}
+            {%- assign desktop_gallery_setting = 'desktop_gallery_image_' | append: index -%}
+            {%- assign desktop_image = section.settings[desktop_gallery_setting] -%}
+            {%- if desktop_image != blank -%}
+              {%- assign desktop_thumbnail_position = desktop_thumbnail_position | plus: 1 -%}
+              <li
+                id="Slide-Thumbnails-{{ section.id }}-desktop-gallery-{{ desktop_thumbnail_position }}{{ id_append }}"
+                class="thumbnail-list__item slider__slide small-hide"
+                data-target="{{ section.id }}-desktop-gallery-{{ desktop_thumbnail_position }}"
+                data-media-position="{{ desktop_thumbnail_position }}"
+              >
+                {%- capture thumbnail_id -%}
+                  Thumbnail-{{ section.id }}-desktop-gallery-{{ desktop_thumbnail_position }}{{ id_append }}
+                {%- endcapture -%}
+                <button
+                  class="thumbnail global-media-settings global-media-settings--no-shadow"
+                  aria-label="{{ 'products.product.media.load_image' | t: index: desktop_thumbnail_position }}"
+                  {% if desktop_thumbnail_position == 1 %}
+                    aria-current="true"
+                  {% endif %}
+                  aria-controls="GalleryViewer-{{ section.id }}{{ id_append }}"
+                  aria-describedby="{{ thumbnail_id }}"
+                >
+                  {{
+                    desktop_image
+                    | image_url: width: 416
+                    | image_tag:
+                      loading: 'lazy',
+                      sizes: sizes,
+                      widths: '54, 74, 104, 162, 208, 324, 416',
+                      id: thumbnail_id,
+                      alt: desktop_image.alt
+                  }}
+                </button>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+        {%- if effective_featured_media != null -%}
+          {%- assign featured_media = effective_featured_media -%}
+          {%- liquid
+            capture media_index
+              if featured_media.media_type == 'model'
+                increment model_index
+              elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video'
+                increment video_index
+              elsif featured_media.media_type == 'image'
+                increment image_index
+              endif
+            endcapture
+            assign media_index = media_index | plus: 1
+          -%}
+          <li
+            id="Slide-Thumbnails-{{ section.id }}-0{{ id_append }}"
+            class="thumbnail-list__item slider__slide{% if show_desktop_gallery_override %} medium-hide large-up-hide{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} thumbnail-list_item--variant{% endif %}"
+            data-target="{{ section.id }}-{{ featured_media.id }}"
+            data-media-position="{{ media_index }}"
+          >
+            {%- capture thumbnail_id -%}
+              Thumbnail-{{ section.id }}-0{{ id_append }}
+            {%- endcapture -%}
+            <button
+              class="thumbnail global-media-settings global-media-settings--no-shadow"
+              aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+              aria-current="true"
+              aria-controls="GalleryViewer-{{ section.id }}{{ id_append }}"
+              aria-describedby="{{ thumbnail_id }}"
+            >
+              {{
+                featured_media.preview_image
+                | image_url: width: 416
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  id: thumbnail_id,
+                  alt: featured_media.alt
+                | escape
+              }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- assign visible_thumbnail_index = 0 -%}
+        {%- for media in product.media -%}
+          {%- if media.id == hidden_media_id -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- unless media.id == effective_featured_media.id -%}
+            {%- assign visible_thumbnail_index = visible_thumbnail_index | plus: 1 -%}
+            {%- liquid
+              capture media_index
+                if media.media_type == 'model'
+                  increment model_index
+                elsif media.media_type == 'video' or media.media_type == 'external_video'
+                  increment video_index
+                elsif media.media_type == 'image'
+                  increment image_index
+                endif
+              endcapture
+              assign media_index = media_index | plus: 1
+            -%}
+            <li
+              id="Slide-Thumbnails-{{ section.id }}-{{ forloop.index }}{{ id_append }}"
+              class="thumbnail-list__item slider__slide{% if show_desktop_gallery_override %} medium-hide large-up-hide{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
+              data-target="{{ section.id }}-{{ media.id }}"
+              data-media-position="{{ media_index }}"
+            >
+              {%- if media.media_type == 'model' -%}
+                <span class="thumbnail__badge" aria-hidden="true">
+                  {%- render 'icon-3d-model' -%}
+                </span>
+              {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                <span class="thumbnail__badge" aria-hidden="true">
+                  {%- render 'icon-play' -%}
+                </span>
+              {%- endif -%}
+              {%- capture thumbnail_id -%}
+                Thumbnail-{{ section.id }}-{{ forloop.index }}{{ id_append }}
+              {%- endcapture -%}
+              <button
+                class="thumbnail global-media-settings global-media-settings--no-shadow"
+                aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+                {% if media == effective_featured_media
+                  or effective_featured_media == null
+                  and visible_thumbnail_index == 1
+                %}
+                  aria-current="true"
+                {% endif %}
+                aria-controls="GalleryViewer-{{ section.id }}{{ id_append }}"
+                aria-describedby="{{ thumbnail_id }}"
+              >
+                {{
+                  media.preview_image
+                  | image_url: width: 416
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '54, 74, 104, 162, 208, 324, 416',
+                    id: thumbnail_id,
+                    alt: media.alt
+                  | escape
+                }}
+              </button>
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+      <button
+        type="button"
+        class="slider-button slider-button--next{% if thumbnail_media_count <= 3 %} small-hide{% endif %}{% if thumbnail_media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+        aria-controls="GalleryThumbnails-{{ section.id }}"
+        data-step="3"
+      >
+        {% render 'icon-caret' %}
+      </button>
+    </slider-component>
+  {%- endif -%}
+</media-gallery>
+
+
+<style>
+
+  .product__media-wrapper .product-media-container.media-type-image .media > img,
+  .product__media-wrapper .thumbnail img {
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .product__media-wrapper .product-media-container.media-type-image .media > img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+  }
+
+  .snippets-overlay-gallery {
+    position: absolute;
+    z-index: 99;
+    top: 2rem;
+    left: 2rem;
+    width: 76px;
+}
+
+  @media screen and (min-width: 750px) {
+    .product__media-wrapper slider-component[id^="GalleryViewer-"] {
+      position: relative;
+    }
+
+    .product-gallery-award-overlay-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .product-gallery-award-overlay-layer.award-overlay--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+    @media (max-width: 768px) {
+      .header_sections:not(.homepageheader) .header-wrapper {
+        position: unset !important;
+        background: transparent !important;
+      }
+
+.snippets-overlay-gallery {
+    position: absolute;
+    z-index: 99;
+    top: 9rem!important;
+    left: 15px!important;
+}
+
+      .product__media-list {
+        column-gap: 0px !important;
+        row-gap: 0px !important;
+        position: relative;
+        flex-wrap: inherit;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scroll-padding-left: 0px !important;
+      }
+
+      .product-media-container {
+        --aspect-ratio: 0px !important;
+        --ratio-percent: 0;
+        position: relative;
+        width: 100%;
+        max-width: 100% !important;
+      }
+
+      .product-media-container.grid--peek.slider .grid__item:first-of-type {
+        margin-left: 0px !important;
+      }
+
+      .product-media-container .product__modal-opener {
+        margin-top: 0px !important;
+      }
+
+      .product-media-container.media-fit-cover .media {
+
+        max-height: 80vh;
+        margin-top: 0px !important;
+        min-height: 0px;
+        padding-top: 0px !important;
+      }
+
+      .product__media-wrapper .slider-buttons {
+        display: none!important;
+      }
+
+      .header_sections:not(.homepageheader) .shopify-section-group-header-group {
+        background: transparent !important;
+      }
+
+      .header_sections:not(.homepageheader) {
+        position: ABSOLUTE!important;
+      }
+    }
+
+    .dot-gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      position: relative;
+      width: calc(100vw - 40px);
+      z-index: 9999;
+      margin-top: -30px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dot-line {
+      display: block;
+      width: 100%; /* or 24px, adjust as needed */
+      max-width: 50px;
+      height: 2px;
+      background-color: rgba(228, 228, 228, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dot-line.active {
+      background-color: #E4E4E4; /* active line color */
+      width: 100%; /* slightly wider for effect */
+    }
+
+    @media (min-width: 769px){
+      .dot-gallery{
+        display: none !important;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Scope everything to this section instance
+      const gallery = document.getElementById('GalleryViewer-{{ section.id }}{{ id_append }}');
+      if (!gallery) return;
+
+      const list = document.getElementById('Slider-Gallery-{{ section.id }}{{ id_append }}');
+      if (!list) return;
+
+      const slides = Array.from(list.querySelectorAll('.slider__slide')).filter((slide) => slide.offsetParent !== null);
+      const dotsWrap = gallery.querySelector('.dot-gallery');
+      if (!dotsWrap || slides.length === 0) return;
+
+      // Build dots dynamically to match slides
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot-line';
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('tabindex', '0');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => {
+          // Scroll the target slide into view within the slider
+          slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+          setActive(i);
+        });
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            setActive(i);
+          }
+        });
+        dotsWrap.appendChild(dot);
+      });
+
+      const dots = Array.from(dotsWrap.querySelectorAll('.dot-line'));
+
+      function setActive(index) {
+        dots.forEach((d, j) => d.classList.toggle('active', j === index));
+      }
+
+      // Observe which slide is centered/mostly visible to keep dots in sync
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const idx = slides.indexOf(entry.target);
+              if (idx !== -1) setActive(idx);
+            }
+          });
+        },
+        { root: list, threshold: 0.6 }
+      );
+
+      slides.forEach((slide) => observer.observe(slide));
+
+      // Initial active state
+      setActive(0);
+    });
+  </script>

@@ -1,0 +1,162 @@
+<div class="custom-section-slider padding-top-bottom-70">
+  <div class="text-area scroll-trigger animate--slide-in">
+<div class="in_text-area ">
+    <h2 class="text-heading">{{ section.settings.heading }}</h2>
+    <div class="text-description">{{ section.settings.description }}</div>
+  </div>
+</div>
+  <div class="carousel-area scroll-trigger animate--slide-in">
+    <div class="swiper-container-info swiper-container">
+      <div class="swiper-wrapper cards_block">
+        {% for block in section.blocks %}
+          <div class="swiper-slide" data-title="{{ block.settings.title }}" data-popup-image="{{ block.settings.popup_image | img_url: 'large' }}" data-popup-text="{{ block.settings.popup_text }}">
+        
+            <img src="{{ block.settings.carousel_image | img_url: 'large' }}" alt="{{ block.settings.title }}">
+            <div class="slide-title">{{ block.settings.title }}</div>
+
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup" id="popup">
+<div class="in_popup">
+  <div class="popup-content">
+    <div class="popup-text">
+ <div class="popup-close" onclick="closePopup()">Close</div>
+      <div>
+      <h3 class="popup-title"></h3>
+      <p class="popup-description"></p>
+      </div>
+    </div>
+    <img src="" alt="" class="popup-image">
+  </div>
+ 
+</div>
+</div>
+<div class="cursor-circle" id="cursorCirclelearnmore"><svg xmlns="http://www.w3.org/2000/svg" width="129" height="129" viewBox="0 0 129 129" fill="none">
+<path d="M58.2829 0.459412C26.0209 3.77785 0.878601 31.0892 0.878601 64.2736C0.878601 99.6966 29.5413 128.43 64.8771 128.43C100.213 128.43 128.876 99.6966 128.876 64.2736C128.876 52.0006 125.434 40.5441 119.47 30.7995C119.497 30.7995 58.2829 0.459412 58.2829 0.459412Z" fill="#666460" style="fill:#666460;fill:color(display-p3 0.4000 0.3922 0.3765);fill-opacity:1;"/>
+</svg><span>Learn</span></div>
+<div class="cursor-circle close" id="cursorCircleclose"><svg xmlns="http://www.w3.org/2000/svg" width="129" height="129" viewBox="0 0 129 129" fill="none">
+<path d="M58.2829 0.459412C26.0209 3.77785 0.878601 31.0892 0.878601 64.2736C0.878601 99.6966 29.5413 128.43 64.8771 128.43C100.213 128.43 128.876 99.6966 128.876 64.2736C128.876 52.0006 125.434 40.5441 119.47 30.7995C119.497 30.7995 58.2829 0.459412 58.2829 0.459412Z" fill="#666460" style="fill:#666460;fill:color(display-p3 0.4000 0.3922 0.3765);fill-opacity:1;"/>
+</svg><span>Close</span></div>
+<script> 
+
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.swiper-container-info', {
+     
+     slidesPerView: 'auto',
+          spaceBetween: 13 / 20,
+      
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+
+  document.querySelectorAll('.swiper-slide').forEach(function(slide) {
+    slide.addEventListener('click', function() {
+      openPopup(this.getAttribute('data-popup-image'), this.getAttribute('data-title'), this.getAttribute('data-popup-text'));
+    });
+ 
+  });
+
+  function openPopup(image, title, description) {
+    document.getElementById('popup').style.display = 'block';
+    document.querySelector('.popup-image').src = image;
+    document.querySelector('.popup-title').textContent = title;
+    document.querySelector('.popup-description').textContent = description;
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var popups = document.querySelectorAll('.popup-image, .popup');
+
+    function closePopup() {
+        popups.forEach(function(popup) {
+            popup.style.display = 'none';
+        });
+    }
+
+    popups.forEach(function(popup) {
+        popup.addEventListener('click', closePopup);
+    });
+});
+  
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Custom Section Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Default Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Default description text goes here."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_with_text",
+      "name": "Image with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "carousel_image",
+          "label": "Carousel Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "popup_image",
+          "label": "Popup Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Default Title"
+        },
+        {
+          "type": "textarea",
+          "id": "popup_text",
+          "label": "Popup Text",
+          "default": "Default popup text."
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Custom Section Slider",
+      "blocks": [
+        {
+          "type": "image_with_text"
+        },
+        {
+          "type": "image_with_text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

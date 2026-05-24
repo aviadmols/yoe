@@ -1,0 +1,935 @@
+{% schema %}
+{
+  "name": "Innovative Actives",
+  "settings": [
+      {
+            "type": "text",
+            "id": "custom-class",
+            "label": "Custom Class"
+        },
+         {
+            "type": "text",
+            "id": "main-title",
+            "label": "Title",
+            "default": "INNOVATIVE ACTIVES MEET ADVANCED BIOTECHNOLOGY"
+        },
+        {
+            "type": "header",
+            "content": "Right Image Content"
+        },
+        {
+            "type": "image_picker",
+            "id": "right-bg-image",
+            "label": "Right Image"
+        },
+         {
+      "type": "video",
+      "id": "video_file",
+      "label": "Background Video File"
+    },
+
+        {
+            "type": "richtext",
+            "id": "right-title",
+            "label": "Caption Text"
+        },
+         {
+            "type": "richtext",
+            "id": "main-title-cus",
+            "label": "Title"
+        },
+         {
+            "type": "richtext",
+            "id": "sub-title-cus",
+            "label": "Sub Title"
+        },
+        {
+            "type": "url",
+            "id": "btn-url-content",
+            "label": "Button Url"
+        },
+        {
+          "type": "header",
+          "content": "Ingredients Modal Settings"
+        },
+        {
+          "type": "richtext",
+          "id": "ingredients_list",
+          "label": "Full Ingredients List",
+          "info": "This will appear in the modal when 'See full ingredients list' is clicked"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "gold_standard",
+      "name": "Gold Standard Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "popup_image",
+          "label": "Popup Image"
+        },
+        {
+          "type": "richtext",
+          "id": "popup_text",
+          "label": "Popup Text"
+        }
+      ]
+    },
+    {
+      "type": "power_player",
+      "name": "Power Player Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "popup_image",
+          "label": "Popup Image"
+        },
+        {
+          "type": "richtext",
+          "id": "popup_text",
+          "label": "Popup Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Innovative Actives",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+{% assign poster_image = section.settings.right-bg-image | img_url: 'master' %}
+<div class="innovative-actives {{ section.settings.custom-class }}">
+    <div class="page-width">
+        <div class="inner-cus-innov">
+             <!-- Left section -->
+            <div class="left-content-sec-innov">
+ <h1>{{ section.settings.main-title }}</h1>
+
+  <!-- Gold Standards -->
+  <div class="gold-standards">
+    <h3>THE GOLD STANDARDS</h3>
+    <div class="grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'gold_standard' %}
+          <div class="item-section" role="button" tabindex="0"
+              data-popup-trigger="{{ section.id }}"
+              data-popup-image="{% if block.settings.popup_image %}{{ block.settings.popup_image | img_url: 'large' }}{% endif %}"
+              data-popup-title="{{ block.settings.title | strip_html | escape }}"
+              data-block-id="{{ block.id }}">
+            <div class="popup-text-src" hidden data-popup-content="{{ block.id }}">
+              {{ block.settings.popup_text }}
+            </div>
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.title | strip_html }}">
+            {% endif %}
+            {{ block.settings.title }}<br>{{ block.settings.description }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Power Players -->
+  <div class="power-players">
+    <h3>THE POWER PLAYERS</h3>
+    <div class="grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'power_player' %}
+          <div class="item-section" role="button" tabindex="0"
+              data-popup-trigger="{{ section.id }}"
+              data-popup-image="{% if block.settings.popup_image %}{{ block.settings.popup_image | img_url: 'large' }}{% endif %}"
+              data-popup-title="{{ block.settings.title | strip_html | escape }}"
+              data-block-id="{{ block.id }}">
+            <div class="popup-text-src" hidden data-popup-content="{{ block.id }}">
+              {{ block.settings.popup_text }}
+            </div>
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.title | strip_html }}">
+            {% endif %}
+            {{ block.settings.title }}<br>{{ block.settings.description }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+    <!-- Hidden container for preloading popup images -->
+    <div style="display: none !important;" aria-hidden="true" id="popup-preload-{{ section.id }}">
+        {% for block in section.blocks %}
+            {% if block.settings.popup_image %}
+                <img src="{{ block.settings.popup_image | img_url: 'large' }}" alt="Preload {{ block.settings.title | strip_html }}" loading="eager">
+            {% endif %}
+        {% endfor %}
+    </div>
+    <a href="#" class="cta-btn" data-ingredients-trigger="{{ section.id }}">See full ingredients list</a>
+  </div>
+
+{% comment %} Right section {% endcomment %}
+<div class="right-section-image-innov">
+{% if section.settings.video_file != blank %}
+     {{ section.settings.video_file | video_tag: 
+    autoplay: true, 
+    loop: true, 
+    muted: true, 
+    playsinline: true, 
+    controls: false, 
+    class: 'background-video', 
+    preload: 'metadata', 
+    aria_label: 'Background video', 
+    poster: poster_image
+}}
+  {% elsif section.settings.right-bg-image != blank %}
+    <div class="background-image" style="background-image: url('{{ section.settings.right-bg-image | img_url: 'master' }}');"></div>
+  {% endif %}
+
+  <div class="content-overlay">
+    <h3>{{ section.settings.right-title }}</h3>
+    <h1>{{ section.settings.main-title-cus }}</h1>
+    <p class="utilizing-content">{{ section.settings.sub-title-cus }}</p>
+    <a href="{{ section.settings.btn-url-content }}" class="learn-more-btn">Learn More
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="17" viewBox="0 0 10 17" fill="none">
+        <path d="M1 16L8 8.5L1 1" stroke="#666460" stroke-width="2"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+
+
+  </div>
+  </div>
+</div>
+
+<div class="popup" id="yoe-popup-{{ section.id }}" style="display:none;">
+  <div class="in_popup">
+    <div class="popup-content">
+      <div class="popup-text">
+        <div class="popup-close" data-popup-close="{{ section.id }}">Close</div>
+        <div>
+          <h3 class="popup-title" id="yoe-popup-title-{{ section.id }}"></h3>
+          <p class="popup-description" id="yoe-popup-desc-{{ section.id }}"></p>
+        </div>
+      </div>
+      <img src="" alt="" class="popup-image" id="yoe-popup-image-{{ section.id }}">
+    </div>
+  </div>
+</div>
+
+<!-- Ingredients Modal -->
+<div class="ingredients-modal popup" id="ingredients-modal-{{ section.id }}" style="display:none;">
+
+    <div class="in_popup">
+        <div class="popup-content">
+            <div class="popup-text ingredients-modal-content">
+                <button class="ingredients-modal-close popup-close" data-ingredients-close="{{ section.id }}">
+                    Close
+                </button>
+                <div class="ingredients-modal-body">
+                    <h4 class="ingredients-product-name">{{ product.title }}</h4>
+                    <h3 class="ingredients-heading popup-title">Ingredients</h3>
+                    <div class="ingredients-text">
+                        {{ section.settings.ingredients_list }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+  .right-section-image-innov {
+  position: relative;
+  overflow: hidden;
+}
+
+.background-video,
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+a.cta-btn {
+    border: 1px solid #666460;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-width: 180px;
+    line-height: 52px;
+    text-transform: uppercase;
+    color: #666460;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    font-size: 15px;
+    max-width: 244px;
+}
+.inner-cus-innov {
+    display: flex;
+    justify-content: space-between;
+}
+.left-content-sec-innov h1 {
+    font-size: 1.9rem;
+    color: #666460;
+    text-align: left;
+    line-height: 2.2rem;
+    margin: 0px;
+    letter-spacing: 5px;
+    font-weight: 350;
+    width: 100%;
+    max-width: 29rem;
+    padding-bottom: 0.5rem;
+}
+.gold-standards, .power-players {
+    text-align: left;
+    margin: 20px 0px 0px;
+}
+.innovative-actives {
+    text-align: center;
+    padding: 38px 20px;
+    background: #fff;
+}
+.item-section p {
+    text-transform: uppercase;
+    font-size: 0.66rem;
+    letter-spacing: 0.05rem;
+    font-weight: 400;
+    width: 100%;
+    word-break: break-word;
+    line-height: 13px;
+    max-width: 4.295rem;
+}
+.innovative-actives h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.gold-standards, .power-players {
+  margin-bottom: 40px;
+}
+.item-section img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+}
+.gold-standards h3, .power-players h3 {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+    font-weight: 550;
+    color: #716E6A;
+    letter-spacing: 3px;
+}
+.item-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 32%;
+    max-width: 31%;
+    cursor:pointer;
+}
+.innovative-actives .grid {
+    display: flex;
+    gap: 8px;
+}
+.right-section-image-innov {
+    width: 56%;
+    max-width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0rem 4rem;
+    margin-left: 7rem;
+}
+.left-content-sec-innov {
+    width: 37%;
+    max-width: 37%;
+    padding: 56px 0px;
+    margin-left:auto;
+}
+.innovative-actives .item img {
+  max-width: 60px;
+  margin-bottom: 10px;
+}
+.innovative-actives .item p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.right-section-image-innov h3 {
+    margin: 0px;
+    font-size: 12px;
+    color: #666460;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.right-section-image-innov h1 {
+    margin: 0px;
+    font-size: 24px;
+    color: #666460;
+    line-height: 31px;
+    padding: 6px 0px 18px;
+    font-weight: 300;
+}
+.right-section-image-innov h1 p {
+    margin: 0px auto;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 130%;
+}
+.right-section-image-innov p {
+    font-size: 14px;
+    color: #666460;
+    font-weight: 200;
+    max-width: 387px;
+    margin: 10px auto;
+    line-height: 21px;
+}
+a.learn-more-btn svg {
+    width: 7px;
+    height: 12px;
+}
+a.learn-more-btn {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 3rem;
+    width: 100%;
+    text-decoration: none;
+    color: #666460;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 10px 30px;
+    border: 1px solid #666460;
+    max-width: fit-content;
+    margin: 3rem auto 0;
+}
+.innovative-actives .page-width {
+    padding-right: 0px;
+}
+
+.item-section:nth-child(2) p {
+    max-width: 5.4rem;
+}
+.power-players .item-section:nth-child(1) p {
+    max-width: 6rem;
+}
+
+
+ 
+@media(max-width: 767px) {
+  .right-section-image-innov {
+    margin-left: 0rem;
+  }
+  .innovative-actives .page-width {
+      padding: 14px 15px;
+  }
+  a.cta-btn {
+      font-family: "Open Sans Condensed", sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: 1.17px solid #666460;
+      color: #666460;
+      margin: 16px auto 16px;
+      font-size: 14px;
+      max-width: 260px;
+  }
+  .inner-cus-innov {
+      flex-direction: column;
+  }
+  .right-section-image-innov {
+      margin-top: 2rem;
+  }
+  .left-content-sec-innov, .right-section-image-innov {
+      width: 100%;
+      max-width: 100%;
+  }
+  .left-content-sec-innov h1 {
+      font-family: "Open Sans Condensed", sans-serif;
+      font-weight: 300;
+      font-size: 30px;
+      text-align: center;
+      line-height: 1.2em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+      color: #666460
+  }
+  .gold-standards, .power-players {
+      text-align: center;
+      width: 100%;
+      margin: 22px auto 0px !important;
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+  .gold-standards h3, .power-players h3 {
+      font-size: 16px;
+      margin-bottom: 18px;
+      font-weight: 600;
+      color: #716E6A;
+      letter-spacing: 3px;
+  }
+  .item-section {
+      flex-direction: column;
+      row-gap: 4px;
+  }
+  .innovative-actives .grid {
+      gap: 8px;
+      justify-content: center;
+      row-gap: 0px;
+  }
+  .item-section p {
+      text-transform: uppercase;
+      font-size: 12.4px;
+      line-height: 1em;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+      width: 100%;
+      word-break: inherit;
+      line-height: 13px;
+      max-width: 82px;
+  }
+  .item-section:nth-child(2) p {
+    max-width:106px;
+  }
+  .innovative-actives {
+      padding: 36px 0px 1px;
+  }
+  .right-section-image-innov {
+      padding: 5rem 2rem;
+  }
+  .right-section-image-innov h1 {
+      font-family: "Open Sans Condensed", sans-serif;
+      font-weight: 300;
+      font-size: 30px;
+      line-height: 1.2em;
+      letter-spacing: 0.15em;
+      padding: 12px 0px 17px;
+  }
+  .right-section-image-innov h3 {
+      font-size: 14px;
+      line-height: 1.4em;
+      letter-spacing: 0.15em;
+      font-weight: 800;
+      color: #666460;
+  }
+  .right-section-image-innov p {
+      font-family: "Open Sans Condensed", sans-serif;
+      font-size: 13.45px;
+      line-height: 1.5em;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      width: 100%;
+      max-width: 265px;
+      margin: auto;
+  }
+  a.learn-more-btn {
+      display: none;
+  }
+  .item-section img {
+      width: 47px;
+      height: 47px;
+  }
+  .left-content-sec-innov {
+      padding: 0px 0px;
+  }
+}
+
+
+  @media(max-width: 991px) and (min-width: 768px){
+  .left-content-sec-innov h1 {
+    font-size: 25px;
+    line-height: 42px;
+}
+.item-section {
+    gap: 5px;
+}
+.innovative-actives .grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+.item-section p {
+    font-size: 13px;
+}
+.gold-standards h3, .power-players h3 {
+    font-size: 18px;
+}
+.right-section-image-innov h1 {
+    font-size: 30px;
+    line-height: 44px;
+}
+.innovative-actives .page-width {
+    padding: 0px;
+}
+  }
+
+  
+  @media(max-width: 1200px) and (min-width: 992px){
+.innovative-actives .page-width {
+    padding: 0px;
+}
+.left-content-sec-innov h1 {
+    font-size: 27px;
+    line-height: 46px;
+}
+.gold-standards h3, .power-players h3 {
+    font-size: 16px;
+}
+.item-section p {
+    font-size: 10px;
+}
+.item-section img {
+    width: 43px;
+    height: 43px;
+    object-fit: cover;
+}
+.right-section-image-innov h1 {
+    font-size: 30px;
+    line-height: 45px;
+}
+.right-section-image-innov p {
+    font-size: 16px;
+}
+  }
+
+
+
+@media only screen and (min-width: 767px) and (max-width: 1199px) {
+  .left-content-sec-innov {
+    width: 50%;
+    max-width: 50%;
+  }
+  .right-section-image-innov {
+    width: 50%;
+    max-width: 50%;
+    padding: 0rem 2rem;
+    margin-left: 0.5rem;
+}
+}
+
+@media only screen and (min-width: 767px) and (max-width: 880px) {
+.item-section { 
+    width: 44%;
+    max-width: 44%;
+}
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .left-content-sec-innov h1 {
+        margin: 0 auto; 
+    }
+}
+
+
+  /* Ingredients Modal Styles */
+  .ingredients-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+  }
+
+  .ingredients-modal .in_popup{
+      max-width: 85%;
+      width: 100%;
+  }
+
+  .ingredients-modal-content {
+      position: relative;
+      background: white;
+      width: 100%;
+      overflow-y: auto;
+      z-index: 2;
+      border-radius: 0px;
+  }
+
+  .ingredients-modal-close {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+  }
+
+  .ingredients-modal-close:hover {
+      opacity: 0.7;
+  }
+
+  .ingredients-modal-close svg {
+      width: 24px;
+      height: 24px;
+  }
+
+  .ingredients-modal-body {
+      text-align: center;
+  }
+
+  .ingredients-product-name {
+      font-size: 16.66px;
+      font-style: normal;
+      font-weight: 538;
+      line-height: 121%; /* 20.158px */
+      letter-spacing: 1.499px;
+      text-transform: uppercase;
+      color: #666460;
+      margin: 0;
+      font-family: "Open Sans Condensed", sans-serif;
+  }
+
+  .ingredients-heading {
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 538;
+      line-height: 121%; /* 48.4px */
+      letter-spacing: 3.6px;
+      text-transform: uppercase;
+      color: #666460;
+      margin: 0 0 20px 0;
+      text-align: center;
+      font-family: "Open Sans Condensed", sans-serif;
+  }
+
+  .ingredients-text {
+      color: #666460;
+      text-align: left;
+      font-family: "Open Sans condensed", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 460;
+      line-height: 160%; /* 22.4px */
+      letter-spacing: 0.42px;
+
+  }
+
+  .ingredients-text h4 {
+      color: #666460;
+      font-family: "Open Sans condensed", sans-serif;
+      font-size: 16.66px;
+      font-style: normal;
+      font-weight: 538;
+      line-height: 121%;
+      letter-spacing: 1.499px;
+      text-transform: uppercase;
+  }
+
+  .ingredients-text p {
+      margin: 0 0 15px 0;
+      color: #666460;
+  }
+
+  .ingredients-text p:last-child {
+      margin-bottom: 0;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+      .ingredients-modal{
+          padding: 0;
+      }
+
+      .ingredients-modal .in_popup{
+          max-width: 100%;
+          width: 100%;
+      }
+
+      .ingredients-modal-content {
+          align-items: start;
+          justify-content: start;
+          max-height: 85vh;
+      }
+
+      .ingredients-modal-close {
+          top: 15px;
+          left: auto;
+      }
+
+      .ingredients-product-name {
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 538;
+          line-height: 121%; /* 14.52px */
+          letter-spacing: 1.08px;
+          margin-top: 20px;
+          margin-bottom: 5px;
+          text-align: left;
+      }
+
+      .ingredients-heading {
+          font-size: 25px;
+          font-style: normal;
+          font-weight: 538;
+          line-height: 121%; /* 30.25px */
+          letter-spacing: 2.25px;
+          text-transform: uppercase;
+          margin-bottom: 40px;
+          text-align: left;
+      }
+
+      .ingredients-text {
+          font-size: 11px;
+          line-height: 1.4em;
+      }
+
+      .ingredients-text h4{
+          font-size: 12px;
+          letter-spacing: 1.08px;
+      }
+  }
+
+</style>
+
+
+<script>
+(function() {
+  var sid = '{{ section.id }}';
+  var popup = document.getElementById('yoe-popup-' + sid);
+  if (!popup) return;
+  var imgEl = document.getElementById('yoe-popup-image-' + sid);
+  var titleEl = document.getElementById('yoe-popup-title-' + sid);
+  var descEl = document.getElementById('yoe-popup-desc-' + sid);
+
+  function openPopup(image, title, description) {
+    if (imgEl) {
+      imgEl.src = image || '';
+      imgEl.style.display = image ? 'block' : 'none';
+    }
+    if (titleEl) titleEl.textContent = title || '';
+    if (descEl) descEl.innerHTML = description || '';
+    popup.style.display = 'block';
+  }
+  
+  function closePopup() { 
+    popup.style.display = 'none'; 
+  }
+
+  document.addEventListener('click', function(e) {
+    var trigger = e.target.closest('[data-popup-trigger="' + sid + '"]');
+    if (trigger) {
+      var image = trigger.getAttribute('data-popup-image') || '';
+      var title = trigger.getAttribute('data-popup-title') || '';
+      var blockId = trigger.getAttribute('data-block-id') || '';
+      
+      // Find the popup text content by block ID
+      var textNode = trigger.querySelector('.popup-text-src[data-popup-content="' + blockId + '"]');
+      var text = textNode ? textNode.innerHTML.trim() : '';
+      
+      console.log('Popup Debug:', {
+        image: image,
+        title: title,
+        blockId: blockId,
+        hasTextNode: !!textNode,
+        text: text
+      });
+      
+      openPopup(image, title, text);
+    }
+    if (e.target.matches('[data-popup-close="' + sid + '"]') || e.target.closest('[data-popup-close="' + sid + '"]')) {
+      closePopup();
+    }
+    if (e.target === popup) { closePopup(); }
+  });
+
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+})();
+
+// Ingredients Modal Handler
+(function() {
+    var sid = '{{ section.id }}';
+    var ingredientsModal = document.getElementById('ingredients-modal-' + sid);
+    if (!ingredientsModal) return;
+
+    function openIngredientsModal(e) {
+        e.preventDefault();
+        ingredientsModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeIngredientsModal() {
+        ingredientsModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // Open modal on trigger click
+    document.addEventListener('click', function(e) {
+        var trigger = e.target.closest('[data-ingredients-trigger="' + sid + '"]');
+        if (trigger) {
+            openIngredientsModal(e);
+        }
+
+        // Close on close button
+        var closeBtn = e.target.closest('[data-ingredients-close="' + sid + '"]');
+        if (closeBtn) {
+            closeIngredientsModal();
+        }
+
+        // Close on overlay click
+        if (e.target.classList.contains('ingredients-modal-overlay')) {
+            closeIngredientsModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && ingredientsModal.style.display === 'flex') {
+            closeIngredientsModal();
+        }
+    });
+})();
+</script>

@@ -1,0 +1,251 @@
+/* Discovery Duo – Formula comparison
+ * Desktop in rem (1rem = 20px); mobile in px.
+ */
+
+.dd-compare {
+  width: 100%;
+  padding-top: var(--dd-compare-padding-top, 4rem);
+  padding-bottom: var(--dd-compare-padding-bottom, 4rem);
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+}
+
+.dd-compare__inner {
+  max-width: 72rem; /* 1440px */
+  margin: 0 auto;
+  padding: 0 4rem;
+  box-sizing: border-box;
+}
+
+.dd-compare__header {
+  text-align: center;
+  margin-bottom: 3.2rem; /* 64px */
+}
+
+.dd-compare__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem; /* 14px */
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+  margin-bottom: 0.6rem;
+}
+
+.dd-compare__headline {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.2rem; /* 44px */
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-compare__subheadline {
+  margin: 0;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.dd-compare__grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2.4rem;
+  align-items: start;
+}
+
+.dd-compare__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dd-compare__column-media {
+  width: 100%;
+  max-width: 14rem; /* 280px */
+  height: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.dd-compare__column-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.dd-compare__column-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.4rem; /* 28px */
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-compare__column-subtitle {
+  margin: 0 0 1.6rem 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #999592;
+}
+
+.dd-compare__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  text-align: left;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.dd-compare__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem; /* 17px */
+  line-height: 1.4;
+  color: #666460;
+}
+
+.dd-compare__list-check {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #bd1e18;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+}
+
+.dd-compare__divider {
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: 6rem;
+  position: relative;
+}
+
+.dd-compare__divider-label {
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #bd1e18;
+  line-height: 1;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-compare__disclaimer {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  font-size: 0.6rem;
+  font-style: italic;
+  color: #999592;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — px values
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-compare {
+    padding-top: var(--dd-compare-padding-top, 48px);
+    padding-bottom: var(--dd-compare-padding-bottom, 48px);
+  }
+
+  .dd-compare__inner {
+    padding: 0 20px;
+  }
+
+  .dd-compare__header {
+    margin-bottom: 32px;
+  }
+
+  .dd-compare__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .dd-compare__headline {
+    font-size: 24px;
+    letter-spacing: 0.6px;
+  }
+
+  .dd-compare__subheadline {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .dd-compare__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .dd-compare__column-media {
+    height: 200px;
+    max-width: 200px;
+    margin-bottom: 14px;
+  }
+
+  .dd-compare__column-title {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .dd-compare__column-subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .dd-compare__list {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .dd-compare__list-item {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .dd-compare__list-check {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .dd-compare__divider {
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  .dd-compare__divider-label {
+    font-size: 32px;
+  }
+
+  .dd-compare__disclaimer {
+    margin-top: 24px;
+    font-size: 10px;
+  }
+}

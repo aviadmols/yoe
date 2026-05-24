@@ -1,0 +1,331 @@
+{% comment %}
+  Section: Clinical Results
+  Description: Responsive section for showcasing skincare product clinical results.
+{% endcomment %}
+
+<section class="clinical-results-section">
+    <div class="page-width">
+  <div class="clinical-results-container">
+    
+    <!-- Left Image -->
+    <div class="image-side">
+      {% if section.settings.image %}
+        <img class="desktop-image-clinic"
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="clinical-image"
+          loading="lazy"
+        />
+
+          <img class="mobile-image-clinic"
+          src="{{ section.settings.image_mobile | image_url: width: 800 }}"
+          alt="{{ section.settings.image_mobile.alt | escape }}"
+          class="clinical-image"
+          loading="lazy"
+        />
+      {% endif %}
+    </div>
+
+    <!-- Right Content -->
+    <div class="results-side">
+      {% if section.settings.headline != blank %}
+        <h2 class="results-title">{{ section.settings.headline }}</h2>
+      {% endif %}
+
+      <ul class="results-list">
+        {% for block in section.blocks %}
+          <li class="result-item">
+            <span class="percent">{{ block.settings.percentage }}</span>
+            <span class="description">{{ block.settings.description }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+
+        <a class="clinic-button" href="{{ section.settings.button_link }}" class="results-button">
+          {{ section.settings.button_label }}
+        </a>
+
+    </div>
+</div>
+  </div>
+</section>
+
+<style>
+a.clinic-button {
+    display: flex;
+    border: 1px solid #666460;
+    width: 100%;
+    max-width: 244px;
+    justify-content: center;
+    font-size: 15px;
+    color: #666460;
+    text-transform: uppercase;
+    margin-top: 4rem;
+    line-height: 52px;
+    letter-spacing: 0.06rem;
+}
+img.desktop-image-clinic {
+    mix-blend-mode: multiply;
+}
+.clinical-results-section {
+    background-color: #F7F6F5;
+}
+.clinical-results-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1188px;
+    margin: auto;
+}
+.clinical-results-container .image-side img.desktop-image-clinic {
+    height: 37rem;
+}
+.image-side {
+    flex: 1 1 55%;
+    padding: 0rem;
+    line-height: 0;
+}
+  .clinical-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .results-side {
+    flex: 1 1 45%;
+    padding: 0rem;
+  }
+.results-title {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+    color: #666460;
+    text-transform: uppercase;
+    margin: 0px 0px 30px;
+}
+
+  .results-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0rem;
+  }
+.result-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+.percent {
+    font-size: 2.6rem;
+    font-weight: 200;
+    color: #666460;
+    margin-right: 0.5rem;
+    width: 120px;
+}
+.results-side .description {
+    font-size: 1rem;
+    color: #666460;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-weight: 400;
+}
+  .results-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #000;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: #000;
+    transition: all 0.3s ease;
+  }
+
+  .results-button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  img.mobile-image-clinic {
+    display: none;
+}
+
+
+
+  @media screen and (max-width: 767px) {
+    section.clinical-results-section .page-width {
+    padding: 0px;
+}
+    img.desktop-image-clinic {
+    display: none;
+}
+img.mobile-image-clinic {
+    display: block;
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+.clinical-results-container {
+    flex-direction: column-reverse;
+    row-gap: 30px;
+}
+a.clinic-button {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 500;
+    line-height: 53px;
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+    margin: 0px;
+    margin-top:30px;
+    border: 1.17px solid #666460;
+    color: #666460;
+    letter-spacing: 0.05em;
+}
+.results-title {
+  font-family: "Open Sans Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    font-weight: uppercase;
+    line-height: 1.2em;
+}
+
+    .image-side,
+    .results-side {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+.clinical-results-section {
+    padding: 3rem 0rem 0rem;
+    background: #F7F6F5;
+}
+.percent {
+    font-size: 27px;
+    width: 97px;
+}
+   .results-side .description {
+    font-family: "Open Sans Condensed", sans-serif;
+    font-weight: 500;
+    line-height: 1.2em;
+    letter-spacing: 0.1em;
+    font-size: 13px;
+}
+  }
+
+  @media(max-width: 991px) and (min-width: 768px){
+.results-title {
+    font-size: 28px;
+}
+    img.desktop-image-clinic {
+        width: 100%;
+    }
+    .percent {
+    font-size: 30px;
+    width: 120px;
+}
+.header_sections:not(.homepageheader) .cart-count-bubble {
+    background: #666460;
+}
+}
+
+  @media(max-width: 1200px) and (min-width: 992px){
+    img.desktop-image-clinic {
+        width: 100%;
+    }
+    .results-title {
+    font-size: 28px;
+}
+.percent {
+    font-size: 35px;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Clinical Results",
+  "tag": "section",
+  "class": "clinical-results",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Upload Image"
+    },
+     {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Upload Image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Clinical Results"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Discover More Results"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Result Line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "percentage",
+          "label": "Percentage",
+          "default": "123%"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Reduced Fine Lines"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Clinical Results",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "result",
+          "settings": {
+            "percentage": "123%",
+            "description": "Reduced Fine Lines"
+          }
+        },
+        {
+          "type": "result",
+          "settings": {
+            "percentage": "94%",
+            "description": "Improved Hydration"
+          }
+        },
+        {
+          "type": "result",
+          "settings": {
+            "percentage": "57%",
+            "description": "Firmness Feel of Skin"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+

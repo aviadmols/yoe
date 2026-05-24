@@ -1,0 +1,95 @@
+{% schema %}
+{
+  "name": "Title and Subtitle",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Your Title Here"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Your Subtitle Here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Title & Subtitle",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="title-subtitle-section">
+  <div class="page-width padding-right-left">
+  <h1 class="main-title">{{ section.settings.title }}</h1>
+  <p class="sub-title">{{ section.settings.subtitle }}</p>
+  </div>
+</section>
+
+
+<style>
+  .title-subtitle-section {
+  text-align: center;
+}
+
+/* Desktop Styles */
+.main-title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 3.5rem; /* 70px */
+  font-weight: 385;
+  line-height: 4.2rem; /* 84px */
+  letter-spacing: 0.15em;
+  text-align: center;
+  font-variation-settings: 'wdth' 80;
+  margin-bottom: 1.5rem; /* 30px */
+}
+
+.title-subtitle-section {
+    margin-bottom: 6rem;
+}
+
+.sub-title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem; /* 18px */
+  font-weight: 480;
+  line-height: 1.26rem; /* 25.2px */
+  text-align: center;
+  font-variation-settings: 'wdth' 85;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+
+.title-subtitle-section {
+    margin-bottom: 0px!important;
+}
+.main-title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 41.43px; /* 41.43px */
+    font-weight: 500;
+    line-height: 49.71px; /* 49.71px */
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 20px; /* 20px */
+}
+
+.sub-title {
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13.6px; /* 13.6px */
+    font-weight: 413;
+    line-height: 19.04px; /* 19.04px */
+    letter-spacing: 0.01em;
+    text-align: center;
+    font-variation-settings: 'wdth' 87;
+}
+}
+
+</style>

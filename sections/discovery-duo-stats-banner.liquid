@@ -1,0 +1,146 @@
+{{ 'discovery-duo-stats-banner.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-stats"
+  style="--dd-stats-padding-top: {{ section.settings.padding_top }}px; --dd-stats-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Visibly transformed' | escape }}"
+>
+  <div class="dd-stats__inner">
+    <header class="dd-stats__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="dd-stats__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-stats__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-stats__subheadline">{{ section.settings.subheadline }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="dd-stats__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <li class="dd-stats__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.timing != blank -%}
+                <span class="dd-stats__item-timing">{{ block.settings.timing }}</span>
+              {%- endif -%}
+              {%- if block.settings.percentage != blank -%}
+                <span class="dd-stats__item-percentage{% if block.settings.is_negative %} dd-stats__item-percentage--negative{% endif %}">{{ block.settings.percentage }}</span>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <span class="dd-stats__item-description">{{ block.settings.description }}</span>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="dd-stats__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Stats banner",
+  "tag": "section",
+  "class": "section-dd-stats",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / small label",
+      "default": "Clinically tested"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Visibly Transformed"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Yes, in just 4 weeks"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer text"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "timing",
+          "label": "Timing label",
+          "default": "WEEK 4"
+        },
+        {
+          "type": "text",
+          "id": "percentage",
+          "label": "Percentage",
+          "default": "-86.8%"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_negative",
+          "label": "Use 'reduction' colour",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Fine lines reduced"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Stats banner",
+      "blocks": [
+        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "-86.8%", "is_negative": true, "description": "Fine lines reduced" } },
+        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "-65.1%", "is_negative": true, "description": "Wrinkles reduced" } },
+        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "+127.1%", "is_negative": false, "description": "Hydration boost" } },
+        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "+50.6%", "is_negative": false, "description": "Firmness increase" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

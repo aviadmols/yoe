@@ -1,0 +1,206 @@
+/* Discovery Duo – Two formulas
+ * Desktop in rem (1rem = 20px); mobile in px.
+ */
+
+.dd-two {
+  width: 100%;
+  padding-top: var(--dd-two-padding-top, 4rem);
+  padding-bottom: var(--dd-two-padding-bottom, 4rem);
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+}
+
+.dd-two__inner {
+  max-width: 72rem; /* 1440px */
+  margin: 0 auto;
+  padding: 0 4rem; /* 80px */
+  box-sizing: border-box;
+}
+
+.dd-two__header {
+  text-align: center;
+  margin-bottom: 3.2rem; /* 64px */
+}
+
+.dd-two__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem; /* 14px */
+  font-weight: 700;
+  letter-spacing: 0.14rem; /* 2.8px */
+  text-transform: uppercase;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+  margin-bottom: 0.6rem;
+}
+
+.dd-two__headline {
+  margin: 0 0 0.6rem 0;
+  font-size: 2.4rem; /* 48px */
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-two__subheadline {
+  margin: 0;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem; /* 20px */
+  line-height: 1.5;
+  color: #666460;
+}
+
+.dd-two__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.8rem; /* 56px */
+}
+
+.dd-two__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem 2.5rem;
+  background-color: #f7f6f5;
+  border-radius: 0.35rem; /* 7px — matches theme image radius */
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.04);
+}
+
+.dd-two__card-media {
+  width: 100%;
+  max-width: 18rem; /* 360px */
+  height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+}
+
+.dd-two__card-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.dd-two__card-label {
+  display: inline-block;
+  font-size: 0.6rem; /* 12px */
+  font-weight: 700;
+  letter-spacing: 0.16rem; /* 3.2px */
+  text-transform: uppercase;
+  color: #bd1e18;
+  margin-bottom: 0.6rem;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-two__card-title {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.5rem; /* 30px */
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-two__card-description {
+  font-size: 0.85rem; /* 17px */
+  line-height: 1.5;
+  color: #666460;
+  max-width: 22rem;
+}
+
+.dd-two__card-description p {
+  margin: 0;
+}
+
+.dd-two__card-tagline {
+  margin-top: 1rem;
+  font-size: 0.7rem; /* 14px */
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 80;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — px values
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-two {
+    padding-top: var(--dd-two-padding-top, 48px);
+    padding-bottom: var(--dd-two-padding-bottom, 48px);
+  }
+
+  .dd-two__inner {
+    padding: 0 20px;
+  }
+
+  .dd-two__header {
+    margin-bottom: 32px;
+  }
+
+  .dd-two__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .dd-two__headline {
+    font-size: 26px;
+    letter-spacing: 0.6px;
+    line-height: 1.2;
+  }
+
+  .dd-two__subheadline {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .dd-two__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dd-two__card {
+    padding: 20px 16px 28px;
+    border-radius: 7px;
+  }
+
+  .dd-two__card-media {
+    height: 220px;
+    margin-bottom: 16px;
+  }
+
+  .dd-two__card-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .dd-two__card-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .dd-two__card-description {
+    font-size: 14px;
+  }
+
+  .dd-two__card-tagline {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 1.8px;
+  }
+}

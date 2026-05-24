@@ -1,0 +1,222 @@
+/* Discovery Duo – Refillable
+ * Desktop in rem (1rem = 20px); mobile in px.
+ */
+
+.dd-refill {
+  width: 100%;
+  padding-top: var(--dd-refill-padding-top, 4rem);
+  padding-bottom: var(--dd-refill-padding-bottom, 4rem);
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+}
+
+.dd-refill__inner {
+  max-width: 72rem; /* 1440px */
+  margin: 0 auto;
+  padding: 0 4rem;
+  box-sizing: border-box;
+}
+
+.dd-refill__header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.dd-refill__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+  margin-bottom: 0.6rem;
+}
+
+.dd-refill__headline {
+  margin: 0 0 0.8rem 0;
+  font-size: 2.4rem; /* 48px */
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-refill__subheadline {
+  max-width: 32rem;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.dd-refill__subheadline p {
+  margin: 0;
+}
+
+.dd-refill__media {
+  margin: 0 auto 3rem;
+  border-radius: 0.35rem; /* 7px */
+  overflow: hidden;
+  max-width: 64rem;
+}
+
+.dd-refill__media picture,
+.dd-refill__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.dd-refill__pillars {
+  list-style: none;
+  margin: 0 0 2.4rem 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+
+.dd-refill__pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.dd-refill__pillar-icon {
+  width: 3.6rem; /* 72px */
+  height: 3.6rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dd-refill__pillar-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.dd-refill__pillar-title {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.2rem; /* 24px */
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-refill__pillar-description {
+  margin: 0;
+  font-size: 0.85rem; /* 17px */
+  line-height: 1.5;
+  color: #666460;
+  max-width: 14rem;
+}
+
+.dd-refill__cta-wrap {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.dd-refill__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.4rem;
+  background-color: transparent;
+  color: #666460;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 80;
+  border: 0.05rem solid #666460; /* 1px */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dd-refill__cta:hover,
+.dd-refill__cta:focus-visible {
+  background-color: #666460;
+  color: #ffffff;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — px values
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-refill {
+    padding-top: var(--dd-refill-padding-top, 48px);
+    padding-bottom: var(--dd-refill-padding-bottom, 48px);
+  }
+
+  .dd-refill__inner {
+    padding: 0 20px;
+  }
+
+  .dd-refill__header {
+    margin-bottom: 20px;
+  }
+
+  .dd-refill__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .dd-refill__headline {
+    font-size: 24px;
+    letter-spacing: 0.6px;
+  }
+
+  .dd-refill__subheadline {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .dd-refill__media {
+    margin-bottom: 28px;
+    border-radius: 7px;
+  }
+
+  .dd-refill__pillars {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .dd-refill__pillar {
+    padding: 0;
+  }
+
+  .dd-refill__pillar-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 12px;
+  }
+
+  .dd-refill__pillar-title {
+    font-size: 18px;
+    letter-spacing: 0.8px;
+  }
+
+  .dd-refill__pillar-description {
+    font-size: 14px;
+    max-width: 280px;
+  }
+
+  .dd-refill__cta {
+    padding: 14px 24px;
+    font-size: 12px;
+    letter-spacing: 1.6px;
+  }
+}

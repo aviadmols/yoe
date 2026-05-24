@@ -1,0 +1,174 @@
+{{ 'discovery-duo-faq.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'discovery-duo-faq.js' | asset_url }}" defer></script>
+
+<section
+  class="dd-faq"
+  style="--dd-faq-padding-top: {{ section.settings.padding_top }}px; --dd-faq-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Frequently asked questions' | escape }}"
+>
+  <div class="dd-faq__inner">
+    <header class="dd-faq__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="dd-faq__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-faq__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-faq__subheadline">{{ section.settings.subheadline }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="dd-faq__list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'qa' -%}
+            <li class="dd-faq__item" data-faq-item {{ block.shopify_attributes }}>
+              <button
+                type="button"
+                class="dd-faq__question"
+                data-faq-button
+                aria-expanded="false"
+                aria-controls="dd-faq-panel-{{ section.id }}-{{ forloop.index }}"
+                id="dd-faq-trigger-{{ section.id }}-{{ forloop.index }}"
+              >
+                <span class="dd-faq__question-text">{{ block.settings.question }}</span>
+                <span class="dd-faq__question-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div
+                class="dd-faq__answer"
+                id="dd-faq-panel-{{ section.id }}-{{ forloop.index }}"
+                role="region"
+                aria-labelledby="dd-faq-trigger-{{ section.id }}-{{ forloop.index }}"
+                hidden
+              >
+                <div class="dd-faq__answer-inner">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.contact_text != blank -%}
+      <p class="dd-faq__contact">
+        {{ section.settings.contact_text }}
+        {%- if section.settings.contact_link_text != blank and section.settings.contact_link_url != blank -%}
+          <a href="{{ section.settings.contact_link_url }}" class="dd-faq__contact-link">{{ section.settings.contact_link_text }}</a>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – FAQ",
+  "tag": "section",
+  "class": "section-dd-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Help centre"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Everything you need to know about Discovery Duo."
+    },
+    {
+      "type": "header",
+      "content": "Contact line"
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Contact text",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "contact_link_text",
+      "label": "Link text",
+      "default": "Get in touch"
+    },
+    {
+      "type": "url",
+      "id": "contact_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "limit": 30,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is the Discovery Duo?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>The Discovery Duo pairs the HA + Retinol Active serum with the Cream Booster, giving you a complete daily routine in two products.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "What is the Discovery Duo?", "answer": "<p>The Discovery Duo pairs the HA + Retinol Active serum with the Cream Booster, giving you a complete daily routine in two products.</p>" } },
+        { "type": "qa", "settings": { "question": "How long until I see results?", "answer": "<p>Many users see visible improvements in hydration within one week and clearer changes in firmness and fine lines after four weeks of daily use.</p>" } },
+        { "type": "qa", "settings": { "question": "Is it suitable for sensitive skin?", "answer": "<p>Yes. Both formulas are dermatologist-tested, hypoallergenic and suitable for all skin types, including sensitive skin and during pregnancy.</p>" } },
+        { "type": "qa", "settings": { "question": "How do I use the duo?", "answer": "<p>Apply the HA + Retinol Active serum first to cleansed skin, then layer the Cream Booster on top. Use morning and evening.</p>" } },
+        { "type": "qa", "settings": { "question": "Do you ship internationally?", "answer": "<p>Yes — we ship to most countries. Shipping rates and delivery times appear at checkout based on your address.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

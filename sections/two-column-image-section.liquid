@@ -1,0 +1,82 @@
+{% schema %}
+{
+  "name": "Two Column Images",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column Images",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="two-column-images">
+    <div class="page-width">
+  <div class="container-section-image">
+    {% if section.settings.left_image != blank %}
+      <div class="image-col">
+        <img src="{{ section.settings.left_image | image_url }}" alt="Left Image">
+      </div>
+    {% endif %}
+
+    {% if section.settings.right_image != blank %}
+      <div class="image-col">
+        <img src="{{ section.settings.right_image | image_url }}" alt="Right Image">
+      </div>
+    {% endif %}
+  </div>
+  </div>
+</section>
+
+<style>
+
+.two-column-images .container-section-image {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+}
+section.two-column-images {
+    background: #fff;
+    position: relative;
+    z-index: 11;
+}
+.two-column-images .image-col {
+  flex: 1;
+}
+section.two-column-images .page-width {
+    padding: 0px 20px;
+}
+.two-column-images img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    height: 100%;
+}
+/* Mobile Responsive */
+@media (max-width: 767px) {
+{% comment %} section.two-column-images .page-width {
+    padding: 0px 14px;
+} {% endcomment %}
+  .two-column-images .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+.two-column-images .container-section-image {
+    flex-direction: column;
+    gap: 14px;
+}
+}
+</style>

@@ -1,0 +1,409 @@
+{% comment %}
+  Landing Advanced Encapsulation – replicates discover-encapsulation with:
+  - Section title and list block centered; list items left-aligned with tick icons (no angle/chevron icons).
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Adv. Encapsulation",
+  "tag": "section",
+  "class": "lp-advanced-encapsulation-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Image on the left"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "SKINCARE BEYOND THE SURFACE LEVEL"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "ADVANCED ENCAPSULATION"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "MAXIMIZES BENEFITS, MINIMIZES IRRITATION"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "GRADUAL RELEASE OF CONTINUOUS NOURISHMENT"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "PRECISE, TIME-CONTROLLED DELIVERY TO DEEPEST LAYERS"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "PROTECTS ACTIVES FROM OXIDATION & DEGRADATION"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "100% of users reported softer, smoother and younger-looking skin after as fast as one week of use."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Advanced Encapsulation",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="lp-advanced-encapsulation padding-right-left no-padding-mobile">
+  <div class="lp-advanced-encapsulation-inner">
+    <div class="lp-advanced-encapsulation-grid">
+      <div class="lp-advanced-encapsulation-image{% if section.settings.left_image == blank %} lp-advanced-encapsulation-image--video{% endif %}">
+        {% if section.settings.left_image != blank %}
+          <img src="{{ section.settings.left_image | image_url: width: 800 }}" alt="" width="800" height="auto" loading="lazy">
+        {% else %}
+          <video autoplay muted loop playsinline>
+            <source src="https://cdn.shopify.com/videos/c/o/v/650395a67adb48719eea2b742209651c.mp4" type="video/mp4">
+          </video>
+        {% endif %}
+      </div>
+      <div class="lp-advanced-encapsulation-text">
+        {% if section.settings.subtitle != blank %}
+          <p class="lp-advanced-encapsulation-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2 class="lp-advanced-encapsulation-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div class="lp-advanced-encapsulation-list-wrap">
+          <ul class="lp-advanced-encapsulation-benefits">
+            {% if section.settings.benefit_1 != blank %}
+              <li class="flex items-center gap-3 mb-4">
+                <span class="lp-advanced-encapsulation-tick" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle cx="29.8713" cy="29.8713" r="29.8713" fill="#F7F6F5"/>
+                    <path d="M18.8652 29.0855L26.7261 36.1603L42.4478 22.0107" stroke="#666460" stroke-width="3.14434"/>
+                  </svg>
+                </span>
+                <span>{{ section.settings.benefit_1 }}</span>
+              </li>
+            {% endif %}
+            {% if section.settings.benefit_2 != blank %}
+              <li class="flex items-center gap-3 mb-4">
+                <span class="lp-advanced-encapsulation-tick" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle cx="29.8713" cy="29.8713" r="29.8713" fill="#F7F6F5"/>
+                    <path d="M18.8652 29.0855L26.7261 36.1603L42.4478 22.0107" stroke="#666460" stroke-width="3.14434"/>
+                  </svg>
+                </span>
+                <span>{{ section.settings.benefit_2 }}</span>
+              </li>
+            {% endif %}
+            {% if section.settings.benefit_3 != blank %}
+              <li class="flex items-center gap-3 mb-4">
+                <span class="lp-advanced-encapsulation-tick" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle cx="29.8713" cy="29.8713" r="29.8713" fill="#F7F6F5"/>
+                    <path d="M18.8652 29.0855L26.7261 36.1603L42.4478 22.0107" stroke="#666460" stroke-width="3.14434"/>
+                  </svg>
+                </span>
+                <span>{{ section.settings.benefit_3 }}</span>
+              </li>
+            {% endif %}
+            {% if section.settings.benefit_4 != blank %}
+              <li class="flex items-center gap-3 mb-4">
+                <span class="lp-advanced-encapsulation-tick" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    <circle cx="29.8713" cy="29.8713" r="29.8713" fill="#F7F6F5"/>
+                    <path d="M18.8652 29.0855L26.7261 36.1603L42.4478 22.0107" stroke="#666460" stroke-width="3.14434"/>
+                  </svg>
+                </span>
+                <span>{{ section.settings.benefit_4 }}</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if section.settings.disclaimer != blank %}
+          <div class="lp-advanced-encapsulation-disclaimer">
+            <p>{{ section.settings.disclaimer }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lp-advanced-encapsulation-inner video {
+    max-width: 100%;
+  }
+
+  .lp-advanced-encapsulation-inner {
+    background: #fff;
+    padding: 0 4rem 3.5rem 4rem;
+  }
+
+  .lp-advanced-encapsulation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 auto;
+  }
+
+  .lp-advanced-encapsulation-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .lp-advanced-encapsulation-image img,
+  .lp-advanced-encapsulation-image video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lp-advanced-encapsulation-subtitle {
+    color: #666460;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 430;
+    line-height: 1.44rem;
+    letter-spacing: 0.048rem;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .lp-advanced-encapsulation-title {
+    color: #666460;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2.75rem;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 3.3rem;
+    letter-spacing: 0.4125rem;
+    text-transform: uppercase;
+    margin: 30px 0 64px;
+  }
+  @media (min-width: 768px) {
+    .lp-advanced-encapsulation-title {
+      width: 90%;
+    }
+  }
+
+  /* List centered under title; items left-aligned with ticks */
+  .lp-advanced-encapsulation-list-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .lp-advanced-encapsulation-benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: #666460;
+    color: color(display-p3 0.4 0.3922 0.3765);
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .lp-advanced-encapsulation-benefits {
+      width: 66%;
+    }
+  }
+
+
+  .lp-advanced-encapsulation-benefits li:last-child {
+    margin-bottom: 0;
+  }
+
+  .lp-advanced-encapsulation-tick {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+  }
+
+  .lp-advanced-encapsulation-tick svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  {% comment %} .lp-advanced-encapsulation-benefits li span:last-child {
+    color: #666460;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.19rem;
+    letter-spacing: 0.085rem;
+    text-transform: uppercase;
+  } {% endcomment %}
+
+  .lp-advanced-encapsulation-disclaimer p {
+    color: #716E6A;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 1.2rem;
+    text-align: left;
+    max-width: 26rem;
+    margin: 0 auto;
+    padding-bottom: 22px;
+  }
+
+  .lp-advanced-encapsulation-disclaimer {
+    margin-left: 0;
+  }
+
+  @media (max-width: 768px) {
+    .lp-advanced-encapsulation-subtitle {
+      display: none !important;
+    }
+
+    .lp-advanced-encapsulation-title {
+      margin-bottom: 50px !important;
+      margin-top: 0 !important;
+      color: #666460 !important;
+      text-align: center !important;
+      font-family: "Open Sans", sans-serif !important;
+      font-size: 21px !important;
+      font-style: normal !important;
+      font-weight: 450 !important;
+      line-height: 120% !important;
+      letter-spacing: 4.2px !important;
+      text-transform: uppercase !important;
+    }
+
+    .lp-advanced-encapsulation-benefits li span:last-child {
+      color: #666460 !important;
+      font-family: "Open Sans", sans-serif !important;
+      font-size: 11px !important;
+      font-style: normal !important;
+      font-weight: 700 !important;
+      line-height: 140% !important;
+      letter-spacing: 1.3px !important;
+      text-transform: uppercase !important;
+    }
+
+    .lp-advanced-encapsulation-list-wrap {
+      margin-bottom: 40px;
+      width: 100%;
+      @include breakMin($breakpoint-desktop) {
+        max-width: 222px;
+      }
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .lp-advanced-encapsulation-tick {
+      width: 38px !important;
+      height: 38px !important;
+    }
+
+    .lp-advanced-encapsulation-grid {
+      display: grid !important;
+      grid-template-columns: none !important;
+      align-items: center !important;
+      gap: 0 !important;
+      position: relative;
+    }
+
+    .lp-advanced-encapsulation-inner {
+      background: #fff !important;
+      padding: 20px 14px 8px !important;
+    }
+
+    /* Mobile: video as background of content, text on top */
+    .lp-advanced-encapsulation-grid:has(.lp-advanced-encapsulation-image--video)::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.45);
+      pointer-events: none;
+    }
+
+    .lp-advanced-encapsulation-image.lp-advanced-encapsulation-image--video {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 0;
+      order: unset !important;
+    }
+
+    .lp-advanced-encapsulation-image.lp-advanced-encapsulation-image--video video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lp-advanced-encapsulation-image.lp-advanced-encapsulation-image--video + .lp-advanced-encapsulation-text {
+      position: relative;
+      z-index: 2;
+      padding: 58px 10%;
+    }
+
+    .lp-advanced-encapsulation-image:not(.lp-advanced-encapsulation-image--video) {
+      order: 2 !important;
+    }
+
+    .lp-advanced-encapsulation-disclaimer {
+      display: block !important;
+      color: #666460;
+      text-align: center;
+      max-width: 269px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 35px;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 413;
+      line-height: 140%;
+      letter-spacing: 0.14px;
+    }
+
+    .lp-advanced-encapsulation.no-padding-mobile {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .lp-advanced-encapsulation-disclaimer p {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .lp-advanced-encapsulation-disclaimer {
+      max-width: 350px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+</style>

@@ -1,0 +1,7 @@
+[id*='MainProduct']:has(.bss-lock-element) [id*='Quantity-Form']{ cursor: not-allowed; opacity: .5; pointer-events: none }[id*='MainProduct']:has(.bss-lock-element) [id*='ProductSubmitButton'] { cursor: not-allowed !important; opacity: .5 !important; pointer-events: none !important; }[id*='MainProduct']:has(.bss-lock-element) .shopify-payment-button { cursor: not-allowed !important; opacity: .5 !important; pointer-events: none !important; }.variant-item:has(.bss-lock-element) .variant-item__quantity { cursor: not-allowed !important; opacity: .5 !important; pointer-events: none !important; }.variant-item__price:has(.bss-lock-element) .variant-item__old-price { display: none; }.product-card-wrapper:has(.bss-lock-element) form[id*="quick-add"] { cursor: not-allowed !important; opacity: .5 !important; pointer-events: none !important; }.product-card-wrapper:has(.bss-lock-element) quantity-input { cursor: not-allowed !important; opacity: .5 !important; pointer-events: none !important; }
+        .bss-hide-atc + * {
+            display: none !important;
+        }
+			.bss-lock-hidden { display: none; }
+			script#bss-behavior-script { display: none !important }
+		

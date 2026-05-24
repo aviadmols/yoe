@@ -1,0 +1,264 @@
+{%- liquid
+  assign og_title = page_title | default: shop.name
+  assign og_url = canonical_url | default: request.origin
+  assign og_type = 'website'
+  assign og_description = page_description | default: shop.description | default: shop.name
+
+  if request.page_type == 'product'
+    assign og_type = 'product'
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+  elsif request.page_type == 'password'
+    assign og_url = request.origin
+  endif
+%}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:title" content="{{ og_title | escape }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:description" content="{{ og_description | escape }}">
+
+{%- if page_image -%}
+  <meta property="og:image" content="http:{{ page_image | image_url }}">
+  <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
+  <meta property="og:image:width" content="{{ page_image.width }}">
+  <meta property="og:image:height" content="{{ page_image.height }}">
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
+  <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
+{%- endif -%}
+
+{%- if settings.social_twitter_link != blank -%}
+  <meta name="twitter:site" content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
+{%- endif -%}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title | escape }}">
+<meta name="twitter:description" content="{{ og_description | escape }}">
+
+{% if product.handle == "ympossible-cream-light" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Video - Ympossible Cream Light Refill",
+    "description": "Eco-friendly refill for Ympossible Cream Light, offering lightweight hydration and nourishment.",
+    "thumbnailUrl": "https://yoeandco.com/cdn/shop/files/d25cdcb109d033d6a02d33507901456e.png?v=1722202568",
+    "uploadDate": "2024-08-22",
+    "contentUrl": "https://cdn.shopify.com/videos/c/o/v/7e94314a1cb340e58efb6ec61664752b.mp4",
+    "embedUrl": "https://yoeandco.com/products/ympossible-cream-light?variant=45626942947576"
+  }
+  </script>
+
+{% elsif product.handle == "ympossible-cream-light" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Video - Ympossible Cream Light",
+    "description": "A luxurious, lightweight cream that hydrates and revitalizes your skin, perfect for sensitive and dry skin types.",
+    "thumbnailUrl": "https://yoeandco.com/cdn/shop/files/d25cdcb109d033d6a02d33507901456e.png?v=1722202568",
+    "uploadDate": "2024-08-22",
+    "contentUrl": "https://cdn.shopify.com/videos/c/o/v/7e94314a1cb340e58efb6ec61664752b.mp4",
+    "embedUrl": "https://yoeandco.com/products/ympossible-cream-light"
+  }
+  </script>
+
+{% elsif product.handle == "ympossible-cream" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Video - Yoé The Impact",
+    "description": "Learn about Yoé’s sustainable practices and the positive impact of our refill system on the environment.",
+    "thumbnailUrl": "https://yoeandco.com/cdn/shop/files/d25cdcb109d033d6a02d33507901456e.png?v=1722202568",
+    "uploadDate": "2024-08-22",
+    "contentUrl": "https://cdn.shopify.com/videos/c/o/v/7e94314a1cb340e58efb6ec61664752b.mp4",
+    "embedUrl": "https://yoeandco.com/products/ympossible-cream?variant=45492680753400"
+  }
+  </script>
+
+{% elsif product.handle == "ympossible-cream" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Video - Ympossible Cream",
+    "description": "A nourishing cream with a velvet finish that provides deep hydration and revitalizes your skin.",
+    "thumbnailUrl": "https://yoeandco.com/cdn/shop/files/d25cdcb109d033d6a02d33507901456e.png?v=1722202568",
+    "uploadDate": "2024-08-22",
+    "contentUrl": "https://cdn.shopify.com/videos/c/o/v/7e94314a1cb340e58efb6ec61664752b.mp4",
+    "embedUrl": "https://yoeandco.com/products/ympossible-cream"
+  }
+  </script>
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://yoeandco.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "https://yoeandco.com/pages/shop"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Our Story",
+      "item": "https://yoeandco.com/pages/our-story"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "The Science",
+      "item": "https://yoeandco.com/pages/the-science"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Ympossible Cream",
+      "item": "https://yoeandco.com/products/ympossible-cream"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Ympossible Cream Light",
+      "item": "https://yoeandco.com/products/ympossible-cream-light"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Discovery Duo",
+      "item": "https://yoeandco.com/products/discovery-duo"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "FAQs",
+      "item": "https://yoeandco.com/pages/faqs"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Contact",
+      "item": "https://yoeandco.com/pages/contact"
+    }
+  ]
+}
+  </script>
+  {% if request.path == '/pages/faqs' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does shipping cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can enjoy free shipping in the USA. We provide shipping at no cost at all. Other countries may vary; please see the checkout to find shipping costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do you ship?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We ship to the U.S., UK, and parts of the EU (excluding Alaska and Hawaii)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What forms of payment do you accept?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We accept Visa, MasterCard, American Express, Discover, Apple Pay, and PayPal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I cancel my order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can cancel your order by opening your confirmation email. Additionally, you can reach out to our customer service team at support@yoeandco.com. Please let us know the reason for the cancellation. If your order has already been processed or shipped, please review our return policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I track my order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once you place an order, you should receive a confirmation email which will include a custom order tracking number and a link to our tracking page on our website. Tracking information can be delayed after your order is placed. It can take up to 24-48 hours for you to get the order number. If you do not see any updates right away, feel free to reach our support team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I update/skip my subscription items?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1. Log in to your account. 2. Click 'Subscriptions'. 3. Locate your subscription and click 'Manage'. 4. Click 'Change Items'. Proceed to complete the steps to successfully update your subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I do if my item(s) arrives damaged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We’re sorry your item(s) have damage! Not to worry! All of our products come with a complete guarantee. Email us at support@yoeandco.com with images and an explanation, and we will do our best to accommodate and get you a replacement for you to enjoy. While we may not be able to guarantee your exact order is replaced due to potential stock issues, we’ll be sure to resolve the situation as best we can!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will I get my refund?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once your return has been processed, you will be notified through email when the refund has been issued. It typically takes 7-10 business days for the refund to reflect in your account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I cancel my subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1. Log in to your account. 2. Click 'Subscriptions'. 3. Locate your subscription and click 'Manage'. 4. Click 'Cancel'. Proceed to complete the steps to successfully cancel your subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make a return?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reach out to our customer support team at support@yoeandco.com to understand the return process with your order number and details about the item you wish to return. Print the shipping label and drop off your return at a FedEx shipping center location."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Ympossible Cream or Ympossible Cream Light morning and night?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We recommend using our products morning and night."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the product while I'm pregnant or nursing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Yoé products are clinically and dermatologist tested. However, we always recommend consulting with your healthcare provider before introducing new skincare products during pregnancy or nursing."
+      }
+    }
+  ]
+}
+</script>
+{% endif %}

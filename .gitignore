@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (in case any tooling shows up later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build / dist artifacts
+dist/
+build/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Shopify CLI
+.shopifyignore
+.shopify/
+shopify.theme.toml
+
+# Project-specific: design assets stored outside the theme
+# (figma-assets lives at the parent folder, but ignore if it ever appears inside)
+figma-assets/
+figma-reference/

@@ -1,0 +1,178 @@
+/* Discovery Duo – Stats banner
+ * Desktop in rem (1rem = 20px); mobile in px.
+ */
+
+.dd-stats {
+  width: 100%;
+  padding-top: var(--dd-stats-padding-top, 3.6rem);
+  padding-bottom: var(--dd-stats-padding-bottom, 3.6rem);
+  background-color: #f7f6f5;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+}
+
+.dd-stats__inner {
+  max-width: 72rem; /* 1440px */
+  margin: 0 auto;
+  padding: 0 4rem; /* 80px */
+  box-sizing: border-box;
+}
+
+.dd-stats__header {
+  text-align: center;
+  margin-bottom: 2.4rem; /* 48px */
+}
+
+.dd-stats__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem; /* 14px */
+  font-weight: 700;
+  letter-spacing: 0.14rem; /* 2.8px */
+  text-transform: uppercase;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+  margin-bottom: 0.6rem;
+}
+
+.dd-stats__headline {
+  margin: 0 0 0.4rem 0;
+  font-size: 2.4rem; /* 48px */
+  font-weight: 600;
+  letter-spacing: 0.12rem; /* 2.4px */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-stats__subheadline {
+  margin: 0;
+  font-size: 1rem; /* 20px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: #666460;
+}
+
+.dd-stats__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; /* 40px */
+}
+
+.dd-stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+.dd-stats__item-timing {
+  font-size: 0.6rem; /* 12px */
+  font-weight: 700;
+  letter-spacing: 0.12rem; /* 2.4px */
+  text-transform: uppercase;
+  color: #bd1e18;
+  margin-bottom: 0.4rem;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-stats__item-percentage {
+  font-size: 3.2rem; /* 64px */
+  font-weight: 700;
+  line-height: 1.05;
+  color: #666460;
+  letter-spacing: 0.02rem;
+  margin-bottom: 0.5rem;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-stats__item-percentage--negative {
+  color: #bd1e18;
+}
+
+.dd-stats__item-description {
+  font-size: 0.8rem; /* 16px */
+  font-weight: 400;
+  line-height: 1.3;
+  color: #666460;
+  max-width: 9rem;
+}
+
+.dd-stats__disclaimer {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  font-size: 0.6rem; /* 12px */
+  color: #999592;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — px values
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-stats {
+    padding-top: var(--dd-stats-padding-top, 40px);
+    padding-bottom: var(--dd-stats-padding-bottom, 40px);
+  }
+
+  .dd-stats__inner {
+    padding: 0 20px;
+  }
+
+  .dd-stats__header {
+    margin-bottom: 32px;
+  }
+
+  .dd-stats__eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .dd-stats__headline {
+    font-size: 28px;
+    letter-spacing: 1.4px;
+    margin-bottom: 6px;
+  }
+
+  .dd-stats__subheadline {
+    font-size: 14px;
+  }
+
+  .dd-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  .dd-stats__item {
+    padding: 8px 4px;
+  }
+
+  .dd-stats__item-timing {
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    margin-bottom: 6px;
+  }
+
+  .dd-stats__item-percentage {
+    font-size: 38px;
+    margin-bottom: 6px;
+  }
+
+  .dd-stats__item-description {
+    font-size: 12px;
+    line-height: 1.3;
+    max-width: 130px;
+  }
+
+  .dd-stats__disclaimer {
+    margin-top: 24px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,46 @@
+{% assign displayed_currencies = "" %}
+{% assign allowed_currencies = "EUR,USD,CAD,GBP" %}
+
+<div class="disclosure">
+  <button
+    type="button"
+    class="disclosure__button localization-form__select localization-selector link link--text caption-large"
+    aria-expanded="false"
+    aria-controls="{{ localPosition }}List"
+    aria-describedby="{{ localPosition }}Label"
+  >
+    <span>
+      {{- localization.country.currency.iso_code }}
+      {{ localization.country.currency.symbol }}
+    </span>
+    {% render 'icon-caret' %}
+  </button>
+  <div class="disclosure__list-wrapper" hidden>
+    <ul id="{{ localPosition }}List" role="list" class="disclosure__list list-unstyled">
+      {%- for country in localization.available_countries -%}
+        {% assign currency_code = country.currency.iso_code %}
+        {% if allowed_currencies contains currency_code %}
+          {% unless displayed_currencies contains currency_code %}
+            <li class="disclosure__item" tabindex="-1">
+              <a
+                class="link link--text disclosure__link caption-large focus-inset{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %}"
+                href="#"
+                {% if country.iso_code == localization.country.iso_code %}
+                  aria-current="true"
+                {% endif %}
+                data-value="{{ country.iso_code }}"
+              >
+                <span class="localization-form__currency">
+                  {{- currency_code }}
+                  {{ country.currency.symbol }}
+                </span>
+              </a>
+            </li>
+            {% assign displayed_currencies = displayed_currencies | append: currency_code | append: "," %}
+          {% endunless %}
+        {% endif %}
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+<input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">

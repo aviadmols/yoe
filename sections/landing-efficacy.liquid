@@ -1,0 +1,328 @@
+{% comment %}
+  Landing page efficacy – clinical proof + before/after + benefits + CTA.
+  Pixel-perfect to Figma Desktop 2452:1261, Mobile 2452:412.
+  Tailwind-first. Namespaced lp-efficacy. All content editable in customizer.
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Landing Efficacy",
+  "tag": "section",
+  "class": "lp-efficacy-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Quote (optional)"
+    },
+    {
+      "type": "text",
+      "id": "quote_text",
+      "label": "Quote text"
+    },
+    {
+      "type": "text",
+      "id": "quote_attribution",
+      "label": "Quote attribution"
+    },
+    {
+      "type": "header",
+      "content": "Clinical proof (optional)"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "CLINICALLY PROVEN"
+    },
+    {
+      "type": "text",
+      "id": "stat_timeframe",
+      "label": "Stat timeframe",
+      "default": "IN 1 WEEK"
+    },
+    {
+      "type": "text",
+      "id": "stat_number",
+      "label": "Stat number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat_description",
+      "label": "Stat description",
+      "default": "OF USERS REPORTED SOFTER, SMOOTHER AND YOUNGER-LOOKING SKIN"
+    },
+    {
+      "type": "header",
+      "content": "Before & after images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_before",
+      "label": "Before image"
+    },
+    {
+      "type": "text",
+      "id": "image_before_label",
+      "label": "Before image label",
+      "default": "DAY 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_after",
+      "label": "After image"
+    },
+    {
+      "type": "text",
+      "id": "image_after_label",
+      "label": "After image label",
+      "default": "WEEK 4"
+    },
+    {
+      "type": "text",
+      "id": "images_disclaimer",
+      "label": "Disclaimer below images",
+      "default": "*Clinical study, 26 participants aged 35-63, 8-week period"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (add to cart)"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount code",
+      "info": "Optional: applied when adding to cart"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "TRY DISCOVERY DUO"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price (e.g. 48)",
+      "default": "48"
+    },
+    {
+      "type": "text",
+      "id": "compare_at_price_text",
+      "label": "Compare-at price (e.g. 86)",
+      "default": "86"
+    },
+    {
+      "type": "richtext",
+      "id": "after_cta_text",
+      "label": "Guarantee / shipping text",
+      "default": "<p>30-Day Money-Back Guarantee | Free Express Shipping</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F9F6F3"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (badge, stat, button)",
+      "default": "#C82424"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Efficacy",
+      "category": "Landing",
+      "blocks": [
+        { "type": "benefit", "settings": { "text": "Instantly hydrates" } },
+        { "type": "benefit", "settings": { "text": "Boosts radiance" } },
+        { "type": "benefit", "settings": { "text": "Targets fine lines & wrinkles" } },
+        { "type": "benefit", "settings": { "text": "Strengthens skin barrier" } },
+        { "type": "benefit", "settings": { "text": "Improve skin tone and texture" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% liquid
+  assign bg_color = section.settings.bg_color | default: '#F9F6F3'
+  assign accent_color = section.settings.accent_color | default: '#C82424'
+  comment
+    Placeholder dimensions match Figma 3:4 portrait (300x400). Use placehold.co when no image set.
+  endcomment
+  assign ph_w = 300
+  assign ph_h = 400
+  assign ph_before = 'https://placehold.co/' | append: ph_w | append: 'x' | append: ph_h | append: '?text=DAY+1'
+  assign ph_after = 'https://placehold.co/' | append: ph_w | append: 'x' | append: ph_h | append: '?text=WEEK+4'
+%}
+
+{%- comment -%} Figma 2452:1261 (desktop) / 2452:412 (mobile). BG #F9F6F3, accent #C82424, text #464646. {%- endcomment -%}
+<section
+  class="lp-efficacy-section w-full relative"
+  style="background-color: {{ bg_color }}; --lp-efficacy-accent: {{ accent_color }};"
+  aria-label="Clinical proof"
+>
+  <div class="w-full max-w-[1920px] mx-auto box-border px-5 py-8 md:px-10 md:py-14 lg:px-16 lg:py-16">
+    {%- comment -%}
+      Mobile (Figma 2488:320): single column order = Badge → Stat → Disclaimer → Images → Disclaimer → Tick list → CTA → Guarantee.
+      Desktop: unchanged — left col = badge + stat + benefits + CTA + guarantee, right col = images.
+    {%- endcomment -%}
+    <div class="lp-efficacy-grid grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-x-8 md:gap-x-12 lg:gap-x-16 gap-y-8 md:gap-y-0">
+
+      {%- comment -%} 1. Content top: optional quote + optional badge/stat. If set, show; order: quote first, then badge + stat. ─ {%- endcomment -%}
+      <div class="lp-efficacy-content-top flex flex-col items-center md:items-start text-center md:text-left order-1 md:col-start-1 md:row-start-1 scroll-trigger animate--slide-in" style="--animation-order: 0;">
+        {%- if section.settings.quote_text != blank or section.settings.quote_attribution != blank -%}
+          <div class="lp-efficacy-quote-block w-full flex flex-col items-center text-center mb-6 md:mb-8 md:self-center">
+            {%- if section.settings.quote_text != blank -%}
+              <span class="lp-efficacy-quote-block__text">"{{ section.settings.quote_text }}"</span>
+            {%- endif -%}
+            {%- if section.settings.quote_attribution != blank -%}
+              <span class="lp-efficacy-quote-block__attribution">{{ section.settings.quote_attribution }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- assign has_badge_or_stat = false -%}
+        {%- if section.settings.badge_text != blank or section.settings.stat_timeframe != blank or section.settings.stat_number != blank or section.settings.stat_description != blank -%}
+          {%- assign has_badge_or_stat = true -%}
+        {%- endif -%}
+        {%- if has_badge_or_stat -%}
+          {%- if section.settings.badge_text != blank -%}
+            <span
+              class="lp-efficacy-badge inline-block mb-4 md:mb-5"
+              style="background-color: {{ accent_color }}; border-radius: 5.653px;"
+            >
+              {{ section.settings.badge_text }}
+            </span>
+          {%- endif -%}
+
+          <div class="flex flex-col gap-0 mb-5 md:mb-[38px]">
+            {%- if section.settings.stat_timeframe != blank -%}
+              <span class="lp-efficacy-stat-timeframe" style="color: {{ accent_color }};">
+                {{ section.settings.stat_timeframe }}
+              </span>
+            {%- endif -%}
+            <div class="flex flex-col md:flex-row items-center md:items-end gap-0 md:gap-[38px] text-center md:text-left">
+              {%- if section.settings.stat_number != blank -%}
+                <span class="lp-efficacy-stat-number shrink-0" style="color: {{ accent_color }};">
+                  {{ section.settings.stat_number }}
+                </span>
+              {%- endif -%}
+              {%- if section.settings.stat_description != blank -%}
+                <p class="lp-efficacy-stat-desc m-0">
+                  {{ section.settings.stat_description }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} 2. Images. Mobile: second. Desktop: col 2, span both rows. ─ {%- endcomment -%}
+      <div class="lp-efficacy-images-wrapper order-2 md:col-start-2 md:row-start-1 md:row-span-2">
+        <div class="lp-efficacy-images">
+          <div class="lp-efficacy-image-card">
+            <img
+              src="{% if section.settings.image_before != blank %}{{ section.settings.image_before | image_url: width: 700 }}{% else %}{{ ph_before }}{% endif %}"
+              alt=""
+              loading="lazy"
+              width="345"
+              height="629"
+            >
+            <span class="lp-efficacy-image-label">{{ section.settings.image_before_label | default: 'DAY 1' }}</span>
+          </div>
+          <div class="lp-efficacy-image-card">
+            <img
+              src="{% if section.settings.image_after != blank %}{{ section.settings.image_after | image_url: width: 700 }}{% else %}{{ ph_after }}{% endif %}"
+              alt=""
+              loading="lazy"
+              width="345"
+              height="629"
+            >
+            <span class="lp-efficacy-image-label">{{ section.settings.image_after_label | default: 'WEEK 4' }}</span>
+          </div>
+        </div>
+        {%- if section.settings.images_disclaimer != blank -%}
+          <p class="lp-efficacy-disclaimer-text">
+            {{ section.settings.images_disclaimer }}
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} 3. Content bottom: benefits, CTA, guarantee. Mobile: third. Desktop: col 1 row 2. Entrance animation. ─ {%- endcomment -%}
+      <div class="lp-efficacy-content-bottom flex flex-col items-center md:items-start text-center md:text-left order-3 md:col-start-1 md:row-start-2 scroll-trigger animate--slide-in" style="--animation-order: 1;">
+        {%- if section.blocks.size > 0 -%}
+          <ul class="list-none m-0 p-0 flex flex-col md:grid md:grid-cols-2 md:grid-rows-3 md:grid-flow-col md:gap-x-10 md:gap-y-4 gap-3 mb-[49px] md:mb-[65px]">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'benefit' and block.settings.text != blank -%}
+                <li class="lp-efficacy-benefit flex items-center gap-3 text-[var(--lp-efficacy-text)] leading-[1.4]" {{ block.shopify_attributes }}>
+                  <span class="lp-efficacy-tick shrink-0 rounded-full bg-white border border-[#D8D8D8] flex items-center justify-center" style="color: {{ accent_color }};">
+                    <svg class="lp-efficacy-tick-svg" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.product -%}
+          <form
+            method="post"
+            action="{{ routes.cart_add_url }}"
+            class="mb-[19px]"
+            data-lp-hero-form="true"
+            data-discount-code="{{ section.settings.discount_code | escape }}"
+          >
+            <input type="hidden" name="id" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
+            <button
+              type="submit"
+              class="lp-efficacy-cta-btn"
+              style="--lp-cta-fill: {{ accent_color }}; background-color: {{ accent_color }};"
+              data-lp-hero-submit="true"
+            >
+              <span class="whitespace-nowrap">{{ section.settings.button_label | default: 'TRY DISCOVERY DUO' }} - ${{ section.settings.price_text | default: '48' }}</span>
+              {%- if section.settings.compare_at_price_text != blank -%}
+                <span class="lp-efficacy-compare">${{ section.settings.compare_at_price_text }}</span>
+              {%- endif -%}
+            </button>
+          </form>
+        {%- endif -%}
+
+        {%- if section.settings.after_cta_text != blank -%}
+          <div class="lp-efficacy-guarantee font-medium uppercase leading-[1.4] m-0">
+            {{ section.settings.after_cta_text }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- comment -%} Add-to-cart uses same data-lp-hero-form; handled by landing-hero section script. {%- endcomment -%}

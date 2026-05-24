@@ -1,0 +1,27 @@
+{%- comment %}BSS Login{% endcomment -%}{% capture bss_lock_check %} {% render 'bss-lock-condition', scope: 'subject', subject: product, subject_parent: product, variable: 'price', get_content: true, bss_lock_action: 'bss_hide_price' %} {% endcapture %} {% if bss_lock_check contains 'bss-lock-element' %} {{ bss_lock_check }} {% break %} {% endif %}{%- comment %}BSS-Login{% endcomment -%}
+
+{%- comment -%}
+  Only show this Loop price widget if product does NOT have selling plans
+  (If it has selling plans, the full widget in loop-widget-custom.liquid will handle it)
+{%- endcomment -%}
+{% if product.selling_plan_groups.size == 0 %}
+<div class="loop-one-time-purchase-option-position" id="loop-one-time-purchase-option-at-top">
+    <div class="loop-one-time-purchase-option loop-selected-selling-plan-group">
+        <input type="radio" class="loop-one-time-purchase-option-radio" name="loop_purchase_option" id="loop-one-time-purchase-{{ product.id }}" data-id="loop-one-time-purchase" data-product-id="{{ product.id }}" data-name="loop-one-time-purchase" checked>
+        <label class="loop-one-time-purchase-option-labell" for="loop-one-time-purchase-{{ product.id }}">One Time Purchase</label>
+        <div class="loop-subscription-group-discount-badge-onetime loop-display-none loop-subscription-group-discount-badge" id="loop-discount-badge-onetime">
+        </div>
+        <div class="loop-one-time-purchase-option-price-container">
+            {% if product.compare_at_price and product.compare_at_price > product.price %}
+            <div id="loop-price-one-time-original" class="loop-one-time-purchase-option-price-amount-original">
+                {{ product.compare_at_price | money_without_trailing_zeros }}
+            </div>
+            {% endif %}
+            <div id="loop-price-one-time" class="loop-one-time-purchase-option-price-amountl">{{ product.price | money_without_trailing_zeros }}</div>
+            <div class="loop-one-time-purchase-option-price-quantity loop-display-none">each</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{%- comment %}BSS Login{% endcomment -%}{% if bss_lock_check contains 'bss-unlocked-element' %} {{ bss_lock_check }} {% endif %}{%- comment %}BSS-Login{% endcomment -%}

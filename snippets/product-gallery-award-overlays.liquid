@@ -1,0 +1,31 @@
+{% comment %}
+  Award overlays for main product gallery (desktop main viewer only; visibility toggled in media-gallery.js).
+{% endcomment %}
+{% if product.title == 'Ympossible Cream' or product.title == 'Discovery Duo' %}
+  <div class="snippets-overlay-gallery">
+    {% if product.title == 'Ympossible Cream' or product.title == 'Discovery Duo' %}
+      <img
+        class="cosmopolitan-icon"
+        src="https://cdn.shopify.com/s/files/1/0691/9959/3720/files/cosmopolitan.png"
+        alt="Cosmopolitan"
+        width="76"
+        height="76"
+        loading="lazy"
+      >
+    {% endif %}
+    {% render 'beauty-award-cosmopolitan-svg' %}
+  </div>
+{% endif %}
+
+{% if product.title == 'Ympossible Cream Light' or product.title == 'Discovery Duo' %}
+  <div class="snippets-overlay-gallery{% if product.title == 'Discovery Duo' %} right-badge{% endif %}">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0691/9959/3720/files/image002_1_1.png?v=1745347709"
+      style="object-fit: contain;height: auto;max-height: 8rem;min-height: 0; max-width:100%;"
+      alt=""
+      width="200"
+      height="200"
+      loading="lazy"
+    >
+  </div>
+{% endif %}

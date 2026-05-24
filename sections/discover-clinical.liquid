@@ -1,0 +1,365 @@
+{% schema %}
+{
+  "name": "Discover Clinical",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Clinical Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "week",
+      "name": "Week Results",
+      "settings": [
+        {
+          "type": "text",
+          "id": "week_title",
+          "label": "Week Title",
+          "default": "WEEK 1"
+        },
+        {
+          "type": "text",
+          "id": "category_1",
+          "label": "Category 1"
+        },
+        {
+          "type": "text",
+          "id": "percentage_1",
+          "label": "Percentage 1"
+        },
+        {
+          "type": "text",
+          "id": "description_1",
+          "label": "Description 1"
+        },
+        {
+          "type": "text",
+          "id": "category_2",
+          "label": "Category 2"
+        },
+        {
+          "type": "text",
+          "id": "percentage_2",
+          "label": "Percentage 2"
+        },
+        {
+          "type": "text",
+          "id": "description_2",
+          "label": "Description 2"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discover Clinical",
+      "category": "Clinical"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="discover-clinical page-width padding-right-left">
+  <div class="discover-clinical__container">
+    <div class="discover-clinical__image">
+      <img src="{{ section.settings.image | img_url: 'master' }}" alt="Clinical Results">
+    </div>
+    <div class="discover-clinical__content">
+      <h2>{{ section.settings.title }}</h2>
+      <div class="discover-clinical__results">
+        {% for block in section.blocks %}
+          {% if block.type == 'week' %}
+            <h3 class="week-title">{{ block.settings.week_title }}</h3>
+
+            <div class="category-group">
+              <h4>{{ block.settings.category_1 }}</h4>
+              <div class="statistic">
+                <span class="percentage">{{ block.settings.percentage_1 }}</span>
+                <p class="description">{{ block.settings.description_1 }}</p>
+              </div>
+            </div>
+
+            <div class="category-group">
+              <h4>{{ block.settings.category_2 }}</h4>
+              <div class="statistic">
+                <span class="percentage">{{ block.settings.percentage_2 }}</span>
+                <p class="description">{{ block.settings.description_2 }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <p class="disclaimer">Consumer perceptions of 26 participants aged 35 to 63 were assessed after 1 and 4 weeks of twice-daily application.</p>
+    </div>
+  </div>
+</div>
+
+
+{% stylesheet %}
+.discover-clinical {
+  padding: 4rem 0;
+}
+
+.discover-clinical__container {
+    background: #fff;
+}
+
+.category-group {
+    display: flex;
+    justify-content: space-between;
+}
+.discover-clinical__container {
+  display: flex;
+
+  margin: 0 auto;
+  gap: 4rem;
+}
+
+.discover-clinical__image {
+  flex: 1;
+  max-width: 50%;
+}
+
+.discover-clinical__image img {
+width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.discover-clinical__content {
+    flex: 1;
+    position: relative;
+    padding: 3rem 3rem 1rem;
+}
+  
+.discover-clinical h2 {
+    font-family: Open Sans;
+    font-size: 2.75rem;
+    margin-left: -3rem;
+    font-weight: 450;
+    line-height: 3.33rem;
+    letter-spacing: .09em;
+    margin-bottom: 4.4rem;
+    font-variation-settings: "wdth" 80;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.week-title {
+    writing-mode: vertical-rl;
+    transform: rotate(0deg);
+    position: absolute;
+    left: 0px;
+    font-family: Open Sans;
+    font-size: 1.13rem;
+    font-weight: 347;
+    line-height: 1.356rem;
+    letter-spacing: .452rem;
+    color: #666460;
+    margin: 1rem 0;
+    font-variation-settings: "wdth" 80;
+}
+.category-group {
+  margin-bottom: 2rem;
+}
+
+.category-group h4 {
+      margin: 0px!important;
+  font-family: "Open Sans";
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  font-variation-settings: 'wdth' 80;
+}
+
+.statistic {
+      MAX-WIDTH: 80%;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.percentage {
+  font-family: "Open Sans";
+  font-size: 2.1rem;
+  font-weight: 300;
+  line-height: 2.04rem;
+  letter-spacing: -0.02em;
+  min-width: 4rem;
+  font-variation-settings: 'wdth' 96;
+}
+
+  .category-group h4 {
+    max-width: 11rem;
+  }
+
+.description {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 16rem;
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-weight: 350;
+    line-height: 1.3rem;
+    letter-spacing: .04em;
+    margin-left: 1rem;
+    font-variation-settings: "wdth" 80;
+}
+
+.disclaimer {
+  font-family: "Open Sans";
+  font-size: 0.7rem;
+  font-weight: 400;
+  line-height: 1.05rem;
+  letter-spacing: 0.03em;
+  margin-top: 4rem;
+  font-variation-settings: 'wdth' 85;
+}
+
+
+@media screen and (max-width: 1099px) {
+.discover-clinical h2 {
+    margin-top: 0;
+}
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .discover-clinical__container {
+        flex-direction: column;
+        gap: 0!important;
+    }
+.discover-clinical__container {
+  display: grid !important;
+}
+
+.discover-clinical__image {
+  max-width: 100% !important;
+  order: 0 !important;
+}
+
+.discover-clinical__content {
+        padding: 40px 25px 0 !important;
+    }
+
+.discover-clinical h2 {
+  color: #666460 !important;
+  text-align: center !important;
+  font-family: "Open Sans" !important;
+  font-size: 26px !important;
+  font-style: normal !important;
+  font-weight: 450 !important;
+  line-height: 120% !important;
+  letter-spacing: 3.9px !important;
+  text-transform: uppercase !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.week-title {
+  writing-mode: horizontal-tb !important;
+  transform: none !important;
+  position: unset !important;
+  color: #666460 !important;
+  font-family: "Open Sans" !important;
+  font-size: 18.969px !important;
+  font-style: normal !important;
+  font-weight: 347 !important;
+  line-height: 120% !important;
+  letter-spacing: 3.794px !important;
+  margin: 35px 0 !important;
+}
+
+.category-group {
+  display: block !important;
+  margin-bottom: 25px !important;
+}
+
+.category-group h4 {
+  max-width: 100% !important;
+  padding-bottom: 15px !important;
+  color: #666460 !important;
+  font-family: "Open Sans" !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 120% !important;
+  letter-spacing: 2.1px !important;
+  text-transform: uppercase !important;
+}
+
+.statistic {
+  display: flex !important;
+  margin-bottom: 0 !important;
+  gap: 20px !important;
+    MAX-WIDTH: 100%!important;
+}
+
+.percentage {
+  color: #666460 !important;
+  font-family: "Open Sans" !important;
+  font-size: 30px !important;
+  font-style: normal !important;
+  font-weight: 300 !important;
+  line-height: 120% !important;
+  letter-spacing: -0.6px !important;
+  text-transform: uppercase !important;
+}
+
+.disclaimer {
+    display: none;
+}
+
+  .discover-clinical__results {
+    margin-left: auto;
+    max-width: 263px;
+    margin-right: auto;
+  }
+.description {
+        color: #666460 !important;
+        font-family: Open Sans !important;
+        font-style: normal !important;
+        width: auto !important;
+        line-height: 120% !important;
+        letter-spacing: .12px !important;
+        font-size: 1.2rem;
+    }
+.discover-clinical__results {
+    max-width: 100%;
+}
+.category-group br {
+    display: none;
+}
+.statistic {
+    align-items: center;
+}
+}
+
+
+@media only screen and (max-width:575px) {
+.product__title h1 {
+        text-align: center !important;
+    }
+.custom-review-stars .oke-w-header-content-module.oke-w-header-content-module--left {
+    justify-content: center!important;
+    margin: 0px;
+    margin-top: -26px!important;
+    margin-bottom: 10px;
+}
+ 
+}
+
+
+
+{% endstylesheet %} 

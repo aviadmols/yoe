@@ -1,0 +1,530 @@
+{% schema %}
+{
+  "name": "Landing Discover Products",
+  "class": "landing-discover-products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TWO MULTI-ACTION HERO CREAMS, TWO OPTIONS TO ACHIEVE ULTIMATE RESULTS."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "product_highlights",
+      "label": "Product highlights (icons)",
+      "info": "Select product_highlights entries (heading + image). Max 4. Else Icon blocks below are used.",
+      "metaobject_type": "product_highlights",
+      "limit": 4
+    },
+    {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product (add to cart)"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount code",
+      "info": "Optional: discount code to apply when adding to cart"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "CTA button label",
+      "default": "TRY DISCOVERY DUO"
+    },
+    {
+      "type": "text",
+      "id": "cta_price_text",
+      "label": "Price (e.g. 48)",
+      "default": "48"
+    },
+    {
+      "type": "text",
+      "id": "cta_compare_at_price_text",
+      "label": "Compare-at price (e.g. 86)",
+      "default": "86"
+    },
+    {
+      "type": "text",
+      "id": "after_cta_text",
+      "label": "After CTA text",
+      "default": "30-Day Money-Back Guarantee | Free Express Shipping"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "default_badges",
+      "label": "Default gallery badges",
+      "metaobject_type": "gallery_badge",
+      "limit": 6,
+      "info": "Badges (image + position) to show on product cards when none are set per product. Uses metaobject type gallery_badge."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product image",
+          "info": "Product-only image. Badges are overlaid from the gallery badges setting (each has image + position)."
+        },
+        {
+          "type": "metaobject_list",
+          "id": "badges",
+          "label": "Gallery badges",
+          "metaobject_type": "gallery_badge",
+          "limit": 6,
+          "info": "Override default badges for this product. Each gallery_badge has image and position (left/right). Leave empty to use section default badges."
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "YMPOSSIBLE CREAM"
+        },
+        {
+          "type": "textarea",
+          "id": "product_description",
+          "label": "Product Description",
+          "default": "Description of the product."
+        },
+        {
+          "type": "richtext",
+          "id": "hero_text",
+          "label": "Hero Text",
+          "default": "<p>Ultra-Nourishing Multi-Action Hero Cream</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Discover Products",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign product_blocks = section.blocks | where: "type", "product" %}
+{% assign icon_blocks = section.blocks | where: "type", "icon" %}
+{% assign product_highlights_meta = section.settings.product_highlights %}
+{% assign cta_product = section.settings.cta_product %}
+{% if cta_product != blank %}
+  {% assign cta_variant = cta_product.selected_or_first_available_variant %}
+{% endif %}
+<div class="landing-discover-products__container">
+    <h2 class="landing-discover-products__heading scroll-trigger animate--slide-in" style="--animation-order: 0;">{{ section.settings.heading }}</h2>
+    <div class="landing-discover-products__inner mt-[45px] md:mt-[90px]">
+        <div class="landing-discover-products__left mx-auto scroll-trigger animate--slide-in" style="--animation-order: 1;">
+            {% if section.settings.description != blank %}
+                <div class="landing-discover-products__section-description rte mb-[28px] md:mb-[40px]">{{ section.settings.description }}</div>
+            {% endif %}
+
+            {% assign has_icons = false %}
+            {% if product_highlights_meta != blank and product_highlights_meta.size > 0 %}
+                {% assign has_icons = true %}
+            {% elsif icon_blocks.size > 0 %}
+                {% assign has_icons = true %}
+            {% endif %}
+            {% if has_icons %}
+                <ul class="landing-discover-products__section-icons list-unstyled">
+                    {% if product_highlights_meta != blank and product_highlights_meta.size > 0 %}
+                        {% for highlight in product_highlights_meta limit: 4 %}
+                            {% assign highlight_label = highlight.heading.value | default: highlight.label.value | default: highlight.name.value %}
+                            {% assign highlight_image = highlight.image.value | default: highlight.icon.value %}
+                            <li class="landing-discover-products__section-icon-item">
+                                {% if highlight_image != blank %}
+                                    <img src="{{ highlight_image | image_url: width: 80 }}" alt="{{ highlight_label | escape }}" width="55" height="55" loading="lazy">
+                                {% endif %}
+                                {% if highlight_label != blank %}
+                                    <span class="landing-discover-products__section-icon-label">{{ highlight_label }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for block in icon_blocks %}
+                            <li class="landing-discover-products__section-icon-item" {{ block.shopify_attributes }}>
+                                {% if block.settings.icon != blank %}
+                                    <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="{{ block.settings.label | escape }}" width="55" height="55" loading="lazy">
+                                {% endif %}
+                                {% if block.settings.label != blank %}
+                                    <span class="landing-discover-products__section-icon-label">{{ block.settings.label }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            {% endif %}
+
+            {% if cta_product != blank and cta_variant %}
+                <div class="landing-discover-products__section-cta mx-auto md:mx-0 my-2">
+                    <form method="post" action="/cart/add" class="landing-discover-products-cta-form" data-landing-discover-cta-form="true" data-discount-code="{{ section.settings.discount_code | escape }}">
+                        <input type="hidden" name="id" value="{{ cta_variant.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit"
+                                class="landing-discover-products__section-cta-btn button button--primary"
+                                data-landing-discover-cta-submit="true"
+                                data-button-label="{{ section.settings.cta_button_label | escape }}"
+                                data-price="{{ section.settings.cta_price_text | escape }}"
+                                data-compare-at="{{ section.settings.cta_compare_at_price_text | escape }}">
+                            <span class="landing-discover-products__section-cta-label whitespace-nowrap">{{ section.settings.cta_button_label | default: 'TRY DISCOVERY DUO' }} - ${{ section.settings.cta_price_text | default: '48' }}</span>
+                            {%- if section.settings.cta_compare_at_price_text != blank -%}
+                                <span class="landing-discover-products__section-cta-compare">${{ section.settings.cta_compare_at_price_text }}</span>
+                            {%- endif -%}
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
+
+            {% if section.settings.after_cta_text != blank %}
+                <p class="landing-discover-products__after-cta-text mx-auto md:mx-0">{{ section.settings.after_cta_text }}</p>
+            {% endif %}
+        </div>
+
+        <div class="landing-discover-products__right mx-auto scroll-trigger animate--slide-in" style="--animation-order: 2;">
+            <div class="landing-discover-products__products">
+        {% for block in product_blocks %}
+            {% assign product = all_products[block.settings.product] %}
+            {% if product %}
+                {% assign sorted_variants = product.variants | sort: "price" | reverse %}
+                {% assign highest_price_variant = sorted_variants.first %}
+                {% if block.settings.badges != blank and block.settings.badges.size > 0 %}
+                    {% assign badge_list = block.settings.badges %}
+                {% else %}
+                    {% assign badge_list = section.settings.default_badges %}
+                {% endif %}
+
+                <article class="discover-product-card scroll-trigger animate--slide-in" style="--animation-order: {{ forloop.index0 | plus: 3 }};" {{ block.shopify_attributes }}>
+                    <div class="discover-product-card__media">
+                        {% if block.settings.product_image != blank %}
+                            <img class="discover-product-card__product-image" src="{{ block.settings.product_image | img_url: 'master' }}" alt="{{ product.title | escape }}" width="189" height="240" loading="lazy">
+                        {% elsif product.featured_image %}
+                            <img class="discover-product-card__product-image" src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title | escape }}" width="189" height="240" loading="lazy">
+                        {% endif %}
+                        {% if badge_list != blank and badge_list.size > 0 %}
+                            <div class="discover-product-card__badges discover-product-card__badges--left">
+                                {% for badge_obj in badge_list %}
+                                    {% assign pos = badge_obj.position.value | downcase | strip | default: 'left' %}
+                                    {% if pos != 'right' and badge_obj.image.value != blank %}
+                                        <div class="discover-product-card__badge">
+                                            <img class="discover-product-card__badge-img" src="{{ badge_obj.image.value | image_url: width: 200 }}" alt="" width="120" height="120" loading="lazy">
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="discover-product-card__badges discover-product-card__badges--right">
+                                {% for badge_obj in badge_list %}
+                                    {% assign pos = badge_obj.position.value | downcase | strip | default: 'left' %}
+                                    {% if pos == 'right' and badge_obj.image.value != blank %}
+                                        <div class="discover-product-card__badge">
+                                            <img class="discover-product-card__badge-img" src="{{ badge_obj.image.value | image_url: width: 200 }}" alt="" width="120" height="120" loading="lazy">
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="discover-product-card__content rte quick-add-hidden mt-6">
+                        <h3 class="discover-product-card__title flex flex-col md:flex-row items-center md:items-end justify-start md:justify-center">
+                            {% if forloop.index == 2 %}
+                            <div class="flex flex-row">
+                                {{ block.settings.product_name | default: product.title }}
+                                <span class="discover-product-card__suffix ml-1 flex items-center">LIGHT</span>
+                            </div>
+                            <span class="discover-product-card__volume md:mx-2">8ml</span>
+                            {% endif %}
+                            {% if forloop.index == 1 %}
+                                {{ block.settings.product_name | default: product.title }}
+                                <span class="discover-product-card__volume mx-2">8ml</span>
+                            {% endif %}
+                        </h3>
+                        <div class="discover-product-card__tagline mt-2 rte">{{ block.settings.hero_text }}</div>
+                        <div class="discover-product-card__reviews">
+                            {% render 'okendo-reviews-widget', product: product %}
+                            {% render 'okendo-reviews-product-rating-summary', product: product %}
+                        </div>
+                        <div class="discover-product-card__benefits-wrap">
+                            <ul class="discover-product-card__benefits list-unstyled">
+                                {% assign benefits = block.settings.product_description | newline_to_br | split: '<br />' %}
+                                {% for benefit in benefits %}
+                                    {% if benefit != blank %}
+                                        <li class="discover-product-card__benefit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="14" viewBox="0 0 19 14" fill="none" aria-hidden="true">
+                                                <path d="M1 6.5L6.66667 12L18 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                            <span>{{ benefit | strip }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            {% endif %}
+        {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function() {
+        document.addEventListener('submit', function(e) {
+            var form = e.target;
+            if (!form.classList.contains('landing-discover-products-cta-form')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            var discountCode = (form.getAttribute('data-discount-code') || '').trim();
+            var variantId = form.querySelector('input[name="id"]').value;
+            var submitButton = form.querySelector('button[type="submit"]');
+            if (submitButton.disabled) return;
+
+            var buttonLabel = submitButton.getAttribute('data-button-label') || '';
+            var price = submitButton.getAttribute('data-price') || '48';
+            var compareAt = submitButton.getAttribute('data-compare-at') || '';
+
+            submitButton.disabled = true;
+            function setButtonContent(labelText, compareAtText) {
+                // Keep content in child elements so it stays above the ::before fill layer
+                // (outline CTA mixin uses `& > * { z-index: 1; }`).
+                submitButton.replaceChildren();
+
+                var labelSpan = document.createElement('span');
+                labelSpan.className = 'landing-discover-products__section-cta-label whitespace-nowrap';
+                labelSpan.textContent = labelText;
+                submitButton.appendChild(labelSpan);
+
+                if (compareAtText && compareAtText.trim() !== '') {
+                    var compareSpan = document.createElement('span');
+                    compareSpan.className = 'landing-discover-products__section-cta-compare';
+                    compareSpan.textContent = '$' + compareAtText;
+                    submitButton.appendChild(compareSpan);
+                }
+            }
+
+            setButtonContent('Adding...');
+
+            function resetButton(useText) {
+                if (useText) {
+                    setButtonContent(useText);
+                } else {
+                    setButtonContent((buttonLabel || 'TRY DISCOVERY DUO') + ' - $' + price, compareAt);
+                }
+                submitButton.disabled = false;
+            }
+
+            function openMiniCart() {
+                var miniCart = document.getElementById('rebuy-cart');
+                if (miniCart) {
+                    miniCart.classList.add('is-visible');
+                    miniCart.setAttribute('aria-hidden', 'false');
+                }
+            }
+
+            function addToCart() {
+                fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+                })
+                    .then(function(r) { if (!r.ok) throw new Error('Cart add failed'); return r.json(); })
+                    .then(function() {
+                        setButtonContent('Added!');
+                        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                        setTimeout(function() {
+                            openMiniCart();
+                            setTimeout(resetButton, 2000);
+                        }, 300);
+                    })
+                    .catch(function() {
+                        resetButton('Try Again');
+                        alert('Failed to add to cart. Please try again.');
+                    });
+            }
+
+            if (discountCode !== '') {
+                fetch('/discount/' + encodeURIComponent(discountCode), { method: 'GET', redirect: 'manual' })
+                    .then(function() { setTimeout(addToCart, 300); })
+                    .catch(function() { addToCart(); });
+            } else {
+                addToCart();
+            }
+            return false;
+        }, true);
+    })();
+</script>
+
+<style>
+
+
+
+    /* Two-column layout: left = static content, right = product blocks */
+    .landing-discover-products__inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-start;
+        max-width: 100%;
+    }
+
+    .landing-discover-products__left {
+        flex: 1 1 320px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .landing-discover-products__right {
+        flex: 1 1 50%;
+        min-width: 0;
+        width: 100%;
+    }
+
+
+    .landing-discover-products__section-cta {
+        margin-bottom: 1rem;
+    }
+
+    .landing-discover-products__submit {
+        font-weight: 400 !important;
+        font-variation-settings: 'wdth' 78 !important;
+
+    }
+
+
+    .landing-discover-products .button:hover {
+        background-color: #bd1e18;
+    }
+
+    .landing-discover-products__submit strong {
+        margin-right: 0.5rem;
+    }
+
+    .landing-discover-products .messages {
+        color: #BD1E18;
+        font-family: "Open Sans";
+        font-size: 0.95rem;
+        font-style: normal;
+        letter-spacing: 0.08em;
+        text-align: left;
+        text-underline-position: from-font;
+        line-height: 140%;
+        letter-spacing: 0.076rem;
+        text-transform: uppercase;
+        display: block;
+        text-align: left;
+        margin-bottom: 0.85rem;
+    }
+
+    .landing-discover-products {
+        text-align: center;
+        color: #fff;
+    }
+
+    {% comment %} .landing-discover-products__submit {
+        color: #FFF !important;
+        opacity: 1;
+        padding: 10px 30px;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.09em;
+        line-height: 140%;
+        text-transform: uppercase;
+        margin: 0 auto;
+        text-align: center;
+    } {% endcomment %}
+
+    @media (max-width: 768px) {
+
+        {% comment %} .landing-discover-products__submit {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-size: 18px;
+        } {% endcomment %}
+
+        .landing-discover-products .messages {
+            {% comment %} letter-spacing: 1.36px !important; {% endcomment %}
+            margin-bottom: 20px !important;
+            text-align: center !important;
+            {% comment %} font-size: 13px !important; {% endcomment %}
+        }
+
+        {% comment %} .landing-discover-products .image-with-text__text p {
+            font-size: 13.6px !important;
+            margin-top: 0px !important;
+            font-style: normal;
+            text-align: center;
+            font-weight: 413 !important;
+            letter-spacing: 0.136px !important;
+        } {% endcomment %}
+
+        .landing-discover-products .multirow__inner .text_in_div {
+            margin-top: 0px !important;
+            text-align: center !important;
+        }
+
+        .landing-discover-products .multirow__inner .image-with-text__text {
+            margin-bottom: 8px !important;
+        }
+
+    }
+
+
+    @media (max-width: 990px) {
+        .landing-discover-products__inner {
+            flex-direction: column;
+        }
+
+        .landing-discover-products__left,
+        .landing-discover-products__right {
+            flex: 1 1 100%;
+        }
+
+        /* Mobile: show product cards under the section title, then description/icons/CTA/disclaimer below */
+        .landing-discover-products__left {
+            order: 2;
+        }
+        .landing-discover-products__right {
+            order: 1;
+        }
+    }
+
+
+
+</style>

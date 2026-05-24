@@ -1,0 +1,70 @@
+{% schema %}
+{
+  "name": "Yoe Product Slider",
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Yoe Product Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="yoe-product-slider">
+  <div class="swiper-container-Product-Slider">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        {% assign custom_image = block.settings.custom_image %}
+        {% if product %}
+          {% assign product_obj = all_products[product] %}
+          <div class="swiper-slide  scroll-trigger animate--slide-in">
+            <a href="{{ product_obj.url }}">
+              {% if custom_image %}
+                <img class="main_image zoom-image" src="{{ custom_image | img_url: '' }}" alt="{{ product_obj.title }}">
+              {% else %}
+                <img class="main_image zoom-image" src="{{ product_obj.featured_image | img_url: '' }}" alt="{{ product_obj.title }}">
+              {% endif %}
+              <h3>{{ product_obj.title }}</h3>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% if section.blocks.size > 0 %}
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var swiper = new Swiper('.swiper-container-Product-Slider', {
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 0
+      }
+    }
+  });
+});
+  </script>
+{% endif %}

@@ -1,0 +1,169 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+<style>
+
+    .mobile_menu_ui nav.menu-drawer__navigation {
+        padding: 3rem;
+    }
+
+    .mobile_menu_ui nav.menu-drawer__navigation ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile_menu_ui nav.menu-drawer__navigation ul li a {
+        padding: 1rem 0;
+    }
+
+    body .mobile_menu_ui nav.menu-drawer__navigation ul li a span {
+        color: #666460 !important;
+        font-size: 1.25rem !important;
+    }
+
+</style>
+
+<header-drawer
+        data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+    <details id="Details-menu-drawer-container" class="menu-drawer-container">
+        <summary
+                class="header__icon header__icon--menu header__icon--summary link focus-inset"
+                aria-label="{{ 'sections.header.menu' | t }}"
+        >
+      <span>
+        {% render 'icon-hamburger' %}
+          {% render 'icon-close' %}
+      </span>
+        </summary>
+        <div id="menu-drawer" class="gradient menu-drawer motion-reduce">
+            <div class="menu-drawer__inner-container">
+                <div class="menu-drawer__navigation-container">
+                    <nav class="menu-drawer__navigation">
+                        <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+
+                            <nav class="menu-drawer__navigation">
+                                {% for block in section.blocks %}
+                                    <li class="link_drawer">
+                                        <img src="{{ block.settings.image_url | image_url }}"
+                                             alt="{{ block.settings.image_alt }}" class="menu-item__image">
+                                        <a href="{{ block.settings.link }}"
+                                           class="menu-item__link">{{ block.settings.text }}</a>
+                                    </li>
+                                {% endfor %}
+
+
+                                <div class="border-svg"></div>
+
+                                <!-- Discover Menu -->
+                                <li class="menu-drawer__menu-item list-menu__item link link--text accordion-item"
+                                    style="
+    display: block;
+">
+                                    <div class="accordion-header">
+                                        <span>Discover</span>
+                                        <span class="plus-icon">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 10.1008H20.2021" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;" stroke-width="3.45167"/>
+                                                <path d="M10.0991 20.2021L10.0991 6.24545e-06" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;" stroke-width="3.45167"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <ul class="menu-drawer__menu list-menu dd_mobile" role="list">
+                                            {% assign discover_menu = linklists['discover'] %}
+                                            {% for link in discover_menu.links %}
+                                                <li><a href="{{ link.url }}" class="menu-item">{{ link.title }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- Help Menu -->
+                                <li class="menu-drawer__menu-item list-menu__item link link--text accordion-item"
+                                    style="
+    display: block;
+">
+                                    <div class="accordion-header ">
+                                        <span>Help</span>
+                                        <span class="plus-icon">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 10.1008H20.2021" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;" stroke-width="3.45167"/>
+                                                <path d="M10.0991 20.2021L10.0991 6.24545e-06" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;" stroke-width="3.45167"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <ul class="menu-drawer__menu list-menu dd_mobile" role="list">
+                                            {% assign help_menu = linklists['help'] %}
+                                            {% for link in help_menu.links %}
+                                                <li><a href="{{ link.url }}" class="menu-item">{{ link.title }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-drawer__menu-item list-menu__item menu-item-last-drawer">
+                                    <div class="menu-drawer__utility-links">
+                                        {%- comment -%} Login Section {%- endcomment -%}
+                                        <div class="menu-drawer__login">
+                                            {%- if customer -%}
+                                                <a href="/account" class="menu-drawer__login-link">
+                                                    <svg width="38" height="41" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M36.2062 40.7199C36.2062 31.162 28.4579 23.4137 18.9 23.4137C9.34201 23.4137 1.59375 31.162 1.59375 40.7199" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3929 0.3752);stroke-opacity:1;" stroke-width="3.18772"/>
+                                                        <circle cx="18.9013" cy="10.1801" r="8.58627" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3929 0.3752);stroke-opacity:1;" stroke-width="3.18772"/>
+                                                    </svg>
+                                                    <span>ACCOUNT</span>
+                                                </a>
+                                            {%- else -%}
+                                                <a href="/account/login" class="menu-drawer__login-link">
+                                                    <svg width="38" height="41" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M36.2062 40.7199C36.2062 31.162 28.4579 23.4137 18.9 23.4137C9.34201 23.4137 1.59375 31.162 1.59375 40.7199" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3929 0.3752);stroke-opacity:1;" stroke-width="3.18772"/>
+                                                        <circle cx="18.9013" cy="10.1801" r="8.58627" stroke="#666460" style="stroke:#666460;stroke:color(display-p3 0.4000 0.3929 0.3752);stroke-opacity:1;" stroke-width="3.18772"/>
+                                                    </svg>
+                                                    <span>LOGIN</span>
+                                                </a>
+                                            {%- endif -%}
+                                        </div>
+
+                                        {%- comment -%} Currency Selector {%- endcomment -%}
+                                        {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
+                                            <div>
+                                                {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
+                                            </div>
+                                        {%- endform -%}
+                                    </div>
+                                </li>
+                            </nav>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </details>
+</header-drawer>
+
+<script>
+    function adjustMenuDrawerMargin() {
+        const adminBar = document.getElementById('PBarNextFrameWrapper');
+        const menuItem = document.querySelector('.menu-item-last-drawer');
+
+        if (adminBar && menuItem) {
+            const adminBarHeight = adminBar.offsetHeight;
+            if (adminBarHeight > 0) {
+                menuItem.style.marginBottom = adminBarHeight + 'px';
+            }
+        }
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', adjustMenuDrawerMargin);
+
+    // Run after a short delay to ensure admin bar is rendered
+    setTimeout(adjustMenuDrawerMargin, 500);
+
+    // Optional: Run on window resize
+    window.addEventListener('resize', adjustMenuDrawerMargin);
+</script>

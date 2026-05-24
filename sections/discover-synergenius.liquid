@@ -1,0 +1,155 @@
+{% schema %}
+{
+  "name": "SynerGenius Ingredients",
+  "class": "synergenius-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "ADVANCED PRECISION DELIVERY, TRANSFORMATIVE RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading_1",
+      "label": "Sub Heading - Right Top",
+      "default": "INNOVATIVE INGREDIENTS MEET ADVANCED BIOTECHNOLOGY"
+    },
+    {
+      "type": "text",
+      "id": "synergenius_title",
+      "label": "Synergenius Title",
+      "default": "SYNERGENIUS™"
+    },
+    {
+      "type": "textarea",
+      "id": "synergenius_text",
+      "label": "Synergenius Description",
+      "default": "The jewel of Yoé’s formulation is SynerGenius™ complex, a proprietary blend of botanical and bioengineered actives that work to deeply hydrate, repair and visibly revitalize skin."
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left Side Title",
+      "default": "THE GOLD STANDARDS"
+    },
+    {
+      "type": "textarea",
+      "id": "left_text",
+      "label": "Left Side Text",
+      "default": "Proven essentials for hydration, repair and protection."
+    },
+    {
+      "type": "text",
+      "id": "bottom_title",
+      "label": "Bottom Section Title",
+      "default": "THE POWER PLAYERS"
+    },
+    {
+      "type": "textarea",
+      "id": "bottom_text",
+      "label": "Bottom Section Description",
+      "default": "Cutting-edge actives for advanced skin performance."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Ingredient Label",
+          "default": "COLLAGEN-BOOSTING"
+        },
+        {
+          "type": "text",
+          "id": "bold_text",
+          "label": "Bold Text",
+          "default": "VITAMIN C"
+        },
+        {
+          "type": "select",
+          "id": "group",
+          "label": "Row Group",
+          "default": "top",
+          "options": [
+            { "value": "top", "label": "Top Row" },
+            { "value": "bottom", "label": "Bottom Row" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SynerGenius Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+<div class=" padding-right-left no-padding-mobile" >
+<div class="synergenius-wrapper">
+  <h2 class="synergenius-main-heading">{{ section.settings.main_heading }}</h2>
+  <div class="synergenius-row">
+    <div class="synergenius-right">
+<div>
+      <p class="subheading">{{ section.settings.sub_heading_1 }}</p>
+      <h3 class="synergenius-title">{{ section.settings.synergenius_title }}</h3>
+
+</div>
+<div>
+      <p class="synergenius-desc">{{ section.settings.synergenius_text }}</p>
+  </div>
+    </div>
+  
+  </div>
+
+  <div class="synergenius-bottom">
+
+
+    <div class="ingredients-grid top-row">
+<div class="div_title_grid">
+      <h4 class="left-title">{{ section.settings.left_title }}</h4>
+      <p class="left-text">{{ section.settings.left_text }}</p>
+</div>
+      <div class="inlne-div-flex">
+      {% for block in section.blocks %}
+        {% if block.settings.group == 'top' %}
+          <div class="ingredient-block">
+            <img class="mx-auto" src="{{ block.settings.icon | img_url: 'master' }}" alt="{{ block.settings.label }} icon">
+            <div class="ingredient-label">{{ block.settings.label }}</div>
+            <div class="ingredient-bold">{{ block.settings.bold_text }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+    <div class="ingredients-grid bottom-row">
+<div class="div_title_grid">
+    <h4 class="bottom-title">{{ section.settings.bottom_title }}</h4>
+    <p class="bottom-desc">{{ section.settings.bottom_text }}</p>
+</div>
+      <div class="inlne-div-flex">
+      {% for block in section.blocks %}
+        {% if block.settings.group == 'bottom' %}
+          <div class="ingredient-block">
+            <img class="mx-auto" src="{{ block.settings.icon | img_url: 'master' }}" alt="{{ block.settings.label }} icon">
+            <div class="ingredient-label">{{ block.settings.label }}</div>
+            <div class="ingredient-bold">{{ block.settings.bold_text }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

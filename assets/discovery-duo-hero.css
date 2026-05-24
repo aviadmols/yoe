@@ -1,0 +1,344 @@
+/* Discovery Duo – Hero section
+ * Desktop values in rem (1rem = 20px); mobile values in px.
+ * Figma reference: file zxDGKKIAlZWxrW5gMFlFqM node 1:1256 (desktop) / 1:285 (mobile)
+ */
+
+.dd-hero {
+  position: relative;
+  width: 100%;
+  min-height: 49rem; /* 980px */
+  padding-top: var(--dd-hero-padding-top, 0px);
+  padding-bottom: var(--dd-hero-padding-bottom, 0px);
+  overflow: hidden;
+  background-color: #bebfbf;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+  box-sizing: content-box;
+}
+
+.dd-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.dd-hero__bg picture,
+.dd-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.dd-hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    -54.87deg,
+    rgba(255, 255, 255, 0) 29.81%,
+    rgba(255, 255, 255, 0.4) 79.29%
+  );
+  pointer-events: none;
+}
+
+.dd-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 96rem; /* 1920px */
+  min-height: 49rem; /* 980px */
+  margin: 0 auto;
+  padding: 9.95rem 6rem 0 5.65rem; /* 199px 120px 0 113px */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: "content product awards";
+  align-items: start;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+/* ---------- Content (left) ---------- */
+
+.dd-hero__content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 30rem; /* 600px */
+}
+
+.dd-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.066rem; /* 41.317px */
+  padding: 0 1rem;
+  background-color: #bd1e18;
+  color: #ffffff;
+  border-radius: 0.456rem; /* 9.129px */
+  font-size: 0.909rem; /* 18.179px */
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.091rem; /* 1.8179px */
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 75;
+  white-space: nowrap;
+}
+
+.dd-hero__headline {
+  margin: 2.9rem 0 0 0; /* 58px gap from badge -> ~256.94px from top */
+  font-size: 2.282rem; /* 45.645px */
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: 0.114rem; /* 2.2823px */
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+  max-width: 22.86rem; /* 457.161px */
+}
+
+.dd-hero__subheadline {
+  margin: 1.05rem 0 0 0; /* ~21px gap -> 436.46px from top */
+  font-size: 1.681rem; /* 33.621px */
+  font-weight: 700;
+  line-height: 1.16;
+  color: #bd1e18;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 75;
+}
+
+/* ---------- CTA button ---------- */
+
+.dd-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem; /* 12px */
+  margin-top: 2.95rem; /* ~59px gap -> 516.81px from top */
+  padding: 0 1.5rem 0 5.35rem; /* matches Figma offsets */
+  width: 25.285rem; /* 505.703px */
+  height: 3.88rem; /* 77.597px */
+  background-color: #bd1e18;
+  color: #f7f6f5;
+  text-decoration: none;
+  font-size: 1.217rem; /* 24.344px */
+  font-weight: 660;
+  line-height: 1.12;
+  letter-spacing: 0.024rem; /* 0.4869px */
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 77;
+  box-shadow: 0 0 2.83rem 0.3rem rgba(255, 255, 255, 0.6); /* 56.554px 6.089px */
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.dd-hero__cta:hover,
+.dd-hero__cta:focus-visible {
+  background-color: #a31b16;
+}
+
+.dd-hero__cta-compare {
+  position: relative;
+  font-weight: 400;
+}
+
+.dd-hero__cta-compare::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 0.05rem; /* 1px */
+  background-color: currentColor;
+}
+
+.dd-hero__cta-price {
+  font-weight: 660;
+}
+
+.dd-hero__cta-arrow {
+  margin-left: auto;
+  width: 0.384rem; /* 7.673px */
+  height: 1.084rem; /* 21.678px */
+  flex-shrink: 0;
+}
+
+/* ---------- Trust badges ---------- */
+
+.dd-hero__trust {
+  list-style: none;
+  margin: 0.7rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.6rem; /* horizontal gap matches Figma item spacing */
+  font-size: 0.769rem; /* 15.375px */
+  color: #666460;
+}
+
+.dd-hero__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  line-height: 1.153rem; /* 23.063px */
+  white-space: nowrap;
+  font-family: "Open Sans", "DM Sans", sans-serif;
+}
+
+.dd-hero__trust-check {
+  font-size: 0.85rem;
+  color: #666460;
+}
+
+/* ---------- Rating ---------- */
+
+.dd-hero__rating {
+  margin-top: 0.45rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.897rem; /* 17.938px */
+  line-height: 1.345rem; /* 26.907px */
+  color: #666460;
+  font-family: "Open Sans", "DM Sans", sans-serif;
+}
+
+.dd-hero__rating-stars {
+  color: #bd1e18;
+  letter-spacing: 0.05rem;
+}
+
+.dd-hero__rating-value,
+.dd-hero__rating-text {
+  font-weight: 400;
+}
+
+/* ---------- Product (center/right) ---------- */
+
+.dd-hero__product {
+  grid-area: product;
+  align-self: center;
+  justify-self: center;
+  width: 36rem; /* ~720px composed product visual */
+  max-width: 50vw;
+}
+
+.dd-hero__product picture,
+.dd-hero__product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---------- Awards (far right column) ---------- */
+
+.dd-hero__awards {
+  grid-area: awards;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem; /* 17px */
+  width: 5rem; /* 100px */
+  margin-top: 6rem; /* offset so awards align with product visual */
+}
+
+.dd-hero__award {
+  width: 100%;
+}
+
+.dd-hero__award-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — values in px from Figma node 1:285
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-hero {
+    min-height: 763px;
+    background-color: #bebfbf;
+  }
+
+  .dd-hero__inner {
+    min-height: 763px;
+    max-width: 100%;
+    padding: 110px 0 0 0;
+    display: block;
+    position: relative;
+  }
+
+  .dd-hero__content {
+    position: absolute;
+    top: 110px;
+    left: 32px;
+    right: 32px;
+    max-width: none;
+    z-index: 2;
+    display: block;
+  }
+
+  .dd-hero__badge {
+    height: 27px;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: 11.95px;
+    letter-spacing: 1.195px;
+    line-height: 1.2;
+  }
+
+  /* Hide desktop-only elements on mobile per Figma 1:285 (mobile hero is visual-only) */
+  .dd-hero__headline,
+  .dd-hero__subheadline,
+  .dd-hero__cta,
+  .dd-hero__trust,
+  .dd-hero__rating {
+    display: none;
+  }
+
+  .dd-hero__product {
+    position: absolute;
+    top: 472px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    max-width: 70%;
+    margin: 0;
+    align-self: auto;
+    justify-self: auto;
+  }
+
+  .dd-hero__awards {
+    position: absolute;
+    top: 472px;
+    right: 14px;
+    margin-top: 0;
+    width: 56px;
+    gap: 8px;
+    z-index: 2;
+  }
+}
+
+/* Optional intermediate tablet stop */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .dd-hero__inner {
+    padding: 6rem 3rem 3rem 3rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "content awards"
+      "product awards";
+  }
+
+  .dd-hero__product {
+    width: 100%;
+    max-width: 28rem;
+  }
+}

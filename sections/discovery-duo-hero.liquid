@@ -1,0 +1,324 @@
+{{ 'discovery-duo-hero.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-hero"
+  style="--dd-hero-padding-top: {{ section.settings.padding_top }}px; --dd-hero-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Discovery Duo hero' | escape }}"
+>
+  <div class="dd-hero__bg" aria-hidden="true">
+    {%- if section.settings.desktop_background != blank or section.settings.mobile_background != blank -%}
+      <picture>
+        {%- if section.settings.mobile_background != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ section.settings.mobile_background | image_url: width: 750 }}"
+          >
+        {%- endif -%}
+        {%- if section.settings.desktop_background != blank -%}
+          {{ section.settings.desktop_background | image_url: width: 2400 | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            class: 'dd-hero__bg-image',
+            alt: ''
+          }}
+        {%- endif -%}
+      </picture>
+    {%- endif -%}
+    <span class="dd-hero__bg-overlay"></span>
+  </div>
+
+  <div class="dd-hero__inner">
+    <div class="dd-hero__content">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="dd-hero__badge">{{ section.settings.badge_text }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.headline != blank -%}
+        <h1 class="dd-hero__headline">{{ section.settings.headline }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-hero__subheadline">{{ section.settings.subheadline }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.cta_url != blank and section.settings.cta_label != blank -%}
+        <a class="dd-hero__cta" href="{{ section.settings.cta_url }}">
+          <span class="dd-hero__cta-label">{{ section.settings.cta_label }}</span>
+          {%- if section.settings.cta_compare_price != blank -%}
+            <span class="dd-hero__cta-compare">{{ section.settings.cta_compare_price }}</span>
+          {%- endif -%}
+          {%- if section.settings.cta_price != blank -%}
+            <span class="dd-hero__cta-price">{{ section.settings.cta_price }}</span>
+          {%- endif -%}
+          <svg class="dd-hero__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
+            <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.trust_1 != blank or section.settings.trust_2 != blank or section.settings.trust_3 != blank -%}
+        <ul class="dd-hero__trust">
+          {%- if section.settings.trust_1 != blank -%}
+            <li class="dd-hero__trust-item">
+              <span class="dd-hero__trust-check" aria-hidden="true">&#10003;</span>
+              {{ section.settings.trust_1 }}
+            </li>
+          {%- endif -%}
+          {%- if section.settings.trust_2 != blank -%}
+            <li class="dd-hero__trust-item">
+              <span class="dd-hero__trust-check" aria-hidden="true">&#10003;</span>
+              {{ section.settings.trust_2 }}
+            </li>
+          {%- endif -%}
+          {%- if section.settings.trust_3 != blank -%}
+            <li class="dd-hero__trust-item">
+              <span class="dd-hero__trust-check" aria-hidden="true">&#10003;</span>
+              {{ section.settings.trust_3 }}
+            </li>
+          {%- endif -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.rating_value != blank or section.settings.rating_text != blank -%}
+        <div class="dd-hero__rating">
+          <span class="dd-hero__rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          {%- if section.settings.rating_value != blank -%}
+            <span class="dd-hero__rating-value">{{ section.settings.rating_value }}</span>
+          {%- endif -%}
+          {%- if section.settings.rating_text != blank -%}
+            <span class="dd-hero__rating-text">&middot; {{ section.settings.rating_text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.desktop_product_image != blank or section.settings.mobile_product_image != blank -%}
+      <div class="dd-hero__product">
+        <picture>
+          {%- if section.settings.mobile_product_image != blank -%}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ section.settings.mobile_product_image | image_url: width: 750 }}"
+            >
+          {%- endif -%}
+          {%- if section.settings.desktop_product_image != blank -%}
+            {{ section.settings.desktop_product_image | image_url: width: 1600 | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              class: 'dd-hero__product-image',
+              alt: section.settings.desktop_product_image.alt | default: section.settings.headline
+            }}
+          {%- endif -%}
+        </picture>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="dd-hero__awards">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'award' -%}
+            <li class="dd-hero__award" {{ block.shopify_attributes }}>
+              <picture>
+                {%- if block.settings.mobile_image != blank -%}
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="{{ block.settings.mobile_image | image_url: width: 200 }}"
+                  >
+                {%- endif -%}
+                {%- if block.settings.desktop_image != blank -%}
+                  {{ block.settings.desktop_image | image_url: width: 300 | image_tag:
+                    loading: 'eager',
+                    class: 'dd-hero__award-image',
+                    alt: block.settings.alt_text | default: 'Award'
+                  }}
+                {%- endif -%}
+              </picture>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Hero",
+  "tag": "section",
+  "class": "section-dd-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_background",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "header",
+      "content": "Product visual"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_product_image",
+      "label": "Desktop product image (bottles)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_product_image",
+      "label": "Mobile product image (bottles)"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Clinically proven"
+    },
+    {
+      "type": "header",
+      "content": "Headline (desktop only)"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Visibly firms, lifts, reduces fine lines and boosts hydration."
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline (red)",
+      "default": "ALL IN ONE FORMULA."
+    },
+    {
+      "type": "header",
+      "content": "CTA button (desktop only)"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button left label",
+      "default": "TRY BOTH FOR"
+    },
+    {
+      "type": "text",
+      "id": "cta_compare_price",
+      "label": "Compare-at price",
+      "default": "$86"
+    },
+    {
+      "type": "text",
+      "id": "cta_price",
+      "label": "Sale price",
+      "default": "$48"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Trust badges (desktop only)"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "30-Day Money-Back"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Free Express Shipping"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "First-Time Offer"
+    },
+    {
+      "type": "header",
+      "content": "Star rating (desktop only)"
+    },
+    {
+      "type": "text",
+      "id": "rating_value",
+      "label": "Rating value",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating description",
+      "default": "1,000+ Verified Buyers"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award badge",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Hero"
+    }
+  ]
+}
+{% endschema %}

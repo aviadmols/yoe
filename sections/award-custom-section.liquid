@@ -1,0 +1,183 @@
+{% schema %}
+{
+  "name": "Awards Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "AWARD-WINNING, FOR A REASON"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "award_logo",
+          "label": "Award Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_award_logo",
+          "label": "Award Logo"
+        },
+        {
+          "type": "text",
+          "id": "award_title",
+          "label": "Award Title"
+        },
+        {
+          "type": "textarea",
+          "id": "award_text",
+          "label": "Award Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Awards Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="awards-section">
+    <div class="page-width">
+        <div class="both-main-cust-nj">
+            {% if section.settings.heading != blank %}
+                <h2 class="awards-heading">{{ section.settings.heading }}</h2>
+            {% endif %}
+            <div class="awards-list">
+                {% for block in section.blocks %}
+                    <div class="award-item">
+                        {% if block.settings.award_logo != blank %}
+                            <img class="desktop-image-section" src="{{ block.settings.award_logo | image_url }}"
+                                 alt="{{ block.settings.award_title }}">
+                            <img class="mobile-image-section" src="{{ block.settings.mobile_award_logo | image_url }}"
+                                 alt="{{ block.settings.award_title }}">
+                        {% endif %}
+                        {% if block.settings.award_title != blank %}
+                            <h4>{{ block.settings.award_title }}</h4>
+                        {% endif %}
+                        {% if block.settings.award_text != blank %}
+                            <p>{{ block.settings.award_text }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .both-main-cust-nj {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .awards-section {
+        padding: 60px 20px;
+        background: #fff;
+        text-align: center;
+    }
+
+    .awards-section .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .awards-heading {
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 2.2rem;
+        margin: 0px;
+        color: #716E6A;
+        letter-spacing: 3px;
+    }
+
+    .awards-list {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        width: 57%;
+    }
+
+    .award-item {
+        text-align: center;
+    }
+
+    .award-item img {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .award-item h4 {
+        font-size: 14px;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #222;
+    }
+
+    .award-item p {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.4;
+    }
+
+    img.mobile-image-section {
+        display: none;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 767px) {
+        img.mobile-image-section {
+            display: block;
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        .awards-list {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .both-main-cust-nj {
+            flex-direction: column;
+        }
+
+        .awards-section {
+            padding: 20px 0px 40px;
+        }
+
+        .awards-heading {
+            font-size: 2.6rem;
+            padding-bottom: 50px;
+            line-height: 130%;
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+            font-family: 'Open Sans Condensed', sans-serif;
+            letter-spacing: 0.15em;
+        }
+
+        img.desktop-image-section {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+        .awards-heading {
+            font-size: 24px;
+        }
+    }
+</style>

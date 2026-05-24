@@ -1,0 +1,115 @@
+{% schema %}
+{
+  "name": "Active Ingredients",
+  "class": "active-ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE UNMATCHED LINEUP OF ACTIVE INGREDIENTS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "ingredient_image",
+          "label": "Ingredient Image"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_name",
+          "label": "Ingredient Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Active Ingredients",
+      "category": "Custom",
+      "blocks": [
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="active-ingredients">
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="ingredients-grid">
+    {% for block in section.blocks %}
+      <div class="ingredient">
+        <img src="{{ block.settings.ingredient_image | img_url: 'medium' }}" alt="{{ block.settings.ingredient_name }}">
+        <p>{{ block.settings.ingredient_name }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="ingredient-description">
+    <h3>SCIENCE-BACKED INNOVATION</h3>
+    <h4>SYNERGENIUS™</h4>
+    <p>It all starts with our SynerGenius™ complex, a proprietary blend of botanical and bioengineered actives that work synergistically to deeply hydrate, repair and visibly revitalize skin.</p>
+  </div>
+  <div class="delivery-system">
+    <img src="{{ section.settings.delivery_image | img_url: 'medium' }}" alt="Advanced Encapsulation">
+    <h3>DELIVERY SYSTEM</h3>
+    <h4>ADVANCED ENCAPSULATION</h4>
+    <p>Powered by an advanced encapsulation delivery system, Yoé actives are gradually and precisely released into the skin to reach its deepest layers, ensuring long-lasting results.</p>
+  </div>
+</div>
+
+<style>
+  .active-ingredients {
+    text-align: center;
+    padding: 50px 0;
+  }
+  .active-ingredients h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .ingredients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .ingredient {
+    text-align: center;
+    max-width: 120px;
+  }
+  .ingredient img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  .ingredient p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .ingredient-description, .delivery-system {
+    margin-top: 40px;
+  }
+  .ingredient-description h3, .delivery-system h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .ingredient-description h4, .delivery-system h4 {
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .ingredient-description p, .delivery-system p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .delivery-system img {
+    width: 100%;
+    max-width: 300px;
+  }
+</style>

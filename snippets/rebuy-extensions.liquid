@@ -1,0 +1,67 @@
+<!-- Rebuy Speed Load Script -->
+<script async src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}"></script>
+
+<!--  Manual Widget Installs BELOW -->
+{% if product %}
+<!-- PDP ATC Subscription Popup Upsell Widget Install -->
+<div data-rebuy-id="160086" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+{% endif %}
+
+<!-- Widget : Gift with Purchase ( DD) -->
+<div data-rebuy-id="226673"></div>
+<!-- End Widget : Gift with Purchase ( DD) -->
+<!-- Widget : Gift with Purchase (YCL) -->
+<div data-rebuy-id="226663"></div>
+<!-- End Widget : Gift with Purchase (YCL) -->
+<!-- Widget : Global - Gift with Purchase (YC) -->
+<div data-rebuy-id="222377"></div>
+<!-- End Widget : Global - Gift with Purchase (YC) -->
+<!-- Widget : Global - Free Gift (Mascara) -->
+{% comment %}<div data-rebuy-id="218438"></div>{% endcomment %}
+<!-- End Widget : Global - Free Gift (Mascara) -->
+<!-- Widget : Gift with Purchase (YCLR) -->
+<div data-rebuy-id="226954"></div>
+<!-- End Widget : Gift with Purchase (YCLR) -->
+<!-- Widget : Gift with Purchase ( YCR) -->
+<div data-rebuy-id="226951"></div>
+<!-- End Widget : Gift with Purchase ( YCR) -->
+
+
+{% if template == 'cart' %} 
+ <script>
+    window.addEventListener("load", function () {
+      // --- Reload after 3s on first cart load ---
+      if (!sessionStorage.getItem("cartReloaded")) {
+        sessionStorage.setItem("cartReloaded", "true");
+        setTimeout(function () {
+          location.reload();
+        }, 3000);
+      } else {
+        sessionStorage.removeItem("cartReloaded");
+      }
+
+      // --- Reload after 2s if quantity buttons or input are used ---
+      function triggerReloadAfterDelay() {
+        clearTimeout(window.cartReloadTimeout); // Prevent multiple triggers
+        window.cartReloadTimeout = setTimeout(function () {
+          location.reload();
+        }, 3000); // 2 second delay
+      }
+
+      // Listen for clicks on quantity buttons
+      document.querySelectorAll('.quantity__button').forEach(function (btn) {
+        btn.addEventListener('click', triggerReloadAfterDelay);
+      });
+      document.querySelectorAll('.remove-item-btn').forEach(function (btn) {
+        btn.addEventListener('click', triggerReloadAfterDelay);
+      });
+      // Listen for changes in quantity input fields
+      document.querySelectorAll('.quantity__input').forEach(function (input) {
+        input.addEventListener('change', triggerReloadAfterDelay);
+
+        // Optional: for better UX, also catch when users type and leave input
+        input.addEventListener('blur', triggerReloadAfterDelay);
+      });
+    });
+  </script> 
+{% endif %}

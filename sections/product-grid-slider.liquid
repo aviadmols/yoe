@@ -1,0 +1,568 @@
+<!-- Slick CSS -->
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+
+<div class="product-grid-section-cus {{ section.settings.custom-class }}">
+  <div class="page-width">
+    <div class="inner-section-cus-page">
+      <div class="heading-list">
+        <div class="product-heading">
+        <h1>{{ section.settings.main-title }}</h1>
+        <p>{{ section.settings.sub-title }}</p>
+        </div>
+         <div class="shopp-all-button">
+        <a class="shop-all-button" href="{{ section.settings.shop-url }}">Shop All</a>
+      </div>
+      </div>
+      <div class="product-section-grid">
+        {% for block in section.blocks %}
+          {% assign product = all_products[block.settings.product] %}
+          {% if product %}
+            <div class="product-list">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}" class="without-hover-image">
+                
+                {% if block.settings.hover-image %}
+                  <img 
+                    src="{{ block.settings.hover-image | img_url: 'master' }}" 
+                    alt="{{ product.title }} hover" 
+                    class="hover-img"
+                  >
+                {% endif %}
+                <div class="product-content-section">
+                  <h2>{{ product.title }}</h2>
+                {% if block.settings.product-volume %}
+                  <div class="product-volume">
+                    {{ block.settings.product-volume }}
+                  </div>
+                {% endif %}
+                  <p class="price">
+                    FROM {{ product.price | money }}
+                  </p>
+                  <div class="dec-btn">
+                    <p class="product-desc">{{ product.description | strip_html | truncate: 80 }}</p>
+                    <a href="{{ block.settings.btn-url }}" class="learn-more-btn">Learn More</a>
+                  </div>
+                </div>
+              </a>
+              <div class="product-icons">
+                {% if block.settings.icons-1 %}
+                  <img src="{{ block.settings.icons-1 | img_url: 'small' }}" alt="icon 1">
+                {% endif %}
+                {% if block.settings.icons-2 %}
+                  <img src="{{ block.settings.icons-2 | img_url: 'small' }}" alt="icon 2">
+                {% endif %}
+                {% if block.settings.icons-3 %}
+                  <img src="{{ block.settings.icons-3 | img_url: 'small' }}" alt="icon 3">
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.product-section-grid').slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: false,
+      responsive: [
+        {
+          breakpoint: 1024,   // below 1024px
+          settings: "unslick" // ✅ turns slider OFF
+        }
+      ]
+    });
+
+    // Reinitialize if window is resized back to desktop
+    $(window).on('resize', function() {
+      if ($(window).width() > 1024 && !$('.product-section-grid').hasClass('slick-initialized')) {
+        $('.product-section-grid').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+           responsive: [
+    {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 991,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    }
+  ]
+        });
+      }
+    });
+  });
+</script>
+
+
+
+
+{% schema %}
+{
+  "name": "Product Grid Custom",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom-class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "main-title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub-title",
+      "label": "Sub Title"
+    },
+     {
+      "type": "url",
+      "id": "shop-url",
+      "label": "BUtton URL"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+            {
+          "type": "text",
+          "id": "product-volume",
+          "label": "Product Volume (e.g. 30ML, 8ML+8ML)"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover-image",
+          "label": "Hover Image"
+        },
+        {
+          "type": "url",
+          "id": "btn-url",
+          "label": "Button Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "icons-1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icons-2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icons-3",
+          "label": "Icon 3"
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.product-volume {
+    color: #666460;
+    padding-top: 7px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+.product-content-section p.price {
+    position: absolute;
+    bottom: 51px;
+    width: 100%;
+}
+.product-list:hover .product-volume{
+  color: #fff;
+}
+.product-list:hover  p.price {
+    opacity: 0;
+}
+.shopp-all-button {
+    line-height: 32px;
+    text-align: right;
+    position: absolute;
+    right: 9.1%;
+    bottom: unset;
+}
+.inner-section-cus-page {
+    position: relative;
+}
+.shopp-all-button a.shop-all-button {
+    color: #666460;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.product-grid-section-cus.product-slider-cus .page-width {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.product-icons {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: absolute;
+    top: 33px;
+    left: 20px;
+    z-index: 2;
+}
+/* .product-section-grid .product-list a {
+    z-index: 2;
+    position: relative;
+} */
+.product-list a {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.product-icons img {
+    width: 100px;
+    height: 100%;
+}
+.product-image-wrap {
+  position: relative;
+  display: block;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.product-image-wrap .hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.product-image-wrap:hover .default-img {
+  opacity: 0;
+}
+.product-icons img {
+    width: 88px;
+    height: 88px;
+}
+.product-image-wrap:hover .hover-img {
+  opacity: 1;
+}
+
+img.hover-img {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+.product-section-grid .product-list:hover img.hover-img {
+    opacity: 1;
+}
+.slick-list.draggable .slick-track {
+    display: flex;
+    gap: 5px;
+}
+.product-section-grid .product-list:hover img.hover-img {
+    background: #0000007a;
+}
+  .product-section-grid {
+      display: flex;
+    align-items: center;
+    gap: 37px;
+}
+.product-list img {
+    width: 100%;
+}
+.product-section-grid .product-list {
+    width: 33%;
+    max-width: 33%;
+    position: relative;
+    transition: 0.5s;
+}
+.product-content-section {
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+}
+.product-content-section h2 {
+    margin: 0;
+    color: #666460;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+}
+.heading-list {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+.heading-list p {
+    font-size: 21px;
+    margin: 0px;
+    color: #716F6A;
+}
+.heading-list h1 {
+    line-height: 84px;
+    margin: 0px;
+}
+.heading-list {
+    margin-bottom: 3rem;
+}
+.dec-btn p.product-desc {
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 0rem 2rem;
+    font-family: Open Sans Condensed;
+    font-size: .945rem;
+    font-weight: 400;
+    line-height: 1.47rem;
+}
+.dec-btn a.learn-more-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: Open Sans Condensed;
+    text-transform: uppercase;
+    color: #fff;
+    max-width: 466px;
+    border: 1px solid rgba(255,255,255,1);
+    line-height: 71px;
+}
+.product-content-section p.price {
+    font-size: 14px;
+    color: #666460;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+.dec-btn {
+    bottom: -91px;
+    top: unset;
+    position: absolute;
+    padding: 20px 54px;
+    transform: translatey(63px);
+    transition: .5s;
+    cursor: pointer;
+    opacity: 0;
+}
+.product-list:hover .dec-btn {
+    transform: translatey(-110px);
+    opacity: 1;
+    z-index: 2;
+}
+.product-grid-section-cus.product-slider-cus {
+    background: #f9f8f7;
+    padding: 35px 0;
+}
+.slick-track {
+    display: flex;
+    gap: 30px;
+}
+.product-grid-section-cus.product-slider-cus button.slick-arrow {
+    position: absolute;
+    top: unset;
+    left: unset;
+    right: 27px;
+    bottom: 109%;
+}
+.product-section-grid .product-list img.without-hover-image, .product-section-grid .product-list img.hover-img {
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+    height: 594px !IMPORTANT;
+}
+.product-grid-section-cus.product-slider-cus button.slick-arrow::before {
+    font-size: 40px;
+    color: #000;
+    font-family: fontAwesome;
+}
+.product-grid-section-cus.product-slider-cus button.slick-prev.slick-arrow {
+    right: 86px !IMPORTANT;
+    position: absolute;
+    left: unset;
+}
+.product-section-grid .product-list:hover img.without-hover-image {
+    opacity: 0;
+}
+.product-section-grid .product-list:hover img.hover-img {
+    opacity: 1;
+    /* background: #00000054; */
+}
+.product-section-grid .product-list:hover p.price {
+    color: #fff;
+}
+.product-section-grid .product-list:hover .product-content-section h2 {
+    color: #fff;
+}
+/* .product-grid-section-cus.product-slider-cus button.slick-prev.slick-arrow::before {
+    content: ">";
+} */
+
+ @media(max-width: 767px){
+  .dec-btn a.learn-more-btn {
+    max-width: 100%;
+    height: auto;
+}
+  .shopp-all-button {
+    display: none;
+}
+  .dec-btn {
+    bottom: 0;
+    transform: translatey(0px);
+    opacity: 1;
+        width: 100%;
+}
+.product-grid-section-cus.product-slider-cus {
+    padding: 20px 0;
+}
+/* img.hover-img {
+    display: none;
+} */
+p.product-desc {
+    display: none;
+}
+.product-list:hover .dec-btn {
+    transform: translatey(-0px);
+}
+.dec-btn a.learn-more-btn {
+    border: 1px solid #666460;
+    color: #666460;
+}
+.product-list:hover .dec-btn a.learn-more-btn {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.product-icons img {
+    width: 60px;
+    height: 60px;
+}
+.product-content-section p.price {
+    font-size: 14px !important;
+}
+.product-volume {
+    font-size: 12px;
+    padding-top: 6px;
+}
+.product-content-section h2 {
+    font-size: 16px;
+}
+.product-icons {
+    top: 54px;
+      gap: 7px;
+}
+.product-section-grid .product-list img.without-hover-image, .product-section-grid .product-list img.hover-img {
+    height: 100%;
+    min-height: 600px;
+}
+.product-content-section p.price {
+    bottom: 87px;
+}
+.product-section-grid {
+    flex-direction: column;
+    row-gap: 18px;
+}
+.product-grid-section-cus.product-slider-cus .heading-list {
+    display: none;
+}
+.product-section-grid .product-list {
+    width: 100%;
+    max-width: 100%;
+}
+.heading-list h1 {
+    line-height: 47px;
+}
+.heading-list p {
+    font-size: 21px;
+    line-height: 32px;
+}
+ }
+
+ @media (min-width: 768px) and (max-width: 990px){
+.product-grid-section-cus.product-slider-cus .slick-next:before {
+    width: 15px;
+    height: 26px;
+}
+.product-grid-section-cus.product-slider-cus .slick-prev:before {
+    width: 15px;
+    height: 26px;
+}
+.heading-list p {
+    font-size: 15px;
+}
+.shopp-all-button {
+    right: 0%;
+    font-size: 30px;
+}
+.slick-list.draggable .slick-track {
+    gap: 10px;
+}
+.product-icons {
+    top: 68px;
+}
+.product-volume {
+    font-size: 15px;
+    color: #666460;
+    padding-top: 5px;
+}
+.product-grid-section-cus.product-slider-cus {
+    background: #f9f8f7;
+    padding: 20px 0 20px;
+}
+.shopp-all-button a.shop-all-button {
+    font-size: 13px !important;
+}
+.heading-list h1 {
+    line-height: 50px;
+    font-size: 32px;
+}
+}
+{% endstylesheet %}

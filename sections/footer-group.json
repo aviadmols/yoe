@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_h96Dfz": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "shop",
+            "show_icons": false
+          }
+        },
+        "link_list_L6RRUt": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Discover",
+            "menu": "discover",
+            "show_icons": false
+          }
+        },
+        "link_list_UQdNCz": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "help",
+            "show_icons": false
+          }
+        },
+        "link_list_HDj68g": {
+          "type": "link_list",
+          "settings": {
+            "heading": "commitments",
+            "menu": "footer",
+            "show_icons": true
+          }
+        }
+      },
+      "block_order": [
+        "link_list_h96Dfz",
+        "link_list_L6RRUt",
+        "link_list_UQdNCz",
+        "link_list_HDj68g"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "STAY IN TOUCH",
+        "show_social": true,
+        "brand_description": "<p>Exclusive offers, new products, events, news and & tips.</p>",
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

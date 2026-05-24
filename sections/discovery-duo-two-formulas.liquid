@@ -1,0 +1,154 @@
+{{ 'discovery-duo-two-formulas.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-two"
+  style="--dd-two-padding-top: {{ section.settings.padding_top }}px; --dd-two-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Two formulas, one complete routine' | escape }}"
+>
+  <div class="dd-two__inner">
+    <header class="dd-two__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="dd-two__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-two__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-two__subheadline">{{ section.settings.subheadline }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="dd-two__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'formula' -%}
+            <article class="dd-two__card" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <div class="dd-two__card-media">
+                  {{ block.settings.image | image_url: width: 800 | image_tag:
+                    loading: 'lazy',
+                    class: 'dd-two__card-image',
+                    alt: block.settings.image.alt | default: block.settings.title
+                  }}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.label != blank -%}
+                <span class="dd-two__card-label">{{ block.settings.label }}</span>
+              {%- endif -%}
+
+              {%- if block.settings.title != blank -%}
+                <h3 class="dd-two__card-title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <div class="dd-two__card-description">{{ block.settings.description }}</div>
+              {%- endif -%}
+
+              {%- if block.settings.tagline != blank -%}
+                <span class="dd-two__card-tagline">{{ block.settings.tagline }}</span>
+              {%- endif -%}
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Two formulas",
+  "tag": "section",
+  "class": "section-dd-two",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / small label",
+      "default": "The Discovery Duo"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Two formulas. One complete routine."
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "formula",
+      "name": "Formula card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Eyebrow label",
+          "default": "FORMULA 1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "HA + Retinol Active"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Lightweight, fast-absorbing serum to firm, smooth and brighten.</p>"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tagline / use cue"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Two formulas",
+      "blocks": [
+        { "type": "formula", "settings": { "label": "FORMULA 1", "title": "HA + Retinol Active", "description": "<p>Lightweight, fast-absorbing serum to firm, smooth and brighten.</p>", "tagline": "Serum" } },
+        { "type": "formula", "settings": { "label": "FORMULA 2", "title": "Cream Booster", "description": "<p>Rich, nourishing cream that locks in hydration and seals the routine.</p>", "tagline": "Cream" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

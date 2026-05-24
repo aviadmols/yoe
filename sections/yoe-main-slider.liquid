@@ -1,0 +1,312 @@
+{% schema %}
+{
+  "name": "Custom Parallax Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_slide_image",
+          "label": "Desktop Slide Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_slide_image",
+          "label": "Mobile Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "slide_text",
+          "label": "Heading",
+          "default": "Your Slide Text"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "slide_button_link",
+          "label": "Slide Button Link"
+        },
+        {
+          "type": "text",
+          "id": "slide_button_text",
+          "label": "Slide Button Text",
+          "default": "Click Here"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_type",
+          "label": "Link Button Type",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "center_content",
+          "label": "Text Center",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "mother_day_content",
+          "label": "Use Mother's Day Content",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Parallax Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.custom-parallax-section {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-parallax-section__slide {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 0;
+  width: 100%;
+  padding-top: 54.71%;
+  position: relative;
+}
+
+.custom-parallax-section__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
+  .mobile-only {
+    display: none;
+  }
+
+  .custom-parallax-section__content.centered {
+top: 50%;
+    justify-content: center;
+    display: flex !important;
+    left: 50%;
+    justify-content: center;
+    align-items: flex-start !important;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-parallax-section__content {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  z-index: 2;
+}
+
+
+
+.mother_day_slide .mother-day-title {
+  color: #666460;
+  font-variation-settings: "wdth" 85;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2.578rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.609rem;
+  letter-spacing: 8%;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.mother_day_slide .mother-day-subtitle {
+  color: #666460;
+  text-align: center;
+  font-variation-settings: "wdth" 80;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 480;
+  line-height: 1.54rem;
+  margin-bottom: 2rem;
+}
+
+.mother_day_slide .mother-day-button {
+  background: #666460;
+  display: flex;
+  width: 8.95rem;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2.3rem;
+  padding: 0.808rem 2.23rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.646rem;
+  flex-shrink: 0;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+
+
+   .swiper-wrapper:not(.mother_day_slide) .custom-parallax-section__slide img {
+     min-height: 100vh;
+  }
+
+  .swiper-wrapper:not(.mother_day_slide) .custom-parallax-section__content {
+    position: absolute;
+    top: 0;
+    min-height: 95vh;
+  }
+  
+  .custom-parallax-section__slide {
+
+    padding-top: 143%!important;
+  }
+  .mother_day_slide .custom-parallax-section__slide {
+    padding-top: 0 !important;
+  }
+  .mother_day_slide .image_btn_a {
+    display: block;
+  }
+  .mother_day_slide .image_btn_a img {
+    position: unset !important;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+
+  .mother_day_slide .in_slider {
+    margin-left: 0px!important;
+    top: 30%!important;
+  }
+</style>
+
+<div class="custom-parallax-section swiper-container swiper-container-main main_slider">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div id="block-{{ block.id }}" class="swiper-slide {% if block.settings.mother_day_content %}mother_day_slide{% endif %}">
+        <div class="custom-parallax-section__slide">
+          {% if block.settings.center_content %}
+            <a href="{{ block.settings.slide_button_link }}" class="image_btn_a mobile-only">
+              <img class="mother-day-mobile-image" src="{{ block.settings.mobile_slide_image | img_url: 'master' }}" alt="">
+            </a>
+          {% else %}
+            <img class="mobile-only zoom-image" src="{{ block.settings.mobile_slide_image | img_url: 'master' }}" alt="">
+          {% endif %}
+          <img class="desktop-only zoom-image" src="{{ block.settings.desktop_slide_image | img_url: 'master' }}" alt="">
+          
+          {% if block.settings.mother_day_content %}
+            <div class="custom-parallax-section__content centered desktop-only">
+              <div class="in_slider scroll-trigger animate--slide-in">
+                <div class="mother-day-title">Yoé x 19/99</div>
+                <div class="mother-day-subtitle">Receive a best-selling gift from 19/99<br>with any full-size Yoé purchase.</div>
+                <a href="{{ block.settings.slide_button_link }}" class="mother-day-button">Shop Now</a>
+              </div>
+            </div>
+          {% else %}
+            <div class="custom-parallax-section__content {% if block.settings.center_content %} centered {% endif %}">
+              <div class="in_slider scroll-trigger animate--slide-in">
+                <div class="slider-text-group">
+                <h1>{{ block.settings.slide_text }}</h1>
+                {% if block.settings.text != blank %}
+                  {{ block.settings.text }}
+                {% endif %}
+                </div>
+                <a href="{{ block.settings.slide_button_link }}" class="{% if block.settings.center_content %} link_button {% else %} outline_button {% endif %} white custom-parallax-section__button ">{{ block.settings.slide_button_text }}</a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var swiper = new Swiper('.swiper-container-main', {
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+      delay: 7000,
+      disableOnInteraction: false,
+    },
+    fadeEffect: {
+      crossFade: true
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      slideChangeTransitionStart: function () {
+        var header = document.querySelector('.header_sections');
+        var activeSlide = this.slides[this.activeIndex];
+        if (activeSlide.classList.contains('mother_day_slide')) {
+          header.classList.add('dark_header');
+        } else {
+          header.classList.remove('dark_header');
+        }
+      },
+      init: function () {
+        var header = document.querySelector('.header_sections');
+        var activeSlide = this.slides[this.activeIndex];
+        if (activeSlide.classList.contains('mother_day_slide')) {
+          header.classList.add('dark_header');
+        } else {
+          header.classList.remove('dark_header');
+        }
+      }
+    }
+  });
+});
+
+</script>

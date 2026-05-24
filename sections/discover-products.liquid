@@ -1,0 +1,681 @@
+{% schema %}
+{
+  "name": "Discover Products",
+  "class": "Discover-Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TWO MULTI-ACTION HERO CREAMS, TWO OPTIONS TO ACHIEVE ULTIMATE RESULTS."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "YMPOSSIBLE CREAM"
+        },
+        {
+          "type": "textarea",
+          "id": "product_description",
+          "label": "Product Description",
+          "default": "Description of the product."
+        },
+        {
+          "type": "text",
+          "id": "hero_text",
+          "label": "Hero Text",
+          "default": "Ultra-Nourishing Multi-Action Hero Cream"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discover Products",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="hero-creams">
+    <h2 class="text-heading">{{ section.settings.heading }}</h2>
+    <div class="products">
+        {% for block in section.blocks %}
+            {% assign product = all_products[block.settings.product] %}
+            {% if product %}
+                {% assign sorted_variants = product.variants | sort: "price" | reverse %}
+                {% assign highest_price_variant = sorted_variants.first %}
+
+                <div class="product">
+                    <a href="{{ product.url }}">
+                        {% if block.settings.product_image != blank %}
+                            <img src="{{ block.settings.product_image | img_url: 'master' }}" alt="{{ product.title }}">
+                        {% elsif product.featured_image %}
+                            <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                        {% endif %}
+                    </a>
+                    <div class="product__description rte quick-add-hidden">
+                        <div class="product__title">
+                            <h1>
+                                {{ block.settings.product_name | default: product.title }}
+                                {% if forloop.index == 2 %}
+                                    <span class="light">LIGHT 8ml</span>
+                                {% endif %}
+                                {% if forloop.index == 1 %}
+                                    <span class="light">8ml</span>
+                                {% endif %}
+                            </h1>
+
+                            {% comment %} Review section {% endcomment %}
+                            <div class="custom-review-stars">
+                                {% render 'okendo-reviews-widget', product: product %}
+                                {% render 'okendo-reviews-product-rating-summary', product: product %}
+                            </div>
+
+                        </div>
+                        <p class="hero-subtitle">{{ block.settings.hero_text }}</p>
+                        <p class="price">{{ highest_price_variant.price | money }}</p>
+
+
+                        <div class="description_div">
+                            <ul class="benefits-list">
+                                {% assign benefits = block.settings.product_description | newline_to_br | split: '<br />' %}
+                                {% for benefit in benefits %}
+                                    {% if benefit != blank %}
+                                        <li class="benefit-item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="14"
+                                                 viewBox="0 0 19 14" fill="none">
+                                                <path d="M1 6.5L6.66667 12L18 1" stroke="#666460" stroke-width="2"/>
+                                            </svg>
+                                            <span>{{ benefit | strip }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <p class="hero-subtitle">{{ block.settings.hero_text }}</p>
+
+                        <ul class="icon-with-text icon-with-text--horizontal list-unstyled">
+                            <li class="icon-with-text__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"
+                                     fill="none">
+                                    <path d="M32.6781 21.8693V17.1782H31.0312V13.9843C31.0312 13.1359 30.3325 12.4871 29.534 12.4871H27.3382C26.5397 12.4871 25.9409 13.1359 25.891 13.8845H24.2441L18.8544 10.7405C17.457 9.94198 15.8101 9.94198 14.4128 10.7405C13.0155 11.5389 12.217 12.9862 12.217 14.5832C12.217 16.1801 13.0654 17.6274 14.4128 18.4258C15.1115 18.8251 15.86 19.0247 16.6086 19.0247C17.3572 19.0247 18.1058 18.8251 18.8044 18.4258L24.1942 15.2818H25.7912V17.1782H23.6951V21.8194C18.2056 23.7158 14.5625 28.7562 14.5625 34.5452C14.5625 42.6298 21.7488 42.6298 28.0868 42.6298C34.4247 42.6298 41.6111 42.6298 41.6111 34.5452C41.6111 28.8061 38.0179 23.7657 32.5782 21.8693H32.6781ZM18.1058 17.1782C17.1576 17.7272 16.0597 17.7272 15.1115 17.1782C14.1633 16.6293 13.6143 15.6811 13.6143 14.5832C13.6143 13.4852 14.1633 12.537 15.1115 11.9881C15.5606 11.6887 16.1096 11.5888 16.6086 11.5888C17.1077 11.5888 17.6566 11.7386 18.1058 11.9881L22.5972 14.5832L18.1058 17.1782ZM27.3382 13.8845H29.534L29.6338 13.9843V17.1782H27.2883L27.3881 13.8845H27.3382ZM28.1866 41.2325C20.6509 41.2325 16.0597 40.7833 16.0597 34.5452C16.0597 29.2053 19.5031 24.5642 24.6932 23.0171L25.1923 22.8674V18.6255H25.8411H31.0312H31.2308V22.9173L31.7299 23.067C36.8202 24.664 40.2636 29.3051 40.2636 34.5951C40.2636 40.8332 35.6724 41.2824 28.1367 41.2824L28.1866 41.2325Z"
+                                          fill="#666460"></path>
+                                    <path d="M27.2382 0.460938C12.2667 0.460938 0.0898438 12.6378 0.0898438 27.6093C0.0898438 42.5808 12.2667 54.7576 27.2382 54.7576C42.2097 54.7576 54.3865 42.5808 54.3865 27.6093C54.3865 12.6378 42.2097 0.460938 27.2382 0.460938ZM27.2382 53.4102C13.0153 53.4102 1.43728 41.8322 1.43728 27.6093C1.43728 13.3863 13.0153 1.80837 27.2382 1.80837C41.4611 1.80837 53.0391 13.3863 53.0391 27.6093C53.0391 41.8322 41.4611 53.4102 27.2382 53.4102Z"
+                                          fill="#666460"></path>
+                                    <path d="M9.02395 46.4231L8.02585 45.425L44.9556 8.44531L45.9537 9.44341L9.02395 46.4231Z"
+                                          fill="#666460"></path>
+                                </svg>
+                                <span class="h4 inline-richtext">Fragrance Free</span>
+                            </li>
+                            <li class="icon-with-text__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"
+                                     fill="none">
+                                    <path d="M27.3866 0.460938C12.4151 0.460938 0.238281 12.6378 0.238281 27.6093C0.238281 42.5808 12.4151 54.7576 27.3866 54.7576C42.3581 54.7576 54.535 42.5808 54.535 27.6093C54.535 12.6378 42.4081 0.460938 27.3866 0.460938ZM27.3866 53.4102C13.1637 53.4102 1.58572 41.8322 1.58572 27.6093C1.58572 13.3863 13.1637 1.80837 27.3866 1.80837C41.6096 1.80837 53.1875 13.3863 53.1875 27.6093C53.1875 41.8322 41.6096 53.4102 27.3866 53.4102Z"
+                                          fill="#666460"></path>
+                                    <path d="M27.8352 8.54477C27.8352 8.54477 27.2364 8.34515 26.9868 8.54477C26.4379 8.99392 13.762 19.3243 13.762 29.1057C13.762 36.3918 19.551 42.3804 26.7373 42.7297V46.1732C26.7373 46.5724 27.0367 46.8719 27.436 46.8719C27.8352 46.8719 28.1347 46.5724 28.1347 46.1732V42.7297C35.3709 42.3804 41.11 36.3918 41.11 29.1057C41.11 19.3742 28.4341 8.99392 27.8851 8.54477H27.8352ZM28.0847 41.3823V36.6912C30.4802 36.4916 32.676 35.1941 34.0234 33.1979C34.2231 32.8984 34.1233 32.4493 33.8238 32.2497C33.5244 32.0501 33.0753 32.1499 32.8756 32.4493C31.7777 34.0962 30.031 35.1442 28.0847 35.3438V27.6584C29.7316 27.4588 31.2288 26.5605 32.1271 25.1632C32.3267 24.8637 32.2269 24.4146 31.9274 24.215C31.628 24.0153 31.1789 24.1152 30.9792 24.4146C30.2806 25.4127 29.2326 26.1114 28.0348 26.311V19.474C28.0348 19.0747 27.7354 18.7753 27.3362 18.7753C26.9369 18.7753 26.6375 19.0747 26.6375 19.474V26.311C25.4398 26.1114 24.3918 25.4626 23.6931 24.4146C23.4935 24.1152 23.0443 24.0153 22.7449 24.215C22.4455 24.4146 22.3457 24.8637 22.5453 25.1632C23.4935 26.5605 24.9906 27.4588 26.5876 27.6584V35.3438C24.6413 35.1442 22.8946 34.0962 21.7967 32.4493C21.5971 32.1499 21.1479 32.0501 20.8485 32.2497C20.5491 32.4493 20.4493 32.8984 20.6489 33.1979C21.9963 35.244 24.1922 36.4916 26.5876 36.6912V41.3823C20.0999 41.033 14.9597 35.6432 14.9597 29.1057C14.9597 20.9711 25.0405 11.8884 27.2863 9.99202C29.4821 11.8884 39.6128 20.9711 39.6128 29.1057C39.6128 35.6432 34.4726 41.033 27.9849 41.3823H28.0847Z"
+                                          fill="#666460"></path>
+                                </svg>
+                                <span class="h4 inline-richtext">Vegan</span>
+                            </li>
+                            <li class="icon-with-text__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"
+                                     fill="none">
+                                    <path d="M30.5857 53.1841C30.0368 53.1841 29.937 52.8846 29.8871 52.7848C29.7872 52.5353 29.7872 52.3357 29.8871 52.136C29.9869 51.9364 30.2364 51.7867 30.5358 51.7368C33.9793 51.3376 37.1732 50.2896 40.1675 48.5429C44.609 45.9977 48.0026 42.3547 50.2982 37.7135C51.3462 35.5676 52.0948 33.2719 52.494 30.9264C52.9432 28.2315 52.9931 25.4867 52.5939 22.7919C52.0449 19.1488 50.7474 15.8052 48.8011 12.8109C45.9565 8.46911 42.1138 5.22528 37.3728 3.22908C35.177 2.33079 32.9313 1.68202 30.6356 1.4325C30.2863 1.4325 30.0368 1.23288 29.8871 0.983353C29.7373 0.733827 29.8871 0.484302 29.937 0.334587C30.1366 0.0351562 30.2863 0.0351562 30.3861 0.0351562C31.1846 0.0351562 31.9332 0.184871 32.5819 0.334587C34.4284 0.683922 36.225 1.18297 37.9218 1.93155C41.7145 3.52851 44.9584 5.87405 47.6033 8.86835C49.5996 11.164 51.2464 13.759 52.3942 16.6036C53.1428 18.5 53.6419 20.2966 53.9413 22.0433L54.3405 24.4886V25.2871V26.4848C54.3405 27.1336 54.3405 27.7325 54.3405 28.3812L54.091 30.1778C53.7417 33.0224 52.8933 35.867 51.4959 38.5619C49.7992 41.9554 47.4536 44.8499 44.5092 47.2953C42.1637 49.1916 39.5187 50.7387 36.6242 51.7867C34.7777 52.4355 32.8315 52.8846 30.8352 53.1341H30.6356L30.5857 53.1841Z"
+                                          fill="#666460"></path>
+                                    <path d="M24.5966 53.1331C23.8979 53.1331 23.1992 52.9833 22.4507 52.8835C20.6042 52.5342 18.8575 52.0351 17.2106 51.3365C14.9649 50.3883 12.819 49.1406 10.8727 47.6435C8.52714 45.797 6.53094 43.6012 4.88407 41.056C3.73626 39.2595 2.83796 37.3631 2.13929 35.4168C1.59034 33.8198 1.1911 32.1729 0.891667 30.2765C0.891667 29.4781 0.891667 28.9291 0.791857 28.4301C0.692047 27.7813 0.692047 27.4819 0.692047 27.2323V24.4876C0.891667 22.7409 1.14119 21.2936 1.59034 19.7466C2.2391 17.3012 3.2372 14.9557 4.53474 12.7599C7.1797 8.46803 10.723 5.12439 15.1645 2.82876C17.1108 1.83066 19.107 1.08209 21.1531 0.63294C22.1512 0.383415 23.1992 0.2337 24.1973 0.0839844C24.1973 0.0839844 24.2472 0.0839844 24.2971 0.0839844C24.7962 0.0839844 24.9459 0.2337 25.0956 0.483225C25.1954 0.682845 25.1954 0.882465 25.0956 1.08209C24.9459 1.33161 24.6964 1.48133 24.3969 1.48133C21.7021 1.78076 19.0571 2.52933 16.6118 3.72705C11.3218 6.27221 7.27951 10.2646 4.68445 15.5546C3.58654 17.7504 2.83796 20.1957 2.43872 22.7409C2.03948 25.1862 2.03948 27.5817 2.33891 29.9272C3.03758 34.9676 5.03379 39.4092 8.27762 43.152C11.0723 46.346 14.5157 48.7913 18.5082 50.2885C20.3546 50.9871 22.3009 51.4363 24.2472 51.6858C24.896 51.7357 24.9958 51.9353 25.0956 52.2348C25.1954 52.4344 25.0956 52.6839 24.9958 52.9334C24.7962 53.183 24.6465 53.183 24.5966 53.183V53.1331Z"
+                                          fill="#666460"></path>
+                                    <path d="M27.4907 37.8636C25.1951 37.8636 22.9993 37.1649 21.053 35.7676C19.1566 34.4201 17.7592 32.5736 16.9608 30.3279C16.2621 28.3816 16.1124 26.3854 16.5116 24.4391C17.2602 20.7961 19.3063 18.1511 22.6 16.4543C24.1471 15.6558 25.794 15.2566 27.4907 15.2566C28.1395 15.2566 28.7384 15.3065 29.3871 15.4063C33.3795 16.105 36.1742 18.3008 37.871 22.1934C38.4199 23.441 38.7194 24.8883 38.7194 26.4852C38.7194 26.7348 38.6196 26.9843 38.4698 27.1839C38.2702 27.3835 38.0207 27.4833 37.7213 27.4833H25.794C25.3947 27.4833 24.9456 27.3835 24.746 26.8346C24.6461 26.5351 24.746 26.2357 24.8957 25.9862C25.0953 25.7367 25.3448 25.5869 25.6442 25.5869H37.322L36.4736 23.3911C36.3738 23.1416 36.274 22.8921 36.1742 22.6425C35.0763 20.297 33.3296 18.7 30.9841 17.8017C29.8862 17.3526 28.6885 17.153 27.5406 17.153C24.4964 17.153 21.7517 18.6002 19.9551 21.0955C18.4579 23.1915 17.8591 25.6368 18.3082 28.0822C19.0069 31.875 21.3025 34.47 24.9456 35.5679C25.8938 35.8674 26.842 35.9672 27.7403 35.9672C29.8363 35.9672 31.7826 35.2186 33.5791 33.7714C33.8786 33.5218 34.1281 33.422 34.3776 33.422C34.5273 33.422 34.6771 33.4719 34.8767 33.5717C35.1262 33.7215 35.2759 33.971 35.2759 34.2704C35.2759 34.5698 35.226 34.8194 35.0264 35.019C33.5791 36.3165 31.9323 37.1649 30.0858 37.5142C29.1875 37.7139 28.2892 37.8137 27.4408 37.8137L27.4907 37.8636Z"
+                                          fill="#666460"></path>
+                                    <path d="M45.6571 24.4873C45.3077 24.4873 45.0582 24.2876 44.9584 23.9882L44.7089 22.8903C44.609 22.3413 44.4593 21.7425 44.2597 21.1935C43.4612 18.6484 42.1138 16.3527 40.2174 14.3565C38.3709 12.4102 36.1751 10.963 33.6299 10.0647C31.5838 9.26621 29.4878 8.96678 26.743 8.96678C22.7506 9.06659 18.8081 10.7135 15.714 13.4582C13.3685 15.5043 11.7216 18.0495 10.7235 20.9939C10.4241 21.8423 10.2245 22.7406 10.0747 23.7387C10.0747 23.9383 9.97493 24.2377 9.72541 24.3874L9.07664 24.4873C8.6275 24.0381 8.57759 23.7387 8.6275 23.4892C8.97683 21.6427 9.42598 20.1455 10.0747 18.7981C11.7216 15.155 14.2668 12.3104 17.6603 10.2643C19.3571 9.2163 21.2535 8.46773 23.2497 8.01858C24.647 7.66925 26.0943 7.51953 27.5415 7.51953C28.2901 7.51953 29.0387 7.51953 29.7872 7.66925C31.7834 7.91877 33.6798 8.46773 35.4265 9.26621C39.5187 11.1626 42.6128 14.1569 44.609 18.1992C45.4574 19.896 46.0563 21.7425 46.3557 23.7387C46.4056 24.088 46.1561 24.4873 45.8567 24.5372H45.6571V24.4873Z"
+                                          fill="#666460"></path>
+                                    <path d="M27.6903 45.6956C23.4484 45.6457 19.8553 44.5478 16.6613 42.302C13.5173 40.1062 11.1718 37.2117 9.77443 33.6685C9.22547 32.2711 8.87614 31.0734 8.72642 29.9256C8.67652 29.3766 9.07576 29.177 9.22548 29.177H9.32529C9.87424 29.177 10.0739 29.3766 10.1238 29.726C10.7226 32.7702 11.9703 35.4151 13.7668 37.7108C15.6133 40.0064 17.9589 41.7531 20.6537 42.9009C22.8496 43.8491 25.0953 44.2982 27.2911 44.2982C27.7403 44.2982 28.1894 44.2982 28.6385 44.2483C32.7807 43.9489 36.4237 42.4018 39.418 39.6072C41.8634 37.3614 43.5602 34.6167 44.4085 31.4726C44.5583 30.9237 44.708 30.3747 44.8078 29.7759C44.9076 29.3766 45.1571 29.177 45.5564 29.177L46.1053 29.4265C46.1053 29.4265 46.255 29.7759 46.255 29.9755C45.9057 32.0715 45.207 34.1176 44.1091 36.0639C41.9133 39.9066 38.6695 42.7512 34.4774 44.4479C32.3814 45.2963 30.0359 45.7455 27.6404 45.7954L27.6903 45.6956Z"
+                                          fill="#666460"></path>
+                                </svg>
+                                <span class="h4 inline-richtext">Ewg Verified</span>
+                            </li>
+                            <li class="icon-with-text__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"
+                                     fill="none">
+                                    <path d="M60.397 17.6668L64.4394 17.567C62.3433 13.9739 59.5986 10.6302 56.1551 7.83554C48.0705 1.39779 38.0396 -0.997655 28.5576 0.549402C36.792 0.150162 45.2758 2.64542 52.2625 8.28469C55.6062 10.9796 58.3509 14.1735 60.397 17.7167V17.6668Z"
+                                          fill="#666460"></path>
+                                    <path d="M18.4764 38.6243L14.6836 39.9218C17.7777 42.7664 21.4208 45.062 25.5629 46.7089C35.1946 50.5017 45.475 49.6533 54.0088 45.3614C46.2735 48.2559 37.4403 48.4556 29.1062 45.1618C25.0638 43.6647 21.5206 41.419 18.4764 38.6742V38.6243Z"
+                                          fill="#666460"></path>
+                                    <path d="M33.9475 11.6779C34.9955 11.5781 35.5444 11.1289 38.3391 11.6779C38.3391 11.6779 42.1319 11.4782 49.1685 18.1156C51.2645 20.1118 52.4123 23.3557 53.5102 23.6551C54.4584 23.9545 58.9499 24.204 59.2493 26.0006C59.4489 27.4978 56.4047 30.4921 52.7118 30.2426C53.3605 29.2445 55.5563 28.9949 56.5544 26.35C55.4066 25.6513 53.5601 25.5515 51.8634 26.0505C48.6195 18.5648 39.1875 13.3746 35.8938 12.9754C33.1989 12.6261 32.2008 13.0752 30.4541 12.9754C31.6019 12.6261 33.3486 11.6779 33.9475 11.6779Z"
+                                          fill="#666460"></path>
+                                    <path d="M22.1198 2.59417C23.4173 2.59417 23.8664 2.59417 25.164 3.39265L22.1198 3.64218C22.1198 3.64218 18.5266 4.54047 17.0793 7.43496C17.6782 7.93401 17.6782 8.03382 18.327 8.08373C19.375 8.08373 21.9201 4.69019 26.3617 4.69019C27.2101 4.69019 27.9087 5.03952 27.9587 4.98962C28.4078 5.28905 28.2581 5.73819 28.2581 6.33705C28.2581 6.33705 25.4135 12.8746 20.5228 12.8746H19.4249C22.5689 12.126 24.8146 9.18164 26.4615 6.38696L23.1678 7.33515C20.8721 7.98392 18.3769 10.0799 17.5285 10.0799C16.5803 10.0799 15.9315 9.23155 13.2866 9.23155C11.2405 9.23155 8.94482 10.3295 7.84691 11.078C8.34596 12.1759 9.39397 11.6769 10.1924 11.5771C10.1924 11.5771 9.89302 12.5752 7.39776 12.7748C7.39776 12.8746 7.94672 14.9207 9.24425 16.2183C10.7913 17.7653 13.1368 18.6137 13.9353 18.6137C13.9353 18.963 14.085 20.2606 15.0332 22.0072C18.9258 29.5429 21.0717 23.3547 25.7628 30.8404V31.6888C23.2177 29.5928 19.2752 28.8442 17.1292 28.4949C14.085 28.0458 10.941 28.4949 10.8412 28.4949C9.7433 28.7444 6.7989 29.3433 6.7989 29.3433C9.14444 26.4987 14.7338 26.3989 15.7818 25.9497C12.0888 22.2568 12.538 21.059 12.0888 20.5101C11.7395 20.0609 6.39966 19.4621 6.44957 12.0761C6.44957 9.43117 11.49 7.43496 13.1867 7.43496C16.1311 7.53477 17.1792 2.49436 22.1697 2.44446L22.1198 2.59417Z"
+                                          fill="#666460"></path>
+                                    <path d="M14.1851 10.4325C14.8838 10.3327 14.784 10.3327 15.7322 10.682V11.5803C14.8339 11.3807 13.4865 11.5803 12.0891 11.4306C12.8377 10.8817 13.0373 10.5323 14.1851 10.4325Z"
+                                          fill="#666460"></path>
+                                    <path d="M4.80308 20.3623C6.89909 20.3623 9.59396 22.1089 9.84349 22.3086C8.44615 22.4084 8.24653 22.1588 5.0526 22.4084C5.0526 22.4084 2.35773 22.5581 0.261719 23.0072C1.75887 20.9611 1.45944 20.3124 4.80308 20.3623Z"
+                                          fill="#666460"></path>
+                                    <path d="M45.5753 35.0359L49.0687 36.6827C53.1609 38.6789 57.0535 33.4389 58.5507 32.4907C59.1994 35.8343 62.4932 42.5216 67.2341 43.8191C66.5854 44.6176 65.7869 44.5178 64.8886 44.5178C62.593 44.5178 58.2512 40.7749 58.2512 37.9303C58.2512 37.9303 58.1514 35.7844 58.1514 35.3353C56.8539 37.8804 54.159 39.4774 51.8634 39.4774C50.1167 39.4774 49.7674 39.3776 48.2203 38.629C47.871 38.4793 39.6366 33.4389 39.1875 29.8956C39.5867 30.0453 43.7788 34.3372 45.5753 35.0359Z"
+                                          fill="#666460"></path>
+                                    <path d="M60.2473 46.6628L58.8998 46.8624C55.5562 46.3135 54.9573 41.4727 55.9055 40.1253C55.9055 40.1253 56.5044 39.1272 57.0034 38.678C57.1033 41.0735 57.3528 42.9698 57.5524 43.4689C58.1513 44.8163 57.1532 44.2175 60.2972 46.6129L60.2473 46.6628Z"
+                                          fill="#666460"></path>
+                                    <path d="M15.134 38.6775L13.1877 36.5316L10.4928 37.5796C10.9419 36.7312 11.5907 35.9826 12.0398 35.0843C11.441 34.3357 10.8421 33.5872 10.1934 32.8386C11.0917 33.0382 12.1896 33.2877 13.0879 33.5373L14.6349 31.0919C14.7347 31.9902 14.7846 32.9883 14.8844 33.9365L17.729 34.735L14.9343 35.8329L15.0841 38.6775H15.134Z"
+                                          fill="#666460"></path>
+                                    <path d="M66.4859 25.9519L63.9407 24.5046L61.695 26.3511C61.8447 25.4029 62.1941 24.5046 62.3438 23.5065C61.5453 22.9576 60.7468 22.4585 59.8984 21.9096C60.8466 21.8098 61.9445 21.7099 62.8927 21.66L63.5914 18.8654C63.9907 19.7137 64.34 20.6619 64.7392 21.5103L67.7335 21.3606L65.4379 23.3069L66.436 25.9519H66.4859Z"
+                                          fill="#666460"></path>
+                                </svg>
+                                <span class="h4 inline-richtext">Leaping bunny certified</span>
+                            </li>
+
+                            <li class="icon-with-text__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 39 39"
+                                     fill="none">
+                                    <mask id="mask0_4648_885" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                          y="0" width="39" height="39">
+                                        <circle cx="19.5" cy="19.5" r="18.5" fill="#666460" stroke="#666460"
+                                                style="fill:#666460;fill:color(display-p3 0.4000 0.3922 0.3765);fill-opacity:1;stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;"
+                                                stroke-miterlimit="10"/>
+                                    </mask>
+                                    <g mask="url(#mask0_4648_885)">
+                                        <path d="M19.59 26.373H30.0856V56.5068C30.0856 61.1853 26.3223 64.9854 21.6891 64.9854H17.5098C12.8766 64.9854 9.11328 61.1853 9.11328 56.5068V26.373H19.59Z"
+                                              stroke="#666460"
+                                              style="stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;"
+                                              stroke-width="1.09897" stroke-miterlimit="16"/>
+                                        <path d="M14.7121 17.416H24.4513C24.9429 17.416 25.3401 17.817 25.3401 18.3135V50.2232C25.3401 51.6363 24.2054 52.7821 22.806 52.7821H16.3573C14.9579 52.7821 13.8232 51.6363 13.8232 50.2232V18.3135C13.8232 17.817 14.2204 17.416 14.7121 17.416Z"
+                                              fill="#AB2920"
+                                              style="fill:#AB2920;fill:color(display-p3 0.6706 0.1608 0.1255);fill-opacity:1;"/>
+                                        <path d="M23.4102 17.4209H15.751V15.2568L23.4102 14.5576V17.4209ZM23.4102 14.1318L15.751 14.8301V13.4424L23.4102 12.7441V14.1318ZM22.0674 8.9043L23.4102 9.57227V12.3174L15.751 13.0156V11.626L20.2334 11.2188L20.1953 10.7959L15.751 11.2002V9.57227L17.0938 8.9043H22.0674Z"
+                                              fill="#AB2920"
+                                              style="fill:#AB2920;fill:color(display-p3 0.6706 0.1608 0.1255);fill-opacity:1;"/>
+                                    </g>
+                                    <circle cx="19.5" cy="19.5" r="18.5" stroke="#666460"
+                                            style="stroke:#666460;stroke:color(display-p3 0.4000 0.3922 0.3765);stroke-opacity:1;"
+                                            stroke-miterlimit="10"/>
+                                </svg>
+                                <span class="h4 inline-richtext">refillable</span>
+                            </li>
+                        </ul>
+
+
+                        {% if product.available %}
+                            <form method="post" action="/cart/add">
+                                <input type="hidden" name="id" value="{{ highest_price_variant.id }}">
+                                <button type="submit"
+                                        class="product-form__submit button button--full-width button--primary">
+                                    Claim Yours Now
+                                </button>
+                            </form>
+                        {% else %}
+                            <p class="sold-out">Sold Out</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+
+
+<style>
+
+    .custom-review-stars span.star {
+        color: #AB2920;
+    }
+
+    .hero-creams .product__title {
+        margin-bottom: 3rem;
+    }
+
+    .custom-review-stars {
+        font-size: 25px;
+        text-align: left;
+        line-height: 0;
+        font-weight: 600;
+    }
+
+    .custom-review-stars span.review-count {
+        color: #666460;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .benefits-list {
+        list-style: none;
+        padding-left: 0;
+        text-align: left;
+        margin-left: 0px !important;
+        margin-bottom: 1rem;
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+
+        font-family: "Open Sans";
+        color: #666460;
+    }
+
+    .benefit-item svg {
+        flex-shrink: 0;
+        width: 0.85rem;
+        margin-top: 0.2rem;
+    }
+
+    .hero-subtitle {
+        color: #666460;
+        font-family: "Open Sans";
+        font-size: 0.75rem;
+        font-style: italic;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+
+    .hero-creams {
+        padding-bottom: 4.5rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        padding-top: 1rem;
+    }
+
+    .product-form__submit {
+        font-weight: 400 !important;
+        font-variation-settings: 'wdth' 78 !important;
+
+    }
+
+
+    .product__title h3 {
+        color: #666460;
+        font-family: "Open Sans";
+        font-size: 0.9rem;
+        font-weight: 586;
+        line-height: 1.26rem;
+        letter-spacing: 0.018rem;
+    }
+
+    .hero-creams .product img {
+        width: 100%;
+        height: 100%;
+        max-width: 11.8rem;
+        object-position: bottom right;
+        object-fit: contain;
+        margin-top: 3.5rem;
+    }
+
+
+    .button:hover {
+        background-color: #bd1e18;
+    }
+
+    .product__title h1 {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    .description_div {
+        padding-top: 12px;
+    }
+
+    .icon-with-text--horizontal .icon-with-text__item {
+        max-width: 5rem;
+        display: flex;
+        text-align: center;
+        width: auto !important;
+        flex-flow: column;
+        align-items: center;
+    }
+
+    .product-form__submit strong {
+        margin-right: 0.5rem;
+    }
+
+    .hero-creams .text-heading {
+    {% comment %} width: 70rem; {% endcomment %} text-align: center;
+        margin-bottom: 3rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 700;
+        font-size: 2.50000rem;
+    }
+
+    .icon-with-text__item svg {
+        height: 1.9rem !important;
+    }
+
+    ul.icon-with-text.icon-with-text--horizontal.list-unstyled {
+        margin: 0px 0px 25px !important;
+    }
+
+    .discover-add-to-cart {
+        padding: 4rem 1.75rem 5.5rem;
+    }
+
+    .messages {
+        color: #BD1E18;
+        font-family: "Open Sans";
+        font-size: 0.95rem;
+        font-style: normal;
+        letter-spacing: 0.08em;
+        text-align: left;
+        text-underline-position: from-font;
+        line-height: 140%;
+        letter-spacing: 0.076rem;
+        text-transform: uppercase;
+        display: block;
+        text-align: left;
+        margin-bottom: 0.85rem;
+    }
+
+    .icon-with-text {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    {% comment %} .hero-creams .product img {
+      width: 100%;
+      width: 8.962rem;
+      height: 25.492rem;
+    } {% endcomment %}
+
+    .oke-stars-foreground svg,
+    .oke-stars-background svg {
+        width: auto;
+    }
+
+    .custom-review-stars span.oke-w-ratingAverageModule-rating-average {
+        font-size: 20px;
+    }
+
+    .oke-w-header-content-block .oke-w-ratingAverageModule-count {
+        top: -3px;
+        font-size: 1rem;
+    }
+
+    .benefit-item svg {
+        margin-top: 0.4rem;
+    }
+
+    .hero-creams .product {
+        display: flex;
+        gap: 2.5rem;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: center;
+        width: 40rem;
+    }
+
+    .product__description p {
+        font-family: Open Sans;
+        font-size: 0.85rem;
+    }
+
+
+    .icon-with-text__item .h4 {
+        margin-top: 0.45rem;
+        text-align: center !important;
+    }
+
+    .hero-creams {
+        text-align: center;
+        color: #fff;
+    }
+
+    .product-form__submit {
+        color: #FFF !important;
+        opacity: 1;
+        padding: 10px 30px;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.09em;
+        line-height: 140%;
+        text-transform: uppercase;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-creams .products {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero-creams .product img {
+        width: 100%;
+    }
+
+
+    .hero-creams .products {
+        flex-flow: wrap;
+    }
+
+    .benefits-list {
+        padding-left: 0px !important;
+    }
+
+    @media (max-width: 768px) {
+        span.review-count {
+            display: none;
+        }
+
+        .custom-review-stars {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-creams {
+            padding-bottom: 40px !important;
+            padding-right: 15px !important;
+            padding-left: 15px !important;
+        }
+
+        .product__title h1 {
+            margin-bottom: 30px;
+            padding-top: 15px !important;
+            text-align: left;
+        }
+
+
+        .benefit-item {
+            color: #666460 !important;
+            font-family: "Open Sans" !important;
+            font-size: 17px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: 120% !important;
+            letter-spacing: 0.17px !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+            margin-bottom: 20px;
+
+        }
+
+
+        .product-form__submit {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-size: 18px;
+        }
+
+        .product__description p {
+            margin-top: 20px !important;
+            font-size: 16px !important;
+        }
+
+        .benefits-list {
+            padding-left: 0px !important;
+        }
+
+        .benefit-item svg {
+            flex-shrink: 0;
+            width: 17px !important;
+        }
+
+        .description_div {
+            height: auto !important;
+        }
+
+    {% comment %} .hero-creams .product img {
+      width: 100% !important;
+      object-position: center !important;
+      height: 290px !important;
+    } {% endcomment %}
+
+
+        .hero-creams .text-heading {
+            font-size: 28px !important;
+            letter-spacing: 0.1em !important;
+            font-style: normal !important;
+            font-weight: 700 !important;
+            line-height: 120% !important; /* 36.4px */
+            font-family: "Open Sans Condensed", sans-serif;
+            text-transform: uppercase;
+        }
+
+        .product__description {
+            max-width: 100%;
+            margin-top: 1.35rem;
+            margin-bottom: 1.35rem;
+            width: 290px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-creams .products {
+            gap: 50px !important;
+        }
+
+        .messages {
+            letter-spacing: 1.36px !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+            font-size: 13px !important;
+        }
+
+        .image-with-text__text p {
+            font-size: 13.6px !important;
+            margin-top: 0px !important;
+            font-style: normal;
+            text-align: center;
+            font-weight: 413 !important;
+            letter-spacing: 0.136px !important;
+        }
+
+        .multirow__inner .text_in_div {
+            margin-top: 0px !important;
+            text-align: center !important;
+        }
+
+        .multirow__inner .image-with-text__text {
+            margin-bottom: 8px !important;
+        }
+
+    }
+
+
+    #insta-feed h2 {
+        font-family: Open Sans;
+        text-transform: uppercase;
+        font-size: 2.75rem; /* 55px / 20 */
+        font-weight: 450;
+        line-height: 3.3275rem; /* 66.55px / 20 */
+        letter-spacing: 0.09em;
+        margin-bottom: 5rem;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        font-variation-settings: 'wdth' 80;
+    }
+
+    .instafeed-hover-layer {
+        position: relative;
+        background-color: rgba(0, 0, 0, .1) !important;
+        opacity: 1 !important;
+    }
+
+    #insta-feed .instafeed-new-layout-item-container .instafeed-hover-layer .instafeed-hover-icon img, .instafeed-shopify .instafeed-new-layout-item-container .instafeed-hover-layer .instafeed-hover-icon img {
+        height: 2rem !important;
+        width: 2rem !important;
+    }
+
+
+    #insta-feed {
+        padding-bottom: 5rem;
+    }
+
+    .instafeed-new-layout-item {
+        border-radius: 0px !important;
+        overflow: hidden;
+
+    }
+
+
+    @media (max-width: 768px) {
+
+        .hero-creams .product img {
+            max-width: 16.8rem;
+            margin-top: 1.2rem;
+        }
+
+        #insta-feed {
+            padding-bottom: 40px !important;
+        }
+
+        ul.icon-with-text.icon-with-text--horizontal.list-unstyled {
+            margin: 25px 0px 25px !important;
+        }
+
+
+        #insta-feed h2 {
+            font-family: Open Sans;
+            font-size: 29.39px !important;
+            font-weight: 450 !important;
+            line-height: 35.27px !important;
+            padding-bottom: 0px !important;
+            letter-spacing: 0.15em !important;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            font-variation-settings: 'wdth' 80;
+
+        }
+    }
+
+
+    @media (max-width: 575px) {
+        .hero-creams .product {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product__description {
+            width: 90%;
+        }
+    }
+
+
+</style>

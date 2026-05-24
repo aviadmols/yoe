@@ -1,0 +1,187 @@
+{{ 'discovery-duo-reviews.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-reviews"
+  style="--dd-reviews-padding-top: {{ section.settings.padding_top }}px; --dd-reviews-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Customer reviews' | escape }}"
+>
+  <div class="dd-reviews__inner">
+    <div class="dd-reviews__summary">
+      {%- if section.settings.rating_value != blank -%}
+        <span class="dd-reviews__rating-value">{{ section.settings.rating_value }}</span>
+      {%- endif -%}
+      <span class="dd-reviews__rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      {%- if section.settings.rating_text != blank -%}
+        <span class="dd-reviews__rating-text">{{ section.settings.rating_text }}</span>
+      {%- endif -%}
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-reviews__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+    </div>
+
+    {%- assign review_blocks = section.blocks | where: 'type', 'review' -%}
+    {%- if review_blocks.size > 0 -%}
+      <ul class="dd-reviews__list">
+        {%- for block in review_blocks -%}
+          <li class="dd-reviews__item" {{ block.shopify_attributes }}>
+            <span class="dd-reviews__item-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            {%- if block.settings.title != blank -%}
+              <h3 class="dd-reviews__item-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.quote != blank -%}
+              <blockquote class="dd-reviews__item-quote">{{ block.settings.quote }}</blockquote>
+            {%- endif -%}
+            <footer class="dd-reviews__item-meta">
+              {%- if block.settings.author != blank -%}
+                <cite class="dd-reviews__item-author">{{ block.settings.author }}</cite>
+              {%- endif -%}
+              {%- if block.settings.verified -%}
+                <span class="dd-reviews__item-verified">
+                  <span class="dd-reviews__item-verified-icon" aria-hidden="true">&#10003;</span>
+                  Verified Buyer
+                </span>
+              {%- endif -%}
+            </footer>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- assign cert_blocks = section.blocks | where: 'type', 'certification' -%}
+    {%- if cert_blocks.size > 0 -%}
+      <ul class="dd-reviews__certs">
+        {%- for block in cert_blocks -%}
+          <li class="dd-reviews__cert" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon | image_url: width: 120 | image_tag:
+                loading: 'lazy',
+                class: 'dd-reviews__cert-icon',
+                alt: block.settings.label
+              }}
+            {%- endif -%}
+            {%- if block.settings.label != blank -%}
+              <span class="dd-reviews__cert-label">{{ block.settings.label }}</span>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Reviews",
+  "tag": "section",
+  "class": "section-dd-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Loved by 1,000+ verified buyers"
+    },
+    {
+      "type": "text",
+      "id": "rating_value",
+      "label": "Rating value",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "1,000+ Verified Buyers"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Skin transformed"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>I've tried so many serums, but this one actually delivers. My skin looks plumper and brighter in just a few weeks.</p>"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "— Sarah K."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show 'Verified Buyer'",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "certification",
+      "name": "Certification",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Cruelty-Free"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "title": "Skin transformed", "quote": "<p>I've tried so many serums, but this one actually delivers. My skin looks plumper and brighter in just a few weeks.</p>", "author": "— Sarah K." } },
+        { "type": "review", "settings": { "title": "Smoother & brighter", "quote": "<p>Fine lines noticeably reduced. The duo is now part of my daily routine.</p>", "author": "— Maya R." } },
+        { "type": "review", "settings": { "title": "Best skincare investment", "quote": "<p>Worth every dollar. My complexion has never looked this even.</p>", "author": "— Anna L." } },
+        { "type": "certification", "settings": { "label": "Cruelty-Free" } },
+        { "type": "certification", "settings": { "label": "Vegan" } },
+        { "type": "certification", "settings": { "label": "EWG Verified" } },
+        { "type": "certification", "settings": { "label": "Fragrance-Free" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

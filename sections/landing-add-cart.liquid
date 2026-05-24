@@ -1,0 +1,226 @@
+{% schema %}
+{
+  "name": "Landing Add to Cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount Code",
+      "info": "Optional: Enter a discount code to apply when adding to cart"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price (e.g. 48)",
+      "default": "48"
+    },
+    {
+      "type": "text",
+      "id": "compare_at_price_text",
+      "label": "Compare-at price (e.g. 86)",
+      "default": "86"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtext",
+      "label": "Additional text under button",
+      "info": "Optional: small red text below the CTA button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Add to Cart",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="landing-add-cart">
+    <div class="landing-add-cart__container">
+        <h2>{{ section.settings.title }} <span>{{ section.settings.sub_title }}</span></h2>
+        <div class="description">{{ section.settings.description }}</div>
+        <div class="landing-add-to-cart-action">
+            <form method="post" action="/cart/add" class="landing-cart-form" data-landing-form="true" data-discount-code="{{ section.settings.discount_code }}">
+                <input type="hidden" name="id" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <button
+                    type="submit"
+                    class="landing-add-cart-cta-btn product-form__submit button button--primary"
+                    data-landing-submit="true"
+                    data-button-label="{{ section.settings.button_text | escape }}"
+                    data-price="{{ section.settings.price_text | escape }}"
+                    data-compare-at="{{ section.settings.compare_at_price_text | escape }}"
+                >
+                    <span class="landing-add-cart-cta-label">{{ section.settings.button_text }} - ${{ section.settings.price_text | default: '48' }}</span>
+                    {%- if section.settings.compare_at_price_text != blank -%}
+                        <span class="landing-add-cart-compare">${{ section.settings.compare_at_price_text }}</span>
+                    {%- endif -%}
+                </button>
+            </form>
+            {%- if section.settings.cta_subtext != blank -%}
+                <p class="landing-add-cart-cta-subtext">{{ section.settings.cta_subtext }}</p>
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Use a more specific event handler with capture phase
+        document.addEventListener('submit', function(e) {
+            var form = e.target;
+
+            // Only handle our specific form
+            if (!form.classList.contains('landing-cart-form')) return;
+
+            // Stop all propagation to prevent other scripts from handling this
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            var discountCode = form.getAttribute('data-discount-code');
+            var variantId = form.querySelector('input[name="id"]').value;
+            var submitButton = form.querySelector('button[type="submit"]');
+
+            // Prevent multiple submissions
+            if (submitButton.disabled) return;
+
+            var buttonLabel = submitButton.getAttribute('data-button-label') || '';
+            var price = submitButton.getAttribute('data-price') || '48';
+            var compareAt = submitButton.getAttribute('data-compare-at') || '';
+
+            function setButtonContent(labelText, compareAtText) {
+                // For outline-style CTA buttons, keep content in child elements so it
+                // stays above the ::before fill layer (mixin uses `& > * { z-index: 1; }`).
+                submitButton.replaceChildren();
+
+                var labelSpan = document.createElement('span');
+                labelSpan.className = 'landing-add-cart-cta-label';
+                labelSpan.textContent = labelText;
+                submitButton.appendChild(labelSpan);
+
+                if (compareAtText && compareAtText.trim() !== '') {
+                    var compareSpan = document.createElement('span');
+                    compareSpan.className = 'landing-add-cart-compare';
+                    compareSpan.textContent = '$' + compareAtText;
+                    submitButton.appendChild(compareSpan);
+                }
+            }
+
+            submitButton.disabled = true;
+            setButtonContent('Adding to cart...');
+
+            function openMiniCart() {
+                var miniCart = document.getElementById('rebuy-cart');
+                if (miniCart) {
+                    miniCart.classList.add('is-visible');
+                    miniCart.setAttribute('aria-hidden', 'false');
+                }
+            }
+
+            function resetButton(useText) {
+                if (useText) {
+                    setButtonContent(useText);
+                } else {
+                    setButtonContent((buttonLabel || 'Add to Cart') + ' - $' + price, compareAt);
+                }
+                submitButton.disabled = false;
+            }
+
+            function addToCart() {
+                fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        items: [{
+                            id: variantId,
+                            quantity: 1
+                        }]
+                    })
+                })
+                    .then(function(response) {
+                        if (!response.ok) throw new Error('Cart add failed');
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        setButtonContent('Added!');
+
+                        // Trigger cart update event for theme
+                        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
+                            bubbles: true
+                        }));
+
+                        // Open mini cart after brief delay
+                        setTimeout(function() {
+                            openMiniCart();
+                            // Reset button after a moment
+                            setTimeout(function() {
+                                resetButton();
+                            }, 2000);
+                        }, 300);
+                    })
+                    .catch(function(error) {
+                        console.error('Error:', error);
+                        resetButton('Try Again');
+                        alert('Failed to add to cart. Please try again.');
+                    });
+            }
+
+            // Apply discount if provided
+            if (discountCode && discountCode.trim() !== '') {
+                var code = discountCode.trim();
+
+                // Method 1: Navigate to discount URL then add to cart
+                fetch('/discount/' + encodeURIComponent(code), {
+                    method: 'GET',
+                    redirect: 'manual'
+                })
+                    .then(function() {
+                        // Wait a moment for discount to apply
+                        setTimeout(function() {
+                            addToCart();
+                        }, 300);
+                    })
+                    .catch(function(error) {
+                        console.error('Discount error:', error);
+                        // Add to cart even if discount fails
+                        addToCart();
+                    });
+            } else {
+                addToCart();
+            }
+
+            return false;
+        }, true); // Use capture phase to intercept before other handlers
+    })();
+</script>

@@ -1,0 +1,941 @@
+<!-- sections/tabs-section.liquid -->
+<div class="tabs hide_mobile">
+  <ul class="tab-links">
+    <li class="active"><a href="#tab1">{{ section.settings.tab1_title }}</a></li>
+    <li><a href="#tab2">{{ section.settings.tab2_title }}</a></li>
+    <li><a href="#tab3">{{ section.settings.tab3_title }}</a></li>
+    <li><a href="#tab4">{{ section.settings.tab4_title }}</a></li>
+    <li><a href="#tab5">{{ section.settings.tab5_title }}</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    
+    <!-- Tab 1 -->
+    <div id="tab1" class="tab active">
+      <div class="two_columns">
+      <div class="tab-section first">
+
+        <div class="tab-image  ">
+          <img src="{{ section.settings.tab1_part1_image | img_url: 'medium' }}" alt="Image 1">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>8ml</em></h4>
+          <p>{{ section.settings.tab1_part1_text }}</p>
+          <a href="{{ section.settings.tab1_part1_button_link }}" class="btn">{{ section.settings.tab1_part1_button_text }}</a>
+        </div>
+      </div>
+      <hr class="hide-pc">
+      <div class="tab-section">
+        <div class="tab-image  ">
+          <img src="{{ section.settings.tab1_part2_image | img_url: 'medium' }}" alt="Image 2">
+        </div>
+        <div class="tab-column">
+       <h4>Ympossible Cream <em>LIGHT 8ml</em></h4>
+          <p>{{ section.settings.tab1_part2_text }}</p>
+          <a href="{{ section.settings.tab1_part2_button_link }}" class="btn">{{ section.settings.tab1_part2_button_text }}</a>
+        </div>
+      </div>
+    </div>
+       </div>
+    <!-- Tab 2 -->
+    <div id="tab2" class="tab">
+      <div class="two_columns">
+      <div class="tab-section first">
+        <div class="tab-image  ">
+          <img src="{{ section.settings.tab1_part1_image | img_url: 'medium' }}" alt="Image 1">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>8ml</em></h4>
+         <ul>
+  <li>Time-released technology delivers long-lasting, deeply nourishing moisture.</li>
+  <li>Strengthens the skin’s essential moisture barrier.</li>
+  <li>Improves skin tone and texture and reduces the appearance of hyperpigmentation, sunspots, and post-acne marks.</li>
+  <li>Restores skin elasticity and firmness.</li>
+  <li>Reduces the appearance of fine lines and wrinkles and other visible signs of skin aging.</li>
+  <li>Soothes skin irritation and redness.</li>
+</ul>
+
+        </div>
+      </div>
+      <hr class="hide-pc">
+      <div class="tab-section">
+        <div class="tab-image">
+                 <img src="{{ section.settings.tab1_part2_image | img_url: 'medium' }}" alt="Image 2">
+        </div>
+        <div class="tab-column">
+              <h4>Ympossible Cream <em>LIGHT 8ml</em></h4>
+   <ul>
+  <li>Time-released technology delivers weightless, long-lasting nourishment.</li>
+  <li>Imparts a hydrated, naturally radiant glow.</li>
+  <li>May be mixed with foundation for sheer, luminous coverage.</li>
+  <li>Strengthens the skin’s essential moisture barrier.</li>
+  <li>Improves overall skin texture, resulting in a visibly smooth and plumped appearance.</li>
+  <li>Addresses the signs of aging, including the appearance of fine lines and wrinkles.</li>
+  <li>Reduces redness caused by skin irritation and inflammation.</li>
+  <li>Repairs damage caused by environmental and lifestyle factors, including exposure to pollution, UV radiation, and blue light.</li>
+</ul>
+
+
+        </div>
+      </div>
+ </div>
+    </div>
+    
+    <!-- Tab 3 -->
+    <div id="tab3" class="tab">
+      <div class="two_columns">
+      <div class="tab-section first">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part1_image | img_url: 'medium' }}" alt="Image 1">
+        </div>
+        <div class="tab-column">
+        <h4>Ympossible Cream <em>8ml</em></h4>
+         <p style="
+    line-height: 1.8;
+">SYNERGENIUS™<br>
+Red Algae<br>
+Chebula<br>
+Timut Pepper<br>
+Hyaluronic Acid<br>
+Ceramides<br>
+Vitamin C<br>
+Vitamin B<br>
+Diosmin<br>
+Tranexamic Acid<br>
+Nicotiana Benthamiana
+</p>
+        </div>
+      </div>
+      <hr class="hide-pc">
+      <div class="tab-section">
+        <div class="tab-image">
+            <img src="{{ section.settings.tab1_part2_image | img_url: 'medium' }}" alt="Image 2">
+        </div>
+        <div class="tab-column">
+              <h4>Ympossible Cream <em>LIGHT 8ml</em></h4>
+       <p style="
+    line-height: 1.8;
+">SYNERGENIUS™<br>
+Red Algae<br>
+Chebula<br>
+Timut Pepper<br>
+Hyaluronic Acid<br>
+Ceramides<br>
+Vitamin C<br>
+Vitamin B<br>
+Diosmin<br>
+Nicotiana Benthamiana
+</p>
+
+        </div>
+      </div>
+  </div>
+    </div>
+    
+    <!-- Tab 4 -->
+    <div id="tab4" class="tab">
+<div class="features-container">
+  <div class="feature">
+{% include 'mark' %}
+ Clinically Tested
+
+  
+ 
+  </div>
+  <div class="feature">
+{% include 'mark' %}
+  Dermatologist Tested
+
+  </div>
+  <div class="feature">
+ {% include 'mark' %}
+ Hypoallergenic
+   
+  </div>
+  <div class="feature">
+  {% include 'mark' %}
+    Ideal For Sensitive Skin
+  
+  </div>
+  <div class="feature">
+  {% include 'mark' %}
+    Made in Small Batch
+   
+  </div>
+  <div class="feature">
+{% include 'mark' %}
+    Refillable Packaging
+    
+  </div>
+</div>
+      <p style="
+    max-width: 46.6rem;
+    margin-left: auto;
+    margin-right: auto;
+">{{ section.settings.tab4_content }}</p>
+    </div>
+    
+    <!-- Tab 5 -->
+    <div id="tab5" class="tab">
+      <p style="
+    max-width: 31.5rem;
+    margin-left: auto;
+    margin-right: auto;
+text-align: center;
+">{{ section.settings.tab5_content }}</p>
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="accordion-mobile">
+  <!-- Accordion Tab 1 -->
+  <div class="accordion-item">
+    <a href="#" class="accordion-title">{{ section.settings.tab1_title }} <span class="toggle-icon">+</span></a>
+    <div class="accordion-content">
+      <div class="tab-section">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part1_image | img_url: 'medium' }}" alt="Image 1">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>8ml</em></h4>
+          <p>{{ section.settings.tab1_part1_text }}</p>
+          <a href="{{ section.settings.tab1_part1_button_link }}" class="btn">{{ section.settings.tab1_part1_button_text }}</a>
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part2_image | img_url: 'medium' }}" alt="Image 2">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>LIGHT 8ml</em></h4>
+          <p>{{ section.settings.tab1_part2_text }}</p>
+          <a href="{{ section.settings.tab1_part2_button_link }}" class="btn">{{ section.settings.tab1_part2_button_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion Tab 2 -->
+  <div class="accordion-item">
+    <a href="#" class="accordion-title">{{ section.settings.tab2_title }} <span class="toggle-icon">+</span></a>
+    <div class="accordion-content">
+      <div class="tab-section">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part1_image | img_url: 'medium' }}" alt="Image 1">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>8ml</em></h4>
+          <ul>
+            <li>Time-released technology delivers long-lasting, deeply nourishing moisture.</li>
+            <li>Strengthens the skin’s essential moisture barrier.</li>
+            <li>Improves skin tone and texture and reduces the appearance of hyperpigmentation, sunspots, and post-acne marks.</li>
+            <li>Restores skin elasticity and firmness.</li>
+            <li>Reduces the appearance of fine lines and wrinkles and other visible signs of skin aging.</li>
+            <li>Soothes skin irritation and redness.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part2_image | img_url: 'medium' }}" alt="Image 2">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>LIGHT 8ml</em></h4>
+          <ul>
+            <li>Time-released technology delivers long-lasting, deeply nourishing moisture.</li>
+            <li>Imparts a hydrated, naturally radiant glow.</li>
+            <li>Protects and improves the skin’s essential moisture barrier.</li>
+            <li>Improves overall skin’s texture, resulting in a visibly smooth and plumped appearance.</li>
+            <li>Addresses the signs of aging including the appearance of fine lines and wrinkles.</li>
+            <li>Reduces redness caused by skin irritation.</li>
+            <li>Fights damage caused by free radicals as well as environmental and lifestyle factors including exposure to blue light, UV radiation, and pollution.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion Tab 3 -->
+  <div class="accordion-item">
+    <a href="#" class="accordion-title">{{ section.settings.tab3_title }} <span class="toggle-icon">+</span></a>
+    <div class="accordion-content">
+      <div class="tab-section">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part1_image | img_url: 'medium' }}" alt="Image 1">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>8ml</em></h4>
+          <p style="line-height: 1.8;">
+            SYNERGENIUS™<br>
+            Red Algae<br>
+            Chebula<br>
+            Timut Pepper<br>
+            Hyaluronic Acid<br>
+            Ceramides<br>
+            Vitamin C<br>
+            Vitamin B<br>
+            Diosmin<br>
+            Tranexamic Acid<br>
+            Nicotiana Benthamiana
+          </p>
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-image">
+          <img src="{{ section.settings.tab1_part2_image | img_url: 'medium' }}" alt="Image 2">
+        </div>
+        <div class="tab-column">
+          <h4>Ympossible Cream <em>LIGHT 8ml</em></h4>
+          <p style="line-height: 1.8;">
+            SYNERGENIUS™<br>
+            Red Algae<br>
+            Chebula<br>
+            Timut Pepper<br>
+            Hyaluronic Acid<br>
+            Ceramides<br>
+            Vitamin C<br>
+            Vitamin B<br>
+            Diosmin<br>
+            Nicotiana Benthamiana
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion Tab 4 -->
+  <div class="accordion-item">
+    <a href="#" class="accordion-title">{{ section.settings.tab4_title }} <span class="toggle-icon">+</span></a>
+    <div class="accordion-content">
+      <div class="features-container">
+        <div class="feature">{% include 'mark' %} Clinically Tested</div>
+        <div class="feature">{% include 'mark' %} Dermatologist Tested</div>
+        <div class="feature">{% include 'mark' %} Hypoallergenic</div>
+        <div class="feature">{% include 'mark' %} Ideal For Sensitive Skin</div>
+        <div class="feature">{% include 'mark' %} Made in Small Batch</div>
+        <div class="feature">{% include 'mark' %} Refillable Packaging</div>
+      </div>
+      <p style="max-width: 46.6rem; margin-left: auto; margin-right: auto;">{{ section.settings.tab4_content }}</p>
+    </div>
+  </div>
+
+  <!-- Accordion Tab 5 -->
+  <div class="accordion-item">
+    <a href="#" class="accordion-title">{{ section.settings.tab5_title }} <span class="toggle-icon">+</span></a>
+    <div class="accordion-content">
+      <p style="max-width: 31.5rem; margin-left: auto; margin-right: auto; text-align: center;">{{ section.settings.tab5_content }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="love">
+{% include 'love-icon' %}
+<p>More THan</p>
+</div>
+
+<!-- Style Section -->
+<style>
+.tab-section {
+  display: flex;
+  flex-wrap: wrap;
+width: 100%;
+  margin-bottom: 2rem;
+}
+
+.tab-image {
+ padding-right: 6rem;
+min-width: 12.4110625rem;
+    max-width: 12.4110625rem;
+    height: 15.02875rem;
+    flex: 1;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+  .two_columns {
+    display: flex;
+    max-width: 82rem;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tab-column h4{
+color: #666460!important;
+font-family: "Open Sans";
+font-size: 1.1rem; /* 22px */
+font-style: normal;
+font-weight: 700;
+line-height: 1.331rem; /* 26.62px */
+letter-spacing: 0.099rem; /* 1.98px */
+text-transform: uppercase;
+font-variation-settings: 'wdth' 80;
+  }
+
+#shopify-installments {
+  display: none !important;
+}
+.tab-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tab-column {
+  flex: 1;
+  padding-left: 1rem;
+}
+
+.tab-column h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-column p {
+  margin-bottom: 1rem;
+}
+.tab-column .btn:hover {
+  border: 0.04625rem solid #666460;
+background: #666460;
+color: #fff;
+ transition: all 0.3s;
+}
+
+.tab-column .btn {
+font-family: 'Open Sans';
+    margin-top: 3rem;
+ transition: all 0.3s;
+    font-size: 0.96125rem;
+    font-weight: 460;
+    line-height: 1.076875rem;
+    text-align: center;
+    font-variation-settings: 'wdth' 80;
+    border: 0.04625rem solid #666460;
+    width: 14.421875rem;
+    display: inline-flex;
+    height: 3.37375rem;
+    color: #666460;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+
+.features-container {
+    display: flex;
+    max-width: 38rem;
+padding-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem 3rem;
+    margin-left: auto;
+    margin-right: auto;
+  
+    justify-content: space-evenly;
+}
+
+.feature {
+  display: flex;
+
+    width: calc(33% - 3rem);
+font-family: "Open Sans", sans-serif;
+font-size: 0.825rem;
+font-weight: 634;
+line-height: 0.924rem;
+letter-spacing: 0.02em;
+text-align: center;
+font-variation-settings: 'wdth' 80;
+
+}
+
+.feature svg {
+Width: 0.75rem;
+height: auto;
+  margin-right: 0.5rem;
+}
+
+.love p {
+    margin-bottom: 0px;
+}
+
+@media (max-width: 768px) {
+.tab-section {
+padding-right: 0px!important;
+    padding-left: 0px !important;
+}
+
+
+.tab-image {
+    display: none!important;
+}
+.tab-column h4 {
+  margin-top: 10px!important;
+    color: #666460 !important;
+    font-family: "Open Sans";
+    font-size: 18px!important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2!important;
+    margin-bottom: 10px !important;
+}
+.tab-image {
+    padding-right: 2rem !important;
+    max-width: 7.411062rem !important;
+}
+
+.love {
+    text-align: center;
+    padding-bottom: 20px !important;
+}
+
+.love svg {
+    width: 35px!important;
+    margin-bottom: 10px!important;
+    height: auto;
+    padding-top: 20px!important;
+}
+
+.features-container {
+    padding-left: 0px!important;
+    margin-top: 0px !important;
+    display: flex;
+    padding-right: 0px!important;
+    display: flex;
+    gap: 20px 0rem !important;
+    max-width: 100% !important;
+padding-top: 30px;
+    padding-bottom: 20px!important;
+}
+
+.tab-column .btn {
+    font-family: 'Open Sans';
+    margin-top: 20px !important;
+}
+
+.feature {
+    display: flex;
+    width: 50%!important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px!important;
+}
+}
+
+
+@media(min-width: 768px) {
+
+.tab-content .two_columns  p {
+    margin-top: 0;
+    min-height: 11rem;
+}
+.benefits-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+}
+
+
+.tab-links li:after {
+  display: none!important;
+}
+
+.benefits-container .column {
+  flex: 1;
+ 
+}
+
+.benefits-container  .column ul {
+  list-style-type: disc;
+  padding-left:  1rem;
+}
+
+.benefits-container .column li {
+  margin-bottom: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #666460;
+}
+
+}
+.tabs .tab-links {
+    width: 46.55rem;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+.tab-section.first{
+    padding-right: 6rem;
+    border-right: 1px solid rgba(102, 100, 96, 0.50);
+}
+
+.tab-section:not(.first){
+    padding-left: 6rem;
+}
+
+.love {
+  text-align: center;
+padding-bottom: 3rem;
+}
+.love svg {
+  width: 1.7rem;
+margin-bottom: 1rem;
+}
+
+.love p {
+    margin-top: 0px;
+font-family: "Open Sans", sans-serif;
+font-size: 0.825rem;
+font-weight: 400;
+line-height: 0.924rem;
+letter-spacing: 0.02em;
+text-align: center;
+font-variation-settings: 'wdth' 80;
+
+text-transform: uppercase;
+}
+.tab-links a {
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5605rem;
+    letter-spacing: 0.09em;
+    text-align: left;
+    font-variation-settings: 'wdth' 78;
+    color: #666460;
+    letter-spacing: 0.1003rem;
+    text-transform: uppercase;
+}
+
+.tab-links li.active a {
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-weight: 700!important;
+    line-height: 1.5605rem;
+    letter-spacing: 0.09em;
+    text-align: left;
+    font-variation-settings: 'wdth' 78;
+}
+
+.tab-links li {
+    list-style: none;
+}
+
+.tab-links a {
+    transition: all linear 0.15s;
+}
+
+.tab-links a:hover {
+    font-weight: 700!important;
+    text-decoration: none;
+}
+
+.tab-links {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.tab-links li {
+    overflow: visible;
+}
+
+.tab-content {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
+
+.tab-content p, .tab-content li {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Open Sans;
+    font-size: 0.9rem;
+    opacity: 1;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666460;
+    letter-spacing: 0.02em;
+    text-align: left;
+    font-variation-settings: 'wdth' 85;
+}
+
+.tab-links li:nth-child(1) {
+    width: 7rem; 
+}
+
+.tab-links li:nth-child(2) {
+    width: 4.5rem; /* 90px = 4.5rem */
+}
+
+.tab-links li:nth-child(3) {
+    width: 9rem; /* 180px = 9rem */
+}
+
+.tab-links li:nth-child(4) {
+    width: 5.65rem; /* 113px = 5.65rem */
+}
+
+.tab-links li:nth-child(5) {
+    width: 6.55rem; /* 131px = 6.55rem */
+}
+
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+
+.accordion-mobile {
+  display: none;
+}
+
+
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+
+
+    const accordionTitles = document.querySelectorAll(".accordion-title");
+
+    accordionTitles.forEach(title => {
+      title.addEventListener("click", function(e) {
+        e.preventDefault();
+        const isActive = this.classList.contains("active");
+
+        document.querySelectorAll(".accordion-title").forEach(t => {
+          t.classList.remove("active");
+          t.querySelector(".toggle-icon").textContent = "+";
+        });
+
+        document.querySelectorAll(".accordion-content").forEach(content => {
+          content.style.maxHeight = null;
+        });
+
+        if (!isActive) {
+          this.classList.add("active");
+          this.querySelector(".toggle-icon").textContent = "-";
+          const content = this.nextElementSibling;
+          content.style.maxHeight = content.scrollHeight + "px";
+const accordionMobile = document.querySelector('.accordion-mobile');
+        const y = accordionMobile.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+    });
+
+  const tabLinks = document.querySelectorAll(".tab-links a");
+  const tabContents = document.querySelectorAll(".tab-content .tab");
+
+  tabLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      // Remove active class from all tabs and links
+      tabLinks.forEach(link => link.parentElement.classList.remove("active"));
+      tabContents.forEach(tab => tab.classList.remove("active"));
+
+      // Add active class to clicked tab and corresponding content
+      const targetId = this.getAttribute("href").substring(1);
+      document.getElementById(targetId).classList.add("active");
+      this.parentElement.classList.add("active");
+    });
+  });
+
+
+  });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const shopPayMessage = document.querySelector('#shopify-installments-content');
+    if (shopPayMessage) {
+        shopPayMessage.style.display = 'none';
+    }
+});
+
+</script>
+
+
+
+<!-- Schema Section -->
+{% schema %}
+{
+  "name": "Tabs Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tab1_title",
+      "label": "Tab 1 Title",
+      "default": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab1_part1_image",
+      "label": "Tab 1 Part 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "tab1_part1_title",
+      "label": "Tab 1 Part 1 Title",
+      "default": "Title 1"
+    },
+    {
+      "type": "textarea",
+      "id": "tab1_part1_text",
+      "label": "Tab 1 Part 1 Text"
+    },
+    {
+      "type": "text",
+      "id": "tab1_part1_button_text",
+      "label": "Tab 1 Part 1 Button Text"
+    },
+    {
+      "type": "url",
+      "id": "tab1_part1_button_link",
+      "label": "Tab 1 Part 1 Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab1_part2_image",
+      "label": "Tab 1 Part 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "tab1_part2_title",
+      "label": "Tab 1 Part 2 Title",
+      "default": "Title 2"
+    },
+    {
+      "type": "textarea",
+      "id": "tab1_part2_text",
+      "label": "Tab 1 Part 2 Text"
+    },
+    {
+      "type": "text",
+      "id": "tab1_part2_button_text",
+      "label": "Tab 1 Part 2 Button Text"
+    },
+    {
+      "type": "url",
+      "id": "tab1_part2_button_link",
+      "label": "Tab 1 Part 2 Button Link"
+    },
+    {
+      "type": "text",
+      "id": "tab2_title",
+      "label": "Tab 2 Title",
+      "default": "Benefits"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab2_part1_image",
+      "label": "Tab 2 Part 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "tab2_part1_title",
+      "label": "Tab 2 Part 1 Title",
+      "default": "Title 1"
+    },
+    {
+      "type": "textarea",
+      "id": "tab2_part1_text",
+      "label": "Tab 2 Part 1 Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab2_part2_image",
+      "label": "Tab 2 Part 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "tab2_part2_title",
+      "label": "Tab 2 Part 2 Title",
+      "default": "Title 2"
+    },
+    {
+      "type": "textarea",
+      "id": "tab2_part2_text",
+      "label": "Tab 2 Part 2 Text"
+    },
+    {
+      "type": "text",
+      "id": "tab3_title",
+      "label": "Tab 3 Title",
+      "default": "Ingredients"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab3_part1_image",
+      "label": "Tab 3 Part 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "tab3_part1_title",
+      "label": "Tab 3 Part 1 Title",
+      "default": "Title 1"
+    },
+    {
+      "type": "textarea",
+      "id": "tab3_part1_text",
+      "label": "Tab 3 Part 1 Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab3_part2_image",
+      "label": "Tab 3 Part 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "tab3_part2_title",
+      "label": "Tab 3 Part 2 Title",
+      "default": "Title 2"
+    },
+    {
+      "type": "textarea",
+      "id": "tab3_part2_text",
+      "label": "Tab 3 Part 2 Text"
+    },
+    {
+      "type": "text",
+      "id": "tab4_title",
+      "label": "Tab 4 Title",
+      "default": "Standards"
+    },
+    {
+      "type": "textarea",
+      "id": "tab4_content",
+      "label": "Tab 4 Content",
+      "default": "Enter the standards here."
+    },
+    {
+      "type": "text",
+      "id": "tab5_title",
+      "label": "Tab 5 Title",
+      "default": "How to use"
+    },
+    {
+      "type": "textarea",
+      "id": "tab5_content",
+      "label": "Tab 5 Content",
+      "default": "Enter how to use here."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs Section duo",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

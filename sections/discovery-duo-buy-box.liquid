@@ -1,0 +1,249 @@
+{{ 'discovery-duo-buy-box.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-buy"
+  style="--dd-buy-padding-top: {{ section.settings.padding_top }}px; --dd-buy-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.product_name | default: 'Buy Discovery Duo' | escape }}"
+>
+  <div class="dd-buy__inner">
+    <div class="dd-buy__gallery">
+      {%- if section.settings.main_image != blank -%}
+        <div class="dd-buy__main">
+          {{ section.settings.main_image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            class: 'dd-buy__main-image',
+            alt: section.settings.main_image.alt | default: section.settings.product_name
+          }}
+        </div>
+      {%- endif -%}
+
+      {%- assign thumb_blocks = section.blocks | where: 'type', 'thumb' -%}
+      {%- if thumb_blocks.size > 0 -%}
+        <ul class="dd-buy__thumbs">
+          {%- for block in thumb_blocks -%}
+            <li class="dd-buy__thumb" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 240 | image_tag:
+                  loading: 'lazy',
+                  class: 'dd-buy__thumb-image',
+                  alt: block.settings.image.alt | default: 'Thumbnail'
+                }}
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="dd-buy__info">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="dd-buy__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.product_name != blank -%}
+        <h2 class="dd-buy__title">{{ section.settings.product_name }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.product_description != blank -%}
+        <div class="dd-buy__description">{{ section.settings.product_description }}</div>
+      {%- endif -%}
+
+      <div class="dd-buy__price-row">
+        {%- if section.settings.compare_price != blank -%}
+          <span class="dd-buy__compare-price">{{ section.settings.compare_price }}</span>
+        {%- endif -%}
+        {%- if section.settings.price != blank -%}
+          <span class="dd-buy__price">{{ section.settings.price }}</span>
+        {%- endif -%}
+        {%- if section.settings.price_suffix != blank -%}
+          <span class="dd-buy__price-suffix">{{ section.settings.price_suffix }}</span>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
+        <a class="dd-buy__cta" href="{{ section.settings.cta_url }}">
+          {{ section.settings.cta_text }}
+          <svg class="dd-buy__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
+            <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {%- endif -%}
+
+      {%- assign trust_blocks = section.blocks | where: 'type', 'trust' -%}
+      {%- if trust_blocks.size > 0 -%}
+        <ul class="dd-buy__trust">
+          {%- for block in trust_blocks -%}
+            <li class="dd-buy__trust-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <span class="dd-buy__trust-icon">
+                  {{ block.settings.icon | image_url: width: 80 | image_tag:
+                    loading: 'lazy',
+                    alt: ''
+                  }}
+                </span>
+              {%- else -%}
+                <span class="dd-buy__trust-check" aria-hidden="true">&#10003;</span>
+              {%- endif -%}
+              <span class="dd-buy__trust-text">{{ block.settings.text }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.disclaimer != blank -%}
+        <p class="dd-buy__disclaimer">{{ section.settings.disclaimer }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Buy box",
+  "tag": "section",
+  "class": "section-dd-buy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Discovery Duo"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Discovery Duo"
+    },
+    {
+      "type": "richtext",
+      "id": "product_description",
+      "label": "Product description",
+      "default": "<p>HA + Retinol Active and Cream Booster — your complete daily routine.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare-at price",
+      "default": "$86"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "$48"
+    },
+    {
+      "type": "text",
+      "id": "price_suffix",
+      "label": "Price suffix",
+      "default": "USD"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "TRY DISCOVERY DUO"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "*For First-Time Customers Only"
+    },
+    {
+      "type": "header",
+      "content": "Main image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main product image"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "thumb",
+      "name": "Gallery thumbnail",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Thumbnail image"
+        }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Trust badge",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (optional – falls back to check)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free Express Shipping"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Buy box",
+      "blocks": [
+        { "type": "thumb" },
+        { "type": "thumb" },
+        { "type": "thumb" },
+        { "type": "thumb" },
+        { "type": "thumb" },
+        { "type": "trust", "settings": { "text": "Free Express Shipping" } },
+        { "type": "trust", "settings": { "text": "30-Day Money-Back" } },
+        { "type": "trust", "settings": { "text": "First-Time Offer" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

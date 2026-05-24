@@ -1,0 +1,23 @@
+<div class="header_sections {% if settings.transparent_header %}homepageheader{% endif %}">
+    {% section 'header-group' %}
+</div>
+
+{% schema %}
+{
+  "name": "Header Custom",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent Header",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Header",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}

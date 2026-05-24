@@ -1,0 +1,275 @@
+{% schema %}
+{
+  "name": "Advanced Encapsulation",
+  "class": "section-advanced-encapsulation",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Image on the left"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "SKINCARE BEYOND THE SURFACE LEVEL"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "ADVANCED ENCAPSULATION"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "MAXIMIZES BENEFITS, MINIMIZES IRRITATION"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "GRADUAL RELEASE OF CONTINUOUS NOURISHMENT"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "PRECISE, TIME-CONTROLLED DELIVERY TO DEEPEST LAYERS"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "PROTECTS ACTIVES FROM OXIDATION & DEGRADATION"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "100% of users reported softer, smoother and younger-looking skin after as fast as one week of use."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Encapsulation",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="padding-right-left no-padding-mobile">
+  <div class="advanced-encapsulation-section">
+    <div class="encapsulation-grid">
+      <div class="encapsulation-image">
+        <video autoplay muted loop playsinline>
+          <source src="https://cdn.shopify.com/videos/c/o/v/650395a67adb48719eea2b742209651c.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="encapsulation-text">
+        <p class="subtitle">{{ section.settings.subtitle }}</p>
+        <h2 class="title">{{ section.settings.title }}</h2>
+        <div class="benefits">
+          <p>{{ section.settings.benefit_1 }}</p>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
+              <path d="M1 12L11 2L21 12" stroke="#666460" stroke-width="2"/>
+            </svg>
+          </div>
+          <p>{{ section.settings.benefit_2 }}</p>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
+              <path d="M1 12L11 2L21 12" stroke="#666460" stroke-width="2"/>
+            </svg>
+          </div>
+          <p>{{ section.settings.benefit_3 }}</p>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="13" viewBox="0 0 22 13" fill="none">
+              <path d="M1 12L11 2L21 12" stroke="#666460" stroke-width="2"/>
+            </svg>
+          </div>
+          <p>{{ section.settings.benefit_4 }}</p>
+        </div>
+        <div class="disclaimer">
+          <p>{{ section.settings.disclaimer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+ .advanced-encapsulation-section video {
+    max-width: 100%;
+  }
+.advanced-encapsulation-section {
+    background: #fff;
+    padding: 0rem 4rem 3.5rem 4rem;
+}
+
+.encapsulation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+.encapsulation-text {
+    width: 28.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.encapsulation-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.encapsulation-text .subtitle {
+    color: #666460;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 1.19865rem;
+    font-style: normal;
+    font-weight: 430;
+    line-height: 1.4384rem;
+    letter-spacing: 0.04795rem;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.encapsulation-text .title {
+    color: #666460;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 2.75rem;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 3.3rem;
+    letter-spacing: 0.4125rem;
+    text-transform: uppercase;
+    margin: 30px 0px 64px;
+}
+
+.encapsulation-text .benefits p {
+    color: #666460;
+    font-family: "Open Sans";
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.19rem;
+    letter-spacing: 0.085rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.encapsulation-text .disclaimer p {
+    color: #716E6A;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 1.2rem;
+    text-align: left;
+    max-width: 26rem;
+    margin: 0 auto;
+    padding-bottom: 22px;
+}
+.disclaimer {
+    margin-left: 0!important;
+}
+@media (max-width: 768px) {
+.encapsulation-text .subtitle {
+  display: none !important;
+}
+
+.encapsulation-text .disclaimer {
+display: block!important;
+        color: #666460;
+        text-align: center;
+        max-width: 269px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 35px;
+        font-family: "Open Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 413;
+        line-height: 140%;
+        letter-spacing: 0.14px;
+}
+.encapsulation-text .title {
+          margin-bottom: 50px !important;
+margin-top: 0px!important;
+  color: #666460 !important;
+  text-align: center !important;
+  font-family: "Open Sans" !important;
+  font-size: 28px !important;
+  font-style: normal !important;
+  font-weight: 450 !important;
+  line-height: 120% !important;
+  letter-spacing: 4.2px !important;
+  text-transform: uppercase !important;
+}
+
+.encapsulation-text .benefits p {
+  color: #666460 !important;
+  text-align: center !important;
+  font-family: "Open Sans" !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 140% !important;
+  letter-spacing: 1.3px !important;
+  text-transform: uppercase !important;
+}
+
+.benefits {
+        margin-bottom: 40px;
+  max-width: 100% !important;
+  width: 202px !important;
+  margin-left: auto;
+        margin-right: auto;
+}
+
+.encapsulation-grid {
+  display: grid !important;
+  grid-template-columns: none !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+
+.encapsulation-text {
+  width: auto !important;
+}
+
+    .advanced-encapsulation-section {
+        background: #fff !important;
+        padding: 20px 14px 8px !important;
+    }
+
+.encapsulation-image {
+  order: 2 !important;
+}
+
+
+}
+
+@media (max-width: 575px) {
+.encapsulation-text .disclaimer p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+    .encapsulation-text .disclaimer {
+        max-width: 350px;
+        margin-right: 0;
+    }
+}
+
+</style>

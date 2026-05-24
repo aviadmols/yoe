@@ -1,0 +1,243 @@
+{{ 'discovery-duo-formula-comparison.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-compare"
+  style="--dd-compare-padding-top: {{ section.settings.padding_top }}px; --dd-compare-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Formula comparison' | escape }}"
+>
+  <div class="dd-compare__inner">
+    <header class="dd-compare__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="dd-compare__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-compare__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-compare__subheadline">{{ section.settings.subheadline }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="dd-compare__grid">
+      {%- comment -%} Left column {%- endcomment -%}
+      <article class="dd-compare__column dd-compare__column--left">
+        {%- if section.settings.left_image != blank -%}
+          <div class="dd-compare__column-media">
+            {{ section.settings.left_image | image_url: width: 600 | image_tag:
+              loading: 'lazy',
+              class: 'dd-compare__column-image',
+              alt: section.settings.left_image.alt | default: section.settings.left_title
+            }}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.left_title != blank -%}
+          <h3 class="dd-compare__column-title">{{ section.settings.left_title }}</h3>
+        {%- endif -%}
+        {%- if section.settings.left_subtitle != blank -%}
+          <p class="dd-compare__column-subtitle">{{ section.settings.left_subtitle }}</p>
+        {%- endif -%}
+
+        {%- assign left_items = section.blocks | where: 'type', 'left_item' -%}
+        {%- if left_items.size > 0 -%}
+          <ul class="dd-compare__list">
+            {%- for block in left_items -%}
+              <li class="dd-compare__list-item" {{ block.shopify_attributes }}>
+                <span class="dd-compare__list-check" aria-hidden="true">&#10003;</span>
+                {{ block.settings.text }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </article>
+
+      {%- comment -%} Divider/center {%- endcomment -%}
+      <div class="dd-compare__divider" aria-hidden="true">
+        {%- if section.settings.center_label != blank -%}
+          <span class="dd-compare__divider-label">{{ section.settings.center_label }}</span>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right column {%- endcomment -%}
+      <article class="dd-compare__column dd-compare__column--right">
+        {%- if section.settings.right_image != blank -%}
+          <div class="dd-compare__column-media">
+            {{ section.settings.right_image | image_url: width: 600 | image_tag:
+              loading: 'lazy',
+              class: 'dd-compare__column-image',
+              alt: section.settings.right_image.alt | default: section.settings.right_title
+            }}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.right_title != blank -%}
+          <h3 class="dd-compare__column-title">{{ section.settings.right_title }}</h3>
+        {%- endif -%}
+        {%- if section.settings.right_subtitle != blank -%}
+          <p class="dd-compare__column-subtitle">{{ section.settings.right_subtitle }}</p>
+        {%- endif -%}
+
+        {%- assign right_items = section.blocks | where: 'type', 'right_item' -%}
+        {%- if right_items.size > 0 -%}
+          <ul class="dd-compare__list">
+            {%- for block in right_items -%}
+              <li class="dd-compare__list-item" {{ block.shopify_attributes }}>
+                <span class="dd-compare__list-check" aria-hidden="true">&#10003;</span>
+                {{ block.settings.text }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </article>
+    </div>
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="dd-compare__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Formula comparison",
+  "tag": "section",
+  "class": "section-dd-compare",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How they work"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "HA + Retinol Active vs. Cream Booster"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline"
+    },
+    {
+      "type": "text",
+      "id": "center_label",
+      "label": "Center divider label",
+      "default": "+"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Footnote / disclaimer"
+    },
+    {
+      "type": "header",
+      "content": "Left column (HA + Retinol Active)"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left product image"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left title",
+      "default": "HA + Retinol Active"
+    },
+    {
+      "type": "text",
+      "id": "left_subtitle",
+      "label": "Left subtitle",
+      "default": "Lightweight, fast-absorbing serum"
+    },
+    {
+      "type": "header",
+      "content": "Right column (Cream Booster)"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right product image"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Right title",
+      "default": "Cream Booster"
+    },
+    {
+      "type": "text",
+      "id": "right_subtitle",
+      "label": "Right subtitle",
+      "default": "Rich, nourishing cream"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_item",
+      "name": "Left benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit",
+          "default": "Reduces fine lines & wrinkles"
+        }
+      ]
+    },
+    {
+      "type": "right_item",
+      "name": "Right benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit",
+          "default": "Deep, long-lasting hydration"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Formula comparison",
+      "blocks": [
+        { "type": "left_item", "settings": { "text": "Reduces fine lines & wrinkles" } },
+        { "type": "left_item", "settings": { "text": "Boosts collagen production" } },
+        { "type": "left_item", "settings": { "text": "Brightens & evens skin tone" } },
+        { "type": "left_item", "settings": { "text": "Targets dark spots & pigmentation" } },
+        { "type": "left_item", "settings": { "text": "Improves firmness & elasticity" } },
+        { "type": "right_item", "settings": { "text": "Deep, long-lasting hydration" } },
+        { "type": "right_item", "settings": { "text": "Strengthens skin barrier" } },
+        { "type": "right_item", "settings": { "text": "Smooths skin texture" } },
+        { "type": "right_item", "settings": { "text": "Soothes irritation & redness" } },
+        { "type": "right_item", "settings": { "text": "Defends against pollution & UV" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

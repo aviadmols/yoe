@@ -1,0 +1,333 @@
+/* Discovery Duo – Buy box
+ * Desktop in rem (1rem = 20px); mobile in px.
+ */
+
+.dd-buy {
+  width: 100%;
+  padding-top: var(--dd-buy-padding-top, 4rem);
+  padding-bottom: var(--dd-buy-padding-bottom, 4rem);
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+}
+
+.dd-buy__inner {
+  max-width: 72rem; /* 1440px */
+  margin: 0 auto;
+  padding: 0 4rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 3.6rem;
+  align-items: start;
+}
+
+/* ---------- Gallery (left) ---------- */
+
+.dd-buy__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.dd-buy__main {
+  width: 100%;
+  background-color: #f7f6f5;
+  border-radius: 0.35rem; /* 7px */
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dd-buy__main-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dd-buy__thumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.6rem;
+}
+
+.dd-buy__thumb {
+  background-color: #f7f6f5;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.dd-buy__thumb:hover {
+  opacity: 0.85;
+}
+
+.dd-buy__thumb-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Info (right) ---------- */
+
+.dd-buy__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 0.8rem;
+}
+
+.dd-buy__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+  margin-bottom: 0.6rem;
+}
+
+.dd-buy__title {
+  margin: 0 0 1rem 0;
+  font-size: 2.2rem; /* 44px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-buy__description {
+  margin: 0 0 1.6rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #666460;
+  max-width: 22rem;
+}
+
+.dd-buy__description p {
+  margin: 0 0 0.6rem 0;
+}
+
+.dd-buy__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.dd-buy__compare-price {
+  font-size: 1.2rem; /* 24px */
+  font-weight: 400;
+  color: #999592;
+  text-decoration: line-through;
+}
+
+.dd-buy__price {
+  font-size: 2rem; /* 40px */
+  font-weight: 700;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-buy__price-suffix {
+  font-size: 0.7rem;
+  color: #999592;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+}
+
+.dd-buy__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 22rem;
+  height: 3.5rem; /* 70px */
+  padding: 0 1.6rem;
+  background-color: #bd1e18;
+  color: #f7f6f5;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 80;
+  box-shadow: 0 0.4rem 1.5rem rgba(189, 30, 24, 0.18);
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.dd-buy__cta:hover,
+.dd-buy__cta:focus-visible {
+  background-color: #a31b16;
+}
+
+.dd-buy__cta-arrow {
+  flex-shrink: 0;
+}
+
+.dd-buy__trust {
+  list-style: none;
+  margin: 1.6rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+}
+
+.dd-buy__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #666460;
+}
+
+.dd-buy__trust-icon img {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+}
+
+.dd-buy__trust-check {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #bd1e18;
+  color: #ffffff;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.dd-buy__disclaimer {
+  margin: 1rem 0 0 0;
+  font-size: 0.6rem;
+  font-style: italic;
+  color: #999592;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — px values
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-buy {
+    padding-top: var(--dd-buy-padding-top, 40px);
+    padding-bottom: var(--dd-buy-padding-bottom, 40px);
+  }
+
+  .dd-buy__inner {
+    padding: 0 20px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .dd-buy__gallery {
+    gap: 12px;
+  }
+
+  .dd-buy__main {
+    aspect-ratio: 1;
+    border-radius: 7px;
+  }
+
+  .dd-buy__thumbs {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .dd-buy__thumb {
+    border-radius: 7px;
+  }
+
+  .dd-buy__info {
+    padding-top: 0;
+  }
+
+  .dd-buy__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .dd-buy__title {
+    font-size: 28px;
+    letter-spacing: 0.6px;
+    margin-bottom: 12px;
+  }
+
+  .dd-buy__description {
+    font-size: 14px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .dd-buy__price-row {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .dd-buy__compare-price {
+    font-size: 18px;
+  }
+
+  .dd-buy__price {
+    font-size: 30px;
+  }
+
+  .dd-buy__price-suffix {
+    font-size: 12px;
+  }
+
+  .dd-buy__cta {
+    height: 56px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .dd-buy__trust {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .dd-buy__trust-item {
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .dd-buy__trust-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dd-buy__trust-check {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .dd-buy__disclaimer {
+    margin-top: 14px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,688 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_button_section_adKJta": {
+      "type": "Custom-Button-Section",
+      "disabled": true,
+      "settings": {
+        "title": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "slideshow_MC8MXa": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_3p8TnX": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-image-winter-compaign-desktop.jpg",
+            "mobile_image": "shopify://shop_images/hero-image-winter-compaign-mobile.jpg",
+            "heading": "Award-Winning Skincare. <strong>20% Off.</strong>",
+            "heading_size": "h1",
+            "subheading": "Skincare that performs beyond the surface.  Fewer steps. Real transformation.",
+            "button_label": "<strong>Limited Time Offer</strong>      |  SHOP NOW",
+            "link": "shopify://collections/all",
+            "text_below_button": "Free Shipping  |  30-Day Money-Back Guarantee",
+            "button_style_secondary": false,
+            "box_align": "top-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center",
+            "custom_slide_class": "page-20-off-main-slide"
+          }
+        },
+        "slide_6aQjj7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Hero_-_2.webp",
+            "mobile_image": "shopify://shop_images/Hero_-_2_-_Mobile.webp",
+            "heading": "Minis Reimagined",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Shop Discovery Duo",
+            "link": "shopify://pages/discover-yoe",
+            "text_below_button": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center",
+            "custom_slide_class": ""
+          }
+        },
+        "slide_wgggkW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Hero_-_3.webp",
+            "mobile_image": "shopify://shop_images/Hero_-_3_-_Mobile.webp",
+            "heading": "Sustainable luxury",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "The Science",
+            "link": "shopify://pages/the-science",
+            "text_below_button": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center",
+            "custom_slide_class": ""
+          }
+        },
+        "slide_qKy49D": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Hero_-_4.webp",
+            "mobile_image": "shopify://shop_images/Hero_-_4_-_Mobile.webp",
+            "heading": "ELEGANCE IN EVERY STEP",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "The Impact",
+            "link": "shopify://pages/the-impact",
+            "text_below_button": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center",
+            "custom_slide_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_3p8TnX",
+        "slide_6aQjj7",
+        "slide_wgggkW",
+        "slide_qKy49D"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "custom-class": "homepage-slideshow",
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "award_mentions_two_GVCUgD": {
+      "type": "award-mentions-two",
+      "blocks": {
+        "award_card_qKzAng": {
+          "type": "award_card",
+          "settings": {
+            "badge_image": "shopify://shop_images/Cosmopolitan.webp",
+            "subheading": "Cosmopolitan’s 2025 Holy Grail <br>Beauty Awards in the Face category. ",
+            "quote": "“Behold: the rich-but-light skin-soothing cream you didn’t know you were missing.”"
+          }
+        },
+        "award_card_3aDnmz": {
+          "type": "award_card",
+          "settings": {
+            "badge_image": "shopify://shop_images/Womens_Health.webp",
+            "subheading": "Ympossible Cream Light named the”Best Moisturizer Normal to Oily Skin”",
+            "quote": "“This lightweight<br> moisturizer soothes.” "
+          }
+        },
+        "award_card_KbPXCh": {
+          "type": "award_card",
+          "settings": {
+            "badge_image": "shopify://shop_images/Oprah.webp",
+            "subheading": "Ympossible Cream named the \"Best Night Cream\" by the Oprah",
+            "quote": "“It's so hard to find a rich, luxurious anti-aging cream for sensitive skin—but this is it!”"
+          }
+        },
+        "mention_TpLkML": {
+          "type": "mention",
+          "settings": {
+            "title": "forbes",
+            "quote": "“In just a short time, this moisturizer has become a go-to for some of the biggest makeup artists.”"
+          }
+        },
+        "mention_MWDxtt": {
+          "type": "mention",
+          "settings": {
+            "title": "The sunday times",
+            "quote": "“Acts as a gentle retinol alternative.”"
+          }
+        },
+        "mention_HQ4n8e": {
+          "type": "mention",
+          "settings": {
+            "title": "Glamour",
+            "quote": "“It does it all—it’s super hydrating like a moisturizer but also grips makeup like a primer”"
+          }
+        }
+      },
+      "block_order": [
+        "award_card_qKzAng",
+        "award_card_3aDnmz",
+        "award_card_KbPXCh",
+        "mention_TpLkML",
+        "mention_MWDxtt",
+        "mention_HQ4n8e"
+      ],
+      "name": "Award Mentions Two",
+      "settings": {
+        "title": "Award-Winning Ritual, Trusted by Experts",
+        "background_color": "#f7f6f5",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "loved_by_bbNqwY": {
+      "type": "loved-by",
+      "name": "Loved By",
+      "settings": {
+        "heading": "loved by 300+ celebrity  makeup artists & estheticians",
+        "text": "<p>Yoé has become a go-to skincare staple of the pros.</p>",
+        "quotes": "<p>“By far the best creams I have used on my client and on myself! Beyond obsessed!”</p>",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "discover_title_kyjUkJ": {
+      "type": "discover-title",
+      "blocks": {
+        "benefit_4UQDeT": {
+          "type": "benefit",
+          "settings": {
+            "text": "<b>Instant hydration</b>"
+          }
+        },
+        "benefit_4JWPAi": {
+          "type": "benefit",
+          "settings": {
+            "text": "Deep,<b>long-lasting nourishment</b>"
+          }
+        },
+        "benefit_DLppJ7": {
+          "type": "benefit",
+          "settings": {
+            "text": "Strengthens the <b>skin barrier</b>"
+          }
+        },
+        "benefit_kRymMF": {
+          "type": "benefit",
+          "settings": {
+            "text": "Boosts <b>collagen</b> production"
+          }
+        },
+        "benefit_xpbf9D": {
+          "type": "benefit",
+          "settings": {
+            "text": "Targets <b>fine lines and wrinkles</b>"
+          }
+        },
+        "benefit_tB8VRx": {
+          "type": "benefit",
+          "settings": {
+            "text": "Addresses <b>hyperpigmentation</b>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_4UQDeT",
+        "benefit_4JWPAi",
+        "benefit_DLppJ7",
+        "benefit_kRymMF",
+        "benefit_xpbf9D",
+        "benefit_tB8VRx"
+      ],
+      "custom_css": [
+        "b {margin-left: 0.2rem; margin-right: 0.2rem;}",
+        ".discover-title {padding: 4rem 1.75rem 5rem;}"
+      ],
+      "settings": {
+        "title": "<p><strong>Two </strong>Multi-Action HERO Creams,<br/><strong>Two </strong>Options to Achieve Ultimate Results.</p>",
+        "subtitle": "Multi-action benefits to address multiple skin concerns at once through an advanced encapsulation delivery system."
+      }
+    },
+    "discover_clinical_waAQF8": {
+      "type": "discover-clinical",
+      "blocks": {
+        "week_YnJ3BC": {
+          "type": "week",
+          "settings": {
+            "week_title": "WEEK 4",
+            "category_1": "ANTI-REDNESS",
+            "percentage_1": "92%",
+            "description_1": "Agree the product reduces the appearance of skin irritation",
+            "category_2": "HYDRATION & MOISTURIZATION",
+            "percentage_2": "92%",
+            "description_2": "Agree the product effectively delivers a long-lasting moisture feeling"
+          }
+        },
+        "week_r3WJDN": {
+          "type": "week",
+          "settings": {
+            "week_title": "WEEK 1",
+            "category_1": "RADIANCE & <br>RENEWAL",
+            "percentage_1": "85%",
+            "description_1": "Agree the product significantly enhances a radiant-looking complexion",
+            "category_2": "TONE & <br>TEXTURE",
+            "percentage_2": "88%",
+            "description_2": "Agree the product visibly enhances the texture of their skin"
+          }
+        }
+      },
+      "block_order": [
+        "week_YnJ3BC",
+        "week_r3WJDN"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 992px) {.padding-right-left {padding-right: 4.4rem; padding-left: 4.4rem; padding-top: 2rem; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/04_Ritual.webp",
+        "title": "CLINICAL RESULTS"
+      }
+    },
+    "discover_products_6UTeTL": {
+      "type": "discover-products",
+      "blocks": {
+        "product_gUPzEU": {
+          "type": "product",
+          "settings": {
+            "product": "ympossible-cream",
+            "product_image": "shopify://shop_images/Group-1000004868-1.png",
+            "product_name": "",
+            "product_description": "Instantly hydrates\nDeep, long-lasting nourishment \nStrengthens the skin barrier \nBoosts collagen production\nTargets fine lines and wrinkles\nAddresses hyperpigmentation\nImproves skin tone and texture",
+            "hero_text": "Best for <strong>normal, dry, mature & sensitive skin. </strong>"
+          }
+        },
+        "product_VH6GWJ": {
+          "type": "product",
+          "settings": {
+            "product": "ympossible-cream-light",
+            "product_image": "shopify://shop_images/YCL_-_mini_-_with_stamps.webp",
+            "product_name": "Ympossible Cream",
+            "product_description": "Supplies instant hydration\nDeep, long-lasting nourishment\nDelivers a radiant glow\nStrengthens the skin barrier\nAddresses fine lines and wrinkles\nSmoothes texture",
+            "hero_text": "Best for <strong>normal, oily, combination & sensitive skin.</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "product_gUPzEU",
+        "product_VH6GWJ"
+      ],
+      "custom_css": [
+        ".product-form__submit {width: auto;}"
+      ],
+      "settings": {
+        "heading": "Yoé’s Award-Winning Heroes"
+      }
+    },
+    "discover_add_to_cart_Cm7Kd6": {
+      "type": "discover-add-to-cart",
+      "settings": {
+        "title": "Award-winning Skincare",
+        "sub_title": "20% off.Limited time offer.",
+        "description": "Free Shipping  |  30-Day Money-Back Guarantee",
+        "product": "discovery-duo",
+        "discount_code": "DISCOVERYDUO50NOVEMBER2025",
+        "button_text": "Claim Yours Now"
+      }
+    },
+    "innovative_active_section_AzdhRB": {
+      "type": "innovative-active-section",
+      "blocks": {
+        "gold_standard_eMbyNN": {
+          "type": "gold_standard",
+          "settings": {
+            "icon": "shopify://shop_images/asdasdsad.png",
+            "title": "<p>Collagen-Boosting <strong>Vitamin C </strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Vitamin_C_FULL.webp",
+            "popup_text": "<p>Vitamin C a gold standard antioxidant in skincare, works to even the skin tone and protects against collagen degradation.</p>"
+          }
+        },
+        "gold_standard_Gthacb": {
+          "type": "gold_standard",
+          "settings": {
+            "icon": "shopify://shop_images/Timut_pepper_6ed76706-0a2e-46d3-83e8-330c8b28b5ea.png",
+            "title": "<p>Deeply Hydrating <strong>Hyaluronic Acid</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Tranexamic_Acid_FULL.webp",
+            "popup_text": "<p>Tranexamic Acid is an amino acid which can reduce hyperpigmentation and uneven skin tone by inhibiting the production of melanin. It's gentle yet effective, helping brighten complexion and improve overall skin clarity.</p>"
+          }
+        },
+        "gold_standard_fidhPF": {
+          "type": "gold_standard",
+          "settings": {
+            "icon": "shopify://shop_images/Chebula_c52edb66-79fc-4ab3-8c54-874b87baadb6.png",
+            "title": "<p>Barrier - Boosting <strong>Ceramides</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Ceramides_FULL.webp",
+            "popup_text": "<p>Ceramides are naturally occurring fatty acids whose levels decline with age, leading to dryness and irritation. Olive-derived ceramides in Yoé products support skin barrier function, helping to seal in moisture and protect against environmental aggressors.</p>"
+          }
+        },
+        "gold_standard_9XjKML": {
+          "type": "gold_standard",
+          "settings": {
+            "icon": "shopify://shop_images/Diosmin_028c3577-8f82-4a05-a305-5e5ab67aa2db.png",
+            "title": "<p>Soothing<strong> Panthenol</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Vitamin_B_FULL.webp",
+            "popup_text": "<p>Vitamin B (panthenol) is a soothing anti-inflammatory that acts in combination with ceramides to repair the skin barrier and minimize transepidermal water loss.</p>"
+          }
+        },
+        "gold_standard_jcmCXP": {
+          "type": "gold_standard",
+          "settings": {
+            "icon": "shopify://shop_images/Ceramides_6f1e612d-7af8-436f-9f42-835daf166b6e.png",
+            "title": "<p>Nourishing <strong>Squalene</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Squalene_FULL.webp",
+            "popup_text": "<p>Squalane is an effective emollient, deeply nourishes and hydrates the skin, promoting a smoother, more youthful appearance. This naturally occurring lipid also helps fortify the skin's barrier, protecting against environmental stressors and moisture loss.</p>"
+          }
+        },
+        "power_player_wWRwWe": {
+          "type": "power_player",
+          "settings": {
+            "icon": "shopify://shop_images/Vitamin_C_205f58e1-e9c3-4379-a58d-7532467358f6.png",
+            "title": "<p>Bioidentical Vegan <strong>Epidermal Growth Factor</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Nicotiana_benthamiana_FULL.webp",
+            "popup_text": "<p>Nicotiana benthamiana is a vegan epidermal growth factor (EGF) and peptide that acts as a gentle retinol alternative. It is shown to reduce the appearance of lines and wrinkles, improve skin texture and elasticity, and promote the natural production of collagen.</p>"
+          }
+        },
+        "power_player_e3gBfk": {
+          "type": "power_player",
+          "settings": {
+            "icon": "shopify://shop_images/Vitamin_B1w_4e7f6891-4e52-41c7-a002-ee61c3828290.png",
+            "title": "<p>Calming <strong> Chebula</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Chebula_FULL.webp",
+            "popup_text": "<p>Chebula, a powerful antioxidant, helps protect skin against environmental damage, calms visible redness, and promotes a more balanced complexion.</p>"
+          }
+        },
+        "power_player_QGbaC7": {
+          "type": "power_player",
+          "settings": {
+            "icon": "shopify://shop_images/Tranexamic_Acid_3d326a20-5a4f-4409-b5e5-8cfe0aaab862.png",
+            "title": "<p>Anti - inflammatory<strong> Diosmin</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Diosmin_FULL.webp",
+            "popup_text": "<p>Diosmin is an antioxidant with anti-inflammatory properties that soothes irritation.</p>"
+          }
+        },
+        "power_player_fLfrGc": {
+          "type": "power_player",
+          "settings": {
+            "icon": "shopify://shop_images/Nicotiana_benthamiana_440ea861-d6b0-4647-be5b-b01102f28391.png",
+            "title": "<p>Antioxidant - Rich <strong>Red Algae</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Red_Algae_FULL.webp",
+            "popup_text": "<p>Red algae, a nutrient-rich marine ingredient, contains a clinically proven antioxidant that naturally boosts hydration and promotes overall skin health.</p>"
+          }
+        },
+        "power_player_bUYT3p": {
+          "type": "power_player",
+          "settings": {
+            "icon": "shopify://shop_images/Squalene_9554fe62-39ed-4c13-81a8-fdf4d5fc3d74.png",
+            "title": "<p>Nutrient - Packed <strong>Timut Pepper</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Timut_pepper_FULL.webp",
+            "popup_text": "<p>Timut pepper, native to the southern Himalayan region, contains a diverse profile of bioactive alkaloids—phytochemicals that are shown to improve skin tone. Timut pepper extract also activates the cellular signaling pathways, thereby supporting skin renewal for a healthy epidermis.</p>"
+          }
+        },
+        "power_player_tMjMfF": {
+          "type": "power_player",
+          "settings": {
+            "icon": "shopify://shop_images/Hyaluronic_Acid_d6bf85ec-53c3-4e7b-af21-1c3c6823f72f.png",
+            "title": "<p>Mineral - Rich <strong>Rice Water</strong></p>",
+            "description": "",
+            "popup_image": "shopify://shop_images/Hyaluronic_Acid_FULL.webp",
+            "popup_text": "<p>Hyaluronic acid is naturally found in the body where it is responsible for hydration, lubrication, and tissue stability. Hyaluronic acid attracts and holds up to 500 times its weight in water, which serves to plump skin and minimize the appearance of fine lines.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "gold_standard_eMbyNN",
+        "gold_standard_Gthacb",
+        "gold_standard_fidhPF",
+        "gold_standard_9XjKML",
+        "gold_standard_jcmCXP",
+        "power_player_wWRwWe",
+        "power_player_e3gBfk",
+        "power_player_QGbaC7",
+        "power_player_fLfrGc",
+        "power_player_bUYT3p",
+        "power_player_tMjMfF"
+      ],
+      "name": "Innovative Actives",
+      "settings": {
+        "custom-class": "",
+        "main-title": "INNOVATIVE ACTIVES MEET   ADVANCED BIOTECHNOLOGY",
+        "right-bg-image": "shopify://shop_images/adaq2_1.png",
+        "video_file": "shopify://files/videos/Encapsulation Video.mp4",
+        "right-title": "<p>Delivery System</p>",
+        "main-title-cus": "<p>Advanced   Encapsulation</p>",
+        "sub-title-cus": "<p>Utilizing an <strong>advanced encapsulation</strong> delivery system, powerful actives are gradually and precisely released, penetrating the deepest layers of the skin. This enhances bioavailability for superior absorption and maximum efficacy.</p>",
+        "btn-url-content": "",
+        "ingredients_list": "<p><strong>Ympossible Cream<br/></strong><br/>Water, Caprylic / Capric Triglyceride, Squalane, Hydrogenated Jojoba Oil,Dimethicone, Cetearyl Alcohol, Propanediol, Oryza Sativa (Rice) Seed Water,Cetearyl Olivate, Tranexamic Acid, Niacinamide, Oligopeptide-1, Diosmine,Ceramide NP, Hyaluronic Acid, Panthenol, Tocopherol, Ergothioneine, BetaSitosterol, Sodium Ascorbyl Phosphate, Saccharomyces Ferment, LactobacillusFerment, Porphyra Umbilicalis (Red Algae) Extract, Terminalia, Chebula FruitExtract, Zanthoxylum Alatum Fruit Extract, Helianthus Annuus (Sunflower) SeedOil, Glycerin, Mannitol, Phosphatidylcholine, Pentylene Glycol, SodiumChloride, Xanthan Gum, Decyl Glucoside, Cetyl Alcohol, Citric Acid, SodiumBenzoate, Sodium Phytate, Sodium Stearoyl Glutamate, Behenyl Alcohol,Sorbitan Olivate, Polyglyceryl-3 Stearate, Potassium Sorbate, PotassiumPhosphate, Dipotassium Phosphate, Phenoxyethanol</p><p><br/><br/><strong>Ympossible Cream Light</strong></p><p>Water, Caprylic/Capric Triglyceride, Squalane, Dimethicone, Propanediol,Hydrogenated Jojoba Oil, Cetearyl Alcohol, Oryza Sativa (Rice) Seed Water,Cetearyl Olivate, Oligopeptide-1, Diosmin, Squalene, Ceramide NP, HyaluronicAcid, Panthenol, Tocopherol, Beta-Sitosterol, Sodium Ascorbyl Phosphate,Saccharomyces Ferment, Lactobacillus Ferment, Terminalia Chebula FruitExtract, Porphyra Umbilicalis (Red Algae) Extract, Zanthoxylum Alatum FruitExtract, Helianthus Annuus (Sunflower) Seed Oil, Glycerin, Mannitol,Phosphatidylcholine, Pentylene Glycol, Sodium Chloride, Xanthan Gum, DecylGlucoside, Cetyl Alcohol, Citric Acid, Sodium Benzoate, Sodium Phytate,Sodium Stearoyl Glutamate, Behenyl Alcohol, Sorbitan Olivate, Polyglyceryl-3Stearate, Potassium Sorbate, Potassium Phosphate, Dipotassium Phosphate,Phenoxyethanol<br/><br/></p>"
+      }
+    },
+    "apps_WDrcBd": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_WtbnF3": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "discovery-duo",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_WtbnF3"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_Reygbi": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".color-background-1 {background: #fff;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"btn_insta custom-parallax-banner\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"39\" height=\"39\" viewBox=\"0 0 39 39\" fill=\"none\">\n  <path d=\"M13.2212 19.3631C13.2212 15.9148 16.0159 13.1187 19.4642 13.1187C22.9124 13.1187 25.7086 15.9148 25.7086 19.3631C25.7086 22.8114 22.9124 25.6075 19.4642 25.6075C16.0159 25.6075 13.2212 22.8114 13.2212 19.3631M9.84563 19.3631C9.84563 24.6754 14.1518 28.9816 19.4642 28.9816C24.7765 28.9816 29.0827 24.6754 29.0827 19.3631C29.0827 14.0508 24.7765 9.74456 19.4642 9.74456C14.1518 9.74456 9.84578 14.0505 9.84578 19.3631M27.2158 9.36318C27.2156 9.80776 27.3473 10.2424 27.5941 10.6121C27.841 10.9819 28.1919 11.2701 28.6026 11.4404C29.0132 11.6107 29.4652 11.6554 29.9012 11.5689C30.3373 11.4823 30.7379 11.2684 31.0524 10.9542C31.3669 10.6399 31.5811 10.2395 31.668 9.80349C31.7549 9.36749 31.7106 8.91551 31.5406 8.50471C31.3707 8.09391 31.0827 7.74274 30.7132 7.4956C30.3436 7.24846 29.9091 7.11645 29.4645 7.11627H29.4636C28.8677 7.11655 28.2962 7.35334 27.8748 7.77463C27.4533 8.19592 27.2163 8.76727 27.2158 9.36318M11.8965 34.6104C10.0703 34.5272 9.07763 34.223 8.41798 33.966C7.54343 33.6256 6.91944 33.2201 6.26338 32.5649C5.60732 31.9097 5.20121 31.2864 4.86224 30.4118C4.60509 29.7524 4.30089 28.7595 4.21787 26.9332C4.12706 24.9588 4.10893 24.3657 4.10893 19.3634C4.10893 14.3611 4.12856 13.7696 4.21787 11.7935C4.30104 9.96724 4.60749 8.97626 4.86224 8.31495C5.20271 7.44041 5.60822 6.81642 6.26338 6.16036C6.91854 5.5043 7.54193 5.09819 8.41798 4.75922C9.07733 4.50207 10.0703 4.19787 11.8965 4.11485C13.871 4.02404 14.4641 4.00591 19.4642 4.00591C24.4642 4.00591 25.0579 4.02524 27.034 4.11515C28.8603 4.19832 29.8513 4.50477 30.5126 4.75952C31.3871 5.09849 32.0111 5.50549 32.6672 6.16066C33.3232 6.81582 33.7278 7.44071 34.0683 8.31525C34.3255 8.97461 34.6297 9.96754 34.7127 11.7938C34.8035 13.7699 34.8216 14.3614 34.8216 19.3637C34.8216 24.366 34.8035 24.9574 34.7127 26.9335C34.6295 28.7598 34.3238 29.7524 34.0683 30.4121C33.7278 31.2867 33.3223 31.9106 32.6672 32.5652C32.012 33.2198 31.3871 33.6259 30.5126 33.9663C29.8532 34.2235 28.8603 34.5277 27.034 34.6107C25.0595 34.7015 24.4664 34.7197 19.4642 34.7197C14.4619 34.7197 13.8704 34.7015 11.8965 34.6107M11.7414 0.744787C9.74733 0.835599 8.38471 1.15179 7.19472 1.61484C5.96307 2.09302 4.91904 2.73455 3.8765 3.77543C2.83397 4.81632 2.1941 5.8605 1.71591 7.09365C1.25286 8.28438 0.936673 9.64626 0.845861 11.6404C0.753551 13.6376 0.732422 14.2761 0.732422 19.3631C0.732422 24.45 0.753551 25.0885 0.845861 27.0858C0.936673 29.0801 1.25286 30.4418 1.71591 31.6325C2.1941 32.8642 2.83412 33.9103 3.8765 34.9507C4.91889 35.9912 5.96157 36.6318 7.19472 37.1113C8.38696 37.5744 9.74733 37.8906 11.7414 37.9814C13.7397 38.0722 14.3772 38.0948 19.4642 38.0948C24.5511 38.0948 25.1896 38.0737 27.1869 37.9814C29.1811 37.8906 30.5428 37.5744 31.7336 37.1113C32.9652 36.6318 34.0093 35.9916 35.0518 34.9507C36.0943 33.9098 36.7329 32.8642 37.2124 31.6325C37.6754 30.4418 37.9931 29.0799 38.0824 27.0858C38.1733 25.087 38.1944 24.45 38.1944 19.3631C38.1944 14.2761 38.1733 13.6376 38.0824 11.6404C37.9916 9.64611 37.6754 8.28364 37.2124 7.09365C36.7329 5.862 36.0927 4.81797 35.0518 3.77543C34.0109 2.7329 32.9652 2.09302 31.7351 1.61484C30.5428 1.15179 29.181 0.8341 27.1884 0.744787C25.1908 0.653526 24.5526 0.631348 19.4664 0.631348C14.3802 0.631348 13.7405 0.652477 11.7422 0.744787\" fill=\"#666460\"/>\n</svg>\n\n<h3>yoeandco</h3>\n\n<a href=\"https://www.instagram.com/yoeandco/?igsh=MWxmNWpicDVpMTV1OQ\">Follow us</a>\n\n</div>\n\n\n<style>\n.btn_insta a {\n    font-size: 16px !important;\n    font-weight: 400 !important;\n    text-transform: uppercase !important;\n    margin-left: 3.6rem;\n}\nbody #insta-feed {\n    padding-top: 15px !IMPORTANT;\n}\n.section-template--20152377639160__custom_liquid_Reygbi-padding {\n    padding: 4rem 0rem 1rem;\n}\n.btn_insta svg {\n    width: 1.873rem; /* 37.46px */\n    height: 1.873rem; /* 37.46px */\n    display: flex;\n    margin-right: 1rem; /* 20px */\n}\n\n.btn_insta h3 {\n    margin: 0rem !important;\n    font-family: Open Sans;\n    font-size: 1.983rem; /* 39.66px */\n    font-weight: 450;\n    line-height: 2.3795rem; /* 47.59px */\n    display: inline-block;\n    letter-spacing: 0.1em;\n    text-align: left;\n    font-variation-settings: 'wdth' 80;\n}\n\n.btn_insta a:hover{\nbackground:  #666460 ;\ncolor: #fff!important;\n}\n\n.btn_insta a {\n    font-family: Open Sans;\n    font-size: 1.04rem; /* 20.8px */\n    font-weight: 700;\n    line-height: 1.1645rem; /* 23.29px */\n    text-align: center;\n    font-variation-settings: 'wdth' 80;\n    width: 9.3895rem; /* 187.79px */\n    height: 3.483rem; /* 69.66px */\n    gap: 0rem; /* 0px */\n    display: flex;\n    align-items: center !important;\n    justify-content: center;\n    color: #666460 !important;\n    border: 0.1rem solid #666460; /* 2px */\n\n}\n\n.btn_insta {\n    padding-bottom: 0rem;\n    display: flex;\n    align-items: center !important;\n}\n\n@media (max-width: 768px){\n.btn_insta svg {\n    width: 26.803px !important;\n    height: 26.804px !important;\n}\n\n.btn_insta h3 {\npadding-right: 52px!important;\n    color: #666460 !important;\n    font-family: \"Open Sans\" !important;\n    font-size: 20px !important;\n    font-style: normal !important;\n    font-weight: 450 !important;\n    line-height: 120% !important; /* 31.2px */\n    letter-spacing: 0px !important;\n    text-transform: lowercase !important;\n}\n\n.btn_insta a {\n    width: 115.43px!important;\n    height: 44.9px !important;\n    color: #666460 !important;\n    text-align: center !important;\n    font-family: \"Open Sans\" !important;\n    font-size: 14px !important;\n    font-style: normal !important;\n    font-weight: 460 !important;\n    line-height: 112% !important;\n    letter-spacing: 0.349px !important;\n    text-transform: uppercase !important;\n    border: 1.6px solid #666460a8;\n}\n\n.btn_insta {\n    padding-bottom: 0px !important; \n        justify-content: space-between;\n    display: flex !important;\n    align-items: center !important;\n}\n}\n\n@media (min-width: 768px) {\n  .btn_insta.custom-parallax-banner {\n    padding-right: 5rem !important;\n    padding-left: 5rem !important;\n  }\n} \n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "17555861102fc801d8": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_xGb4AB": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_xGb4AB"
+      ],
+      "custom_css": [
+        ".page-width {background: #fff;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "collapsible_content_F3Biwe": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_dxqNND": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "How will my Valentine receive the products?",
+            "icon": "check_mark",
+            "row_content": "<ul><li>Your Valentine will receive an email containing a voucher to redeem their complimentary product, with your name included to let them know the gift is from you. We make it super easy!</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_bLQjnR": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the benefits of the Ympossible Cream?",
+            "icon": "none",
+            "row_content": "<ul><li>Instantly hydrates and replenishes the skin.  </li><li>Provides deep, long-lasting nourishment.  </li><li>Strengthens the skin's moisture barrier.  </li><li>Targets visible signs of aging for a youthful complexion.  </li><li>Boosts collagen production for firmer, healthier skin.  </li><li>Improves skin tone and texture while addressing hyperpigmentation.  </li><li>Protects against environmental damage from pollution, UV and blue light. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4kfNCA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the differences between Yoé’s two hero products?",
+            "icon": "none",
+            "row_content": "<ul><li>Ympossible Cream: A rich, ultra-nourishing formula designed to deeply hydrate, rejuvenate and protect your skin.  </li><li>Ympossible Cream Light: A lightweight version of our multi-action cream that delivers hydration, radiance and a youthful glow. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_fmff7P": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the benefits of the Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Supplies instant and long-lasting hydration.  </li><li>Delivers a radiant, luminous glow.  </li><li>Strengthens the moisture barrier for lasting hydration.  </li><li>Smooths texture and plumps skin for a youthful look.  </li><li>Reduces fine lines, wrinkles, and redness.  </li><li>Protects against environmental damage from pollution, UV, and blue light. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Dgac6E": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I use the Ympossible Cream and Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Ympossible Cream: Apply to cleansed, dry skin on the face, neck and décolletage, both morning and evening. It can also be used as an overnight mask for stressed or parched skin. Best for normal to dry skin types or as a rich nighttime treatment.  </li><li>Ympossible Cream Light: Apply to cleansed, dry skin on the face, neck, and décolletage, both morning and evening. Ideal for normal to oily and combination skin types, or as a makeup base for a glowy finish. </li></ul><p><em><strong>Both products can also be used together as a moisture cocktail to tailor hydration to your skin's specific needs. Mix them in your palm to balance nourishment and radiance, addressing multiple skin concerns at once.  </strong></em></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_ynE9iq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products suitable for sensitive skin or those who are pregnant or breastfeeding?",
+            "icon": "none",
+            "row_content": "<p>Yes! Both the Ympossible Cream and Ympossible Cream Light are:  </p><ul><li>Dermatologist-tested and hypoallergenic.  </li><li>Safe for all skin types, including sensitive skin.  </li><li>Suitable for individuals who are pregnant or breastfeeding. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YQheXE": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products clean and safe?",
+            "icon": "none",
+            "row_content": "<p>Absolutely. Yoé’s products are:  </p><ul><li>Clinically and dermatologically tested.  </li><li>Hypoallergenic and safe for pregnant or breastfeeding individuals.  </li><li>Formulated without parabens, phthalates, synthetic fragrances and other harmful substances.  </li><li>EWG verified, Leaping Bunny Certified and vegan.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6QL4yN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products vegan and cruelty-free?",
+            "icon": "none",
+            "row_content": "<ul><li>Yes, both products are 100% vegan and cruelty-free, and they are Leaping Bunny certified.</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_dxqNND",
+        "collapsible_row_bLQjnR",
+        "collapsible_row_4kfNCA",
+        "collapsible_row_fmff7P",
+        "collapsible_row_Dgac6E",
+        "collapsible_row_ynE9iq",
+        "collapsible_row_YQheXE",
+        "collapsible_row_6QL4yN"
+      ],
+      "custom_css": [
+        ".collapsible-content__heading {color: #666460; text-align: center; font-family: \"Open Sans\"; font-size: 2.75rem; font-style: normal; font-weight: 450;}",
+        ".accordion summary {display: flex; position: relative; line-height: 1; padding: 1.5rem 0; min-height: 60px; align-items: center;}",
+        ".collapsible-content .accordion {max-width: 46rem; margin-left: auto; margin-right: auto;}",
+        ".rte ul,.rte ol {padding-left: 0.5rem;}",
+        ".color-background-1 {background: #fff;}",
+        "@media all AND (max-width: 768px) {.accordion__title {font-size: 13px; line-height: 1.4; }}"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "custom_button_section_adKJta",
+    "main",
+    "slideshow_MC8MXa",
+    "award_mentions_two_GVCUgD",
+    "loved_by_bbNqwY",
+    "discover_title_kyjUkJ",
+    "discover_clinical_waAQF8",
+    "discover_products_6UTeTL",
+    "discover_add_to_cart_Cm7Kd6",
+    "innovative_active_section_AzdhRB",
+    "apps_WDrcBd",
+    "custom_liquid_Reygbi",
+    "17555861102fc801d8",
+    "collapsible_content_F3Biwe"
+  ]
+}

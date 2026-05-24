@@ -1,0 +1,190 @@
+{% schema %}
+{
+  "name": "Discover Precision",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ingredient Icon"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Ingredient Name"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Icon Color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discover Precision",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="discover-precision">
+  <div class="discover-precision__header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+  </div>
+  
+  <div class="discover-precision__content">
+    <div class="ingredients-grid">
+      {% for block in section.blocks %}
+        <div class="ingredient" style="--ingredient-color: {{ block.settings.color }}">
+          <div class="ingredient-icon">
+            <img src="{{ block.settings.icon | img_url: 'master' }}" alt="{{ block.settings.name }}">
+          </div>
+          <p>{{ block.settings.name }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div class="main-image">
+      <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Advanced Precision Delivery">
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.discover-precision {
+  padding: 6rem 1.75rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.discover-precision__header {
+  margin-bottom: 4rem;
+}
+
+.discover-precision__header h2 {
+  font-family: "Open Sans";
+  font-size: 2.75rem;
+  font-weight: 450;
+  line-height: 3.33rem;
+  letter-spacing: 0.09em;
+  margin-bottom: 1.5rem;
+  font-variation-settings: 'wdth' 80;
+}
+
+.discover-precision__header p {
+  font-family: "Open Sans";
+  font-size: 1.4rem;
+  font-weight: 350;
+  line-height: 2.1rem;
+  font-variation-settings: 'wdth' 78;
+  max-width: 39.55rem;
+  margin: 0 auto;
+}
+
+.discover-precision__content {
+  max-width: 82rem;
+  margin: 0 auto;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.ingredient {
+  text-align: center;
+}
+
+.ingredient-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredient-icon img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(10%) saturate(2076%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+
+.ingredient p {
+  font-family: "Open Sans";
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--ingredient-color);
+  margin: 0;
+  font-variation-settings: 'wdth' 80;
+}
+
+.main-image {
+  margin-top: 4rem;
+}
+
+.main-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .discover-precision {
+    padding: 4rem 1rem;
+  }
+
+  .discover-precision__header h2 {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  .discover-precision__header p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+
+  .ingredients-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ingredient-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .ingredient p {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+}
+{% endstylesheet %} 

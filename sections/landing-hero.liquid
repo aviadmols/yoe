@@ -1,0 +1,374 @@
+{% comment %}
+  Landing page hero – pixel-perfect to Figma (Desktop 2452:1263, Mobile 2452:772).
+  Tailwind-first. SCSS kept only for pseudo-elements and font-family shortcuts.
+  Namespaced lp-hero to avoid collisions.
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Landing Hero",
+  "tag": "section",
+  "class": "lp-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_top",
+      "label": "Background top (fallback)",
+      "default": "#F0EFED"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_bottom",
+      "label": "Background bottom (fallback gradient)",
+      "default": "#E8D4D4"
+    },
+    {
+      "type": "header",
+      "content": "Award badges"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "awards",
+      "label": "Award badges",
+      "metaobject_type": "gallery_badge",
+      "limit": 6,
+      "info": "Select badges from the gallery_badge metaobject (same as Landing Discover Products). Order determines display order."
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "Optional text badge shown above the headline (e.g. CLINICALLY PROVEN)"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "headline_line1",
+      "label": "Headline line 1 (accent)",
+      "default": "THE MOST"
+    },
+    {
+      "type": "text",
+      "id": "headline_line2",
+      "label": "Headline line 2",
+      "default": "CONCENTRATED SKINCARE"
+    },
+    {
+      "type": "text",
+      "id": "headline_line3",
+      "label": "Headline line 3",
+      "default": "WE KNOW HOW TO MAKE"
+    },
+    {
+      "type": "header",
+      "content": "Background images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile hero image"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (add to cart)"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount code",
+      "info": "Optional: applied when adding to cart"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "TRY DISCOVERY DUO"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price (e.g. 48)",
+      "default": "48"
+    },
+    {
+      "type": "text",
+      "id": "compare_at_price_text",
+      "label": "Compare-at price (e.g. 86)",
+      "default": "86"
+    },
+    {
+      "type": "header",
+      "content": "After CTA"
+    },
+    {
+      "type": "text",
+      "id": "after_cta_text",
+      "label": "Guarantee / shipping text",
+      "default": "30-DAY MONEY-BACK GUARANTEE | FREE EXPRESS SHIPPING"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer_text",
+      "label": "Disclaimer",
+      "default": "*For First-Time Customers Only"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Hero",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}
+
+{% liquid
+  assign bg_top    = section.settings.bg_color_top    | default: '#F0EFED'
+  assign bg_bottom = section.settings.bg_color_bottom | default: '#E8D4D4'
+
+  assign has_desktop_img = false
+  assign has_mobile_img  = false
+  if section.settings.desktop_image != blank
+    assign has_desktop_img  = true
+    assign desktop_bg_url   = section.settings.desktop_image | image_url: width: 1920
+  endif
+  if section.settings.mobile_image != blank
+    assign has_mobile_img  = true
+    assign mobile_bg_url   = section.settings.mobile_image | image_url: width: 800
+  endif
+%}
+
+{%- comment -%} Section: full viewport height, flex column, fallback gradient background {%- endcomment -%}
+<section
+  class="lp-hero-inner relative w-full h-screen max-h-screen overflow-hidden flex flex-col"
+  style="background: linear-gradient(180deg, {{ bg_top | default: '#f0efed' }} 0%, {{ bg_top | default: '#f0efed' }} 55%, {{ bg_bottom | default: '#e8d4d4' }} 100%); padding-top: var(--header-height, 0px);"
+  aria-label="Hero"
+>
+
+  {%- comment -%} ── Background image layer – <picture> for reliable responsive switching {%- endcomment -%}
+  {%- if has_desktop_img or has_mobile_img -%}
+    <picture class="absolute inset-0 z-0 w-full h-full pointer-events-none" aria-hidden="true">
+      {%- comment -%} Desktop source {%- endcomment -%}
+      {%- if has_desktop_img -%}
+        <source
+          media="(min-width: 768px)"
+          srcset="{{ section.settings.desktop_image | image_url: width: 1920 }} 1920w,
+                  {{ section.settings.desktop_image | image_url: width: 1440 }} 1440w,
+                  {{ section.settings.desktop_image | image_url: width: 1200 }} 1200w"
+          sizes="100vw"
+        >
+      {%- endif -%}
+      {%- comment -%} Mobile source (fall back to desktop if none set) {%- endcomment -%}
+      {%- if has_mobile_img -%}
+        <source
+          srcset="{{ section.settings.mobile_image | image_url: width: 800 }} 800w,
+                  {{ section.settings.mobile_image | image_url: width: 600 }} 600w"
+          sizes="100vw"
+        >
+      {%- endif -%}
+      {%- comment -%} Fallback <img> — always required inside <picture> {%- endcomment -%}
+      <img
+        src="{{ section.settings.desktop_image | default: section.settings.mobile_image | image_url: width: 1920 }}"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover object-center block"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </picture>
+  {%- endif -%}
+
+  {%- comment -%}
+    ── Main content ─────────────────────────────────────────────────────────────
+    Mobile  (< 768px): single flex column, content at top, CTA at bottom.
+                       Text centered. Background image fills the gap in between.
+    Desktop (≥ 768px): 2-col grid, left col = text + CTA stacked, right col empty.
+                       Text left-aligned.
+    Figma mobile  ref: 2452:772  (375 × 782px frame, nav ≈ 61px)
+    Figma desktop ref: 2452:1263 (1920 × 1131px frame)
+  {%- endcomment -%}
+  <div class="relative z-10 flex-1 min-h-0 w-full
+              flex flex-col pt-[22px] pb-2
+              md:grid md:grid-cols-2 md:items-start md:pt-[90px] md:pb-8
+              px-5 md:px-10 lg:px-16 box-border">
+
+    {%- comment -%} Content column – no scroll-trigger here to avoid layout shift on load (hero is above the fold) {%- endcomment -%}
+    <div class="flex flex-col justify-between flex-1 md:flex-none md:justify-start
+                items-center text-center md:items-start md:[&_*]:!text-left">
+
+      {%- comment -%} ── Top group: awards + headline ── {%- endcomment -%}
+      <div class="flex flex-col items-center md:items-start">
+
+        {%- comment -%} Award badges (from gallery_badge metaobject, same as Landing Discover Products)
+          Mobile  Figma: badge heights 94/98/104px, displayed at ~72px
+          Desktop Figma: displayed at ~90-100px
+        {%- endcomment -%}
+        {%- assign award_list = section.settings.awards -%}
+        {%- if award_list != blank and award_list.size > 0 -%}
+          <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-[22px] md:mb-[48px]">
+            {%- for badge_obj in award_list -%}
+              {%- if badge_obj.image.value != blank -%}
+                {{ badge_obj.image.value | image_url: width: 180 | image_tag: loading: 'eager', alt: '', class: 'h-[72px] md:h-[90px] lg:h-[100px] w-auto object-contain block' }}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Optional text badge (same style as Efficacy) – above headline {%- endcomment -%}
+        {%- if section.settings.badge_text != blank -%}
+          <span
+            class="lp-hero-badge inline-block mb-4 md:mb-5"
+            style="background-color: var(--lp-hero-accent); border-radius: 5.653px;"
+          >
+            {{ section.settings.badge_text }}
+          </span>
+        {%- endif -%}
+
+        {%- comment -%} Headline
+          Mobile  Figma: font 40px / leading 1.2, gap between spans = 8px
+          Desktop Figma: font 56px / leading 1.2, gap between spans = 0px
+          mb mobile → CTA: headline sits at top, CTA at bottom (flex justify-between)
+          mb desktop→ CTA: 48px (headline bottom y=525 → CTA top y=573)
+        {%- endcomment -%}
+        <h1 class="uppercase m-0 md:mb-[48px] flex flex-col gap-[8px] md:gap-0">
+          {%- if section.settings.headline_line1 != blank -%}
+            <span class="text-[40px] md:text-[56px] leading-[1.2] font-[650] text-[var(--lp-hero-accent)] tracking-[0.01em]">
+              {{- section.settings.headline_line1 -}}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.headline_line2 != blank -%}
+            <span class="text-[26px] md:text-[38px] leading-[1.16] font-[572] text-[var(--lp-hero-accent)] tracking-[0.06em]">
+              {{- section.settings.headline_line2 -}}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.headline_line3 != blank -%}
+            <span class="text-[26px] md:text-[38px] leading-[1.16] font-[572] text-[var(--lp-hero-accent)] tracking-[0.06em]">
+              {{- section.settings.headline_line3 -}}
+            </span>
+          {%- endif -%}
+        </h1>
+
+      </div>{%- comment -%} /top group {%- endcomment -%}
+
+      {%- comment -%} ── Bottom group: CTA + guarantee ──
+        Mobile  Figma: button 260×56px, centered. Gap to guarantee ≈ 19px.
+        Desktop Figma: button 324×69.7px, left. Gap to guarantee ≈ 19px.
+      {%- endcomment -%}
+      <div class="flex flex-col items-center md:items-start">
+
+        {%- if section.settings.product -%}
+          <form
+            method="post"
+            action="/cart/add"
+            class="mb-[19px]"
+            data-lp-hero-form="true"
+            data-discount-code="{{ section.settings.discount_code | escape }}"
+          >
+            <input type="hidden" name="id" value="{{ section.settings.product.selected_or_first_available_variant.id }}">
+            <button
+              type="submit"
+              class="lp-hero-cta-btn bg-[var(--lp-hero-accent)]"
+              data-lp-hero-submit="true"
+            >
+              <span class="whitespace-nowrap">{{ section.settings.button_label | default: 'TRY DISCOVERY DUO' }} - ${{ section.settings.price_text | default: '48' }}</span>
+              {%- if section.settings.compare_at_price_text != blank -%}
+                <span class="lp-hero-compare">${{ section.settings.compare_at_price_text }}</span>
+              {%- endif -%}
+            </button>
+          </form>
+        {%- endif -%}
+
+        {%- if section.settings.after_cta_text != blank -%}
+          <p class="font-[529] text-[10px] sm:text-[13px] md:text-[17px] leading-[1.4] tracking-[0.39px] uppercase text-white sm:tracking-[0.57px] md:text-[var(--lp-hero-accent)] m-0">
+            {{- section.settings.after_cta_text -}}
+          </p>
+        {%- endif -%}
+
+      </div>{%- comment -%} /bottom group {%- endcomment -%}
+
+    </div>{%- comment -%} /content column {%- endcomment -%}
+
+    {%- comment -%} Right column placeholder (desktop only) {%- endcomment -%}
+    <div class="hidden md:block"></div>
+
+  </div>{%- comment -%} /inner {%- endcomment -%}
+
+  {%- comment -%} ── Disclaimer pinned to bottom ─────────────────────────────────── {%- endcomment -%}
+  {%- if section.settings.disclaimer_text != blank -%}
+    <p class="disclaimer-text relative z-10 shrink-0 text-center md:text-left text-[12px] md:text-[18px] italic text-[var(--lp-hero-text-light)] tracking-[0.01em] leading-[1.4] m-0 px-5 md:px-10 lg:px-16 pt-1 pb-4">
+      {{- section.settings.disclaimer_text -}}
+    </p>
+  {%- endif -%}
+
+</section>
+
+<script>
+  (function () {
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (!form || !form.hasAttribute('data-lp-hero-form')) return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      var discountCode = form.getAttribute('data-discount-code') || '';
+      var variantId    = form.querySelector('input[name="id"]').value;
+      var btn          = form.querySelector('[data-lp-hero-submit]');
+      if (!btn || btn.disabled) return;
+
+      btn.disabled = true;
+      var originalHTML = btn.innerHTML;
+      btn.textContent  = 'Adding…';
+
+      function openMiniCart() {
+        var cart = document.getElementById('rebuy-cart');
+        if (cart) { cart.classList.add('is-visible'); cart.setAttribute('aria-hidden', 'false'); }
+      }
+      function resetBtn() { btn.innerHTML = originalHTML; btn.disabled = false; }
+
+      function addToCart() {
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ items: [{ id: parseInt(variantId, 10), quantity: 1 }] })
+        })
+          .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+          .then(function () {
+            btn.textContent = 'Added!';
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+            setTimeout(function () { openMiniCart(); setTimeout(resetBtn, 2000); }, 300);
+          })
+          .catch(function () { btn.textContent = 'Try again'; btn.disabled = false; });
+      }
+
+      if (discountCode.trim()) {
+        fetch('/discount/' + encodeURIComponent(discountCode.trim()), { method: 'GET', redirect: 'manual' })
+          .then(function () { setTimeout(addToCart, 300); })
+          .catch(addToCart);
+      } else {
+        addToCart();
+      }
+    }, true);
+  })();
+</script>

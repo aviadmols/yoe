@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_RtGB66": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_634fKi": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our story",
+            "heading_size": "h0"
+          }
+        },
+        "text_LzeCBX": {
+          "type": "text",
+          "settings": {
+            "text": "Inspired by the Japanese Word for Good, Yoé Elevates Care Through Scientific Ingenuity",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_634fKi",
+        "text_LzeCBX"
+      ],
+      "custom_css": [
+        ".banner__text.subtitle {max-width: 40rem !important;}",
+        "@media (max-width: 768px) {.banner {max-height: 100vh !important; height: 674px; }}"
+      ],
+      "settings": {
+        "custom-class": "",
+        "image": "shopify://shop_images/About_us_Hero.webp",
+        "image_3": "shopify://shop_images/About_us_-_Hero_-_Mobile.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "multirow_EPrLik": {
+      "type": "multirow",
+      "blocks": {
+        "row_Pt6xtd": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/cc73a38ac939a3dd4a06cd1724f2ae53.webp",
+            "caption": "For founder Hazel Guo, the impetus to create Yoé was shaped by her own health struggles.",
+            "heading": "",
+            "text": "<p>For founder Hazel Guo, the impetus to create Yoé was shaped by her own health struggles. <br/>After being diagnosed with multiple autoimmune disorders in her early 20’s, she devoted herself to the pursuit of nutritional and lifestyle research. With the help of her doctors, rounds of elimination diets, and a committed meditation practice, Guo succeeded in getting most of her symptoms to a manageable level, but she couldn’t fully heal her newly reactive skin. A luxury beauty devotee at heart, Guo was dismayed to find that once-favorite products were no longer tolerable; at the same time, organic and natural brands often fell short on performance and sensorial elegance. Driven to create something wholly novel, she met with numerous experts in skincare formulation—an exhaustive search that led her to an Italian-born cosmetic chemist who serves as the brand’s chief scientist and formulator of the SynerGenius™complex.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_Pt6xtd"
+      ],
+      "custom_css": [
+        ".row_section .text_in_div > div {width: 100%;}",
+        ".image-with-text__content > * + * {margin-top: 0;}",
+        ".row_section .image-with-text__content {width: 100%; justify-content: center;}",
+        "@media (max-width: 768px) {.multirow__inner .title_in_div {min-width: 100%; display: none; }}",
+        "@media (min-width: 768px) {.image-with-text__text {margin-top: 0; } {margin-top: 1.75rem; } .image-with-text__content {padding: 4.3rem; }}",
+        "@media (max-width: 768px) {.image-with-text__media {min-height: 120vw; } .image-with-text__media img {min-height: 120vw; }}"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-right",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "founder_message_Y8wktr": {
+      "type": "FounderMessage",
+      "settings": {
+        "founder_image": "shopify://shop_images/image_3.jpg",
+        "founder_name": "Hazel Guo",
+        "founder_message": "<p>YOÉ & CO. was born out of a deeply personal necessity and a desire to redefine beauty through the lens of science and ethics. The name \"Yoé\" draws inspiration from the Japanese word for \"good\", encapsulating our mission to create products that are beneficial in every sense.</p><p>In my early 20s, I faced an overwhelming health crisis. Diagnosed with a painful autoimmune disorder, I embarked on a relentless pursuit of healing through nutrition, lifestyle changes, and mindfulness. While I managed to bring most of my symptoms under control, my skin remained volatile and reactive. As a lover of luxury beauty products, the products I once adored were no longer suitable, and organic brands often fell short of the performance, sensory experience and elegance I craved.</p><p>This personal struggle inspired the creation of Yoé, a brand built on innovative biotechnology and clean, conscientious formulations. With the expertise of cosmetic scientist Luisa Fanzani, I created YOÉ & CO. , a line of clinical and dermatologist-tested, hypoallergenic skincare products suitable for even the most sensitive skin.</p><p>Our hero products, the Ympossible Creams, represent our commitment to clean beauty. They are meticulously crafted, and I am proud to say they are EWG Verified, vegan, fragrance-free, and Leaping Bunny certified.</p>",
+        "founder_message_02": "<p>At Yoé, we adhere to the highest standards, formulating without gluten, parabens, phthalates, petroleum, and over 3000 harmful substances. We go beyond industry expectations, leveraging pharmaceutical-grade advanced microencapsulation biotechnology to deliver botanicals and bioengineered actives designed for controlled release and targeted delivery, ensuring your skin gets what it needs, when it needs it.</p><p>Our philosophy is rooted in science-backed, clean formulations using biotech ingredients, high-design packaging, and sustainability initiatives.</p>",
+        "signature": "Founder, YOÉ & CO."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_RtGB66",
+    "multirow_EPrLik",
+    "founder_message_Y8wktr"
+  ]
+}

@@ -1,0 +1,205 @@
+{{ 'discovery-duo-stubborn-stats.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-stubborn"
+  style="--dd-stubborn-padding-top: {{ section.settings.padding_top }}px; --dd-stubborn-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.headline | default: 'Clinically proven results' | escape }}"
+>
+  <div class="dd-stubborn__inner">
+    <div class="dd-stubborn__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="dd-stubborn__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-stubborn__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-stubborn__subheadline">{{ section.settings.subheadline }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="dd-stubborn__stats">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stat' -%}
+              <li class="dd-stubborn__stat" {{ block.shopify_attributes }}>
+                {%- if block.settings.percentage != blank -%}
+                  <span class="dd-stubborn__stat-percentage">{{ block.settings.percentage }}</span>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <span class="dd-stubborn__stat-description">{{ block.settings.description }}</span>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.disclaimer != blank -%}
+        <p class="dd-stubborn__disclaimer">{{ section.settings.disclaimer }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
+        <a class="dd-stubborn__cta" href="{{ section.settings.cta_url }}">
+          {{ section.settings.cta_text }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
+      <div class="dd-stubborn__media">
+        <picture>
+          {%- if section.settings.mobile_image != blank -%}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ section.settings.mobile_image | image_url: width: 750 }}"
+            >
+          {%- endif -%}
+          {%- if section.settings.desktop_image != blank -%}
+            {{ section.settings.desktop_image | image_url: width: 1200 | image_tag:
+              loading: 'lazy',
+              class: 'dd-stubborn__image',
+              alt: section.settings.desktop_image.alt | default: section.settings.headline
+            }}
+          {%- endif -%}
+        </picture>
+
+        {%- if section.settings.overlay_label != blank or section.settings.overlay_text != blank -%}
+          <div class="dd-stubborn__overlay">
+            {%- if section.settings.overlay_label != blank -%}
+              <span class="dd-stubborn__overlay-label">{{ section.settings.overlay_label }}</span>
+            {%- endif -%}
+            {%- if section.settings.overlay_text != blank -%}
+              <span class="dd-stubborn__overlay-text">{{ section.settings.overlay_text }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discovery Duo – Stubborn stats",
+  "tag": "section",
+  "class": "section-dd-stubborn",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Clinical results"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "For stubborn lines, wrinkles & dehydration"
+    },
+    {
+      "type": "richtext",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "<p>Real users. Real, visible results in just 4 weeks of use.</p>"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "*Clinical study, 26 participants aged 35-63, 8-week period"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "overlay_label",
+      "label": "Overlay label",
+      "default": "REAL RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "overlay_text",
+      "label": "Overlay text",
+      "default": "Verified by clinical study"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "percentage",
+          "label": "Percentage",
+          "default": "95%"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Of users reported softer, smoother skin"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discovery Duo – Stubborn stats",
+      "blocks": [
+        { "type": "stat", "settings": { "percentage": "95%", "description": "Of users reported softer, smoother skin" } },
+        { "type": "stat", "settings": { "percentage": "68.5%", "description": "Of users saw visible reduction in wrinkles" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

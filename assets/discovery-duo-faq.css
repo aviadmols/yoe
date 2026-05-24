@@ -1,0 +1,234 @@
+/* Discovery Duo – FAQ accordion
+ * Desktop in rem (1rem = 20px); mobile in px.
+ */
+
+.dd-faq {
+  width: 100%;
+  padding-top: var(--dd-faq-padding-top, 4rem);
+  padding-bottom: var(--dd-faq-padding-bottom, 4rem);
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  color: #666460;
+}
+
+.dd-faq__inner {
+  max-width: 48rem; /* 960px */
+  margin: 0 auto;
+  padding: 0 4rem;
+  box-sizing: border-box;
+}
+
+.dd-faq__header {
+  text-align: center;
+  margin-bottom: 2.4rem; /* 48px */
+}
+
+.dd-faq__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: #bd1e18;
+  font-variation-settings: "wdth" 80;
+  margin-bottom: 0.6rem;
+}
+
+.dd-faq__headline {
+  margin: 0 0 0.6rem 0;
+  font-size: 2.4rem; /* 48px */
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  color: #666460;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-faq__subheadline {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.dd-faq__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dd-faq__item {
+  border-bottom: 0.05rem solid rgba(102, 100, 96, 0.18); /* 1px */
+}
+
+.dd-faq__item:first-child {
+  border-top: 0.05rem solid rgba(102, 100, 96, 0.18); /* 1px */
+}
+
+.dd-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 0; /* 25px */
+  background: none;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: #666460;
+  cursor: pointer;
+  font-size: 1rem; /* 20px */
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.02rem;
+  font-variation-settings: "wdth" 85;
+  transition: color 0.2s ease;
+}
+
+.dd-faq__question:hover,
+.dd-faq__question:focus-visible {
+  color: #bd1e18;
+}
+
+.dd-faq__question:focus-visible {
+  outline: 0.1rem solid #bd1e18; /* 2px */
+  outline-offset: 0.2rem; /* 4px */
+}
+
+.dd-faq__question-text {
+  flex: 1;
+}
+
+.dd-faq__question-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem; /* 32px */
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 0.05rem solid #666460; /* 1px */
+  color: #666460;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.dd-faq__item.is-active .dd-faq__question-icon {
+  background-color: #bd1e18;
+  border-color: #bd1e18;
+  color: #ffffff;
+  transform: rotate(45deg); /* + becomes × */
+}
+
+.dd-faq__answer {
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.dd-faq__answer[hidden] {
+  display: block;
+  height: 0;
+}
+
+.dd-faq__answer-inner {
+  padding: 0 0 1.5rem 0;
+  font-size: 0.85rem; /* 17px */
+  line-height: 1.6;
+  color: #666460;
+  max-width: 38rem;
+}
+
+.dd-faq__answer-inner p {
+  margin: 0 0 0.8rem 0;
+}
+
+.dd-faq__answer-inner p:last-child {
+  margin-bottom: 0;
+}
+
+.dd-faq__answer-inner ul,
+.dd-faq__answer-inner ol {
+  margin: 0 0 0.8rem 0;
+  padding-left: 1.2rem;
+}
+
+.dd-faq__answer-inner li {
+  margin-bottom: 0.3rem;
+}
+
+.dd-faq__answer-inner a {
+  color: #bd1e18;
+  text-decoration: underline;
+}
+
+.dd-faq__contact {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666460;
+}
+
+.dd-faq__contact-link {
+  margin-left: 0.4rem;
+  color: #bd1e18;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* ============================================================
+ * MOBILE (max-width: 749px) — px values
+ * ============================================================ */
+
+@media screen and (max-width: 749px) {
+  .dd-faq {
+    padding-top: var(--dd-faq-padding-top, 48px);
+    padding-bottom: var(--dd-faq-padding-bottom, 48px);
+  }
+
+  .dd-faq__inner {
+    padding: 0 20px;
+  }
+
+  .dd-faq__header {
+    margin-bottom: 28px;
+  }
+
+  .dd-faq__eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .dd-faq__headline {
+    font-size: 26px;
+    letter-spacing: 0.6px;
+  }
+
+  .dd-faq__subheadline {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .dd-faq__question {
+    padding: 18px 0;
+    font-size: 15px;
+    gap: 14px;
+  }
+
+  .dd-faq__question-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dd-faq__answer-inner {
+    padding-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .dd-faq__contact {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+}

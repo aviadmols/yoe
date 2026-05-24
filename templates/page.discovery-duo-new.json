@@ -11,6 +11,7 @@
   "sections": {
     "custom_button_section_adKJta": {
       "type": "Custom-Button-Section",
+      "disabled": true,
       "settings": {
         "title": ""
       }
@@ -25,6 +26,31 @@
     },
     "dd_hero": {
       "type": "discovery-duo-hero",
+      "blocks": {
+        "award_1": {
+          "type": "award",
+          "settings": {
+            "alt_text": "Cosmopolitan"
+          }
+        },
+        "award_2": {
+          "type": "award",
+          "settings": {
+            "alt_text": "Women's Health Beauty Awards 2025"
+          }
+        },
+        "award_3": {
+          "type": "award",
+          "settings": {
+            "alt_text": "Oprah Daily Beauty O-Wards 2024"
+          }
+        }
+      },
+      "block_order": [
+        "award_1",
+        "award_2",
+        "award_3"
+      ],
       "settings": {
         "badge_text": "Clinically proven",
         "headline": "Visibly firms, lifts, reduces fine lines and boosts hydration.",
@@ -32,6 +58,7 @@
         "cta_label": "TRY BOTH FOR",
         "cta_compare_price": "$86",
         "cta_price": "$48",
+        "cta_url": "",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
         "trust_3": "First-Time Offer",
@@ -39,85 +66,274 @@
         "rating_text": "1,000+ Verified Buyers",
         "padding_top": 0,
         "padding_bottom": 0
-      },
-      "blocks": {
-        "award_1": { "type": "award", "settings": { "alt_text": "Cosmopolitan" } },
-        "award_2": { "type": "award", "settings": { "alt_text": "Women's Health Beauty Awards 2025" } },
-        "award_3": { "type": "award", "settings": { "alt_text": "Oprah Daily Beauty O-Wards 2024" } }
-      },
-      "block_order": ["award_1", "award_2", "award_3"]
+      }
     },
     "dd_stats_banner": {
       "type": "discovery-duo-stats-banner",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "timing": "WEEK 4",
+            "percentage": "-86.8%",
+            "is_negative": true,
+            "description": "Fine lines reduced"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "timing": "WEEK 4",
+            "percentage": "-65.1%",
+            "is_negative": true,
+            "description": "Wrinkles reduced"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "timing": "WEEK 4",
+            "percentage": "+127.1%",
+            "is_negative": false,
+            "description": "Hydration boost"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "timing": "WEEK 4",
+            "percentage": "+50.6%",
+            "is_negative": false,
+            "description": "Firmness increase"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
       "settings": {
         "eyebrow": "Clinically tested",
         "headline": "Visibly Transformed",
         "subheadline": "Yes, in just 4 weeks",
-        "disclaimer": "*Clinical study, 26 participants aged 35-63, 8-week period"
-      },
-      "blocks": {
-        "stat_1": { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "-86.8%", "is_negative": true, "description": "Fine lines reduced" } },
-        "stat_2": { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "-65.1%", "is_negative": true, "description": "Wrinkles reduced" } },
-        "stat_3": { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "+127.1%", "is_negative": false, "description": "Hydration boost" } },
-        "stat_4": { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "+50.6%", "is_negative": false, "description": "Firmness increase" } }
-      },
-      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"]
+        "disclaimer": "*Clinical study, 26 participants aged 35-63, 8-week period",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     },
     "dd_two_formulas": {
       "type": "discovery-duo-two-formulas",
+      "blocks": {
+        "formula_1": {
+          "type": "formula",
+          "settings": {
+            "label": "FORMULA 1",
+            "title": "HA + Retinol Active",
+            "description": "<p>Lightweight, fast-absorbing serum to firm, smooth and brighten.</p>",
+            "tagline": "Serum"
+          }
+        },
+        "formula_2": {
+          "type": "formula",
+          "settings": {
+            "label": "FORMULA 2",
+            "title": "Cream Booster",
+            "description": "<p>Rich, nourishing cream that locks in hydration and seals the routine.</p>",
+            "tagline": "Cream"
+          }
+        }
+      },
+      "block_order": [
+        "formula_1",
+        "formula_2"
+      ],
       "settings": {
         "eyebrow": "The Discovery Duo",
-        "headline": "Two formulas. One complete routine."
-      },
-      "blocks": {
-        "formula_1": { "type": "formula", "settings": { "label": "FORMULA 1", "title": "HA + Retinol Active", "description": "<p>Lightweight, fast-absorbing serum to firm, smooth and brighten.</p>", "tagline": "Serum" } },
-        "formula_2": { "type": "formula", "settings": { "label": "FORMULA 2", "title": "Cream Booster", "description": "<p>Rich, nourishing cream that locks in hydration and seals the routine.</p>", "tagline": "Cream" } }
-      },
-      "block_order": ["formula_1", "formula_2"]
+        "headline": "Two formulas. One complete routine.",
+        "subheadline": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_compare": {
       "type": "discovery-duo-formula-comparison",
+      "blocks": {
+        "l1": {
+          "type": "left_item",
+          "settings": {
+            "text": "Reduces fine lines & wrinkles"
+          }
+        },
+        "l2": {
+          "type": "left_item",
+          "settings": {
+            "text": "Boosts collagen production"
+          }
+        },
+        "l3": {
+          "type": "left_item",
+          "settings": {
+            "text": "Brightens & evens skin tone"
+          }
+        },
+        "l4": {
+          "type": "left_item",
+          "settings": {
+            "text": "Targets dark spots & pigmentation"
+          }
+        },
+        "l5": {
+          "type": "left_item",
+          "settings": {
+            "text": "Improves firmness & elasticity"
+          }
+        },
+        "r1": {
+          "type": "right_item",
+          "settings": {
+            "text": "Deep, long-lasting hydration"
+          }
+        },
+        "r2": {
+          "type": "right_item",
+          "settings": {
+            "text": "Strengthens skin barrier"
+          }
+        },
+        "r3": {
+          "type": "right_item",
+          "settings": {
+            "text": "Smooths skin texture"
+          }
+        },
+        "r4": {
+          "type": "right_item",
+          "settings": {
+            "text": "Soothes irritation & redness"
+          }
+        },
+        "r5": {
+          "type": "right_item",
+          "settings": {
+            "text": "Defends against pollution & UV"
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ],
       "settings": {
         "eyebrow": "How they work",
         "headline": "HA + Retinol Active vs. Cream Booster",
+        "subheadline": "",
         "center_label": "+",
+        "disclaimer": "",
         "left_title": "HA + Retinol Active",
         "left_subtitle": "Lightweight, fast-absorbing serum",
         "right_title": "Cream Booster",
-        "right_subtitle": "Rich, nourishing cream"
-      },
-      "blocks": {
-        "l1": { "type": "left_item", "settings": { "text": "Reduces fine lines & wrinkles" } },
-        "l2": { "type": "left_item", "settings": { "text": "Boosts collagen production" } },
-        "l3": { "type": "left_item", "settings": { "text": "Brightens & evens skin tone" } },
-        "l4": { "type": "left_item", "settings": { "text": "Targets dark spots & pigmentation" } },
-        "l5": { "type": "left_item", "settings": { "text": "Improves firmness & elasticity" } },
-        "r1": { "type": "right_item", "settings": { "text": "Deep, long-lasting hydration" } },
-        "r2": { "type": "right_item", "settings": { "text": "Strengthens skin barrier" } },
-        "r3": { "type": "right_item", "settings": { "text": "Smooths skin texture" } },
-        "r4": { "type": "right_item", "settings": { "text": "Soothes irritation & redness" } },
-        "r5": { "type": "right_item", "settings": { "text": "Defends against pollution & UV" } }
-      },
-      "block_order": ["l1", "l2", "l3", "l4", "l5", "r1", "r2", "r3", "r4", "r5"]
+        "right_subtitle": "Rich, nourishing cream",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_stubborn": {
       "type": "discovery-duo-stubborn-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "percentage": "95%",
+            "description": "Of users reported softer, smoother skin"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "percentage": "68.5%",
+            "description": "Of users saw visible reduction in wrinkles"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2"
+      ],
       "settings": {
         "eyebrow": "Clinical results",
         "headline": "For stubborn lines, wrinkles & dehydration",
         "subheadline": "<p>Real users. Real, visible results in just 4 weeks of use.</p>",
         "disclaimer": "*Clinical study, 26 participants aged 35-63, 8-week period",
+        "cta_text": "",
+        "cta_url": "",
         "overlay_label": "REAL RESULTS",
-        "overlay_text": "Verified by clinical study"
-      },
-      "blocks": {
-        "stat_1": { "type": "stat", "settings": { "percentage": "95%", "description": "Of users reported softer, smoother skin" } },
-        "stat_2": { "type": "stat", "settings": { "percentage": "68.5%", "description": "Of users saw visible reduction in wrinkles" } }
-      },
-      "block_order": ["stat_1", "stat_2"]
+        "overlay_text": "Verified by clinical study",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_buy": {
       "type": "discovery-duo-buy-box",
+      "blocks": {
+        "thumb_1": {
+          "type": "thumb",
+          "settings": {}
+        },
+        "thumb_2": {
+          "type": "thumb",
+          "settings": {}
+        },
+        "thumb_3": {
+          "type": "thumb",
+          "settings": {}
+        },
+        "thumb_4": {
+          "type": "thumb",
+          "settings": {}
+        },
+        "thumb_5": {
+          "type": "thumb",
+          "settings": {}
+        },
+        "trust_1": {
+          "type": "trust",
+          "settings": {
+            "text": "Free Express Shipping"
+          }
+        },
+        "trust_2": {
+          "type": "trust",
+          "settings": {
+            "text": "30-Day Money-Back"
+          }
+        },
+        "trust_3": {
+          "type": "trust",
+          "settings": {
+            "text": "First-Time Offer"
+          }
+        }
+      },
+      "block_order": [
+        "thumb_1",
+        "thumb_2",
+        "thumb_3",
+        "thumb_4",
+        "thumb_5",
+        "trust_1",
+        "trust_2",
+        "trust_3"
+      ],
       "settings": {
         "eyebrow": "The Discovery Duo",
         "product_name": "Discovery Duo",
@@ -126,87 +342,224 @@
         "price": "$48",
         "price_suffix": "USD",
         "cta_text": "TRY DISCOVERY DUO",
-        "disclaimer": "*For First-Time Customers Only"
-      },
-      "blocks": {
-        "thumb_1": { "type": "thumb" },
-        "thumb_2": { "type": "thumb" },
-        "thumb_3": { "type": "thumb" },
-        "thumb_4": { "type": "thumb" },
-        "thumb_5": { "type": "thumb" },
-        "trust_1": { "type": "trust", "settings": { "text": "Free Express Shipping" } },
-        "trust_2": { "type": "trust", "settings": { "text": "30-Day Money-Back" } },
-        "trust_3": { "type": "trust", "settings": { "text": "First-Time Offer" } }
-      },
-      "block_order": ["thumb_1", "thumb_2", "thumb_3", "thumb_4", "thumb_5", "trust_1", "trust_2", "trust_3"]
+        "cta_url": "",
+        "disclaimer": "*For First-Time Customers Only",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_reviews": {
       "type": "discovery-duo-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "title": "Skin transformed",
+            "quote": "<p>I've tried so many serums, but this one actually delivers. My skin looks plumper and brighter in just a few weeks.</p>",
+            "author": "— Sarah K.",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "title": "Smoother & brighter",
+            "quote": "<p>Fine lines noticeably reduced. The duo is now part of my daily routine.</p>",
+            "author": "— Maya R.",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "title": "Best skincare investment",
+            "quote": "<p>Worth every dollar. My complexion has never looked this even.</p>",
+            "author": "— Anna L.",
+            "verified": true
+          }
+        },
+        "cert_1": {
+          "type": "certification",
+          "settings": {
+            "label": "Cruelty-Free"
+          }
+        },
+        "cert_2": {
+          "type": "certification",
+          "settings": {
+            "label": "Vegan"
+          }
+        },
+        "cert_3": {
+          "type": "certification",
+          "settings": {
+            "label": "EWG Verified"
+          }
+        },
+        "cert_4": {
+          "type": "certification",
+          "settings": {
+            "label": "Fragrance-Free"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "cert_1",
+        "cert_2",
+        "cert_3",
+        "cert_4"
+      ],
       "settings": {
         "headline": "Loved by 1,000+ verified buyers",
         "rating_value": "4.9",
-        "rating_text": "1,000+ Verified Buyers"
-      },
-      "blocks": {
-        "review_1": { "type": "review", "settings": { "title": "Skin transformed", "quote": "<p>I've tried so many serums, but this one actually delivers. My skin looks plumper and brighter in just a few weeks.</p>", "author": "— Sarah K.", "verified": true } },
-        "review_2": { "type": "review", "settings": { "title": "Smoother & brighter", "quote": "<p>Fine lines noticeably reduced. The duo is now part of my daily routine.</p>", "author": "— Maya R.", "verified": true } },
-        "review_3": { "type": "review", "settings": { "title": "Best skincare investment", "quote": "<p>Worth every dollar. My complexion has never looked this even.</p>", "author": "— Anna L.", "verified": true } },
-        "cert_1": { "type": "certification", "settings": { "label": "Cruelty-Free" } },
-        "cert_2": { "type": "certification", "settings": { "label": "Vegan" } },
-        "cert_3": { "type": "certification", "settings": { "label": "EWG Verified" } },
-        "cert_4": { "type": "certification", "settings": { "label": "Fragrance-Free" } }
-      },
-      "block_order": ["review_1", "review_2", "review_3", "cert_1", "cert_2", "cert_3", "cert_4"]
+        "rating_text": "1,000+ Verified Buyers",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_refill": {
       "type": "discovery-duo-refillable",
+      "blocks": {
+        "pillar_1": {
+          "type": "pillar",
+          "settings": {
+            "title": "Refillable",
+            "description": "Reusable bottles refill at home to reduce single-use packaging."
+          }
+        },
+        "pillar_2": {
+          "type": "pillar",
+          "settings": {
+            "title": "Recyclable",
+            "description": "Glass + minimum 50% post-consumer recycled materials throughout."
+          }
+        },
+        "pillar_3": {
+          "type": "pillar",
+          "settings": {
+            "title": "Responsible",
+            "description": "No adhesives, metal-free pumps, optimized for recycling at end of life."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_1",
+        "pillar_2",
+        "pillar_3"
+      ],
       "settings": {
         "eyebrow": "Sustainability",
         "headline": "Refillable. Recyclable. Responsible.",
         "subheadline": "<p>Our refillable system is designed to minimize our carbon footprint and the overall environmental impact of every product.</p>",
-        "cta_text": "LEARN ABOUT OUR IMPACT"
-      },
-      "blocks": {
-        "pillar_1": { "type": "pillar", "settings": { "title": "Refillable", "description": "Reusable bottles refill at home to reduce single-use packaging." } },
-        "pillar_2": { "type": "pillar", "settings": { "title": "Recyclable", "description": "Glass + minimum 50% post-consumer recycled materials throughout." } },
-        "pillar_3": { "type": "pillar", "settings": { "title": "Responsible", "description": "No adhesives, metal-free pumps, optimized for recycling at end of life." } }
-      },
-      "block_order": ["pillar_1", "pillar_2", "pillar_3"]
+        "cta_text": "LEARN ABOUT OUR IMPACT",
+        "cta_url": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_retailer": {
       "type": "discovery-duo-retailer-gallery",
+      "blocks": {
+        "retailer_1": {
+          "type": "retailer",
+          "settings": {
+            "alt": "Bloomingdale's",
+            "url": ""
+          }
+        },
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "caption": "Morning prep"
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "caption": "Evening reset"
+          }
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {
+            "caption": "On-the-go"
+          }
+        }
+      },
+      "block_order": [
+        "retailer_1",
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
       "settings": {
         "retailers_label": "AS SEEN AT",
         "eyebrow": "Editorial",
         "headline": "In the routine",
-        "subheadline": "See Discovery Duo in everyday rituals — from morning prep to evening reset."
-      },
-      "blocks": {
-        "retailer_1": { "type": "retailer", "settings": { "alt": "Bloomingdale's" } },
-        "image_1": { "type": "image", "settings": { "caption": "Morning prep" } },
-        "image_2": { "type": "image", "settings": { "caption": "Evening reset" } },
-        "image_3": { "type": "image", "settings": { "caption": "On-the-go" } }
-      },
-      "block_order": ["retailer_1", "image_1", "image_2", "image_3"]
+        "subheadline": "See Discovery Duo in everyday rituals — from morning prep to evening reset.",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     },
     "dd_faq": {
       "type": "discovery-duo-faq",
+      "blocks": {
+        "qa_1": {
+          "type": "qa",
+          "settings": {
+            "question": "What is the Discovery Duo?",
+            "answer": "<p>The Discovery Duo pairs the HA + Retinol Active serum with the Cream Booster, giving you a complete daily routine in two products.</p>"
+          }
+        },
+        "qa_2": {
+          "type": "qa",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Many users see visible improvements in hydration within one week and clearer changes in firmness and fine lines after four weeks of daily use.</p>"
+          }
+        },
+        "qa_3": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it suitable for sensitive skin?",
+            "answer": "<p>Yes. Both formulas are dermatologist-tested, hypoallergenic and suitable for all skin types, including sensitive skin and during pregnancy.</p>"
+          }
+        },
+        "qa_4": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I use the duo?",
+            "answer": "<p>Apply the HA + Retinol Active serum first to cleansed skin, then layer the Cream Booster on top. Use morning and evening.</p>"
+          }
+        },
+        "qa_5": {
+          "type": "qa",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes — we ship to most countries. Shipping rates and delivery times appear at checkout based on your address.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "qa_1",
+        "qa_2",
+        "qa_3",
+        "qa_4",
+        "qa_5"
+      ],
       "settings": {
         "eyebrow": "Help centre",
         "headline": "Frequently Asked Questions",
         "subheadline": "Everything you need to know about Discovery Duo.",
         "contact_text": "Still have questions?",
         "contact_link_text": "Get in touch",
-        "contact_link_url": "/pages/contact"
-      },
-      "blocks": {
-        "qa_1": { "type": "qa", "settings": { "question": "What is the Discovery Duo?", "answer": "<p>The Discovery Duo pairs the HA + Retinol Active serum with the Cream Booster, giving you a complete daily routine in two products.</p>" } },
-        "qa_2": { "type": "qa", "settings": { "question": "How long until I see results?", "answer": "<p>Many users see visible improvements in hydration within one week and clearer changes in firmness and fine lines after four weeks of daily use.</p>" } },
-        "qa_3": { "type": "qa", "settings": { "question": "Is it suitable for sensitive skin?", "answer": "<p>Yes. Both formulas are dermatologist-tested, hypoallergenic and suitable for all skin types, including sensitive skin and during pregnancy.</p>" } },
-        "qa_4": { "type": "qa", "settings": { "question": "How do I use the duo?", "answer": "<p>Apply the HA + Retinol Active serum first to cleansed skin, then layer the Cream Booster on top. Use morning and evening.</p>" } },
-        "qa_5": { "type": "qa", "settings": { "question": "Do you ship internationally?", "answer": "<p>Yes — we ship to most countries. Shipping rates and delivery times appear at checkout based on your address.</p>" } }
-      },
-      "block_order": ["qa_1", "qa_2", "qa_3", "qa_4", "qa_5"]
+        "contact_link_url": "/pages/contact",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [

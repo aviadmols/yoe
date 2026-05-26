@@ -3,201 +3,141 @@
 <section
   class="dd-stubborn"
   style="--dd-stubborn-padding-top: {{ section.settings.padding_top }}px; --dd-stubborn-padding-bottom: {{ section.settings.padding_bottom }}px;"
-  aria-label="{{ section.settings.headline | default: 'Clinically proven results' | escape }}"
+  aria-label="{{ section.settings.headline | default: 'Formulated without' | escape }}"
 >
   <div class="dd-stubborn__inner">
     <div class="dd-stubborn__content">
       {%- if section.settings.eyebrow != blank -%}
-        <span class="dd-stubborn__eyebrow">{{ section.settings.eyebrow }}</span>
+        <span class="dd-stubborn__eyebrow">{{ section.settings.eyebrow | escape }}</span>
       {%- endif -%}
-
       {%- if section.settings.headline != blank -%}
-        <h2 class="dd-stubborn__headline">{{ section.settings.headline }}</h2>
+        <h2 class="dd-stubborn__headline">{{ section.settings.headline | escape }}</h2>
       {%- endif -%}
-
       {%- if section.settings.subheadline != blank -%}
-        <p class="dd-stubborn__subheadline">{{ section.settings.subheadline }}</p>
+        <div class="dd-stubborn__subheadline">{{ section.settings.subheadline }}</div>
       {%- endif -%}
 
-      {%- if section.blocks.size > 0 -%}
-        <ul class="dd-stubborn__stats">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'stat' -%}
-              <li class="dd-stubborn__stat" {{ block.shopify_attributes }}>
-                {%- if block.settings.percentage != blank -%}
-                  <span class="dd-stubborn__stat-percentage">{{ block.settings.percentage }}</span>
-                {%- endif -%}
-                {%- if block.settings.description != blank -%}
-                  <span class="dd-stubborn__stat-description">{{ block.settings.description }}</span>
-                {%- endif -%}
-              </li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ul>
+      <ul class="dd-stubborn__icons">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'icon' -%}
+            <li {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                {{ block.settings.icon | image_url: width: 120 | image_tag: loading: 'lazy', class: 'dd-stubborn__icon-image', alt: block.settings.label }}
+              {%- else -%}
+                <span class="dd-stubborn__icon-placeholder" aria-hidden="true"></span>
+              {%- endif -%}
+              <span>{{ block.settings.label | escape }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.without_heading != blank -%}
+        <p class="dd-stubborn__without-heading">{{ section.settings.without_heading | escape }}</p>
       {%- endif -%}
 
-      {%- if section.settings.disclaimer != blank -%}
-        <p class="dd-stubborn__disclaimer">{{ section.settings.disclaimer }}</p>
-      {%- endif -%}
-
-      {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
-        <a class="dd-stubborn__cta" href="{{ section.settings.cta_url }}">
-          {{ section.settings.cta_text }}
-        </a>
-      {%- endif -%}
+      <ul class="dd-stubborn__without">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'without' -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
     </div>
 
-    {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
+    <div class="dd-stubborn__media-card">
+      {%- if section.settings.image_heading != blank -%}
+        <h3 class="dd-stubborn__media-heading">{{ section.settings.image_heading | escape }}</h3>
+      {%- endif -%}
       <div class="dd-stubborn__media">
-        <picture>
-          {%- if section.settings.mobile_image != blank -%}
-            <source
-              media="(max-width: 749px)"
-              srcset="{{ section.settings.mobile_image | image_url: width: 750 }}"
-            >
-          {%- endif -%}
-          {%- if section.settings.desktop_image != blank -%}
-            {{ section.settings.desktop_image | image_url: width: 1200 | image_tag:
-              loading: 'lazy',
-              class: 'dd-stubborn__image',
-              alt: section.settings.desktop_image.alt | default: section.settings.headline
-            }}
-          {%- endif -%}
-        </picture>
-
-        {%- if section.settings.overlay_label != blank or section.settings.overlay_text != blank -%}
-          <div class="dd-stubborn__overlay">
-            {%- if section.settings.overlay_label != blank -%}
-              <span class="dd-stubborn__overlay-label">{{ section.settings.overlay_label }}</span>
+        {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
+          <picture>
+            {%- if section.settings.mobile_image != blank -%}
+              <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 750 }}">
             {%- endif -%}
-            {%- if section.settings.overlay_text != blank -%}
-              <span class="dd-stubborn__overlay-text">{{ section.settings.overlay_text }}</span>
+            {%- if section.settings.desktop_image != blank -%}
+              {{ section.settings.desktop_image | image_url: width: 900 | image_tag:
+                loading: 'lazy',
+                class: 'dd-stubborn__image',
+                alt: section.settings.desktop_image.alt | default: section.settings.image_heading
+              }}
             {%- endif -%}
-          </div>
+          </picture>
+        {%- else -%}
+          <span class="dd-stubborn__image-placeholder" aria-hidden="true"></span>
         {%- endif -%}
       </div>
-    {%- endif -%}
+
+      <ul class="dd-stubborn__stats">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <li class="dd-stubborn__stat" {{ block.shopify_attributes }}>
+              <span class="dd-stubborn__stat-percentage">{{ block.settings.percentage | escape }}</span>
+              <span class="dd-stubborn__stat-description">{{ block.settings.description | escape }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Duo – Stubborn stats",
+  "name": "Duo – Clean results",
   "tag": "section",
   "class": "section-dd-stubborn",
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Clinical results"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "Headline",
-      "default": "For stubborn lines, wrinkles & dehydration"
-    },
-    {
-      "type": "richtext",
-      "id": "subheadline",
-      "label": "Subheadline",
-      "default": "<p>Real users. Real, visible results in just 4 weeks of use.</p>"
-    },
-    {
-      "type": "text",
-      "id": "disclaimer",
-      "label": "Disclaimer",
-      "default": "*Clinical study, 26 participants aged 35-63, 8-week period"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "Button text"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Button link"
-    },
-    {
-      "type": "header",
-      "content": "Media"
-    },
-    {
-      "type": "image_picker",
-      "id": "desktop_image",
-      "label": "Desktop image"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Mobile image"
-    },
-    {
-      "type": "text",
-      "id": "overlay_label",
-      "label": "Overlay label",
-      "default": "REAL RESULTS"
-    },
-    {
-      "type": "text",
-      "id": "overlay_text",
-      "label": "Overlay text",
-      "default": "Verified by clinical study"
-    },
-    {
-      "type": "header",
-      "content": "Section padding"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
-      "min": 0,
-      "max": 200,
-      "step": 4,
-      "unit": "px",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 200,
-      "step": 4,
-      "unit": "px",
-      "default": 80
-    }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Clean, clinical, uncompromising" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Formulated without" },
+    { "type": "richtext", "id": "subheadline", "label": "Subheadline", "default": "<p>Free from more than 3,000 questionable ingredients while delivering visible clinical performance.</p>" },
+    { "type": "text", "id": "without_heading", "label": "Without list heading", "default": "Formulated without" },
+    { "type": "image_picker", "id": "desktop_image", "label": "Desktop image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "text", "id": "image_heading", "label": "Image heading", "default": "Visible results" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 }
   ],
   "blocks": [
     {
+      "type": "without",
+      "name": "Without item",
+      "limit": 16,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Parabens" }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "Certification icon",
+      "limit": 10,
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Vegan" }
+      ]
+    },
+    {
       "type": "stat",
-      "name": "Stat",
+      "name": "Result stat",
       "limit": 4,
       "settings": [
-        {
-          "type": "text",
-          "id": "percentage",
-          "label": "Percentage",
-          "default": "95%"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description",
-          "default": "Of users reported softer, smoother skin"
-        }
+        { "type": "text", "id": "percentage", "label": "Percentage", "default": "95%" },
+        { "type": "text", "id": "description", "label": "Description", "default": "reported softer, smoother skin" }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Duo – Stubborn stats",
+      "name": "Duo – Clean results",
       "blocks": [
-        { "type": "stat", "settings": { "percentage": "95%", "description": "Of users reported softer, smoother skin" } },
-        { "type": "stat", "settings": { "percentage": "68.5%", "description": "Of users saw visible reduction in wrinkles" } }
+        { "type": "without", "settings": { "text": "Parabens" } },
+        { "type": "without", "settings": { "text": "Phthalates" } },
+        { "type": "without", "settings": { "text": "Fragrance" } },
+        { "type": "without", "settings": { "text": "Silicones" } },
+        { "type": "icon", "settings": { "label": "EWG Verified" } },
+        { "type": "icon", "settings": { "label": "Vegan" } },
+        { "type": "stat", "settings": { "percentage": "95%", "description": "reported softer, smoother skin" } },
+        { "type": "stat", "settings": { "percentage": "68.9%", "description": "saw visible wrinkle reduction" } }
       ]
     }
   ]

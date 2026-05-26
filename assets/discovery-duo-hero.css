@@ -110,6 +110,10 @@
 
 /* ---------- CTA button ---------- */
 
+.dd-hero__form {
+  margin: 0;
+}
+
 .dd-hero__cta {
   display: inline-flex;
   align-items: center;
@@ -119,8 +123,12 @@
   padding: 0 1.5rem 0 5.35rem; /* matches Figma offsets */
   width: 25.285rem; /* 505.703px */
   height: 3.88rem; /* 77.597px */
+  border: 0;
+  border-radius: 0;
   background-color: #bd1e18;
   color: #f7f6f5;
+  cursor: pointer;
+  font-family: inherit;
   text-decoration: none;
   font-size: 1.217rem; /* 24.344px */
   font-weight: 660;
@@ -184,11 +192,21 @@
   line-height: 1.153rem; /* 23.063px */
   white-space: nowrap;
   font-family: "Open Sans", "DM Sans", sans-serif;
+  font-variation-settings: "wdth" 85;
 }
 
 .dd-hero__trust-check {
-  font-size: 0.85rem;
+  display: inline-flex;
+  width: 0.6rem;
+  height: 0.6rem;
+  flex: 0 0 auto;
   color: #666460;
+}
+
+.dd-hero__trust-check svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* ---------- Rating ---------- */
@@ -202,6 +220,7 @@
   line-height: 1.345rem; /* 26.907px */
   color: #666460;
   font-family: "Open Sans", "DM Sans", sans-serif;
+  font-variation-settings: "wdth" 85;
 }
 
 .dd-hero__rating-stars {
@@ -212,6 +231,58 @@
 .dd-hero__rating-value,
 .dd-hero__rating-text {
   font-weight: 400;
+}
+
+/* ---------- Editorial press quote ---------- */
+
+.dd-hero__press {
+  margin-top: 3.05rem; /* 61px */
+  display: grid;
+  grid-template-columns: minmax(0, 19.05rem) 5.3rem;
+  grid-template-areas:
+    "quote source"
+    "retailer retailer";
+  column-gap: 1.25rem;
+  align-items: center;
+  max-width: 25.6rem; /* 512px */
+}
+
+.dd-hero__press-quote {
+  grid-area: quote;
+  margin: 0;
+  color: #666460;
+  font-size: 2.07rem; /* 41.4px */
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.04rem;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-hero__press-source {
+  grid-area: source;
+  color: #666460;
+  font-family: "Roboto Mono", "Open Sans", sans-serif;
+  font-size: 0.668rem; /* 13.359px */
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: 0.07rem;
+  text-transform: uppercase;
+  max-width: 3.8rem;
+  font-variation-settings: "wdth" 100;
+}
+
+.dd-hero__retailer-note {
+  grid-area: retailer;
+  margin: 1.45rem 0 0;
+  color: #666460;
+  font-family: "Roboto Mono", "Open Sans", sans-serif;
+  font-size: 0.588rem; /* 11.756px */
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.09rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 75;
 }
 
 /* ---------- Product (center/right) ---------- */
@@ -280,10 +351,13 @@
     position: absolute;
     top: 110px;
     left: 32px;
-    right: 32px;
-    max-width: none;
+    right: auto;
+    width: 301px;
+    max-width: 301px;
     z-index: 2;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .dd-hero__badge {
@@ -293,14 +367,93 @@
     font-size: 11.95px;
     letter-spacing: 1.195px;
     line-height: 1.2;
+    font-variation-settings: "wdth" 75;
   }
 
-  /* Hide desktop-only elements on mobile per Figma 1:285 (mobile hero is visual-only) */
-  .dd-hero__headline,
-  .dd-hero__subheadline,
-  .dd-hero__cta,
-  .dd-hero__trust,
+  .dd-hero__headline {
+    display: block;
+    width: 301px;
+    max-width: 301px;
+    margin: 11px 0 0;
+    color: #666460;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 1.1px;
+    font-variation-settings: "wdth" 75;
+  }
+
+  .dd-hero__subheadline {
+    display: block;
+    margin: 16px 0 0;
+    color: #bd1e18;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.16;
+    letter-spacing: 0;
+    font-variation-settings: "wdth" 75;
+  }
+
+  .dd-hero__form {
+    width: 313px;
+    margin: 19px 0 0 -6px;
+  }
+
+  .dd-hero__cta {
+    display: inline-flex;
+    width: 313px;
+    height: 51px;
+    min-height: 51px;
+    margin-top: 0;
+    padding: 0 14px 0 66px;
+    gap: 5px;
+    box-shadow: none;
+    font-size: 16px;
+    line-height: 1.136;
+    letter-spacing: 0.32px;
+    font-variation-settings: "wdth" 77;
+  }
+
+  .dd-hero__cta-arrow {
+    width: 5px;
+    height: 14px;
+  }
+
+  .dd-hero__trust {
+    display: flex;
+    width: 338px;
+    margin: 15px 0 0 -14px;
+    gap: 9px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    font-size: 10.1px;
+    line-height: 16px;
+  }
+
+  .dd-hero__trust-item {
+    gap: 3px;
+    line-height: 16px;
+  }
+
+  .dd-hero__trust-check {
+    width: 10px;
+    height: 10px;
+  }
+
   .dd-hero__rating {
+    display: inline-flex;
+    align-self: center;
+    margin-top: 5px;
+    gap: 4px;
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .dd-hero__rating-stars {
+    letter-spacing: 0.35px;
+  }
+
+  .dd-hero__press {
     display: none;
   }
 

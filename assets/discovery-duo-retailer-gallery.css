@@ -31,7 +31,7 @@
 }
 
 .dd-retailer__retailers-label {
-  font-size: 0.65rem;
+  font-size: 0.833rem; /* 16.66px */
   font-weight: 700;
   letter-spacing: 0.16rem;
   text-transform: uppercase;
@@ -71,7 +71,7 @@
 
 .dd-retailer__eyebrow {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.9rem; /* 18px */
   font-weight: 700;
   letter-spacing: 0.14rem;
   text-transform: uppercase;
@@ -82,7 +82,7 @@
 
 .dd-retailer__headline {
   margin: 0 0 0.4rem 0;
-  font-size: 2.2rem; /* 44px */
+  font-size: 2.75rem; /* 55px */
   font-weight: 600;
   letter-spacing: 0.06rem;
   line-height: 1.15;
@@ -96,32 +96,85 @@
   max-width: 32rem;
   margin-left: auto;
   margin-right: auto;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 20px */
   line-height: 1.5;
+  font-variation-settings: "wdth" 85;
+}
+
+.dd-retailer__cta {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: 0.7rem 1.4rem;
+  border: 0.05rem solid #bd1e18;
+  color: #bd1e18;
+  font-size: 0.9rem; /* 18px */
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-variation-settings: "wdth" 80;
+}
+
+.dd-retailer__cta:hover {
+  background: #bd1e18;
+  color: #fff;
+}
+
+.dd-retailer__feature {
+  margin-bottom: 1.2rem;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  background: #e8e8e6;
+}
+
+.dd-retailer__feature-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* ---------- Gallery ---------- */
+
+.dd-retailer__slider {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+}
 
 .dd-retailer__gallery {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
+  display: flex;
+  gap: 0.12rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.dd-retailer__gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .dd-retailer__gallery-item {
+  flex: 0 0 22rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  scroll-snap-align: start;
 }
 
-.dd-retailer__gallery-item picture {
+.dd-retailer__gallery-item picture,
+.dd-retailer__gallery-placeholder {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 0.35rem; /* 7px */
+  aspect-ratio: 0.72 / 1;
+  border-radius: 0;
   overflow: hidden;
   background-color: #e8e8e6;
 }
@@ -134,9 +187,53 @@
 }
 
 .dd-retailer__gallery-caption {
-  font-size: 0.75rem;
+  font-size: 1rem; /* 20px */
   color: #666460;
   text-align: center;
+  font-variation-settings: "wdth" 85;
+}
+
+.dd-retailer__slider-button {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(247, 246, 245, 0.82);
+  color: #666460;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  transform: translateY(-50%);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dd-retailer__slider-button:hover,
+.dd-retailer__slider-button:focus-visible {
+  background: #bd1e18;
+  color: #fff;
+}
+
+.dd-retailer__slider-button span {
+  display: block;
+  font-size: 2.15rem;
+  font-weight: 300;
+  line-height: 1;
+  transform: translateY(-0.08rem);
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-retailer__slider-button--prev {
+  left: 1.1rem;
+}
+
+.dd-retailer__slider-button--next {
+  right: 1.1rem;
 }
 
 /* ============================================================
@@ -145,23 +242,22 @@
 
 @media screen and (max-width: 749px) {
   .dd-retailer {
-    padding-top: var(--dd-retailer-padding-top, 48px);
-    padding-bottom: var(--dd-retailer-padding-bottom, 48px);
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 
   .dd-retailer__inner {
-    padding: 0 20px;
+    padding: 0 18px;
   }
 
   .dd-retailer__retailers {
-    gap: 14px;
-    padding-bottom: 24px;
-    margin-bottom: 28px;
+    display: none;
   }
 
   .dd-retailer__retailers-label {
     font-size: 11px;
     letter-spacing: 2px;
+    font-variation-settings: "wdth" 80;
   }
 
   .dd-retailer__retailers-list {
@@ -173,35 +269,89 @@
   }
 
   .dd-retailer__header {
-    margin-bottom: 24px;
+    position: relative;
+    width: 339px;
+    max-width: 100%;
+    min-height: 50px;
+    margin: 0 auto 8px;
+    text-align: left;
   }
 
   .dd-retailer__eyebrow {
-    font-size: 11px;
-    letter-spacing: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 123px;
+    height: 50px;
+    margin: 0;
+    border: 1px solid #666460;
+    color: #666460;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    font-variation-settings: "wdth" 80;
   }
 
   .dd-retailer__headline {
+    width: 130px;
+    margin: 0;
+    padding-top: 7px;
     font-size: 24px;
-    letter-spacing: 0.6px;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+    font-variation-settings: "wdth" 75;
   }
 
   .dd-retailer__subheadline {
-    font-size: 14px;
-    margin-top: 8px;
+    display: none;
+  }
+
+  .dd-retailer__cta {
+    display: none;
+  }
+
+  .dd-retailer__slider {
+    width: 339px;
+    max-width: calc(100vw - 36px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .dd-retailer__gallery {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 12px;
   }
 
-  .dd-retailer__gallery-item picture {
-    border-radius: 7px;
-    aspect-ratio: 4 / 5;
+  .dd-retailer__gallery-item {
+    flex-basis: 339px;
+    max-width: calc(100vw - 36px);
+  }
+
+  .dd-retailer__gallery-item picture,
+  .dd-retailer__gallery-placeholder {
+    height: 308px;
+    border-radius: 0;
+    aspect-ratio: auto;
   }
 
   .dd-retailer__gallery-caption {
-    font-size: 12px;
+    display: none;
+  }
+
+  .dd-retailer__slider-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dd-retailer__slider-button--prev {
+    left: 8px;
+  }
+
+  .dd-retailer__slider-button--next {
+    right: 8px;
   }
 }

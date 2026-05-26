@@ -5,6 +5,9 @@
   style="--dd-refill-padding-top: {{ section.settings.padding_top }}px; --dd-refill-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Refillable, recyclable, responsible' | escape }}"
 >
+  {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
+
   <div class="dd-refill__inner">
     <header class="dd-refill__header">
       {%- if section.settings.eyebrow != blank -%}
@@ -16,59 +19,82 @@
       {%- if section.settings.subheadline != blank -%}
         <div class="dd-refill__subheadline">{{ section.settings.subheadline }}</div>
       {%- endif -%}
-    </header>
 
-    {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
-      <div class="dd-refill__media">
-        <picture>
-          {%- if section.settings.mobile_image != blank -%}
-            <source
-              media="(max-width: 749px)"
-              srcset="{{ section.settings.mobile_image | image_url: width: 750 }}"
-            >
-          {%- endif -%}
-          {%- if section.settings.desktop_image != blank -%}
-            {{ section.settings.desktop_image | image_url: width: 1800 | image_tag:
-              loading: 'lazy',
-              class: 'dd-refill__image',
-              alt: section.settings.desktop_image.alt | default: section.settings.headline
-            }}
-          {%- endif -%}
-        </picture>
-      </div>
-    {%- endif -%}
-
-    {%- if section.blocks.size > 0 -%}
-      <ul class="dd-refill__pillars">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'pillar' -%}
-            <li class="dd-refill__pillar" {{ block.shopify_attributes }}>
+      {%- assign cert_blocks = section.blocks | where: 'type', 'certification' -%}
+      {%- if cert_blocks.size > 0 -%}
+        <ul class="dd-refill__certs" aria-label="Sustainability certifications">
+          {%- for block in cert_blocks -%}
+            <li class="dd-refill__cert" {{ block.shopify_attributes }}>
               {%- if block.settings.icon != blank -%}
-                <div class="dd-refill__pillar-icon">
-                  {{ block.settings.icon | image_url: width: 120 | image_tag:
-                    loading: 'lazy',
-                    alt: ''
-                  }}
-                </div>
+                {{ block.settings.icon | image_url: width: 140 | image_tag:
+                  loading: 'lazy',
+                  class: 'dd-refill__cert-icon',
+                  alt: block.settings.label
+                }}
+              {%- else -%}
+                <span class="dd-refill__cert-placeholder" aria-hidden="true">{{ block.settings.placeholder | escape }}</span>
               {%- endif -%}
-              {%- if block.settings.title != blank -%}
-                <h3 class="dd-refill__pillar-title">{{ block.settings.title }}</h3>
-              {%- endif -%}
-              {%- if block.settings.description != blank -%}
-                <p class="dd-refill__pillar-description">{{ block.settings.description }}</p>
+              {%- if block.settings.label != blank -%}
+                <span class="dd-refill__cert-label">{{ block.settings.label | escape }}</span>
               {%- endif -%}
             </li>
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </header>
 
-    {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
-      <div class="dd-refill__cta-wrap">
-        <a class="dd-refill__cta" href="{{ section.settings.cta_url }}">
-          {{ section.settings.cta_text }}
-        </a>
-      </div>
+    <div class="dd-refill__visual">
+      {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
+        <div class="dd-refill__media">
+          <picture>
+            {%- if section.settings.mobile_image != blank -%}
+              <source
+                media="(max-width: 749px)"
+                srcset="{{ section.settings.mobile_image | image_url: width: 750 }}"
+              >
+            {%- endif -%}
+            {%- if section.settings.desktop_image != blank -%}
+              {{ section.settings.desktop_image | image_url: width: 1800 | image_tag:
+                loading: 'lazy',
+                class: 'dd-refill__image',
+                alt: section.settings.desktop_image.alt | default: section.settings.headline
+              }}
+            {%- endif -%}
+          </picture>
+        </div>
+      {%- else -%}
+        <div class="dd-refill__media dd-refill__media--placeholder" aria-hidden="true">
+          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--cap"></span>
+          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--pump"></span>
+          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--refill"></span>
+          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--bottle"></span>
+        </div>
+      {%- endif -%}
+
+      {%- assign pillar_blocks = section.blocks | where: 'type', 'pillar' -%}
+      {%- if pillar_blocks.size > 0 -%}
+        <ul class="dd-refill__pillars">
+          {%- for block in pillar_blocks -%}
+            <li class="dd-refill__pillar dd-refill__pillar--{{ forloop.index }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.title != blank -%}
+                <h3 class="dd-refill__pillar-title">{{ block.settings.title | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p class="dd-refill__pillar-description">{{ block.settings.description | escape }}</p>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <form class="dd-refill__cta-wrap" method="post" action="/cart/add">
+        {%- if cta_variant != blank -%}<input type="hidden" name="id" value="{{ cta_variant.id }}">{%- endif -%}
+        <button class="dd-refill__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
+          {{ section.settings.cta_text | escape }}
+        </button>
+      </form>
     {%- endif -%}
   </div>
 </section>
@@ -116,15 +142,15 @@
       "content": "Call to action"
     },
     {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product"
+    },
+    {
       "type": "text",
       "id": "cta_text",
       "label": "Button text",
       "default": "LEARN ABOUT OUR IMPACT"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Button link"
     },
     {
       "type": "header",
@@ -153,9 +179,32 @@
   ],
   "blocks": [
     {
+      "type": "certification",
+      "name": "Certification icon",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder text",
+          "default": "1%"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    },
+    {
       "type": "pillar",
       "name": "Pillar",
-      "limit": 4,
+      "limit": 5,
       "settings": [
         {
           "type": "image_picker",

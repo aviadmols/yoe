@@ -5,42 +5,94 @@
   style="--dd-stats-padding-top: {{ section.settings.padding_top }}px; --dd-stats-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Visibly transformed' | escape }}"
 >
+  {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
+
   <div class="dd-stats__inner">
     <header class="dd-stats__header">
-      {%- if section.settings.eyebrow != blank -%}
-        <span class="dd-stats__eyebrow">{{ section.settings.eyebrow }}</span>
-      {%- endif -%}
       {%- if section.settings.headline != blank -%}
-        <h2 class="dd-stats__headline">{{ section.settings.headline }}</h2>
-      {%- endif -%}
-      {%- if section.settings.subheadline != blank -%}
-        <p class="dd-stats__subheadline">{{ section.settings.subheadline }}</p>
+        <h2 class="dd-stats__headline">{{ section.settings.headline | escape }}</h2>
       {%- endif -%}
     </header>
 
     {%- if section.blocks.size > 0 -%}
-      <ul class="dd-stats__grid">
+      <div class="dd-stats__products">
         {%- for block in section.blocks -%}
-          {%- if block.type == 'stat' -%}
-            <li class="dd-stats__item" {{ block.shopify_attributes }}>
-              {%- if block.settings.timing != blank -%}
-                <span class="dd-stats__item-timing">{{ block.settings.timing }}</span>
+          {%- if block.type == 'product_result' -%}
+            <article class="dd-stats__product" {{ block.shopify_attributes }}>
+              {%- if block.settings.product_name != blank -%}
+                {%- assign product_name = block.settings.product_name | escape -%}
+                {%- assign product_name = product_name | replace: ' LIGHT', ' <span class="dd-stats__product-name-light">LIGHT</span>' | replace: ' Light', ' <span class="dd-stats__product-name-light">Light</span>' -%}
+                <h3 class="dd-stats__product-name">{{ product_name }}</h3>
               {%- endif -%}
-              {%- if block.settings.percentage != blank -%}
-                <span class="dd-stats__item-percentage{% if block.settings.is_negative %} dd-stats__item-percentage--negative{% endif %}">{{ block.settings.percentage }}</span>
+
+              <div class="dd-stats__product-body">
+                <ul class="dd-stats__stats">
+                  {%- for index in (1..4) -%}
+                    {%- assign top_key = 'stat_' | append: index | append: '_top' -%}
+                    {%- assign percent_key = 'stat_' | append: index | append: '_percentage' -%}
+                    {%- assign bottom_key = 'stat_' | append: index | append: '_bottom' -%}
+                    {%- if block.settings[percent_key] != blank -%}
+                      <li class="dd-stats__stat">
+                        {%- if block.settings[top_key] != blank -%}
+                          <span class="dd-stats__stat-top">{{ block.settings[top_key] | escape }}</span>
+                        {%- endif -%}
+                        <span class="dd-stats__stat-percentage">{{ block.settings[percent_key] | escape }}</span>
+                        {%- if block.settings[bottom_key] != blank -%}
+                          <span class="dd-stats__stat-bottom">{{ block.settings[bottom_key] | escape }}</span>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+
+                <figure class="dd-stats__media" aria-label="{{ block.settings.product_name | escape }} before and after image">
+                  {%- if block.settings.before_after_image != blank -%}
+                    {{ block.settings.before_after_image | image_url: width: 700 | image_tag:
+                      loading: 'lazy',
+                      class: 'dd-stats__media-image',
+                      alt: block.settings.before_after_image.alt | default: block.settings.product_name
+                    }}
+                  {%- else -%}
+                    <span class="dd-stats__media-placeholder" aria-hidden="true"></span>
+                  {%- endif -%}
+                </figure>
+              </div>
+
+              {%- if block.settings.disclaimer != blank -%}
+                <p class="dd-stats__product-disclaimer">{{ block.settings.disclaimer | escape }}</p>
               {%- endif -%}
-              {%- if block.settings.description != blank -%}
-                <span class="dd-stats__item-description">{{ block.settings.description }}</span>
-              {%- endif -%}
-            </li>
+            </article>
           {%- endif -%}
         {%- endfor -%}
-      </ul>
+      </div>
     {%- endif -%}
 
-    {%- if section.settings.disclaimer != blank -%}
-      <p class="dd-stats__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- if section.settings.cta_label != blank -%}
+      <form class="dd-stats__form" method="post" action="/cart/add">
+        {%- if cta_variant != blank -%}
+          <input type="hidden" name="id" value="{{ cta_variant.id }}">
+        {%- endif -%}
+        <button class="dd-stats__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
+          <span>{{ section.settings.cta_label | escape }}</span>
+          {%- if section.settings.cta_compare_price != blank -%}
+            <span class="dd-stats__cta-old">{{ section.settings.cta_compare_price | escape }}</span>
+          {%- endif -%}
+          {%- if cta_product != blank -%}
+            <span>{{ cta_product.price | money_without_trailing_zeros }}</span>
+          {%- elsif section.settings.cta_price != blank -%}
+            <span>{{ section.settings.cta_price | escape }}</span>
+          {%- endif -%}
+          <span class="dd-stats__cta-arrow" aria-hidden="true">›</span>
+        </button>
+      </form>
     {%- endif -%}
+
+    <ul class="dd-stats__trust">
+      {%- if section.settings.trust_1 != blank -%}<li>{% render 'dd-check-icon' %}{{ section.settings.trust_1 | escape }}</li>{%- endif -%}
+      {%- if section.settings.trust_2 != blank -%}<li>{% render 'dd-check-icon' %}{{ section.settings.trust_2 | escape }}</li>{%- endif -%}
+      {%- if section.settings.trust_3 != blank -%}<li>{% render 'dd-check-icon' %}{{ section.settings.trust_3 | escape }}</li>{%- endif -%}
+    </ul>
   </div>
 </section>
 
@@ -52,26 +104,58 @@
   "settings": [
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow / small label",
-      "default": "Clinically tested"
-    },
-    {
-      "type": "text",
       "id": "headline",
       "label": "Headline",
-      "default": "Visibly Transformed"
+      "default": "Visibly Transformed."
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product"
     },
     {
       "type": "text",
-      "id": "subheadline",
-      "label": "Subheadline",
-      "default": "Yes, in just 4 weeks"
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "SEE IT ON YOUR SKIN -"
     },
     {
       "type": "text",
-      "id": "disclaimer",
-      "label": "Disclaimer text"
+      "id": "cta_compare_price",
+      "label": "Fallback compare-at price",
+      "default": "$86"
+    },
+    {
+      "type": "text",
+      "id": "cta_price",
+      "label": "Fallback price",
+      "default": "$48"
+    },
+    {
+      "type": "header",
+      "content": "Trust signals"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "30-Day Money-Back"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Free Express Shipping"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "First-Time Offer"
     },
     {
       "type": "header",
@@ -100,34 +184,38 @@
   ],
   "blocks": [
     {
-      "type": "stat",
-      "name": "Stat",
-      "limit": 8,
+      "type": "product_result",
+      "name": "Product result",
+      "limit": 2,
       "settings": [
         {
           "type": "text",
-          "id": "timing",
-          "label": "Timing label",
-          "default": "WEEK 4"
+          "id": "product_name",
+          "label": "Product name",
+          "default": "Ympossible Cream"
         },
         {
-          "type": "text",
-          "id": "percentage",
-          "label": "Percentage",
-          "default": "-86.8%"
+          "type": "paragraph",
+          "content": "Upload one composed before/after image for this product. This single image is what appears in the result area."
         },
         {
-          "type": "checkbox",
-          "id": "is_negative",
-          "label": "Use 'reduction' colour",
-          "default": false
+          "type": "image_picker",
+          "id": "before_after_image",
+          "label": "Single before / after image"
         },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description",
-          "default": "Fine lines reduced"
-        }
+        { "type": "text", "id": "stat_1_top", "label": "Stat 1 top", "default": "Fine lines and wrinkles reduced by up to" },
+        { "type": "text", "id": "stat_1_percentage", "label": "Stat 1 percentage", "default": "68.9%" },
+        { "type": "text", "id": "stat_1_bottom", "label": "Stat 1 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "stat_2_top", "label": "Stat 2 top", "default": "Skin firmness improved by up to" },
+        { "type": "text", "id": "stat_2_percentage", "label": "Stat 2 percentage", "default": "66.7%" },
+        { "type": "text", "id": "stat_2_bottom", "label": "Stat 2 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "stat_3_top", "label": "Stat 3 top", "default": "Frown line depth reduced by up to" },
+        { "type": "text", "id": "stat_3_percentage", "label": "Stat 3 percentage", "default": "50.0%" },
+        { "type": "text", "id": "stat_3_bottom", "label": "Stat 3 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "stat_4_top", "label": "Stat 4 top", "default": "Skin barrier function improved by up to" },
+        { "type": "text", "id": "stat_4_percentage", "label": "Stat 4 percentage", "default": "65.7%" },
+        { "type": "text", "id": "stat_4_bottom", "label": "Stat 4 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "disclaimer", "label": "Disclaimer", "default": "*In an instrumental clinical trial after twice-daily use." }
       ]
     }
   ],
@@ -135,10 +223,8 @@
     {
       "name": "Duo – Stats banner",
       "blocks": [
-        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "-86.8%", "is_negative": true, "description": "Fine lines reduced" } },
-        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "-65.1%", "is_negative": true, "description": "Wrinkles reduced" } },
-        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "+127.1%", "is_negative": false, "description": "Hydration boost" } },
-        { "type": "stat", "settings": { "timing": "WEEK 4", "percentage": "+50.6%", "is_negative": false, "description": "Firmness increase" } }
+        { "type": "product_result", "settings": { "product_name": "Ympossible Cream Light", "stat_1_top": "Immediate hydration boost by up to", "stat_1_percentage": "127.8%", "stat_1_bottom": "upon application", "stat_2_top": "Skin firmness improved by up to", "stat_2_percentage": "66.7%", "stat_2_bottom": "in only 4 weeks", "stat_3_top": "Fine lines and wrinkles reduced by up to", "stat_3_percentage": "65.1%", "stat_3_bottom": "in only 8 weeks", "stat_4_top": "Under-eye wrinkle depth reduced by", "stat_4_percentage": "50.0%", "stat_4_bottom": "in only 4 weeks" } },
+        { "type": "product_result", "settings": { "product_name": "Ympossible Cream" } }
       ]
     }
   ]

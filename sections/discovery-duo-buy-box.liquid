@@ -5,36 +5,10 @@
   style="--dd-buy-padding-top: {{ section.settings.padding_top }}px; --dd-buy-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.product_name | default: 'Buy Discovery Duo' | escape }}"
 >
+  {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
+
   <div class="dd-buy__inner">
-    <div class="dd-buy__gallery">
-      {%- if section.settings.main_image != blank -%}
-        <div class="dd-buy__main">
-          {{ section.settings.main_image | image_url: width: 1200 | image_tag:
-            loading: 'lazy',
-            class: 'dd-buy__main-image',
-            alt: section.settings.main_image.alt | default: section.settings.product_name
-          }}
-        </div>
-      {%- endif -%}
-
-      {%- assign thumb_blocks = section.blocks | where: 'type', 'thumb' -%}
-      {%- if thumb_blocks.size > 0 -%}
-        <ul class="dd-buy__thumbs">
-          {%- for block in thumb_blocks -%}
-            <li class="dd-buy__thumb" {{ block.shopify_attributes }}>
-              {%- if block.settings.image != blank -%}
-                {{ block.settings.image | image_url: width: 240 | image_tag:
-                  loading: 'lazy',
-                  class: 'dd-buy__thumb-image',
-                  alt: block.settings.image.alt | default: 'Thumbnail'
-                }}
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-    </div>
-
     <div class="dd-buy__info">
       {%- if section.settings.eyebrow != blank -%}
         <span class="dd-buy__eyebrow">{{ section.settings.eyebrow }}</span>
@@ -48,25 +22,51 @@
         <div class="dd-buy__description">{{ section.settings.product_description }}</div>
       {%- endif -%}
 
-      <div class="dd-buy__price-row">
-        {%- if section.settings.compare_price != blank -%}
-          <span class="dd-buy__compare-price">{{ section.settings.compare_price }}</span>
+      {%- assign price_lines = section.blocks | where: 'type', 'price_line' -%}
+      {%- if price_lines.size > 0 -%}
+        <dl class="dd-buy__lines">
+          {%- for block in price_lines -%}
+            <div class="dd-buy__line" {{ block.shopify_attributes }}>
+              <dt>{{ block.settings.label | escape }}</dt>
+              <dd>{{ block.settings.value | escape }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+
+      <div class="dd-buy__totals">
+        {%- if section.settings.total_label != blank or section.settings.compare_price != blank -%}
+          <div class="dd-buy__total-row">
+            <span>{{ section.settings.total_label | escape }}</span>
+            <span class="dd-buy__compare-price">{{ section.settings.compare_price | escape }}</span>
+          </div>
         {%- endif -%}
-        {%- if section.settings.price != blank -%}
-          <span class="dd-buy__price">{{ section.settings.price }}</span>
-        {%- endif -%}
-        {%- if section.settings.price_suffix != blank -%}
-          <span class="dd-buy__price-suffix">{{ section.settings.price_suffix }}</span>
+        {%- if section.settings.savings_label != blank or section.settings.price != blank -%}
+          <div class="dd-buy__total-row dd-buy__total-row--final">
+            <span>{{ section.settings.savings_label | escape }}</span>
+            <span class="dd-buy__price">
+              {%- if cta_product != blank -%}
+                {{ cta_product.price | money_without_trailing_zeros }}
+              {%- else -%}
+                {{ section.settings.price | escape }}
+              {%- endif -%}
+            </span>
+          </div>
         {%- endif -%}
       </div>
 
-      {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
-        <a class="dd-buy__cta" href="{{ section.settings.cta_url }}">
-          {{ section.settings.cta_text }}
+      {%- if section.settings.cta_text != blank -%}
+        <form class="dd-buy__form" method="post" action="/cart/add">
+          {%- if cta_variant != blank -%}
+            <input type="hidden" name="id" value="{{ cta_variant.id }}">
+          {%- endif -%}
+          <button class="dd-buy__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
+          {{ section.settings.cta_text | escape }}
           <svg class="dd-buy__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
             <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </a>
+          </button>
+        </form>
       {%- endif -%}
 
       {%- assign trust_blocks = section.blocks | where: 'type', 'trust' -%}
@@ -82,7 +82,7 @@
                   }}
                 </span>
               {%- else -%}
-                <span class="dd-buy__trust-check" aria-hidden="true">&#10003;</span>
+                <span class="dd-buy__trust-check" aria-hidden="true">{% render 'dd-check-icon' %}</span>
               {%- endif -%}
               <span class="dd-buy__trust-text">{{ block.settings.text }}</span>
             </li>
@@ -144,19 +144,31 @@
       "default": "USD"
     },
     {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total label",
+      "default": "Total Value"
+    },
+    {
+      "type": "text",
+      "id": "savings_label",
+      "label": "Final price label",
+      "default": "Your Price — First-Time Customers"
+    },
+    {
       "type": "header",
       "content": "Call to action"
+    },
+    {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product"
     },
     {
       "type": "text",
       "id": "cta_text",
       "label": "Button text",
       "default": "TRY DISCOVERY DUO"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Button link"
     },
     {
       "type": "text",
@@ -199,6 +211,25 @@
     }
   ],
   "blocks": [
+    {
+      "type": "price_line",
+      "name": "Price line",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Ympossible Cream 8ml"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "$43"
+        }
+      ]
+    },
     {
       "type": "thumb",
       "name": "Gallery thumbnail",

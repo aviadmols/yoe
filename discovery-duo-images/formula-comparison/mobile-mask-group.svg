@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 334 267" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask group">
+<mask id="mask0_0_38" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="334" height="267">
+<rect id="Rectangle 29726" width="334" height="267" fill="var(--fill-0, #F7F6F4)"/>
+</mask>
+<g mask="url(#mask0_0_38)">
+<path id="Vector 224" d="M-66 91C-45.0157 88.5073 44.1048 72 168.5 72C292.895 72 371.314 88.5073 403 91" stroke="var(--stroke-0, #666460)" stroke-opacity="0.5" stroke-width="0.5"/>
+<path id="curved line" d="M-80 195L-56.55 185.5C-41.5103 179.407 -24.6897 179.407 -9.65 185.5C5.38968 191.593 22.2103 191.593 37.25 185.5C52.2897 179.407 69.1103 179.407 84.15 185.5C99.1897 191.593 116.01 191.593 131.05 185.5C146.09 179.407 162.91 179.407 177.95 185.5C192.99 191.593 209.81 191.593 224.85 185.5C239.89 179.407 256.71 179.407 271.75 185.5C286.79 191.593 303.61 191.593 318.65 185.5C333.69 179.407 350.51 179.407 365.55 185.5L389 195" stroke="var(--stroke-0, #666460)" stroke-opacity="0.5" stroke-width="0.5"/>
+</g>
+</g>
+</svg>

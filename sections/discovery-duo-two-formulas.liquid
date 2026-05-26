@@ -5,54 +5,128 @@
   style="--dd-two-padding-top: {{ section.settings.padding_top }}px; --dd-two-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Two formulas, one complete routine' | escape }}"
 >
+  {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
+
   <div class="dd-two__inner">
     <header class="dd-two__header">
       {%- if section.settings.eyebrow != blank -%}
         <span class="dd-two__eyebrow">{{ section.settings.eyebrow }}</span>
       {%- endif -%}
+
       {%- if section.settings.headline != blank -%}
         <h2 class="dd-two__headline">{{ section.settings.headline }}</h2>
-      {%- endif -%}
-      {%- if section.settings.subheadline != blank -%}
-        <p class="dd-two__subheadline">{{ section.settings.subheadline }}</p>
       {%- endif -%}
     </header>
 
     {%- if section.blocks.size > 0 -%}
-      <div class="dd-two__grid">
+      <div class="dd-two__formulas">
         {%- for block in section.blocks -%}
           {%- if block.type == 'formula' -%}
-            <article class="dd-two__card" {{ block.shopify_attributes }}>
-              {%- if block.settings.image != blank -%}
-                <div class="dd-two__card-media">
-                  {{ block.settings.image | image_url: width: 800 | image_tag:
+            <article class="dd-two__formula dd-two__formula--{{ forloop.index }}" {{ block.shopify_attributes }}>
+              <div class="dd-two__formula-media">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 500 | image_tag:
                     loading: 'lazy',
-                    class: 'dd-two__card-image',
+                    widths: '160, 240, 320, 500',
+                    sizes: '(min-width: 750px) 7vw, 82px',
+                    class: 'dd-two__formula-image',
                     alt: block.settings.image.alt | default: block.settings.title
                   }}
-                </div>
-              {%- endif -%}
+                {%- else -%}
+                  <span class="dd-two__formula-placeholder" aria-hidden="true"></span>
+                {%- endif -%}
+              </div>
 
-              {%- if block.settings.label != blank -%}
-                <span class="dd-two__card-label">{{ block.settings.label }}</span>
-              {%- endif -%}
+              <div class="dd-two__formula-content">
+                {%- if block.settings.title != blank -%}
+                  {%- assign formula_title = block.settings.title | escape -%}
+                  {%- assign formula_title = formula_title | replace: ' LIGHT', ' <span class="dd-two__formula-title-light">LIGHT</span>' | replace: ' Light', ' <span class="dd-two__formula-title-light">Light</span>' -%}
+                  <h3 class="dd-two__formula-title">{{ formula_title }}</h3>
+                {%- endif -%}
 
-              {%- if block.settings.title != blank -%}
-                <h3 class="dd-two__card-title">{{ block.settings.title }}</h3>
-              {%- endif -%}
+                {%- if block.settings.subtitle != blank -%}
+                  <p class="dd-two__formula-subtitle">{{ block.settings.subtitle | escape }}</p>
+                {%- endif -%}
 
-              {%- if block.settings.description != blank -%}
-                <div class="dd-two__card-description">{{ block.settings.description }}</div>
-              {%- endif -%}
-
-              {%- if block.settings.tagline != blank -%}
-                <span class="dd-two__card-tagline">{{ block.settings.tagline }}</span>
-              {%- endif -%}
+                <ul class="dd-two__benefits" aria-label="{{ block.settings.title | escape }} benefits">
+                  {%- if block.settings.benefit_1 != blank -%}<li>{{ block.settings.benefit_1 | escape }}</li>{%- endif -%}
+                  {%- if block.settings.benefit_2 != blank -%}<li>{{ block.settings.benefit_2 | escape }}</li>{%- endif -%}
+                  {%- if block.settings.benefit_3 != blank -%}<li>{{ block.settings.benefit_3 | escape }}</li>{%- endif -%}
+                  {%- if block.settings.benefit_4 != blank -%}<li>{{ block.settings.benefit_4 | escape }}</li>{%- endif -%}
+                  {%- if block.settings.benefit_5 != blank -%}<li>{{ block.settings.benefit_5 | escape }}</li>{%- endif -%}
+                  {%- if block.settings.benefit_6 != blank -%}<li>{{ block.settings.benefit_6 | escape }}</li>{%- endif -%}
+                </ul>
+              </div>
             </article>
           {%- endif -%}
         {%- endfor -%}
       </div>
     {%- endif -%}
+
+    <div class="dd-two__routine" aria-label="{{ section.settings.routine_title | escape }}">
+      {%- if section.settings.routine_title != blank -%}
+        <p class="dd-two__routine-title">{{ section.settings.routine_title | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.routine_desktop_image != blank or section.settings.routine_mobile_image != blank -%}
+        <picture class="dd-two__routine-picture">
+          {%- if section.settings.routine_mobile_image != blank -%}
+            <source media="(max-width: 749px)" srcset="{{ section.settings.routine_mobile_image | image_url: width: 750 }}">
+          {%- endif -%}
+          {%- if section.settings.routine_desktop_image != blank -%}
+            {{ section.settings.routine_desktop_image | image_url: width: 1400 | image_tag:
+              loading: 'lazy',
+              class: 'dd-two__routine-image',
+              alt: section.settings.routine_alt | default: section.settings.routine_title
+            }}
+          {%- endif -%}
+        </picture>
+      {%- else -%}
+        <div class="dd-two__routine-track" aria-hidden="true">
+          <span class="dd-two__routine-item dd-two__routine-item--ha"><span>HA<br>Serum</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--barrier"><span>Barrier</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--vitc"><span>Vit C</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--primer"><span>Primer</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--peptide"><span>Peptide</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--cream"><span>Cream</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--mask"><span>Night<br>Mask</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--toner"><span>Toner</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--brighten"><span>Brighten</span></span>
+          <span class="dd-two__routine-item dd-two__routine-item--anti"><span>Anti-Age</span></span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank -%}
+      <form class="dd-two__cta-wrap" method="post" action="/cart/add">
+        {%- if cta_variant != blank -%}
+          <input type="hidden" name="id" value="{{ cta_variant.id }}">
+        {%- endif -%}
+        <button class="dd-two__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
+          <span class="dd-two__cta-label">{{ section.settings.cta_label | escape }}</span>
+          <span class="dd-two__cta-prices">
+            {%- if cta_product != blank and cta_product.compare_at_price > cta_product.price -%}
+              <span class="dd-two__cta-compare">{{ cta_product.compare_at_price | money_without_trailing_zeros }}</span>
+            {%- elsif section.settings.cta_compare_price != blank -%}
+              <span class="dd-two__cta-compare">{{ section.settings.cta_compare_price | escape }}</span>
+            {%- endif -%}
+            {%- if cta_product != blank -%}
+              <span class="dd-two__cta-price">{{ cta_product.price | money_without_trailing_zeros }}</span>
+            {%- elsif section.settings.cta_price != blank -%}
+              <span class="dd-two__cta-price">{{ section.settings.cta_price | escape }}</span>
+            {%- endif -%}
+          </span>
+          <span class="dd-two__cta-arrow" aria-hidden="true">›</span>
+        </button>
+      </form>
+    {%- endif -%}
+
+    <ul class="dd-two__trust" aria-label="Offer benefits">
+      {%- if section.settings.trust_1 != blank -%}<li>{% render 'dd-check-icon' %}{{ section.settings.trust_1 | escape }}</li>{%- endif -%}
+      {%- if section.settings.trust_2 != blank -%}<li>{% render 'dd-check-icon' %}{{ section.settings.trust_2 | escape }}</li>{%- endif -%}
+      {%- if section.settings.trust_3 != blank -%}<li>{% render 'dd-check-icon' %}{{ section.settings.trust_3 | escape }}</li>{%- endif -%}
+    </ul>
   </div>
 </section>
 
@@ -66,7 +140,7 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow / small label",
-      "default": "The Discovery Duo"
+      "default": "What you're getting"
     },
     {
       "type": "text",
@@ -76,8 +150,74 @@
     },
     {
       "type": "text",
-      "id": "subheadline",
-      "label": "Subheadline"
+      "id": "routine_title",
+      "label": "Routine title",
+      "default": "Replaces your entire routine"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_desktop_image",
+      "label": "Routine diagram desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "routine_mobile_image",
+      "label": "Routine diagram mobile image"
+    },
+    {
+      "type": "text",
+      "id": "routine_alt",
+      "label": "Routine diagram alt text",
+      "default": "Replaces your entire routine diagram"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Get both for -"
+    },
+    {
+      "type": "text",
+      "id": "cta_compare_price",
+      "label": "Fallback compare-at price",
+      "default": "$86"
+    },
+    {
+      "type": "text",
+      "id": "cta_price",
+      "label": "Fallback price",
+      "default": "$48"
+    },
+    {
+      "type": "header",
+      "content": "Trust signals"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "30-Day Money-Back"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Free Express Shipping"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "First-Time Offer"
     },
     {
       "type": "header",
@@ -91,7 +231,7 @@
       "max": 200,
       "step": 4,
       "unit": "px",
-      "default": 80
+      "default": 72
     },
     {
       "type": "range",
@@ -101,14 +241,14 @@
       "max": 200,
       "step": 4,
       "unit": "px",
-      "default": 80
+      "default": 72
     }
   ],
   "blocks": [
     {
       "type": "formula",
-      "name": "Formula card",
-      "limit": 4,
+      "name": "Formula",
+      "limit": 2,
       "settings": [
         {
           "type": "image_picker",
@@ -117,26 +257,51 @@
         },
         {
           "type": "text",
-          "id": "label",
-          "label": "Eyebrow label",
-          "default": "FORMULA 1"
-        },
-        {
-          "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "HA + Retinol Active"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>Lightweight, fast-absorbing serum to firm, smooth and brighten.</p>"
+          "default": "Ympossible Cream"
         },
         {
           "type": "text",
-          "id": "tagline",
-          "label": "Tagline / use cue"
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "ULTRA-RICH · AGE-DEFYING"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Benefit 1",
+          "default": "Firms + Lifts"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Benefit 2",
+          "default": "Brightens Dark Spots"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Benefit 3",
+          "default": "Smooths Fine Lines"
+        },
+        {
+          "type": "text",
+          "id": "benefit_4",
+          "label": "Benefit 4",
+          "default": "Strengthens Barrier"
+        },
+        {
+          "type": "text",
+          "id": "benefit_5",
+          "label": "Benefit 5",
+          "default": "Hydrates + Nourishes"
+        },
+        {
+          "type": "text",
+          "id": "benefit_6",
+          "label": "Benefit 6",
+          "default": "Calms + Soothes"
         }
       ]
     }
@@ -145,8 +310,32 @@
     {
       "name": "Duo – Two formulas",
       "blocks": [
-        { "type": "formula", "settings": { "label": "FORMULA 1", "title": "HA + Retinol Active", "description": "<p>Lightweight, fast-absorbing serum to firm, smooth and brighten.</p>", "tagline": "Serum" } },
-        { "type": "formula", "settings": { "label": "FORMULA 2", "title": "Cream Booster", "description": "<p>Rich, nourishing cream that locks in hydration and seals the routine.</p>", "tagline": "Cream" } }
+        {
+          "type": "formula",
+          "settings": {
+            "title": "Ympossible Cream",
+            "subtitle": "ULTRA-RICH · AGE-DEFYING",
+            "benefit_1": "Firms + Lifts",
+            "benefit_2": "Brightens Dark Spots",
+            "benefit_3": "Smooths Fine Lines",
+            "benefit_4": "Strengthens Barrier",
+            "benefit_5": "Hydrates + Nourishes",
+            "benefit_6": "Calms + Soothes"
+          }
+        },
+        {
+          "type": "formula",
+          "settings": {
+            "title": "Ympossible Cream Light",
+            "subtitle": "WEIGHTLESS · RADIANT",
+            "benefit_1": "Instantly Hydrates",
+            "benefit_2": "Plumps + Smooths",
+            "benefit_3": "Restores Glow",
+            "benefit_4": "Strengthens Barrier",
+            "benefit_5": "Smooths Fine Lines",
+            "benefit_6": "Calms + Soothes"
+          }
+        }
       ]
     }
   ]

@@ -50,39 +50,107 @@
       {%- if section.settings.subheadline != blank -%}
         <p class="dd-retailer__subheadline">{{ section.settings.subheadline }}</p>
       {%- endif -%}
+      {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+        <a class="dd-retailer__cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label | escape }}</a>
+      {%- endif -%}
     </header>
+
+    {%- if section.settings.feature_desktop_image != blank or section.settings.feature_mobile_image != blank -%}
+      <div class="dd-retailer__feature">
+        <picture>
+          {%- if section.settings.feature_mobile_image != blank -%}
+            <source media="(max-width: 749px)" srcset="{{ section.settings.feature_mobile_image | image_url: width: 750 }}">
+          {%- endif -%}
+          {%- if section.settings.feature_desktop_image != blank -%}
+            {{ section.settings.feature_desktop_image | image_url: width: 1800 | image_tag:
+              loading: 'lazy',
+              class: 'dd-retailer__feature-image',
+              alt: section.settings.feature_alt | default: section.settings.headline
+            }}
+          {%- endif -%}
+        </picture>
+      </div>
+    {%- endif -%}
 
     {%- assign image_blocks = section.blocks | where: 'type', 'image' -%}
     {%- if image_blocks.size > 0 -%}
-      <ul class="dd-retailer__gallery">
-        {%- for block in image_blocks -%}
-          <li class="dd-retailer__gallery-item" {{ block.shopify_attributes }}>
-            {%- if block.settings.desktop_image != blank or block.settings.mobile_image != blank -%}
-              <picture>
-                {%- if block.settings.mobile_image != blank -%}
-                  <source
-                    media="(max-width: 749px)"
-                    srcset="{{ block.settings.mobile_image | image_url: width: 600 }}"
-                  >
-                {%- endif -%}
-                {%- if block.settings.desktop_image != blank -%}
-                  {{ block.settings.desktop_image | image_url: width: 900 | image_tag:
-                    loading: 'lazy',
-                    class: 'dd-retailer__gallery-image',
-                    alt: block.settings.caption | default: ''
-                  }}
-                {%- endif -%}
-              </picture>
-            {%- endif -%}
-            {%- if block.settings.caption != blank -%}
-              <span class="dd-retailer__gallery-caption">{{ block.settings.caption }}</span>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
+      <div class="dd-retailer__slider" data-retailer-slider>
+        <ul class="dd-retailer__gallery" data-retailer-track>
+          {%- for block in image_blocks -%}
+            <li class="dd-retailer__gallery-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.desktop_image != blank or block.settings.mobile_image != blank -%}
+                <picture>
+                  {%- if block.settings.mobile_image != blank -%}
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="{{ block.settings.mobile_image | image_url: width: 600 }}"
+                    >
+                  {%- endif -%}
+                  {%- if block.settings.desktop_image != blank -%}
+                    {{ block.settings.desktop_image | image_url: width: 900 | image_tag:
+                      loading: 'lazy',
+                      class: 'dd-retailer__gallery-image',
+                      alt: block.settings.caption | default: ''
+                    }}
+                  {%- endif -%}
+                </picture>
+              {%- else -%}
+                <span class="dd-retailer__gallery-placeholder" aria-hidden="true"></span>
+              {%- endif -%}
+              {%- if block.settings.caption != blank -%}
+                <span class="dd-retailer__gallery-caption">{{ block.settings.caption }}</span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <button class="dd-retailer__slider-button dd-retailer__slider-button--prev" type="button" data-retailer-prev aria-label="Previous image">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button class="dd-retailer__slider-button dd-retailer__slider-button--next" type="button" data-retailer-next aria-label="Next image">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
     {%- endif -%}
   </div>
 </section>
+
+<script>
+  (() => {
+    const initRetailerSlider = (slider) => {
+      const track = slider.querySelector('[data-retailer-track]');
+      const prev = slider.querySelector('[data-retailer-prev]');
+      const next = slider.querySelector('[data-retailer-next]');
+
+      if (!track || !prev || !next || slider.dataset.sliderReady === 'true') return;
+
+      const getStep = () => {
+        const slide = track.querySelector('.dd-retailer__gallery-item');
+        if (!slide) return track.clientWidth;
+
+        const styles = window.getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || 0);
+        return slide.getBoundingClientRect().width + gap;
+      };
+
+      prev.addEventListener('click', () => {
+        track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+      });
+
+      next.addEventListener('click', () => {
+        track.scrollBy({ left: getStep(), behavior: 'smooth' });
+      });
+
+      slider.dataset.sliderReady = 'true';
+    };
+
+    document.querySelectorAll('[data-retailer-slider]').forEach(initRetailerSlider);
+
+    document.addEventListener('shopify:section:load', (event) => {
+      event.target.querySelectorAll('[data-retailer-slider]').forEach(initRetailerSlider);
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -118,6 +186,32 @@
       "type": "text",
       "id": "subheadline",
       "label": "Subheadline"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Follow us"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_desktop_image",
+      "label": "Feature desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_mobile_image",
+      "label": "Feature mobile image"
+    },
+    {
+      "type": "text",
+      "id": "feature_alt",
+      "label": "Feature image alt text"
     },
     {
       "type": "header",

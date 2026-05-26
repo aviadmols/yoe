@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 554.679 443.411" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask group">
+<mask id="mask0_0_129" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="555" height="444">
+<rect id="Rectangle 29726" width="554.679" height="443.411" fill="var(--fill-0, #F7F6F4)"/>
+</mask>
+<g mask="url(#mask0_0_129)">
+<path id="Vector 224" d="M-109.607 151.125C-74.7584 146.985 73.2452 119.571 279.83 119.571C486.415 119.571 616.646 146.985 669.268 151.125" stroke="var(--stroke-0, #666460)" stroke-opacity="0.5" stroke-width="0.830357"/>
+<path id="curved line" d="M-132.857 323.839L-93.9137 308.063C-68.9371 297.944 -41.0028 297.944 -16.0262 308.063C8.95043 318.181 36.8847 318.181 61.8613 308.063C86.8379 297.944 114.772 297.944 139.749 308.063C164.725 318.181 192.66 318.181 217.636 308.063C242.613 297.944 270.547 297.944 295.524 308.063C320.5 318.181 348.435 318.181 373.411 308.063C398.388 297.944 426.322 297.944 451.299 308.063C476.275 318.181 504.21 318.181 529.186 308.063C554.163 297.944 582.097 297.944 607.074 308.063L646.018 323.839" stroke="var(--stroke-0, #666460)" stroke-opacity="0.5" stroke-width="0.830357"/>
+</g>
+</g>
+</svg>

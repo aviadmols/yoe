@@ -1,0 +1,150 @@
+.dd-press {
+  overflow: hidden;
+  width: 100%;
+  height: 3.4rem;
+  background: #bd1e18;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+.dd-press__track {
+  display: flex;
+  width: 200vw;
+  height: 100%;
+  background: #bd1e18;
+  animation: dd-press-marquee var(--dd-press-speed, 28s) linear infinite;
+  will-change: transform;
+}
+
+.dd-press__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  min-width: 100vw;
+  height: 100%;
+}
+
+.dd-press__item {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font-size: 1.097rem; /* 21.947px */
+  font-style: italic;
+  font-weight: 400;
+  line-height: 140%; /* 30.725px */
+  letter-spacing: 0.033rem; /* 0.658px */
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-variation-settings: "wdth" 75;
+}
+
+.dd-press__item::after {
+  content: "/";
+  margin: 0 1rem;
+  opacity: 0.9;
+}
+
+.dd-press__mobile-quote {
+  display: none;
+}
+
+@keyframes dd-press-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dd-press__track {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .dd-press {
+    height: auto;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .dd-press__track {
+    width: 240vw;
+    height: 50px;
+  }
+
+  .dd-press__group {
+    min-width: 120vw;
+  }
+
+  .dd-press__item {
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.48px;
+    font-variation-settings: "wdth" 75;
+  }
+
+  .dd-press__item::after {
+    margin: 0 10px;
+  }
+
+  .dd-press__mobile-quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 215px;
+    padding: 33px 40px 0;
+    box-sizing: border-box;
+    background: #666460;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .dd-press__mobile-quote-text {
+    width: 223px;
+    max-width: 100%;
+    margin: 0;
+    color: inherit;
+    font-size: 29px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.07;
+    letter-spacing: 0.1px;
+    font-variation-settings: "wdth" 75;
+  }
+
+  .dd-press__mobile-source {
+    margin: 8px 0 0;
+    color: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 100;
+  }
+
+  .dd-press__mobile-divider {
+    display: block;
+    width: 57px;
+    height: 1px;
+    margin-top: 46px;
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .dd-press__mobile-note {
+    margin: 17px 0 0;
+    color: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 75;
+  }
+}

@@ -1,0 +1,106 @@
+{{ 'discovery-duo-press-strip.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-press"
+  style="--dd-press-speed: {{ section.settings.speed }}s;"
+  aria-label="{{ section.settings.accessibility_label | default: 'Press mentions' | escape }}"
+>
+  <div class="dd-press__track" aria-hidden="true">
+    {%- for repeat in (1..2) -%}
+      <div class="dd-press__group">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'item' and block.settings.text != blank -%}
+            <span class="dd-press__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+  {%- assign mobile_quote = section.settings.mobile_quote | default: '“Acts as a gentle retinol alternative”' -%}
+  {%- assign mobile_source = section.settings.mobile_source | default: 'The Sunday Times' -%}
+  {%- assign mobile_note = section.settings.mobile_note | default: "Available at select Bloomingdale's." -%}
+  {%- if mobile_quote != blank or mobile_source != blank or mobile_note != blank -%}
+    <div class="dd-press__mobile-quote" aria-label="Press quote">
+      {%- if mobile_quote != blank -%}
+        <blockquote class="dd-press__mobile-quote-text">{{ mobile_quote | escape }}</blockquote>
+      {%- endif -%}
+      {%- if mobile_source != blank -%}
+        <p class="dd-press__mobile-source">{{ mobile_source | escape }}</p>
+      {%- endif -%}
+      {%- if mobile_note != blank -%}
+        <span class="dd-press__mobile-divider" aria-hidden="true"></span>
+        <p class="dd-press__mobile-note">{{ mobile_note | escape }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Duo – Press strip",
+  "tag": "section",
+  "class": "section-dd-press",
+  "settings": [
+    {
+      "type": "text",
+      "id": "accessibility_label",
+      "label": "Accessibility label",
+      "default": "Press mentions"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Animation speed",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "default": 28
+    },
+    {
+      "type": "text",
+      "id": "mobile_quote",
+      "label": "Mobile quote",
+      "default": "“Acts as a gentle retinol alternative”"
+    },
+    {
+      "type": "text",
+      "id": "mobile_source",
+      "label": "Mobile source",
+      "default": "The Sunday Times"
+    },
+    {
+      "type": "text",
+      "id": "mobile_note",
+      "label": "Mobile note",
+      "default": "Available at select Bloomingdale's."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Press item",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Glamour"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo – Press strip",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Glamour" } },
+        { "type": "item", "settings": { "text": "Forbes" } },
+        { "type": "item", "settings": { "text": "The Sunday Times" } },
+        { "type": "item", "settings": { "text": "Cosmopolitan" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

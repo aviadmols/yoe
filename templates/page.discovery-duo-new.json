@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "dd_hero": {
       "type": "discovery-duo-hero",
@@ -637,93 +637,12 @@
     },
     "dd_refill": {
       "type": "discovery-duo-refillable",
-      "blocks": {
-        "cert_1": {
-          "type": "certification",
-          "settings": {
-            "placeholder": "1%",
-            "label": "For the planet"
-          }
-        },
-        "cert_2": {
-          "type": "certification",
-          "settings": {
-            "placeholder": "FSC",
-            "label": "FSC"
-          }
-        },
-        "cert_3": {
-          "type": "certification",
-          "settings": {
-            "placeholder": "50%",
-            "label": "50% PCR"
-          }
-        },
-        "cert_4": {
-          "type": "certification",
-          "settings": {
-            "placeholder": "♻",
-            "label": "Recyclable"
-          }
-        },
-        "callout_1": {
-          "type": "pillar",
-          "settings": {
-            "icon": "shopify://shop_images/Rectangle_198_54cf98cc-4d76-4d4c-ac61-358b8dd677ac.png",
-            "title": "Reusable cap",
-            "description": "Minimum 50% post-consumer recycled content (PCR)."
-          }
-        },
-        "callout_2": {
-          "type": "pillar",
-          "settings": {
-            "icon": "shopify://shop_images/Rectangle_197_168f36bb-adef-4d16-8d71-4b5fb2129113.png",
-            "title": "Metal-free",
-            "description": "Spring within the pump optimized for recycling."
-          }
-        },
-        "callout_3": {
-          "type": "pillar",
-          "settings": {
-            "title": "PCR glass",
-            "description": "Bottles composed of minimum 50%."
-          }
-        },
-        "callout_4": {
-          "type": "pillar",
-          "settings": {
-            "title": "No adhesives",
-            "description": "Yoé emblem heat-fused into the cap."
-          }
-        },
-        "callout_5": {
-          "type": "pillar",
-          "settings": {
-            "title": "PCR refillable bottles",
-            "description": "Minimum 50% post-consumer recycled content."
-          }
-        }
-      },
-      "block_order": [
-        "cert_1",
-        "cert_2",
-        "cert_3",
-        "cert_4",
-        "callout_1",
-        "callout_2",
-        "callout_3",
-        "callout_4",
-        "callout_5"
-      ],
       "settings": {
-        "eyebrow": "",
-        "headline": "Refillable. Recyclable. Responsible.",
-        "subheadline": "",
         "desktop_image": "shopify://shop_images/Rectangle_195_dfeec261-3159-4c33-977d-fb537e3780de.png",
-        "cta_product": "",
-        "cta_text": "LEARN ABOUT OUR IMPACT",
-        "padding_top": 56,
-        "padding_bottom": 56
+        "mobile_image": "",
+        "alt_text": "Refillable product banner",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "dd_buy": {

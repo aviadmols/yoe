@@ -15,7 +15,8 @@
       {%- endif -%}
 
       {%- if section.settings.headline != blank -%}
-        <h2 class="dd-two__headline">{{ section.settings.headline }}</h2>
+        {%- assign formatted_headline = section.settings.headline | replace_first: '. ', '.<br> ' -%}
+        <h2 class="dd-two__headline">{{ formatted_headline }}</h2>
       {%- endif -%}
     </header>
 
@@ -99,7 +100,7 @@
     </div>
 
     {%- if section.settings.cta_label != blank -%}
-      <form class="dd-two__cta-wrap" method="post" action="/cart/add">
+      <form class="dd-two__cta-wrap" method="post" action="{{ routes.cart_add_url }}">
         {%- if cta_variant != blank -%}
           <input type="hidden" name="id" value="{{ cta_variant.id }}">
         {%- endif -%}

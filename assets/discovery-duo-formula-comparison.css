@@ -2,7 +2,7 @@
   width: 100%;
   padding-top: var(--dd-compare-padding-top, 4.4rem);
   padding-bottom: var(--dd-compare-padding-bottom, 4.4rem);
-  background: #f7f6f5;
+  background: #fff;
   color: #666460;
   font-family: "Open Sans", sans-serif;
 }

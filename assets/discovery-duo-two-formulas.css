@@ -5,8 +5,8 @@
 .dd-two {
   width: 100%;
   padding-top: var(--dd-two-padding-top, 3.6rem);
-  padding-bottom: var(--dd-two-padding-bottom, 3.6rem);
-  background: #fff;
+  padding-bottom: 2.8rem; /* 56px */
+  background: #F7F6F5;
   color: #666460;
   font-family: "Open Sans", sans-serif;
 }
@@ -20,7 +20,7 @@
 
 .dd-two__header {
   text-align: center;
-  margin-bottom: 2.15rem;
+  margin-bottom: 2.5rem; /* 50px */
 }
 
 .dd-two__eyebrow {
@@ -70,8 +70,8 @@
 
 .dd-two__formula-image {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 5.15855rem; /* 103.171px */
+  height: 12.19925rem; /* 243.985px */
   object-fit: contain;
 }
 
@@ -87,6 +87,7 @@
 }
 
 .dd-two__formula-content {
+  min-width: 17.25rem; /* 345px */
   padding-top: 1rem;
 }
 
@@ -107,7 +108,7 @@
 }
 
 .dd-two__formula-subtitle {
-  margin: 0 0 1.55rem;
+  margin: 0 0 2rem; /* 40px */
   color: #bd1e18;
   font-size: 1.13rem;
   font-weight: 400;
@@ -123,7 +124,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, max-content);
-  gap: 0.75rem 1.55rem;
+  gap: 1.35rem 1.8rem; /* 27px 36px */
 }
 
 .dd-two__benefits li {
@@ -145,13 +146,13 @@
   inset-block: -0.15rem;
   inset-inline-start: 0;
   width: 0.05rem;
-  background: #d5d2d0;
+  background: #666460;
 }
 
 .dd-two__routine {
   width: 57.2rem;
   max-width: 100%;
-  margin: 2.45rem auto 0;
+  margin: 5.8rem auto 0; /* 116px */
   text-align: center;
 }
 
@@ -245,7 +246,7 @@
 .dd-two__routine-item--anti { right: 0; --item-height: 3.7rem; }
 
 .dd-two__cta-wrap {
-  margin-top: 1.6rem;
+  margin-top: 3.4rem; /* 68px */
   text-align: center;
 }
 
@@ -269,7 +270,7 @@
 }
 
 .dd-two__cta:hover {
-  background: #666460;
+  background: #7d0e0a;
   color: #f7f6f5;
 }
 
@@ -356,7 +357,7 @@
   }
 
   .dd-two__header {
-    margin-bottom: 42px;
+    margin-bottom: 54px;
   }
 
   .dd-two__eyebrow {
@@ -384,7 +385,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 40px;
   }
 
   .dd-two__formula,
@@ -427,7 +428,7 @@
 
   .dd-two__benefits {
     grid-template-columns: repeat(2, minmax(0, max-content));
-    gap: 10px 22px;
+    gap: 17px 22px;
   }
 
   .dd-two__benefits li {
@@ -451,7 +452,7 @@
   .dd-two__routine {
     width: calc(100% + 36px);
     max-width: none;
-    margin: 47px -18px 0;
+    margin: 60px -18px 0;
   }
 
   .dd-two__routine-title {
@@ -537,7 +538,7 @@
     max-width: calc(100vw - 36px);
     margin-top: 9px;
     gap: 9px;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-wrap: nowrap;
     font-size: 10px;
     line-height: 16px;

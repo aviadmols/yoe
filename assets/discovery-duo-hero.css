@@ -87,11 +87,12 @@
 }
 
 .dd-hero__headline {
-  margin: 2.9rem 0 0 0; /* 58px gap from badge -> ~256.94px from top */
+  margin: 0.8rem 0 0 0; /* 16px */
   font-size: 2.282rem; /* 45.645px */
   font-weight: 400;
   line-height: 1.16;
   letter-spacing: 0.114rem; /* 2.2823px */
+  text-align: left;
   text-transform: uppercase;
   color: #666460;
   font-variation-settings: "wdth" 75;
@@ -99,7 +100,7 @@
 }
 
 .dd-hero__subheadline {
-  margin: 1.05rem 0 0 0; /* ~21px gap -> 436.46px from top */
+  margin: 1rem 0 0 0; /* 20px */
   font-size: 1.681rem; /* 33.621px */
   font-weight: 700;
   line-height: 1.16;
@@ -119,7 +120,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 0.6rem; /* 12px */
-  margin-top: 2.95rem; /* ~59px gap -> 516.81px from top */
+  margin-top: 2rem; /* 40px */
   padding: 0 1.5rem 0 5.35rem; /* matches Figma offsets */
   width: 25.285rem; /* 505.703px */
   height: 3.88rem; /* 77.597px */
@@ -236,7 +237,7 @@
 /* ---------- Editorial press quote ---------- */
 
 .dd-hero__press {
-  margin-top: 3.05rem; /* 61px */
+  margin-top: 5.4rem; /* 108px */
   display: grid;
   grid-template-columns: minmax(0, 19.05rem) 5.3rem;
   grid-template-areas:
@@ -314,7 +315,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.85rem; /* 17px */
-  width: 5rem; /* 100px */
+  width: 7.37155rem; /* 147.431px */
   margin-top: 6rem; /* offset so awards align with product visual */
 }
 
@@ -337,6 +338,10 @@
   .dd-hero {
     min-height: 763px;
     background-color: #bebfbf;
+  }
+
+  .dd-hero__bg-image {
+    object-position: top center;
   }
 
   .dd-hero__inner {
@@ -374,12 +379,13 @@
     display: block;
     width: 301px;
     max-width: 301px;
-    margin: 11px 0 0;
+    margin: 10px 0 0 !important;
     color: #666460;
     font-size: 35px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: 1.1px;
+    text-align: left;
     font-variation-settings: "wdth" 75;
   }
 
@@ -396,7 +402,7 @@
 
   .dd-hero__form {
     width: 313px;
-    margin: 19px 0 0 -6px;
+    margin: 16px 0 0 -6px;
   }
 
   .dd-hero__cta {
@@ -406,12 +412,17 @@
     min-height: 51px;
     margin-top: 0;
     padding: 0 14px 0 66px;
-    gap: 5px;
+    gap: 8px;
     box-shadow: none;
     font-size: 16px;
     line-height: 1.136;
     letter-spacing: 0.32px;
     font-variation-settings: "wdth" 77;
+  }
+
+  .dd-hero__cta-compare {
+    position: relative;
+    font-variation-settings: "wdth" 75;
   }
 
   .dd-hero__cta-arrow {
@@ -425,7 +436,7 @@
     margin: 15px 0 0 -14px;
     gap: 9px;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: space-around;
     font-size: 10.1px;
     line-height: 16px;
   }
@@ -474,7 +485,7 @@
     top: 472px;
     right: 14px;
     margin-top: 0;
-    width: 56px;
+    width: 61.382px;
     gap: 8px;
     z-index: 2;
   }

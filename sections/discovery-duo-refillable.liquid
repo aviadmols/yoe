@@ -3,154 +3,68 @@
 <section
   class="dd-refill"
   style="--dd-refill-padding-top: {{ section.settings.padding_top }}px; --dd-refill-padding-bottom: {{ section.settings.padding_bottom }}px;"
-  aria-label="{{ section.settings.headline | default: 'Refillable, recyclable, responsible' | escape }}"
+  aria-label="{{ section.settings.alt_text | default: 'Responsive refillable banner' | escape }}"
 >
-  {%- assign cta_product = section.settings.cta_product -%}
-  {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
+  {%- assign desktop_banner = section.settings.desktop_image -%}
+  {%- assign mobile_banner = section.settings.mobile_image -%}
+  {%- assign fallback_banner = desktop_banner | default: mobile_banner -%}
+  {%- assign banner_alt = section.settings.alt_text | default: fallback_banner.alt | default: 'Responsive refillable banner' -%}
 
   <div class="dd-refill__inner">
-    <header class="dd-refill__header">
-      {%- if section.settings.eyebrow != blank -%}
-        <span class="dd-refill__eyebrow">{{ section.settings.eyebrow }}</span>
-      {%- endif -%}
-      {%- if section.settings.headline != blank -%}
-        <h2 class="dd-refill__headline">{{ section.settings.headline }}</h2>
-      {%- endif -%}
-      {%- if section.settings.subheadline != blank -%}
-        <div class="dd-refill__subheadline">{{ section.settings.subheadline }}</div>
-      {%- endif -%}
-
-      {%- assign cert_blocks = section.blocks | where: 'type', 'certification' -%}
-      {%- if cert_blocks.size > 0 -%}
-        <ul class="dd-refill__certs" aria-label="Sustainability certifications">
-          {%- for block in cert_blocks -%}
-            <li class="dd-refill__cert" {{ block.shopify_attributes }}>
-              {%- if block.settings.icon != blank -%}
-                {{ block.settings.icon | image_url: width: 140 | image_tag:
-                  loading: 'lazy',
-                  class: 'dd-refill__cert-icon',
-                  alt: block.settings.label
-                }}
-              {%- else -%}
-                <span class="dd-refill__cert-placeholder" aria-hidden="true">{{ block.settings.placeholder | escape }}</span>
-              {%- endif -%}
-              {%- if block.settings.label != blank -%}
-                <span class="dd-refill__cert-label">{{ block.settings.label | escape }}</span>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-    </header>
-
-    <div class="dd-refill__visual">
-      {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
-        <div class="dd-refill__media">
-          <picture>
-            {%- if section.settings.mobile_image != blank -%}
-              <source
-                media="(max-width: 749px)"
-                srcset="{{ section.settings.mobile_image | image_url: width: 750 }}"
-              >
-            {%- endif -%}
-            {%- if section.settings.desktop_image != blank -%}
-              {{ section.settings.desktop_image | image_url: width: 1800 | image_tag:
-                loading: 'lazy',
-                class: 'dd-refill__image',
-                alt: section.settings.desktop_image.alt | default: section.settings.headline
-              }}
-            {%- endif -%}
-          </picture>
-        </div>
-      {%- else -%}
-        <div class="dd-refill__media dd-refill__media--placeholder" aria-hidden="true">
-          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--cap"></span>
-          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--pump"></span>
-          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--refill"></span>
-          <span class="dd-refill__placeholder-part dd-refill__placeholder-part--bottle"></span>
-        </div>
-      {%- endif -%}
-
-      {%- assign pillar_blocks = section.blocks | where: 'type', 'pillar' -%}
-      {%- if pillar_blocks.size > 0 -%}
-        <ul class="dd-refill__pillars">
-          {%- for block in pillar_blocks -%}
-            <li class="dd-refill__pillar dd-refill__pillar--{{ forloop.index }}" {{ block.shopify_attributes }}>
-              {%- if block.settings.title != blank -%}
-                <h3 class="dd-refill__pillar-title">{{ block.settings.title | escape }}</h3>
-              {%- endif -%}
-              {%- if block.settings.description != blank -%}
-                <p class="dd-refill__pillar-description">{{ block.settings.description | escape }}</p>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-    </div>
-
-    {%- if section.settings.cta_text != blank -%}
-      <form class="dd-refill__cta-wrap" method="post" action="/cart/add">
-        {%- if cta_variant != blank -%}<input type="hidden" name="id" value="{{ cta_variant.id }}">{%- endif -%}
-        <button class="dd-refill__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-          {{ section.settings.cta_text | escape }}
-        </button>
-      </form>
+    {%- if fallback_banner != blank -%}
+      <picture class="dd-refill__picture">
+        {%- if mobile_banner != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ mobile_banner | image_url: width: 480 }} 480w,
+              {{ mobile_banner | image_url: width: 750 }} 750w,
+              {{ mobile_banner | image_url: width: 900 }} 900w
+            "
+            sizes="100vw"
+          >
+        {%- endif -%}
+        {{ fallback_banner | image_url: width: 2400 | image_tag:
+          loading: 'lazy',
+          widths: '750, 1100, 1500, 1800, 2200, 2400',
+          sizes: '100vw',
+          class: 'dd-refill__image',
+          alt: banner_alt
+        }}
+      </picture>
+    {%- else -%}
+      <div class="dd-refill__placeholder">
+        <span>Choose desktop and mobile banners</span>
+      </div>
     {%- endif -%}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Duo – Refillable",
+  "name": "Duo - Refillable Banner",
   "tag": "section",
   "class": "section-dd-refill",
   "settings": [
     {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Sustainability"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "Headline",
-      "default": "Refillable. Recyclable. Responsible."
-    },
-    {
-      "type": "richtext",
-      "id": "subheadline",
-      "label": "Subheadline",
-      "default": "<p>Our refillable system is designed to minimize our carbon footprint and the overall environmental impact of every product.</p>"
-    },
-    {
       "type": "header",
-      "content": "Hero image (two-bottle landscape)"
+      "content": "Responsive banner"
     },
     {
       "type": "image_picker",
       "id": "desktop_image",
-      "label": "Desktop image"
+      "label": "Desktop banner"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Mobile image"
-    },
-    {
-      "type": "header",
-      "content": "Call to action"
-    },
-    {
-      "type": "product",
-      "id": "cta_product",
-      "label": "CTA product"
+      "label": "Mobile banner"
     },
     {
       "type": "text",
-      "id": "cta_text",
-      "label": "Button text",
-      "default": "LEARN ABOUT OUR IMPACT"
+      "id": "alt_text",
+      "label": "Image alt text",
+      "default": "Refillable product banner"
     },
     {
       "type": "header",
@@ -164,7 +78,7 @@
       "max": 200,
       "step": 4,
       "unit": "px",
-      "default": 80
+      "default": 0
     },
     {
       "type": "range",
@@ -174,66 +88,12 @@
       "max": 200,
       "step": 4,
       "unit": "px",
-      "default": 80
-    }
-  ],
-  "blocks": [
-    {
-      "type": "certification",
-      "name": "Certification icon",
-      "limit": 6,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
-        },
-        {
-          "type": "text",
-          "id": "placeholder",
-          "label": "Placeholder text",
-          "default": "1%"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label"
-        }
-      ]
-    },
-    {
-      "type": "pillar",
-      "name": "Pillar",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Refillable"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Reusable bottles refill at home to reduce single-use packaging."
-        }
-      ]
+      "default": 0
     }
   ],
   "presets": [
     {
-      "name": "Duo – Refillable",
-      "blocks": [
-        { "type": "pillar", "settings": { "title": "Refillable", "description": "Reusable bottles refill at home to reduce single-use packaging." } },
-        { "type": "pillar", "settings": { "title": "Recyclable", "description": "Glass + minimum 50% post-consumer recycled materials throughout." } },
-        { "type": "pillar", "settings": { "title": "Responsible", "description": "No adhesives, metal-free pumps, optimized for recycling at end of life." } }
-      ]
+      "name": "Duo - Refillable Banner"
     }
   ]
 }

@@ -20,31 +20,33 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'product_result' -%}
             <article class="dd-stats__product" {{ block.shopify_attributes }}>
-              {%- if block.settings.product_name != blank -%}
-                {%- assign product_name = block.settings.product_name | escape -%}
-                {%- assign product_name = product_name | replace: ' LIGHT', ' <span class="dd-stats__product-name-light">LIGHT</span>' | replace: ' Light', ' <span class="dd-stats__product-name-light">Light</span>' -%}
-                <h3 class="dd-stats__product-name">{{ product_name }}</h3>
-              {%- endif -%}
-
               <div class="dd-stats__product-body">
-                <ul class="dd-stats__stats">
-                  {%- for index in (1..4) -%}
-                    {%- assign top_key = 'stat_' | append: index | append: '_top' -%}
-                    {%- assign percent_key = 'stat_' | append: index | append: '_percentage' -%}
-                    {%- assign bottom_key = 'stat_' | append: index | append: '_bottom' -%}
-                    {%- if block.settings[percent_key] != blank -%}
-                      <li class="dd-stats__stat">
-                        {%- if block.settings[top_key] != blank -%}
-                          <span class="dd-stats__stat-top">{{ block.settings[top_key] | escape }}</span>
-                        {%- endif -%}
-                        <span class="dd-stats__stat-percentage">{{ block.settings[percent_key] | escape }}</span>
-                        {%- if block.settings[bottom_key] != blank -%}
-                          <span class="dd-stats__stat-bottom">{{ block.settings[bottom_key] | escape }}</span>
-                        {%- endif -%}
-                      </li>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </ul>
+                <div class="dd-stats__product-copy">
+                  {%- if block.settings.product_name != blank -%}
+                    {%- assign product_name = block.settings.product_name | escape -%}
+                    {%- assign product_name = product_name | replace: ' LIGHT', ' <span class="dd-stats__product-name-light">LIGHT</span>' | replace: ' Light', ' <span class="dd-stats__product-name-light">Light</span>' -%}
+                    <h3 class="dd-stats__product-name">{{ product_name }}</h3>
+                  {%- endif -%}
+
+                  <ul class="dd-stats__stats">
+                    {%- for index in (1..4) -%}
+                      {%- assign top_key = 'stat_' | append: index | append: '_top' -%}
+                      {%- assign percent_key = 'stat_' | append: index | append: '_percentage' -%}
+                      {%- assign bottom_key = 'stat_' | append: index | append: '_bottom' -%}
+                      {%- if block.settings[percent_key] != blank -%}
+                        <li class="dd-stats__stat">
+                          {%- if block.settings[top_key] != blank -%}
+                            <span class="dd-stats__stat-top">{{ block.settings[top_key] | escape }}</span>
+                          {%- endif -%}
+                          <span class="dd-stats__stat-percentage">{{ block.settings[percent_key] | escape }}</span>
+                          {%- if block.settings[bottom_key] != blank -%}
+                            <span class="dd-stats__stat-bottom">{{ block.settings[bottom_key] | escape }}</span>
+                          {%- endif -%}
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                </div>
 
                 <figure class="dd-stats__media" aria-label="{{ block.settings.product_name | escape }} before and after image">
                   {%- if block.settings.before_after_image != blank -%}
@@ -69,7 +71,7 @@
     {%- endif -%}
 
     {%- if section.settings.cta_label != blank -%}
-      <form class="dd-stats__form" method="post" action="/cart/add">
+      <form class="dd-stats__form" method="post" action="{{ routes.cart_add_url }}">
         {%- if cta_variant != blank -%}
           <input type="hidden" name="id" value="{{ cta_variant.id }}">
         {%- endif -%}

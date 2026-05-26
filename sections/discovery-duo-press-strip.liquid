@@ -8,10 +8,12 @@
   <div class="dd-press__track" aria-hidden="true">
     {%- for repeat in (1..2) -%}
       <div class="dd-press__group">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'item' and block.settings.text != blank -%}
-            <span class="dd-press__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
-          {%- endif -%}
+        {%- for set in (1..4) -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'item' and block.settings.text != blank -%}
+              <span class="dd-press__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+            {%- endif -%}
+          {%- endfor -%}
         {%- endfor -%}
       </div>
     {%- endfor -%}

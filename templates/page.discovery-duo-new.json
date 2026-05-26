@@ -174,6 +174,7 @@
         "formula_1": {
           "type": "formula",
           "settings": {
+            "image": "shopify://shop_images/01.png",
             "title": "Ympossible Cream",
             "subtitle": "ULTRA-RICH · AGE-DEFYING",
             "benefit_1": "Firms + Lifts",
@@ -187,6 +188,7 @@
         "formula_2": {
           "type": "formula",
           "settings": {
+            "image": "shopify://shop_images/022.png",
             "title": "Ympossible Cream Light",
             "subtitle": "WEIGHTLESS · RADIANT",
             "benefit_1": "Instantly Hydrates",
@@ -206,6 +208,8 @@
         "eyebrow": "What you're getting",
         "headline": "Two formulas. One complete routine.",
         "routine_title": "Replaces your entire routine",
+        "routine_desktop_image": "shopify://shop_images/Group_1000006183.png",
+        "routine_mobile_image": "shopify://shop_images/Group_1000006158.png",
         "routine_alt": "Replaces your entire routine diagram",
         "cta_product": "",
         "cta_label": "Get both for -",
@@ -224,6 +228,7 @@
         "mechanism_1": {
           "type": "mechanism",
           "settings": {
+            "icon": "shopify://shop_images/11.png",
             "title": "Shielded",
             "text": "Each active protected at peak potency."
           }
@@ -231,6 +236,7 @@
         "mechanism_2": {
           "type": "mechanism",
           "settings": {
+            "icon": "shopify://shop_images/12.png",
             "title": "Time-released",
             "text": "Sustained delivery, longer-lasting."
           }
@@ -238,6 +244,7 @@
         "mechanism_3": {
           "type": "mechanism",
           "settings": {
+            "icon": "shopify://shop_images/223.png",
             "title": "Targeted",
             "text": "Reaches deeper epidermal layers."
           }
@@ -245,6 +252,7 @@
         "mechanism_4": {
           "type": "mechanism",
           "settings": {
+            "icon": "shopify://shop_images/Vector_1.png",
             "title": "Gentle",
             "text": "Suitable for sensitive, reactive skin."
           }
@@ -252,6 +260,7 @@
         "active_1": {
           "type": "active",
           "settings": {
+            "icon": "shopify://shop_images/desktop-vitamin-c.jpg",
             "name": "Epidermal Growth Factor",
             "action": "Renew",
             "benefits": "Visibly renewed, younger-looking"
@@ -260,6 +269,7 @@
         "active_2": {
           "type": "active",
           "settings": {
+            "icon": "shopify://shop_images/mobile-red-algae.jpg",
             "name": "Vitamin C",
             "action": "Firm",
             "benefits": "Visibly firmer, lifted"
@@ -268,6 +278,7 @@
         "active_3": {
           "type": "active",
           "settings": {
+            "icon": "shopify://shop_images/mobile-timut-pepper.jpg",
             "name": "Tranexamic Acid",
             "action": "Brighten",
             "benefits": "Dark spots visibly reduced, brighter complexion"
@@ -276,6 +287,7 @@
         "active_4": {
           "type": "active",
           "settings": {
+            "icon": "shopify://shop_images/desktop-hyaluronic-acid.jpg",
             "name": "Hyaluronic Acid",
             "action": "Hydrate",
             "benefits": "Plumped, smoother-looking skin"
@@ -284,6 +296,7 @@
         "active_5": {
           "type": "active",
           "settings": {
+            "icon": "shopify://shop_images/mobile-chebula.jpg",
             "name": "Ceramides",
             "action": "Protect",
             "benefits": "Stronger moisture barrier"
@@ -292,6 +305,7 @@
         "active_6": {
           "type": "active",
           "settings": {
+            "icon": "shopify://shop_images/desktop-ceramides.jpg",
             "name": "Squalane",
             "action": "Nourish",
             "benefits": "Soft, resilient finish"
@@ -314,6 +328,8 @@
         "headline_prefix": "14 biotech actives.",
         "headline_accent": "One Complex",
         "body": "SynerGenius® delivers actives beyond the surface, where skin renewal begins.",
+        "diagram_desktop_image": "shopify://shop_images/031.jpg",
+        "diagram_mobile_image": "shopify://shop_images/031.jpg",
         "diagram_alt": "SynerGenius delivery diagram",
         "diagram_label_1": "Surface",
         "diagram_title_1": "Advanced encapsulation",

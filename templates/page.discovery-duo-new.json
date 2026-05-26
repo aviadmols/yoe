@@ -114,6 +114,7 @@
           "type": "product_result",
           "settings": {
             "product_name": "Ympossible Cream Light",
+            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
             "stat_1_top": "Immediate hydration boost by up to",
             "stat_1_percentage": "127.8%",
             "stat_1_bottom": "upon application",
@@ -133,6 +134,7 @@
           "type": "product_result",
           "settings": {
             "product_name": "Ympossible Cream",
+            "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
             "stat_1_top": "Fine lines and wrinkles reduced by up to",
             "stat_1_percentage": "68.9%",
             "stat_1_bottom": "in only 4 weeks",

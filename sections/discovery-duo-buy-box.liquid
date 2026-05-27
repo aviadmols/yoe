@@ -63,7 +63,7 @@
           {%- capture cta_strike_markup -%}<span class="dd-buy__cta-compare">{{ cta_strike_escaped }}</span>{%- endcapture -%}
           {%- assign cta_button_text = cta_button_text | replace: cta_strike_escaped, cta_strike_markup -%}
         {%- endif -%}
-        <form class="dd-buy__form" method="post" action="{{ routes.cart_add_url }}">
+        <form class="dd-buy__form" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
           {%- if cta_variant != blank -%}
             <input type="hidden" name="id" value="{{ cta_variant.id }}">
           {%- endif -%}
@@ -170,6 +170,13 @@
       "type": "product",
       "id": "cta_product",
       "label": "CTA product"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_go_to_checkout",
+      "label": "Go directly to checkout",
+      "default": false,
+      "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
     },
     {
       "type": "text",

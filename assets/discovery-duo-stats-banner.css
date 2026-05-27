@@ -177,9 +177,10 @@
 }
 
 .dd-stats__cta span {
+  margin-left: 0.4rem;
   color: inherit;
   font-size: 1.2rem;
-  font-weight: 660;
+  font-weight: 600;
   line-height: 1.12;
   letter-spacing: 0.024rem;
   font-variation-settings: "wdth" 77;

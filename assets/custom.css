@@ -1553,13 +1553,15 @@ section#shopify-section-template--20115878281464__1758030390efc27bb5 {
     transition: 0.2s all
 }
 
+body.template-page-discovery-duo-new .announcement-bar-section {
+    position: relative;
+    z-index: 2;
+}
+
 body.template-page-discovery-duo-new .section-header.shopify-section-group-header-group {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    position: relative;
+    z-index: 1;
     width: 100%;
-    z-index: 5;
 }
 
 body.template-page-discovery-duo-new sticky-header.header-wrapper,

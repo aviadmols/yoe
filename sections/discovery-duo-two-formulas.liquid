@@ -100,7 +100,7 @@
     </div>
 
     {%- if section.settings.cta_label != blank -%}
-      <form class="dd-two__cta-wrap" method="post" action="{{ routes.cart_add_url }}">
+      <form class="dd-two__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
         {%- if cta_variant != blank -%}
           <input type="hidden" name="id" value="{{ cta_variant.id }}">
         {%- endif -%}
@@ -179,6 +179,13 @@
       "type": "product",
       "id": "cta_product",
       "label": "CTA product"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_go_to_checkout",
+      "label": "Go directly to checkout",
+      "default": false,
+      "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
     },
     {
       "type": "text",

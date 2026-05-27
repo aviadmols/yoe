@@ -89,7 +89,7 @@
     </div>
 
     {%- if section.settings.cta_label != blank -%}
-      <form class="dd-compare__cta-wrap" method="post" action="/cart/add">
+      <form class="dd-compare__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
         {%- if cta_variant != blank -%}<input type="hidden" name="id" value="{{ cta_variant.id }}">{%- endif -%}
         <button class="dd-compare__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
           <span>{{ section.settings.cta_label | escape }}</span>
@@ -129,6 +129,7 @@
     { "type": "text", "id": "diagram_label_3", "label": "Diagram label 3", "default": "Dermis" },
     { "type": "text", "id": "diagram_title_3", "label": "Diagram title 3", "default": "Targeted delivery within dermin" },
     { "type": "product", "id": "cta_product", "label": "CTA product" },
+    { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": false, "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart." },
     { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Get both for -" },
     { "type": "text", "id": "cta_compare_price", "label": "Fallback compare-at price", "default": "$86" },
     { "type": "text", "id": "cta_price", "label": "Fallback price", "default": "$48" },

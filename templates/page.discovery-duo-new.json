@@ -604,11 +604,12 @@
     },
     "dd_refill": {
       "type": "discovery-duo-refillable",
+      "custom_css": [],
       "settings": {
         "desktop_image": "shopify://shop_images/Group_1000006169_1.png",
         "mobile_image": "shopify://shop_images/Group_1000005523.jpg",
         "alt_text": "Refillable product banner",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 0
       }
     },
@@ -726,61 +727,112 @@
         "include_margins": true
       }
     },
-    "dd_faq": {
-      "type": "discovery-duo-faq",
+    "collapsible_content_ihwU9N": {
+      "type": "collapsible-content",
       "blocks": {
-        "qa_1": {
-          "type": "qa",
+        "collapsible_row_xeQaQr": {
+          "type": "collapsible_row",
+          "disabled": true,
           "settings": {
-            "question": "What is included in the Discovery Duo?",
-            "answer": "<p>The Discovery Duo includes Ympossible Cream 8ml and Ympossible Cream Light 8ml.</p>"
+            "heading": "How will my Valentine receive the products?",
+            "icon": "check_mark",
+            "row_content": "<ul><li>Your Valentine will receive an email containing a voucher to redeem their complimentary product, with your name included to let them know the gift is from you. We make it super easy!</li></ul>",
+            "page": ""
           }
         },
-        "qa_2": {
-          "type": "qa",
+        "collapsible_row_rtVrcE": {
+          "type": "collapsible_row",
           "settings": {
-            "question": "What are the benefits of the Ympossible Cream?",
-            "answer": "<p>It helps hydrate, nourish, smooth fine lines, support barrier function and visibly improve firmness.</p>"
+            "heading": "What are the benefits of the Ympossible Cream?",
+            "icon": "none",
+            "row_content": "<ul><li>Instantly hydrates and replenishes the skin.  </li><li>Provides deep, long-lasting nourishment.  </li><li>Strengthens the skin's moisture barrier.  </li><li>Targets visible signs of aging for a youthful complexion.  </li><li>Boosts collagen production for firmer, healthier skin.  </li><li>Improves skin tone and texture while addressing hyperpigmentation.  </li><li>Protects against environmental damage from pollution, UV and blue light. </li></ul>",
+            "page": ""
           }
         },
-        "qa_3": {
-          "type": "qa",
+        "collapsible_row_iaQ4ga": {
+          "type": "collapsible_row",
           "settings": {
-            "question": "What are the benefits of the Ympossible Cream Light?",
-            "answer": "<p>It delivers lightweight hydration, glow support and smoothing benefits for a radiant finish.</p>"
+            "heading": "What are the differences between Yoé’s two hero products?",
+            "icon": "none",
+            "row_content": "<ul><li>Ympossible Cream: A rich, ultra-nourishing formula designed to deeply hydrate, rejuvenate and protect your skin.  </li><li>Ympossible Cream Light: A lightweight version of our multi-action cream that delivers hydration, radiance and a youthful glow. </li></ul>",
+            "page": ""
           }
         },
-        "qa_4": {
-          "type": "qa",
+        "collapsible_row_iN33Hc": {
+          "type": "collapsible_row",
           "settings": {
-            "question": "How do I use the Ympossible Cream and Ympossible Cream Light?",
-            "answer": "<p>Use on clean skin morning and evening. Apply the texture that suits your skin needs or alternate as desired.</p>"
+            "heading": "What are the benefits of the Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Supplies instant and long-lasting hydration.  </li><li>Delivers a radiant, luminous glow.  </li><li>Strengthens the moisture barrier for lasting hydration.  </li><li>Smooths texture and plumps skin for a youthful look.  </li><li>Reduces fine lines, wrinkles, and redness.  </li><li>Protects against environmental damage from pollution, UV, and blue light. </li></ul>",
+            "page": ""
           }
         },
-        "qa_5": {
-          "type": "qa",
+        "collapsible_row_KfRMnX": {
+          "type": "collapsible_row",
           "settings": {
-            "question": "Is the Discovery Duo vegan and cruelty-free?",
-            "answer": "<p>Yes, the formulas are vegan and cruelty-free.</p>"
+            "heading": "How do I use the Ympossible Cream and Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Ympossible Cream: Apply to cleansed, dry skin on the face, neck and décolletage, both morning and evening. It can also be used as an overnight mask for stressed or parched skin. Best for normal to dry skin types or as a rich nighttime treatment.  </li><li>Ympossible Cream Light: Apply to cleansed, dry skin on the face, neck, and décolletage, both morning and evening. Ideal for normal to oily and combination skin types, or as a makeup base for a glowy finish.</li><li>Both products can also be used together as a moisture cocktail to tailor hydration to your skin's specific needs. Mix them in your palm to balance nourishment and radiance, addressing multiple skin concerns at once.  </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YCCKjJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products suitable for sensitive skin or those who are pregnant or breastfeeding?",
+            "icon": "none",
+            "row_content": "<ul><li><strong>Yes! Both the Ympossible Cream and Ympossible Cream Light are:  </strong></li><li>Dermatologist-tested and hypoallergenic.  </li><li>Safe for all skin types, including sensitive skin.  </li><li>Suitable for individuals who are pregnant or breastfeeding. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_tgT6Bg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products clean and safe?",
+            "icon": "none",
+            "row_content": "<ul><li><strong>Absolutely. Yoé’s products are:  </strong></li><li>Clinically and dermatologically tested.  </li><li>Hypoallergenic and safe for pregnant or breastfeeding individuals.  </li><li>Formulated without parabens, phthalates, synthetic fragrances and other harmful substances.  </li><li>EWG verified, Leaping Bunny Certified and vegan.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_dRDYmK": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products vegan and cruelty-free?",
+            "icon": "none",
+            "row_content": "<ul><li>Yes, both products are 100% vegan and cruelty-free, and they are Leaping Bunny certified.</li></ul>",
+            "page": ""
           }
         }
       },
       "block_order": [
-        "qa_1",
-        "qa_2",
-        "qa_3",
-        "qa_4",
-        "qa_5"
+        "collapsible_row_xeQaQr",
+        "collapsible_row_rtVrcE",
+        "collapsible_row_iaQ4ga",
+        "collapsible_row_iN33Hc",
+        "collapsible_row_KfRMnX",
+        "collapsible_row_YCCKjJ",
+        "collapsible_row_tgT6Bg",
+        "collapsible_row_dRDYmK"
+      ],
+      "custom_css": [
+        ".collapsible-content__heading {color: #666460; text-align: center; font-family: \"Open Sans\"; font-size: 2.75rem; font-style: normal; font-weight: 450;}",
+        ".accordion summary {display: flex; position: relative; line-height: 1; padding: 1.5rem 0; min-height: 60px; align-items: center;}",
+        ".collapsible-content .accordion {max-width: 46rem; margin-left: auto; margin-right: auto;}",
+        ".rte ul,.rte ol {padding-left: 0.5rem;}"
       ],
       "settings": {
-        "eyebrow": "",
-        "headline": "FAQ",
-        "subheadline": "",
-        "contact_text": "Still have questions?",
-        "contact_link_text": "Get in touch",
-        "contact_link_url": "/pages/contact",
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
         "padding_top": 72,
-        "padding_bottom": 120
+        "padding_bottom": 72
       }
     }
   },
@@ -797,6 +849,6 @@
     "dd_mobile_banner",
     "custom_liquid_7Tik8g",
     "apps_NcRJ7C",
-    "dd_faq"
+    "collapsible_content_ihwU9N"
   ]
 }

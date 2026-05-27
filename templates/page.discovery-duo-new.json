@@ -296,6 +296,15 @@
             "benefits": "Plumped, smoother-looking skin"
           }
         },
+        "active_BN6LiL": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Protective_-_Niacinamide_1.png",
+            "name": "niacinamide",
+            "action": "refine",
+            "benefits": "Pores minimized, tone evened, barrier strengthened"
+          }
+        },
         "active_5": {
           "type": "active",
           "settings": {
@@ -358,6 +367,24 @@
             "action": "SHIELD",
             "benefits": "Shielded from pollution and UV stress"
           }
+        },
+        "active_p7LcFV": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Squalene_b0fc49c7-dffd-43f8-bd65-732fe5460a52.png",
+            "name": "Timut Pepper",
+            "action": "RADIANCE",
+            "benefits": "Visibly brighter, more even-toned"
+          }
+        },
+        "active_itm3Xi": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Hyaluronic_Acid_1.png",
+            "name": "Rice Water",
+            "action": "SMOOTH",
+            "benefits": "Smoother, more luminous"
+          }
         }
       },
       "block_order": [
@@ -369,13 +396,16 @@
         "active_2",
         "active_3",
         "active_4",
+        "active_BN6LiL",
         "active_5",
         "active_6",
         "active_a3fRxX",
         "active_8t4HD4",
         "active_eiTzAU",
         "active_dE7phR",
-        "active_hPzN7t"
+        "active_hPzN7t",
+        "active_p7LcFV",
+        "active_itm3Xi"
       ],
       "settings": {
         "headline_prefix": "14 biotech actives.",

@@ -425,7 +425,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {%- endif -%}
 
 
-<div class="header_sections {% if page.title contains 'The Impact' or page.title contains 'The Science' %} {{ page.title }} {% endif %}{% if page.title contains 'The Impact' or page.title contains 'The Science' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' %} dark_header {% endif %} {% if template == 'index' or request.path contains '/the-science' or request.path contains '/our-story' or page.title contains 'The Impact' or request.path contains '/discover-yoe' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' %} homepageheader{% endif %} ">
+<div class="header_sections {% if page.title contains 'The Impact' or page.title contains 'The Science' %} {{ page.title }} {% endif %}{% if page.title contains 'The Impact' or page.title contains 'The Science' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix == 'discovery-duo-new' %} dark_header {% endif %} {% if template == 'index' or request.path contains '/the-science' or request.path contains '/our-story' or page.title contains 'The Impact' or request.path contains '/discover-yoe' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix == 'discovery-duo-new' %} homepageheader{% endif %} ">
     {% sections 'header-group' %}
 </div>
 

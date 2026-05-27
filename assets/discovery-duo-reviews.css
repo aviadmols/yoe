@@ -53,8 +53,8 @@
 
 .dd-reviews__rating-stars .dd-reviews-star {
   display: block;
-  width: 3.6rem; /* 72px */
-  height: 3.6rem;
+  width: 2.5rem.6rem; /* 72px */
+  height: 2.6rem;
   flex-shrink: 0;
 }
 

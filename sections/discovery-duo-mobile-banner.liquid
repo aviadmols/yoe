@@ -1,0 +1,44 @@
+{{ 'discovery-duo-mobile-banner.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-mobile-banner"
+  aria-label="{{ section.settings.alt_text | default: 'Mobile banner' | escape }}"
+>
+  {%- if section.settings.image != blank -%}
+    <div class="dd-mobile-banner__inner">
+      {{ section.settings.image | image_url: width: 1200 | image_tag:
+        loading: 'lazy',
+        widths: '375, 550, 750, 900, 1100, 1200',
+        sizes: '100vw',
+        class: 'dd-mobile-banner__image',
+        alt: section.settings.alt_text | default: section.settings.image.alt
+      }}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Duo - Mobile banner",
+  "tag": "section",
+  "class": "section-dd-mobile-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Image alt text",
+      "default": "Discovery Duo mobile banner"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo - Mobile banner"
+    }
+  ]
+}
+{% endschema %}

@@ -56,15 +56,22 @@
       </div>
 
       {%- if section.settings.cta_text != blank -%}
-        <form class="dd-buy__form" method="post" action="/cart/add">
+        {%- assign cta_button_text = section.settings.cta_text | escape -%}
+        {%- assign cta_strike_price = section.settings.cta_strike_price | default: section.settings.compare_price | strip -%}
+        {%- if cta_strike_price != blank -%}
+          {%- assign cta_strike_escaped = cta_strike_price | escape -%}
+          {%- capture cta_strike_markup -%}<span class="dd-buy__cta-compare">{{ cta_strike_escaped }}</span>{%- endcapture -%}
+          {%- assign cta_button_text = cta_button_text | replace: cta_strike_escaped, cta_strike_markup -%}
+        {%- endif -%}
+        <form class="dd-buy__form" method="post" action="{{ routes.cart_add_url }}">
           {%- if cta_variant != blank -%}
             <input type="hidden" name="id" value="{{ cta_variant.id }}">
           {%- endif -%}
           <button class="dd-buy__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-          {{ section.settings.cta_text | escape }}
-          <svg class="dd-buy__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
-            <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+            {{ cta_button_text }}
+            <svg class="dd-buy__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
+              <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
         </form>
       {%- endif -%}
@@ -169,6 +176,13 @@
       "id": "cta_text",
       "label": "Button text",
       "default": "TRY DISCOVERY DUO"
+    },
+    {
+      "type": "text",
+      "id": "cta_strike_price",
+      "label": "Button strikethrough price",
+      "default": "$86",
+      "info": "Must match the price shown in the button text (e.g. $86)."
     },
     {
       "type": "text",

@@ -9,8 +9,13 @@
       {%- if section.settings.rating_value != blank -%}
         <span class="dd-reviews__rating-value">{{ section.settings.rating_value }}</span>
       {%- endif -%}
-      <span class="dd-reviews__rating-stars" aria-hidden="true">
+      <span class="dd-reviews__rating-stars dd-reviews__rating-stars--single" aria-hidden="true">
         {% render 'dd-reviews-star' %}
+      </span>
+      <span class="dd-reviews__rating-stars dd-reviews__rating-stars--below" aria-hidden="true">
+        {%- for star in (1..5) -%}
+          {% render 'dd-reviews-star' %}
+        {%- endfor -%}
       </span>
       {%- if section.settings.rating_text != blank -%}
         <span class="dd-reviews__rating-text">{{ section.settings.rating_text }}</span>

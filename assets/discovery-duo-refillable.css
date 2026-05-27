@@ -4,7 +4,9 @@
   width: 100%;
   padding-top: var(--dd-refill-padding-top, 3.6rem);
   padding-bottom: var(--dd-refill-padding-bottom, 3.6rem);
-  background: #fff;
+  padding-left: 5rem; /* 100px */
+  padding-right: 5rem; /* 100px */
+  background: transparent;
   color: #666460;
   font-family: "Open Sans", sans-serif;
 }
@@ -44,6 +46,8 @@
   .dd-refill {
     padding-top: var(--dd-refill-padding-top, 0);
     padding-bottom: var(--dd-refill-padding-bottom, 0);
+    padding-left: 0;
+    padding-right: 0;
     background: #fff;
   }
 

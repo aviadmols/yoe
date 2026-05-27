@@ -10,10 +10,10 @@
 }
 
 .dd-buy__inner {
-  width: min(100% - 2rem, 30.95rem);
+  width: 28.7rem; /* 574px */
   margin: 0 auto;
-  padding: 1.65rem 2.05rem 1.35rem;
-  border: 0.05rem solid #bd1e18;
+  padding: 3rem 1.75rem 1.75rem; /* 60px 35px 35px */
+  border: none;
   background: #fff;
   box-sizing: border-box;
 }
@@ -36,22 +36,27 @@
   border-radius: 0.25rem;
   background: #bd1e18;
   color: #fff;
-  font-size: 0.949rem; /* 18.972px */
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.052rem;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9486rem; /* 18.972px */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0.09485rem; /* 1.897px */
   text-transform: uppercase;
-  font-variation-settings: "wdth" 75;
 }
 
 .dd-buy__title {
-  max-width: 17rem;
+  max-width: 16.25rem; /* 325px */
   margin: 0 auto 1.65rem;
   color: #bd1e18;
-  font-size: 1.747rem; /* 34.933px */
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.74665rem; /* 34.933px */
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.16;
-  letter-spacing: 0.105rem; /* 2.096px */
+  line-height: 116%;
+  letter-spacing: 0.1048rem; /* 2.096px */
   text-transform: uppercase;
   font-variation-settings: "wdth" 75;
 }
@@ -95,7 +100,7 @@
 }
 
 .dd-buy__total-row + .dd-buy__total-row {
-  margin-top: 1.05rem;
+  margin-top: 1.35rem; /* 27px */
 }
 
 .dd-buy__compare-price {
@@ -109,7 +114,7 @@
 
 .dd-buy__price {
   color: #bd1e18;
-  font-weight: 700;
+  font-weight: 430;
 }
 
 .dd-buy__price-suffix {
@@ -117,7 +122,7 @@
 }
 
 .dd-buy__form {
-  margin-top: 1.45rem;
+  margin-top: 2rem; /* 40px */
 }
 
 .dd-buy__cta {
@@ -135,7 +140,7 @@
   cursor: pointer;
   font-family: inherit;
   font-size: 1.27rem; /* 25.406px */
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.1;
   letter-spacing: 0.025rem; /* 0.508px */
   text-transform: uppercase;
@@ -143,9 +148,14 @@
   font-variation-settings: "wdth" 77;
 }
 
+.dd-buy__cta-compare {
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
 .dd-buy__cta:hover,
 .dd-buy__cta:focus-visible {
-  background: #666460;
+  background: #7d0e0a;
 }
 
 .dd-buy__cta-arrow {

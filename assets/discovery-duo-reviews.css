@@ -47,6 +47,10 @@
   line-height: 0;
 }
 
+.dd-reviews__rating-stars--below {
+  display: none;
+}
+
 .dd-reviews__rating-stars .dd-reviews-star {
   display: block;
   width: 3.6rem; /* 72px */
@@ -152,30 +156,44 @@
   }
 
   .dd-reviews__inner {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     width: 100%;
     min-height: 0;
     margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 50px;
+    padding-right: 50px;
     border: none !important;
   }
 
   .dd-reviews__summary {
-    justify-content: center;
+    width: 100%;
+    min-width: 0 !important;
+    display: block;
     padding: 0 0 35px;
     border-bottom: 1px solid rgba(102, 100, 96, 0.35);
     text-align: center;
   }
 
   .dd-reviews__rating-value {
+    display: block;
     font-size: 64px;
     line-height: 0.95;
     font-variation-settings: "wdth" 75;
   }
 
-  .dd-reviews__rating-stars .dd-reviews-star {
+  .dd-reviews__rating-stars--single {
+    display: none;
+  }
+
+  .dd-reviews__rating-stars--below {
+    display: inline-flex;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .dd-reviews__rating-stars--below .dd-reviews-star {
     width: 26px;
     height: 26px;
   }
@@ -186,31 +204,43 @@
   }
 
   .dd-reviews__item {
-    width: 305px;
+    width: 100%;
     min-height: 122px;
     padding: 28px 0 0;
     border: none !important;
-    gap: 12px;
+    gap: 11px;
     scroll-snap-align: none;
   }
 
   .dd-reviews__item-stars .dd-reviews-star {
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
   }
 
   .dd-reviews__item-title {
-    font-size: 9px;
-    line-height: 1;
-    letter-spacing: 0.54px;
+    color: #666460;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0.51px;
+    text-transform: uppercase;
     font-variation-settings: "wdth" 80;
   }
 
   .dd-reviews__item-quote {
     max-width: 299px;
-    font-size: 14px;
-    line-height: 1.28;
-    font-variation-settings: "wdth" 85;
+  }
+
+  .dd-reviews__item-quote p {
+    color: #666460;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 413;
+    line-height: 140%;
+    letter-spacing: 0.13px;
   }
 
   .dd-reviews__item-author {

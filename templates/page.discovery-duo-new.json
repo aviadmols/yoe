@@ -707,9 +707,17 @@
         "savings_label": "Your Price — First-Time Customers",
         "cta_product": "",
         "cta_text": "Claim my duo for  $86  $48",
+        "cta_strike_price": "$86",
         "disclaimer": "",
         "padding_top": 56,
         "padding_bottom": 56
+      }
+    },
+    "dd_mobile_banner": {
+      "type": "discovery-duo-mobile-banner",
+      "settings": {
+        "image": "",
+        "alt_text": "Discovery Duo mobile banner"
       }
     },
     "dd_retailer": {
@@ -828,6 +836,7 @@
     "dd_reviews",
     "dd_refill",
     "dd_buy",
+    "dd_mobile_banner",
     "dd_retailer",
     "dd_faq"
   ]

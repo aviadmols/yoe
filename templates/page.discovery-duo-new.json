@@ -44,11 +44,12 @@
       ],
       "settings": {
         "desktop_background": "shopify://shop_images/hero-desktop-bg.png",
-        "mobile_background": "shopify://shop_images/hero-mobile-bg.png",
+        "mobile_background": "shopify://shop_images/Rectangle_881_87f5d324-594f-48ea-b2a2-75a20ae7af68.jpg",
         "badge_text": "Clinically proven",
         "headline": "Visibly firms, lifts, reduces fine lines and boosts hydration.",
         "subheadline": "ALL IN ONE FORMULA.",
         "cta_product": "",
+        "cta_go_to_checkout": false,
         "cta_label": "TRY BOTH FOR",
         "cta_compare_price": "$86",
         "cta_price": "$48",
@@ -158,6 +159,7 @@
       "settings": {
         "headline": "Visibly Transformed.",
         "cta_product": "",
+        "cta_go_to_checkout": false,
         "cta_label": "SEE IT ON YOUR SKIN -",
         "cta_compare_price": "$86",
         "cta_price": "$48",
@@ -212,6 +214,7 @@
         "routine_mobile_image": "shopify://shop_images/Group_1000006158.png",
         "routine_alt": "Replaces your entire routine diagram",
         "cta_product": "",
+        "cta_go_to_checkout": false,
         "cta_label": "Get both for -",
         "cta_compare_price": "$86",
         "cta_price": "$48",
@@ -338,6 +341,7 @@
         "diagram_label_3": "Dermis",
         "diagram_title_3": "Targeted delivery within dermin",
         "cta_product": "",
+        "cta_go_to_checkout": false,
         "cta_label": "Get both for -",
         "cta_compare_price": "$86",
         "cta_price": "$48",
@@ -544,43 +548,6 @@
         "padding_bottom": 72
       }
     },
-    "dd_image_collage": {
-      "type": "discovery-duo-image-collage",
-      "blocks": {
-        "image_1": {
-          "type": "image",
-          "settings": {
-            "caption": "Morning prep",
-            "alt": ""
-          }
-        },
-        "image_2": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/03_YCL_Model_1.webp",
-            "caption": "Clinical texture",
-            "alt": ""
-          }
-        },
-        "image_3": {
-          "type": "image",
-          "settings": {
-            "caption": "Evening reset",
-            "alt": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_1",
-        "image_2",
-        "image_3"
-      ],
-      "settings": {
-        "accessibility_label": "Discovery Duo image collage",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
     "dd_reviews": {
       "type": "discovery-duo-reviews",
       "blocks": {
@@ -638,7 +605,8 @@
     "dd_refill": {
       "type": "discovery-duo-refillable",
       "settings": {
-        "desktop_image": "shopify://shop_images/Rectangle_195_dfeec261-3159-4c33-977d-fb537e3780de.png",
+        "desktop_image": "shopify://shop_images/Group_1000006169_1.png",
+        "mobile_image": "shopify://shop_images/Group_1000005523.jpg",
         "alt_text": "Refillable product banner",
         "padding_top": 0,
         "padding_bottom": 0
@@ -705,6 +673,7 @@
         "total_label": "Total Value",
         "savings_label": "Your Price — First-Time Customers",
         "cta_product": "",
+        "cta_go_to_checkout": false,
         "cta_text": "Claim my duo for  $86  $48",
         "cta_strike_price": "$86",
         "disclaimer": "",
@@ -715,6 +684,7 @@
     "dd_mobile_banner": {
       "type": "discovery-duo-mobile-banner",
       "settings": {
+        "image": "shopify://shop_images/Rectangle_887.png",
         "alt_text": "Discovery Duo mobile banner"
       }
     },
@@ -821,7 +791,6 @@
     "dd_two_formulas",
     "dd_compare",
     "dd_stubborn",
-    "dd_image_collage",
     "dd_reviews",
     "dd_refill",
     "dd_buy",

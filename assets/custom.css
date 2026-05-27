@@ -1553,6 +1553,10 @@ section#shopify-section-template--20115878281464__1758030390efc27bb5 {
     transition: 0.2s all
 }
 
+body.template-page-discovery-duo-new .header_sections {
+    min-height: 6.5rem;
+}
+
 body.template-page-discovery-duo-new .announcement-bar-section {
     position: relative;
     z-index: 2;

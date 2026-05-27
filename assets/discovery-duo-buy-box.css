@@ -206,6 +206,9 @@
     background: #f7f6f5;
   }
 
+  .dd-hero__content {
+    padding-bottom: 307px;
+  }
   .dd-stubborn__content {
      padding-top: 0px;
   }

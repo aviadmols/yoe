@@ -530,7 +530,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   body.template-page-discovery-duo-new .dd-hero__bg {
-    animation: dd-hero-bg-in 0.65s ease-out both;
+    animation: dd-hero-bg-in 1s ease-out both;
   }
 
   body.template-page-discovery-duo-new .dd-hero__inner {

@@ -227,6 +227,8 @@
 
   .dd-buy__title {
     max-width: 205px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 26px;
     font-size: 22px;
     line-height: 1.18;

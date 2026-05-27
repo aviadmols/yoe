@@ -582,10 +582,10 @@
   .dd-compare__table-row span:last-child {
     color: #666460;
     font-family: "Open Sans", sans-serif;
-    font-size: 8.748px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 400;
-    line-height: 100%;
+    line-height: 1.1;
     font-variation-settings: "wdth" 85;
   }
 

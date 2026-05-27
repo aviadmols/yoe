@@ -2,7 +2,6 @@
 
 <section
   class="dd-reviews"
-  style="--dd-reviews-padding-top: {{ section.settings.padding_top }}px; --dd-reviews-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Customer reviews' | escape }}"
 >
   <div class="dd-reviews__inner">
@@ -10,7 +9,9 @@
       {%- if section.settings.rating_value != blank -%}
         <span class="dd-reviews__rating-value">{{ section.settings.rating_value }}</span>
       {%- endif -%}
-      <span class="dd-reviews__rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="dd-reviews__rating-stars" aria-hidden="true">
+        {% render 'dd-reviews-star' %}
+      </span>
       {%- if section.settings.rating_text != blank -%}
         <span class="dd-reviews__rating-text">{{ section.settings.rating_text }}</span>
       {%- endif -%}
@@ -24,7 +25,11 @@
       <ul class="dd-reviews__list">
         {%- for block in review_blocks -%}
           <li class="dd-reviews__item" {{ block.shopify_attributes }}>
-            <span class="dd-reviews__item-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="dd-reviews__item-stars" aria-hidden="true">
+              {%- for star in (1..5) -%}
+                {% render 'dd-reviews-star' %}
+              {%- endfor -%}
+            </span>
             {%- if block.settings.title != blank -%}
               <h3 class="dd-reviews__item-title">{{ block.settings.title }}</h3>
             {%- endif -%}

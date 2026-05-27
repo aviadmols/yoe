@@ -538,7 +538,7 @@
     max-width: calc(100vw - 36px);
     margin-top: 9px;
     gap: 9px;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: nowrap;
     font-size: 10px;
     line-height: 16px;

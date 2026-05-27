@@ -206,9 +206,13 @@
     background: #f7f6f5;
   }
 
+  .dd-stubborn__content {
+     padding-top: 0px;
+  }
+
   .dd-buy__inner {
     width: 313px;
-    max-width: 100%;
+    max-width: 100% ;
     padding: 0;
     border-width: 0;
     background: transparent;

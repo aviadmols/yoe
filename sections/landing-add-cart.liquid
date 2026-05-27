@@ -91,6 +91,7 @@
     </div>
 </div>
 
+{% unless template.suffix == 'landing-page-b' %}
 <script>
     (function() {
         // Use a more specific event handler with capture phase
@@ -224,3 +225,4 @@
         }, true); // Use capture phase to intercept before other handlers
     })();
 </script>
+{% endunless %}

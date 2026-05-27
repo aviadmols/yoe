@@ -340,6 +340,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {{ 'landing-page.css' | asset_url | stylesheet_tag }}
   <script type="module" src="{{ 'landing-page.js' | asset_url }}"></script>
 {% endif %}
+{% if template.name == 'page' and template.suffix == 'landing-page-b' %}
+  <script src="{{ 'landing-page-b-cart.js' | asset_url }}" defer="defer"></script>
+{% endif %}
 
 
     {%- unless settings.type_body_font.system? -%}

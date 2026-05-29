@@ -358,7 +358,7 @@
     left: 32px;
     right: auto;
     width: 301px;
-    max-width: 100%;
+    width: calc(100% - 32px);
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -377,11 +377,11 @@
 
   .dd-hero__headline {
     display: block;
-    width: 301px;
+    width: calc(100% - 32px);
     max-width: 100%;
     margin: 10px 0 0 !important;
     color: #666460;
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: 1.1px;

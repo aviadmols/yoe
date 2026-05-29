@@ -616,7 +616,7 @@
     justify-content: center;
     font-size: 10px;
     line-height: 16px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     font-variation-settings: "wdth" 85;
   }
 

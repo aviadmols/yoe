@@ -539,7 +539,7 @@
     margin-top: 9px;
     gap: 9px;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     font-size: 10px;
     line-height: 16px;
     font-variation-settings: "wdth" 85;

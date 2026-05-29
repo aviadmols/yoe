@@ -358,7 +358,7 @@
     left: 32px;
     right: auto;
     width: 301px;
-    max-width: 301px;
+    max-width: calc(100vw - 64px);
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -378,7 +378,7 @@
   .dd-hero__headline {
     display: block;
     width: 301px;
-    max-width: 301px;
+    max-width: 100%;
     margin: 10px 0 0 !important;
     color: #666460;
     font-size: 30px;
@@ -401,13 +401,15 @@
   }
 
   .dd-hero__form {
-    width: 313px;
-    margin: 16px 0 0 -6px;
+    width: 100%;
+    max-width: 313px;
+    margin: 16px 0 0;
   }
 
   .dd-hero__cta {
     display: inline-flex;
-    width: 313px;
+    width: 100%;
+    max-width: 313px;
     height: 51px;
     min-height: 51px;
     margin-top: 0;
@@ -432,11 +434,12 @@
 
   .dd-hero__trust {
     display: flex;
-    width: 338px;
-    margin: 15px 0 0 -14px;
+    width: 100%;
+    max-width: 338px;
+    margin: 15px 0 0;
     gap: 9px;
-    flex-wrap: nowrap;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     font-size: 10.1px;
     line-height: 16px;
   }

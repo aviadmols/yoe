@@ -237,9 +237,10 @@
     max-width: 205px;
     margin-left: auto;
     margin-right: auto;
+    min-width: 220px;
             width: 100%;
     margin-bottom: 26px;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.18;
     letter-spacing: 1.32px;
     font-variation-settings: "wdth" 75;

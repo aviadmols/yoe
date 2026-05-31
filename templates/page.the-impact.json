@@ -1,1 +1,167 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":28}},"image_banner_Vd77EC":{"type":"image-banner","blocks":{"heading_tbdbUP":{"type":"heading","settings":{"heading":"The Impact","heading_size":"h0"}},"text_kqmkaF":{"type":"text","settings":{"text":"The Yoé production process and refillable packaging system are designed to minimize our carbon footprint and overall environmental impact throughout the product life cycle. ","text_style":"subtitle"}}},"block_order":["heading_tbdbUP","text_kqmkaF"],"custom_css":[".banner__text.subtitle {margin-top: 1rem; max-width: 30rem;}","@media (min-width: 768px) {p, h2 {color: #666460 !important; }}",".banner__box {margin-top: -7rem;}",".banner__heading.h2 {text-align: center;}",".banner__content * {text-align: center;}","@media (max-width: 768px) {h2 {max-width: 200px; margin-left: auto; margin-right: auto; margin-top: 120px; } p {display: none !important; } .banner {max-height: 100vh !important; height: 674px; }}"],"settings":{"custom-class":"","image":"shopify:\/\/shop_images\/Impact_Hero_5a5de152-870f-4f36-8acd-bccb74c75ebf.webp","image_3":"shopify:\/\/shop_images\/Impact_Hero_-_Mobile.webp","image_overlay_opacity":0,"image_height":"adapt","desktop_content_position":"middle-center","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":true,"show_text_below":true}},"multirow_4cK7kT":{"type":"multirow","blocks":{"row_nPRnK7":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/Perfectly_Sustain_-_Mobile.webp","caption":"Our Commitment","heading":"Sustainable Packaging","text":"<p>At Yoé, we prioritize sustainability through our innovative production and refillable packaging process. Our glass bottles, made from at least 50% post-consumer recycled content, are designed for continuous reuse. <\/p><p>Our outer boxes use Forest Stewardship Council (FSC) certified paper, ensuring responsible tree harvesting and fair wages for workers. Printed with vegetal ink, these boxes avoid magnets, foam inserts, and glues to maintain recyclability. <\/p><p>Our signature red Yoé emblem is heat-fused into the cap, eliminating adhesive. The reusable pumps feature a metal-free spring, enhancing recyclability. <\/p><p>Notably, our airless dispenser system preserves product potency by reducing exposure to contaminants and maximizes usage, dispensing over 99% of the cream inside.<\/p>","button_label":"","button_link":""}}},"block_order":["row_nPRnK7"],"custom_css":[".row_section .text_in_div > div {width: 100%;}","@media (max-width: 768px) {.image-with-text__text {margin-top: 10px !important; }}"],"settings":{"image_height":"medium","desktop_image_width":"medium","heading_size":"h1","text_style":"body","button_style":"secondary","desktop_content_position":"middle","desktop_content_alignment":"left","image_layout":"alternate-right","section_color_scheme":"","row_color_scheme":"","mobile_content_alignment":"left","padding_top":36,"padding_bottom":36}},"yoe_video_banner_NcJFjh":{"type":"Yoe-video-banner","custom_css":[".padding-top-bottom-70 {padding-top: 0; padding-bottom: 0 !important;}","@media (max-width: 768px) {.text_on_video * {text-align: center !important; } > div {position: relative; } .text_on_video {min-width: 100%; text-align: center; padding-left: 20px; padding-bottom: 40px; padding-right: 20px; position: unset !important; } .play span {color: #666460; } .custom-cursor {margin-top: 140px; } .play path {fill: #fff !important; background-color: #fff; }}","@media (min-width: 768px) {img {max-height: 42rem; object-fit: cover; }}"],"settings":{"desktop_placeholder_image":"shopify:\/\/shop_images\/d25cdcb109d033d6a02d33507901456e.png","mobile_placeholder_image":"shopify:\/\/shop_images\/Rectangle_890_6ec09bc6-ea0c-4b3a-af72-0d0846cdfc1c.jpg","video_url":"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7e94314a1cb340e58efb6ec61664752b.mp4","heading":"The Refill System","text":"One Refill at A Time"}},"multirow_7R6HMg":{"type":"multirow","blocks":{"row_WRCQ8h":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/Extraction_process.webp","caption":"Our Method","heading":"Extraction process","text":"<p>In line with our sustainable ethos, we use a proprietary water extraction process to draw phytochemicals from botanical ingredients which preserves bioactive compounds while minimizing environmental impact. All leftover plant material is upcycled to create natural fertilizer. <\/p><p>We continue to explore ways to increase the PCR content in our packaging and reduce our environmental impact. We look forward to sharing additional sustainability milestones in the future.<br\/><br\/><\/p>","button_label":"","button_link":""}}},"block_order":["row_WRCQ8h"],"custom_css":[".row_section .image-with-text__content {width: 100%; justify-content: center;}",".image-with-text__content > * + * {margin-top: 0rem;}",".row_section .text_in_div > div {width: 100%; margin-right: auto; margin-left: auto;}","@media (max-width: 768px) {.title_in_div {display: none; } p {text-align: center; } .multirow__inner .image-with-text__text {margin-top: 0px !important; }}"],"settings":{"image_height":"medium","desktop_image_width":"medium","heading_size":"h1","text_style":"body","button_style":"secondary","desktop_content_position":"middle","desktop_content_alignment":"left","image_layout":"alternate-left","section_color_scheme":"","row_color_scheme":"","mobile_content_alignment":"left","padding_top":36,"padding_bottom":36}}},"order":["main","image_banner_Vd77EC","multirow_4cK7kT","yoe_video_banner_NcJFjh","multirow_7R6HMg"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_Vd77EC": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_tbdbUP": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Impact",
+            "heading_size": "h0"
+          }
+        },
+        "text_kqmkaF": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tbdbUP",
+        "text_kqmkaF"
+      ],
+      "custom_css": [
+        ".banner__text.subtitle {margin-top: 1rem; max-width: 30rem;}",
+        "@media (min-width: 768px) {p, h2 {color: #666460 !important; }}",
+        ".banner__box {margin-top: -7rem;}",
+        ".banner__heading.h2 {text-align: center;}",
+        ".banner__content * {text-align: center;}",
+        "@media (max-width: 768px) {h2 {max-width: 200px; margin-left: auto; margin-right: auto; margin-top: 120px; } p {display: none !important; } .banner {max-height: 100vh !important; height: 674px; }}"
+      ],
+      "settings": {
+        "custom-class": "",
+        "image": "shopify://shop_images/Impact_Hero_5a5de152-870f-4f36-8acd-bccb74c75ebf.webp",
+        "image_3": "shopify://shop_images/Impact_Hero_-_Mobile.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "multirow_4cK7kT": {
+      "type": "multirow",
+      "blocks": {
+        "row_nPRnK7": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Perfectly_Sustain_-_Mobile.webp",
+            "caption": "Our Commitment",
+            "heading": "Sustainable Packaging",
+            "text": "<p>At Yoé, we prioritize sustainability through our innovative production and refillable packaging process. Our glass bottles, made from at least 50% post-consumer recycled content, are designed for continuous reuse. </p><p>Our outer boxes use Forest Stewardship Council (FSC) certified paper, ensuring responsible tree harvesting and fair wages for workers. Printed with vegetal ink, these boxes avoid magnets, foam inserts, and glues to maintain recyclability. </p><p>Our signature red Yoé emblem is heat-fused into the cap, eliminating adhesive. The reusable pumps feature a metal-free spring, enhancing recyclability. </p><p>Notably, our airless dispenser system preserves product potency by reducing exposure to contaminants and maximizes usage, dispensing over 99% of the cream inside.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_nPRnK7"
+      ],
+      "custom_css": [
+        ".row_section .text_in_div > div {width: 100%;}",
+        "@media (max-width: 768px) {.image-with-text__text {margin-top: 10px !important; }}"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-right",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "yoe_video_banner_NcJFjh": {
+      "type": "Yoe-video-banner",
+      "custom_css": [
+        ".padding-top-bottom-70 {padding-top: 0; padding-bottom: 0 !important;}",
+        "@media (max-width: 768px) {.text_on_video * {text-align: center !important; } > div {position: relative; } .text_on_video {min-width: 100%; text-align: center; padding-left: 20px; padding-bottom: 40px; padding-right: 20px; position: unset !important; } .play span {color: #666460; } .custom-cursor {margin-top: 140px; } .play path {fill: #fff !important; background-color: #fff; }}",
+        "@media (min-width: 768px) {img {max-height: 42rem; object-fit: cover; }}"
+      ],
+      "settings": {
+        "desktop_placeholder_image": "shopify://shop_images/d25cdcb109d033d6a02d33507901456e.png",
+        "mobile_placeholder_image": "shopify://shop_images/Rectangle_890_6ec09bc6-ea0c-4b3a-af72-0d0846cdfc1c.jpg",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/7e94314a1cb340e58efb6ec61664752b.mp4",
+        "heading": "The Refill System",
+        "text": "One Refill at A Time"
+      }
+    },
+    "multirow_7R6HMg": {
+      "type": "multirow",
+      "blocks": {
+        "row_WRCQ8h": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Extraction_process.webp",
+            "caption": "Our Method",
+            "heading": "Extraction process",
+            "text": "<p>In line with our sustainable ethos, we use a proprietary water extraction process to draw phytochemicals from botanical ingredients which preserves bioactive compounds while minimizing environmental impact. All leftover plant material is upcycled to create natural fertilizer. </p><p>We continue to explore ways to increase the PCR content in our packaging and reduce our environmental impact. We look forward to sharing additional sustainability milestones in the future.<br/><br/></p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_WRCQ8h"
+      ],
+      "custom_css": [
+        ".row_section .image-with-text__content {width: 100%; justify-content: center;}",
+        ".image-with-text__content > * + * {margin-top: 0rem;}",
+        ".row_section .text_in_div > div {width: 100%; margin-right: auto; margin-left: auto;}",
+        "@media (max-width: 768px) {.title_in_div {display: none; } p {text-align: center; } .multirow__inner .image-with-text__text {margin-top: 0px !important; }}"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_Vd77EC",
+    "multirow_4cK7kT",
+    "yoe_video_banner_NcJFjh",
+    "multirow_7R6HMg"
+  ]
+}

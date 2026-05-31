@@ -136,18 +136,18 @@
           "settings": {
             "product_name": "Ympossible Cream",
             "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
-            "stat_1_top": "Fine lines and wrinkles reduced by up to",
-            "stat_1_percentage": "68.9%",
+            "stat_1_top": "Forehead wrinkle depth reduced by up",
+            "stat_1_percentage": "66.7%",
             "stat_1_bottom": "in only 4 weeks",
-            "stat_2_top": "Skin firmness improved by up to",
+            "stat_2_top": "Jawline firmness improved by up to",
             "stat_2_percentage": "66.7%",
             "stat_2_bottom": "in only 4 weeks",
             "stat_3_top": "Frown line depth reduced by up to",
             "stat_3_percentage": "50.0%",
             "stat_3_bottom": "in only 4 weeks",
-            "stat_4_top": "Skin barrier function (TEWL) improved by up to",
-            "stat_4_percentage": "65.7%",
-            "stat_4_bottom": "in only 4 weeks",
+            "stat_4_top": "Skin barrier integrity improved by up to",
+            "stat_4_percentage": "61.8%",
+            "stat_4_bottom": "in 8 weeks",
             "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
           }
         }

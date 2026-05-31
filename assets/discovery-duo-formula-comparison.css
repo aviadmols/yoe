@@ -271,7 +271,7 @@
   justify-self: start;
   min-width: 3.15rem;
   padding: 0.18rem 0.48rem;
-  border: 0.05rem solid #bd1e18;
+  border: 1px solid #bd1e18;
   border-radius: 999px;
   color: #bd1e18;
   font-size: 0.851rem; /* 17.021px */

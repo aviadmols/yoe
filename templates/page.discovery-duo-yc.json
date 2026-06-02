@@ -27,24 +27,15 @@
             "mobile_image": "shopify://shop_images/hero-mobile-product-1.png",
             "alt_text": "Women's Health Beauty Awards 2025"
           }
-        },
-        "award_3": {
-          "type": "award",
-          "settings": {
-            "desktop_image": "shopify://shop_images/hero-desktop-product-3.png",
-            "mobile_image": "shopify://shop_images/hero-desktop-product-3.png",
-            "alt_text": "Oprah Daily Beauty O-Wards 2024"
-          }
         }
       },
       "block_order": [
         "award_1",
-        "award_2",
-        "award_3"
+        "award_2"
       ],
       "settings": {
-        "desktop_background": "shopify://shop_images/hero-desktop-bg.png",
-        "mobile_background": "shopify://shop_images/Rectangle_881_87f5d324-594f-48ea-b2a2-75a20ae7af68.jpg",
+        "desktop_background": "shopify://shop_images/Rectangle_915_60191014-17cc-464d-8d5a-1a0655598e19.jpg",
+        "mobile_background": "shopify://shop_images/Rectangle_915_1.jpg",
         "badge_text": "Clinically proven",
         "headline": "Visibly firms, lifts and reduces fine lines, wrinkles and dark spots.",
         "subheadline": "ALL IN ONE FORMULA.",
@@ -116,18 +107,18 @@
           "settings": {
             "product_name": "Ympossible Cream",
             "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
-            "stat_1_top": "Fine lines and wrinkles reduced by up to",
-            "stat_1_percentage": "68.9%",
+            "stat_1_top": "Forehead wrinkle depth reduced by up",
+            "stat_1_percentage": "66.7%",
             "stat_1_bottom": "in only 4 weeks",
-            "stat_2_top": "Skin firmness improved by up to",
+            "stat_2_top": "Jawline firmness improved by up to",
             "stat_2_percentage": "66.7%",
             "stat_2_bottom": "in only 4 weeks",
             "stat_3_top": "Frown line depth reduced by up to",
             "stat_3_percentage": "50.0%",
             "stat_3_bottom": "in only 4 weeks",
-            "stat_4_top": "Skin barrier function (TEWL) improved by up to",
-            "stat_4_percentage": "65.7%",
-            "stat_4_bottom": "in only 4 weeks",
+            "stat_4_top": "Skin barrier integrity improved by up to",
+            "stat_4_percentage": "61.8%",
+            "stat_4_bottom": "in 8 weeks",
             "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
           }
         }
@@ -136,12 +127,12 @@
         "product_cream"
       ],
       "settings": {
-        "layout_mode": "single",
         "headline": "Visibly Transformed.",
+        "layout_mode": "single",
         "cta_product": "ympossible-cream",
         "cta_go_to_checkout": true,
-        "cta_label": "SEE IT ON YOUR SKIN -",
-        "cta_compare_price": "$86",
+        "cta_label": "GET AWARD-WINING CREAM -",
+        "cta_compare_price": "$185",
         "cta_price": "$48",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
@@ -158,7 +149,7 @@
           "settings": {
             "image": "shopify://shop_images/01.png",
             "title": "Ympossible Cream",
-            "subtitle": "ULTRA-RICH · AGE-DEFYING",
+            "subtitle": "ULTRA-RICH · AGE-DEFYING · ADVANCED REPAIR",
             "benefit_1": "Firms + Lifts",
             "benefit_2": "Brightens Dark Spots",
             "benefit_3": "Smooths Fine Lines",
@@ -172,9 +163,9 @@
         "formula_1"
       ],
       "settings": {
-        "layout_mode": "single",
         "eyebrow": "What you're getting",
         "headline": "One formula. Clinically-proven results.",
+        "layout_mode": "single",
         "routine_title": "Replaces your entire routine",
         "routine_desktop_image": "shopify://shop_images/Group_1000006183.png",
         "routine_mobile_image": "shopify://shop_images/Group_1000006158.png",
@@ -182,7 +173,7 @@
         "cta_product": "ympossible-cream",
         "cta_go_to_checkout": true,
         "cta_label": "Get Ympossible Cream for -",
-        "cta_compare_price": "$86",
+        "cta_compare_price": "$185",
         "cta_price": "$48",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
@@ -388,8 +379,8 @@
         "diagram_title_3": "Targeted delivery within dermin",
         "cta_product": "ympossible-cream",
         "cta_go_to_checkout": true,
-        "cta_label": "Get Ympossible Cream for -",
-        "cta_compare_price": "$86",
+        "cta_label": "TRY YMPOSSIBLE CREAM NOW -",
+        "cta_compare_price": "$185",
         "cta_price": "$48",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
@@ -545,15 +536,15 @@
         "stat_1": {
           "type": "stat",
           "settings": {
-            "percentage": "95%",
-            "description": "saw visible transformation in 4 weeks"
+            "percentage": "100%",
+            "description": "felt skin appeared more youthful"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
-            "percentage": "68.9%",
-            "description": "reduction of fine lines and wrinkles in 4 weeks"
+            "percentage": "95.0%",
+            "description": "felt skin was firmer"
           }
         }
       },
@@ -588,7 +579,7 @@
         "headline": "Our Standards.",
         "subheadline": "<p>Free from more than 3,000 questionable ingredients. Without compromising efficacy.</p>",
         "without_heading": "Formulated without",
-        "desktop_image": "shopify://shop_images/image_49.png",
+        "desktop_image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.png",
         "image_heading": "",
         "padding_top": 72,
         "padding_bottom": 72
@@ -665,15 +656,15 @@
         "line_1": {
           "type": "price_line",
           "settings": {
-            "label": "Ympossible Cream 8ml",
-            "value": "$43"
+            "label": "Ympossible Cream 30ml",
+            "value": "$185"
           }
         },
         "line_2": {
           "type": "price_line",
           "settings": {
             "label": "Free Express Shipping",
-            "value": ""
+            "value": "12$"
           }
         },
         "line_3": {
@@ -721,9 +712,9 @@
         "savings_label": "Your Price — First-Time Customers",
         "cta_product": "ympossible-cream",
         "cta_go_to_checkout": true,
-        "cta_text": "Claim Ympossible Cream for    ",
-        "cta_strike_price": "$86",
-        "disclaimer": "",
+        "cta_text": "TRY YMPOSSIBLE CREAM NOW",
+        "cta_strike_price": "$185",
+        "disclaimer": "157",
         "padding_top": 56,
         "padding_bottom": 56
       }

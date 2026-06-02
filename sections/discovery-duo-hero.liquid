@@ -53,11 +53,11 @@
           <span class="dd-hero__cta-label">{{ section.settings.cta_label | escape }}</span>
           {%- if section.settings.cta_compare_price != blank -%}
             <span class="dd-hero__cta-compare">{{ section.settings.cta_compare_price | escape }}</span>
-          {%- endif -%}
-          {%- if cta_product != blank -%}
-            <span class="dd-hero__cta-price">{{ cta_product.price | money_without_trailing_zeros }}</span>
-          {%- elsif section.settings.cta_price != blank -%}
-            <span class="dd-hero__cta-price">{{ section.settings.cta_price | escape }}</span>
+            {%- if cta_product != blank -%}
+              <span class="dd-hero__cta-price">{{ cta_product.price | money_without_trailing_zeros }}</span>
+            {%- elsif section.settings.cta_price != blank -%}
+              <span class="dd-hero__cta-price">{{ section.settings.cta_price | escape }}</span>
+            {%- endif -%}
           {%- endif -%}
           <svg class="dd-hero__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
             <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

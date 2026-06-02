@@ -339,11 +339,10 @@
     padding: 0 1.5rem;
   }
 
-  body.template-page-discovery-duo-yc .dd-hero__cta-compare,
-  body.template-page-discovery-duo-yc .dd-hero__cta-price,
-  body.template-page-discovery-duo-ycl .dd-hero__cta-compare,
-  body.template-page-discovery-duo-ycl .dd-hero__cta-price {
-    display: none;
+  body.template-page-discovery-duo-yc .dd-hero__cta:has(.dd-hero__cta-compare),
+  body.template-page-discovery-duo-ycl .dd-hero__cta:has(.dd-hero__cta-compare) {
+    justify-content: flex-start;
+    padding: 0 1.5rem 0 5.35rem;
   }
 }
 

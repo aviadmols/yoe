@@ -1,7 +1,7 @@
 {{ 'discovery-duo-two-formulas.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="dd-two"
+  class="dd-two{% if section.settings.layout_mode == 'single' %} dd-two--single{% endif %}"
   style="--dd-two-padding-top: {{ section.settings.padding_top }}px; --dd-two-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Two formulas, one complete routine' | escape }}"
 >
@@ -148,6 +148,16 @@
       "id": "headline",
       "label": "Headline",
       "default": "Two formulas. One complete routine."
+    },
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Layout",
+      "default": "duo",
+      "options": [
+        { "value": "duo", "label": "Two formulas (side by side)" },
+        { "value": "single", "label": "Single formula" }
+      ]
     },
     {
       "type": "text",

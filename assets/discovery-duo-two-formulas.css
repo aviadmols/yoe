@@ -149,6 +149,26 @@
   background: #666460;
 }
 
+/* Single formula (YC / YCL) — desktop */
+.dd-two--single .dd-two__formulas {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  justify-items: center;
+}
+
+.dd-two--single .dd-two__formula,
+.dd-two--single .dd-two__formula--1,
+.dd-two--single .dd-two__formula--2 {
+  grid-template-columns: 5.3rem minmax(0, 1fr);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.dd-two--single .dd-two__formula-media,
+.dd-two--single .dd-two__formula--2 .dd-two__formula-media {
+  width: 5.3rem;
+}
+
 .dd-two__routine {
   width: 57.2rem;
   max-width: 100%;

@@ -1,7 +1,7 @@
 {{ 'discovery-duo-stats-banner.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="dd-stats"
+  class="dd-stats{% if section.settings.layout_mode == 'single' %} dd-stats--single{% endif %}"
   style="--dd-stats-padding-top: {{ section.settings.padding_top }}px; --dd-stats-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Visibly transformed' | escape }}"
 >
@@ -109,6 +109,16 @@
       "id": "headline",
       "label": "Headline",
       "default": "Visibly Transformed."
+    },
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Layout",
+      "default": "duo",
+      "options": [
+        { "value": "duo", "label": "Two products (side by side)" },
+        { "value": "single", "label": "Single product" }
+      ]
     },
     {
       "type": "header",

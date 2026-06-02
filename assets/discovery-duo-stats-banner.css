@@ -234,6 +234,46 @@
   flex: 0 0 auto;
 }
 
+/* Single product (YC / YCL) — desktop */
+.dd-stats--single {
+  background: #fff;
+}
+
+.dd-stats--single .dd-stats__products {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  max-width: 100%;
+}
+
+.dd-stats--single .dd-stats__product {
+  width: 100%;
+  max-width: none;
+}
+
+.dd-stats--single .dd-stats__product-body {
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 3.5rem;
+}
+
+.dd-stats--single .dd-stats__product-copy {
+  flex: 0 1 28rem;
+  min-width: 0;
+}
+
+.dd-stats--single .dd-stats__media {
+  flex: 0 1 28.5rem;
+  width: 28.5rem;
+  max-width: 50%;
+}
+
+.dd-stats--single .dd-stats__product-disclaimer {
+  width: 100%;
+  max-width: 28.5rem;
+  margin-left: auto;
+  margin-right: 0;
+}
+
 /* ============================================================
  * MOBILE (max-width: 749px) — px values
  * ============================================================ */

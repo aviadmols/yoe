@@ -130,33 +130,13 @@
             "stat_4_bottom": "in only 4 weeks",
             "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
           }
-        },
-        "product_cream": {
-          "type": "product_result",
-          "settings": {
-            "product_name": "Ympossible Cream Light",
-            "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
-            "stat_1_top": "Fine lines and wrinkles reduced by up to",
-            "stat_1_percentage": "68.9%",
-            "stat_1_bottom": "in only 4 weeks",
-            "stat_2_top": "Skin firmness improved by up to",
-            "stat_2_percentage": "66.7%",
-            "stat_2_bottom": "in only 4 weeks",
-            "stat_3_top": "Frown line depth reduced by up to",
-            "stat_3_percentage": "50.0%",
-            "stat_3_bottom": "in only 4 weeks",
-            "stat_4_top": "Skin barrier function (TEWL) improved by up to",
-            "stat_4_percentage": "65.7%",
-            "stat_4_bottom": "in only 4 weeks",
-            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
-          }
         }
       },
       "block_order": [
-        "product_light",
-        "product_cream"
+        "product_light"
       ],
       "settings": {
+        "layout_mode": "single",
         "headline": "Visibly Transformed.",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
@@ -186,27 +166,13 @@
             "benefit_5": "Hydrates + Nourishes",
             "benefit_6": "Calms + Soothes"
           }
-        },
-        "formula_2": {
-          "type": "formula",
-          "settings": {
-            "image": "shopify://shop_images/022.png",
-            "title": "Ympossible Cream Light Refill",
-            "subtitle": "WEIGHTLESS · RADIANT",
-            "benefit_1": "Instantly Hydrates",
-            "benefit_2": "Plumps + Smooths",
-            "benefit_3": "Restores Glow",
-            "benefit_4": "Strengthens Barrier",
-            "benefit_5": "Smooths Fine Lines",
-            "benefit_6": "Calms + Soothes"
-          }
         }
       },
       "block_order": [
-        "formula_1",
-        "formula_2"
+        "formula_1"
       ],
       "settings": {
+        "layout_mode": "single",
         "eyebrow": "What you're getting",
         "headline": "One formula. Clinically-proven results.",
         "routine_title": "Replaces your entire routine",

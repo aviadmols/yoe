@@ -111,26 +111,6 @@
     "dd_stats_banner": {
       "type": "discovery-duo-stats-banner",
       "blocks": {
-        "product_light": {
-          "type": "product_result",
-          "settings": {
-            "product_name": "Ympossible Cream",
-            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
-            "stat_1_top": "Forehead wrinkle depth reduced by up to",
-            "stat_1_percentage": "66.7%",
-            "stat_1_bottom": "in only 4 weeks",
-            "stat_2_top": "Frown line depth reduced by up to",
-            "stat_2_percentage": "50.0%",
-            "stat_2_bottom": "in only 4 weeks",
-            "stat_3_top": "Jawline firmness improved by up to",
-            "stat_3_percentage": "66.7%",
-            "stat_3_bottom": "in only 4 weeks",
-            "stat_4_top": "Skin barrier integrity improved by up to",
-            "stat_4_percentage": "61.8%",
-            "stat_4_bottom": "in 8 weeks",
-            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
-          }
-        },
         "product_cream": {
           "type": "product_result",
           "settings": {
@@ -153,10 +133,10 @@
         }
       },
       "block_order": [
-        "product_light",
         "product_cream"
       ],
       "settings": {
+        "layout_mode": "single",
         "headline": "Visibly Transformed.",
         "cta_product": "ympossible-cream",
         "cta_go_to_checkout": true,
@@ -186,27 +166,13 @@
             "benefit_5": "Hydrates + Nourishes",
             "benefit_6": "Calms + Soothes"
           }
-        },
-        "formula_2": {
-          "type": "formula",
-          "settings": {
-            "image": "shopify://shop_images/022.png",
-            "title": "Ympossible Cream Refill",
-            "subtitle": "WEIGHTLESS · RADIANT",
-            "benefit_1": "Instantly Hydrates",
-            "benefit_2": "Plumps + Smooths",
-            "benefit_3": "Restores Glow",
-            "benefit_4": "Strengthens Barrier",
-            "benefit_5": "Smooths Fine Lines",
-            "benefit_6": "Calms + Soothes"
-          }
         }
       },
       "block_order": [
-        "formula_1",
-        "formula_2"
+        "formula_1"
       ],
       "settings": {
+        "layout_mode": "single",
         "eyebrow": "What you're getting",
         "headline": "One formula. Clinically-proven results.",
         "routine_title": "Replaces your entire routine",

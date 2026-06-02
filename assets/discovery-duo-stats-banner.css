@@ -234,44 +234,91 @@
   flex: 0 0 auto;
 }
 
-/* Single product (YC / YCL) — desktop */
+/* Single product (YC / YCL) */
 .dd-stats--single {
   background: #fff;
 }
 
-.dd-stats--single .dd-stats__products {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  max-width: 100%;
-}
+@media screen and (min-width: 750px) {
+  .dd-stats--single .dd-stats__products {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 100%;
+  }
 
-.dd-stats--single .dd-stats__product {
-  width: 100%;
-  max-width: none;
-}
+  .dd-stats--single .dd-stats__product {
+    width: 100%;
+    max-width: none;
+  }
 
-.dd-stats--single .dd-stats__product-body {
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 3.5rem;
-}
+  .dd-stats--single .dd-stats__product-body {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 3.5rem;
+  }
 
-.dd-stats--single .dd-stats__product-copy {
-  flex: 0 1 28rem;
-  min-width: 0;
-}
+  .dd-stats--single .dd-stats__product-copy {
+    flex: 0 1 28rem;
+    min-width: 0;
+  }
 
-.dd-stats--single .dd-stats__media {
-  flex: 0 1 28.5rem;
-  width: 28.5rem;
-  max-width: 50%;
-}
+  .dd-stats--single .dd-stats__product-name {
+    margin: 0 0 1.85rem;
+    color: #bd1e18;
+    text-align: center;
+    font-size: 2.5rem; /* 50px */
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0.15rem; /* 3px */
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 75;
+  }
 
-.dd-stats--single .dd-stats__product-disclaimer {
-  width: 100%;
-  max-width: 28.5rem;
-  margin-left: auto;
-  margin-right: 0;
+  .dd-stats--single .dd-stats__stat-top {
+    color: #666460;
+    font-size: 0.9891rem; /* 19.782px */
+    font-weight: 430;
+    line-height: 1.2;
+    font-variation-settings: "wdth" 83;
+  }
+
+  .dd-stats--single .dd-stats__stat-percentage {
+    color: #bd1e18;
+    font-size: 3.7092rem; /* 74.184px */
+    font-weight: 300;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 80;
+  }
+
+  .dd-stats--single .dd-stats__stat-bottom {
+    color: #666460;
+    font-size: 0.74185rem; /* 14.837px */
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.0074rem; /* 0.148px */
+    font-variation-settings: "wdth" 80;
+  }
+
+  .dd-stats--single .dd-stats__media {
+    position: relative;
+    display: block;
+    flex: none;
+    width: 32.5rem; /* 650px */
+    max-width: 100%;
+    aspect-ratio: auto;
+    margin: 0;
+    overflow: hidden;
+    background: #d8d2cc;
+  }
+
+  .dd-stats--single .dd-stats__product-disclaimer {
+    width: 100%;
+    max-width: 32.5rem;
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
 /* ============================================================

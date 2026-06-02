@@ -43,8 +43,8 @@
         "award_3"
       ],
       "settings": {
-        "desktop_background": "shopify://shop_images/hero-desktop-bg.png",
-        "mobile_background": "shopify://shop_images/Rectangle_881_87f5d324-594f-48ea-b2a2-75a20ae7af68.jpg",
+        "desktop_background": "shopify://shop_images/Rectangle_915_2.jpg",
+        "mobile_background": "shopify://shop_images/Rectangle_916.jpg",
         "badge_text": "Clinically proven",
         "headline": "Visibly firms, plumps and reduces fine lines and wrinkles.",
         "subheadline": "ALL IN ONE FORMULA.",
@@ -116,15 +116,15 @@
           "settings": {
             "product_name": "Ympossible Cream Light",
             "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
-            "stat_1_top": "Immediate hydration boost by up to",
+            "stat_1_top": "Immediate hydration boost  by up to",
             "stat_1_percentage": "127.8%",
             "stat_1_bottom": "upon application",
-            "stat_2_top": "Fine lines and wrinkles reduced by up to",
-            "stat_2_percentage": "62.8%",
-            "stat_2_bottom": "in only 8 weeks",
-            "stat_3_top": "Forehead wrinkle depth reduced by up to",
-            "stat_3_percentage": "66.7%",
-            "stat_3_bottom": "in only 4 weeks",
+            "stat_2_top": "Forehead wrinkle depth reduced by up to",
+            "stat_2_percentage": "66.7%",
+            "stat_2_bottom": "in only 4 weeks",
+            "stat_3_top": "Fine lines and wrinkles reduced by up to",
+            "stat_3_percentage": "62.8%",
+            "stat_3_bottom": "in only 8 weeks",
             "stat_4_top": "Under-eye wrinkle depth reduced by up to",
             "stat_4_percentage": "50.0%",
             "stat_4_bottom": "in only 4 weeks",
@@ -136,8 +136,8 @@
         "product_light"
       ],
       "settings": {
-        "layout_mode": "single",
         "headline": "Visibly Transformed.",
+        "layout_mode": "single",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
         "cta_label": "SEE IT ON YOUR SKIN -",
@@ -156,7 +156,7 @@
         "formula_1": {
           "type": "formula",
           "settings": {
-            "image": "shopify://shop_images/01.png",
+            "image": "shopify://shop_images/022.png",
             "title": "Ympossible Cream Light",
             "subtitle": "WEIGHTLESS · RADIANT",
             "benefit_1": "Firms + Lifts",
@@ -172,9 +172,9 @@
         "formula_1"
       ],
       "settings": {
-        "layout_mode": "single",
         "eyebrow": "What you're getting",
         "headline": "One formula. Clinically-proven results.",
+        "layout_mode": "single",
         "routine_title": "Replaces your entire routine",
         "routine_desktop_image": "shopify://shop_images/Group_1000006183.png",
         "routine_mobile_image": "shopify://shop_images/Group_1000006158.png",
@@ -545,15 +545,15 @@
         "stat_1": {
           "type": "stat",
           "settings": {
-            "percentage": "95%",
-            "description": "saw visible transformation in 4 weeks"
+            "percentage": "100%",
+            "description": "felt skin looked healthy"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
-            "percentage": "68.9%",
-            "description": "reduction of fine lines and wrinkles in 4 weeks"
+            "percentage": "96.0%",
+            "description": "felt skin was soft"
           }
         }
       },
@@ -588,7 +588,7 @@
         "headline": "Our Standards.",
         "subheadline": "<p>Free from more than 3,000 questionable ingredients. Without compromising efficacy.</p>",
         "without_heading": "Formulated without",
-        "desktop_image": "shopify://shop_images/image_49.png",
+        "desktop_image": "shopify://shop_images/vaiyulaw_yoe_urgent2952_edit_2.png",
         "image_heading": "",
         "padding_top": 72,
         "padding_bottom": 72
@@ -665,15 +665,15 @@
         "line_1": {
           "type": "price_line",
           "settings": {
-            "label": "Ympossible Cream Light 8ml",
-            "value": "$43"
+            "label": "Ympossible Cream Light 30ml",
+            "value": "$185"
           }
         },
         "line_2": {
           "type": "price_line",
           "settings": {
             "label": "Free Express Shipping",
-            "value": ""
+            "value": "$12"
           }
         },
         "line_3": {
@@ -714,14 +714,14 @@
         "eyebrow": "First-Time Offer",
         "product_name": "Try Ympossible Cream Light. Thirty days. No risk.",
         "product_description": "",
-        "compare_price": "$98",
+        "compare_price": "$197",
         "price": "$48",
         "price_suffix": "USD",
         "total_label": "Total Value",
         "savings_label": "Your Price — First-Time Customers",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
-        "cta_text": "Claim Ympossible Cream Light for    ",
+        "cta_text": "Claim Ympossible Cream Light for",
         "cta_strike_price": "$86",
         "disclaimer": "",
         "padding_top": 56,

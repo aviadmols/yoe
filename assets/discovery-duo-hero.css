@@ -330,6 +330,23 @@
   object-fit: contain;
 }
 
+/* YC / YCL hero CTA — desktop only */
+@media screen and (min-width: 750px) {
+  body.template-page-discovery-duo-yc .dd-hero__cta,
+  body.template-page-discovery-duo-ycl .dd-hero__cta {
+    width: 30.285rem;
+    justify-content: center;
+    padding: 0 1.5rem;
+  }
+
+  body.template-page-discovery-duo-yc .dd-hero__cta-compare,
+  body.template-page-discovery-duo-yc .dd-hero__cta-price,
+  body.template-page-discovery-duo-ycl .dd-hero__cta-compare,
+  body.template-page-discovery-duo-ycl .dd-hero__cta-price {
+    display: none;
+  }
+}
+
 /* ============================================================
  * MOBILE (max-width: 749px) — values in px from Figma node 1:285
  * ============================================================ */

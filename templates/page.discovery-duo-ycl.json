@@ -167,7 +167,7 @@
         "routine_alt": "Replaces your entire routine diagram",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
-        "cta_label": "Get Ympossible Cream Light for -",
+        "cta_label": "Get Ympossible Cream Light -",
         "cta_offer_display": "legacy",
         "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$185",
@@ -881,7 +881,7 @@
       "name": "Sticky CTA",
       "settings": {
         "scroll_threshold_vh": 100,
-        "cta_product": "",
+        "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
         "cta_label": "GET AWARD-WINING CREAM -",
         "cta_offer_display": "price",

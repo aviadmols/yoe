@@ -1,0 +1,100 @@
+{{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
+
+{% render 'dd-sticky-cta-bar',
+  scroll_vh: section.settings.scroll_threshold_vh,
+  cta_product: section.settings.cta_product,
+  cta_label: section.settings.cta_label,
+  cta_go_to_checkout: section.settings.cta_go_to_checkout,
+  cta_offer_display: section.settings.cta_offer_display,
+  cta_discount_text: section.settings.cta_discount_text,
+  cta_compare_price: section.settings.cta_compare_price,
+  cta_price: section.settings.cta_price
+%}
+
+{% schema %}
+{
+  "name": "Sticky CTA",
+  "tag": "section",
+  "class": "section-dd-sticky-cta",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Fixed bottom bar on mobile only. Appears after scrolling past the hero (100vh by default). Add this section once per Discovery Duo page, or it loads automatically from the theme."
+    },
+    {
+      "type": "range",
+      "id": "scroll_threshold_vh",
+      "label": "Show after scroll (vh)",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "default": 100,
+      "info": "Sticky bar appears once the visitor scrolls past this many viewport heights."
+    },
+    {
+      "type": "header",
+      "content": "Product & action"
+    },
+    {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_go_to_checkout",
+      "label": "Go directly to checkout",
+      "default": true,
+      "info": "When enabled: clears cart, adds this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
+    },
+    {
+      "type": "header",
+      "content": "Button text"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "GET AWARD-WINNING CREAM -"
+    },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "price"
+    },
+    {
+      "type": "text",
+      "id": "cta_discount_text",
+      "label": "Discount suffix",
+      "default": "| 15% OFF"
+    },
+    {
+      "type": "text",
+      "id": "cta_compare_price",
+      "label": "Fallback compare-at price",
+      "default": "$185"
+    },
+    {
+      "type": "text",
+      "id": "cta_price",
+      "label": "Fallback price",
+      "default": "$48",
+      "info": "Used only when no product is selected or the product has no price."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky CTA",
+      "category": "Discovery Duo"
+    }
+  ]
+}
+{% endschema %}

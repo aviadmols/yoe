@@ -18,6 +18,11 @@
     font-weight: 400;
   }
 
+  body.template-page-discovery-duo-yc .dd-hero__cta,
+  body.template-page-discovery-duo-ycl .dd-hero__cta {
+    gap: 4px;
+  }
+
   body.template-page-discovery-duo-yc .dd-hero__cta-label,
   body.template-page-discovery-duo-ycl .dd-hero__cta-label,
   body.template-page-discovery-duo-yc .dd-stats__cta-label,

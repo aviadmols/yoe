@@ -1,0 +1,135 @@
+{{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
+
+{%- assign cta_product = section.settings.cta_product -%}
+{%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
+
+<aside
+  class="dd-sticky-cta"
+  id="dd-sticky-cta-{{ section.id }}"
+  data-dd-sticky-cta
+  data-scroll-vh="{{ section.settings.scroll_threshold_vh | default: 100 }}"
+  aria-hidden="true"
+  aria-label="{{ section.settings.cta_label | default: 'Add to cart' | escape }}"
+>
+  {%- if section.settings.cta_label != blank -%}
+    <form
+      class="dd-sticky-cta__form"
+      method="post"
+      action="{{ routes.cart_add_url }}"
+      {% if section.settings.cta_go_to_checkout %}
+        data-dd-checkout
+      {% endif %}
+    >
+      {%- if cta_variant != blank -%}
+        <input type="hidden" name="id" value="{{ cta_variant.id }}">
+      {%- endif -%}
+      <button class="dd-sticky-cta__btn" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
+        {% render 'dd-cta-offer',
+          offer_display: section.settings.cta_offer_display,
+          label: section.settings.cta_label,
+          discount_text: section.settings.cta_discount_text,
+          compare_price: section.settings.cta_compare_price,
+          price: section.settings.cta_price,
+          product: cta_product,
+          legacy_style: 'stats',
+          label_class: 'dd-sticky-cta__label',
+          offer_class: 'dd-sticky-cta__offer',
+          compare_class: 'dd-sticky-cta__compare',
+          price_class: 'dd-sticky-cta__price'
+        %}
+        <span class="dd-sticky-cta__arrow" aria-hidden="true">
+          <svg width="8" height="22" viewBox="0 0 8 22" fill="none">
+            <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </form>
+  {%- endif -%}
+</aside>
+
+{% schema %}
+{
+  "name": "Duo – Sticky CTA (mobile)",
+  "tag": "section",
+  "class": "section-dd-sticky-cta",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Fixed bottom bar on mobile only. Appears after scrolling past the hero (100vh by default)."
+    },
+    {
+      "type": "range",
+      "id": "scroll_threshold_vh",
+      "label": "Show after scroll (vh)",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "vh",
+      "default": 100,
+      "info": "Sticky bar appears once the visitor scrolls past this many viewport heights."
+    },
+    {
+      "type": "header",
+      "content": "Product & action"
+    },
+    {
+      "type": "product",
+      "id": "cta_product",
+      "label": "CTA product"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_go_to_checkout",
+      "label": "Go directly to checkout",
+      "default": true,
+      "info": "When enabled: clears cart, adds this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
+    },
+    {
+      "type": "header",
+      "content": "Button text"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "GET AWARD-WINNING CREAM -"
+    },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "price"
+    },
+    {
+      "type": "text",
+      "id": "cta_discount_text",
+      "label": "Discount suffix",
+      "default": "| 15% OFF"
+    },
+    {
+      "type": "text",
+      "id": "cta_compare_price",
+      "label": "Fallback compare-at price",
+      "default": "$185"
+    },
+    {
+      "type": "text",
+      "id": "cta_price",
+      "label": "Fallback price",
+      "default": ""
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo – Sticky CTA (mobile)"
+    }
+  ]
+}
+{% endschema %}

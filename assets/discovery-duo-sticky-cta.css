@@ -1,0 +1,148 @@
+/**
+ * Discovery Duo — mobile sticky bottom CTA bar.
+ */
+
+.dd-sticky-cta {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .dd-sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: #fff;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(110%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s ease,
+      visibility 0.35s ease;
+  }
+
+  .dd-sticky-cta.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  body.dd-has-sticky-cta {
+    padding-bottom: calc(85px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .dd-sticky-cta__form {
+    margin: 0;
+    width: 100%;
+  }
+
+  .dd-sticky-cta__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    min-height: 51px;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 0;
+    background: #bd1e18;
+    color: #f7f6f5;
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 660;
+    font-style: normal;
+    line-height: 1.12;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 77;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+  }
+
+  .dd-sticky-cta__btn:hover,
+  .dd-sticky-cta__btn:focus-visible {
+    background: #a31b16;
+  }
+
+  .dd-sticky-cta__btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .dd-sticky-cta__label,
+  .dd-sticky-cta__offer,
+  .dd-sticky-cta__compare,
+  .dd-sticky-cta__price {
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+  }
+
+  .dd-sticky-cta__compare {
+    position: relative;
+    font-weight: 400;
+  }
+
+  .dd-sticky-cta__compare::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .dd-sticky-cta__price,
+  .dd-sticky-cta__offer {
+    font-weight: 660;
+  }
+
+  .dd-sticky-cta__arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+    margin-left: 2px;
+    line-height: 0;
+  }
+
+  .dd-sticky-cta__arrow svg {
+    width: 6px;
+    height: 16px;
+  }
+
+  .dd-sticky-cta__btn.is-loading {
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .dd-sticky-cta__btn.is-loading .dd-sticky-cta__arrow {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .dd-sticky-cta {
+    display: none !important;
+  }
+
+  body.dd-has-sticky-cta {
+    padding-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dd-sticky-cta {
+    transition: none;
+  }
+}

@@ -9,6 +9,7 @@
   .dd-two__cta.is-loading,
   .dd-compare__cta.is-loading,
   .dd-buy__cta.is-loading,
+  .dd-sticky-cta__btn.is-loading,
   .landing-cart-form button.is-loading,
   .landing-cart-form [type="submit"].is-loading,
   [data-lp-hero-form] button.is-loading,
@@ -26,7 +27,8 @@
   .dd-stats__cta.is-loading .dd-stats__cta-arrow,
   .dd-two__cta.is-loading .dd-two__cta-arrow,
   .dd-compare__cta.is-loading .dd-compare__cta-arrow,
-  .dd-buy__cta.is-loading .dd-buy__cta-arrow {
+  .dd-buy__cta.is-loading .dd-buy__cta-arrow,
+  .dd-sticky-cta__btn.is-loading .dd-sticky-cta__arrow {
     display: none;
   }
 }

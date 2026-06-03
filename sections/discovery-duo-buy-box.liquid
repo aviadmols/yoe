@@ -45,10 +45,10 @@
           <div class="dd-buy__total-row dd-buy__total-row--final">
             <span>{{ section.settings.savings_label | escape }}</span>
             <span class="dd-buy__price">
-              {%- if cta_product != blank -%}
-                {{ cta_product.price | money_without_trailing_zeros }}
-              {%- else -%}
+              {%- if section.settings.price != blank -%}
                 {{ section.settings.price | escape }}
+              {%- elsif cta_product != blank -%}
+                {{ cta_product.price | money_without_trailing_zeros }}
               {%- endif -%}
             </span>
           </div>

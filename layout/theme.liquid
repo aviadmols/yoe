@@ -341,9 +341,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script type="module" src="{{ 'landing-page.js' | asset_url }}"></script>
 {% endif %}
 {% if template.name == 'page' and template.suffix == 'landing-page-b' %}
+  {{ 'checkout-cta-loading.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'landing-page-b-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
 {% if template.name == 'page' and template.suffix != blank and template.suffix contains 'discovery-duo' %}
+  {{ 'checkout-cta-loading.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'discovery-duo-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
 {% if template.name == 'page' and (template.suffix == 'discovery-duo-yc' or template.suffix == 'discovery-duo-ycl') %}

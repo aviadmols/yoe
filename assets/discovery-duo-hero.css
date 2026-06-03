@@ -422,6 +422,17 @@
     margin: 16px 0 0;
   }
 
+  .dd-hero__cta.is-loading {
+    justify-content: center !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    text-align: center;
+  }
+
+  .dd-hero__cta.is-loading .dd-hero__cta-arrow {
+    display: none;
+  }
+
   .dd-hero__cta {
     display: inline-flex;
     width: 100%;

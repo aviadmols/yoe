@@ -1,0 +1,32 @@
+/**
+ * Center loading-state text on checkout CTAs (mobile).
+ * Used on discovery-duo and landing-page-b.
+ */
+
+@media screen and (max-width: 749px) {
+  .dd-hero__cta.is-loading,
+  .dd-stats__cta.is-loading,
+  .dd-two__cta.is-loading,
+  .dd-compare__cta.is-loading,
+  .dd-buy__cta.is-loading,
+  .landing-cart-form button.is-loading,
+  .landing-cart-form [type="submit"].is-loading,
+  [data-lp-hero-form] button.is-loading,
+  [data-lp-hero-form] [type="submit"].is-loading,
+  .landing-discover-products-cta-form button.is-loading,
+  .landing-discover-products-cta-form [type="submit"].is-loading {
+    justify-content: center !important;
+    text-align: center;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: 6px;
+  }
+
+  .dd-hero__cta.is-loading .dd-hero__cta-arrow,
+  .dd-stats__cta.is-loading .dd-stats__cta-arrow,
+  .dd-two__cta.is-loading .dd-two__cta-arrow,
+  .dd-compare__cta.is-loading .dd-compare__cta-arrow,
+  .dd-buy__cta.is-loading .dd-buy__cta-arrow {
+    display: none;
+  }
+}

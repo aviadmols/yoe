@@ -46,6 +46,46 @@
     window.location.href = cartRoot() + 'checkout';
   }
 
+  function markButtonBusy(button) {
+    if (!button.dataset.ddOriginalHtml) {
+      button.dataset.ddOriginalHtml = button.innerHTML;
+    }
+    button.dataset.ddBusy = '1';
+    button.classList.add('is-loading');
+    button.disabled = true;
+  }
+
+  function resetButton(button) {
+    if (button.dataset.ddOriginalHtml != null) {
+      button.innerHTML = button.dataset.ddOriginalHtml;
+    }
+    button.disabled = false;
+    button.classList.remove('is-loading');
+    delete button.dataset.ddBusy;
+    delete button.dataset.ddOriginalHtml;
+  }
+
+  function setButtonLoadingText(button, text) {
+    button.textContent = text;
+  }
+
+  function restoreBusyButtonsFromCache() {
+    document.querySelectorAll('[data-dd-busy]').forEach(function (btn) {
+      resetButton(btn);
+    });
+  }
+
+  function shouldRestoreFromNavigation(event) {
+    if (event.persisted) return true;
+    var nav = performance.getEntriesByType('navigation')[0];
+    return nav && nav.type === 'back_forward';
+  }
+
+  window.addEventListener('pageshow', function (event) {
+    if (!shouldRestoreFromNavigation(event)) return;
+    restoreBusyButtonsFromCache();
+  });
+
   function canRunCheckout(form) {
     var variantInput = form.querySelector('input[name="id"]');
     return !!(variantInput && variantInput.value);
@@ -59,26 +99,20 @@
     var submitButton = form.querySelector('button[type="submit"]');
     if (!submitButton || submitButton.disabled) return;
 
-    var originalHTML = submitButton.innerHTML;
-    submitButton.disabled = true;
-    submitButton.textContent = 'Adding…';
-
-    function resetButton() {
-      submitButton.innerHTML = originalHTML;
-      submitButton.disabled = false;
-    }
+    markButtonBusy(submitButton);
+    setButtonLoadingText(submitButton, 'Adding…');
 
     clearCart()
       .then(function () {
         return addVariant(variantId);
       })
       .then(function () {
-        submitButton.textContent = 'Redirecting…';
+        setButtonLoadingText(submitButton, 'Redirecting…');
         goToCheckout();
       })
       .catch(function (error) {
         console.error('discovery-duo checkout error:', error);
-        resetButton();
+        resetButton(submitButton);
         alert('Failed to proceed to checkout. Please try again.');
       });
   }

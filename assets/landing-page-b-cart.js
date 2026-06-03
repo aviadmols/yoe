@@ -62,6 +62,42 @@
     window.location.href = cartRoot() + 'checkout';
   }
 
+  function markButtonBusy(button) {
+    if (!button.dataset.ddOriginalHtml) {
+      button.dataset.ddOriginalHtml = button.innerHTML;
+    }
+    button.dataset.ddBusy = '1';
+    button.classList.add('is-loading');
+    button.disabled = true;
+  }
+
+  function resetButton(button) {
+    if (button.dataset.ddOriginalHtml != null) {
+      button.innerHTML = button.dataset.ddOriginalHtml;
+    }
+    button.disabled = false;
+    button.classList.remove('is-loading');
+    delete button.dataset.ddBusy;
+    delete button.dataset.ddOriginalHtml;
+  }
+
+  function restoreBusyButtonsFromCache() {
+    document.querySelectorAll('[data-dd-busy]').forEach(function (btn) {
+      resetButton(btn);
+    });
+  }
+
+  function shouldRestoreFromNavigation(event) {
+    if (event.persisted) return true;
+    var nav = performance.getEntriesByType('navigation')[0];
+    return nav && nav.type === 'back_forward';
+  }
+
+  window.addEventListener('pageshow', function (event) {
+    if (!shouldRestoreFromNavigation(event)) return;
+    restoreBusyButtonsFromCache();
+  });
+
   function createButtonUI(button, form) {
     var isHero = form.hasAttribute('data-lp-hero-form');
     var isDiscover = form.classList.contains('landing-discover-products-cta-form');
@@ -70,7 +106,6 @@
     var state = {
       button: button,
       isHero: isHero,
-      originalHTML: isHero ? button.innerHTML : null,
       label: button.getAttribute('data-button-label') || '',
       price: button.getAttribute('data-price') || '48',
       compareAt: button.getAttribute('data-compare-at') || '',
@@ -100,11 +135,11 @@
 
     return {
       setLoading: function () {
-        button.disabled = true;
+        markButtonBusy(button);
         if (isHero) {
           button.textContent = 'Adding…';
         } else if (state.labelClass) {
-          setStructuredContent('Adding…', state.compareAt);
+          setStructuredContent('Adding…', '');
         } else {
           button.textContent = 'Adding…';
         }
@@ -113,27 +148,30 @@
         if (isHero) {
           button.textContent = 'Redirecting…';
         } else if (state.labelClass) {
-          setStructuredContent('Redirecting…', state.compareAt);
+          setStructuredContent('Redirecting…', '');
         } else {
           button.textContent = 'Redirecting…';
         }
       },
       reset: function (message) {
-        button.disabled = false;
-        if (isHero) {
-          button.innerHTML = state.originalHTML;
-          if (message) button.textContent = message;
-        } else if (state.labelClass) {
-          if (message) {
+        if (message) {
+          button.disabled = false;
+          button.classList.remove('is-loading');
+          if (isHero) {
+            if (button.dataset.ddOriginalHtml != null) {
+              button.innerHTML = button.dataset.ddOriginalHtml;
+            }
+            button.textContent = message;
+          } else if (state.labelClass) {
             setStructuredContent(message, state.compareAt);
           } else {
-            var defaultLabel =
-              (state.label || 'TRY DISCOVERY DUO') + ' - $' + state.price;
-            setStructuredContent(defaultLabel, state.compareAt);
+            button.textContent = message;
           }
-        } else {
-          button.textContent = message || 'Try again';
+          delete button.dataset.ddBusy;
+          delete button.dataset.ddOriginalHtml;
+          return;
         }
+        resetButton(button);
       },
     };
   }
@@ -173,7 +211,7 @@
         })
         .catch(function (error) {
           console.error('landing-page-b checkout error:', error);
-          ui.reset('Try again');
+          ui.reset();
           alert('Failed to proceed to checkout. Please try again.');
         });
     }
@@ -184,7 +222,7 @@
   document.addEventListener(
     'submit',
     function (event) {
-      var form = event.target;
+      var form = event.target && event.target.closest ? event.target.closest('form') : event.target;
       if (!isLandingForm(form)) return;
 
       event.preventDefault();

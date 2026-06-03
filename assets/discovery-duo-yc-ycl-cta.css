@@ -86,4 +86,25 @@
   body.template-page-discovery-duo-ycl .dd-compare__cta:not(:has(.dd-compare__cta-label)) span:not(.dd-compare__cta-old):not(.dd-compare__cta-arrow) {
     font-weight: 660;
   }
+
+  body.template-page-discovery-duo-yc .dd-hero__cta.is-loading,
+  body.template-page-discovery-duo-ycl .dd-hero__cta.is-loading,
+  body.template-page-discovery-duo-yc .dd-stats__cta.is-loading,
+  body.template-page-discovery-duo-ycl .dd-stats__cta.is-loading,
+  body.template-page-discovery-duo-yc .dd-two__cta.is-loading,
+  body.template-page-discovery-duo-ycl .dd-two__cta.is-loading,
+  body.template-page-discovery-duo-yc .dd-compare__cta.is-loading,
+  body.template-page-discovery-duo-ycl .dd-compare__cta.is-loading,
+  body.template-page-discovery-duo-yc .dd-buy__cta.is-loading,
+  body.template-page-discovery-duo-ycl .dd-buy__cta.is-loading {
+    justify-content: center !important;
+    text-align: center;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  body.template-page-discovery-duo-yc .dd-hero__cta.is-loading .dd-hero__cta-arrow,
+  body.template-page-discovery-duo-ycl .dd-hero__cta.is-loading .dd-hero__cta-arrow {
+    display: none;
+  }
 }

@@ -12,22 +12,6 @@
     "dd_hero": {
       "type": "discovery-duo-hero",
       "blocks": {
-        "award_1": {
-          "type": "award",
-          "settings": {
-            "desktop_image": "shopify://shop_images/hero-desktop-product-2.png",
-            "mobile_image": "shopify://shop_images/hero-desktop-product-2.png",
-            "alt_text": "Cosmopolitan"
-          }
-        },
-        "award_2": {
-          "type": "award",
-          "settings": {
-            "desktop_image": "shopify://shop_images/hero-mobile-product-1.png",
-            "mobile_image": "shopify://shop_images/hero-mobile-product-1.png",
-            "alt_text": "Women's Health Beauty Awards 2025"
-          }
-        },
         "award_3": {
           "type": "award",
           "settings": {
@@ -38,8 +22,6 @@
         }
       },
       "block_order": [
-        "award_1",
-        "award_2",
         "award_3"
       ],
       "settings": {
@@ -50,7 +32,9 @@
         "subheadline": "ALL IN ONE FORMULA.",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
-        "cta_label": "GET AWARD-WINNING CREAM NOW | 15% OFF",
+        "cta_label": "GET AWARD-WINNING CREAM | 20% OFF",
+        "cta_offer_display": "legacy",
+        "cta_discount_text": "| 20% OFF",
         "cta_compare_price": "",
         "cta_price": "",
         "cta_url": "",
@@ -141,8 +125,10 @@
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
         "cta_label": "SEE IT ON YOUR SKIN -",
+        "cta_offer_display": "legacy",
+        "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$185",
-        "cta_price": "$48",
+        "cta_price": "$148",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
         "trust_3": "First-Time Offer",
@@ -182,8 +168,10 @@
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
         "cta_label": "Get Ympossible Cream Light for -",
+        "cta_offer_display": "legacy",
+        "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$185",
-        "cta_price": "$48",
+        "cta_price": "$148",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
         "trust_3": "First-Time Offer",
@@ -388,9 +376,11 @@
         "diagram_title_3": "Targeted delivery within dermin",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
-        "cta_label": "TRY YMPOSSIBLE CREAM light NOW -",
+        "cta_label": "TRY YMPOSSIBLE CREAM light NOW",
+        "cta_offer_display": "legacy",
+        "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$185",
-        "cta_price": "$48",
+        "cta_price": "$148",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Free Express Shipping",
         "trust_3": "First-Time Offer",
@@ -584,7 +574,7 @@
         "stat_2"
       ],
       "custom_css": [
-        "@media screen and (max-width: 749px) {.dd-stubborn__stat {padding-bottom: 30px!important; }}"
+        "@media screen and (max-width: 749px) {.dd-stubborn__stat {padding-bottom: 30px !important; }}"
       ],
       "settings": {
         "eyebrow": "",
@@ -718,13 +708,15 @@
         "product_name": "Try Ympossible Cream Light. Thirty days. No risk.",
         "product_description": "",
         "compare_price": "$197",
-        "price": "$48",
+        "price": "$148",
         "price_suffix": "USD",
         "total_label": "Total Value",
         "savings_label": "Your Price — First-Time Customers",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": true,
         "cta_text": "Claim Ympossible Cream Light for",
+        "cta_offer_display": "legacy",
+        "cta_discount_text": "| 15% OFF",
         "cta_strike_price": "$86",
         "disclaimer": "",
         "padding_top": 56,
@@ -883,6 +875,20 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "discovery_duo_sticky_cta_7GWLKc": {
+      "type": "discovery-duo-sticky-cta",
+      "name": "Sticky CTA",
+      "settings": {
+        "scroll_threshold_vh": 100,
+        "cta_product": "",
+        "cta_go_to_checkout": true,
+        "cta_label": "GET AWARD-WINING CREAM -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$185",
+        "cta_price": "$148"
+      }
     }
   },
   "order": [
@@ -898,6 +904,7 @@
     "dd_mobile_banner",
     "custom_liquid_7Tik8g",
     "apps_NcRJ7C",
-    "collapsible_content_ihwU9N"
+    "collapsible_content_ihwU9N",
+    "discovery_duo_sticky_cta_7GWLKc"
   ]
 }

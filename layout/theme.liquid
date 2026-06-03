@@ -347,7 +347,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script src="{{ 'discovery-duo-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
 {% if template.name == 'page' and (template.suffix == 'discovery-duo-yc' or template.suffix == 'discovery-duo-ycl') %}
+  <style>{% render 'dd-yc-ycl-critical-css' %}</style>
+  {{ 'discovery-duo-yc-ycl-preloader.css' | asset_url | stylesheet_tag }}
   {{ 'discovery-duo-yc-ycl-cta.css' | asset_url | stylesheet_tag }}
+  {%- unless request.design_mode -%}
+    <script>document.documentElement.classList.add('dd-yc-ycl-preloading');</script>
+    <script src="{{ 'discovery-duo-yc-ycl-preloader.js' | asset_url }}" defer="defer"></script>
+  {%- endunless -%}
 {% endif %}
 
 
@@ -418,6 +424,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <style class="loop-style"> {% render 'loop-widget.css' %} </style>
     
   <body class="template-{{ template | handle }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {% if content_for_header_capture contains 'previewBarInjector' %}admin-logged-in{% endif %} {% if customer %}customer-logged-in{% endif %}">
+    {%- if template.name == 'page' and (template.suffix == 'discovery-duo-yc' or template.suffix == 'discovery-duo-ycl') and request.design_mode == false -%}
+      {% render 'dd-yc-ycl-preloader' %}
+    {%- endif -%}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXWF7BPH"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

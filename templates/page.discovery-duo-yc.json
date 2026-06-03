@@ -881,6 +881,20 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "discovery_duo_sticky_cta_ydqF6T": {
+      "type": "discovery-duo-sticky-cta",
+      "name": "Sticky CTA",
+      "settings": {
+        "scroll_threshold_vh": 100,
+        "cta_product": "ympossible-cream",
+        "cta_go_to_checkout": true,
+        "cta_label": "GET AWARD-WINNING CREAM -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$185",
+        "cta_price": "$48"
+      }
     }
   },
   "order": [
@@ -896,6 +910,7 @@
     "dd_mobile_banner",
     "custom_liquid_7Tik8g",
     "apps_NcRJ7C",
-    "collapsible_content_ihwU9N"
+    "collapsible_content_ihwU9N",
+    "discovery_duo_sticky_cta_ydqF6T"
   ]
 }

@@ -1,5 +1,5 @@
 /**
- * discovery-duo-new: optional checkout flow for CTA forms with data-dd-checkout.
+ * Discovery Duo pages (new / yc / ycl): checkout flow for forms with data-dd-checkout.
  * clear cart → add single variant → redirect to checkout.
  */
 (function () {
@@ -46,6 +46,11 @@
     window.location.href = cartRoot() + 'checkout';
   }
 
+  function canRunCheckout(form) {
+    var variantInput = form.querySelector('input[name="id"]');
+    return !!(variantInput && variantInput.value);
+  }
+
   function runCheckoutFlow(form) {
     var variantInput = form.querySelector('input[name="id"]');
     if (!variantInput || !variantInput.value) return;
@@ -81,14 +86,20 @@
   document.addEventListener(
     'submit',
     function (event) {
-      var form = event.target;
-      if (!form || form.tagName !== 'FORM' || !form.hasAttribute('data-dd-checkout')) {
+      var form = event.target && event.target.closest ? event.target.closest('form') : event.target;
+      if (!form || !form.hasAttribute('data-dd-checkout')) {
         return;
       }
 
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
+
+      if (!canRunCheckout(form)) {
+        console.error('discovery-duo checkout: cannot proceed without variant', form);
+        alert('Product is unavailable. Please refresh and try again.');
+        return false;
+      }
 
       runCheckoutFlow(form);
       return false;

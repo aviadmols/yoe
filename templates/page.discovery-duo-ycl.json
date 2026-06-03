@@ -666,7 +666,7 @@
           "type": "price_line",
           "settings": {
             "label": "Free Express Shipping",
-            "value": "$12"
+            "value": "$25"
           }
         },
         "line_3": {
@@ -707,7 +707,7 @@
         "eyebrow": "First-Time Offer",
         "product_name": "Try Ympossible Cream Light. Thirty days. No risk.",
         "product_description": "",
-        "compare_price": "$197",
+        "compare_price": "$210",
         "price": "$148",
         "price_suffix": "USD",
         "total_label": "Total Value",

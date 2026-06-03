@@ -105,19 +105,20 @@
           <input type="hidden" name="id" value="{{ cta_variant.id }}">
         {%- endif -%}
         <button class="dd-two__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-          <span class="dd-two__cta-label">{{ section.settings.cta_label | escape }}</span>
-          <span class="dd-two__cta-prices">
-            {%- if cta_product != blank and cta_product.compare_at_price > cta_product.price -%}
-              <span class="dd-two__cta-compare">{{ cta_product.compare_at_price | money_without_trailing_zeros }}</span>
-            {%- elsif section.settings.cta_compare_price != blank -%}
-              <span class="dd-two__cta-compare">{{ section.settings.cta_compare_price | escape }}</span>
-            {%- endif -%}
-            {%- if cta_product != blank -%}
-              <span class="dd-two__cta-price">{{ cta_product.price | money_without_trailing_zeros }}</span>
-            {%- elsif section.settings.cta_price != blank -%}
-              <span class="dd-two__cta-price">{{ section.settings.cta_price | escape }}</span>
-            {%- endif -%}
-          </span>
+          {% render 'dd-cta-offer',
+            offer_display: section.settings.cta_offer_display,
+            label: section.settings.cta_label,
+            discount_text: section.settings.cta_discount_text,
+            compare_price: section.settings.cta_compare_price,
+            price: section.settings.cta_price,
+            product: cta_product,
+            legacy_style: 'two',
+            label_class: 'dd-two__cta-label',
+            offer_class: 'dd-two__cta-offer',
+            compare_class: 'dd-two__cta-compare',
+            price_class: 'dd-two__cta-price',
+            prices_wrap_class: 'dd-two__cta-prices'
+          %}
           <span class="dd-two__cta-arrow" aria-hidden="true">›</span>
         </button>
       </form>
@@ -202,6 +203,23 @@
       "id": "cta_label",
       "label": "CTA label",
       "default": "Get both for -"
+    },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "legacy"
+    },
+    {
+      "type": "text",
+      "id": "cta_discount_text",
+      "label": "Discount suffix",
+      "default": "| 15% OFF"
     },
     {
       "type": "text",

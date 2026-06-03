@@ -56,19 +56,36 @@
       </div>
 
       {%- if section.settings.cta_text != blank -%}
-        {%- assign cta_button_text = section.settings.cta_text | escape -%}
+        {%- assign cta_offer_mode = section.settings.cta_offer_display | default: 'legacy' -%}
         {%- assign cta_strike_price = section.settings.cta_strike_price | default: section.settings.compare_price | strip -%}
-        {%- if cta_strike_price != blank -%}
-          {%- assign cta_strike_escaped = cta_strike_price | escape -%}
-          {%- capture cta_strike_markup -%}<span class="dd-buy__cta-compare">{{ cta_strike_escaped }}</span>{%- endcapture -%}
-          {%- assign cta_button_text = cta_button_text | replace: cta_strike_escaped, cta_strike_markup -%}
-        {%- endif -%}
         <form class="dd-buy__form" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
           {%- if cta_variant != blank -%}
             <input type="hidden" name="id" value="{{ cta_variant.id }}">
           {%- endif -%}
           <button class="dd-buy__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-            {{ cta_button_text }}
+            {%- if cta_offer_mode == 'discount' or cta_offer_mode == 'price' -%}
+              {% render 'dd-cta-offer',
+                offer_display: cta_offer_mode,
+                label: section.settings.cta_text,
+                discount_text: section.settings.cta_discount_text,
+                compare_price: cta_strike_price,
+                price: section.settings.price,
+                product: cta_product,
+                legacy_style: 'buy',
+                label_class: 'dd-buy__cta-label',
+                offer_class: 'dd-buy__cta-offer',
+                compare_class: 'dd-buy__cta-compare',
+                price_class: 'dd-buy__cta-price'
+              %}
+            {%- else -%}
+              {%- assign cta_button_text = section.settings.cta_text | escape -%}
+              {%- if cta_strike_price != blank -%}
+                {%- assign cta_strike_escaped = cta_strike_price | escape -%}
+                {%- capture cta_strike_markup -%}<span class="dd-buy__cta-compare">{{ cta_strike_escaped }}</span>{%- endcapture -%}
+                {%- assign cta_button_text = cta_button_text | replace: cta_strike_escaped, cta_strike_markup -%}
+              {%- endif -%}
+              {{ cta_button_text }}
+            {%- endif -%}
             <svg class="dd-buy__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
               <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -183,6 +200,23 @@
       "id": "cta_text",
       "label": "Button text",
       "default": "TRY DISCOVERY DUO"
+    },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "legacy"
+    },
+    {
+      "type": "text",
+      "id": "cta_discount_text",
+      "label": "Discount suffix",
+      "default": "| 15% OFF"
     },
     {
       "type": "text",

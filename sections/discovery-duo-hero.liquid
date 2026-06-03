@@ -50,15 +50,19 @@
             <input type="hidden" name="id" value="{{ cta_variant.id }}">
           {%- endif -%}
           <button class="dd-hero__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-          <span class="dd-hero__cta-label">{{ section.settings.cta_label | escape }}</span>
-          {%- if section.settings.cta_compare_price != blank -%}
-            <span class="dd-hero__cta-compare">{{ section.settings.cta_compare_price | escape }}</span>
-            {%- if cta_product != blank -%}
-              <span class="dd-hero__cta-price">{{ cta_product.price | money_without_trailing_zeros }}</span>
-            {%- elsif section.settings.cta_price != blank -%}
-              <span class="dd-hero__cta-price">{{ section.settings.cta_price | escape }}</span>
-            {%- endif -%}
-          {%- endif -%}
+          {% render 'dd-cta-offer',
+            offer_display: section.settings.cta_offer_display,
+            label: section.settings.cta_label,
+            discount_text: section.settings.cta_discount_text,
+            compare_price: section.settings.cta_compare_price,
+            price: section.settings.cta_price,
+            product: cta_product,
+            legacy_style: 'hero',
+            label_class: 'dd-hero__cta-label',
+            offer_class: 'dd-hero__cta-offer',
+            compare_class: 'dd-hero__cta-compare',
+            price_class: 'dd-hero__cta-price'
+          %}
           <svg class="dd-hero__cta-arrow" width="8" height="22" viewBox="0 0 8 22" fill="none" aria-hidden="true">
             <path d="M1 1L7 11L1 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -254,6 +258,25 @@
       "id": "cta_label",
       "label": "Button left label",
       "default": "TRY BOTH FOR"
+    },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "legacy",
+      "info": "YC/YCL: choose discount suffix or compare + price per button."
+    },
+    {
+      "type": "text",
+      "id": "cta_discount_text",
+      "label": "Discount suffix",
+      "default": "| 15% OFF",
+      "info": "Shown when CTA offer display is Discount."
     },
     {
       "type": "text",

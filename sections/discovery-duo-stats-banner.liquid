@@ -76,15 +76,19 @@
           <input type="hidden" name="id" value="{{ cta_variant.id }}">
         {%- endif -%}
         <button class="dd-stats__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-          <span>{{ section.settings.cta_label | escape }}</span>
-          {%- if section.settings.cta_compare_price != blank -%}
-            <span class="dd-stats__cta-old">{{ section.settings.cta_compare_price | escape }}</span>
-          {%- endif -%}
-          {%- if cta_product != blank -%}
-            <span>{{ cta_product.price | money_without_trailing_zeros }}</span>
-          {%- elsif section.settings.cta_price != blank -%}
-            <span>{{ section.settings.cta_price | escape }}</span>
-          {%- endif -%}
+          {% render 'dd-cta-offer',
+            offer_display: section.settings.cta_offer_display,
+            label: section.settings.cta_label,
+            discount_text: section.settings.cta_discount_text,
+            compare_price: section.settings.cta_compare_price,
+            price: section.settings.cta_price,
+            product: cta_product,
+            legacy_style: 'stats',
+            label_class: 'dd-stats__cta-label',
+            offer_class: 'dd-stats__cta-offer',
+            compare_class: 'dd-stats__cta-old',
+            price_class: 'dd-stats__cta-price'
+          %}
           <span class="dd-stats__cta-arrow" aria-hidden="true">›</span>
         </button>
       </form>
@@ -141,6 +145,23 @@
       "id": "cta_label",
       "label": "CTA label",
       "default": "SEE IT ON YOUR SKIN -"
+    },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "legacy"
+    },
+    {
+      "type": "text",
+      "id": "cta_discount_text",
+      "label": "Discount suffix",
+      "default": "| 15% OFF"
     },
     {
       "type": "text",

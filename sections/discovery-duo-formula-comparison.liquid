@@ -92,10 +92,20 @@
       <form class="dd-compare__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
         {%- if cta_variant != blank -%}<input type="hidden" name="id" value="{{ cta_variant.id }}">{%- endif -%}
         <button class="dd-compare__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
-          <span>{{ section.settings.cta_label | escape }}</span>
-          {%- if section.settings.cta_compare_price != blank -%}<span class="dd-compare__cta-old">{{ section.settings.cta_compare_price | escape }}</span>{%- endif -%}
-          {%- if cta_product != blank -%}<span>{{ cta_product.price | money_without_trailing_zeros }}</span>{%- elsif section.settings.cta_price != blank -%}<span>{{ section.settings.cta_price | escape }}</span>{%- endif -%}
-          <span aria-hidden="true">›</span>
+          {% render 'dd-cta-offer',
+            offer_display: section.settings.cta_offer_display,
+            label: section.settings.cta_label,
+            discount_text: section.settings.cta_discount_text,
+            compare_price: section.settings.cta_compare_price,
+            price: section.settings.cta_price,
+            product: cta_product,
+            legacy_style: 'compare',
+            label_class: 'dd-compare__cta-label',
+            offer_class: 'dd-compare__cta-offer',
+            compare_class: 'dd-compare__cta-old',
+            price_class: 'dd-compare__cta-price'
+          %}
+          <span class="dd-compare__cta-arrow" aria-hidden="true">›</span>
         </button>
       </form>
     {%- endif -%}
@@ -131,6 +141,18 @@
     { "type": "product", "id": "cta_product", "label": "CTA product" },
     { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": false, "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart." },
     { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Get both for -" },
+    {
+      "type": "select",
+      "id": "cta_offer_display",
+      "label": "CTA offer display",
+      "options": [
+        { "value": "legacy", "label": "Auto (theme default)" },
+        { "value": "discount", "label": "Discount text (e.g. | 15% OFF)" },
+        { "value": "price", "label": "Compare + sale price" }
+      ],
+      "default": "legacy"
+    },
+    { "type": "text", "id": "cta_discount_text", "label": "Discount suffix", "default": "| 15% OFF" },
     { "type": "text", "id": "cta_compare_price", "label": "Fallback compare-at price", "default": "$86" },
     { "type": "text", "id": "cta_price", "label": "Fallback price", "default": "$48" },
     { "type": "text", "id": "trust_1", "label": "Trust item 1", "default": "30-Day Money-Back" },

@@ -1,0 +1,83 @@
+/**
+ * Discovery Duo YC / YCL — mobile CTA typography and spacing only.
+ */
+
+@media screen and (max-width: 749px) {
+  body.template-page-discovery-duo-yc .dd-hero__cta,
+  body.template-page-discovery-duo-ycl .dd-hero__cta,
+  body.template-page-discovery-duo-yc .dd-stats__cta,
+  body.template-page-discovery-duo-ycl .dd-stats__cta,
+  body.template-page-discovery-duo-yc .dd-two__cta,
+  body.template-page-discovery-duo-ycl .dd-two__cta,
+  body.template-page-discovery-duo-yc .dd-compare__cta,
+  body.template-page-discovery-duo-ycl .dd-compare__cta,
+  body.template-page-discovery-duo-yc .dd-buy__cta,
+  body.template-page-discovery-duo-ycl .dd-buy__cta {
+    padding: 0 14px 0 25px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  body.template-page-discovery-duo-yc .dd-hero__cta-label,
+  body.template-page-discovery-duo-ycl .dd-hero__cta-label,
+  body.template-page-discovery-duo-yc .dd-stats__cta-label,
+  body.template-page-discovery-duo-ycl .dd-stats__cta-label,
+  body.template-page-discovery-duo-yc .dd-two__cta-label,
+  body.template-page-discovery-duo-ycl .dd-two__cta-label,
+  body.template-page-discovery-duo-yc .dd-compare__cta-label,
+  body.template-page-discovery-duo-ycl .dd-compare__cta-label,
+  body.template-page-discovery-duo-yc .dd-buy__cta-label,
+  body.template-page-discovery-duo-ycl .dd-buy__cta-label {
+    font-weight: 400;
+  }
+
+  body.template-page-discovery-duo-yc .dd-hero__cta-offer,
+  body.template-page-discovery-duo-ycl .dd-hero__cta-offer,
+  body.template-page-discovery-duo-yc .dd-hero__cta-compare,
+  body.template-page-discovery-duo-ycl .dd-hero__cta-compare,
+  body.template-page-discovery-duo-yc .dd-hero__cta-price,
+  body.template-page-discovery-duo-ycl .dd-hero__cta-price,
+  body.template-page-discovery-duo-yc .dd-stats__cta-offer,
+  body.template-page-discovery-duo-ycl .dd-stats__cta-offer,
+  body.template-page-discovery-duo-yc .dd-stats__cta-old,
+  body.template-page-discovery-duo-ycl .dd-stats__cta-old,
+  body.template-page-discovery-duo-yc .dd-stats__cta-price,
+  body.template-page-discovery-duo-ycl .dd-stats__cta-price,
+  body.template-page-discovery-duo-yc .dd-two__cta-offer,
+  body.template-page-discovery-duo-ycl .dd-two__cta-offer,
+  body.template-page-discovery-duo-yc .dd-two__cta-compare,
+  body.template-page-discovery-duo-ycl .dd-two__cta-compare,
+  body.template-page-discovery-duo-yc .dd-two__cta-price,
+  body.template-page-discovery-duo-ycl .dd-two__cta-price,
+  body.template-page-discovery-duo-yc .dd-compare__cta-offer,
+  body.template-page-discovery-duo-ycl .dd-compare__cta-offer,
+  body.template-page-discovery-duo-yc .dd-compare__cta-old,
+  body.template-page-discovery-duo-ycl .dd-compare__cta-old,
+  body.template-page-discovery-duo-yc .dd-compare__cta-price,
+  body.template-page-discovery-duo-ycl .dd-compare__cta-price,
+  body.template-page-discovery-duo-yc .dd-buy__cta-offer,
+  body.template-page-discovery-duo-ycl .dd-buy__cta-offer,
+  body.template-page-discovery-duo-yc .dd-buy__cta-compare,
+  body.template-page-discovery-duo-ycl .dd-buy__cta-compare,
+  body.template-page-discovery-duo-yc .dd-buy__cta-price,
+  body.template-page-discovery-duo-ycl .dd-buy__cta-price {
+    font-weight: 660;
+  }
+
+  body.template-page-discovery-duo-yc .dd-compare__cta-arrow,
+  body.template-page-discovery-duo-ycl .dd-compare__cta-arrow,
+  body.template-page-discovery-duo-yc .dd-stats__cta-arrow,
+  body.template-page-discovery-duo-ycl .dd-stats__cta-arrow,
+  body.template-page-discovery-duo-yc .dd-two__cta-arrow,
+  body.template-page-discovery-duo-ycl .dd-two__cta-arrow {
+    font-weight: 400;
+  }
+
+  /* Legacy stats/compare: price spans without dedicated class */
+  body.template-page-discovery-duo-yc .dd-stats__cta:not(:has(.dd-stats__cta-label)) span:not(.dd-stats__cta-old):not(.dd-stats__cta-arrow),
+  body.template-page-discovery-duo-ycl .dd-stats__cta:not(:has(.dd-stats__cta-label)) span:not(.dd-stats__cta-old):not(.dd-stats__cta-arrow),
+  body.template-page-discovery-duo-yc .dd-compare__cta:not(:has(.dd-compare__cta-label)) span:not(.dd-compare__cta-old):not(.dd-compare__cta-arrow),
+  body.template-page-discovery-duo-ycl .dd-compare__cta:not(:has(.dd-compare__cta-label)) span:not(.dd-compare__cta-old):not(.dd-compare__cta-arrow) {
+    font-weight: 660;
+  }
+}

@@ -1,0 +1,75 @@
+{%- comment -%}
+  CTA label + offer (discount suffix or compare + price), or legacy per-section behavior.
+  Params: offer_display, label, legacy_style, discount_text, compare_price, price, product,
+  label_class, offer_class, compare_class, price_class, prices_wrap_class (optional)
+{%- endcomment -%}
+
+{%- liquid
+  assign mode = offer_display | default: 'legacy'
+-%}
+
+<span class="{{ label_class }}">{{ label | escape }}</span>
+
+{%- if mode == 'discount' -%}
+  {%- if discount_text != blank -%}
+    <span class="{{ offer_class }}">{{ discount_text | escape }}</span>
+  {%- endif -%}
+
+{%- elsif mode == 'price' -%}
+  {%- if prices_wrap_class != blank -%}
+    <span class="{{ prices_wrap_class }}">
+  {%- endif -%}
+  {%- if product != blank and product.compare_at_price > product.price -%}
+    <span class="{{ compare_class }}">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+  {%- elsif compare_price != blank -%}
+    <span class="{{ compare_class }}">{{ compare_price | escape }}</span>
+  {%- endif -%}
+  {%- if product != blank -%}
+    <span class="{{ price_class }}">{{ product.price | money_without_trailing_zeros }}</span>
+  {%- elsif price != blank -%}
+    <span class="{{ price_class }}">{{ price | escape }}</span>
+  {%- endif -%}
+  {%- if prices_wrap_class != blank -%}
+    </span>
+  {%- endif -%}
+
+{%- elsif legacy_style == 'hero' -%}
+  {%- if compare_price != blank -%}
+    <span class="{{ compare_class }}">{{ compare_price | escape }}</span>
+    {%- if product != blank -%}
+      <span class="{{ price_class }}">{{ product.price | money_without_trailing_zeros }}</span>
+    {%- elsif price != blank -%}
+      <span class="{{ price_class }}">{{ price | escape }}</span>
+    {%- endif -%}
+  {%- endif -%}
+
+{%- elsif legacy_style == 'stats' or legacy_style == 'compare' -%}
+  {%- if compare_price != blank -%}
+    <span class="{{ compare_class }}">{{ compare_price | escape }}</span>
+  {%- endif -%}
+  {%- if product != blank -%}
+    <span class="{{ price_class }}">{{ product.price | money_without_trailing_zeros }}</span>
+  {%- elsif price != blank -%}
+    <span class="{{ price_class }}">{{ price | escape }}</span>
+  {%- endif -%}
+
+{%- elsif legacy_style == 'two' -%}
+  <span class="{{ prices_wrap_class }}">
+    {%- if product != blank and product.compare_at_price > product.price -%}
+      <span class="{{ compare_class }}">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+    {%- elsif compare_price != blank -%}
+      <span class="{{ compare_class }}">{{ compare_price | escape }}</span>
+    {%- endif -%}
+    {%- if product != blank -%}
+      <span class="{{ price_class }}">{{ product.price | money_without_trailing_zeros }}</span>
+    {%- elsif price != blank -%}
+      <span class="{{ price_class }}">{{ price | escape }}</span>
+    {%- endif -%}
+  </span>
+
+{%- elsif legacy_style == 'buy' -%}
+  {%- assign buy_strike = compare_price | strip -%}
+  {%- if buy_strike != blank -%}
+    <span class="{{ compare_class }}">{{ buy_strike | escape }}</span>
+  {%- endif -%}
+{%- endif -%}

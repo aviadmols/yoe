@@ -455,6 +455,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {{ content_for_layout }}
     </main>
 
+    {%- if template.name == 'page' and template.suffix contains 'discovery-duo' -%}
+      {{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
+      {%- liquid
+        assign dd_sticky_label = 'GET AWARD-WINNING CREAM -'
+        assign dd_sticky_product = blank
+        assign dd_sticky_compare = '$185'
+        assign dd_sticky_price = ''
+        assign dd_sticky_checkout = true
+        assign dd_sticky_offer = 'price'
+
+        if template.suffix == 'discovery-duo-yc'
+          assign dd_sticky_product = all_products['ympossible-cream']
+        elsif template.suffix == 'discovery-duo-ycl'
+          assign dd_sticky_product = all_products['ympossible-cream-light']
+        elsif template.suffix == 'discovery-duo-new'
+          assign dd_sticky_product = all_products['discovery-duo']
+          assign dd_sticky_label = 'TRY BOTH FOR -'
+          assign dd_sticky_compare = '$86'
+          assign dd_sticky_price = '$48'
+        endif
+      -%}
+      {% render 'dd-sticky-cta-bar',
+        scroll_vh: 100,
+        cta_product: dd_sticky_product,
+        cta_label: dd_sticky_label,
+        cta_go_to_checkout: dd_sticky_checkout,
+        cta_offer_display: dd_sticky_offer,
+        cta_discount_text: '| 15% OFF',
+        cta_compare_price: dd_sticky_compare,
+        cta_price: dd_sticky_price
+      %}
+    {%- endif -%}
+
     {% sections 'footer-group' %}
 
     <ul hidden>

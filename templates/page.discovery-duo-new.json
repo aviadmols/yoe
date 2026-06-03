@@ -914,19 +914,6 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
-    },
-    "dd_sticky_cta": {
-      "type": "discovery-duo-sticky-cta",
-      "settings": {
-        "scroll_threshold_vh": 100,
-        "cta_product": "discovery-duo",
-        "cta_go_to_checkout": true,
-        "cta_label": "TRY BOTH FOR -",
-        "cta_offer_display": "price",
-        "cta_discount_text": "| 15% OFF",
-        "cta_compare_price": "$86",
-        "cta_price": "$48"
-      }
     }
   },
   "order": [
@@ -942,7 +929,6 @@
     "dd_mobile_banner",
     "custom_liquid_7Tik8g",
     "apps_NcRJ7C",
-    "collapsible_content_ihwU9N",
-    "dd_sticky_cta"
+    "collapsible_content_ihwU9N"
   ]
 }

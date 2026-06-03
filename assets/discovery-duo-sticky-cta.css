@@ -2,8 +2,27 @@
  * Discovery Duo — mobile sticky bottom CTA bar.
  */
 
+/* Section wrapper in main must not clip the fixed bar (JS moves bar to body). */
+.section-dd-sticky-cta {
+  display: block !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: none !important;
+  background: transparent !important;
+}
+
 .dd-sticky-cta {
   display: none;
+}
+
+.shopify-design-mode .dd-sticky-cta.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 749px) {
@@ -13,7 +32,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 120;
+    z-index: 9990;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
     background: #fff;
     box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);

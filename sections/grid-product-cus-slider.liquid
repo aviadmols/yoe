@@ -21,6 +21,13 @@
       "type": "url",
       "id": "shop-btn-url",
       "label": "Shop Button Url"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_snippets_overlay",
+      "label": "Show award overlays (snippets-overlay)",
+      "default": true,
+      "info": "When disabled, no award badges appear on product images in this section."
     }
   ],
   "blocks": [
@@ -212,7 +219,7 @@
                         <a href="{{ product_url }}" class="product-item">
                             <div class="product-image-container">
 
-                                {% if block.settings.show_snippets %}
+                                {% if section.settings.show_snippets_overlay != false and block.settings.show_snippets %}
                                     <div class="snippets-overlay {% if block.settings.show_snippets_right %}right-badge{% endif %}">
                                         {% if block.settings.show_cosmopolitan_icon %}
                                             <img class="cosmopolitan-icon"
@@ -224,14 +231,14 @@
 
 
 
-                                {% if block.settings.show_snippets02 %}
+                                {% if section.settings.show_snippets_overlay != false and block.settings.show_snippets02 %}
                                     <div class="snippets-overlay {% if block.settings.show_snippets02_right %} right-badge{% endif %}">
                                         <img src="https://cdn.shopify.com/s/files/1/0691/9959/3720/files/beauty_icon_587c0b11-84ff-4d4c-bc0a-854917ca8872.svg?v=1756928214"
                                              style="object-fit: contain; min-width: 100%;">
                                     </div>
                                 {% endif %}
 
-                                {% if block.settings.show_snippets01 %}
+                                {% if section.settings.show_snippets_overlay != false and block.settings.show_snippets01 %}
 
                                     <div class="snippets-overlay {% if block.settings.show_snippets01_right %} right-badge{% endif %}">
                                         <img src="https://cdn.shopify.com/s/files/1/0691/9959/3720/files/image002_1_1.png?v=1745347709"

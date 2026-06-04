@@ -729,13 +729,6 @@
         "padding_bottom": 56
       }
     },
-    "dd_mobile_banner": {
-      "type": "discovery-duo-mobile-banner",
-      "settings": {
-        "image": "shopify://shop_images/Rectangle_887.png",
-        "alt_text": "Discovery Duo mobile banner"
-      }
-    },
     "custom_liquid_7Tik8g": {
       "type": "custom-liquid",
       "settings": {
@@ -907,7 +900,6 @@
     "dd_reviews",
     "dd_refill",
     "dd_buy",
-    "dd_mobile_banner",
     "custom_liquid_7Tik8g",
     "apps_NcRJ7C",
     "collapsible_content_ihwU9N",

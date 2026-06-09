@@ -687,9 +687,14 @@ body:has(.dd-hero--light-text):not(.scrolled) .header__menu-item span {
 }
 
 body:has(.dd-hero--light-text):not(.scrolled) summary.header__icon svg path,
-body:has(.dd-hero--light-text):not(.scrolled) a.header__icon.header__icon--account.link path,
-body:has(.dd-hero--light-text):not(.scrolled) .header__icon svg path {
+body:has(.dd-hero--light-text):not(.scrolled) .header__icon:not(.header__icon--account) svg path {
   fill: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) a.header__icon.header__icon--account.link svg path,
+body:has(.dd-hero--light-text):not(.scrolled) a.header__icon.header__icon--account.link svg circle {
+  fill: none !important;
+  stroke: #fff !important;
 }
 
 body:has(.dd-hero--light-text):not(.scrolled) summary.header__icon svg circle {

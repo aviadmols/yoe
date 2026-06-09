@@ -46,6 +46,16 @@
   opacity: 0.9;
 }
 
+.dd-press--inverted,
+.dd-press--inverted .dd-press__track {
+  background: #fff;
+  color: #bd1e18;
+}
+
+.dd-press--inverted .dd-press__item {
+  color: #bd1e18;
+}
+
 .dd-press__mobile-quote {
   display: none;
 }
@@ -71,6 +81,14 @@
     height: auto;
     overflow: visible;
     background: transparent;
+  }
+
+  .dd-press--inverted {
+    background: #fff;
+  }
+
+  .dd-press--inverted .dd-press__track {
+    background: #fff;
   }
 
   .dd-press__track {

@@ -1,0 +1,163 @@
+{{ 'discovery-duo-encapsulation-image.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-encap"
+  style="--dd-encap-padding-top: {{ section.settings.padding_top }}px; --dd-encap-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  aria-label="{{ section.settings.title | default: 'Advanced Encapsulation' | escape }}"
+>
+  <div class="dd-encap__inner">
+    <div class="dd-encap__grid">
+      <div class="dd-encap__content">
+        {%- if section.settings.title != blank -%}
+          <h2 class="dd-encap__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body != blank -%}
+          <p class="dd-encap__body">{{ section.settings.body | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="dd-encap__features">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'feature' -%}
+                <li class="dd-encap__feature" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    {{ block.settings.icon | image_url: width: 80 | image_tag:
+                      loading: 'lazy',
+                      class: 'dd-encap__feature-icon',
+                      alt: ''
+                    }}
+                  {%- endif -%}
+                  {%- if block.settings.label != blank -%}
+                    <span class="dd-encap__feature-label">{{ block.settings.label | escape }}</span>
+                  {%- endif -%}
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      {%- liquid
+        assign encap_alt = section.settings.alt | default: section.settings.title | escape
+        assign encap_asset = section.settings.theme_asset | default: 'discovery-duo-encapsulation-diagram.png'
+      -%}
+      <div class="dd-encap__media">
+        {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
+          <picture>
+            {%- if section.settings.mobile_image != blank -%}
+              <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 750 }}">
+            {%- endif -%}
+            {%- assign encap_image = section.settings.desktop_image | default: section.settings.mobile_image -%}
+            {{ encap_image | image_url: width: 1400 | image_tag:
+              loading: 'lazy',
+              widths: '375, 550, 750, 900, 1100, 1400',
+              sizes: '(max-width: 749px) 100vw, 42vw',
+              class: 'dd-encap__image',
+              alt: encap_alt
+            }}
+          </picture>
+        {%- elsif encap_asset != blank -%}
+          <img
+            class="dd-encap__image"
+            src="{{ encap_asset | asset_url }}"
+            alt="{{ encap_alt }}"
+            loading="lazy"
+            width="1120"
+            height="800"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Duo – Encapsulation image",
+  "tag": "section",
+  "class": "section-dd-encap",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Advanced Encapsulation"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Advanced encapsulation technology gradually and precisely releases potent actives beyond the surface of the skin. Protecting ingredients at peak potency, maximizing efficacy, and minimizing irritation."
+    },
+    {
+      "type": "header",
+      "content": "Diagram image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop diagram"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile diagram"
+    },
+    {
+      "type": "text",
+      "id": "theme_asset",
+      "label": "Theme asset fallback",
+      "default": "discovery-duo-encapsulation-diagram.png",
+      "info": "Used when no diagram images are selected above."
+    },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "Diagram alt text",
+      "default": "Advanced encapsulation delivery diagram"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 6,
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Shields actives from oxidation" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo – Encapsulation image",
+      "blocks": [
+        { "type": "feature", "settings": { "label": "Shields actives from oxidation" } },
+        { "type": "feature", "settings": { "label": "Time-controlled release" } },
+        { "type": "feature", "settings": { "label": "Targeted delivery" } },
+        { "type": "feature", "settings": { "label": "Minimizes irritation" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

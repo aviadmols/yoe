@@ -1,7 +1,7 @@
 {{ 'discovery-duo-press-strip.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="dd-press"
+  class="dd-press{% if section.settings.invert_colors %} dd-press--inverted{% endif %}"
   style="--dd-press-speed: {{ section.settings.speed }}s;"
   aria-label="{{ section.settings.accessibility_label | default: 'Press mentions' | escape }}"
 >
@@ -58,6 +58,13 @@
       "step": 2,
       "unit": "s",
       "default": 28
+    },
+    {
+      "type": "checkbox",
+      "id": "invert_colors",
+      "label": "Red text on white background",
+      "default": false,
+      "info": "Inverts the marquee strip to white background with red text (DUE-style)."
     },
     {
       "type": "text",

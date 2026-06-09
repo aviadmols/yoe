@@ -344,11 +344,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {{ 'checkout-cta-loading.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'landing-page-b-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
-{% if template.name == 'page' and template.suffix != blank and template.suffix contains 'discovery-duo' %}
+{% if template.name == 'page' and template.suffix != blank and (template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
   {{ 'checkout-cta-loading.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'discovery-duo-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
-{% if template.name == 'page' and (template.suffix == 'discovery-duo-yc' or template.suffix == 'discovery-duo-ycl') %}
+{% if template.name == 'page' and (template.suffix contains 'discovery-duo-yc' or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
   <style>{% render 'dd-yc-ycl-critical-css' %}</style>
   {{ 'discovery-duo-yc-ycl-preloader.css' | asset_url | stylesheet_tag }}
   {{ 'discovery-duo-yc-ycl-cta.css' | asset_url | stylesheet_tag }}
@@ -426,7 +426,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <style class="loop-style"> {% render 'loop-widget.css' %} </style>
     
   <body class="template-{{ template | handle }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {% if content_for_header_capture contains 'previewBarInjector' %}admin-logged-in{% endif %} {% if customer %}customer-logged-in{% endif %}">
-    {%- if template.name == 'page' and (template.suffix == 'discovery-duo-yc' or template.suffix == 'discovery-duo-ycl') and request.design_mode == false -%}
+    {%- if template.name == 'page' and (template.suffix contains 'discovery-duo-yc' or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') and request.design_mode == false -%}
       {% render 'dd-yc-ycl-preloader' %}
     {%- endif -%}
 <!-- Google Tag Manager (noscript) -->
@@ -442,7 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {%- endif -%}
 
 
-<div class="header_sections {% if page.title contains 'The Impact' or page.title contains 'The Science' %} {{ page.title }} {% endif %}{% if page.title contains 'The Impact' or page.title contains 'The Science' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix contains 'discovery-duo' %} dark_header {% endif %} {% if template == 'index' or request.path contains '/the-science' or request.path contains '/our-story' or page.title contains 'The Impact' or request.path contains '/discover-yoe' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix contains 'discovery-duo' %} homepageheader{% endif %} ">
+<div class="header_sections {% if page.title contains 'The Impact' or page.title contains 'The Science' %} {{ page.title }} {% endif %}{% if page.title contains 'The Impact' or page.title contains 'The Science' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' %} dark_header {% endif %} {% if template == 'index' or request.path contains '/the-science' or request.path contains '/our-story' or page.title contains 'The Impact' or request.path contains '/discover-yoe' or template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' %} homepageheader{% endif %} ">
     {% sections 'header-group' %}
 </div>
 
@@ -455,23 +455,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {{ content_for_layout }}
     </main>
 
-    {%- if template.name == 'page' and template.suffix contains 'discovery-duo' -%}
+    {%- if template.name == 'page' and (template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') -%}
       {{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
       {%- liquid
         assign dd_sticky_label = 'GET AWARD-WINNING CREAM -'
         assign dd_sticky_product = blank
+        assign dd_sticky_product_secondary = blank
         assign dd_sticky_compare = '$185'
         assign dd_sticky_price = ''
         assign dd_sticky_checkout = true
         assign dd_sticky_offer = 'price'
 
-        if template.suffix == 'discovery-duo-yc'
-          assign dd_sticky_product = all_products['ympossible-cream']
-          assign dd_sticky_price = '$48'
-        elsif template.suffix == 'discovery-duo-ycl'
+        if template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-ycl-lp2'
           assign dd_sticky_product = all_products['ympossible-cream-light']
-          assign dd_sticky_price = '$48'
+          if template.suffix contains 'lp2'
+            assign dd_sticky_label = 'CLAIM YOUR COMPLIMENTARY REFILL -'
+            assign dd_sticky_compare = '$345'
+            assign dd_sticky_price = '$185'
+            assign dd_sticky_product_secondary = all_products['ympossible-cream-light-refill']
+          else
+            assign dd_sticky_price = '$48'
+          endif
+        elsif template.suffix contains 'discovery-duo-yc' or template.suffix == 'discovery-yc-lp2'
+          assign dd_sticky_product = all_products['ympossible-cream']
+          if template.suffix contains 'lp2'
+            assign dd_sticky_label = 'CLAIM YOUR COMPLIMENTARY REFILL -'
+            assign dd_sticky_compare = '$345'
+            assign dd_sticky_price = '$185'
+            assign dd_sticky_product_secondary = all_products['ympossible-cream-refill']
+          else
+            assign dd_sticky_price = '$48'
+          endif
         elsif template.suffix == 'discovery-duo-new'
           assign dd_sticky_product = all_products['discovery-duo']
           assign dd_sticky_label = 'TRY BOTH FOR -'
@@ -482,6 +497,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {% render 'dd-sticky-cta-bar',
         scroll_vh: 100,
         cta_product: dd_sticky_product,
+        cta_product_secondary: dd_sticky_product_secondary,
         cta_label: dd_sticky_label,
         cta_go_to_checkout: dd_sticky_checkout,
         cta_offer_display: dd_sticky_offer,

@@ -1,0 +1,20 @@
+{%- comment -%}
+  Hidden variant inputs for Discovery Duo CTA forms.
+  Params: primary_product, secondary_product, include_secondary (default true)
+{%- endcomment -%}
+
+{%- liquid
+  assign primary_variant = primary_product.selected_or_first_available_variant
+  assign secondary_variant = secondary_product.selected_or_first_available_variant
+  assign add_secondary = include_secondary
+  if add_secondary == blank
+    assign add_secondary = true
+  endif
+-%}
+
+{%- if primary_variant != blank -%}
+  <input type="hidden" name="id" value="{{ primary_variant.id }}" data-dd-variant-id>
+{%- endif -%}
+{%- if add_secondary and secondary_variant != blank -%}
+  <input type="hidden" value="{{ secondary_variant.id }}" data-dd-variant-id aria-hidden="true">
+{%- endif -%}

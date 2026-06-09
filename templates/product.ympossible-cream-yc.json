@@ -1,0 +1,822 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "icon_with_text_9jXtWM": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "apple",
+            "image_1": "shopify://shop_images/Group_1000004350_1.svg",
+            "heading_1": "Ewg Verified",
+            "icon_2": "banana",
+            "image_2": "shopify://shop_images/Group_1000004349_1.svg",
+            "heading_2": "leap bunny certified",
+            "icon_3": "bottle",
+            "image_3": "shopify://shop_images/Group_1000004355_1.svg",
+            "heading_3": "Vegan",
+            "icon_4": "Cruelty-Free",
+            "image_4": "shopify://shop_images/Group_1000004353_1.svg",
+            "heading_4": "Fragrance Free",
+            "icon_5": "bottle",
+            "image_5": "shopify://shop_images/refil_icon_tag.svg",
+            "heading_5": "Refillable"
+          }
+        },
+        "text_cT8XEa": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Ympossible cream is elegantly rich, velvety in texture and subtle satin finish making it perfect for use under makeup. It absorbs instantly, leaving behind no greasy residue, making it perfect for moments when additional long-lasting hydration for up to 48 hours. Suitable for all ages and skin types particular beneficial for those with normal, dry or combination skin, its versatility extends to both day and night use, seamlessly integrating into any skincare regimen. For a more intensive treatment, generously apply Ympossible Cream as an overnight mask, delivering deep, restorative hydration to parched or stressed skin. Wake up to a refreshed, radiant complexion.<em><strong> </strong></em>",
+            "text_style": "body"
+          }
+        },
+        "collapsible_tab_mKjhEM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Benefits",
+            "icon": "none",
+            "content": "<ul><li>Instantly hydration</li><li>Deep, long-lasting nourishment</li><li>Strengthens skin barrier. Supports collagen production</li><li>Reduces fine lines and wrinkles</li><li>Improves firmness and elasticity</li><li>Targets dark spots & hyperpigmentation Evens skin tone</li><li>Smooths texture</li><li>Soothes irritation and redness</li><li>Defends against pollution, UV and blue light</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_6RpJQj": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Full Description",
+            "icon": "check_mark",
+            "content": "<p>The velvet texture and satin finish of the Ympossible Cream makes it perfect for use under makeup. Can be used day or night, suitable for dry climates and normal-to-dry complexions. For a more intensive treatment, apply a generous layer of Ympossible Cream to parched or stressed skin as an overnight mask, and wake up refreshed and glowing. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_WUPyXz": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How to",
+            "icon": "check_mark",
+            "content": "<p>Apply to cleansed, dry skin on the face, neck, and décolletage. Use morning and evening, or as a smooth base before makeup. For intensive repair, apply a generous layer as an overnight treatment. Suitable for all skin types, including sensitive skin. </p>",
+            "page": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "price_QRBtkG": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_pK7Gjz": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "description",
+        "icon_with_text_9jXtWM",
+        "text_cT8XEa",
+        "collapsible_tab_mKjhEM",
+        "collapsible_tab_6RpJQj",
+        "collapsible_tab_WUPyXz",
+        "variant_picker",
+        "price_QRBtkG",
+        "buy_buttons",
+        "afterpay_on_site_messaging_payments_messaging_pK7Gjz"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "hide",
+        "hide_variants": false,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 12,
+        "desktop_gallery_image_1": "shopify://shop_images/01_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_2": "shopify://shop_images/02_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_3": "shopify://shop_images/03_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_4": "shopify://shop_images/04_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_5": "shopify://shop_images/06_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_6": "shopify://shop_images/07_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_7": "shopify://shop_images/08_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_8": "shopify://shop_images/09_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_9": "shopify://shop_images/10_-_website_desktop_-_YC.webp",
+        "desktop_gallery_image_10": "shopify://shop_images/11_-_website_desktop_-_YC.webp",
+        "custom_background_image": "shopify://shop_images/Rectangle_915_6a61a5ed-f463-45ba-a8a9-fe4ead1f22f5.png"
+      }
+    },
+    "press_mention_custom_tBb8eV": {
+      "type": "press-mention-custom",
+      "blocks": {
+        "quote_Hwqheb": {
+          "type": "quote",
+          "settings": {
+            "title": "COSMOPOLITAN",
+            "quote": "\"Behold: the rich-but-light skin-<br>soothing cream you didn’t know <br> you were missing.\""
+          }
+        },
+        "quote_jhJVDw": {
+          "type": "quote",
+          "settings": {
+            "title": "Oprah Daily",
+            "quote": "“It's so hard to find a rich,<br> luxurious anti-aging cream for <br> sensitive skin—but this is it!”"
+          }
+        },
+        "quote_6rxXmb": {
+          "type": "quote",
+          "settings": {
+            "title": "forbes",
+            "quote": "“In just a short time, this moisturizer <br> has become a go-to for some of the <br> biggest makeup artists.”"
+          }
+        },
+        "quote_CiB6tn": {
+          "type": "quote",
+          "settings": {
+            "title": "Glamour",
+            "quote": "“It does it all—it’s super <br> hydrating like a moisturizer but <br> also grips makeup like a primer”"
+          }
+        }
+      },
+      "block_order": [
+        "quote_Hwqheb",
+        "quote_jhJVDw",
+        "quote_6rxXmb",
+        "quote_CiB6tn"
+      ],
+      "name": "Press Mentions",
+      "settings": {}
+    },
+    "dd_stats_headline": {
+      "type": "discovery-duo-stats-banner",
+      "blocks": {
+        "product_cream": {
+          "type": "product_result",
+          "settings": {
+            "product_name": "Ympossible Cream",
+            "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
+            "stat_1_top": "Forehead wrinkle depth reduced by up",
+            "stat_1_percentage": "66.7%",
+            "stat_1_bottom": "in only 4 weeks",
+            "stat_2_top": "Jawline firmness improved by up to",
+            "stat_2_percentage": "66.7%",
+            "stat_2_bottom": "in only 4 weeks",
+            "stat_3_top": "Frown line depth reduced by up to",
+            "stat_3_percentage": "50.0%",
+            "stat_3_bottom": "in only 4 weeks",
+            "stat_4_top": "Skin barrier integrity improved by up to",
+            "stat_4_percentage": "61.8%",
+            "stat_4_bottom": "in 8 weeks",
+            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
+          }
+        }
+      },
+      "block_order": [
+        "product_cream"
+      ],
+      "settings": {
+        "headline": "VISIBLY FIRMs, PLUMPs & REDUCEs FINE LINES & WRINKLES",
+        "layout_mode": "single",
+        "cta_product": "ympossible-cream",
+        "cta_go_to_checkout": false,
+        "cta_label": "",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$185",
+        "cta_price": "$148",
+        "trust_1": "",
+        "trust_2": "",
+        "trust_3": "",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "clinic_result_clinical": {
+      "type": "clinic-result-section",
+      "blocks": {
+        "result_1": {
+          "type": "result",
+          "settings": {
+            "stat_top": "Forehead wrinkle depth reduced by up",
+            "percentage": "66.7%",
+            "stat_bottom": "in only 4 weeks"
+          }
+        },
+        "result_2": {
+          "type": "result",
+          "settings": {
+            "stat_top": "Jawline firmness improved by up to",
+            "percentage": "66.7%",
+            "stat_bottom": "in only 4 weeks"
+          }
+        },
+        "result_3": {
+          "type": "result",
+          "settings": {
+            "stat_top": "Frown line depth reduced by up to",
+            "percentage": "50.0%",
+            "stat_bottom": "in only 4 weeks"
+          }
+        },
+        "result_4": {
+          "type": "result",
+          "settings": {
+            "stat_top": "Skin barrier integrity improved by up to",
+            "percentage": "61.8%",
+            "stat_bottom": "in 8 weeks"
+          }
+        }
+      },
+      "block_order": [
+        "result_1",
+        "result_2",
+        "result_3",
+        "result_4"
+      ],
+      "settings": {
+        "layout_mode": "pdp",
+        "section_variant": "clinical",
+        "badge_text": "Clinically proven",
+        "main_headline": "VISIBLY FIRMs, PLUMPs & REDUCEs FINE LINES & WRINKLES",
+        "image": "shopify://shop_images/Group_1000006031.jpg",
+        "image_mobile": "shopify://shop_images/Group_1000006031.jpg",
+        "headline": "Clinical trial results",
+        "button_label": "See all results",
+        "button_link": ""
+      }
+    },
+    "clinic_result_consumer": {
+      "type": "clinic-result-section",
+      "blocks": {
+        "result_1": {
+          "type": "result",
+          "settings": {
+            "stat_top": "felt skin appeared more youthful",
+            "percentage": "100%"
+          }
+        },
+        "result_2": {
+          "type": "result",
+          "settings": {
+            "stat_top": "felt skin was firmer",
+            "percentage": "95%"
+          }
+        }
+      },
+      "block_order": [
+        "result_1",
+        "result_2"
+      ],
+      "settings": {
+        "layout_mode": "pdp",
+        "section_variant": "consumer",
+        "badge_text": "Consumer approved",
+        "main_headline": "REAL USERS. REAL RESULTS.",
+        "image": "shopify://shop_images/Group_1000006031.jpg",
+        "image_mobile": "shopify://shop_images/Group_1000006031.jpg",
+        "headline": "Consumer perception",
+        "button_label": "See all results",
+        "button_link": ""
+      }
+    },
+    "dd_compare": {
+      "type": "discovery-duo-formula-comparison",
+      "blocks": {
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/11.png",
+            "title": "Shielded",
+            "text": "Each active protected at peak potency."
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/12.png",
+            "title": "Time-released",
+            "text": "Sustained delivery, longer-lasting."
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/223.png",
+            "title": "Targeted",
+            "text": "Reaches deeper epidermal layers."
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_1.png",
+            "title": "Gentle",
+            "text": "Suitable for sensitive, reactive skin."
+          }
+        },
+        "active_1": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-vitamin-c.jpg",
+            "name": "Epidermal Growth Factor",
+            "action": "Renew",
+            "benefits": "Visibly renewed, younger-looking"
+          }
+        },
+        "active_2": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/mobile-red-algae.jpg",
+            "name": "Vitamin C",
+            "action": "Firm",
+            "benefits": "Visibly firmer, lifted"
+          }
+        },
+        "active_3": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/mobile-timut-pepper.jpg",
+            "name": "Tranexamic Acid",
+            "action": "Brighten",
+            "benefits": "Dark spots visibly reduced, brighter complexion"
+          }
+        },
+        "active_4": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-hyaluronic-acid.jpg",
+            "name": "Hyaluronic Acid",
+            "action": "Hydrate",
+            "benefits": "Plumped, smoother-looking skin"
+          }
+        },
+        "active_BN6LiL": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Protective_-_Niacinamide_1.png",
+            "name": "niacinamide",
+            "action": "refine",
+            "benefits": "Pores minimized, tone evened, barrier strengthened"
+          }
+        },
+        "active_5": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/mobile-chebula.jpg",
+            "name": "Ceramides",
+            "action": "Protect",
+            "benefits": "Stronger moisture barrier"
+          }
+        },
+        "active_6": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-ceramides.jpg",
+            "name": "Squalane",
+            "action": "Nourish",
+            "benefits": "Soft, resilient finish"
+          }
+        },
+        "active_a3fRxX": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-diosmin.jpg",
+            "name": "Panthenol",
+            "action": "SOOTHE",
+            "benefits": "Visibly soothed, restored"
+          }
+        },
+        "active_8t4HD4": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Hyaluronic_Acid_75814034-5f69-4cdc-9549-d79a71920723.png",
+            "name": "Vitamin E",
+            "action": "FORTIFY",
+            "benefits": "Protected against oxidative stress and free radicals"
+          }
+        },
+        "active_eiTzAU": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Vitamin_B.png",
+            "name": "Chebula",
+            "action": "DEFEND",
+            "benefits": "Defended against oxidative stress  and environmental damage"
+          }
+        },
+        "active_dE7phR": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-tranexamic-acid.jpg",
+            "name": "Diosmin",
+            "action": "CALM",
+            "benefits": "Visibly calmer, less reactive"
+          }
+        },
+        "active_hPzN7t": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-nicotiana-benthamiana.jpg",
+            "name": "Red Algae",
+            "action": "SHIELD",
+            "benefits": "Shielded from pollution and UV stress"
+          }
+        },
+        "active_p7LcFV": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Squalene_b0fc49c7-dffd-43f8-bd65-732fe5460a52.png",
+            "name": "Timut Pepper",
+            "action": "RADIANCE",
+            "benefits": "Visibly brighter, more even-toned"
+          }
+        },
+        "active_itm3Xi": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Hyaluronic_Acid_1.png",
+            "name": "Rice Water",
+            "action": "SMOOTH",
+            "benefits": "Smoother, more luminous"
+          }
+        }
+      },
+      "block_order": [
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "active_1",
+        "active_2",
+        "active_3",
+        "active_4",
+        "active_BN6LiL",
+        "active_5",
+        "active_6",
+        "active_a3fRxX",
+        "active_8t4HD4",
+        "active_eiTzAU",
+        "active_dE7phR",
+        "active_hPzN7t",
+        "active_p7LcFV",
+        "active_itm3Xi"
+      ],
+      "settings": {
+        "layout_mode": "pdp",
+        "headline_prefix": "SynerGenius®",
+        "headline_accent": "",
+        "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
+        "side_panel_image": "shopify://shop_images/adaq2_1.png",
+        "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
+        "ingredients_button_label": "See full ingredients list",
+        "diagram_desktop_image": "shopify://shop_images/031.jpg",
+        "diagram_mobile_image": "shopify://shop_images/031.jpg",
+        "diagram_alt": "SynerGenius delivery diagram",
+        "diagram_label_1": "Surface",
+        "diagram_title_1": "Advanced encapsulation",
+        "diagram_label_2": "Epidermis",
+        "diagram_title_2": "Controlled release",
+        "diagram_label_3": "Dermis",
+        "diagram_title_3": "Targeted delivery within dermin",
+        "cta_product": "ympossible-cream",
+        "cta_go_to_checkout": false,
+        "cta_label": "",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$185",
+        "cta_price": "$148",
+        "trust_1": "",
+        "trust_2": "",
+        "trust_3": "",
+        "padding_top": 88,
+        "padding_bottom": 88,
+        "show_diagram": false,
+        "show_how_it_works": false
+      }
+    },
+    "dd_encapsulation_image": {
+      "type": "discovery-duo-encapsulation-image",
+      "blocks": {
+        "feature_shield": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/11.png",
+            "label": "Shields actives from oxidation"
+          }
+        },
+        "feature_time": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/12.png",
+            "label": "Time-controlled release"
+          }
+        },
+        "feature_target": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/223.png",
+            "label": "Targeted delivery"
+          }
+        },
+        "feature_gentle": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_1.png",
+            "label": "Minimizes irritation"
+          }
+        }
+      },
+      "block_order": [
+        "feature_shield",
+        "feature_time",
+        "feature_target",
+        "feature_gentle"
+      ],
+      "settings": {
+        "title": "Advanced Encapsulation",
+        "body": "Advanced encapsulation technology gradually and precisely releases potent actives beyond the surface of the skin. Protecting ingredients at peak potency, maximizing efficacy, and minimizing irritation.",
+        "theme_asset": "discovery-duo-encapsulation-diagram.png",
+        "alt": "Advanced encapsulation delivery diagram",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "sustainability_section_pFkRYA": {
+      "type": "Sustainability-Section",
+      "blocks": {
+        "feature_WrTeTM": {
+          "type": "feature",
+          "settings": {
+            "title_1": "Reusable cap",
+            "text_1": "made of minimum 50% post-consumer recycled content (PCR).",
+            "image": "shopify://shop_images/bottle_end_stopper.png",
+            "title_2": "No adhesives",
+            "text_2": "Yoé emblem heat-fused into the cap, eliminating the need for adhesive."
+          }
+        },
+        "feature_CqNq8Q": {
+          "type": "feature",
+          "settings": {
+            "title_1": "Metal-free",
+            "text_1": "Metal-free spring within the pump optimized for recycling.",
+            "image": "shopify://shop_images/bottle_stopper_photo.png",
+            "title_2": "",
+            "text_2": ""
+          }
+        },
+        "feature_bJNGBk": {
+          "type": "feature",
+          "settings": {
+            "title_1": "PCR GLASS",
+            "text_1": "Glass bottles are composed of at minimum 50% PCR",
+            "image": "shopify://shop_images/feature_three_image.png",
+            "title_2": "Refillable bottles",
+            "text_2": "Made of minimum 50% post-consumer recycled content (PCR)"
+          }
+        }
+      },
+      "block_order": [
+        "feature_WrTeTM",
+        "feature_CqNq8Q",
+        "feature_bJNGBk"
+      ],
+      "name": "Sustainability Section",
+      "settings": {
+        "heading": "SUSTAINABILITY",
+        "description": "The Yoé production process and refillable packaging system are designed to minimize our carbon footprint and overall environmental impact throughout the product life cycle.",
+        "badge_1": "shopify://shop_images/Group_1000004786.png",
+        "badge_2": "shopify://shop_images/Group_1000004787.png",
+        "badge_3": "shopify://shop_images/Group_1000004788.png",
+        "badge_mobile_1": "shopify://shop_images/Group_1000005039.png",
+        "badge_mobile_2": "shopify://shop_images/Group_1000004787_1.png",
+        "badge_mobile_3": "shopify://shop_images/Group_1000004788_1.png",
+        "button_link": "",
+        "button_text": "LEARN MORE ABOUT IMPACT",
+        "section_heading": "",
+        "feature_title_mobile_1": "NO ADHESIVES",
+        "feature_text_mobile_1": "Yoé emblem heat-fused into the cap, eliminating the need for adhesive.",
+        "feature_title_mobile_2": "ECO MATERIALS",
+        "feature_text_mobile_2": "Packaging designed with sustainable, recyclable materials.",
+        "feature_title_mobile_3": "REFILL SYSTEM",
+        "feature_text_mobile_3": "Refillable design reduces single-use packaging.",
+        "feature_title_mobile_4": "LOW CARBON",
+        "feature_text_mobile_4": "Production process optimized for a minimal carbon footprint.",
+        "feature_title_mobile_5": "RECYCLABLE",
+        "feature_text_mobile_5": "Designed for recyclability at end-of-life.",
+        "feature_image_1": "shopify://shop_images/mobile_outer_cap.png",
+        "feature_image_2": "shopify://shop_images/mobile_inner_cap.png",
+        "feature_image_3": "shopify://shop_images/stand_bottle.png"
+      }
+    },
+    "award_custom_section_X9tFU9": {
+      "type": "award-custom-section",
+      "blocks": {
+        "award_A9bCMt": {
+          "type": "award",
+          "settings": {
+            "award_logo": "shopify://shop_images/Group_1000004940.png",
+            "mobile_award_logo": "shopify://shop_images/Group_1000004955.png",
+            "award_title": "",
+            "award_text": ""
+          }
+        },
+        "award_3hdmyD": {
+          "type": "award",
+          "settings": {
+            "award_logo": "shopify://shop_images/Group_1000004942.png",
+            "mobile_award_logo": "shopify://shop_images/Group_1000004850.png",
+            "award_title": "",
+            "award_text": ""
+          }
+        },
+        "award_8GHNnK": {
+          "type": "award",
+          "settings": {
+            "award_logo": "shopify://shop_images/women_award_big.png",
+            "mobile_award_logo": "shopify://shop_images/women_award_big_mobile.png",
+            "award_title": "",
+            "award_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "award_A9bCMt",
+        "award_3hdmyD",
+        "award_8GHNnK"
+      ],
+      "name": "Awards Section",
+      "settings": {
+        "heading": "AWARD-WINNING, FOR A REASON"
+      }
+    },
+    "two_column_image_section_iwabiK": {
+      "type": "two-column-image-section",
+      "name": "Two Column Images",
+      "settings": {
+        "left_image": "shopify://shop_images/04_YCL_Model_2.png",
+        "right_image": "shopify://shop_images/06_YC_refill_Model_4.png"
+      }
+    },
+    "products_slide_section_ywEKJh": {
+      "type": "Products_slide_Section",
+      "blocks": {
+        "product_83Gaw6": {
+          "type": "product",
+          "settings": {
+            "product_image": "shopify://shop_images/YCL_-_transperant_03280612-ed95-4c6f-b39f-7c5e75864edb.webp",
+            "show_cosmopolitan_icon": false,
+            "show_beauty_awards": false,
+            "show_snippets": false,
+            "show_snippets_right": false,
+            "show_snippets01": false,
+            "show_snippets01_right": false,
+            "product_name": "YMPOSSIBLE CREAM light",
+            "product_url": "shopify://products/ympossible-cream-light"
+          }
+        },
+        "product_zbMnFe": {
+          "type": "product",
+          "settings": {
+            "product_image": "shopify://shop_images/YCL_Refill_-_transperant.webp",
+            "show_cosmopolitan_icon": false,
+            "show_beauty_awards": false,
+            "show_snippets": false,
+            "show_snippets_right": false,
+            "show_snippets01": false,
+            "show_snippets01_right": false,
+            "product_name": "YMPOSSIBLE CREAM  light refill",
+            "product_url": "shopify://products/ympossible-cream-light-refill"
+          }
+        },
+        "product_GdrYrQ": {
+          "type": "product",
+          "settings": {
+            "product_image": "shopify://shop_images/Discovety_kit_-_transperant.webp",
+            "show_cosmopolitan_icon": false,
+            "show_beauty_awards": false,
+            "show_snippets": false,
+            "show_snippets_right": false,
+            "show_snippets01": false,
+            "show_snippets01_right": false,
+            "product_name": "Discovery Duo",
+            "product_url": "shopify://products/discovery-duo"
+          }
+        },
+        "product_WMggQe": {
+          "type": "product",
+          "settings": {
+            "product_image": "shopify://shop_images/YC_Refill_-_transperant_19f1d0dd-9e71-4153-9e6e-8482cff644f2.webp",
+            "show_cosmopolitan_icon": false,
+            "show_beauty_awards": false,
+            "show_snippets": false,
+            "show_snippets_right": false,
+            "show_snippets01": false,
+            "show_snippets01_right": false,
+            "product_name": "YMPOSSIBLE CREAM refill",
+            "product_url": "shopify://products/ympossible-cream-refill"
+          }
+        }
+      },
+      "block_order": [
+        "product_83Gaw6",
+        "product_zbMnFe",
+        "product_GdrYrQ",
+        "product_WMggQe"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {h2 {text-align: center; margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: -20px; }}"
+      ],
+      "settings": {
+        "heading": "You might also like..",
+        "description": ""
+      }
+    },
+    "17261758204f121d99": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_pHbKwp": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "source": "{{ product.metafields.custom.reviews_widget.value }}",
+          "settings": {
+            "product": "{{ product.metafields.custom.reviews_widget.value.product.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_pHbKwp"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "press_mention_custom_tBb8eV",
+    "dd_stats_headline",
+    "clinic_result_clinical",
+    "clinic_result_consumer",
+    "dd_compare",
+    "dd_encapsulation_image",
+    "sustainability_section_pFkRYA",
+    "award_custom_section_X9tFU9",
+    "two_column_image_section_iwabiK",
+    "products_slide_section_ywEKJh",
+    "17261758204f121d99"
+  ]
+}

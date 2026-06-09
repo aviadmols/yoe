@@ -6,6 +6,7 @@
   aria-label="{{ section.settings.headline | default: 'Two formulas, one complete routine' | escape }}"
 >
   {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_product_secondary = section.settings.cta_product_secondary -%}
   {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
 
   <div class="dd-two__inner">
@@ -101,9 +102,11 @@
 
     {%- if section.settings.cta_label != blank -%}
       <form class="dd-two__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
-        {%- if cta_variant != blank -%}
-          <input type="hidden" name="id" value="{{ cta_variant.id }}">
-        {%- endif -%}
+        {% render 'dd-cta-cart-inputs',
+          primary_product: cta_product,
+          secondary_product: cta_product_secondary,
+          include_secondary: true
+        %}
         <button class="dd-two__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
           {% render 'dd-cta-offer',
             offer_display: section.settings.cta_offer_display,
@@ -192,11 +195,17 @@
       "label": "CTA product"
     },
     {
+      "type": "product",
+      "id": "cta_product_secondary",
+      "label": "CTA bonus product (optional)",
+      "info": "When set, both products are added to cart on CTA click."
+    },
+    {
       "type": "checkbox",
       "id": "cta_go_to_checkout",
       "label": "Go directly to checkout",
       "default": false,
-      "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
+      "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart."
     },
     {
       "type": "text",

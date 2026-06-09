@@ -1,6 +1,6 @@
 {%- comment -%}
   Mobile sticky bottom CTA bar.
-  Params: scroll_vh, cta_product, cta_label, cta_go_to_checkout, cta_offer_display,
+  Params: scroll_vh, cta_product, cta_product_secondary, cta_label, cta_go_to_checkout, cta_offer_display,
   cta_discount_text, cta_compare_price, cta_price
 {%- endcomment -%}
 
@@ -23,9 +23,11 @@
         data-dd-checkout
       {% endif %}
     >
-      {%- if cta_variant != blank -%}
-        <input type="hidden" name="id" value="{{ cta_variant.id }}">
-      {%- endif -%}
+      {% render 'dd-cta-cart-inputs',
+        primary_product: cta_product,
+        secondary_product: cta_product_secondary,
+        include_secondary: true
+      %}
       <button class="dd-sticky-cta__btn" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
         {% render 'dd-cta-offer',
           offer_display: cta_offer_display,

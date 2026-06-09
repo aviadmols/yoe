@@ -581,3 +581,132 @@
     animation: none;
   }
 }
+
+/* Light text on dark hero (DUE / red-bg variant) */
+.dd-hero--light-text {
+  color: #fff;
+}
+
+.dd-hero--light-text .dd-hero__bg-overlay {
+  background-image: none;
+}
+
+.dd-hero--light-text .dd-hero__badge {
+  background-color: #fff;
+  border: 0;
+  color: #bd1e18;
+}
+
+.dd-hero--light-text .dd-hero__headline,
+.dd-hero--light-text .dd-hero__subheadline,
+.dd-hero--light-text .dd-hero__trust,
+.dd-hero--light-text .dd-hero__trust-item,
+.dd-hero--light-text .dd-hero__trust-check,
+.dd-hero--light-text .dd-hero__rating,
+.dd-hero--light-text .dd-hero__rating-value,
+.dd-hero--light-text .dd-hero__rating-text,
+.dd-hero--light-text .dd-hero__press-quote,
+.dd-hero--light-text .dd-hero__press-source,
+.dd-hero--light-text .dd-hero__retailer-note {
+  color: #fff;
+}
+
+.dd-hero--light-text .dd-hero__rating-stars {
+  color: #fff;
+}
+
+.dd-hero--light-text .dd-hero__cta {
+  background-color: #fff;
+  color: #bd1e18;
+  box-shadow: none;
+}
+
+.dd-hero--light-text .dd-hero__cta:hover,
+.dd-hero--light-text .dd-hero__cta:focus-visible {
+  background-color: #f7f6f5;
+}
+
+@media screen and (max-width: 749px) {
+  .dd-hero--light-text .dd-hero__headline,
+  .dd-hero--light-text .dd-hero__subheadline {
+    color: #fff;
+  }
+
+  .dd-hero--light-text .dd-hero__cta {
+    background-color: #fff;
+    color: #bd1e18;
+  }
+}
+
+/* White header while hero uses light text (DUE-style) */
+body:has(.dd-hero--light-text) .header_sections {
+  min-height: 6.5rem;
+}
+
+body:has(.dd-hero--light-text) .announcement-bar-section {
+  position: relative;
+  z-index: 2;
+}
+
+body:has(.dd-hero--light-text) .section-header.shopify-section-group-header-group {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) sticky-header.header-wrapper,
+body:has(.dd-hero--light-text):not(.scrolled) sticky-header header.header {
+  background: transparent !important;
+  transition: 0.2s all;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .header_sections.homepageheader .dark_svg {
+  display: none;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .header_sections .logo_svg path,
+body:has(.dd-hero--light-text):not(.scrolled) .dark_header .logo_svg path {
+  fill: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .dark_header .header_to_div path,
+body:has(.dd-hero--light-text):not(.scrolled) .header_to_div svg.symbol_svg path {
+  fill: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .dark_header a:not(.header__icon) span,
+body:has(.dd-hero--light-text):not(.scrolled) .header__menu-item span {
+  color: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) summary.header__icon svg path,
+body:has(.dd-hero--light-text):not(.scrolled) a.header__icon.header__icon--account.link path,
+body:has(.dd-hero--light-text):not(.scrolled) .header__icon svg path {
+  fill: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) summary.header__icon svg circle {
+  stroke: #fff;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .header__icons--localization .localization-form__select > span,
+body:has(.dd-hero--light-text):not(.scrolled) .header__icons--localization button.disclosure__button span {
+  color: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .header__icons--localization button.disclosure__button svg path,
+body:has(.dd-hero--light-text):not(.scrolled) .header__icons--localization .icon-caret path {
+  fill: #fff !important;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .cart-count-bubble {
+  background: #fff;
+}
+
+body:has(.dd-hero--light-text):not(.scrolled) .cart-count-bubble span {
+  color: #bd1e18 !important;
+}
+
+body:has(.dd-hero--light-text).scrolled sticky-header header.header {
+  background: #f7f6f5 !important;
+}

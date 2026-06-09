@@ -1,0 +1,913 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dd_hero": {
+      "type": "discovery-duo-hero",
+      "blocks": {
+        "award_3": {
+          "type": "award",
+          "settings": {
+            "desktop_image": "shopify://shop_images/hero-desktop-product-3.png",
+            "mobile_image": "shopify://shop_images/hero-desktop-product-3.png",
+            "alt_text": "Oprah Daily Beauty O-Wards 2024"
+          }
+        }
+      },
+      "block_order": [
+        "award_3"
+      ],
+      "settings": {
+        "desktop_background": "shopify://shop_images/Rectangle_915_2.jpg",
+        "mobile_background": "shopify://shop_images/Rectangle_916.jpg",
+        "badge_text": "Clinically proven",
+        "headline": "Visibly firms, plumps and reduces fine lines and wrinkles.",
+        "subheadline": "ALL IN ONE FORMULA.",
+        "cta_product": "ympossible-cream-light",
+        "cta_go_to_checkout": true,
+        "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 20% OFF",
+        "cta_compare_price": "$370",
+        "cta_price": "$160",
+        "cta_url": "",
+        "trust_1": "30-Day Money-Back",
+        "trust_2": "Complimentary Express Shipping",
+        "trust_3": "Limited-Time Offer",
+        "rating_value": "4.9",
+        "rating_text": "1,000+ Verified Buyers",
+        "press_quote": "Acts as a gentle retinol alternative",
+        "press_source": "The Sunday Times",
+        "retailer_note": "Available at select Bloomingdale's.",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "cta_product_secondary": "ympossible-cream-light-refill"
+      }
+    },
+    "dd_press_strip": {
+      "type": "discovery-duo-press-strip",
+      "blocks": {
+        "press_1": {
+          "type": "item",
+          "settings": {
+            "text": "Glamour"
+          }
+        },
+        "press_2": {
+          "type": "item",
+          "settings": {
+            "text": "Forbes"
+          }
+        },
+        "press_3": {
+          "type": "item",
+          "settings": {
+            "text": "The Sunday Times"
+          }
+        },
+        "press_4": {
+          "type": "item",
+          "settings": {
+            "text": "Cosmopolitan"
+          }
+        }
+      },
+      "block_order": [
+        "press_1",
+        "press_2",
+        "press_3",
+        "press_4"
+      ],
+      "settings": {
+        "accessibility_label": "Press mentions",
+        "speed": 28,
+        "mobile_quote": "“Acts as a gentle retinol alternative”",
+        "mobile_source": "The Sunday Times",
+        "mobile_note": "Available at select Bloomingdale's."
+      }
+    },
+    "dd_stats_banner": {
+      "type": "discovery-duo-stats-banner",
+      "blocks": {
+        "product_light": {
+          "type": "product_result",
+          "settings": {
+            "product_name": "Ympossible Cream Light",
+            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
+            "stat_1_top": "Immediate hydration boost  by up to",
+            "stat_1_percentage": "127.8%",
+            "stat_1_bottom": "upon application",
+            "stat_2_top": "Forehead wrinkle depth reduced by up to",
+            "stat_2_percentage": "66.7%",
+            "stat_2_bottom": "in only 4 weeks",
+            "stat_3_top": "Fine lines and wrinkles reduced by up to",
+            "stat_3_percentage": "62.8%",
+            "stat_3_bottom": "in only 8 weeks",
+            "stat_4_top": "Under-eye wrinkle depth reduced by up to",
+            "stat_4_percentage": "50.0%",
+            "stat_4_bottom": "in only 4 weeks",
+            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
+          }
+        }
+      },
+      "block_order": [
+        "product_light"
+      ],
+      "settings": {
+        "headline": "Visibly Transformed.",
+        "layout_mode": "single",
+        "cta_product": "ympossible-cream-light",
+        "cta_go_to_checkout": true,
+        "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$370",
+        "cta_price": "$160",
+        "trust_1": "30-Day Money-Back",
+        "trust_2": "Complimentary Express Shipping",
+        "trust_3": "Limited-Time Offer",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "cta_product_secondary": "ympossible-cream-light-refill"
+      }
+    },
+    "dd_two_formulas": {
+      "type": "discovery-duo-two-formulas",
+      "blocks": {
+        "formula_1": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/YOE_30ml_YC.png",
+            "title": "Ympossible Cream Light",
+            "subtitle": "Weightless · Revitalizing · Radiant Hydration",
+            "benefit_1": "Instantly Hydrates",
+            "benefit_2": "Restores Glow",
+            "benefit_3": "Smooths Fine Lines",
+            "benefit_4": "Plumps + Smooths",
+            "benefit_5": "Strengthens Barrier",
+            "benefit_6": "Calms + Soothes"
+          }
+        }
+      },
+      "block_order": [
+        "formula_1"
+      ],
+      "settings": {
+        "eyebrow": "What you're getting",
+        "headline": "One formula. Clinically-proven results.",
+        "layout_mode": "single",
+        "routine_title": "Replaces your entire routine",
+        "routine_desktop_image": "shopify://shop_images/Group_1000006183.png",
+        "routine_mobile_image": "shopify://shop_images/Group_1000006158.png",
+        "routine_alt": "Replaces your entire routine diagram",
+        "cta_product": "ympossible-cream-light",
+        "cta_go_to_checkout": true,
+        "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$370",
+        "cta_price": "$160",
+        "trust_1": "30-Day Money-Back",
+        "trust_2": "Complimentary Express Shipping",
+        "trust_3": "Limited-Time Offer",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "cta_product_secondary": "ympossible-cream-light-refill"
+      }
+    },
+    "dd_compare": {
+      "type": "discovery-duo-formula-comparison",
+      "blocks": {
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/11.png",
+            "title": "Shielded",
+            "text": "Each active protected at peak potency."
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/12.png",
+            "title": "Time-released",
+            "text": "Sustained delivery, longer-lasting."
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/223.png",
+            "title": "Targeted",
+            "text": "Reaches deeper epidermal layers."
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_1.png",
+            "title": "Gentle",
+            "text": "Suitable for sensitive, reactive skin."
+          }
+        },
+        "active_1": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-vitamin-c.jpg",
+            "name": "Epidermal Growth Factor",
+            "action": "Renew",
+            "benefits": "Visibly renewed, younger-looking"
+          }
+        },
+        "active_2": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/mobile-red-algae.jpg",
+            "name": "Vitamin C",
+            "action": "Firm",
+            "benefits": "Visibly firmer, lifted"
+          }
+        },
+        "active_3": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/mobile-timut-pepper.jpg",
+            "name": "Tranexamic Acid",
+            "action": "Brighten",
+            "benefits": "Dark spots visibly reduced, brighter complexion"
+          }
+        },
+        "active_4": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-hyaluronic-acid.jpg",
+            "name": "Hyaluronic Acid",
+            "action": "Hydrate",
+            "benefits": "Plumped, smoother-looking skin"
+          }
+        },
+        "active_BN6LiL": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Protective_-_Niacinamide_1.png",
+            "name": "niacinamide",
+            "action": "refine",
+            "benefits": "Pores minimized, tone evened, barrier strengthened"
+          }
+        },
+        "active_5": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/mobile-chebula.jpg",
+            "name": "Ceramides",
+            "action": "Protect",
+            "benefits": "Stronger moisture barrier"
+          }
+        },
+        "active_6": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-ceramides.jpg",
+            "name": "Squalane",
+            "action": "Nourish",
+            "benefits": "Soft, resilient finish"
+          }
+        },
+        "active_a3fRxX": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-diosmin.jpg",
+            "name": "Panthenol",
+            "action": "SOOTHE",
+            "benefits": "Visibly soothed, restored"
+          }
+        },
+        "active_8t4HD4": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Hyaluronic_Acid_75814034-5f69-4cdc-9549-d79a71920723.png",
+            "name": "Vitamin E",
+            "action": "FORTIFY",
+            "benefits": "Protected against oxidative stress and free radicals"
+          }
+        },
+        "active_eiTzAU": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Vitamin_B.png",
+            "name": "Chebula",
+            "action": "DEFEND",
+            "benefits": "Defended against oxidative stress  and environmental damage"
+          }
+        },
+        "active_dE7phR": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-tranexamic-acid.jpg",
+            "name": "Diosmin",
+            "action": "CALM",
+            "benefits": "Visibly calmer, less reactive"
+          }
+        },
+        "active_hPzN7t": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/desktop-nicotiana-benthamiana.jpg",
+            "name": "Red Algae",
+            "action": "SHIELD",
+            "benefits": "Shielded from pollution and UV stress"
+          }
+        },
+        "active_p7LcFV": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Squalene_b0fc49c7-dffd-43f8-bd65-732fe5460a52.png",
+            "name": "Timut Pepper",
+            "action": "RADIANCE",
+            "benefits": "Visibly brighter, more even-toned"
+          }
+        },
+        "active_itm3Xi": {
+          "type": "active",
+          "settings": {
+            "icon": "shopify://shop_images/Hyaluronic_Acid_1.png",
+            "name": "Rice Water",
+            "action": "SMOOTH",
+            "benefits": "Smoother, more luminous"
+          }
+        }
+      },
+      "block_order": [
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "active_1",
+        "active_2",
+        "active_3",
+        "active_4",
+        "active_BN6LiL",
+        "active_5",
+        "active_6",
+        "active_a3fRxX",
+        "active_8t4HD4",
+        "active_eiTzAU",
+        "active_dE7phR",
+        "active_hPzN7t",
+        "active_p7LcFV",
+        "active_itm3Xi"
+      ],
+      "settings": {
+        "headline_prefix": "14 biotech actives.",
+        "headline_accent": "One Complex",
+        "body": "SynerGenius® delivers actives beyond the surface, where skin renewal begins.",
+        "diagram_desktop_image": "shopify://shop_images/031.jpg",
+        "diagram_mobile_image": "shopify://shop_images/031.jpg",
+        "diagram_alt": "SynerGenius delivery diagram",
+        "diagram_label_1": "Surface",
+        "diagram_title_1": "Advanced encapsulation",
+        "diagram_label_2": "Epidermis",
+        "diagram_title_2": "Controlled release",
+        "diagram_label_3": "Dermis",
+        "diagram_title_3": "Targeted delivery within dermin",
+        "cta_product": "ympossible-cream-light",
+        "cta_go_to_checkout": true,
+        "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$370",
+        "cta_price": "$160",
+        "trust_1": "30-Day Money-Back",
+        "trust_2": "Complimentary Express Shipping",
+        "trust_3": "Limited-Time Offer",
+        "padding_top": 88,
+        "padding_bottom": 88,
+        "cta_product_secondary": "ympossible-cream-light-refill",
+        "show_how_it_works": true,
+        "how_it_works_title": "Here's how it works",
+        "step_1": "Choose Ympossible Cream Light",
+        "step_2": "Refill added at no cost",
+        "step_3": "2 months of biotech-powered skincare"
+      }
+    },
+    "dd_stubborn": {
+      "type": "discovery-duo-stubborn-stats",
+      "blocks": {
+        "icon_1": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/101.png",
+            "label": "Clinically Proven"
+          }
+        },
+        "icon_2": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/102.png",
+            "label": "Dermatologist-Tested"
+          }
+        },
+        "icon_3": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/103.png",
+            "label": "Hypoallergenic"
+          }
+        },
+        "icon_4": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1000004959.png",
+            "label": "Safe For Sensitive Skin"
+          }
+        },
+        "icon_5": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1000004957.png",
+            "label": "All Skin Types"
+          }
+        },
+        "icon_6": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1000004353_683ed603-39c0-40d8-94af-a99b0d3bcb60.png",
+            "label": "Fragrance Free"
+          }
+        },
+        "icon_7": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1000004350_e29dea8d-af92-4201-a4fe-581d265ea336.png",
+            "label": "EWG Verified"
+          }
+        },
+        "icon_8": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1000004349_86cacf98-5a18-4467-9f16-caf922dec33b.png",
+            "label": "Leaping Bunny Certified"
+          }
+        },
+        "icon_9": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1000004355_4fad8f39-2929-4ed8-b189-a4669e45af85.png",
+            "label": "Vegan"
+          }
+        },
+        "without_1": {
+          "type": "without",
+          "settings": {
+            "text": "Parabens"
+          }
+        },
+        "without_2": {
+          "type": "without",
+          "settings": {
+            "text": "Phthalates"
+          }
+        },
+        "without_3": {
+          "type": "without",
+          "settings": {
+            "text": "Petroleum"
+          }
+        },
+        "without_4": {
+          "type": "without",
+          "settings": {
+            "text": "Mineral Oil"
+          }
+        },
+        "without_5": {
+          "type": "without",
+          "settings": {
+            "text": "Polyethylene Glycol"
+          }
+        },
+        "without_6": {
+          "type": "without",
+          "settings": {
+            "text": "Paraffin"
+          }
+        },
+        "without_7": {
+          "type": "without",
+          "settings": {
+            "text": "Sodium Laureth Sulfate"
+          }
+        },
+        "without_8": {
+          "type": "without",
+          "settings": {
+            "text": "Talc"
+          }
+        },
+        "without_9": {
+          "type": "without",
+          "settings": {
+            "text": "Essential Oils"
+          }
+        },
+        "without_10": {
+          "type": "without",
+          "settings": {
+            "text": "Palm Oil"
+          }
+        },
+        "without_11": {
+          "type": "without",
+          "settings": {
+            "text": "Synthetic Fragrances"
+          }
+        },
+        "without_12": {
+          "type": "without",
+          "settings": {
+            "text": "Artificial Dyes"
+          }
+        },
+        "without_13": {
+          "type": "without",
+          "settings": {
+            "text": "Known Endocrine Disruptors"
+          }
+        },
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "percentage": "100%",
+            "description": "felt skin looked healthy"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "percentage": "96.0%",
+            "description": "felt skin was soft"
+          }
+        }
+      },
+      "block_order": [
+        "icon_1",
+        "icon_2",
+        "icon_3",
+        "icon_4",
+        "icon_5",
+        "icon_6",
+        "icon_7",
+        "icon_8",
+        "icon_9",
+        "without_1",
+        "without_2",
+        "without_3",
+        "without_4",
+        "without_5",
+        "without_6",
+        "without_7",
+        "without_8",
+        "without_9",
+        "without_10",
+        "without_11",
+        "without_12",
+        "without_13",
+        "stat_1",
+        "stat_2"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 749px) {.dd-stubborn__stat {padding-bottom: 30px !important; }}"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "headline": "Our Standards.",
+        "subheadline": "<p>Free from more than 3,000 questionable ingredients. Without compromising efficacy.</p>",
+        "without_heading": "Formulated without",
+        "desktop_image": "shopify://shop_images/vaiyulaw_yoe_urgent2952_edit_2.png",
+        "image_heading": "",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "dd_reviews": {
+      "type": "discovery-duo-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "title": "Gentle but powerful",
+            "quote": "<p>Didn't break me out but definitely changed my skin's texture. The packaging is a 10 out of 10. These feel like little luxury objects.</p>",
+            "author": "Quinn S.",
+            "verified": false
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "title": "Glow glow glow",
+            "quote": "<p>Can't stop staring at my face. Fabulous.</p>",
+            "author": "Julian",
+            "verified": false
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "title": "Totally worth the hype",
+            "quote": "<p>Saw it on Oprah's list and honestly, it's deserving. My sensitive skin didn't react and I feel pampered every time I use it.</p>",
+            "author": "Layla L.",
+            "verified": false
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "title": "Holy grail status",
+            "quote": "<p>Both creams feel like they were designed specifically for my skin. Calmed my redness and gave me this bouncy texture I haven't seen in years.</p>",
+            "author": "Muna",
+            "verified": false
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ],
+      "settings": {
+        "headline": "",
+        "rating_value": "4.9",
+        "rating_text": "1,000+ Verified Buyers",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "dd_refill": {
+      "type": "discovery-duo-refillable",
+      "custom_css": [],
+      "settings": {
+        "desktop_image": "shopify://shop_images/Group_1000006169_1.png",
+        "mobile_image": "shopify://shop_images/Group_1000005523.jpg",
+        "alt_text": "Refillable product banner",
+        "padding_top": 52,
+        "padding_bottom": 0
+      }
+    },
+    "dd_buy": {
+      "type": "discovery-duo-buy-box",
+      "blocks": {
+        "line_1": {
+          "type": "price_line",
+          "settings": {
+            "label": "Ympossible Cream Light 30ml",
+            "value": "$160"
+          }
+        },
+        "line_2": {
+          "type": "price_line",
+          "settings": {
+            "label": "Ympossible Cream Light | refill 30ml",
+            "value": "$185"
+          }
+        },
+        "line_3": {
+          "type": "price_line",
+          "settings": {
+            "label": "Complimentary Express Shipping",
+            "value": "$25"
+          }
+        },
+        "trust_1": {
+          "type": "trust",
+          "settings": {
+            "text": "Complimentary Express Shipping"
+          }
+        },
+        "trust_2": {
+          "type": "trust",
+          "settings": {
+            "text": "30-day refund"
+          }
+        },
+        "trust_3": {
+          "type": "trust",
+          "settings": {
+            "text": "No subscription"
+          }
+        }
+      },
+      "block_order": [
+        "line_1",
+        "line_2",
+        "line_3",
+        "trust_1",
+        "trust_2",
+        "trust_3"
+      ],
+      "settings": {
+        "eyebrow": "Limited-Time Offer",
+        "product_name": "GET AWARD-WINNING CREAM LIGHT. THIRTY DAYS. NO RISK.",
+        "product_description": "",
+        "compare_price": "$370",
+        "price": "$160",
+        "price_suffix": "USD",
+        "total_label": "Total Value",
+        "savings_label": "Your Price — Limited-Time Offer",
+        "cta_product": "ympossible-cream-light",
+        "cta_go_to_checkout": true,
+        "cta_text": "CLAIM YOUR COMPLIMENTARY REFILL -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_strike_price": "$370",
+        "disclaimer": "Complimentary Express Shipping | 30-day refund | No subscription",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "cta_include_secondary_product": true,
+        "cta_product_secondary": "ympossible-cream-light-refill"
+      }
+    },
+    "custom_liquid_7Tik8g": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"btn_insta custom-parallax-banner\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"39\" height=\"39\" viewBox=\"0 0 39 39\" fill=\"none\">\n  <path d=\"M13.2212 19.3631C13.2212 15.9148 16.0159 13.1187 19.4642 13.1187C22.9124 13.1187 25.7086 15.9148 25.7086 19.3631C25.7086 22.8114 22.9124 25.6075 19.4642 25.6075C16.0159 25.6075 13.2212 22.8114 13.2212 19.3631M9.84563 19.3631C9.84563 24.6754 14.1518 28.9816 19.4642 28.9816C24.7765 28.9816 29.0827 24.6754 29.0827 19.3631C29.0827 14.0508 24.7765 9.74456 19.4642 9.74456C14.1518 9.74456 9.84578 14.0505 9.84578 19.3631M27.2158 9.36318C27.2156 9.80776 27.3473 10.2424 27.5941 10.6121C27.841 10.9819 28.1919 11.2701 28.6026 11.4404C29.0132 11.6107 29.4652 11.6554 29.9012 11.5689C30.3373 11.4823 30.7379 11.2684 31.0524 10.9542C31.3669 10.6399 31.5811 10.2395 31.668 9.80349C31.7549 9.36749 31.7106 8.91551 31.5406 8.50471C31.3707 8.09391 31.0827 7.74274 30.7132 7.4956C30.3436 7.24846 29.9091 7.11645 29.4645 7.11627H29.4636C28.8677 7.11655 28.2962 7.35334 27.8748 7.77463C27.4533 8.19592 27.2163 8.76727 27.2158 9.36318M11.8965 34.6104C10.0703 34.5272 9.07763 34.223 8.41798 33.966C7.54343 33.6256 6.91944 33.2201 6.26338 32.5649C5.60732 31.9097 5.20121 31.2864 4.86224 30.4118C4.60509 29.7524 4.30089 28.7595 4.21787 26.9332C4.12706 24.9588 4.10893 24.3657 4.10893 19.3634C4.10893 14.3611 4.12856 13.7696 4.21787 11.7935C4.30104 9.96724 4.60749 8.97626 4.86224 8.31495C5.20271 7.44041 5.60822 6.81642 6.26338 6.16036C6.91854 5.5043 7.54193 5.09819 8.41798 4.75922C9.07733 4.50207 10.0703 4.19787 11.8965 4.11485C13.871 4.02404 14.4641 4.00591 19.4642 4.00591C24.4642 4.00591 25.0579 4.02524 27.034 4.11515C28.8603 4.19832 29.8513 4.50477 30.5126 4.75952C31.3871 5.09849 32.0111 5.50549 32.6672 6.16066C33.3232 6.81582 33.7278 7.44071 34.0683 8.31525C34.3255 8.97461 34.6297 9.96754 34.7127 11.7938C34.8035 13.7699 34.8216 14.3614 34.8216 19.3637C34.8216 24.366 34.8035 24.9574 34.7127 26.9335C34.6295 28.7598 34.3238 29.7524 34.0683 30.4121C33.7278 31.2867 33.3223 31.9106 32.6672 32.5652C32.012 33.2198 31.3871 33.6259 30.5126 33.9663C29.8532 34.2235 28.8603 34.5277 27.034 34.6107C25.0595 34.7015 24.4664 34.7197 19.4642 34.7197C14.4619 34.7197 13.8704 34.7015 11.8965 34.6107M11.7414 0.744787C9.74733 0.835599 8.38471 1.15179 7.19472 1.61484C5.96307 2.09302 4.91904 2.73455 3.8765 3.77543C2.83397 4.81632 2.1941 5.8605 1.71591 7.09365C1.25286 8.28438 0.936673 9.64626 0.845861 11.6404C0.753551 13.6376 0.732422 14.2761 0.732422 19.3631C0.732422 24.45 0.753551 25.0885 0.845861 27.0858C0.936673 29.0801 1.25286 30.4418 1.71591 31.6325C2.1941 32.8642 2.83412 33.9103 3.8765 34.9507C4.91889 35.9912 5.96157 36.6318 7.19472 37.1113C8.38696 37.5744 9.74733 37.8906 11.7414 37.9814C13.7397 38.0722 14.3772 38.0948 19.4642 38.0948C24.5511 38.0948 25.1896 38.0737 27.1869 37.9814C29.1811 37.8906 30.5428 37.5744 31.7336 37.1113C32.9652 36.6318 34.0093 35.9916 35.0518 34.9507C36.0943 33.9098 36.7329 32.8642 37.2124 31.6325C37.6754 30.4418 37.9931 29.0799 38.0824 27.0858C38.1733 25.087 38.1944 24.45 38.1944 19.3631C38.1944 14.2761 38.1733 13.6376 38.0824 11.6404C37.9916 9.64611 37.6754 8.28364 37.2124 7.09365C36.7329 5.862 36.0927 4.81797 35.0518 3.77543C34.0109 2.7329 32.9652 2.09302 31.7351 1.61484C30.5428 1.15179 29.181 0.8341 27.1884 0.744787C25.1908 0.653526 24.5526 0.631348 19.4664 0.631348C14.3802 0.631348 13.7405 0.652477 11.7422 0.744787\" fill=\"#666460\"/>\n</svg>\n\n<h3>yoeandco</h3>\n\n<a href=\"https://www.instagram.com/yoeandco/?igsh=MWxmNWpicDVpMTV1OQ\">Follow us</a>\n\n</div>\n\n\n<style>\n.btn_insta a {\n    font-size: 16px !important;\n    font-weight: 400 !important;\n    text-transform: uppercase !important;\n    margin-left: 3.6rem;\n}\nbody #insta-feed {\n    padding-top: 15px !IMPORTANT;\n}\n.section-template--20152377639160__custom_liquid_Reygbi-padding {\n    padding: 4rem 0rem 1rem;\n}\n.btn_insta svg {\n    width: 1.873rem; /* 37.46px */\n    height: 1.873rem; /* 37.46px */\n    display: flex;\n    margin-right: 1rem; /* 20px */\n}\n\n.btn_insta h3 {\n    margin: 0rem !important;\n    font-family: Open Sans;\n    font-size: 1.983rem; /* 39.66px */\n    font-weight: 450;\n    line-height: 2.3795rem; /* 47.59px */\n    display: inline-block;\n    letter-spacing: 0.1em;\n    text-align: left;\n    font-variation-settings: 'wdth' 80;\n}\n\n.btn_insta a:hover{\nbackground:  #666460 ;\ncolor: #fff!important;\n}\n\n.btn_insta a {\n    font-family: Open Sans;\n    font-size: 1.04rem; /* 20.8px */\n    font-weight: 700;\n    line-height: 1.1645rem; /* 23.29px */\n    text-align: center;\n    font-variation-settings: 'wdth' 80;\n    width: 9.3895rem; /* 187.79px */\n    height: 3.483rem; /* 69.66px */\n    gap: 0rem; /* 0px */\n    display: flex;\n    align-items: center !important;\n    justify-content: center;\n    color: #666460 !important;\n    border: 0.1rem solid #666460; /* 2px */\n\n}\n\n.btn_insta {\n    padding-bottom: 0rem;\n    display: flex;\n    align-items: center !important;\n}\n\n@media (max-width: 768px){\n.btn_insta svg {\n    width: 26.803px !important;\n    height: 26.804px !important;\n}\n\n.btn_insta h3 {\npadding-right: 0px!important;\n    color: #666460 !important;\n    font-family: \"Open Sans\" !important;\n    font-size: 20px !important;\n    font-style: normal !important;\n    font-weight: 450 !important;\n    line-height: 120% !important; /* 31.2px */\n    letter-spacing: 0px !important;\n    text-transform: lowercase !important;\n}\n\n.btn_insta a {\n    width: 115.43px!important;\n    height: 44.9px !important;\n    color: #666460 !important;\n    text-align: center !important;\n    font-family: \"Open Sans\" !important;\n    font-size: 14px !important;\n    font-style: normal !important;\n    font-weight: 460 !important;\n    line-height: 112% !important;\n    letter-spacing: 0.349px !important;\n    text-transform: uppercase !important;\n    border: 1.6px solid #666460a8;\n}\n\n.btn_insta {\n    padding-bottom: 0px !important; \n        justify-content: space-between;\n    display: flex !important;\n    align-items: center !important;\n}\n}\n\n@media (min-width: 768px) {\n  #shopify-section-template--18667038277880__1729636465a4d282d2>div {\n    padding-right: 1.75rem !important;\n    padding-left: 1.75rem !important;\n  }\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 16
+      }
+    },
+    "apps_NcRJ7C": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_XNexDY": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "left",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_XNexDY"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "collapsible_content_ihwU9N": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_xeQaQr": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "How will my Valentine receive the products?",
+            "icon": "check_mark",
+            "row_content": "<ul><li>Your Valentine will receive an email containing a voucher to redeem their complimentary product, with your name included to let them know the gift is from you. We make it super easy!</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rtVrcE": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the benefits of the Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Instantly hydrates and replenishes the skin.  </li><li>Provides deep, long-lasting nourishment.  </li><li>Strengthens the skin's moisture barrier.  </li><li>Targets visible signs of aging for a youthful complexion.  </li><li>Boosts collagen production for firmer, healthier skin.  </li><li>Improves skin tone and texture while addressing hyperpigmentation.  </li><li>Protects against environmental damage from pollution, UV and blue light. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_iaQ4ga": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the differences between Yoé’s hero product?",
+            "icon": "none",
+            "row_content": "<ul><li>Ympossible Cream Light: A rich, ultra-nourishing formula designed to deeply hydrate, rejuvenate and protect your skin.  </li><li>Ympossible Cream Light: A lightweight version of our multi-action cream that delivers hydration, radiance and a youthful glow. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_iN33Hc": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the benefits of the Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Supplies instant and long-lasting hydration.  </li><li>Delivers a radiant, luminous glow.  </li><li>Strengthens the moisture barrier for lasting hydration.  </li><li>Smooths texture and plumps skin for a youthful look.  </li><li>Reduces fine lines, wrinkles, and redness.  </li><li>Protects against environmental damage from pollution, UV, and blue light. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_KfRMnX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I use the Ympossible Cream Light and Ympossible Cream Light?",
+            "icon": "none",
+            "row_content": "<ul><li>Ympossible Cream Light: Apply to cleansed, dry skin on the face, neck and décolletage, both morning and evening. It can also be used as an overnight mask for stressed or parched skin. Best for normal to dry skin types or as a rich nighttime treatment.  </li><li>Ympossible Cream Light: Apply to cleansed, dry skin on the face, neck, and décolletage, both morning and evening. Ideal for normal to oily and combination skin types, or as a makeup base for a glowy finish.</li><li>Both products can also be used together as a moisture cocktail to tailor hydration to your skin's specific needs. Mix them in your palm to balance nourishment and radiance, addressing multiple skin concerns at once.  </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YCCKjJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products suitable for sensitive skin or those who are pregnant or breastfeeding?",
+            "icon": "none",
+            "row_content": "<ul><li><strong>Yes! Both the Ympossible Cream Light and Ympossible Cream Light are:  </strong></li><li>Dermatologist-tested and hypoallergenic.  </li><li>Safe for all skin types, including sensitive skin.  </li><li>Suitable for individuals who are pregnant or breastfeeding. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_tgT6Bg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products clean and safe?",
+            "icon": "none",
+            "row_content": "<ul><li><strong>Absolutely. Yoé’s products are:  </strong></li><li>Clinically and dermatologically tested.  </li><li>Hypoallergenic and safe for pregnant or breastfeeding individuals.  </li><li>Formulated without parabens, phthalates, synthetic fragrances and other harmful substances.  </li><li>EWG verified, Leaping Bunny Certified and vegan.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_dRDYmK": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are these products vegan and cruelty-free?",
+            "icon": "none",
+            "row_content": "<ul><li>Yes, both products are 100% vegan and cruelty-free, and they are Leaping Bunny certified.</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_xeQaQr",
+        "collapsible_row_rtVrcE",
+        "collapsible_row_iaQ4ga",
+        "collapsible_row_iN33Hc",
+        "collapsible_row_KfRMnX",
+        "collapsible_row_YCCKjJ",
+        "collapsible_row_tgT6Bg",
+        "collapsible_row_dRDYmK"
+      ],
+      "custom_css": [
+        ".collapsible-content__heading {color: #666460; text-align: center; font-family: \"Open Sans\"; font-size: 2.75rem; font-style: normal; font-weight: 450;}",
+        ".accordion summary {display: flex; position: relative; line-height: 1; padding: 1.5rem 0; min-height: 60px; align-items: center;}",
+        ".collapsible-content .accordion {max-width: 46rem; margin-left: auto; margin-right: auto;}",
+        ".rte ul,.rte ol {padding-left: 0.5rem;}"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "discovery_duo_sticky_cta_7GWLKc": {
+      "type": "discovery-duo-sticky-cta",
+      "name": "Sticky CTA",
+      "settings": {
+        "scroll_threshold_vh": 100,
+        "cta_product": "ympossible-cream-light",
+        "cta_go_to_checkout": true,
+        "cta_label": "GET AWARD-winning CREAM -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$370",
+        "cta_price": "$160"
+      }
+    }
+  },
+  "order": [
+    "dd_hero",
+    "dd_press_strip",
+    "dd_stats_banner",
+    "dd_two_formulas",
+    "dd_compare",
+    "dd_stubborn",
+    "dd_reviews",
+    "dd_refill",
+    "dd_buy",
+    "custom_liquid_7Tik8g",
+    "apps_NcRJ7C",
+    "collapsible_content_ihwU9N",
+    "discovery_duo_sticky_cta_7GWLKc"
+  ]
+}

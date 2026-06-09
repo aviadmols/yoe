@@ -1,0 +1,54 @@
+{%- comment -%}
+  Ingredients modal for Discovery Duo sections.
+  Params: section_id, ingredients_list, product_title
+{%- endcomment -%}
+
+<div class="dd-ingredients-modal" id="dd-ingredients-modal-{{ section_id }}" hidden>
+  <div class="dd-ingredients-modal__backdrop" data-dd-ingredients-close="{{ section_id }}"></div>
+  <div class="dd-ingredients-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="dd-ingredients-title-{{ section_id }}">
+    <button type="button" class="dd-ingredients-modal__close" data-dd-ingredients-close="{{ section_id }}">Close</button>
+    <div class="dd-ingredients-modal__body">
+      {%- if product_title != blank -%}
+        <p class="dd-ingredients-modal__product">{{ product_title | escape }}</p>
+      {%- endif -%}
+      <h3 class="dd-ingredients-modal__title" id="dd-ingredients-title-{{ section_id }}">Ingredients</h3>
+      <div class="dd-ingredients-modal__text rte">
+        {{ ingredients_list }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var sid = {{ section_id | json }};
+    var modal = document.getElementById('dd-ingredients-modal-' + sid);
+    if (!modal || modal.dataset.bound === 'true') return;
+    modal.dataset.bound = 'true';
+
+    function openModal(event) {
+      if (event) event.preventDefault();
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function (event) {
+      if (event.target.closest('[data-dd-ingredients-trigger="' + sid + '"]')) {
+        openModal(event);
+      }
+      if (event.target.closest('[data-dd-ingredients-close="' + sid + '"]')) {
+        event.preventDefault();
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !modal.hidden) closeModal();
+    });
+  })();
+</script>

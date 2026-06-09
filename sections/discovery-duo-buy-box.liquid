@@ -6,6 +6,7 @@
   aria-label="{{ section.settings.product_name | default: 'Buy Discovery Duo' | escape }}"
 >
   {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_product_secondary = section.settings.cta_product_secondary -%}
   {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
 
   <div class="dd-buy__inner">
@@ -59,9 +60,11 @@
         {%- assign cta_offer_mode = section.settings.cta_offer_display | default: 'legacy' -%}
         {%- assign cta_strike_price = section.settings.cta_strike_price | default: section.settings.compare_price | strip -%}
         <form class="dd-buy__form" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
-          {%- if cta_variant != blank -%}
-            <input type="hidden" name="id" value="{{ cta_variant.id }}">
-          {%- endif -%}
+          {% render 'dd-cta-cart-inputs',
+            primary_product: cta_product,
+            secondary_product: cta_product_secondary,
+            include_secondary: section.settings.cta_include_secondary_product
+          %}
           <button class="dd-buy__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
             {%- if cta_offer_mode == 'discount' or cta_offer_mode == 'price' -%}
               {% render 'dd-cta-offer',
@@ -189,11 +192,24 @@
       "label": "CTA product"
     },
     {
+      "type": "product",
+      "id": "cta_product_secondary",
+      "label": "CTA bonus product (optional)",
+      "info": "Refill or second product added with the primary product when enabled below."
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_include_secondary_product",
+      "label": "Include bonus product at checkout",
+      "default": false,
+      "info": "When enabled and a bonus product is selected, both are added to cart on CTA click."
+    },
+    {
       "type": "checkbox",
       "id": "cta_go_to_checkout",
       "label": "Go directly to checkout",
       "default": false,
-      "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
+      "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart."
     },
     {
       "type": "text",

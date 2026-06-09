@@ -4,6 +4,7 @@
 {% render 'dd-sticky-cta-bar',
   scroll_vh: section.settings.scroll_threshold_vh,
   cta_product: section.settings.cta_product,
+  cta_product_secondary: section.settings.cta_product_secondary,
   cta_label: section.settings.cta_label,
   cta_go_to_checkout: section.settings.cta_go_to_checkout,
   cta_offer_display: section.settings.cta_offer_display,
@@ -43,11 +44,17 @@
       "label": "CTA product"
     },
     {
+      "type": "product",
+      "id": "cta_product_secondary",
+      "label": "CTA bonus product (optional)",
+      "info": "When set, both products are added to cart on CTA click."
+    },
+    {
       "type": "checkbox",
       "id": "cta_go_to_checkout",
       "label": "Go directly to checkout",
       "default": true,
-      "info": "When enabled: clears cart, adds this product (qty 1), then redirects to checkout. When disabled: standard add to cart."
+      "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart."
     },
     {
       "type": "header",

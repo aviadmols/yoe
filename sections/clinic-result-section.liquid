@@ -3,50 +3,134 @@
   Description: Responsive section for showcasing skincare product clinical results.
 {% endcomment %}
 
-<section class="clinical-results-section">
-    <div class="page-width">
-  <div class="clinical-results-container">
-    
-    <!-- Left Image -->
-    <div class="image-side">
-      {% if section.settings.image %}
-        <img class="desktop-image-clinic"
-          src="{{ section.settings.image | image_url: width: 800 }}"
-          alt="{{ section.settings.image.alt | escape }}"
-          class="clinical-image"
-          loading="lazy"
-        />
+{%- assign is_pdp_layout = false -%}
+{%- if section.settings.layout_mode == 'pdp' -%}
+  {%- assign is_pdp_layout = true -%}
+{%- endif -%}
 
-          <img class="mobile-image-clinic"
-          src="{{ section.settings.image_mobile | image_url: width: 800 }}"
-          alt="{{ section.settings.image_mobile.alt | escape }}"
-          class="clinical-image"
-          loading="lazy"
-        />
-      {% endif %}
+{%- assign section_variant = section.settings.section_variant | default: 'clinical' -%}
+
+{%- if is_pdp_layout -%}
+  {{ 'clinic-result-section.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<section class="clinical-results-section{% if is_pdp_layout %} clinical-results-section--pdp clinical-results-section--{{ section_variant }}{% endif %}">
+  <div class="page-width">
+    <div class="clinical-results-container{% if is_pdp_layout %} clinical-results-container--pdp{% endif %}">
+      {%- if is_pdp_layout -%}
+        <div class="clinical-results-content">
+          {%- if section.settings.badge_text != blank -%}
+            <span class="clinical-results-badge">{{ section.settings.badge_text | escape }}</span>
+          {%- endif -%}
+
+          {%- if section.settings.main_headline != blank -%}
+            <h2 class="clinical-results-main-headline">{{ section.settings.main_headline | escape }}</h2>
+          {%- endif -%}
+
+          {%- if section_variant == 'clinical' -%}
+            <div class="clinical-results-ba-grid" aria-label="Before and after results">
+              {%- assign ba_labels = 'Before,After,Before,After' | split: ',' -%}
+              {%- for i in (1..4) -%}
+                {%- capture ba_key -%}ba_image_{{ i }}{%- endcapture -%}
+                {%- assign ba_image = section.settings[ba_key] | default: section.settings.image -%}
+                {%- if ba_image != blank -%}
+                  <div class="clinical-results-ba-cell">
+                    <span class="clinical-results-ba-label">{{ ba_labels[forloop.index0] }}</span>
+                    <img
+                      class="clinical-results-ba-image"
+                      src="{{ ba_image | image_url: width: 400 }}"
+                      alt="{{ ba_labels[forloop.index0] }} — {{ section.settings.badge_text | escape }}"
+                      loading="lazy"
+                      width="156"
+                      height="129"
+                    >
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <div class="clinical-results-stats-panel">
+            {%- if section.settings.headline != blank -%}
+              <p class="clinical-results-side-label">{{ section.settings.headline | escape }}</p>
+            {%- endif -%}
+
+            <ul class="clinical-results-grid results-list">
+              {%- for block in section.blocks -%}
+                <li class="result-item" {{ block.shopify_attributes }}>
+                  {%- if block.settings.stat_top != blank -%}
+                    <span class="result-top">{{ block.settings.stat_top | escape }}</span>
+                  {%- elsif block.settings.description != blank -%}
+                    <span class="result-top">{{ block.settings.description | escape }}</span>
+                  {%- endif -%}
+                  <span class="percent">{{ block.settings.percentage | escape }}</span>
+                  {%- if block.settings.stat_bottom != blank -%}
+                    <span class="result-bottom">{{ block.settings.stat_bottom | escape }}</span>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          {%- if section.settings.button_label != blank -%}
+            <a class="clinic-button" href="{{ section.settings.button_link }}">
+              {{ section.settings.button_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        <div class="image-side">
+          {% if section.settings.image %}
+            <img class="desktop-image-clinic clinical-image"
+              src="{{ section.settings.image | image_url: width: 900 }}"
+              alt="{{ section.settings.image.alt | escape }}"
+              loading="lazy"
+            >
+            <img class="mobile-image-clinic clinical-image"
+              src="{{ section.settings.image_mobile | default: section.settings.image | image_url: width: 750 }}"
+              alt="{{ section.settings.image_mobile.alt | default: section.settings.image.alt | escape }}"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+      {%- else -%}
+        <div class="image-side">
+          {% if section.settings.image %}
+            <img class="desktop-image-clinic"
+              src="{{ section.settings.image | image_url: width: 800 }}"
+              alt="{{ section.settings.image.alt | escape }}"
+              class="clinical-image"
+              loading="lazy"
+            >
+            <img class="mobile-image-clinic"
+              src="{{ section.settings.image_mobile | image_url: width: 800 }}"
+              alt="{{ section.settings.image_mobile.alt | escape }}"
+              class="clinical-image"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+
+        <div class="results-side">
+          {% if section.settings.headline != blank %}
+            <h2 class="results-title">{{ section.settings.headline }}</h2>
+          {% endif %}
+
+          <ul class="results-list">
+            {% for block in section.blocks %}
+              <li class="result-item">
+                <span class="percent">{{ block.settings.percentage }}</span>
+                <span class="description">{{ block.settings.description }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+
+          <a class="clinic-button" href="{{ section.settings.button_link }}" class="results-button">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {%- endif -%}
     </div>
-
-    <!-- Right Content -->
-    <div class="results-side">
-      {% if section.settings.headline != blank %}
-        <h2 class="results-title">{{ section.settings.headline }}</h2>
-      {% endif %}
-
-      <ul class="results-list">
-        {% for block in section.blocks %}
-          <li class="result-item">
-            <span class="percent">{{ block.settings.percentage }}</span>
-            <span class="description">{{ block.settings.description }}</span>
-          </li>
-        {% endfor %}
-      </ul>
-
-        <a class="clinic-button" href="{{ section.settings.button_link }}" class="results-button">
-          {{ section.settings.button_label }}
-        </a>
-
-    </div>
-</div>
   </div>
 </section>
 
@@ -63,6 +147,7 @@ a.clinic-button {
     margin-top: 4rem;
     line-height: 52px;
     letter-spacing: 0.06rem;
+    text-decoration: none;
 }
 img.desktop-image-clinic {
     mix-blend-mode: multiply;
@@ -149,25 +234,23 @@ img.desktop-image-clinic {
     display: none;
 }
 
-
-
   @media screen and (max-width: 767px) {
-    section.clinical-results-section .page-width {
+    section.clinical-results-section:not(.clinical-results-section--pdp) .page-width {
     padding: 0px;
 }
-    img.desktop-image-clinic {
+    section.clinical-results-section:not(.clinical-results-section--pdp) img.desktop-image-clinic {
     display: none;
 }
-img.mobile-image-clinic {
+section.clinical-results-section:not(.clinical-results-section--pdp) img.mobile-image-clinic {
     display: block;
     width: 100%;
     mix-blend-mode: multiply;
 }
-.clinical-results-container {
+.clinical-results-section:not(.clinical-results-section--pdp) .clinical-results-container {
     flex-direction: column-reverse;
     row-gap: 30px;
 }
-a.clinic-button {
+.clinical-results-section:not(.clinical-results-section--pdp) a.clinic-button {
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 500;
     line-height: 53px;
@@ -180,7 +263,7 @@ a.clinic-button {
     color: #666460;
     letter-spacing: 0.05em;
 }
-.results-title {
+.clinical-results-section:not(.clinical-results-section--pdp) .results-title {
   font-family: "Open Sans Condensed", sans-serif;
     font-size: 30px;
     font-weight: 300;
@@ -189,20 +272,20 @@ a.clinic-button {
     line-height: 1.2em;
 }
 
-    .image-side,
-    .results-side {
+    .clinical-results-section:not(.clinical-results-section--pdp) .image-side,
+    .clinical-results-section:not(.clinical-results-section--pdp) .results-side {
       flex: 1 1 100%;
       text-align: center;
     }
-.clinical-results-section {
+.clinical-results-section:not(.clinical-results-section--pdp) {
     padding: 3rem 0rem 0rem;
     background: #F7F6F5;
 }
-.percent {
+.clinical-results-section:not(.clinical-results-section--pdp) .percent {
     font-size: 27px;
     width: 97px;
 }
-   .results-side .description {
+   .clinical-results-section:not(.clinical-results-section--pdp) .results-side .description {
     font-family: "Open Sans Condensed", sans-serif;
     font-weight: 500;
     line-height: 1.2em;
@@ -247,20 +330,79 @@ a.clinic-button {
   "class": "clinical-results",
   "settings": [
     {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Layout mode",
+      "options": [
+        { "value": "classic", "label": "Classic" },
+        { "value": "pdp", "label": "Product page (Figma panel)" }
+      ],
+      "default": "classic"
+    },
+    {
+      "type": "select",
+      "id": "section_variant",
+      "label": "Section variant",
+      "options": [
+        { "value": "clinical", "label": "Clinical trial" },
+        { "value": "consumer", "label": "Consumer perception" }
+      ],
+      "default": "clinical",
+      "info": "PDP layout only"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Clinically proven",
+      "info": "PDP layout only"
+    },
+    {
+      "type": "text",
+      "id": "main_headline",
+      "label": "Main headline",
+      "info": "PDP layout only — large headline above stats"
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "Upload Image"
     },
-     {
+    {
       "type": "image_picker",
       "id": "image_mobile",
-      "label": "Upload Image"
+      "label": "Mobile image"
+    },
+    {
+      "type": "image_picker",
+      "id": "ba_image_1",
+      "label": "Before/after grid image 1",
+      "info": "PDP clinical — top left (falls back to main image)"
+    },
+    {
+      "type": "image_picker",
+      "id": "ba_image_2",
+      "label": "Before/after grid image 2",
+      "info": "PDP clinical — top right"
+    },
+    {
+      "type": "image_picker",
+      "id": "ba_image_3",
+      "label": "Before/after grid image 3",
+      "info": "PDP clinical — bottom left"
+    },
+    {
+      "type": "image_picker",
+      "id": "ba_image_4",
+      "label": "Before/after grid image 4",
+      "info": "PDP clinical — bottom right"
     },
     {
       "type": "text",
       "id": "headline",
-      "label": "Headline",
-      "default": "Clinical Results"
+      "label": "Side label / headline",
+      "default": "Clinical Results",
+      "info": "PDP: vertical side strip. Classic: section title."
     },
     {
       "type": "text",
@@ -281,15 +423,28 @@ a.clinic-button {
       "settings": [
         {
           "type": "text",
+          "id": "stat_top",
+          "label": "Stat line (top)",
+          "info": "PDP layout — text above percentage"
+        },
+        {
+          "type": "text",
           "id": "percentage",
           "label": "Percentage",
           "default": "123%"
         },
         {
           "type": "text",
+          "id": "stat_bottom",
+          "label": "Stat line (bottom)",
+          "info": "PDP layout — text below percentage"
+        },
+        {
+          "type": "text",
           "id": "description",
           "label": "Description",
-          "default": "Reduced Fine Lines"
+          "default": "Reduced Fine Lines",
+          "info": "Classic layout — shown beside percentage"
         }
       ]
     }
@@ -326,6 +481,3 @@ a.clinic-button {
   ]
 }
 {% endschema %}
-
-
-

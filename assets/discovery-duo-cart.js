@@ -1,6 +1,6 @@
 /**
  * Discovery Duo pages (new / yc / ycl): checkout flow for forms with data-dd-checkout.
- * clear cart → add single variant → redirect to checkout.
+ * clear cart → add variant(s) → redirect to checkout.
  */
 (function () {
   function cartRoot() {
@@ -26,13 +26,32 @@
     });
   }
 
-  function addVariant(variantId) {
+  function collectVariantIds(form) {
+    var ids = [];
+    var inputs = form.querySelectorAll('[data-dd-variant-id]');
+    for (var i = 0; i < inputs.length; i++) {
+      var value = (inputs[i].value || '').trim();
+      if (value && ids.indexOf(value) === -1) {
+        ids.push(value);
+      }
+    }
+    if (ids.length === 0) {
+      var fallback = form.querySelector('input[name="id"]');
+      if (fallback && fallback.value) {
+        ids.push(fallback.value.trim());
+      }
+    }
+    return ids;
+  }
+
+  function addVariants(variantIds) {
+    var items = variantIds.map(function (variantId) {
+      return { id: parseInt(variantId, 10), quantity: 1 };
+    });
     return fetch(cartRoot() + 'cart/add.js', {
       method: 'POST',
       headers: jsonHeaders(),
-      body: JSON.stringify({
-        items: [{ id: parseInt(variantId, 10), quantity: 1 }],
-      }),
+      body: JSON.stringify({ items: items }),
     }).then(function (response) {
       if (!response.ok) throw new Error('Cart add failed');
       return response.json();
@@ -87,15 +106,13 @@
   });
 
   function canRunCheckout(form) {
-    var variantInput = form.querySelector('input[name="id"]');
-    return !!(variantInput && variantInput.value);
+    return collectVariantIds(form).length > 0;
   }
 
   function runCheckoutFlow(form) {
-    var variantInput = form.querySelector('input[name="id"]');
-    if (!variantInput || !variantInput.value) return;
+    var variantIds = collectVariantIds(form);
+    if (variantIds.length === 0) return;
 
-    var variantId = variantInput.value;
     var submitButton = form.querySelector('button[type="submit"]');
     if (!submitButton || submitButton.disabled) return;
 
@@ -104,7 +121,7 @@
 
     clearCart()
       .then(function () {
-        return addVariant(variantId);
+        return addVariants(variantIds);
       })
       .then(function () {
         setButtonLoadingText(submitButton, 'Redirecting…');

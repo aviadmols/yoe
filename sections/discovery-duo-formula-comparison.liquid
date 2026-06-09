@@ -1,96 +1,208 @@
 {{ 'discovery-duo-formula-comparison.css' | asset_url | stylesheet_tag }}
 
+{%- assign is_pdp_layout = false -%}
+{%- if section.settings.layout_mode == 'pdp' -%}
+  {%- assign is_pdp_layout = true -%}
+{%- endif -%}
+
 <section
-  class="dd-compare"
+  class="dd-compare{% if is_pdp_layout %} dd-compare--pdp{% endif %}"
   style="--dd-compare-padding-top: {{ section.settings.padding_top }}px; --dd-compare-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline_prefix | default: '14 biotech actives' | escape }}"
 >
   {%- assign cta_product = section.settings.cta_product -%}
+  {%- assign cta_product_secondary = section.settings.cta_product_secondary -%}
   {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
 
   <div class="dd-compare__inner">
-    <header class="dd-compare__header">
-      <h2 class="dd-compare__headline">
-        <span>{{ section.settings.headline_prefix | escape }}</span>
-        <span>{{ section.settings.headline_accent | escape }}</span>
-      </h2>
-      {%- if section.settings.body != blank -%}
-        <p class="dd-compare__body">{{ section.settings.body | escape }}</p>
-      {%- endif -%}
-    </header>
+    {%- if is_pdp_layout -%}
+      <div class="dd-compare__pdp-grid">
+        <div class="dd-compare__pdp-main">
+          <header class="dd-compare__header dd-compare__header--pdp">
+            <h2 class="dd-compare__headline dd-compare__headline--pdp">
+              {%- if section.settings.headline_prefix != blank -%}
+                <span>{{ section.settings.headline_prefix | escape }}</span>
+              {%- endif -%}
+              {%- if section.settings.headline_accent != blank -%}
+                <span>{{ section.settings.headline_accent | escape }}</span>
+              {%- endif -%}
+            </h2>
+            {%- if section.settings.body != blank -%}
+              <p class="dd-compare__body dd-compare__body--pdp">{{ section.settings.body | escape }}</p>
+            {%- endif -%}
+          </header>
 
-    <div class="dd-compare__science">
-      <div class="dd-compare__diagram">
-        {%- if section.settings.diagram_desktop_image != blank or section.settings.diagram_mobile_image != blank -%}
-          <picture>
-            {%- if section.settings.diagram_mobile_image != blank -%}
-              <source media="(max-width: 749px)" srcset="{{ section.settings.diagram_mobile_image | image_url: width: 750 }}">
-            {%- endif -%}
-            {%- if section.settings.diagram_desktop_image != blank -%}
-              {{ section.settings.diagram_desktop_image | image_url: width: 900 | image_tag:
-                loading: 'lazy',
-                class: 'dd-compare__diagram-image',
-                alt: section.settings.diagram_alt | default: section.settings.headline_prefix
-              }}
-            {%- endif -%}
-          </picture>
-        {%- else -%}
-          <div class="dd-compare__diagram-fallback" aria-hidden="true">
-            <span class="dd-compare__layer dd-compare__layer--surface">{{ section.settings.diagram_label_1 | escape }}</span>
-            <span class="dd-compare__layer dd-compare__layer--epidermis">{{ section.settings.diagram_label_2 | escape }}</span>
-            <span class="dd-compare__layer dd-compare__layer--dermis">{{ section.settings.diagram_label_3 | escape }}</span>
-            <span class="dd-compare__dot-group dd-compare__dot-group--top"></span>
-            <span class="dd-compare__dot-group dd-compare__dot-group--middle"></span>
-            <span class="dd-compare__dot-group dd-compare__dot-group--bottom"></span>
-            <span class="dd-compare__diagram-copy dd-compare__diagram-copy--one">01<br>{{ section.settings.diagram_title_1 | escape }}</span>
-            <span class="dd-compare__diagram-copy dd-compare__diagram-copy--two">02<br>{{ section.settings.diagram_title_2 | escape }}</span>
-            <span class="dd-compare__diagram-copy dd-compare__diagram-copy--three">03<br>{{ section.settings.diagram_title_3 | escape }}</span>
+          <div class="dd-compare__table" role="table" aria-label="Biotech actives">
+            <div class="dd-compare__table-head" role="row">
+              <span role="columnheader">Biotech Active</span>
+              <span role="columnheader">Action</span>
+              <span role="columnheader">Benefits</span>
+            </div>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'active' -%}
+                <div class="dd-compare__table-row" role="row" {{ block.shopify_attributes }}>
+                  <span role="cell" class="dd-compare__active-name">
+                    {%- if block.settings.icon != blank -%}
+                      {{ block.settings.icon | image_url: width: 80 | image_tag: loading: 'lazy', class: 'dd-compare__active-icon', alt: '' }}
+                    {%- else -%}
+                      <span class="dd-compare__active-dot" aria-hidden="true"></span>
+                    {%- endif -%}
+                    {{ block.settings.name | escape }}
+                  </span>
+                  <span role="cell" class="dd-compare__active-action">{{ block.settings.action | escape }}</span>
+                  <span role="cell">{{ block.settings.benefits | escape }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
           </div>
-        {%- endif -%}
+
+          {%- if section.settings.ingredients_button_label != blank and section.settings.ingredients_list != blank -%}
+            <button
+              type="button"
+              class="dd-compare__ingredients-btn"
+              data-dd-ingredients-trigger="{{ section.id }}"
+            >
+              {{ section.settings.ingredients_button_label | escape }}
+            </button>
+          {%- endif -%}
+        </div>
+
+        <div class="dd-compare__side-panel" aria-hidden="true">
+          {%- if section.settings.side_panel_image != blank -%}
+            {{ section.settings.side_panel_image | image_url: width: 900 | image_tag:
+              loading: 'lazy',
+              class: 'dd-compare__side-panel-image',
+              alt: ''
+            }}
+          {%- endif -%}
+        </div>
       </div>
 
-      <ul class="dd-compare__mechanisms">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'mechanism' -%}
-            <li class="dd-compare__mechanism" {{ block.shopify_attributes }}>
-              {%- if block.settings.icon != blank -%}
-                {{ block.settings.icon | image_url: width: 120 | image_tag: loading: 'lazy', class: 'dd-compare__mechanism-icon', alt: '' }}
+      {%- if section.settings.ingredients_list != blank -%}
+        {% render 'dd-ingredients-modal',
+          section_id: section.id,
+          ingredients_list: section.settings.ingredients_list,
+          product_title: product.title
+        %}
+      {%- endif -%}
+    {%- else -%}
+      <header class="dd-compare__header">
+        <h2 class="dd-compare__headline">
+          <span>{{ section.settings.headline_prefix | escape }}</span>
+          <span>{{ section.settings.headline_accent | escape }}</span>
+        </h2>
+        {%- if section.settings.body != blank -%}
+          <p class="dd-compare__body">{{ section.settings.body | escape }}</p>
+        {%- endif -%}
+      </header>
+
+      {%- if section.settings.show_diagram -%}
+      <div class="dd-compare__science">
+        <div class="dd-compare__diagram">
+          {%- if section.settings.diagram_desktop_image != blank or section.settings.diagram_mobile_image != blank -%}
+            <picture>
+              {%- if section.settings.diagram_mobile_image != blank -%}
+                <source media="(max-width: 749px)" srcset="{{ section.settings.diagram_mobile_image | image_url: width: 750 }}">
               {%- endif -%}
-              <strong>{{ block.settings.title | escape }}</strong>
-              <span>{{ block.settings.text | escape }}</span>
-            </li>
+              {%- if section.settings.diagram_desktop_image != blank -%}
+                {{ section.settings.diagram_desktop_image | image_url: width: 900 | image_tag:
+                  loading: 'lazy',
+                  class: 'dd-compare__diagram-image',
+                  alt: section.settings.diagram_alt | default: section.settings.headline_prefix
+                }}
+              {%- endif -%}
+            </picture>
+          {%- else -%}
+            <div class="dd-compare__diagram-fallback" aria-hidden="true">
+              <span class="dd-compare__layer dd-compare__layer--surface">{{ section.settings.diagram_label_1 | escape }}</span>
+              <span class="dd-compare__layer dd-compare__layer--epidermis">{{ section.settings.diagram_label_2 | escape }}</span>
+              <span class="dd-compare__layer dd-compare__layer--dermis">{{ section.settings.diagram_label_3 | escape }}</span>
+              <span class="dd-compare__dot-group dd-compare__dot-group--top"></span>
+              <span class="dd-compare__dot-group dd-compare__dot-group--middle"></span>
+              <span class="dd-compare__dot-group dd-compare__dot-group--bottom"></span>
+              <span class="dd-compare__diagram-copy dd-compare__diagram-copy--one">01<br>{{ section.settings.diagram_title_1 | escape }}</span>
+              <span class="dd-compare__diagram-copy dd-compare__diagram-copy--two">02<br>{{ section.settings.diagram_title_2 | escape }}</span>
+              <span class="dd-compare__diagram-copy dd-compare__diagram-copy--three">03<br>{{ section.settings.diagram_title_3 | escape }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <ul class="dd-compare__mechanisms">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'mechanism' -%}
+              <li class="dd-compare__mechanism" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon != blank -%}
+                  {{ block.settings.icon | image_url: width: 120 | image_tag: loading: 'lazy', class: 'dd-compare__mechanism-icon', alt: '' }}
+                {%- endif -%}
+                <strong>{{ block.settings.title | escape }}</strong>
+                <span>{{ block.settings.text | escape }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endif -%}
+
+      <div class="dd-compare__table" role="table" aria-label="Biotech actives">
+        <div class="dd-compare__table-head" role="row">
+          <span role="columnheader">Biotech Active</span>
+          <span role="columnheader">Action</span>
+          <span role="columnheader">Benefits</span>
+        </div>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'active' -%}
+            <div class="dd-compare__table-row" role="row" {{ block.shopify_attributes }}>
+              <span role="cell" class="dd-compare__active-name">
+                {%- if block.settings.icon != blank -%}
+                  {{ block.settings.icon | image_url: width: 80 | image_tag: loading: 'lazy', class: 'dd-compare__active-icon', alt: '' }}
+                {%- else -%}
+                  <span class="dd-compare__active-dot" aria-hidden="true"></span>
+                {%- endif -%}
+                {{ block.settings.name | escape }}
+              </span>
+              <span role="cell" class="dd-compare__active-action">{{ block.settings.action | escape }}</span>
+              <span role="cell">{{ block.settings.benefits | escape }}</span>
+            </div>
           {%- endif -%}
         {%- endfor -%}
-      </ul>
-    </div>
-
-    <div class="dd-compare__table" role="table" aria-label="Biotech actives">
-      <div class="dd-compare__table-head" role="row">
-        <span role="columnheader">Biotech Active</span>
-        <span role="columnheader">Action</span>
-        <span role="columnheader">Benefits</span>
       </div>
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'active' -%}
-          <div class="dd-compare__table-row" role="row" {{ block.shopify_attributes }}>
-            <span role="cell" class="dd-compare__active-name">
-              {%- if block.settings.icon != blank -%}
-                {{ block.settings.icon | image_url: width: 80 | image_tag: loading: 'lazy', class: 'dd-compare__active-icon', alt: '' }}
-              {%- else -%}
-                <span class="dd-compare__active-dot" aria-hidden="true"></span>
-              {%- endif -%}
-              {{ block.settings.name | escape }}
-            </span>
-            <span role="cell" class="dd-compare__active-action">{{ block.settings.action | escape }}</span>
-            <span role="cell">{{ block.settings.benefits | escape }}</span>
-          </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_how_it_works -%}
+      <div class="dd-compare__how-it-works">
+        {%- if section.settings.how_it_works_title != blank -%}
+          <h3 class="dd-compare__how-title">{{ section.settings.how_it_works_title | escape }}</h3>
         {%- endif -%}
-      {%- endfor -%}
-    </div>
+        <ol class="dd-compare__how-steps">
+          {%- if section.settings.step_1 != blank -%}
+            <li class="dd-compare__how-step">
+              <span class="dd-compare__how-num" aria-hidden="true">1</span>
+              <span class="dd-compare__how-text">{{ section.settings.step_1 | escape }}</span>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.step_2 != blank -%}
+            <li class="dd-compare__how-step">
+              <span class="dd-compare__how-num" aria-hidden="true">2</span>
+              <span class="dd-compare__how-text">{{ section.settings.step_2 | escape }}</span>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.step_3 != blank -%}
+            <li class="dd-compare__how-step dd-compare__how-step--full">
+              <span class="dd-compare__how-num" aria-hidden="true">3</span>
+              <span class="dd-compare__how-text">{{ section.settings.step_3 | escape }}</span>
+            </li>
+          {%- endif -%}
+        </ol>
+      </div>
+    {%- endif -%}
 
     {%- if section.settings.cta_label != blank -%}
       <form class="dd-compare__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
-        {%- if cta_variant != blank -%}<input type="hidden" name="id" value="{{ cta_variant.id }}">{%- endif -%}
+        {% render 'dd-cta-cart-inputs',
+          primary_product: cta_product,
+          secondary_product: cta_product_secondary,
+          include_secondary: true
+        %}
         <button class="dd-compare__cta" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
           {% render 'dd-cta-offer',
             offer_display: section.settings.cta_offer_display,
@@ -126,9 +238,24 @@
   "tag": "section",
   "class": "section-dd-compare",
   "settings": [
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Layout mode",
+      "options": [
+        { "value": "lp", "label": "Landing page" },
+        { "value": "pdp", "label": "Product page (split panel)" }
+      ],
+      "default": "lp"
+    },
     { "type": "text", "id": "headline_prefix", "label": "Headline prefix", "default": "14 biotech actives." },
     { "type": "text", "id": "headline_accent", "label": "Headline accent", "default": "One Complex" },
     { "type": "textarea", "id": "body", "label": "Body", "default": "SynerGenius® delivers actives beyond the surface, where skin renewal begins." },
+    { "type": "header", "content": "PDP side panel" },
+    { "type": "image_picker", "id": "side_panel_image", "label": "Side panel image" },
+    { "type": "richtext", "id": "ingredients_list", "label": "Full ingredients list" },
+    { "type": "text", "id": "ingredients_button_label", "label": "Ingredients button label", "default": "See full ingredients list" },
+    { "type": "checkbox", "id": "show_diagram", "label": "Show science diagram and mechanisms", "default": true },
     { "type": "image_picker", "id": "diagram_desktop_image", "label": "Diagram desktop image" },
     { "type": "image_picker", "id": "diagram_mobile_image", "label": "Diagram mobile image" },
     { "type": "text", "id": "diagram_alt", "label": "Diagram alt text", "default": "SynerGenius delivery diagram" },
@@ -139,7 +266,14 @@
     { "type": "text", "id": "diagram_label_3", "label": "Diagram label 3", "default": "Dermis" },
     { "type": "text", "id": "diagram_title_3", "label": "Diagram title 3", "default": "Targeted delivery within dermin" },
     { "type": "product", "id": "cta_product", "label": "CTA product" },
-    { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": false, "info": "When enabled: clears cart, adds only this product (qty 1), then redirects to checkout. When disabled: standard add to cart." },
+    { "type": "product", "id": "cta_product_secondary", "label": "CTA bonus product (optional)", "info": "When set, both products are added to cart on CTA click." },
+    { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": false, "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart." },
+    { "type": "header", "content": "How it works" },
+    { "type": "checkbox", "id": "show_how_it_works", "label": "Show how it works panel", "default": false },
+    { "type": "text", "id": "how_it_works_title", "label": "How it works title", "default": "Here's how it works" },
+    { "type": "text", "id": "step_1", "label": "Step 1", "default": "Choose Ympossible Cream" },
+    { "type": "text", "id": "step_2", "label": "Step 2", "default": "Refill added at no cost" },
+    { "type": "text", "id": "step_3", "label": "Step 3", "default": "2 months of biotech-powered skincare" },
     { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Get both for -" },
     {
       "type": "select",

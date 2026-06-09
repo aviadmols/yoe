@@ -25,12 +25,14 @@
         "award_3"
       ],
       "settings": {
-        "desktop_background": "shopify://shop_images/Rectangle_915_2.jpg",
-        "mobile_background": "shopify://shop_images/Rectangle_916.jpg",
+        "light_text_on_dark": true,
+        "desktop_background": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_16_LP_YC_1_2.jpg",
+        "mobile_background": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_16_LP_YC_1_3.jpg",
         "badge_text": "Clinically proven",
         "headline": "Visibly firms, plumps and reduces fine lines and wrinkles.",
         "subheadline": "ALL IN ONE FORMULA.",
         "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "ympossible-cream-light-refill",
         "cta_go_to_checkout": true,
         "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
         "cta_offer_display": "price",
@@ -47,8 +49,7 @@
         "press_source": "The Sunday Times",
         "retailer_note": "Available at select Bloomingdale's.",
         "padding_top": 0,
-        "padding_bottom": 0,
-        "cta_product_secondary": "ympossible-cream-light-refill"
+        "padding_bottom": 0
       }
     },
     "dd_press_strip": {
@@ -88,6 +89,7 @@
       "settings": {
         "accessibility_label": "Press mentions",
         "speed": 28,
+        "invert_colors": true,
         "mobile_quote": "“Acts as a gentle retinol alternative”",
         "mobile_source": "The Sunday Times",
         "mobile_note": "Available at select Bloomingdale's."
@@ -124,6 +126,7 @@
         "headline": "Visibly Transformed.",
         "layout_mode": "single",
         "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "ympossible-cream-light-refill",
         "cta_go_to_checkout": true,
         "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
         "cta_offer_display": "price",
@@ -134,8 +137,7 @@
         "trust_2": "Complimentary Express Shipping",
         "trust_3": "Limited-Time Offer",
         "padding_top": 72,
-        "padding_bottom": 72,
-        "cta_product_secondary": "ympossible-cream-light-refill"
+        "padding_bottom": 72
       }
     },
     "dd_two_formulas": {
@@ -168,6 +170,7 @@
         "routine_mobile_image": "shopify://shop_images/Group_1000006158.png",
         "routine_alt": "Replaces your entire routine diagram",
         "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "ympossible-cream-light-refill",
         "cta_go_to_checkout": true,
         "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
         "cta_offer_display": "price",
@@ -178,8 +181,7 @@
         "trust_2": "Complimentary Express Shipping",
         "trust_3": "Limited-Time Offer",
         "padding_top": 72,
-        "padding_bottom": 72,
-        "cta_product_secondary": "ympossible-cream-light-refill"
+        "padding_bottom": 72
       }
     },
     "dd_compare": {
@@ -365,9 +367,13 @@
         "active_itm3Xi"
       ],
       "settings": {
+        "layout_mode": "lp",
         "headline_prefix": "14 biotech actives.",
         "headline_accent": "One Complex",
         "body": "SynerGenius® delivers actives beyond the surface, where skin renewal begins.",
+        "ingredients_list": "",
+        "ingredients_button_label": "See full ingredients list",
+        "show_diagram": true,
         "diagram_desktop_image": "shopify://shop_images/031.jpg",
         "diagram_mobile_image": "shopify://shop_images/031.jpg",
         "diagram_alt": "SynerGenius delivery diagram",
@@ -378,7 +384,13 @@
         "diagram_label_3": "Dermis",
         "diagram_title_3": "Targeted delivery within dermin",
         "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "ympossible-cream-light-refill",
         "cta_go_to_checkout": true,
+        "show_how_it_works": true,
+        "how_it_works_title": "Here's how it works",
+        "step_1": "Choose Ympossible Cream Light",
+        "step_2": "Refill added at no cost",
+        "step_3": "2 months of biotech-powered skincare",
         "cta_label": "CLAIM YOUR COMPLIMENTARY REFILL -",
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",
@@ -388,13 +400,7 @@
         "trust_2": "Complimentary Express Shipping",
         "trust_3": "Limited-Time Offer",
         "padding_top": 88,
-        "padding_bottom": 88,
-        "cta_product_secondary": "ympossible-cream-light-refill",
-        "show_how_it_works": true,
-        "how_it_works_title": "Here's how it works",
-        "step_1": "Choose Ympossible Cream Light",
-        "step_2": "Refill added at no cost",
-        "step_3": "2 months of biotech-powered skincare"
+        "padding_bottom": 88
       }
     },
     "dd_stubborn": {
@@ -722,6 +728,8 @@
         "total_label": "Total Value",
         "savings_label": "Your Price — Limited-Time Offer",
         "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "ympossible-cream-light-refill",
+        "cta_include_secondary_product": true,
         "cta_go_to_checkout": true,
         "cta_text": "CLAIM YOUR COMPLIMENTARY REFILL -",
         "cta_offer_display": "price",
@@ -729,9 +737,7 @@
         "cta_strike_price": "$370",
         "disclaimer": "Complimentary Express Shipping | 30-day refund | No subscription",
         "padding_top": 56,
-        "padding_bottom": 56,
-        "cta_include_secondary_product": true,
-        "cta_product_secondary": "ympossible-cream-light-refill"
+        "padding_bottom": 56
       }
     },
     "custom_liquid_7Tik8g": {
@@ -886,6 +892,7 @@
       "settings": {
         "scroll_threshold_vh": 100,
         "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "ympossible-cream-light-refill",
         "cta_go_to_checkout": true,
         "cta_label": "GET AWARD-winning CREAM -",
         "cta_offer_display": "price",

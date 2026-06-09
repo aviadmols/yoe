@@ -40,8 +40,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {%- comment -%} Noindex/nofollow for landing pages and discovery LP2 variants (excluded from SEO). {%- endcomment -%}
-    {% if template.name == 'page' and (template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
+    {%- comment -%} Noindex/nofollow: landing-page*, discovery LP2, and other non-SEO page templates. {%- endcomment -%}
+    {% if template.name == 'page' and (template.suffix contains 'landing-page' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
       <meta name="robots" content="noindex, nofollow">
     {% endif %}
 

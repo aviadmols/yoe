@@ -344,6 +344,13 @@
     justify-content: flex-start;
     padding: 0 1.5rem 0 5.35rem;
   }
+
+  body.template-page-discovery-yc-lp2 .dd-hero__cta,
+  body.template-page-discovery-ycl-lp2 .dd-hero__cta {
+    width: 29.285rem;
+    padding: 0 1.5rem 0 1.35rem;
+    justify-content: center;
+  }
 }
 
 /* ============================================================

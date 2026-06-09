@@ -18,6 +18,13 @@
   box-sizing: border-box;
 }
 
+@media screen and (min-width: 750px) {
+  body.template-page-discovery-yc-lp2 .dd-buy__inner,
+  body.template-page-discovery-ycl-lp2 .dd-buy__inner {
+    width: 30.7rem;
+  }
+}
+
 .dd-buy__info {
   display: flex;
   flex-direction: column;

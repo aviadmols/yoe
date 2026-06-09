@@ -526,6 +526,28 @@
     gap: 8px;
     z-index: 2;
   }
+
+  body.template-page-discovery-yc-lp2 .dd-hero__form,
+  body.template-page-discovery-ycl-lp2 .dd-hero__form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body.template-page-discovery-yc-lp2 .dd-hero__cta,
+  body.template-page-discovery-ycl-lp2 .dd-hero__cta {
+    width: 100%;
+    max-width: calc(100% - 20px);
+  }
+
+  body.template-page-discovery-yc-lp2 .dd-hero__trust,
+  body.template-page-discovery-ycl-lp2 .dd-hero__trust {
+    width: calc(100% - 30px);
+  }
+
+  body.template-page-discovery-yc-lp2 .dd-hero__rating,
+  body.template-page-discovery-ycl-lp2 .dd-hero__rating {
+    margin-left: -30px;
+  }
 }
 
 /* Optional intermediate tablet stop */

@@ -6,6 +6,7 @@
 (function () {
   var cartPreloadPromise = null;
   var cartPreloadFailed = false;
+  var cartUiSuppressCleanup = null;
 
   function cartRoot() {
     return window.Shopify && window.Shopify.routes && window.Shopify.routes.root
@@ -69,76 +70,110 @@
     window.location.href = cartRoot() + 'checkout';
   }
 
-  function shouldSuppressCartDrawer() {
-    return document.documentElement.hasAttribute('data-dd-suppress-cart-drawer');
-  }
+  function closeCartUiSilently() {
+    var drawer = document.querySelector('cart-drawer');
+    if (drawer) {
+      if (typeof drawer.close === 'function') {
+        drawer.close();
+      }
+      drawer.classList.remove('active', 'animate');
+    }
 
-  function suppressCartDrawer() {
-    document.documentElement.setAttribute('data-dd-suppress-cart-drawer', 'true');
-  }
+    document.body.classList.remove('overflow-hidden');
 
-  function releaseCartDrawerSuppression() {
-    document.documentElement.removeAttribute('data-dd-suppress-cart-drawer');
-  }
-
-  function closeCartDrawers() {
     var rebuyCart = document.getElementById('rebuy-cart');
     if (rebuyCart) {
       rebuyCart.classList.remove('is-visible');
       rebuyCart.setAttribute('aria-hidden', 'true');
     }
 
-    var cartDrawer = document.querySelector('cart-drawer');
-    if (cartDrawer) {
-      cartDrawer.classList.remove('active', 'animate');
-      if (typeof cartDrawer.close === 'function') {
-        cartDrawer.close();
+    if (window.Rebuy && window.Rebuy.SmartCart && typeof window.Rebuy.SmartCart.hide === 'function') {
+      window.Rebuy.SmartCart.hide();
+    }
+  }
+
+  function stopCartUiSuppress() {
+    if (typeof cartUiSuppressCleanup === 'function') {
+      cartUiSuppressCleanup();
+    }
+  }
+
+  function suppressCartUiAfterPreload(durationMs) {
+    stopCartUiSuppress();
+
+    var duration = durationMs || 4000;
+    var endAt = Date.now() + duration;
+    var observer = null;
+    var bodyObserver = null;
+    var intervalId = null;
+
+    function suppressIfNeeded() {
+      if (Date.now() > endAt) return;
+      closeCartUiSilently();
+    }
+
+    function observeCartNodes() {
+      if (!observer) return;
+
+      var rebuyCart = document.getElementById('rebuy-cart');
+      var drawer = document.querySelector('cart-drawer');
+
+      if (rebuyCart && !rebuyCart.dataset.ddSuppressObserved) {
+        rebuyCart.dataset.ddSuppressObserved = '1';
+        observer.observe(rebuyCart, {
+          attributes: true,
+          attributeFilter: ['class', 'aria-hidden', 'style'],
+        });
+      }
+
+      if (drawer && !drawer.dataset.ddSuppressObserved) {
+        drawer.dataset.ddSuppressObserved = '1';
+        observer.observe(drawer, {
+          attributes: true,
+          attributeFilter: ['class', 'open'],
+        });
       }
     }
 
-    document.body.classList.remove('overflow-hidden');
-  }
+    function cleanup() {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = null;
+      }
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+      if (bodyObserver) {
+        bodyObserver.disconnect();
+        bodyObserver = null;
+      }
+      cartUiSuppressCleanup = null;
+    }
 
-  function scheduleCartDrawerCloseAttempts() {
-    closeCartDrawers();
-    [100, 300, 800, 1500].forEach(function (delay) {
-      window.setTimeout(closeCartDrawers, delay);
+    cartUiSuppressCleanup = cleanup;
+
+    suppressIfNeeded();
+
+    observer = new MutationObserver(suppressIfNeeded);
+    observeCartNodes();
+
+    intervalId = window.setInterval(function () {
+      if (Date.now() > endAt) {
+        cleanup();
+        return;
+      }
+      observeCartNodes();
+      suppressIfNeeded();
+    }, 100);
+
+    bodyObserver = new MutationObserver(function () {
+      observeCartNodes();
+      suppressIfNeeded();
     });
-  }
+    bodyObserver.observe(document.body, { childList: true, subtree: true });
 
-  function installCartDrawerSuppressor() {
-    if (window.__ddCartDrawerSuppressorInstalled) return;
-    window.__ddCartDrawerSuppressorInstalled = true;
-
-    var cartDrawer = document.querySelector('cart-drawer');
-    if (cartDrawer && !cartDrawer.__ddOpenPatched) {
-      cartDrawer.__ddOpenPatched = true;
-      var originalOpen = cartDrawer.open.bind(cartDrawer);
-      var originalRenderContents = cartDrawer.renderContents.bind(cartDrawer);
-
-      cartDrawer.open = function () {
-        if (shouldSuppressCartDrawer()) return;
-        return originalOpen.apply(this, arguments);
-      };
-
-      cartDrawer.renderContents = function () {
-        if (shouldSuppressCartDrawer()) return;
-        return originalRenderContents.apply(this, arguments);
-      };
-    }
-
-    var rebuyCart = document.getElementById('rebuy-cart');
-    if (rebuyCart && !rebuyCart.__ddObserverAttached) {
-      rebuyCart.__ddObserverAttached = true;
-      var observer = new MutationObserver(function () {
-        if (!shouldSuppressCartDrawer()) return;
-        if (rebuyCart.classList.contains('is-visible')) {
-          rebuyCart.classList.remove('is-visible');
-          rebuyCart.setAttribute('aria-hidden', 'true');
-        }
-      });
-      observer.observe(rebuyCart, { attributes: true, attributeFilter: ['class'] });
-    }
+    window.setTimeout(cleanup, duration);
   }
 
   function markButtonBusy(button) {
@@ -218,8 +253,7 @@
       return Promise.resolve(false);
     }
 
-    installCartDrawerSuppressor();
-    suppressCartDrawer();
+    suppressCartUiAfterPreload();
 
     return clearCart()
       .then(function () {
@@ -227,12 +261,9 @@
       })
       .then(function () {
         markCartReady();
-        scheduleCartDrawerCloseAttempts();
-        window.setTimeout(releaseCartDrawerSuppression, 2000);
         return true;
       })
       .catch(function (error) {
-        releaseCartDrawerSuppression();
         cartPreloadFailed = true;
         console.error('discovery-duo cart preload error:', error);
         return false;
@@ -284,6 +315,8 @@
   }
 
   function handleCheckoutSubmit(form) {
+    stopCartUiSuppress();
+
     if (isCartReady()) {
       runCheckoutOnly(form);
       return;
@@ -314,8 +347,6 @@
   }
 
   function initCartPreload() {
-    if (!isPreloadMode()) return;
-    installCartDrawerSuppressor();
     startCartPreload();
   }
 

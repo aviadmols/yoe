@@ -900,7 +900,7 @@
         "cta_product": "ympossible-cream",
         "cta_product_secondary": "ympossible-cream-refill",
         "cta_go_to_checkout": true,
-        "preload_cart_on_load": true,
+        "preload_cart_on_load": false,
         "cta_label": "GET AWARD-WINNING CREAM -",
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",

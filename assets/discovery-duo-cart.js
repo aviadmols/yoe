@@ -69,6 +69,78 @@
     window.location.href = cartRoot() + 'checkout';
   }
 
+  function shouldSuppressCartDrawer() {
+    return document.documentElement.hasAttribute('data-dd-suppress-cart-drawer');
+  }
+
+  function suppressCartDrawer() {
+    document.documentElement.setAttribute('data-dd-suppress-cart-drawer', 'true');
+  }
+
+  function releaseCartDrawerSuppression() {
+    document.documentElement.removeAttribute('data-dd-suppress-cart-drawer');
+  }
+
+  function closeCartDrawers() {
+    var rebuyCart = document.getElementById('rebuy-cart');
+    if (rebuyCart) {
+      rebuyCart.classList.remove('is-visible');
+      rebuyCart.setAttribute('aria-hidden', 'true');
+    }
+
+    var cartDrawer = document.querySelector('cart-drawer');
+    if (cartDrawer) {
+      cartDrawer.classList.remove('active', 'animate');
+      if (typeof cartDrawer.close === 'function') {
+        cartDrawer.close();
+      }
+    }
+
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function scheduleCartDrawerCloseAttempts() {
+    closeCartDrawers();
+    [100, 300, 800, 1500].forEach(function (delay) {
+      window.setTimeout(closeCartDrawers, delay);
+    });
+  }
+
+  function installCartDrawerSuppressor() {
+    if (window.__ddCartDrawerSuppressorInstalled) return;
+    window.__ddCartDrawerSuppressorInstalled = true;
+
+    var cartDrawer = document.querySelector('cart-drawer');
+    if (cartDrawer && !cartDrawer.__ddOpenPatched) {
+      cartDrawer.__ddOpenPatched = true;
+      var originalOpen = cartDrawer.open.bind(cartDrawer);
+      var originalRenderContents = cartDrawer.renderContents.bind(cartDrawer);
+
+      cartDrawer.open = function () {
+        if (shouldSuppressCartDrawer()) return;
+        return originalOpen.apply(this, arguments);
+      };
+
+      cartDrawer.renderContents = function () {
+        if (shouldSuppressCartDrawer()) return;
+        return originalRenderContents.apply(this, arguments);
+      };
+    }
+
+    var rebuyCart = document.getElementById('rebuy-cart');
+    if (rebuyCart && !rebuyCart.__ddObserverAttached) {
+      rebuyCart.__ddObserverAttached = true;
+      var observer = new MutationObserver(function () {
+        if (!shouldSuppressCartDrawer()) return;
+        if (rebuyCart.classList.contains('is-visible')) {
+          rebuyCart.classList.remove('is-visible');
+          rebuyCart.setAttribute('aria-hidden', 'true');
+        }
+      });
+      observer.observe(rebuyCart, { attributes: true, attributeFilter: ['class'] });
+    }
+  }
+
   function markButtonBusy(button) {
     if (!button.dataset.ddOriginalHtml) {
       button.dataset.ddOriginalHtml = button.innerHTML;
@@ -119,9 +191,6 @@
 
   function markCartReady() {
     document.documentElement.setAttribute('data-dd-cart-ready', 'true');
-    document.documentElement.dispatchEvent(
-      new CustomEvent('cart:refresh', { bubbles: true })
-    );
   }
 
   function getPreloadForm() {
@@ -149,15 +218,21 @@
       return Promise.resolve(false);
     }
 
+    installCartDrawerSuppressor();
+    suppressCartDrawer();
+
     return clearCart()
       .then(function () {
         return addVariants(variantIds);
       })
       .then(function () {
         markCartReady();
+        scheduleCartDrawerCloseAttempts();
+        window.setTimeout(releaseCartDrawerSuppression, 2000);
         return true;
       })
       .catch(function (error) {
+        releaseCartDrawerSuppression();
         cartPreloadFailed = true;
         console.error('discovery-duo cart preload error:', error);
         return false;
@@ -239,6 +314,8 @@
   }
 
   function initCartPreload() {
+    if (!isPreloadMode()) return;
+    installCartDrawerSuppressor();
     startCartPreload();
   }
 

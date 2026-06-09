@@ -38,7 +38,7 @@
         "cta_offer_display": "price",
         "cta_discount_text": "| 20% OFF",
         "cta_compare_price": "$370",
-        "cta_price": "$160",
+        "cta_price": "$185",
         "cta_url": "",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Complimentary Express Shipping",
@@ -132,7 +132,7 @@
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$370",
-        "cta_price": "$160",
+        "cta_price": "$185",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Complimentary Express Shipping",
         "trust_3": "Limited-Time Offer",
@@ -176,7 +176,7 @@
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$370",
-        "cta_price": "$160",
+        "cta_price": "$185",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Complimentary Express Shipping",
         "trust_3": "Limited-Time Offer",
@@ -395,7 +395,7 @@
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$370",
-        "cta_price": "$160",
+        "cta_price": "$185",
         "trust_1": "30-Day Money-Back",
         "trust_2": "Complimentary Express Shipping",
         "trust_3": "Limited-Time Offer",
@@ -674,7 +674,7 @@
           "type": "price_line",
           "settings": {
             "label": "Ympossible Cream Light 30ml",
-            "value": "$160"
+            "value": "$185"
           }
         },
         "line_2": {
@@ -723,7 +723,7 @@
         "product_name": "GET AWARD-WINNING CREAM LIGHT. THIRTY DAYS. NO RISK.",
         "product_description": "",
         "compare_price": "$370",
-        "price": "$160",
+        "price": "$185",
         "price_suffix": "USD",
         "total_label": "Total Value",
         "savings_label": "Your Price — Limited-Time Offer",
@@ -898,7 +898,7 @@
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$370",
-        "cta_price": "$160"
+        "cta_price": "$185"
       }
     }
   },

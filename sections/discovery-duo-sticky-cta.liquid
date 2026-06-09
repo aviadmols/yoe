@@ -7,6 +7,7 @@
   cta_product_secondary: section.settings.cta_product_secondary,
   cta_label: section.settings.cta_label,
   cta_go_to_checkout: section.settings.cta_go_to_checkout,
+  preload_cart_on_load: section.settings.preload_cart_on_load,
   cta_offer_display: section.settings.cta_offer_display,
   cta_discount_text: section.settings.cta_discount_text,
   cta_compare_price: section.settings.cta_compare_price,
@@ -55,6 +56,13 @@
       "label": "Go directly to checkout",
       "default": true,
       "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart."
+    },
+    {
+      "type": "checkbox",
+      "id": "preload_cart_on_load",
+      "label": "Preload cart on page load",
+      "default": false,
+      "info": "Requires Go directly to checkout. Clears cart and adds sticky CTA products on page load; all checkout CTAs then skip cart updates."
     },
     {
       "type": "header",

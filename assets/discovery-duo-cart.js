@@ -1,8 +1,12 @@
 /**
  * Discovery Duo pages (new / yc / ycl): checkout flow for forms with data-dd-checkout.
  * clear cart → add variant(s) → redirect to checkout.
+ * LP2 preload mode: cart is prepared on page load; CTAs redirect to checkout only.
  */
 (function () {
+  var cartPreloadPromise = null;
+  var cartPreloadFailed = false;
+
   function cartRoot() {
     return window.Shopify && window.Shopify.routes && window.Shopify.routes.root
       ? window.Shopify.routes.root
@@ -105,8 +109,78 @@
     restoreBusyButtonsFromCache();
   });
 
+  function isPreloadMode() {
+    return !!document.querySelector('[data-dd-preload-cart="true"]');
+  }
+
+  function isCartReady() {
+    return document.documentElement.getAttribute('data-dd-cart-ready') === 'true';
+  }
+
+  function markCartReady() {
+    document.documentElement.setAttribute('data-dd-cart-ready', 'true');
+    document.documentElement.dispatchEvent(
+      new CustomEvent('cart:refresh', { bubbles: true })
+    );
+  }
+
+  function getPreloadForm() {
+    var sticky = document.querySelector('[data-dd-preload-cart="true"]');
+    if (!sticky) return null;
+    return sticky.querySelector('form[data-dd-checkout]');
+  }
+
+  function preloadCartIfEnabled() {
+    if (!isPreloadMode()) {
+      return Promise.resolve(false);
+    }
+
+    if (document.documentElement.classList.contains('shopify-design-mode')) {
+      return Promise.resolve(false);
+    }
+
+    var form = getPreloadForm();
+    if (!form) {
+      return Promise.resolve(false);
+    }
+
+    var variantIds = collectVariantIds(form);
+    if (variantIds.length === 0) {
+      return Promise.resolve(false);
+    }
+
+    return clearCart()
+      .then(function () {
+        return addVariants(variantIds);
+      })
+      .then(function () {
+        markCartReady();
+        return true;
+      })
+      .catch(function (error) {
+        cartPreloadFailed = true;
+        console.error('discovery-duo cart preload error:', error);
+        return false;
+      });
+  }
+
+  function startCartPreload() {
+    if (cartPreloadPromise) return cartPreloadPromise;
+    cartPreloadPromise = preloadCartIfEnabled();
+    return cartPreloadPromise;
+  }
+
   function canRunCheckout(form) {
     return collectVariantIds(form).length > 0;
+  }
+
+  function runCheckoutOnly(form) {
+    var submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton || submitButton.disabled) return;
+
+    markButtonBusy(submitButton);
+    setButtonLoadingText(submitButton, 'Redirecting…');
+    goToCheckout();
   }
 
   function runCheckoutFlow(form) {
@@ -134,6 +208,46 @@
       });
   }
 
+  function handleCheckoutSubmit(form) {
+    if (isCartReady()) {
+      runCheckoutOnly(form);
+      return;
+    }
+
+    if (isPreloadMode() && !cartPreloadFailed) {
+      var submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton && !submitButton.disabled) {
+        markButtonBusy(submitButton);
+        setButtonLoadingText(submitButton, 'Adding…');
+      }
+
+      startCartPreload().then(function (success) {
+        if (success || isCartReady()) {
+          runCheckoutOnly(form);
+          return;
+        }
+
+        if (submitButton) {
+          resetButton(submitButton);
+        }
+        runCheckoutFlow(form);
+      });
+      return;
+    }
+
+    runCheckoutFlow(form);
+  }
+
+  function initCartPreload() {
+    startCartPreload();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCartPreload);
+  } else {
+    initCartPreload();
+  }
+
   document.addEventListener(
     'submit',
     function (event) {
@@ -152,7 +266,7 @@
         return false;
       }
 
-      runCheckoutFlow(form);
+      handleCheckoutSubmit(form);
       return false;
     },
     true

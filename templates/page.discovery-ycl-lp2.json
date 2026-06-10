@@ -907,7 +907,7 @@
         "cta_apply_discount": true,
         "cta_checkout_discount_code": "myYCLfreeRefill",
         "preload_cart_on_load": false,
-        "cta_label": "Claim your offer crossed",
+        "cta_label": "Claim your offer",
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$345",

@@ -34,7 +34,7 @@
         "award_2"
       ],
       "custom_css": [
-        ".dd-hero__cta {width: 22.285rem;}"
+        ".dd-hero__cta {width: 22.285rem; min-width: 22rem;}"
       ],
       "settings": {
         "light_text_on_dark": true,

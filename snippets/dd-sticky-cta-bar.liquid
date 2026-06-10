@@ -1,7 +1,7 @@
 {%- comment -%}
   Mobile sticky bottom CTA bar.
-  Params: scroll_vh, cta_product, cta_product_secondary, cta_label, cta_go_to_checkout, preload_cart_on_load,
-  cta_offer_display, cta_discount_text, cta_compare_price, cta_price
+  Params: scroll_vh, cta_product, cta_product_secondary, cta_label, cta_go_to_checkout, cta_apply_discount,
+  cta_checkout_discount_code, preload_cart_on_load, cta_offer_display, cta_discount_text, cta_compare_price, cta_price
 {%- endcomment -%}
 
 {%- assign cta_product = cta_product -%}
@@ -29,6 +29,7 @@
       {% if cta_go_to_checkout %}
         data-dd-checkout
       {% endif %}
+      {% render 'dd-cta-checkout-attrs', apply_discount: cta_apply_discount, discount_code: cta_checkout_discount_code %}
     >
       {% render 'dd-cta-cart-inputs',
         primary_product: cta_product,

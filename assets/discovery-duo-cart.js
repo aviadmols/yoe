@@ -1,12 +1,13 @@
 /**
  * Discovery Duo pages (new / yc / ycl): checkout flow for forms with data-dd-checkout.
- * clear cart → add variant(s) → redirect to checkout.
+ * clear cart → add variant(s) → apply discount (optional) → redirect to checkout.
  * LP2 preload mode: cart is prepared on page load; CTAs redirect to checkout only.
  */
 (function () {
   var cartPreloadPromise = null;
   var cartPreloadFailed = false;
   var cartUiSuppressCleanup = null;
+  var DISCOUNT_SETTLE_MS = 300;
 
   function cartRoot() {
     return window.Shopify && window.Shopify.routes && window.Shopify.routes.root
@@ -61,6 +62,57 @@
       if (!response.ok) throw new Error('Cart add failed');
       return response.json();
     });
+  }
+
+  function getDiscountFromForm(form) {
+    if (!form || form.getAttribute('data-dd-apply-discount') !== 'true') {
+      return '';
+    }
+    return (form.getAttribute('data-dd-discount-code') || '').trim();
+  }
+
+  function applyDiscountCode(code) {
+    if (!code) return Promise.resolve();
+
+    return fetch(cartRoot() + 'discount/' + encodeURIComponent(code), {
+      method: 'GET',
+      redirect: 'manual',
+    })
+      .then(function (response) {
+        if (!response.ok && response.type !== 'opaqueredirect') {
+          console.warn('discovery-duo discount apply failed:', code, response.status);
+        }
+      })
+      .catch(function (error) {
+        console.warn('discovery-duo discount apply error:', code, error);
+      });
+  }
+
+  function waitAfterDiscount(code) {
+    if (!code) return Promise.resolve();
+    return new Promise(function (resolve) {
+      window.setTimeout(resolve, DISCOUNT_SETTLE_MS);
+    });
+  }
+
+  function prepareCartFromForm(form) {
+    var variantIds = collectVariantIds(form);
+    if (variantIds.length === 0) {
+      return Promise.reject(new Error('No variant IDs'));
+    }
+
+    var discountCode = getDiscountFromForm(form);
+
+    return clearCart()
+      .then(function () {
+        return addVariants(variantIds);
+      })
+      .then(function () {
+        return applyDiscountCode(discountCode);
+      })
+      .then(function () {
+        return waitAfterDiscount(discountCode);
+      });
   }
 
   function goToCheckout() {
@@ -248,17 +300,13 @@
       return Promise.resolve(false);
     }
 
-    var variantIds = collectVariantIds(form);
-    if (variantIds.length === 0) {
+    if (!canRunCheckout(form)) {
       return Promise.resolve(false);
     }
 
     suppressCartUiAfterPreload();
 
-    return clearCart()
-      .then(function () {
-        return addVariants(variantIds);
-      })
+    return prepareCartFromForm(form)
       .then(function () {
         markCartReady();
         return true;
@@ -286,12 +334,23 @@
 
     markButtonBusy(submitButton);
     setButtonLoadingText(submitButton, 'Redirecting…');
-    goToCheckout();
+
+    var discountCode = getDiscountFromForm(form);
+
+    applyDiscountCode(discountCode)
+      .then(function () {
+        return waitAfterDiscount(discountCode);
+      })
+      .then(goToCheckout)
+      .catch(function (error) {
+        console.error('discovery-duo checkout redirect error:', error);
+        resetButton(submitButton);
+        alert('Failed to proceed to checkout. Please try again.');
+      });
   }
 
   function runCheckoutFlow(form) {
-    var variantIds = collectVariantIds(form);
-    if (variantIds.length === 0) return;
+    if (!canRunCheckout(form)) return;
 
     var submitButton = form.querySelector('button[type="submit"]');
     if (!submitButton || submitButton.disabled) return;
@@ -299,10 +358,7 @@
     markButtonBusy(submitButton);
     setButtonLoadingText(submitButton, 'Adding…');
 
-    clearCart()
-      .then(function () {
-        return addVariants(variantIds);
-      })
+    prepareCartFromForm(form)
       .then(function () {
         setButtonLoadingText(submitButton, 'Redirecting…');
         goToCheckout();

@@ -7,6 +7,8 @@
   cta_product_secondary: section.settings.cta_product_secondary,
   cta_label: section.settings.cta_label,
   cta_go_to_checkout: section.settings.cta_go_to_checkout,
+  cta_apply_discount: section.settings.cta_apply_discount,
+  cta_checkout_discount_code: section.settings.cta_checkout_discount_code,
   preload_cart_on_load: section.settings.preload_cart_on_load,
   cta_offer_display: section.settings.cta_offer_display,
   cta_discount_text: section.settings.cta_discount_text,
@@ -56,6 +58,18 @@
       "label": "Go directly to checkout",
       "default": true,
       "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart."
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_apply_discount",
+      "label": "Apply discount code on checkout",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_checkout_discount_code",
+      "label": "Checkout discount code",
+      "info": "Applied after products are added to cart, before redirect to checkout."
     },
     {
       "type": "checkbox",

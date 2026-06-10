@@ -197,7 +197,7 @@
     {%- endif -%}
 
     {%- if section.settings.cta_label != blank -%}
-      <form class="dd-compare__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %}>
+      <form class="dd-compare__cta-wrap" method="post" action="{{ routes.cart_add_url }}"{% if section.settings.cta_go_to_checkout %} data-dd-checkout{% endif %} {% render 'dd-cta-checkout-attrs', apply_discount: section.settings.cta_apply_discount, discount_code: section.settings.cta_checkout_discount_code %}>
         {% render 'dd-cta-cart-inputs',
           primary_product: cta_product,
           secondary_product: cta_product_secondary,
@@ -268,6 +268,8 @@
     { "type": "product", "id": "cta_product", "label": "CTA product" },
     { "type": "product", "id": "cta_product_secondary", "label": "CTA bonus product (optional)", "info": "When set, both products are added to cart on CTA click." },
     { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": false, "info": "When enabled: clears cart, adds selected product(s), then redirects to checkout. When disabled: standard add to cart." },
+    { "type": "checkbox", "id": "cta_apply_discount", "label": "Apply discount code on checkout", "default": false },
+    { "type": "text", "id": "cta_checkout_discount_code", "label": "Checkout discount code", "info": "Applied after products are added to cart, before redirect to checkout." },
     { "type": "header", "content": "How it works" },
     { "type": "checkbox", "id": "show_how_it_works", "label": "Show how it works panel", "default": false },
     { "type": "text", "id": "how_it_works_title", "label": "How it works title", "default": "Here's how it works" },

@@ -108,3 +108,37 @@
     display: none;
   }
 }
+
+/* LP2 — strikethrough compare price uses px (not rem) on all CTAs */
+body.template-page-discovery-yc-lp2 .dd-hero__cta-compare::after,
+body.template-page-discovery-ycl-lp2 .dd-hero__cta-compare::after,
+body.template-page-discovery-yc-lp2 .dd-two__cta-compare::after,
+body.template-page-discovery-ycl-lp2 .dd-two__cta-compare::after,
+body.template-page-discovery-yc-lp2 .dd-stats__cta-old::after,
+body.template-page-discovery-ycl-lp2 .dd-stats__cta-old::after,
+body.template-page-discovery-yc-lp2 .dd-compare__cta-old::after,
+body.template-page-discovery-ycl-lp2 .dd-compare__cta-old::after,
+body.template-page-discovery-yc-lp2 .dd-sticky-cta__compare::after,
+body.template-page-discovery-ycl-lp2 .dd-sticky-cta__compare::after {
+  left: -1px;
+  right: -1px;
+  height: 2px;
+}
+
+body.template-page-discovery-yc-lp2 .dd-buy__cta-compare,
+body.template-page-discovery-ycl-lp2 .dd-buy__cta-compare {
+  text-decoration: none;
+  position: relative;
+}
+
+body.template-page-discovery-yc-lp2 .dd-buy__cta-compare::after,
+body.template-page-discovery-ycl-lp2 .dd-buy__cta-compare::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: currentColor;
+  transform: translateY(-50%);
+}

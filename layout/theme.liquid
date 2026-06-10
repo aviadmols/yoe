@@ -466,10 +466,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         assign dd_sticky_price = ''
         assign dd_sticky_checkout = true
         assign dd_sticky_preload = false
+        assign dd_sticky_apply_discount = false
+        assign dd_sticky_discount_code = ''
         assign dd_sticky_offer = 'price'
 
-        if template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2'
+        if template.suffix == 'discovery-yc-lp2'
           assign dd_sticky_preload = true
+          assign dd_sticky_apply_discount = true
+          assign dd_sticky_discount_code = 'myYCfreeRefill'
+        elsif template.suffix == 'discovery-ycl-lp2'
+          assign dd_sticky_preload = true
+          assign dd_sticky_apply_discount = true
+          assign dd_sticky_discount_code = 'myYCLfreeRefill'
         endif
 
         if template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-ycl-lp2'
@@ -505,6 +513,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         cta_product_secondary: dd_sticky_product_secondary,
         cta_label: dd_sticky_label,
         cta_go_to_checkout: dd_sticky_checkout,
+        cta_apply_discount: dd_sticky_apply_discount,
+        cta_checkout_discount_code: dd_sticky_discount_code,
         preload_cart_on_load: dd_sticky_preload,
         cta_offer_display: dd_sticky_offer,
         cta_discount_text: '| 15% OFF',

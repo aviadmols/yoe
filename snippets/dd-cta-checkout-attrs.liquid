@@ -1,0 +1,8 @@
+{%- comment -%}
+  Checkout discount data attributes for Discovery Duo CTA forms.
+  Params: apply_discount, discount_code
+{%- endcomment -%}
+
+{%- if apply_discount and discount_code != blank -%}
+  data-dd-apply-discount="true" data-dd-discount-code="{{ discount_code | strip | escape }}"
+{%- endif -%}

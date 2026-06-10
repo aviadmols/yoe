@@ -33,6 +33,9 @@
         "award_1",
         "award_2"
       ],
+      "custom_css": [
+        ".dd-hero__cta {width: 22.285rem;}"
+      ],
       "settings": {
         "light_text_on_dark": true,
         "desktop_background": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_16_LP_YC_1.jpg",

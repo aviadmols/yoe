@@ -26,7 +26,7 @@
       ],
       "custom_css": [
         ".dd-hero__cta {width: 22.285rem;}",
-        "@media (max-width: 749px) {.dd-hero__cta {font-size: 15px !important; justify-content: center !important; min-width: calc(100% - 30px)!important; } .dd-hero__cta-label {font-size: 15px !important; } .dd-hero__cta-arrow {margin: 10px !important; }}"
+        "@media(max-width: 749px) {.dd-hero__cta {font-size: 15px !important; justify-content: center !important; width: 100%!important;min-width: calc(100% - 20px)!important; } .dd-hero__cta-label {font-size: 15px !important; } .dd-hero__cta-arrow {margin: 10px !important; }}"
       ],
       "settings": {
         "light_text_on_dark": true,

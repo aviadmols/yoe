@@ -912,7 +912,7 @@
         "cta_go_to_checkout": true,
         "cta_apply_discount": true,
         "cta_checkout_discount_code": "myYCfreeRefill",
-        "preload_cart_on_load": true,
+        "preload_cart_on_load": false,
         "cta_label": "Buy Full-Size. Get a Free Refill.",
         "cta_offer_display": "price",
         "cta_discount_text": "| 15% OFF",

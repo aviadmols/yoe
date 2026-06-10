@@ -25,7 +25,8 @@
         "award_3"
       ],
       "custom_css": [
-        ".dd-hero__cta {width: 22.285rem;}"
+        ".dd-hero__cta {width: 22.285rem; min-width: 24rem;}",
+        "@media (max-width: 749px) {.dd-hero__cta {font-size: 15px !important; justify-content: center !important; } .dd-hero__cta-label {font-size: 15px !important; } .dd-hero__cta-arrow {margin: 10px !important; }}"
       ],
       "settings": {
         "light_text_on_dark": true,

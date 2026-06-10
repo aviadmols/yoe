@@ -458,7 +458,7 @@
 
   .dd-stats__cta {
     width: 331px;
-    max-width: calc(100vw - 44px);
+    max-width: calc(100vw - 30px);
     min-width: 0;
     min-height: 51px;
     gap: 7px;

@@ -477,6 +477,14 @@
     font-variation-settings: "wdth" 77;
   }
 
+  .dd-stats--single .dd-stats__stat-percentage {
+    color: #bd1e18;
+  }
+
+  .dd-stats--single .dd-stats__product-name {
+    color: #bd1e18;
+  }
+
   .dd-stats__trust {
     width: auto;
     margin: 9px auto 0;

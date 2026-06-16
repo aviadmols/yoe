@@ -1,4 +1,4 @@
-/* PDP layout — Figma clinical / consumer panels */
+/* PDP layout — Figma clinical / consumer panels (20px = 1rem) */
 .clinical-results-section--pdp {
   background: #fff;
   padding: 4.5rem 0;
@@ -18,6 +18,10 @@
   margin: 0 auto;
 }
 
+.clinical-results-section--consumer .clinical-results-container--pdp {
+  flex-direction: row-reverse;
+}
+
 .clinical-results-section--pdp .clinical-results-content {
   flex: 0 1 52%;
   min-width: 0;
@@ -28,38 +32,55 @@
   flex: 0 1 48%;
   padding: 0;
   line-height: 0;
+  overflow: hidden;
 }
 
 .clinical-results-section--pdp .clinical-image {
   width: 100%;
+  max-height: 43.85rem;
   height: auto;
   border-radius: 0;
+  object-fit: cover;
+  object-position: center 28%;
+  mix-blend-mode: multiply;
+}
+
+.clinical-results-section--pdp img.desktop-image-clinic {
+  display: block;
+}
+
+.clinical-results-section--pdp img.mobile-image-clinic {
+  display: none;
 }
 
 .clinical-results-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.066rem;
-  padding: 0 1rem;
-  margin: 0 0 1.25rem;
+  min-height: 2.953rem;
+  padding: 0 1.25rem;
+  margin: 0 0 1.75rem;
   background: #bd1e18;
   color: #fff;
-  border-radius: 0.456rem;
+  border-radius: 0.652rem;
   font-family: "Open Sans", sans-serif;
-  font-size: 0.909rem;
+  font-size: 1.299rem;
   font-weight: 650;
   line-height: 1.2;
-  letter-spacing: 0.091rem;
+  letter-spacing: 0.13rem;
   text-transform: uppercase;
   font-variation-settings: "wdth" 75;
+}
+
+.clinical-results-section--consumer .clinical-results-main-headline {
+  display: none;
 }
 
 .clinical-results-main-headline {
   margin: 0 0 2rem;
   color: #666460;
   font-family: "Open Sans", sans-serif;
-  font-size: clamp(2rem, 3.2vw, 3.5rem);
+  font-size: 2.5rem;
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: 0.06rem;
@@ -70,7 +91,7 @@
 .clinical-results-stats-panel {
   display: flex;
   align-items: stretch;
-  gap: 1.5rem;
+  gap: 1.3rem;
 }
 
 .clinical-results-side-label {
@@ -78,14 +99,14 @@
   margin: 0;
   color: #666460;
   font-family: "Open Sans", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 400;
+  font-size: 1.073rem;
+  font-weight: 650;
   line-height: 1.2;
-  letter-spacing: 0.28rem;
+  letter-spacing: 0.215rem;
   text-transform: uppercase;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-variation-settings: "wdth" 80;
+  font-variation-settings: "wdth" 75;
 }
 
 .clinical-results-grid {
@@ -95,12 +116,21 @@
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem 2rem;
+  gap: 1.65rem 2rem;
 }
 
 .clinical-results-grid .result-item {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+}
+
+.clinical-results-section--consumer .clinical-results-grid .percent {
+  order: 1;
+}
+
+.clinical-results-section--consumer .clinical-results-grid .result-top {
+  order: 2;
 }
 
 .clinical-results-grid .result-top,
@@ -108,11 +138,26 @@
   display: block;
   color: #666460;
   font-family: "Open Sans", sans-serif;
-  font-size: 0.761rem;
   font-weight: 430;
-  line-height: 1.25;
-  letter-spacing: 0.01rem;
+  line-height: 1.2;
+  letter-spacing: 0;
   font-variation-settings: "wdth" 83;
+}
+
+.clinical-results-section--clinical .clinical-results-grid .result-top {
+  font-size: 0.989rem;
+}
+
+.clinical-results-section--clinical .clinical-results-grid .result-bottom {
+  font-size: 0.742rem;
+  font-weight: 400;
+  letter-spacing: 0.0074rem;
+  font-variation-settings: "wdth" 80;
+}
+
+.clinical-results-section--consumer .clinical-results-grid .result-top {
+  font-size: 1rem;
+  margin-top: 0.25rem;
 }
 
 .clinical-results-grid .result-bottom {
@@ -121,21 +166,52 @@
   font-variation-settings: "wdth" 80;
 }
 
+.clinical-results-section--clinical .clinical-results-grid .percent {
+  margin: 0.12rem 0 0.35rem;
+  color: #bd1e18;
+  font-size: 3.709rem;
+}
+
+.clinical-results-section--consumer .clinical-results-grid .percent {
+  margin: 0;
+  color: #666460;
+  font-size: 3.75rem;
+}
+
 .clinical-results-grid .percent {
   display: block;
   width: auto;
-  margin: 0.12rem 0 0.35rem;
-  color: #666460;
   font-family: "Open Sans", sans-serif;
-  font-size: clamp(2rem, 4vw, 3.7rem);
   font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: -0.04rem;
+  line-height: 1.2;
+  letter-spacing: 0;
   font-variation-settings: "wdth" 80;
 }
 
 .clinical-results-section--pdp a.clinic-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16.463rem;
+  max-width: 100%;
+  min-height: 3.536rem;
   margin-top: 2.5rem;
+  padding: 0 1.5rem;
+  border: 0.0585rem solid #666460;
+  background: transparent;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.936rem;
+  font-weight: 540;
+  line-height: 1.12;
+  letter-spacing: 0.047rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.clinical-results-section--pdp a.clinic-button:hover {
+  opacity: 0.75;
 }
 
 .clinical-results-ba-grid {
@@ -146,6 +222,10 @@
   .clinical-results-container--pdp {
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .clinical-results-section--consumer .clinical-results-container--pdp {
+    flex-direction: column;
   }
 
   .clinical-results-section--pdp .clinical-results-content,
@@ -163,6 +243,49 @@
 
   .clinical-results-section--pdp .page-width {
     padding: 0;
+  }
+
+  .clinical-results-section--consumer .clinical-results-container--pdp {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .clinical-results-section--consumer .clinical-results-content {
+    display: contents;
+  }
+
+  .clinical-results-section--consumer .clinical-results-badge {
+    order: 1;
+    margin: 0 0 16px 26.5px;
+  }
+
+  .clinical-results-section--consumer .clinical-results-stats-panel {
+    order: 2;
+  }
+
+  .clinical-results-section--consumer .image-side {
+    order: 3;
+    display: block;
+    margin: 24px 0 0;
+    padding: 0 26.5px;
+  }
+
+  .clinical-results-section--consumer .image-side img.desktop-image-clinic {
+    display: none;
+  }
+
+  .clinical-results-section--consumer .image-side img.mobile-image-clinic {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-position: center;
+    mix-blend-mode: multiply;
+  }
+
+  .clinical-results-section--consumer a.clinic-button {
+    order: 4;
   }
 
   .clinical-results-section--pdp .clinical-results-content {
@@ -188,11 +311,6 @@
     letter-spacing: 0.54px;
     text-transform: uppercase;
     font-variation-settings: "wdth" 75;
-  }
-
-  .clinical-results-section--consumer .clinical-results-main-headline,
-  .clinical-results-section--consumer .image-side {
-    display: none;
   }
 
   .clinical-results-main-headline {
@@ -234,16 +352,31 @@
 
   .clinical-results-ba-label {
     position: absolute;
-    top: 6px;
-    left: 8px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
-    color: #666460;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 18px;
+    padding: 2px 6px;
+    color: #fff;
     font-family: "Open Sans", sans-serif;
     font-size: 10px;
     font-weight: 600;
     line-height: 1;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+  }
+
+  .clinical-results-ba-label--before {
+    background: #666460;
+  }
+
+  .clinical-results-ba-label--after {
+    background: #bd1e18;
   }
 
   .clinical-results-ba-image {
@@ -282,7 +415,7 @@
   .clinical-results-grid {
     flex: 1 1 auto;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 117px 24px;
+    gap: 28px 24px;
   }
 
   .clinical-results-grid .result-top {
@@ -293,12 +426,16 @@
     font-variation-settings: "wdth" 83;
   }
 
+  .clinical-results-section--clinical .clinical-results-grid .percent {
+    color: #bd1e18;
+  }
+
   .clinical-results-grid .percent {
     margin: 4px 0 6px;
     font-size: 45px;
     font-weight: 300;
     line-height: 1.2;
-    letter-spacing: 0;
+    letter-spacing: -0.7px;
     font-variation-settings: "wdth" 80;
   }
 
@@ -317,6 +454,7 @@
     width: 244px;
     max-width: calc(100% - 53px);
     height: 51px;
+    min-height: 51px;
     margin: 32px auto 0;
     padding: 0;
     border: 1px solid #666460;

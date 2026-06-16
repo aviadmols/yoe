@@ -67,13 +67,28 @@
           {%- endif -%}
         </div>
 
-        <div class="dd-compare__side-panel" aria-hidden="true">
-          {%- if section.settings.side_panel_image != blank -%}
-            {{ section.settings.side_panel_image | image_url: width: 900 | image_tag:
-              loading: 'lazy',
-              class: 'dd-compare__side-panel-image',
-              alt: ''
-            }}
+        {%- assign side_panel_desktop = section.settings.side_panel_desktop_image | default: section.settings.side_panel_image -%}
+        {%- assign side_panel_mobile = section.settings.side_panel_mobile_image | default: section.settings.side_panel_image -%}
+        <div class="dd-compare__side-panel{% if side_panel_mobile != blank %} dd-compare__side-panel--has-mobile{% endif %}" aria-hidden="true">
+          {%- if side_panel_desktop != blank or side_panel_mobile != blank -%}
+            <picture>
+              {%- if side_panel_mobile != blank -%}
+                <source media="(max-width: 749px)" srcset="{{ side_panel_mobile | image_url: width: 750 }}">
+              {%- endif -%}
+              {%- if side_panel_desktop != blank -%}
+                {{ side_panel_desktop | image_url: width: 900 | image_tag:
+                  loading: 'lazy',
+                  class: 'dd-compare__side-panel-image',
+                  alt: section.settings.side_panel_alt | default: section.settings.headline_prefix | escape
+                }}
+              {%- elsif side_panel_mobile != blank -%}
+                {{ side_panel_mobile | image_url: width: 900 | image_tag:
+                  loading: 'lazy',
+                  class: 'dd-compare__side-panel-image',
+                  alt: section.settings.side_panel_alt | default: section.settings.headline_prefix | escape
+                }}
+              {%- endif -%}
+            </picture>
           {%- endif -%}
         </div>
       </div>
@@ -252,9 +267,12 @@
     { "type": "text", "id": "headline_accent", "label": "Headline accent", "default": "One Complex" },
     { "type": "textarea", "id": "body", "label": "Body", "default": "SynerGenius® delivers actives beyond the surface, where skin renewal begins." },
     { "type": "header", "content": "PDP side panel" },
-    { "type": "image_picker", "id": "side_panel_image", "label": "Side panel image" },
+    { "type": "image_picker", "id": "side_panel_desktop_image", "label": "Side panel desktop image" },
+    { "type": "image_picker", "id": "side_panel_mobile_image", "label": "Side panel mobile image" },
+    { "type": "text", "id": "side_panel_alt", "label": "Side panel image alt text" },
     { "type": "richtext", "id": "ingredients_list", "label": "Full ingredients list" },
     { "type": "text", "id": "ingredients_button_label", "label": "Ingredients button label", "default": "See full ingredients list" },
+    { "type": "header", "content": "Landing page diagram" },
     { "type": "checkbox", "id": "show_diagram", "label": "Show science diagram and mechanisms", "default": true },
     { "type": "image_picker", "id": "diagram_desktop_image", "label": "Diagram desktop image" },
     { "type": "image_picker", "id": "diagram_mobile_image", "label": "Diagram mobile image" },

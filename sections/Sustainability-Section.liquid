@@ -61,6 +61,21 @@
     },
     {
       "type": "header",
+      "content": "Mobile banner (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner_image",
+      "label": "Mobile full-width banner image",
+      "info": "When set, replaces the entire Sustainability section on mobile. The whole image links to the button URL above."
+    },
+    {
+      "type": "text",
+      "id": "mobile_banner_alt",
+      "label": "Mobile banner alt text"
+    },
+    {
+      "type": "header",
       "content": "Mobile Content"
     },
     {
@@ -188,7 +203,25 @@
 }
 {% endschema %}
 
-<section class="sustainability-section">
+{%- if section.settings.mobile_banner_image != blank -%}
+  {%- if section.settings.button_link != blank -%}
+    <a class="sustainability-mobile-banner" href="{{ section.settings.button_link }}" aria-label="{{ section.settings.mobile_banner_alt | default: section.settings.button_text | escape }}">
+  {%- else -%}
+    <div class="sustainability-mobile-banner sustainability-mobile-banner--static">
+  {%- endif -%}
+      {{ section.settings.mobile_banner_image | image_url: width: 800 | image_tag:
+        loading: 'lazy',
+        class: 'sustainability-mobile-banner__image',
+        alt: section.settings.mobile_banner_alt | default: section.settings.heading | escape
+      }}
+  {%- if section.settings.button_link != blank -%}
+    </a>
+  {%- else -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}">
     <div class="page-width">
         <div class="container-section-desktop">
             <div class="left-col">
@@ -248,7 +281,7 @@
 </section>
 
 {% comment %} Mobile section {% endcomment %}
-<section class="vertical-features-mobile-section">
+<section class="vertical-features-mobile-section{% if section.settings.mobile_banner_image != blank %} vertical-features-mobile-section--has-banner{% endif %}">
     <div class="page-width">
         <div class="container-section-mobile">
             {% if section.settings.section_heading != blank %}
@@ -297,6 +330,16 @@
 
 
 <style>
+
+    .sustainability-mobile-banner {
+        display: none;
+    }
+
+    .sustainability-mobile-banner__image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 
     .feature-item.featured-item-1, .feature-item.featured-item-2 {
         width: 31% !IMPORTANT;
@@ -571,6 +614,17 @@
     }
 
     @media (max-width: 767px) {
+        .sustainability-mobile-banner {
+            display: block;
+            width: 100%;
+            line-height: 0;
+        }
+
+        .sustainability-section--has-mobile-banner,
+        .vertical-features-mobile-section--has-banner {
+            display: none !important;
+        }
+
         h5.caption-section-heading {
             display: block;
         }

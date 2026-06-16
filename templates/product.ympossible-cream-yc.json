@@ -520,7 +520,7 @@
         "headline_prefix": "SynerGenius®",
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
-        "side_panel_image": "shopify://shop_images/adaq2_1.png",
+        "side_panel_desktop_image": "shopify://shop_images/adaq2_1.png",
         "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
         "ingredients_button_label": "See full ingredients list",
         "diagram_desktop_image": "shopify://shop_images/031.jpg",

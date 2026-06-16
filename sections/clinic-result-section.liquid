@@ -35,7 +35,7 @@
                 {%- assign ba_image = section.settings[ba_key] | default: section.settings.image -%}
                 {%- if ba_image != blank -%}
                   <div class="clinical-results-ba-cell">
-                    <span class="clinical-results-ba-label">{{ ba_labels[forloop.index0] }}</span>
+                    <span class="clinical-results-ba-label clinical-results-ba-label--{{ ba_labels[forloop.index0] | downcase }}">{{ ba_labels[forloop.index0] }}</span>
                     <img
                       class="clinical-results-ba-image"
                       src="{{ ba_image | image_url: width: 400 }}"
@@ -135,7 +135,8 @@
 </section>
 
 <style>
-a.clinic-button {
+/* Classic layout only — PDP uses clinic-result-section.css */
+.clinical-results-section:not(.clinical-results-section--pdp) a.clinic-button {
     display: flex;
     border: 1px solid #666460;
     width: 100%;
@@ -149,13 +150,13 @@ a.clinic-button {
     letter-spacing: 0.06rem;
     text-decoration: none;
 }
-img.desktop-image-clinic {
+.clinical-results-section:not(.clinical-results-section--pdp) img.desktop-image-clinic {
     mix-blend-mode: multiply;
 }
-.clinical-results-section {
+.clinical-results-section:not(.clinical-results-section--pdp) {
     background-color: #F7F6F5;
 }
-.clinical-results-container {
+.clinical-results-section:not(.clinical-results-section--pdp) .clinical-results-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -163,25 +164,25 @@ img.desktop-image-clinic {
     max-width: 1188px;
     margin: auto;
 }
-.clinical-results-container .image-side img.desktop-image-clinic {
+.clinical-results-section:not(.clinical-results-section--pdp) .clinical-results-container .image-side img.desktop-image-clinic {
     height: 37rem;
 }
-.image-side {
+.clinical-results-section:not(.clinical-results-section--pdp) .image-side {
     flex: 1 1 55%;
     padding: 0rem;
     line-height: 0;
 }
-  .clinical-image {
+  .clinical-results-section:not(.clinical-results-section--pdp) .clinical-image {
     width: 100%;
     height: auto;
     border-radius: 10px;
   }
 
-  .results-side {
+  .clinical-results-section:not(.clinical-results-section--pdp) .results-side {
     flex: 1 1 45%;
     padding: 0rem;
   }
-.results-title {
+.clinical-results-section:not(.clinical-results-section--pdp) .results-title {
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: 0.3rem;
@@ -190,24 +191,24 @@ img.desktop-image-clinic {
     margin: 0px 0px 30px;
 }
 
-  .results-list {
+  .clinical-results-section:not(.clinical-results-section--pdp) .results-list {
     list-style: none;
     padding: 0;
     margin-bottom: 0rem;
   }
-.result-item {
+.clinical-results-section:not(.clinical-results-section--pdp) .result-item {
     display: flex;
     align-items: center;
     margin-bottom: 0.3rem;
 }
-.percent {
+.clinical-results-section:not(.clinical-results-section--pdp) .percent {
     font-size: 2.6rem;
     font-weight: 200;
     color: #666460;
     margin-right: 0.5rem;
     width: 120px;
 }
-.results-side .description {
+.clinical-results-section:not(.clinical-results-section--pdp) .results-side .description {
     font-size: 1rem;
     color: #666460;
     text-transform: uppercase;
@@ -230,7 +231,7 @@ img.desktop-image-clinic {
     background-color: #000;
     color: #fff;
   }
-  img.mobile-image-clinic {
+  .clinical-results-section:not(.clinical-results-section--pdp) img.mobile-image-clinic {
     display: none;
 }
 
@@ -295,13 +296,13 @@ section.clinical-results-section:not(.clinical-results-section--pdp) img.mobile-
   }
 
   @media(max-width: 991px) and (min-width: 768px){
-.results-title {
+.clinical-results-section:not(.clinical-results-section--pdp) .results-title {
     font-size: 28px;
 }
-    img.desktop-image-clinic {
+    .clinical-results-section:not(.clinical-results-section--pdp) img.desktop-image-clinic {
         width: 100%;
     }
-    .percent {
+    .clinical-results-section:not(.clinical-results-section--pdp) .percent {
     font-size: 30px;
     width: 120px;
 }
@@ -311,13 +312,13 @@ section.clinical-results-section:not(.clinical-results-section--pdp) img.mobile-
 }
 
   @media(max-width: 1200px) and (min-width: 992px){
-    img.desktop-image-clinic {
+    .clinical-results-section:not(.clinical-results-section--pdp) img.desktop-image-clinic {
         width: 100%;
     }
-    .results-title {
+    .clinical-results-section:not(.clinical-results-section--pdp) .results-title {
     font-size: 28px;
 }
-.percent {
+.clinical-results-section:not(.clinical-results-section--pdp) .percent {
     font-size: 35px;
 }
 }

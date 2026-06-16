@@ -222,7 +222,7 @@
         "product_light"
       ],
       "settings": {
-        "headline": "VISIBLY FIRMs, PLUMPs & REDUCEs FINE LINES & WRINKLES",
+        "headline": "VISIBLY FIRMS, PLUMPS & REDUCES FINE LINES & WRINKLES",
         "layout_mode": "single",
         "cta_product": "ympossible-cream-light",
         "cta_go_to_checkout": false,
@@ -284,7 +284,7 @@
         "layout_mode": "pdp",
         "section_variant": "clinical",
         "badge_text": "Clinically proven",
-        "main_headline": "VISIBLY FIRMs, PLUMPs & REDUCEs FINE LINES & WRINKLES",
+        "main_headline": "VISIBLY FIRMS, PLUMPS & REDUCES FINE LINES & WRINKLES",
         "image": "shopify://shop_images/Group_1000006040.jpg",
         "image_mobile": "shopify://shop_images/Group_1000006040.jpg",
         "headline": "Clinical trial results",
@@ -529,7 +529,7 @@
         "headline_prefix": "SynerGenius®",
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
-        "side_panel_image": "shopify://shop_images/adaq2_1.png",
+        "side_panel_desktop_image": "shopify://shop_images/adaq2_1.png",
         "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
         "ingredients_button_label": "See full ingredients list",
         "diagram_desktop_image": "shopify://shop_images/031.jpg",

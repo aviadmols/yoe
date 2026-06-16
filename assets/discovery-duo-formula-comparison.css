@@ -893,6 +893,22 @@
     display: none;
   }
 
+  .dd-compare--pdp .dd-compare__side-panel--has-mobile {
+    display: flex;
+    min-height: 0;
+    margin-top: 24px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .dd-compare--pdp .dd-compare__side-panel--has-mobile .dd-compare__side-panel-image {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+    object-fit: contain;
+  }
+
   .dd-compare--pdp .dd-compare__pdp-main {
     padding: 0;
   }

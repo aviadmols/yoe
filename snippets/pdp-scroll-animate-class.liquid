@@ -5,7 +5,4 @@
       assign pdp_scroll_animate = true
     endif
   endif
--%}
-{%- if pdp_scroll_animate -%}
- scroll-trigger animate--slide-in
-{%- endif -%}
+-%}{% if pdp_scroll_animate %} scroll-trigger animate--slide-in{% endif %}

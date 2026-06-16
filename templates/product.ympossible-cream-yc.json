@@ -583,6 +583,8 @@
       "settings": {
         "title": "Advanced Encapsulation",
         "body": "Advanced encapsulation technology gradually and precisely releases potent actives beyond the surface of the skin. Protecting ingredients at peak potency, maximizing efficacy, and minimizing irritation.",
+        "desktop_image": "shopify://shop_images/031.jpg",
+        "mobile_image": "shopify://shop_images/031.jpg",
         "theme_asset": "discovery-duo-encapsulation-diagram.png",
         "alt": "Advanced encapsulation delivery diagram",
         "padding_top": 72,
@@ -640,6 +642,7 @@
         "badge_mobile_3": "shopify://shop_images/Group_1000004788_1.png",
         "button_link": "",
         "button_text": "LEARN MORE ABOUT IMPACT",
+        "mobile_banner_image": "shopify://shop_images/Group_1000006318.jpg",
         "mobile_banner_alt": "",
         "section_heading": "",
         "feature_title_mobile_1": "NO ADHESIVES",
@@ -677,21 +680,11 @@
             "award_title": "",
             "award_text": ""
           }
-        },
-        "award_8GHNnK": {
-          "type": "award",
-          "settings": {
-            "award_logo": "shopify://shop_images/women_award_big.png",
-            "mobile_award_logo": "shopify://shop_images/women_award_big_mobile.png",
-            "award_title": "",
-            "award_text": ""
-          }
         }
       },
       "block_order": [
         "award_A9bCMt",
-        "award_3hdmyD",
-        "award_8GHNnK"
+        "award_3hdmyD"
       ],
       "name": "Awards Section",
       "settings": {
@@ -702,7 +695,7 @@
       "type": "two-column-image-section",
       "name": "Two Column Images",
       "settings": {
-        "left_image": "shopify://shop_images/04_YCL_Model_2.png",
+        "left_image": "shopify://shop_images/vaiyulaw_yoe_urgent2972_expanded_1.jpg",
         "right_image": "shopify://shop_images/06_YC_refill_Model_4.png"
       }
     },

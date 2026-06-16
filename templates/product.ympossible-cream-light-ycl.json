@@ -783,7 +783,7 @@
       "name": "Sticky CTA",
       "settings": {
         "scroll_threshold_vh": 100,
-        "cta_product": "ympossible-cream-light",
+        "cta_product": "",
         "cta_product_secondary": "",
         "cta_go_to_checkout": false,
         "cta_apply_discount": false,

@@ -201,50 +201,6 @@
       "name": "Press Mentions",
       "settings": {}
     },
-    "dd_stats_headline": {
-      "type": "discovery-duo-stats-banner",
-      "blocks": {
-        "product_cream": {
-          "type": "product_result",
-          "settings": {
-            "product_name": "Ympossible Cream",
-            "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
-            "stat_1_top": "Forehead wrinkle depth reduced by up",
-            "stat_1_percentage": "66.7%",
-            "stat_1_bottom": "in only 4 weeks",
-            "stat_2_top": "Jawline firmness improved by up to",
-            "stat_2_percentage": "66.7%",
-            "stat_2_bottom": "in only 4 weeks",
-            "stat_3_top": "Frown line depth reduced by up to",
-            "stat_3_percentage": "50.0%",
-            "stat_3_bottom": "in only 4 weeks",
-            "stat_4_top": "Skin barrier integrity improved by up to",
-            "stat_4_percentage": "61.8%",
-            "stat_4_bottom": "in 8 weeks",
-            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
-          }
-        }
-      },
-      "block_order": [
-        "product_cream"
-      ],
-      "settings": {
-        "headline": "VISIBLY FIRMS, PLUMPS & REDUCES FINE LINES & WRINKLES",
-        "layout_mode": "single",
-        "cta_product": "ympossible-cream",
-        "cta_go_to_checkout": false,
-        "cta_label": "",
-        "cta_offer_display": "legacy",
-        "cta_discount_text": "| 15% OFF",
-        "cta_compare_price": "$185",
-        "cta_price": "$148",
-        "trust_1": "",
-        "trust_2": "",
-        "trust_3": "",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
     "clinic_result_clinical": {
       "type": "clinic-result-section",
       "blocks": {
@@ -253,7 +209,8 @@
           "settings": {
             "stat_top": "Forehead wrinkle depth reduced by up",
             "percentage": "66.7%",
-            "stat_bottom": "in only 4 weeks"
+            "stat_bottom": "in only 4 weeks",
+            "description": "Reduced Fine Lines"
           }
         },
         "result_2": {
@@ -261,7 +218,8 @@
           "settings": {
             "stat_top": "Jawline firmness improved by up to",
             "percentage": "66.7%",
-            "stat_bottom": "in only 4 weeks"
+            "stat_bottom": "in only 4 weeks",
+            "description": "Reduced Fine Lines"
           }
         },
         "result_3": {
@@ -269,7 +227,8 @@
           "settings": {
             "stat_top": "Frown line depth reduced by up to",
             "percentage": "50.0%",
-            "stat_bottom": "in only 4 weeks"
+            "stat_bottom": "in only 4 weeks",
+            "description": "Reduced Fine Lines"
           }
         },
         "result_4": {
@@ -277,7 +236,8 @@
           "settings": {
             "stat_top": "Skin barrier integrity improved by up to",
             "percentage": "61.8%",
-            "stat_bottom": "in 8 weeks"
+            "stat_bottom": "in 8 weeks",
+            "description": "Reduced Fine Lines"
           }
         }
       },
@@ -292,8 +252,8 @@
         "section_variant": "clinical",
         "badge_text": "Clinically proven",
         "main_headline": "VISIBLY FIRMS, PLUMPS & REDUCES FINE LINES & WRINKLES",
-        "image": "shopify://shop_images/Group_1000006031.jpg",
-        "image_mobile": "shopify://shop_images/Group_1000006031.jpg",
+        "image": "shopify://shop_images/Group_1000006119.jpg",
+        "image_mobile": "shopify://shop_images/Group_1000006119.jpg",
         "headline": "Clinical trial results",
         "button_label": "See all results",
         "button_link": ""
@@ -306,14 +266,18 @@
           "type": "result",
           "settings": {
             "stat_top": "felt skin appeared more youthful",
-            "percentage": "100%"
+            "percentage": "100%",
+            "stat_bottom": "",
+            "description": "Reduced Fine Lines"
           }
         },
         "result_2": {
           "type": "result",
           "settings": {
             "stat_top": "felt skin was firmer",
-            "percentage": "95%"
+            "percentage": "95%",
+            "stat_bottom": "",
+            "description": "Reduced Fine Lines"
           }
         }
       },
@@ -326,8 +290,8 @@
         "section_variant": "consumer",
         "badge_text": "Consumer approved",
         "main_headline": "REAL USERS. REAL RESULTS.",
-        "image": "shopify://shop_images/adaq2_2.png",
-        "image_mobile": "shopify://shop_images/adaq2_3.png",
+        "image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1_c2c92f74-eb04-4d50-a8a8-9b816ecb31b4.png",
+        "image_mobile": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1_c2c92f74-eb04-4d50-a8a8-9b816ecb31b4.png",
         "headline": "Consumer perception",
         "button_label": "See all results",
         "button_link": ""
@@ -521,8 +485,10 @@
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
         "side_panel_desktop_image": "shopify://shop_images/adaq2_1.png",
+        "side_panel_alt": "",
         "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
         "ingredients_button_label": "See full ingredients list",
+        "show_diagram": false,
         "diagram_desktop_image": "shopify://shop_images/031.jpg",
         "diagram_mobile_image": "shopify://shop_images/031.jpg",
         "diagram_alt": "SynerGenius delivery diagram",
@@ -533,7 +499,15 @@
         "diagram_label_3": "Dermis",
         "diagram_title_3": "Targeted delivery within dermin",
         "cta_product": "ympossible-cream",
+        "cta_product_secondary": "",
         "cta_go_to_checkout": false,
+        "cta_apply_discount": false,
+        "cta_checkout_discount_code": "",
+        "show_how_it_works": false,
+        "how_it_works_title": "Here's how it works",
+        "step_1": "Choose Ympossible Cream",
+        "step_2": "Refill added at no cost",
+        "step_3": "2 months of biotech-powered skincare",
         "cta_label": "",
         "cta_offer_display": "legacy",
         "cta_discount_text": "| 15% OFF",
@@ -543,9 +517,7 @@
         "trust_2": "",
         "trust_3": "",
         "padding_top": 88,
-        "padding_bottom": 88,
-        "show_diagram": false,
-        "show_how_it_works": false
+        "padding_bottom": 88
       }
     },
     "dd_encapsulation_image": {
@@ -646,6 +618,7 @@
         "badge_mobile_3": "shopify://shop_images/Group_1000004788_1.png",
         "button_link": "",
         "button_text": "LEARN MORE ABOUT IMPACT",
+        "mobile_banner_alt": "",
         "section_heading": "",
         "feature_title_mobile_1": "NO ADHESIVES",
         "feature_text_mobile_1": "Yoé emblem heat-fused into the cap, eliminating the need for adhesive.",
@@ -790,9 +763,9 @@
       "blocks": {
         "okendo_reviews_widget_pHbKwp": {
           "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "source": "{{ product.metafields.custom.reviews_widget.value }}",
           "settings": {
-            "product": "{{ product.metafields.custom.reviews_widget.value.product.value }}"
+            "product": "{{ product.metafields.custom.reviews_widget.value.product.value }}",
+            "widget_type": "reviews_widget"
           }
         }
       },
@@ -808,7 +781,6 @@
   "order": [
     "main",
     "press_mention_custom_tBb8eV",
-    "dd_stats_headline",
     "clinic_result_clinical",
     "clinic_result_consumer",
     "dd_compare",

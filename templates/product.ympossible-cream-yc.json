@@ -814,10 +814,10 @@
         "cta_checkout_discount_code": "",
         "preload_cart_on_load": false,
         "cta_label": "GET AWARD-WINNING CREAM -",
-        "cta_offer_display": "price",
+        "cta_offer_display": "legacy",
         "cta_discount_text": "| 15% OFF",
-        "cta_compare_price": "$185",
-        "cta_price": "$148"
+        "cta_compare_price": "",
+        "cta_price": ""
       }
     }
   },

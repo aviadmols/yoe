@@ -221,7 +221,7 @@
   {%- endif -%}
 {%- endif -%}
 
-<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}">
+<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}{% render 'pdp-scroll-animate-class' %}">
     <div class="page-width">
         <div class="container-section-desktop">
             <div class="left-col">
@@ -281,7 +281,7 @@
 </section>
 
 {% comment %} Mobile section {% endcomment %}
-<section class="vertical-features-mobile-section{% if section.settings.mobile_banner_image != blank %} vertical-features-mobile-section--has-banner{% endif %}">
+<section class="vertical-features-mobile-section{% if section.settings.mobile_banner_image != blank %} vertical-features-mobile-section--has-banner{% endif %}{% render 'pdp-scroll-animate-class' %}">
     <div class="page-width">
         <div class="container-section-mobile">
             {% if section.settings.section_heading != blank %}

@@ -1,7 +1,7 @@
 {{ 'discovery-duo-encapsulation-image.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="dd-encap"
+  class="dd-encap{% render 'pdp-scroll-animate-class' %}"
   style="--dd-encap-padding-top: {{ section.settings.padding_top }}px; --dd-encap-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.title | default: 'Advanced Encapsulation' | escape }}"
 >

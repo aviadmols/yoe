@@ -438,7 +438,7 @@
 
 @media screen and (max-width: 749px) {
   .dd-compare {
-    padding-top: 36px;
+    padding-top: 0;
     padding-bottom: 16px;
   }
 
@@ -894,7 +894,7 @@
 
 @media screen and (max-width: 749px) {
   .dd-compare--pdp .dd-compare__inner {
-    padding: 0 18px;
+    padding: 0;
   }
 
   .dd-compare--pdp .dd-compare__pdp-grid {
@@ -907,6 +907,7 @@
 
   .dd-compare--pdp .dd-compare__side-panel--has-mobile {
     display: flex;
+    order: -1;
     min-height: 0;
     margin-top: 0;
     margin-bottom: 30px;

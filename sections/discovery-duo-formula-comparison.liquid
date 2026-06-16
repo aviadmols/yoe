@@ -6,7 +6,7 @@
 {%- endif -%}
 
 <section
-  class="dd-compare{% if is_pdp_layout %} dd-compare--pdp{% endif %}"
+  class="dd-compare{% if is_pdp_layout %} dd-compare--pdp{% endif %}{% render 'pdp-scroll-animate-class' %}"
   style="--dd-compare-padding-top: {{ section.settings.padding_top }}px; --dd-compare-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline_prefix | default: '14 biotech actives' | escape }}"
 >

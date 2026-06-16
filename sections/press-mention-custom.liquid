@@ -1,7 +1,7 @@
 {{ 'slick.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'slick.min.js' | asset_url }}"></script>
 
-<section class="press-mentions" id="press-mentions-{{ section.id }}">
+<section class="press-mentions{% render 'pdp-scroll-animate-class' %}" id="press-mentions-{{ section.id }}">
   <div class="page-width">
     <div class="press-mentions-wrapper" data-press-mentions-slider>
       {% for block in section.blocks %}
@@ -109,10 +109,6 @@
 
     #press-mentions-{{ section.id }} .press-mentions-wrapper .slick-list {
       overflow: hidden;
-    }
-
-    #press-mentions-{{ section.id }} .press-mentions-wrapper .slick-slide {
-      float: none;
     }
 
     #press-mentions-{{ section.id }} ul.slick-dots {

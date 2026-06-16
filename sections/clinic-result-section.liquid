@@ -14,7 +14,7 @@
   {{ 'clinic-result-section.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
-<section class="clinical-results-section{% if is_pdp_layout %} clinical-results-section--pdp clinical-results-section--{{ section_variant }}{% endif %}">
+<section class="clinical-results-section{% if is_pdp_layout %} clinical-results-section--pdp clinical-results-section--{{ section_variant }}{% endif %}{% render 'pdp-scroll-animate-class' %}">
   <div class="page-width">
     <div class="clinical-results-container{% if is_pdp_layout %} clinical-results-container--pdp{% endif %}">
       {%- if is_pdp_layout -%}

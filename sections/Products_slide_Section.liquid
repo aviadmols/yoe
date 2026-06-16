@@ -169,14 +169,14 @@
 
 
 
-<div class="custom-product-slider padding-top-bottom-70 product_detail_related_product_sec">
-  <div class="text-area scroll-trigger animate--slide-in">
+<div class="custom-product-slider padding-top-bottom-70 product_detail_related_product_sec{% render 'pdp-scroll-animate-class' %}">
+  <div class="text-area">
     <div class="in_text-area">
       <h2 class="text-heading">{{ section.settings.heading }}</h2>
       <div class="text-description">{{ section.settings.description }}</div>
     </div>
   </div>
-  <div class="carousel-area scroll-trigger animate--slide-in">
+  <div class="carousel-area">
     <div class="swiper-container-product swiper-container">
       <div class="swiper-wrapper cards_block">
         {% for block in section.blocks %}

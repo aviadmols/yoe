@@ -169,7 +169,7 @@
 
   .dd-encap__features {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 64px 48px;
+    gap: 27px 20px;
     max-width: none;
     margin: 24px 0 0;
   }

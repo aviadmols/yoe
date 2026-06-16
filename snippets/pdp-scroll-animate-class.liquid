@@ -1,0 +1,11 @@
+{%- liquid
+  assign pdp_scroll_animate = false
+  if template.name == 'product'
+    if template.suffix == 'ympossible-cream-light-ycl' or template.suffix == 'ympossible-cream-yc'
+      assign pdp_scroll_animate = true
+    endif
+  endif
+-%}
+{%- if pdp_scroll_animate -%}
+ scroll-trigger animate--slide-in
+{%- endif -%}

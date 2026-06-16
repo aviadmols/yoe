@@ -1,7 +1,7 @@
 {{ 'discovery-duo-stats-banner.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="dd-stats{% if section.settings.layout_mode == 'single' %} dd-stats--single{% endif %}"
+  class="dd-stats{% if section.settings.layout_mode == 'single' %} dd-stats--single{% endif %}{% render 'pdp-scroll-animate-class' %}"
   style="--dd-stats-padding-top: {{ section.settings.padding_top }}px; --dd-stats-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline | default: 'Visibly transformed' | escape }}"
 >

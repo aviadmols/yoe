@@ -199,7 +199,8 @@
         "quote_CiB6tn"
       ],
       "custom_css": [
-        "{padding-top: 3rem; padding-bottom: 3rem;}"
+        "{padding-top: 3rem; padding-bottom: 3rem;}",
+        ".press-mentions {background: #f7f6f5;}"
       ],
       "name": "Press Mentions",
       "settings": {}
@@ -249,6 +250,9 @@
         "result_2",
         "result_3",
         "result_4"
+      ],
+      "custom_css": [
+        "{padding-bottom: 0px !important;}"
       ],
       "settings": {
         "layout_mode": "pdp",
@@ -313,7 +317,7 @@
         "section_variant": "consumer",
         "badge_text": "Consumer approved",
         "main_headline": "REAL USERS. REAL RESULTS.",
-        "image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1_c2c92f74-eb04-4d50-a8a8-9b816ecb31b4.png",
+        "image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.jpg",
         "image_mobile": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1_c2c92f74-eb04-4d50-a8a8-9b816ecb31b4.png",
         "headline": "Consumer perception",
         "button_label": "See all results",

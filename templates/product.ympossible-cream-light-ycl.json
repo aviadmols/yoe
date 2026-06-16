@@ -192,7 +192,8 @@
         "quote_CiB6tn"
       ],
       "custom_css": [
-        "{background: #f7f6f4;}"
+        "{padding-top: 3rem; padding-bottom: 3rem;}",
+        ".press-mentions {background: #f7f6f5;}"
       ],
       "name": "Press Mentions",
       "settings": {}
@@ -789,9 +790,9 @@
         "cta_checkout_discount_code": "",
         "preload_cart_on_load": false,
         "cta_label": "GET AWARD-WINNING CREAM -",
-        "cta_offer_display": "price",
+        "cta_offer_display": "legacy",
         "cta_discount_text": "| 15% OFF",
-        "cta_compare_price": "$185",
+        "cta_compare_price": "",
         "cta_price": "$148"
       }
     }

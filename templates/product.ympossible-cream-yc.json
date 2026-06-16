@@ -198,6 +198,9 @@
         "quote_6rxXmb",
         "quote_CiB6tn"
       ],
+      "custom_css": [
+        "{padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
       "name": "Press Mentions",
       "settings": {}
     },

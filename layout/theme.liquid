@@ -381,7 +381,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
       <script type="text/javascript" id="loop-subscription-script" src="{{ 'loop-widget.js' | asset_url }}"></script>
       {{ 'slick.css' | asset_url | stylesheet_tag }}

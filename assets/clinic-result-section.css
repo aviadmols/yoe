@@ -18,8 +18,13 @@
   margin: 0 auto;
 }
 
+.clinical-results-section--consumer.clinical-results-section--pdp {
+  background: #f7f6f5;
+}
+
 .clinical-results-section--consumer .clinical-results-container--pdp {
   flex-direction: row-reverse;
+  align-items: flex-start;
 }
 
 .clinical-results-section--pdp .clinical-results-content {
@@ -33,6 +38,16 @@
   padding: 0;
   line-height: 0;
   overflow: hidden;
+}
+
+.clinical-results-section--consumer .image-side {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.clinical-results-section--consumer .clinical-image {
+  mix-blend-mode: normal;
 }
 
 .clinical-results-section--pdp .clinical-image {
@@ -226,6 +241,42 @@
 
   .clinical-results-section--consumer .clinical-results-container--pdp {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .clinical-results-section--consumer .clinical-results-content {
+    display: contents;
+  }
+
+  .clinical-results-section--consumer .image-side {
+    order: 1;
+    align-self: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .clinical-results-section--consumer .image-side img.desktop-image-clinic {
+    display: none;
+  }
+
+  .clinical-results-section--consumer .image-side img.mobile-image-clinic {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    mix-blend-mode: normal;
+  }
+
+  .clinical-results-section--consumer .clinical-results-badge {
+    order: 2;
+  }
+
+  .clinical-results-section--consumer .clinical-results-stats-panel {
+    order: 3;
+  }
+
+  .clinical-results-section--consumer a.clinic-button {
+    order: 4;
   }
 
   .clinical-results-section--pdp .clinical-results-content,
@@ -245,6 +296,11 @@
     padding: 0;
   }
 
+  .clinical-results-section--consumer.clinical-results-section--pdp {
+    padding: 0;
+    background: #f7f6f5;
+  }
+
   .clinical-results-section--consumer .clinical-results-container--pdp {
     display: flex;
     flex-direction: column;
@@ -255,20 +311,11 @@
     display: contents;
   }
 
-  .clinical-results-section--consumer .clinical-results-badge {
-    order: 1;
-    margin: 0 0 16px 26.5px;
-  }
-
-  .clinical-results-section--consumer .clinical-results-stats-panel {
-    order: 2;
-  }
-
   .clinical-results-section--consumer .image-side {
-    order: 3;
+    order: 1;
     display: block;
-    margin: 24px 0 0;
-    padding: 0 26.5px;
+    margin: 0;
+    padding: 0;
   }
 
   .clinical-results-section--consumer .image-side img.desktop-image-clinic {
@@ -281,7 +328,16 @@
     height: auto;
     max-height: none;
     object-position: center;
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
+  }
+
+  .clinical-results-section--consumer .clinical-results-badge {
+    order: 2;
+    margin: 16px 0 16px 26.5px;
+  }
+
+  .clinical-results-section--consumer .clinical-results-stats-panel {
+    order: 3;
   }
 
   .clinical-results-section--consumer a.clinic-button {

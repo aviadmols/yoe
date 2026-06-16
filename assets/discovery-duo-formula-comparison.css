@@ -729,7 +729,7 @@
   }
 }
 
-/* PDP split layout (SynerGenius table + red side panel) */
+/* PDP split layout (SynerGenius table + side panel image) */
 .dd-compare--pdp .dd-compare__inner {
   max-width: 90rem;
 }
@@ -793,19 +793,30 @@
 }
 
 .dd-compare__side-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #bd1e18;
-  min-height: 28rem;
-  padding: 3rem 2rem;
+  display: block;
+  align-self: stretch;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.dd-compare__side-panel picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .dd-compare__side-panel-image {
-  width: min(22rem, 72%);
-  aspect-ratio: 1;
-  border-radius: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  aspect-ratio: auto;
+  border-radius: 0;
   object-fit: cover;
+  object-position: center;
 }
 
 .dd-ingredients-modal {
@@ -904,6 +915,7 @@
   .dd-compare--pdp .dd-compare__side-panel--has-mobile .dd-compare__side-panel-image {
     width: 100%;
     max-width: 100%;
+    min-height: 0;
     aspect-ratio: auto;
     border-radius: 0;
     object-fit: contain;

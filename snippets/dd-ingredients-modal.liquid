@@ -26,20 +26,32 @@
     if (!modal || modal.dataset.bound === 'true') return;
     modal.dataset.bound = 'true';
 
-    function openModal(event) {
-      if (event) event.preventDefault();
+    if (modal.parentNode !== document.body) {
+      document.body.appendChild(modal);
+    }
+
+    function openModal() {
       modal.hidden = false;
+      modal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       modal.hidden = true;
+      modal.setAttribute('hidden', '');
       document.body.style.overflow = '';
     }
 
     document.addEventListener('click', function (event) {
-      if (event.target.closest('[data-dd-ingredients-trigger="' + sid + '"]')) {
-        openModal(event);
+      if (!event.target.closest('[data-dd-ingredients-trigger="' + sid + '"]')) return;
+      event.preventDefault();
+      openModal();
+    });
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        closeModal();
+        return;
       }
       if (event.target.closest('[data-dd-ingredients-close="' + sid + '"]')) {
         event.preventDefault();

@@ -92,14 +92,6 @@
           {%- endif -%}
         </div>
       </div>
-
-      {%- if section.settings.ingredients_list != blank -%}
-        {% render 'dd-ingredients-modal',
-          section_id: section.id,
-          ingredients_list: section.settings.ingredients_list,
-          product_title: product.title
-        %}
-      {%- endif -%}
     {%- else -%}
       <header class="dd-compare__header">
         <h2 class="dd-compare__headline">
@@ -245,6 +237,14 @@
       </ul>
     {%- endif -%}
   </div>
+
+  {%- if is_pdp_layout and section.settings.ingredients_list != blank -%}
+    {% render 'dd-ingredients-modal',
+      section_id: section.id,
+      ingredients_list: section.settings.ingredients_list,
+      product_title: product.title
+    %}
+  {%- endif -%}
 </section>
 
 {% schema %}

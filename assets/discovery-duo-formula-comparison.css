@@ -1057,6 +1057,20 @@
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1100px) {
+  .dd-compare--pdp .dd-compare__side-panel--has-mobile {
+    display: none;
+  }
+
+  .dd-compare--pdp .dd-compare__pdp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dd-compare--pdp .dd-compare__pdp-main {
+    padding-inline: clamp(2rem, 5vw, 4rem);
+  }
+}
+
 .dd-ingredients-modal {
   position: fixed;
   inset: 0;
@@ -1065,7 +1079,6 @@
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
-  background: rgba(0, 0, 0, 0.75);
 }
 
 .dd-ingredients-modal[hidden] {
@@ -1075,17 +1088,20 @@
 .dd-ingredients-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .dd-ingredients-modal__dialog {
   position: relative;
   z-index: 1;
-  width: min(42rem, 100%);
-  max-height: min(80vh, 40rem);
+  width: min(42rem, calc(100vw - 2.5rem));
+  max-height: min(80dvh, 40rem);
   overflow-y: auto;
+  box-sizing: border-box;
+  overscroll-behavior: contain;
   background: #fff;
   padding: 3rem 2rem 2rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
 }
 
 .dd-ingredients-modal__close {
@@ -1128,4 +1144,22 @@
   color: #666460;
   font-size: 0.9375rem;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 749px) {
+  .dd-ingredients-modal {
+    padding: 1rem;
+  }
+
+  .dd-ingredients-modal__dialog {
+    width: min(42rem, calc(100vw - 2rem));
+    max-height: min(85dvh, 40rem);
+    padding: 2.5rem 1.25rem 1.5rem;
+  }
+
+  .dd-ingredients-modal__title {
+    font-size: 1.75rem;
+    letter-spacing: 0.12rem;
+  }
 }

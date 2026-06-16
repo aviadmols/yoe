@@ -924,43 +924,10 @@
 }
 
 /* PDP split layout (SynerGenius table + side panel image) */
-.dd-compare--pdp .dd-compare__inner {
-  max-width: 90rem;
-}
-
 .dd-compare__pdp-grid {
   display: grid;
   grid-template-columns: minmax(0, 62%) minmax(0, 38%);
   align-items: stretch;
-}
-
-.dd-compare__pdp-main {
-  padding-inline-end: 3rem;
-}
-
-.dd-compare--pdp .dd-compare__header--pdp {
-  margin: 0 0 2rem;
-  text-align: left;
-}
-
-.dd-compare--pdp .dd-compare__headline--pdp {
-  text-align: left;
-  font-size: 2.5rem;
-  letter-spacing: 0.15rem;
-}
-
-.dd-compare--pdp .dd-compare__headline--pdp span {
-  color: #bd1e18;
-}
-
-.dd-compare--pdp .dd-compare__body--pdp {
-  margin: 0;
-  max-width: 36rem;
-  text-align: left;
-}
-
-.dd-compare--pdp .dd-compare__table {
-  margin-top: 0;
 }
 
 .dd-compare__ingredients-btn {
@@ -1011,6 +978,83 @@
   border-radius: 0;
   object-fit: cover;
   object-position: center;
+}
+
+@media screen and (min-width: 750px) {
+  .dd-compare--pdp {
+    width: 100%;
+  }
+
+  .dd-compare--pdp .dd-compare__inner {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dd-compare--pdp .dd-compare__pdp-grid {
+    width: 100%;
+    grid-template-columns: minmax(0, 53%) minmax(0, 47%);
+  }
+
+  .dd-compare--pdp .dd-compare__pdp-main {
+    padding-inline: clamp(2rem, 8vw, 9rem) 2rem;
+  }
+
+  .dd-compare--pdp .dd-compare__header--pdp {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+    margin: 0 0 2rem;
+    text-align: left;
+  }
+
+  .dd-compare--pdp .dd-compare__headline--pdp {
+    margin: 0;
+    text-align: left;
+    font-size: 2.95rem;
+    line-height: 1.16;
+    letter-spacing: 0.2rem;
+  }
+
+  .dd-compare--pdp .dd-compare__headline--pdp span:first-child {
+    color: #666460;
+  }
+
+  .dd-compare--pdp .dd-compare__headline--pdp span:last-child:not(:only-child) {
+    color: #bd1e18;
+  }
+
+  .dd-compare--pdp .dd-compare__body--pdp {
+    margin: 0;
+    max-width: none;
+    padding-top: 0.35rem;
+    text-align: left;
+    font-size: 1.14rem;
+    line-height: 1.2;
+    color: #666460;
+  }
+
+  .dd-compare--pdp .dd-compare__table {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    border: 0;
+  }
+
+  .dd-compare--pdp .dd-compare__table-head {
+    background: #f7f6f5;
+    border-bottom: 0;
+  }
+
+  .dd-compare--pdp .dd-compare__side-panel {
+    min-height: 100%;
+    background: #d7d3d0;
+  }
+
+  .dd-compare--pdp .dd-compare__side-panel-image {
+    min-height: 100%;
+  }
 }
 
 .dd-ingredients-modal {

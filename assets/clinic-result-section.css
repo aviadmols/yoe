@@ -20,11 +20,12 @@
 
 .clinical-results-section--consumer.clinical-results-section--pdp {
   background: #f7f6f5;
+  padding: 0;
 }
 
 .clinical-results-section--consumer .clinical-results-container--pdp {
   flex-direction: row-reverse;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .clinical-results-section--pdp .clinical-results-content {
@@ -41,7 +42,6 @@
 }
 
 .clinical-results-section--consumer .image-side {
-  align-self: flex-start;
   margin: 0;
   padding: 0;
 }
@@ -287,6 +287,10 @@
 }
 
 @media screen and (max-width: 749px) {
+  .clinical-results-container--pdp {
+    padding-bottom: 40px;
+  }
+
   .clinical-results-section--pdp {
     padding: 48px 0 0;
     background: #fff;

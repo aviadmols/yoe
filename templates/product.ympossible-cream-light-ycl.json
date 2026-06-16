@@ -776,6 +776,24 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "discovery_duo_sticky_cta_pdp": {
+      "type": "discovery-duo-sticky-cta",
+      "name": "Sticky CTA",
+      "settings": {
+        "scroll_threshold_vh": 100,
+        "cta_product": "ympossible-cream-light",
+        "cta_product_secondary": "",
+        "cta_go_to_checkout": false,
+        "cta_apply_discount": false,
+        "cta_checkout_discount_code": "",
+        "preload_cart_on_load": false,
+        "cta_label": "GET AWARD-WINNING CREAM -",
+        "cta_offer_display": "price",
+        "cta_discount_text": "| 15% OFF",
+        "cta_compare_price": "$185",
+        "cta_price": "$148"
+      }
     }
   },
   "order": [
@@ -789,6 +807,7 @@
     "award_custom_section_X9tFU9",
     "two_column_image_section_iwabiK",
     "products_slide_section_ywEKJh",
-    "17261758204f121d99"
+    "17261758204f121d99",
+    "discovery_duo_sticky_cta_pdp"
   ]
 }

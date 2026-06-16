@@ -31,10 +31,14 @@
       {% endif %}
       {% render 'dd-cta-checkout-attrs', apply_discount: cta_apply_discount, discount_code: cta_checkout_discount_code %}
     >
+      {%- assign include_secondary_product = false -%}
+      {%- if cta_product_secondary != blank -%}
+        {%- assign include_secondary_product = true -%}
+      {%- endif -%}
       {% render 'dd-cta-cart-inputs',
         primary_product: cta_product,
         secondary_product: cta_product_secondary,
-        include_secondary: true
+        include_secondary: include_secondary_product
       %}
       <button class="dd-sticky-cta__btn" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
         {% render 'dd-cta-offer',

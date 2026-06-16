@@ -795,9 +795,9 @@
     width: 330px;
     max-width: calc(100% - 10px);
     margin: 10px 0 0 0;
-    padding: 0;
+    padding-bottom: 30px;
     color: #666460;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 430;
     line-height: 1.2;
     text-align: left;

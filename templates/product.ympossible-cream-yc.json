@@ -274,6 +274,24 @@
         "result_2": {
           "type": "result",
           "settings": {
+            "stat_top": "felt skin stayed calm throughout the day",
+            "percentage": "100%",
+            "stat_bottom": "",
+            "description": "Reduced Fine Lines"
+          }
+        },
+        "result_bmMcAr": {
+          "type": "result",
+          "settings": {
+            "stat_top": "saw a visible transformation in skin",
+            "percentage": "95.2%",
+            "stat_bottom": "",
+            "description": "Reduced Fine Lines"
+          }
+        },
+        "result_TNpaRn": {
+          "type": "result",
+          "settings": {
             "stat_top": "felt skin was firmer",
             "percentage": "95%",
             "stat_bottom": "",
@@ -283,7 +301,9 @@
       },
       "block_order": [
         "result_1",
-        "result_2"
+        "result_2",
+        "result_bmMcAr",
+        "result_TNpaRn"
       ],
       "settings": {
         "layout_mode": "pdp",

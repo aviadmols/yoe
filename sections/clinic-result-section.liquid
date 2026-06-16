@@ -28,26 +28,19 @@
           {%- endif -%}
 
           {%- if section_variant == 'clinical' -%}
-            <div class="clinical-results-ba-grid" aria-label="Before and after results">
-              {%- assign ba_labels = 'Before,After,Before,After' | split: ',' -%}
-              {%- for i in (1..4) -%}
-                {%- capture ba_key -%}ba_image_{{ i }}{%- endcapture -%}
-                {%- assign ba_image = section.settings[ba_key] | default: section.settings.image -%}
-                {%- if ba_image != blank -%}
-                  <div class="clinical-results-ba-cell">
-                    <span class="clinical-results-ba-label clinical-results-ba-label--{{ ba_labels[forloop.index0] | downcase }}">{{ ba_labels[forloop.index0] }}</span>
-                    <img
-                      class="clinical-results-ba-image"
-                      src="{{ ba_image | image_url: width: 400 }}"
-                      alt="{{ ba_labels[forloop.index0] }} — {{ section.settings.badge_text | escape }}"
-                      loading="lazy"
-                      width="156"
-                      height="129"
-                    >
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
+            {%- assign clinical_mobile_image = section.settings.image_mobile | default: section.settings.image -%}
+            {%- if clinical_mobile_image != blank -%}
+              <div class="clinical-results-ba-single">
+                <img
+                  class="clinical-results-ba-single-image"
+                  src="{{ clinical_mobile_image | image_url: width: 750 }}"
+                  alt="{{ clinical_mobile_image.alt | default: section.settings.badge_text | escape }}"
+                  loading="lazy"
+                  width="{{ clinical_mobile_image.width }}"
+                  height="{{ clinical_mobile_image.height }}"
+                >
+              </div>
+            {%- endif -%}
           {%- endif -%}
 
           <div class="clinical-results-stats-panel">

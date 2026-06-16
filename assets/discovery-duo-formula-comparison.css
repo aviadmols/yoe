@@ -1079,6 +1079,8 @@
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
+  isolation: isolate;
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .dd-ingredients-modal[hidden] {
@@ -1088,7 +1090,9 @@
 .dd-ingredients-modal__backdrop {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: rgba(0, 0, 0, 0.75);
+  pointer-events: auto;
 }
 
 .dd-ingredients-modal__dialog {

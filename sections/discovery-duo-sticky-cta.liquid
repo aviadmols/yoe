@@ -1,9 +1,14 @@
 {{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
 
+{%- assign sticky_cta_product = section.settings.cta_product -%}
+{%- if sticky_cta_product == blank and product != blank -%}
+  {%- assign sticky_cta_product = product -%}
+{%- endif -%}
+
 {% render 'dd-sticky-cta-bar',
   scroll_vh: section.settings.scroll_threshold_vh,
-  cta_product: section.settings.cta_product,
+  cta_product: sticky_cta_product,
   cta_product_secondary: section.settings.cta_product_secondary,
   cta_label: section.settings.cta_label,
   cta_go_to_checkout: section.settings.cta_go_to_checkout,
@@ -44,7 +49,8 @@
     {
       "type": "product",
       "id": "cta_product",
-      "label": "CTA product"
+      "label": "CTA product",
+      "info": "Leave empty on product pages to use the current PDP product."
     },
     {
       "type": "product",

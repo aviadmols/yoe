@@ -5,6 +5,9 @@
 {%- endcomment -%}
 
 {%- assign cta_product = cta_product -%}
+{%- if cta_product == blank and product != blank -%}
+  {%- assign cta_product = product -%}
+{%- endif -%}
 {%- assign cta_variant = cta_product.selected_or_first_available_variant -%}
 {%- assign enable_preload_cart = false -%}
 {%- if preload_cart_on_load and cta_go_to_checkout -%}

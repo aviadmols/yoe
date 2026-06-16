@@ -311,7 +311,7 @@
         "image_mobile": "shopify://shop_images/adaq2_d5229d89-6e10-4a89-a74a-927d38c87c0f.png",
         "headline": "Consumer perception",
         "button_label": "See all results",
-        "button_link": ""
+        "button_link": "#open_popup"
       }
     },
     "dd_compare": {
@@ -677,6 +677,12 @@
         "heading": "AWARD-WINNING, FOR A REASON"
       }
     },
+    "popup_clinical_jmeB8G": {
+      "type": "popup_clinical",
+      "settings": {
+        "trigger_text": "Open Popup"
+      }
+    },
     "two_column_image_section_iwabiK": {
       "type": "two-column-image-section",
       "name": "Two Column Images",
@@ -806,6 +812,7 @@
     "dd_encapsulation_image",
     "sustainability_section_pFkRYA",
     "award_custom_section_X9tFU9",
+    "popup_clinical_jmeB8G",
     "two_column_image_section_iwabiK",
     "products_slide_section_ywEKJh",
     "17261758204f121d99",

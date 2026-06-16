@@ -192,57 +192,10 @@
         "quote_CiB6tn"
       ],
       "custom_css": [
-        "{background: #F7F6F4;}"
+        "{background: #f7f6f4;}"
       ],
       "name": "Press Mentions",
       "settings": {}
-    },
-    "dd_stats_headline": {
-      "type": "discovery-duo-stats-banner",
-      "blocks": {
-        "product_light": {
-          "type": "product_result",
-          "settings": {
-            "product_name": "Ympossible Cream Light",
-            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
-            "stat_1_top": "Immediate hydration boost  by up to",
-            "stat_1_percentage": "127.8%",
-            "stat_1_bottom": "upon application",
-            "stat_2_top": "Forehead wrinkle depth reduced by up to",
-            "stat_2_percentage": "66.7%",
-            "stat_2_bottom": "in only 4 weeks",
-            "stat_3_top": "Fine lines and wrinkles reduced by up to",
-            "stat_3_percentage": "62.8%",
-            "stat_3_bottom": "in only 8 weeks",
-            "stat_4_top": "Under-eye wrinkle depth reduced by up to",
-            "stat_4_percentage": "50.0%",
-            "stat_4_bottom": "in only 4 weeks",
-            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
-          }
-        }
-      },
-      "block_order": [
-        "product_light"
-      ],
-      "settings": {
-        "headline": "VISIBLY FIRMS, PLUMPS & REDUCES FINE LINES & WRINKLES",
-        "layout_mode": "single",
-        "cta_product": "ympossible-cream-light",
-        "cta_product_secondary": "",
-        "cta_go_to_checkout": false,
-        "cta_apply_discount": false,
-        "cta_checkout_discount_code": "",
-        "cta_label": "",
-        "cta_offer_display": "legacy",
-        "cta_discount_text": "| 15% OFF",
-        "cta_compare_price": "$185",
-        "cta_price": "$148",
-        "trust_1": "",
-        "trust_2": "",
-        "trust_3": "",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
     },
     "clinic_result_clinical": {
       "type": "clinic-result-section",
@@ -295,8 +248,8 @@
         "section_variant": "clinical",
         "badge_text": "Clinically proven",
         "main_headline": "VISIBLY FIRMS, PLUMPS & REDUCES FINE LINES & WRINKLES",
-        "image": "shopify://shop_images/Group_1000006040.jpg",
-        "image_mobile": "shopify://shop_images/Group_1000006040.jpg",
+        "image": "shopify://shop_images/Group_1000006233.jpg",
+        "image_mobile": "shopify://shop_images/Group_1000006233.jpg",
         "headline": "Clinical trial results",
         "button_label": "See all results",
         "button_link": ""
@@ -353,8 +306,8 @@
         "section_variant": "consumer",
         "badge_text": "Consumer approved",
         "main_headline": "REAL USERS. REAL RESULTS.",
-        "image": "shopify://shop_images/Group_1000006040.jpg",
-        "image_mobile": "shopify://shop_images/Group_1000006040.jpg",
+        "image": "shopify://shop_images/adaq2_d5229d89-6e10-4a89-a74a-927d38c87c0f.png",
+        "image_mobile": "shopify://shop_images/adaq2_d5229d89-6e10-4a89-a74a-927d38c87c0f.png",
         "headline": "Consumer perception",
         "button_label": "See all results",
         "button_link": ""
@@ -547,7 +500,8 @@
         "headline_prefix": "SynerGenius®",
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
-        "side_panel_desktop_image": "shopify://shop_images/adaq2_1.png",
+        "side_panel_desktop_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_12_7.jpg",
+        "side_panel_mobile_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_12_7_1.jpg",
         "side_panel_alt": "",
         "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
         "ingredients_button_label": "See full ingredients list",
@@ -624,6 +578,8 @@
       "settings": {
         "title": "Advanced Encapsulation",
         "body": "Advanced encapsulation technology gradually and precisely releases potent actives beyond the surface of the skin. Protecting ingredients at peak potency, maximizing efficacy, and minimizing irritation.",
+        "desktop_image": "shopify://shop_images/031.jpg",
+        "mobile_image": "shopify://shop_images/031.jpg",
         "theme_asset": "discovery-duo-encapsulation-diagram.png",
         "alt": "Advanced encapsulation delivery diagram",
         "padding_top": 72,
@@ -681,6 +637,7 @@
         "badge_mobile_3": "shopify://shop_images/Group_1000004788_1.png",
         "button_link": "",
         "button_text": "LEARN MORE ABOUT IMPACT",
+        "mobile_banner_image": "shopify://shop_images/Group_1000005523.jpg",
         "mobile_banner_alt": "",
         "section_heading": "",
         "feature_title_mobile_1": "NO ADHESIVES",
@@ -701,37 +658,17 @@
     "award_custom_section_X9tFU9": {
       "type": "award-custom-section",
       "blocks": {
-        "award_A9bCMt": {
-          "type": "award",
-          "settings": {
-            "award_logo": "shopify://shop_images/Group_1000004940.png",
-            "mobile_award_logo": "shopify://shop_images/Group_1000004955.png",
-            "award_title": "",
-            "award_text": ""
-          }
-        },
-        "award_3hdmyD": {
-          "type": "award",
-          "settings": {
-            "award_logo": "shopify://shop_images/Group_1000004942.png",
-            "mobile_award_logo": "shopify://shop_images/Group_1000004850.png",
-            "award_title": "",
-            "award_text": ""
-          }
-        },
         "award_8GHNnK": {
           "type": "award",
           "settings": {
-            "award_logo": "shopify://shop_images/women_award_big.png",
-            "mobile_award_logo": "shopify://shop_images/women_award_big_mobile.png",
+            "award_logo": "shopify://shop_images/Group_1000005077.png",
+            "mobile_award_logo": "shopify://shop_images/Group_1000005077.png",
             "award_title": "",
             "award_text": ""
           }
         }
       },
       "block_order": [
-        "award_A9bCMt",
-        "award_3hdmyD",
         "award_8GHNnK"
       ],
       "name": "Awards Section",
@@ -743,8 +680,8 @@
       "type": "two-column-image-section",
       "name": "Two Column Images",
       "settings": {
-        "left_image": "shopify://shop_images/04_YCL_Model_2.png",
-        "right_image": "shopify://shop_images/vaiyulaw_yoe_urgent2952_edit_2.png"
+        "left_image": "shopify://shop_images/04_YCL_Model_2.jpg",
+        "right_image": "shopify://shop_images/vaiyulaw_yoe_urgent2975_1.jpg"
       }
     },
     "products_slide_section_ywEKJh": {
@@ -844,7 +781,6 @@
   "order": [
     "main",
     "press_mention_custom_tBb8eV",
-    "dd_stats_headline",
     "clinic_result_clinical",
     "clinic_result_consumer",
     "dd_compare",

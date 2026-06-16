@@ -993,7 +993,7 @@
 
   .dd-compare--pdp .dd-compare__pdp-grid {
     width: 100%;
-    grid-template-columns: minmax(0, 53%) minmax(0, 47%);
+    grid-template-columns: minmax(0,70%) minmax(0,37%);
   }
 
   .dd-compare--pdp .dd-compare__pdp-main {

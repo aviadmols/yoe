@@ -192,7 +192,7 @@
         "quote_CiB6tn"
       ],
       "custom_css": [
-        "{padding-top: 3rem; padding-bottom: 3rem;}",
+        "@media (min-width{padding-top: 3rem; padding-bottom: 3rem;}",
         ".press-mentions {background: #f7f6f5;}"
       ],
       "name": "Press Mentions",
@@ -253,7 +253,7 @@
         "image_mobile": "shopify://shop_images/Group_1000006233.jpg",
         "headline": "Clinical trial results",
         "button_label": "See all results",
-        "button_link": ""
+        "button_link": "#open_popup"
       }
     },
     "clinic_result_consumer": {

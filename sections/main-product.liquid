@@ -48,7 +48,7 @@
 
         @media (min-width: 769px) {
             .custom-background-overlay {
-              background-attachment: fixed;
+              height: 68rem;
             }
 
             .custom-background-gallery-delay:not(.custom-background-ready) .product__media-wrapper {
@@ -69,7 +69,8 @@
 
         .custom-background-overlay.active {
             opacity: 1;
-            pointer-events: auto;
+          
+  
         }
 
         .product__media-wrapper, .product__info-wrapper {
@@ -774,6 +775,7 @@
       function revealGallery() {
         window.setTimeout(function() {
           mainProductSection.classList.add('custom-background-ready');
+          showInitialBackgroundIfNeeded();
         }, 120);
       }
 
@@ -835,8 +837,9 @@
     }
 
     if(window.innerWidth > 768){
+        // The overlay is now revealed inside revealGallery(), only after the
+        // background image has fully loaded, to avoid a flash/jump on load.
         revealGalleryAfterBackgroundReady();
-        setTimeout(showInitialBackgroundIfNeeded, 100);
 
         document.addEventListener('click', function(e) {
             if (e.target.closest('.thumbnail-list__item') || e.target.closest('[data-media-id]')) {

@@ -5796,6 +5796,12 @@ button.thumbnail.global-media-settings.global-media-settings--no-shadow {
 }
 
 
+@media (min-width: 768px) and (max-width: 1060px) {
+    .product__info-wrapper.grid__item {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
 @media (max-width: 1060px) {
     h1.main-title {
         font-size: 25px;

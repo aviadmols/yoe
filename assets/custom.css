@@ -4969,7 +4969,14 @@ ul.icon-with-text.icon-with-text--horizontal.list-unstyled {
     gap: 10px;
     width: 100%;
     max-width: 476px;
-    margin: 0px 0px 17px !IMPORTANT;
+    margin: 0px 0px 17px;
+}
+
+@media (min-width: 768px) {
+    ul.icon-with-text.icon-with-text--horizontal.list-unstyled {
+        max-width: 100%;
+        margin: 1.45rem 0px 1rem;
+    }
 }
 
 .product__description.rte.quick-add-hidden.mobile-description-down {

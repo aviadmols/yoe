@@ -821,7 +821,7 @@
     grid-template-columns: 116px 63px minmax(0, 1fr);
     column-gap: 11px;
     min-width: 0;
-    min-height: 35px;
+    min-height: 40px;
     padding: 0 3px;
     border-bottom-width: 1px;
     border-color: rgba(102, 100, 96, 0.24);

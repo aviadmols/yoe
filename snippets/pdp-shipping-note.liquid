@@ -1,0 +1,27 @@
+{%- comment -%}
+  PDP shipping note shown directly under the add-to-cart button.
+  Self-contained styling so no shared CSS is touched.
+{%- endcomment -%}
+<p class="pdp-shipping-note">Free 2-Day Shipping on all U.S. Domestic Orders &amp; Easy Return.</p>
+
+<style>
+  /* Sizes authored in rem at the 20px = 1rem design ratio (1920px design width). */
+  .pdp-shipping-note {
+    margin: 0.8rem 0 0;
+    color: rgba(102, 100, 96, 0.8);
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    letter-spacing: 0.02rem;
+    font-variation-settings: "wdth" 85;
+  }
+
+  /* Mobile: match the Figma mobile caption. */
+  @media screen and (max-width: 749px) {
+    .pdp-shipping-note {
+      margin: 1rem 0 0;
+      font-size: 1rem;
+      letter-spacing: 0.01rem;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+{%- comment -%}
+  PDP benefit icons row (Firms / Hydrates / Smooths / Brightens).
+  Self-contained styling so no shared CSS is touched.
+{%- endcomment -%}
+<ul class="pdp-benefit-icons" role="list">
+  <li class="pdp-benefit-icons__item">
+    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-firms.svg' | asset_url }}" alt="Firms" loading="lazy" width="28" height="22">
+    <span class="pdp-benefit-icons__label">Firms</span>
+  </li>
+  <li class="pdp-benefit-icons__item">
+    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-hydrates.svg' | asset_url }}" alt="Hydrates" loading="lazy" width="28" height="22">
+    <span class="pdp-benefit-icons__label">Hydrates</span>
+  </li>
+  <li class="pdp-benefit-icons__item">
+    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-smooths.svg' | asset_url }}" alt="Smooths" loading="lazy" width="28" height="22">
+    <span class="pdp-benefit-icons__label">Smooths</span>
+  </li>
+  <li class="pdp-benefit-icons__item">
+    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-brightens.svg' | asset_url }}" alt="Brightens" loading="lazy" width="28" height="22">
+    <span class="pdp-benefit-icons__label">Brightens</span>
+  </li>
+</ul>
+
+<style>
+  /* Sizes authored in rem at the 20px = 1rem design ratio (1920px design width). */
+  .pdp-benefit-icons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.6rem;
+    margin: 0.6rem 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pdp-benefit-icons__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .pdp-benefit-icons__icon {
+    display: block;
+    width: 2rem;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .pdp-benefit-icons__label {
+    color: #666460;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 86;
+  }
+
+  /* Mobile: match the Figma mobile layout (icons spread full width). */
+  @media screen and (max-width: 749px) {
+    .pdp-benefit-icons {
+      margin: 18px 0 20px;
+    }
+
+    .pdp-benefit-icons__icon {
+      width: 2.4rem;
+    }
+
+    .pdp-benefit-icons__label {
+      color: #666460;
+      text-align: center;
+      font-family: "Open Sans";
+      font-size: 8.483px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 11.877px */
+      letter-spacing: 0.848px;
+      text-transform: uppercase;
+    }
+  }
+</style>

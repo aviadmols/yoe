@@ -114,18 +114,32 @@
             "show_if_outside_limits": true,
             "product": "{{product}}"
           }
+        },
+        "benefit_icons_pdp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'pdp-benefit-icons' %}"
+          }
+        },
+        "shipping_note_pdp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'pdp-shipping-note' %}"
+          }
         }
       },
       "block_order": [
         "title",
         "description",
-        "icon_with_text_9jXtWM",
-        "text_cT8XEa",
+        "benefit_icons_pdp",
         "collapsible_tab_mKjhEM",
         "collapsible_tab_6RpJQj",
         "collapsible_tab_WUPyXz",
+        "icon_with_text_9jXtWM",
+        "text_cT8XEa",
         "variant_picker",
         "buy_buttons",
+        "shipping_note_pdp",
         "afterpay_on_site_messaging_payments_messaging_pK7Gjz"
       ],
       "settings": {

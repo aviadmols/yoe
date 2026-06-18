@@ -138,14 +138,6 @@
       </div>
     </div>
   {%- endif -%}
-    {% comment %} Mobile description section {% endcomment %}
-                {%- if product.description != blank -%}
-                <div class="product__description rte quick-add-hidden mobile-description-down" {{ block.shopify_attributes }}>
-                  {{ product.description }}
-                </div>
-              {%- endif -%}
-              {% comment %} End here {% endcomment %}
-               
 
   {%- if show_pickup_availability -%}
     {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}

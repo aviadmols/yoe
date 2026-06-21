@@ -58,12 +58,20 @@
                 </div>
               </div>
 
+              {%- assign mobile_ba_image = block.settings.before_after_image_mobile | default: block.settings.before_after_image -%}
               <figure class="duo-clinical__media" aria-label="{{ block.settings.product_name | escape }} before and after">
                 {%- if block.settings.before_after_image != blank -%}
                   {{ block.settings.before_after_image | image_url: width: 700 | image_tag:
                     loading: 'lazy',
-                    class: 'duo-clinical__media-image',
+                    class: 'duo-clinical__media-image duo-clinical__media-image--desktop',
                     alt: block.settings.before_after_image.alt | default: block.settings.product_name
+                  }}
+                {%- endif -%}
+                {%- if mobile_ba_image != blank -%}
+                  {{ mobile_ba_image | image_url: width: 700 | image_tag:
+                    loading: 'lazy',
+                    class: 'duo-clinical__media-image duo-clinical__media-image--mobile',
+                    alt: mobile_ba_image.alt | default: block.settings.product_name
                   }}
                 {%- endif -%}
               </figure>
@@ -104,6 +112,7 @@
         { "type": "text", "id": "product_name", "label": "Product name", "default": "Ympossible Cream" },
         { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Clinical trial results" },
         { "type": "image_picker", "id": "before_after_image", "label": "Before / after image" },
+        { "type": "image_picker", "id": "before_after_image_mobile", "label": "Before / after image (mobile)" },
         { "type": "text", "id": "stat_1_top", "label": "Stat 1 top", "default": "Forehead wrinkle depth reduced by up" },
         { "type": "text", "id": "stat_1_percentage", "label": "Stat 1 percentage", "default": "66.7%" },
         { "type": "text", "id": "stat_1_bottom", "label": "Stat 1 bottom", "default": "in only 4 weeks" },

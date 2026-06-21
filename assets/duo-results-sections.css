@@ -195,6 +195,10 @@ a.clinic-button.duo-results-button:hover {
   border-radius: 0;
 }
 
+.duo-clinical__media-image--mobile {
+  display: none;
+}
+
 .duo-clinical .duo-results-grid .result-top {
   font-size: 0.989rem;
   font-weight: 430;
@@ -466,6 +470,14 @@ a.clinic-button.duo-results-button:hover {
 
   .duo-clinical__statwrap {
     gap: 18px;
+  }
+
+  .duo-clinical__media-image--desktop {
+    display: none;
+  }
+
+  .duo-clinical__media-image--mobile {
+    display: block;
   }
 
   .duo-clinical__subtitle {

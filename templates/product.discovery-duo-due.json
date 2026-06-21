@@ -259,8 +259,8 @@
         "main_headline": "Visibly transformed.",
         "button_label": "See all results",
         "button_link": "",
-        "padding_top": 88,
-        "padding_bottom": 88
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "duo_consumer": {

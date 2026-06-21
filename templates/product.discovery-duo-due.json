@@ -20,6 +20,12 @@
           "type": "description",
           "settings": {}
         },
+        "benefit_icons_pdp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'pdp-benefit-icons' %}"
+          }
+        },
         "icon_with_text_dPXXWm": {
           "type": "icon-with-text",
           "settings": {
@@ -122,11 +128,12 @@
       "block_order": [
         "title",
         "description",
-        "icon_with_text_dPXXWm",
-        "text_cT8XEa",
+        "benefit_icons_pdp",
         "collapsible_tab_mKjhEM",
         "collapsible_tab_6RpJQj",
         "collapsible_tab_WUPyXz",
+        "icon_with_text_dPXXWm",
+        "text_cT8XEa",
         "variant_picker",
         "price_QRBtkG",
         "buy_buttons",
@@ -199,33 +206,14 @@
       "name": "Press Mentions",
       "settings": {}
     },
-    "dd_stats_headline": {
-      "type": "discovery-duo-stats-banner",
+    "duo_clinical": {
+      "type": "duo-clinical-results",
       "blocks": {
-        "product_light": {
-          "type": "product_result",
-          "settings": {
-            "product_name": "Ympossible Cream Light",
-            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
-            "stat_1_top": "Immediate hydration boost by up to",
-            "stat_1_percentage": "127.8%",
-            "stat_1_bottom": "upon application",
-            "stat_2_top": "Fine lines and wrinkles reduced by up to",
-            "stat_2_percentage": "62.8%",
-            "stat_2_bottom": "in only 8 weeks",
-            "stat_3_top": "Forehead wrinkle depth reduced by up to",
-            "stat_3_percentage": "66.7%",
-            "stat_3_bottom": "in only 4 weeks",
-            "stat_4_top": "Under-eye wrinkle depth reduced by up to",
-            "stat_4_percentage": "50.0%",
-            "stat_4_bottom": "in only 4 weeks",
-            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
-          }
-        },
         "product_cream": {
           "type": "product_result",
           "settings": {
             "product_name": "Ympossible Cream",
+            "subtitle": "Clinical trial results",
             "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
             "stat_1_top": "Forehead wrinkle depth reduced by up",
             "stat_1_percentage": "66.7%",
@@ -238,131 +226,88 @@
             "stat_3_bottom": "in only 4 weeks",
             "stat_4_top": "Skin barrier integrity improved by up to",
             "stat_4_percentage": "61.8%",
-            "stat_4_bottom": "in 8 weeks",
-            "disclaimer": "*In an instrumental clinical trial of 32 subjects after 4 and 8 weeks of twice-daily use."
+            "stat_4_bottom": "in 8 weeks"
+          }
+        },
+        "product_light": {
+          "type": "product_result",
+          "settings": {
+            "product_name": "Ympossible Cream Light",
+            "subtitle": "Clinical trial results",
+            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
+            "stat_1_top": "Immediate hydration boost by up to",
+            "stat_1_percentage": "127.8%",
+            "stat_1_bottom": "upon application",
+            "stat_2_top": "Skin firmness improved by up to",
+            "stat_2_percentage": "66.7%",
+            "stat_2_bottom": "in only 4 weeks",
+            "stat_3_top": "Fine lines and wrinkles reduced by up to",
+            "stat_3_percentage": "65.1%",
+            "stat_3_bottom": "in only 8 weeks",
+            "stat_4_top": "Under-eye wrinkle depth reduced by",
+            "stat_4_percentage": "50.0%",
+            "stat_4_bottom": "in only 4 weeks"
           }
         }
       },
       "block_order": [
-        "product_light",
-        "product_cream"
+        "product_cream",
+        "product_light"
       ],
       "settings": {
-        "headline": "Two Award-Winning Formulas. One Complete Routine.",
-        "cta_product": "discovery-duo",
-        "cta_go_to_checkout": false,
-        "cta_label": "",
-        "cta_compare_price": "$86",
-        "cta_price": "$48",
-        "trust_1": "",
-        "trust_2": "",
-        "trust_3": "",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "clinic_result_clinical": {
-      "type": "clinic-result-section",
-      "blocks": {
-        "result_1": {
-          "type": "result",
-          "settings": {
-            "stat_top": "Forehead wrinkle depth reduced by up",
-            "percentage": "66.7%",
-            "stat_bottom": "in only 4 weeks"
-          }
-        },
-        "result_2": {
-          "type": "result",
-          "settings": {
-            "stat_top": "Jawline firmness improved by up to",
-            "percentage": "66.7%",
-            "stat_bottom": "in only 4 weeks"
-          }
-        },
-        "result_3": {
-          "type": "result",
-          "settings": {
-            "stat_top": "Frown line depth reduced by up to",
-            "percentage": "50.0%",
-            "stat_bottom": "in only 4 weeks"
-          }
-        },
-        "result_4": {
-          "type": "result",
-          "settings": {
-            "stat_top": "Skin barrier integrity improved by up to",
-            "percentage": "61.8%",
-            "stat_bottom": "in 8 weeks"
-          }
-        }
-      },
-      "block_order": [
-        "result_1",
-        "result_2",
-        "result_3",
-        "result_4"
-      ],
-      "settings": {
-        "layout_mode": "pdp",
-        "section_variant": "clinical",
         "badge_text": "Clinically proven",
-        "main_headline": "Two Award-Winning Formulas. One Complete Routine.",
-        "image": "shopify://shop_images/Group_1000006031.jpg",
-        "image_mobile": "shopify://shop_images/Group_1000006031.jpg",
-        "headline": "Clinical trial results",
+        "main_headline": "Visibly transformed.",
         "button_label": "See all results",
-        "button_link": ""
+        "button_link": "",
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
-    "clinic_result_consumer": {
-      "type": "clinic-result-section",
+    "duo_consumer": {
+      "type": "duo-consumer-perception",
       "blocks": {
-        "result_1": {
-          "type": "result",
+        "product_cream": {
+          "type": "product_result",
           "settings": {
-            "stat_top": "felt skin appeared more youthful",
-            "percentage": "100%"
+            "product_name": "Ympossible Cream",
+            "stat_1_top": "felt skin appeared more youthful",
+            "stat_1_percentage": "100%",
+            "stat_2_top": "saw a visible transformation in skin",
+            "stat_2_percentage": "95.2%",
+            "stat_3_top": "noticed a more even skin tone",
+            "stat_3_percentage": "100%",
+            "stat_4_top": "felt skin was firmer",
+            "stat_4_percentage": "95%"
           }
         },
-        "result_2": {
-          "type": "result",
+        "product_light": {
+          "type": "product_result",
           "settings": {
-            "stat_top": "noticed a more even skin tone",
-            "percentage": "100%"
-          }
-        },
-        "result_3": {
-          "type": "result",
-          "settings": {
-            "stat_top": "saw a visible transformation in skin",
-            "percentage": "95.2%"
-          }
-        },
-        "result_4": {
-          "type": "result",
-          "settings": {
-            "stat_top": "felt skin was firmer",
-            "percentage": "95%"
+            "product_name": "Ympossible Cream Light",
+            "stat_1_top": "felt skin looked healthy",
+            "stat_1_percentage": "100%",
+            "stat_2_top": "felt skin was soft",
+            "stat_2_percentage": "96%",
+            "stat_3_top": "felt skin stayed calm throughout the day",
+            "stat_3_percentage": "100%",
+            "stat_4_top": "felt complexion looked radiant",
+            "stat_4_percentage": "95%"
           }
         }
       },
       "block_order": [
-        "result_1",
-        "result_2",
-        "result_3",
-        "result_4"
+        "product_cream",
+        "product_light"
       ],
       "settings": {
-        "layout_mode": "pdp",
-        "section_variant": "consumer",
         "badge_text": "Consumer approved",
-        "main_headline": "REAL USERS. REAL RESULTS.",
-        "image": "shopify://shop_images/Group_1000006031.jpg",
-        "image_mobile": "shopify://shop_images/Group_1000006031.jpg",
-        "headline": "Consumer perception",
+        "side_label": "Consumer perception",
+        "image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.png",
+        "image_mobile": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.png",
         "button_label": "See all results",
-        "button_link": ""
+        "button_link": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "dd_compare": {
@@ -827,9 +772,8 @@
   "order": [
     "main",
     "press_mention_custom_7dj4cY",
-    "dd_stats_headline",
-    "clinic_result_clinical",
-    "clinic_result_consumer",
+    "duo_clinical",
+    "duo_consumer",
     "dd_compare",
     "dd_encapsulation_image",
     "sustainability_section_D8EqMq",

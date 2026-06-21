@@ -1,0 +1,132 @@
+{% comment %}
+  Section: Duo – Clinical results (two products)
+  Figma 9:4424 — "Clinically proven / Visibly transformed".
+  Two product columns, each with a 2x2 stat grid and a before/after image.
+{% endcomment %}
+
+{{ 'duo-results-sections.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="duo-results-section duo-clinical{% render 'pdp-scroll-animate-class' %}"
+  style="--duo-results-padding-top: {{ section.settings.padding_top }}px; --duo-results-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <div class="duo-clinical__head">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="duo-results-badge">{{ section.settings.badge_text | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.main_headline != blank -%}
+        <h2 class="duo-clinical__headline">{{ section.settings.main_headline | escape }}</h2>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="duo-clinical__products">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product_result' -%}
+            <article class="duo-clinical__product" {{ block.shopify_attributes }}>
+              <div class="duo-clinical__copy">
+                {%- if block.settings.product_name != blank -%}
+                  {%- assign product_name = block.settings.product_name | escape -%}
+                  {%- assign product_name = product_name | replace: ' LIGHT', ' <span class="duo-results-product-name-light">LIGHT</span>' | replace: ' Light', ' <span class="duo-results-product-name-light">Light</span>' -%}
+                  <h3 class="duo-results-product-name">{{ product_name }}</h3>
+                {%- endif -%}
+
+                <div class="duo-clinical__statwrap">
+                  {%- if block.settings.subtitle != blank -%}
+                    <p class="duo-clinical__subtitle">{{ block.settings.subtitle | escape }}</p>
+                  {%- endif -%}
+
+                  <ul class="duo-results-grid">
+                    {%- for index in (1..4) -%}
+                      {%- assign top_key = 'stat_' | append: index | append: '_top' -%}
+                      {%- assign percent_key = 'stat_' | append: index | append: '_percentage' -%}
+                      {%- assign bottom_key = 'stat_' | append: index | append: '_bottom' -%}
+                      {%- if block.settings[percent_key] != blank -%}
+                        <li class="result-item">
+                          {%- if block.settings[top_key] != blank -%}
+                            <span class="result-top">{{ block.settings[top_key] | escape }}</span>
+                          {%- endif -%}
+                          <span class="percent">{{ block.settings[percent_key] | escape }}</span>
+                          {%- if block.settings[bottom_key] != blank -%}
+                            <span class="result-bottom">{{ block.settings[bottom_key] | escape }}</span>
+                          {%- endif -%}
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+
+              <figure class="duo-clinical__media" aria-label="{{ block.settings.product_name | escape }} before and after">
+                {%- if block.settings.before_after_image != blank -%}
+                  {{ block.settings.before_after_image | image_url: width: 700 | image_tag:
+                    loading: 'lazy',
+                    class: 'duo-clinical__media-image',
+                    alt: block.settings.before_after_image.alt | default: block.settings.product_name
+                  }}
+                {%- endif -%}
+              </figure>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a class="clinic-button duo-results-button" href="{{ section.settings.button_link | default: '#' }}">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Duo – Clinical results",
+  "tag": "section",
+  "class": "section-duo-clinical",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Clinically proven" },
+    { "type": "text", "id": "main_headline", "label": "Main headline", "default": "Visibly transformed." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "See all results" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 88 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 88 }
+  ],
+  "blocks": [
+    {
+      "type": "product_result",
+      "name": "Product result",
+      "limit": 2,
+      "settings": [
+        { "type": "text", "id": "product_name", "label": "Product name", "default": "Ympossible Cream" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Clinical trial results" },
+        { "type": "image_picker", "id": "before_after_image", "label": "Before / after image" },
+        { "type": "text", "id": "stat_1_top", "label": "Stat 1 top", "default": "Forehead wrinkle depth reduced by up" },
+        { "type": "text", "id": "stat_1_percentage", "label": "Stat 1 percentage", "default": "66.7%" },
+        { "type": "text", "id": "stat_1_bottom", "label": "Stat 1 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "stat_2_top", "label": "Stat 2 top", "default": "Jawline firmness improved by up to" },
+        { "type": "text", "id": "stat_2_percentage", "label": "Stat 2 percentage", "default": "66.7%" },
+        { "type": "text", "id": "stat_2_bottom", "label": "Stat 2 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "stat_3_top", "label": "Stat 3 top", "default": "Frown line depth reduced by up to" },
+        { "type": "text", "id": "stat_3_percentage", "label": "Stat 3 percentage", "default": "50.0%" },
+        { "type": "text", "id": "stat_3_bottom", "label": "Stat 3 bottom", "default": "in only 4 weeks" },
+        { "type": "text", "id": "stat_4_top", "label": "Stat 4 top", "default": "Skin barrier integrity improved by up to" },
+        { "type": "text", "id": "stat_4_percentage", "label": "Stat 4 percentage", "default": "61.8%" },
+        { "type": "text", "id": "stat_4_bottom", "label": "Stat 4 bottom", "default": "in 8 weeks" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo – Clinical results",
+      "blocks": [
+        { "type": "product_result", "settings": { "product_name": "Ympossible Cream" } },
+        { "type": "product_result", "settings": { "product_name": "Ympossible Cream Light" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

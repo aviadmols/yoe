@@ -1,0 +1,131 @@
+{% comment %}
+  Section: Duo – Consumer perception (two products)
+  Figma 9:4425 — "Consumer approved / Consumer perception".
+  Large lifestyle image on one side, two product stat columns on the other.
+{% endcomment %}
+
+{{ 'duo-results-sections.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="duo-results-section duo-consumer{% render 'pdp-scroll-animate-class' %}"
+  style="--duo-results-padding-top: {{ section.settings.padding_top }}px; --duo-results-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="duo-consumer__layout">
+    <div class="duo-consumer__image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1100 | image_tag:
+          loading: 'lazy',
+          class: 'duo-consumer__image-desktop',
+          alt: section.settings.image.alt | default: section.settings.badge_text
+        }}
+        {%- assign mobile_image = section.settings.image_mobile | default: section.settings.image -%}
+        {{ mobile_image | image_url: width: 800 | image_tag:
+          loading: 'lazy',
+          class: 'duo-consumer__image-mobile',
+          alt: mobile_image.alt | default: section.settings.image.alt
+        }}
+      {%- endif -%}
+    </div>
+
+    <div class="duo-consumer__content">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="duo-results-badge">{{ section.settings.badge_text | escape }}</span>
+      {%- endif -%}
+
+      <div class="duo-consumer__panel">
+        {%- if section.settings.side_label != blank -%}
+          <p class="duo-results-side-label duo-results-side-label--shared">{{ section.settings.side_label | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="duo-consumer__products">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'product_result' -%}
+                <article class="duo-consumer__product" {{ block.shopify_attributes }}>
+                  {%- if block.settings.product_name != blank -%}
+                    {%- assign product_name = block.settings.product_name | escape -%}
+                    {%- assign product_name = product_name | replace: ' LIGHT', ' <span class="duo-results-product-name-light">LIGHT</span>' | replace: ' Light', ' <span class="duo-results-product-name-light">Light</span>' -%}
+                    <h3 class="duo-results-product-name">{{ product_name }}</h3>
+                  {%- endif -%}
+
+                  <div class="duo-consumer__statwrap">
+                    {%- if section.settings.side_label != blank -%}
+                      <p class="duo-results-side-label duo-results-side-label--inline">{{ section.settings.side_label | escape }}</p>
+                    {%- endif -%}
+
+                    <ul class="duo-results-grid duo-results-grid--consumer">
+                      {%- for index in (1..4) -%}
+                        {%- assign top_key = 'stat_' | append: index | append: '_top' -%}
+                        {%- assign percent_key = 'stat_' | append: index | append: '_percentage' -%}
+                        {%- if block.settings[percent_key] != blank -%}
+                          <li class="result-item">
+                            <span class="percent">{{ block.settings[percent_key] | escape }}</span>
+                            {%- if block.settings[top_key] != blank -%}
+                              <span class="result-top">{{ block.settings[top_key] | escape }}</span>
+                            {%- endif -%}
+                          </li>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </article>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.button_label != blank -%}
+        <a class="clinic-button duo-results-button" href="{{ section.settings.button_link | default: '#' }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Duo – Consumer perception",
+  "tag": "section",
+  "class": "section-duo-consumer",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Consumer approved" },
+    { "type": "text", "id": "side_label", "label": "Vertical side label", "default": "Consumer perception" },
+    { "type": "image_picker", "id": "image", "label": "Lifestyle image" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Mobile lifestyle image" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "See all results" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "product_result",
+      "name": "Product result",
+      "limit": 2,
+      "settings": [
+        { "type": "text", "id": "product_name", "label": "Product name", "default": "Ympossible Cream" },
+        { "type": "text", "id": "stat_1_top", "label": "Stat 1 description", "default": "felt skin appeared more youthful" },
+        { "type": "text", "id": "stat_1_percentage", "label": "Stat 1 percentage", "default": "100%" },
+        { "type": "text", "id": "stat_2_top", "label": "Stat 2 description", "default": "saw a visible transformation in skin" },
+        { "type": "text", "id": "stat_2_percentage", "label": "Stat 2 percentage", "default": "95.2%" },
+        { "type": "text", "id": "stat_3_top", "label": "Stat 3 description", "default": "noticed a more even skin tone" },
+        { "type": "text", "id": "stat_3_percentage", "label": "Stat 3 percentage", "default": "100%" },
+        { "type": "text", "id": "stat_4_top", "label": "Stat 4 description", "default": "felt skin was firmer" },
+        { "type": "text", "id": "stat_4_percentage", "label": "Stat 4 percentage", "default": "95%" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo – Consumer perception",
+      "blocks": [
+        { "type": "product_result", "settings": { "product_name": "Ympossible Cream" } },
+        { "type": "product_result", "settings": { "product_name": "Ympossible Cream Light" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

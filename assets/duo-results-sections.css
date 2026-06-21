@@ -1,0 +1,549 @@
+/* Duo result sections — clinical + consumer (two products). 20px = 1rem design ratio. */
+
+.duo-results-section {
+  padding-top: var(--duo-results-padding-top, 0px);
+  padding-bottom: var(--duo-results-padding-bottom, 0px);
+}
+
+/* ---------- Shared tokens ---------- */
+.duo-results-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15.8rem;
+  min-height: 2.953rem;
+  padding: 0 1.25rem;
+  margin: 0 0 1.75rem;
+  background: #bd1e18;
+  color: #fff;
+  border-radius: 0.652rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.299rem;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.13rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 75;
+}
+
+.duo-results-product-name {
+  margin: 0 0 1.4rem;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 80;
+}
+
+.duo-results-product-name-light {
+  font-weight: 300;
+}
+
+.duo-results-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.65rem 2rem;
+}
+
+.duo-results-grid .result-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.duo-results-grid .percent {
+  display: block;
+  width: auto;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-variation-settings: "wdth" 80;
+}
+
+.duo-results-grid .result-top,
+.duo-results-grid .result-bottom {
+  display: block;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.2;
+  font-variation-settings: "wdth" 83;
+}
+
+.duo-results-side-label {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.073rem;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.215rem;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-variation-settings: "wdth" 75;
+}
+
+a.clinic-button.duo-results-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16.463rem;
+  max-width: 100%;
+  min-height: 3.536rem;
+  margin-top: 2.5rem;
+  padding: 0 1.5rem;
+  border: 0.0585rem solid #666460;
+  background: transparent;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.936rem;
+  font-weight: 540;
+  line-height: 1.12;
+  letter-spacing: 0.047rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+a.clinic-button.duo-results-button:hover {
+  opacity: 0.75;
+}
+
+/* ---------- Clinical (9:4424) ---------- */
+.duo-clinical {
+  background: #fff;
+}
+
+.duo-clinical .page-width {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.duo-clinical__head {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.duo-clinical__headline {
+  margin: 0;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.28rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 80;
+}
+
+.duo-clinical__products {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 3.25rem;
+}
+
+.duo-clinical__product {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.duo-clinical__product + .duo-clinical__product {
+  padding-left: 3.25rem;
+  border-left: 1px solid #e2e0dd;
+}
+
+.duo-clinical__copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.duo-clinical__subtitle {
+  margin: 0 0 1.5rem;
+  color: #666460;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.742rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 80;
+}
+
+.duo-clinical__media {
+  flex: 0 0 9.5rem;
+  margin: 0;
+  line-height: 0;
+}
+
+.duo-clinical__media-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.duo-clinical .duo-results-grid .result-top {
+  font-size: 0.989rem;
+  font-weight: 430;
+}
+
+.duo-clinical .duo-results-grid .percent {
+  margin: 0.12rem 0 0.35rem;
+  color: #bd1e18;
+  font-size: 3.2rem;
+}
+
+.duo-clinical .duo-results-grid .result-bottom {
+  font-size: 0.742rem;
+  font-weight: 400;
+  letter-spacing: 0.0074rem;
+  font-variation-settings: "wdth" 80;
+}
+
+.duo-clinical .duo-results-button {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+/* ---------- Consumer (9:4425) ---------- */
+.duo-consumer {
+  background: #f7f6f5;
+}
+
+.duo-consumer__layout {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.duo-consumer__image {
+  flex: 0 0 42%;
+  align-self: stretch;
+  display: flex;
+  min-height: 42rem;
+  line-height: 0;
+}
+
+.duo-consumer__image-desktop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 42rem;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.duo-consumer__image-mobile {
+  display: none;
+}
+
+.duo-consumer__content {
+  flex: 1 1 58%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vh, 5.5rem) 4rem clamp(3rem, 6vh, 5.5rem) 0;
+}
+
+.duo-consumer__panel {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.duo-consumer__products {
+  display: flex;
+  gap: 2.5rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.duo-consumer__product {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.duo-consumer .duo-results-grid--consumer .result-item {
+  flex-direction: column;
+}
+
+.duo-consumer .duo-results-grid--consumer .percent {
+  margin: 0;
+  color: #666460;
+  font-size: 3.2rem;
+}
+
+.duo-consumer .duo-results-grid--consumer .result-top {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* Desktop defaults for label/statwrap toggles */
+.duo-clinical__statwrap {
+  display: block;
+}
+
+.duo-results-side-label--inline {
+  display: none;
+}
+
+/* ---------- Tablet / small desktop (stacked) ---------- */
+@media screen and (max-width: 989px) {
+  /* Clinical: stack products; per product -> name, image, [vertical subtitle | grid] */
+  .duo-clinical__products {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .duo-clinical__product {
+    flex: 1 1 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .duo-clinical__product + .duo-clinical__product {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .duo-clinical__copy {
+    display: contents;
+  }
+
+  .duo-clinical .duo-results-product-name {
+    order: 1;
+    text-align: center;
+  }
+
+  .duo-clinical__media {
+    order: 2;
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .duo-clinical__statwrap {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .duo-clinical__subtitle {
+    flex: 0 0 auto;
+    margin: 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: right;
+    letter-spacing: 0.18rem;
+  }
+
+  .duo-clinical .duo-results-grid {
+    flex: 1 1 auto;
+  }
+
+  /* Consumer: stack products; per-product vertical label */
+  .duo-consumer__layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .duo-consumer__image,
+  .duo-consumer__content {
+    flex: 1 1 100%;
+  }
+
+  .duo-consumer__image {
+    min-height: 0;
+  }
+
+  .duo-consumer__image-desktop {
+    min-height: 0;
+    height: auto;
+    object-position: center;
+  }
+
+  .duo-consumer__content {
+    padding: 2.5rem 4rem 3rem;
+  }
+
+  .duo-consumer__panel {
+    display: block;
+  }
+
+  .duo-results-side-label--shared {
+    display: none;
+  }
+
+  .duo-consumer__products {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .duo-consumer__product {
+    flex: 1 1 100%;
+  }
+
+  .duo-consumer .duo-results-product-name {
+    text-align: center;
+  }
+
+  .duo-consumer__statwrap {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .duo-results-side-label--inline {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .duo-consumer .duo-results-grid--consumer {
+    flex: 1 1 auto;
+  }
+}
+
+/* ---------- Mobile (pixel fidelity) ---------- */
+@media screen and (max-width: 749px) {
+  .duo-clinical {
+    padding-top: 48px;
+  }
+
+  .duo-clinical .page-width {
+    padding: 0 26.5px;
+  }
+
+  .duo-clinical__head {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .duo-clinical__headline {
+    font-size: 17px;
+    letter-spacing: 1.7px;
+    font-weight: 419;
+  }
+
+  .duo-results-badge {
+    width: 112px;
+    min-height: 25px;
+    padding: 0;
+    margin: 0 0 16px;
+    border-radius: 8.68px;
+    font-size: 11px;
+    letter-spacing: 0.54px;
+  }
+
+  .duo-clinical__products {
+    gap: 40px;
+  }
+
+  .duo-clinical__product {
+    gap: 16px;
+  }
+
+  .duo-clinical .duo-results-product-name {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  .duo-clinical__statwrap {
+    gap: 18px;
+  }
+
+  .duo-clinical__subtitle {
+    font-size: 12px;
+    letter-spacing: 2.8px;
+  }
+
+  .duo-results-grid {
+    gap: 28px 24px;
+  }
+
+  .duo-clinical .duo-results-grid .result-top {
+    font-size: 12px;
+  }
+
+  .duo-clinical .duo-results-grid .percent {
+    margin: 4px 0 6px;
+    font-size: 45px;
+    letter-spacing: -0.7px;
+  }
+
+  .duo-clinical .duo-results-grid .result-bottom {
+    font-size: 9px;
+    letter-spacing: 0.09px;
+  }
+
+  /* Consumer mobile */
+  .duo-consumer__content {
+    padding: 24px 26.5px 40px;
+  }
+
+  .duo-consumer__image-desktop {
+    display: none;
+  }
+
+  .duo-consumer__image-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .duo-consumer__products {
+    gap: 28px;
+  }
+
+  .duo-consumer .duo-results-product-name {
+    font-size: 16px;
+  }
+
+  .duo-consumer__statwrap {
+    gap: 16px;
+  }
+
+  .duo-results-side-label--inline {
+    flex: 0 0 14px;
+    width: 14px;
+    font-size: 12px;
+    letter-spacing: 2.8px;
+    text-align: right;
+  }
+
+  .duo-consumer .duo-results-grid--consumer .percent {
+    font-size: 38px;
+  }
+
+  .duo-consumer .duo-results-grid--consumer .result-top {
+    font-size: 11px;
+  }
+
+  a.clinic-button.duo-results-button {
+    width: 244px;
+    max-width: 100%;
+    min-height: 51px;
+    margin: 32px auto 0;
+    border: 1px solid #666460;
+    font-family: "Open Sans Condensed", sans-serif;
+    font-size: 16px;
+    font-weight: 660;
+    letter-spacing: 0.32px;
+  }
+}

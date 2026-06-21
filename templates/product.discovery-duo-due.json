@@ -26,6 +26,33 @@
             "custom_liquid": "{% render 'pdp-benefit-icons' %}"
           }
         },
+        "collapsible_tab_mKjhEM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Benefits",
+            "icon": "none",
+            "content": "<h4><span style=\"text-decoration:underline\"><strong>Ympossible Cream:</strong></span></h4><ul><li>Instantly hydration</li><li>Deep, long-lasting nourishment</li><li>Strengthens skin barrier</li><li>Supports collagen production</li><li>Reduces fine lines and wrinkles</li><li>Improves firmness and elasticity</li><li>Targets dark spots & hyperpigmentation</li><li>Evens skin tone </li><li>Smooths texture</li><li>Soothes irritation and redness</li><li>Defends against pollution, UV and blue light</li></ul><h4><span style=\"text-decoration:underline\"><strong>Ympossible Cream Light: </strong></span></h4><ul><li>Supplies instant hydration</li><li>Deep, long-lasting nourishment</li><li>Delivers a radiant glow</li><li>Strengthens skin barrier</li><li>Addresses fine lines </li><li>Supports collagen production</li><li>Smooths skin texture </li><li>Evens skin tone </li><li>Soothes irritation and redness</li><li>Defends against pollution,</li><li>UV and blue light</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_6RpJQj": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Full Description",
+            "icon": "check_mark",
+            "content": "<p>Two powerful skincare essentials, in an on-the-go format: the Ympossible Cream, a rich, deeply nourishing formula ideal for nighttime use, and Ympossible Cream Light, a weightless, dewy finish moisturizer perfect for daytime. Powered by the revolutionary SynerGenius® complex, together, they work to deliver a rejuvenated and radiant complexion.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_WUPyXz": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How to",
+            "icon": "check_mark",
+            "content": "<p>For both creams, apply to cleansed, dry skin on the face, neck, and décolletage.<br/>Ympossible Cream.<br/>Use morning and evening or as a smooth base before makeup. For intensive repair, apply a generous layer as an overnight treatment. Suitable for all skin types, including sensitive skin.<br/>Ympossible Cream Light<br/>Use morning and evening. Wear under or over makeup, or mix with foundation for a radiant finish.</p>",
+            "page": ""
+          }
+        },
         "icon_with_text_dPXXWm": {
           "type": "icon-with-text",
           "settings": {
@@ -52,33 +79,6 @@
           "settings": {
             "text": "Ympossible cream is elegantly rich, velvety in texture and subtle satin finish making it perfect for use under makeup. It absorbs instantly, leaving behind no greasy residue, making it perfect for moments when additional long-lasting hydration for up to 48 hours. Suitable for all ages and skin types particular beneficial for those with normal, dry or combination skin, its versatility extends to both day and night use, seamlessly integrating into any skincare regimen. For a more intensive treatment, generously apply Ympossible Cream as an overnight mask, delivering deep, restorative hydration to parched or stressed skin. Wake up to a refreshed, radiant complexion.<em><strong> </strong></em>",
             "text_style": "body"
-          }
-        },
-        "collapsible_tab_mKjhEM": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Benefits",
-            "icon": "none",
-            "content": "<h4><span style=\"text-decoration:underline\"><strong>Ympossible Cream:</strong></span></h4><ul><li>Instantly hydration</li><li>Deep, long-lasting nourishment</li><li>Strengthens skin barrier</li><li>Supports collagen production</li><li>Reduces fine lines and wrinkles</li><li>Improves firmness and elasticity</li><li>Targets dark spots & hyperpigmentation</li><li>Evens skin tone </li><li>Smooths texture</li><li>Soothes irritation and redness</li><li>Defends against pollution, UV and blue light</li></ul><h4><span style=\"text-decoration:underline\"><strong>Ympossible Cream Light: </strong></span></h4><ul><li>Supplies instant hydration</li><li>Deep, long-lasting nourishment</li><li>Delivers a radiant glow</li><li>Strengthens skin barrier</li><li>Addresses fine lines </li><li>Supports collagen production</li><li>Smooths skin texture </li><li>Evens skin tone </li><li>Soothes irritation and redness</li><li>Defends against pollution,</li><li>UV and blue light</li></ul>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_6RpJQj": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Full Description",
-            "icon": "check_mark",
-            "content": "<p>Two powerful skincare essentials, in an on-the-go format: the Ympossible Cream, a rich, deeply nourishing formula ideal for nighttime use, and Ympossible Cream Light, a weightless, dewy finish moisturizer perfect for daytime. Powered by the revolutionary SynerGenius® complex, together, they work to deliver a rejuvenated and radiant complexion.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_WUPyXz": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "How to",
-            "icon": "check_mark",
-            "content": "<p>For both creams, apply to cleansed, dry skin on the face, neck, and décolletage.<br/>Ympossible Cream.<br/>Use morning and evening or as a smooth base before makeup. For intensive repair, apply a generous layer as an overnight treatment. Suitable for all skin types, including sensitive skin.<br/>Ympossible Cream Light<br/>Use morning and evening. Wear under or over makeup, or mix with foundation for a radiant finish.</p>",
-            "page": ""
           }
         },
         "variant_picker": {
@@ -214,7 +214,7 @@
           "settings": {
             "product_name": "Ympossible Cream",
             "subtitle": "Clinical trial results",
-            "before_after_image": "shopify://shop_images/Group_1000006031.jpg",
+            "before_after_image": "shopify://shop_images/Group_1000006283.jpg",
             "stat_1_top": "Forehead wrinkle depth reduced by up",
             "stat_1_percentage": "66.7%",
             "stat_1_bottom": "in only 4 weeks",
@@ -234,7 +234,7 @@
           "settings": {
             "product_name": "Ympossible Cream Light",
             "subtitle": "Clinical trial results",
-            "before_after_image": "shopify://shop_images/Group_1000006040.jpg",
+            "before_after_image": "shopify://shop_images/Group_1000006284.jpg",
             "stat_1_top": "Immediate hydration boost by up to",
             "stat_1_percentage": "127.8%",
             "stat_1_bottom": "upon application",
@@ -302,8 +302,8 @@
       "settings": {
         "badge_text": "Consumer approved",
         "side_label": "Consumer perception",
-        "image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.png",
-        "image_mobile": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.png",
+        "image": "shopify://shop_images/image_49_b870d534-c705-4aaa-9b4a-d35c9e7baf38.png",
+        "image_mobile": "shopify://shop_images/image_49_b870d534-c705-4aaa-9b4a-d35c9e7baf38.png",
         "button_label": "See all results",
         "button_link": "",
         "padding_top": 0,
@@ -497,9 +497,12 @@
         "headline_prefix": "SynerGenius®",
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
-        "side_panel_desktop_image": "shopify://shop_images/adaq2_1.png",
+        "side_panel_desktop_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_12_8.jpg",
+        "side_panel_mobile_image": "shopify://shop_images/YC_-_Main_Picture.jpg",
+        "side_panel_alt": "",
         "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
         "ingredients_button_label": "See full ingredients list",
+        "show_diagram": false,
         "diagram_desktop_image": "shopify://shop_images/031.jpg",
         "diagram_mobile_image": "shopify://shop_images/031.jpg",
         "diagram_alt": "SynerGenius delivery diagram",
@@ -510,17 +513,25 @@
         "diagram_label_3": "Dermis",
         "diagram_title_3": "Targeted delivery within dermin",
         "cta_product": "discovery-duo",
+        "cta_product_secondary": "",
         "cta_go_to_checkout": false,
+        "cta_apply_discount": false,
+        "cta_checkout_discount_code": "",
+        "show_how_it_works": false,
+        "how_it_works_title": "Here's how it works",
+        "step_1": "Choose Ympossible Cream",
+        "step_2": "Refill added at no cost",
+        "step_3": "2 months of biotech-powered skincare",
         "cta_label": "",
+        "cta_offer_display": "legacy",
+        "cta_discount_text": "| 15% OFF",
         "cta_compare_price": "$86",
         "cta_price": "$48",
         "trust_1": "",
         "trust_2": "",
         "trust_3": "",
         "padding_top": 88,
-        "padding_bottom": 88,
-        "show_diagram": false,
-        "show_how_it_works": false
+        "padding_bottom": 88
       }
     },
     "dd_encapsulation_image": {
@@ -564,6 +575,8 @@
       "settings": {
         "title": "Advanced Encapsulation",
         "body": "Advanced encapsulation technology gradually and precisely releases potent actives beyond the surface of the skin. Protecting ingredients at peak potency, maximizing efficacy, and minimizing irritation.",
+        "desktop_image": "shopify://shop_images/031.jpg",
+        "mobile_image": "shopify://shop_images/031.jpg",
         "theme_asset": "discovery-duo-encapsulation-diagram.png",
         "alt": "Advanced encapsulation delivery diagram",
         "padding_top": 72,
@@ -621,6 +634,8 @@
         "badge_mobile_3": "shopify://shop_images/Group_1000004788.png",
         "button_link": "",
         "button_text": "LEARN MORE ABOUT IMPACT",
+        "mobile_banner_image": "shopify://shop_images/Group_1000006322.jpg",
+        "mobile_banner_alt": "",
         "section_heading": "",
         "feature_title_mobile_1": "NO ADHESIVES",
         "feature_text_mobile_1": "Yoé emblem heat-fused into the cap, eliminating the need for adhesive.",
@@ -640,6 +655,15 @@
     "award_custom_section_6tkNzG": {
       "type": "award-custom-section",
       "blocks": {
+        "award_LiHTxk": {
+          "type": "award",
+          "settings": {
+            "award_logo": "shopify://shop_images/Group_1000005077.png",
+            "mobile_award_logo": "shopify://shop_images/Group_1000006262.jpg",
+            "award_title": "",
+            "award_text": ""
+          }
+        },
         "award_PUtmHt": {
           "type": "award",
           "settings": {
@@ -660,6 +684,7 @@
         }
       },
       "block_order": [
+        "award_LiHTxk",
         "award_PUtmHt",
         "award_pkPMeN"
       ],
@@ -672,8 +697,8 @@
       "type": "two-column-image-section",
       "name": "Two Column Images",
       "settings": {
-        "left_image": "shopify://shop_images/vaiyulaw_yoe_urgent2948_edit_1.png",
-        "right_image": "shopify://shop_images/image_49.png"
+        "left_image": "shopify://shop_images/vaiyulaw_yoe_urgent2975_1_2.jpg",
+        "right_image": "shopify://shop_images/vaiyulaw_yoe_urgent2975_3.jpg"
       }
     },
     "products_slide_section_ywEKJh": {

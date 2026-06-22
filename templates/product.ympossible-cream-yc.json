@@ -20,33 +20,10 @@
           "type": "description",
           "settings": {}
         },
-        "icon_with_text_9jXtWM": {
-          "type": "icon-with-text",
+        "benefit_icons_pdp": {
+          "type": "custom_liquid",
           "settings": {
-            "layout": "horizontal",
-            "icon_1": "apple",
-            "image_1": "shopify://shop_images/Group_1000004350_1.svg",
-            "heading_1": "Ewg Verified",
-            "icon_2": "banana",
-            "image_2": "shopify://shop_images/Group_1000004349_1.svg",
-            "heading_2": "leap bunny certified",
-            "icon_3": "bottle",
-            "image_3": "shopify://shop_images/Group_1000004355_1.svg",
-            "heading_3": "Vegan",
-            "icon_4": "Cruelty-Free",
-            "image_4": "shopify://shop_images/Group_1000004353_1.svg",
-            "heading_4": "Fragrance Free",
-            "icon_5": "bottle",
-            "image_5": "shopify://shop_images/refil_icon_tag.svg",
-            "heading_5": "Refillable"
-          }
-        },
-        "text_cT8XEa": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "Ympossible cream is elegantly rich, velvety in texture and subtle satin finish making it perfect for use under makeup. It absorbs instantly, leaving behind no greasy residue, making it perfect for moments when additional long-lasting hydration for up to 48 hours. Suitable for all ages and skin types particular beneficial for those with normal, dry or combination skin, its versatility extends to both day and night use, seamlessly integrating into any skincare regimen. For a more intensive treatment, generously apply Ympossible Cream as an overnight mask, delivering deep, restorative hydration to parched or stressed skin. Wake up to a refreshed, radiant complexion.<em><strong> </strong></em>",
-            "text_style": "body"
+            "custom_liquid": "{% render 'pdp-benefit-icons' %}"
           }
         },
         "collapsible_tab_mKjhEM": {
@@ -76,6 +53,35 @@
             "page": ""
           }
         },
+        "icon_with_text_9jXtWM": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "apple",
+            "image_1": "shopify://shop_images/Group_1000004350_1.svg",
+            "heading_1": "Ewg Verified",
+            "icon_2": "banana",
+            "image_2": "shopify://shop_images/Group_1000004349_1.svg",
+            "heading_2": "leap bunny certified",
+            "icon_3": "bottle",
+            "image_3": "shopify://shop_images/Group_1000004355_1.svg",
+            "heading_3": "Vegan",
+            "icon_4": "Cruelty-Free",
+            "image_4": "shopify://shop_images/Group_1000004353_1.svg",
+            "heading_4": "Fragrance Free",
+            "icon_5": "bottle",
+            "image_5": "shopify://shop_images/refil_icon_tag.svg",
+            "heading_5": "Refillable"
+          }
+        },
+        "text_cT8XEa": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Ympossible cream is elegantly rich, velvety in texture and subtle satin finish making it perfect for use under makeup. It absorbs instantly, leaving behind no greasy residue, making it perfect for moments when additional long-lasting hydration for up to 48 hours. Suitable for all ages and skin types particular beneficial for those with normal, dry or combination skin, its versatility extends to both day and night use, seamlessly integrating into any skincare regimen. For a more intensive treatment, generously apply Ympossible Cream as an overnight mask, delivering deep, restorative hydration to parched or stressed skin. Wake up to a refreshed, radiant complexion.<em><strong> </strong></em>",
+            "text_style": "body"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -91,6 +97,12 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "shipping_note_pdp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'pdp-shipping-note' %}"
           }
         },
         "afterpay_on_site_messaging_payments_messaging_pK7Gjz": {
@@ -117,18 +129,6 @@
             "show_upper_limit": true,
             "show_if_outside_limits": true,
             "product": "{{product}}"
-          }
-        },
-        "benefit_icons_pdp": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'pdp-benefit-icons' %}"
-          }
-        },
-        "shipping_note_pdp": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'pdp-shipping-note' %}"
           }
         }
       },
@@ -391,15 +391,6 @@
             "benefits": "Visibly firmer, lifted"
           }
         },
-        "active_3": {
-          "type": "active",
-          "settings": {
-            "icon": "shopify://shop_images/mobile-timut-pepper.jpg",
-            "name": "Tranexamic Acid",
-            "action": "Brighten",
-            "benefits": "Dark spots visibly reduced, brighter complexion"
-          }
-        },
         "active_4": {
           "type": "active",
           "settings": {
@@ -507,7 +498,6 @@
         "mechanism_4",
         "active_1",
         "active_2",
-        "active_3",
         "active_4",
         "active_BN6LiL",
         "active_5",

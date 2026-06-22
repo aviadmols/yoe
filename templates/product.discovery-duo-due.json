@@ -260,7 +260,7 @@
         "badge_text": "Clinically proven",
         "main_headline": "Visibly transformed.",
         "button_label": "See all results",
-        "button_link": "",
+        "button_link": "#open_popup",
         "padding_top": 40,
         "padding_bottom": 40
       }
@@ -307,7 +307,7 @@
         "image": "shopify://shop_images/image_49_b870d534-c705-4aaa-9b4a-d35c9e7baf38.png",
         "image_mobile": "shopify://shop_images/image_49_b870d534-c705-4aaa-9b4a-d35c9e7baf38.png",
         "button_label": "See all results",
-        "button_link": "",
+        "button_link": "#open_popup",
         "padding_top": 0,
         "padding_bottom": 0
       }

@@ -794,6 +794,13 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "popup_clinical_TgHwcP": {
+      "type": "popup_clinical",
+      "name": "Popup Clinical",
+      "settings": {
+        "trigger_text": "Open Popup"
+      }
     }
   },
   "order": [
@@ -807,6 +814,7 @@
     "award_custom_section_6tkNzG",
     "two_column_image_section_tVEhzM",
     "products_slide_section_ywEKJh",
-    "1728648437ae2fb795"
+    "1728648437ae2fb795",
+    "popup_clinical_TgHwcP"
   ]
 }

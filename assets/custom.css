@@ -200,6 +200,14 @@ nav.header__inline-menu {
 
 }
 
+@media (max-width: 767px) {
+    .product__accordion .accordion__content ul > li {
+        font-size: 14px !important;
+        font-style: normal;
+        line-height: 1.4 !important;
+    }
+}
+
 /** Ticks style **/
 .product__accordion .accordion__content ul li::before {
     background: transparent url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNSAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAuNDIzODI4IDQuOTEwOEw1LjAzMzE5IDkuMzg0NTlMMTQuMjUxOSAwLjQzNzAxMiIgc3Ryb2tlPSIjNjY2NDYwIiBzdHlsZT0ic3Ryb2tlOiM2NjY0NjA7c3Ryb2tlOmNvbG9yKGRpc3BsYXktcDMgMC40MDAwIDAuMzkyMiAwLjM3NjUpO3N0cm9rZS1vcGFjaXR5OjE7IiBzdHJva2Utd2lkdGg9IjEuMjE3OSIvPgo8L3N2Zz4K") no-repeat center center;

@@ -548,6 +548,7 @@ a.clinic-button.duo-results-button:hover {
   }
 
   a.clinic-button.duo-results-button {
+    display: flex;
     width: 244px;
     max-width: 100%;
     min-height: 51px;

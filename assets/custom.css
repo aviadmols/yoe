@@ -6294,6 +6294,10 @@ body:not(.slideron) .header__icons--localization .localization-form__select .ico
     fill: #666460 !important;
 }
 
+.header_sections.dark_header .header__icons--localization .localization-form__select .icon-caret path {
+    fill: #666460 !important;
+}
+
 
 .template-page-20-off-page a.header__icon.header__icon--account.link.focus-inset.small-hide path,
 .template-page-20-off-page a.header__icon.header__icon--account.link.focus-inset.small-hide circle,

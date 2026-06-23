@@ -204,6 +204,7 @@ nav.header__inline-menu {
     .product__accordion .accordion__content ul > li {
         font-size: 14px !important;
         font-style: normal;
+        font-variation-settings: 'wdth' 87;
         line-height: 1.4 !important;
     }
 }
@@ -6287,6 +6288,10 @@ body.template-page-20-off-page:not(.overflow-hidden-tablet) .header_sections:not
 body:not(.slideron) .header__icons--localization .localization-form__select .icon-caret path,
 .template-page-20-off-page .header_sections:not(.homepageheader) .header_to_div path {
     fill: #fff !important;
+}
+
+.header_sections:not(.homepageheader) .header__icons--localization .localization-form__select .icon-caret path {
+    fill: #666460 !important;
 }
 
 

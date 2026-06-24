@@ -66,8 +66,13 @@
                                                 </label>
                                                 <div class="loop-subscription-group-discount-badge loop-display-none" id="loop-discount-badge-{{ variant.id }}-{{selling_plan_group.id}}">
                                                 </div>
+                                                {%- comment %}YOE computed discount badge{% endcomment -%}
+                                                {%- if variant.price > allocation.price -%}
+                                                    {%- assign yoe_sub_save = variant.price | minus: allocation.price | times: 100 | divided_by: variant.price -%}
+                                                    <span class="yoe-sub-badge">{{ yoe_sub_save }}% OFF</span>
+                                                {%- endif -%}
                                             </div>
-                                            <div class="loop-subscription-group-discover-benefits"><a  id="toggleLink_{{ variant.id }}_{{ selling_plan_group.id }}" onclick="toggleBenefits('{{ variant.id }}', '{{ selling_plan_group.id }}')" style=" text-decoration: underline;  cursor: pointer;"><u>Discover Benefits</u></a></div>
+                                            <div class="loop-subscription-group-discover-benefits"><a  id="toggleLink_{{ variant.id }}_{{ selling_plan_group.id }}" style=" text-decoration: underline;  cursor: pointer;"><u>Discover Benefits</u></a></div>
 
                                             <div class="loop-subscription-group-price-container">
                                                 {% if current_variant.compare_at_price and current_variant.compare_at_price > current_variant.price %}
@@ -78,6 +83,10 @@
                                                 <div id="loop-price-{{ variant.id }}-{{ selling_plan_group.id }}" class="loop-subscription-group-price-amount">
                                                     {{ current_variant.price | money_without_trailing_zeros }}
                                                 </div>
+                                                {%- comment %}YOE computed strikethrough (one-time price){% endcomment -%}
+                                                {%- if variant.price > allocation.price -%}
+                                                    <span class="yoe-sub-strike">{{ variant.price | money_without_trailing_zeros }}</span>
+                                                {%- endif -%}
                                                 <div class="loop-subscription-group-price-quantity">
                                                         each
                                                 </div>
@@ -92,23 +101,9 @@
                                                 </select>
                                                 <div class="loop-selling-plan-selector-description" id="loop-selling-plan-description-{{ variant.id }}-{{ selling_plan_group.id }}" style="display:none;"></div>
                                                 </div>
-
-<script>
-  function toggleBenefits(variantId, sellingPlanGroupId) {
-    var benefits = document.getElementById('loop-selling-plan-description-' + variantId + '-' + sellingPlanGroupId);
-    var link_0 = document.getElementById('toggleLink_' + variantId + '_' + sellingPlanGroupId);
-    
-    if (benefits.style.display === 'none') {
-      benefits.style.display = 'block';
-      link_0.innerHTML = '<u>Close</u>';
-    } else {
-      benefits.style.display = 'none';
-      link_0.innerHTML = '<u>Discover Benefits/u>';
-    }
-  }
-</script>
-                                
-
+                                            {%- if yoe_extras_html != blank -%}
+                                                {{ yoe_extras_html }}
+                                            {%- endif -%}
                                         </div>
                                     {% endif %}
                                 </div>

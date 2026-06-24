@@ -1,0 +1,722 @@
+/* ==========================================================================
+   YOE Buy Module
+   Card-style variant picker + LOOP subscription / one-time purchase restyle.
+
+   Units:
+   - Desktop: rem (theme root font-size is fluid, ~20px at full width, so the
+     module scales with the theme. 1rem = 20px reference).
+   - Mobile (<= 768px): px (theme root is 12px on mobile; fixed px keeps sizes
+     stable instead of shrinking).
+
+   All rules are scoped under .yoe-buy-module. LOOP markup is NOT changed in
+   structure - only restyled here (with !important where LOOP injects its own
+   inline styles at runtime).
+   ========================================================================== */
+
+.yoe-buy-module {
+  --yoe-accent: #bd1e18;
+  --yoe-ink: #666460;
+  --yoe-muted: #666460;
+  --yoe-line: #e2e0dd;
+  --yoe-surface: #ffffff;
+  --yoe-surface-soft: #f7f6f5;
+  --yoe-radius: 0;
+}
+
+/* ==========================================================================
+   1. Variant picker - image cards (DESKTOP / rem)
+   ========================================================================== */
+
+.yoe-buy-module .yoe-variant-cards__fieldset {
+  border: 0;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.yoe-buy-module .yoe-variant-cards__fieldset .form__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--yoe-muted);
+}
+
+.yoe-buy-module .yoe-variant-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.yoe-buy-module .yoe-variant-card__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.yoe-buy-module .yoe-variant-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.6rem;
+  padding: 0.6rem 0.7rem;
+  border: 1.5px solid var(--yoe-line);
+  border-radius: var(--yoe-radius);
+  background: var(--yoe-surface);
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.yoe-buy-module .yoe-variant-card__media {
+  flex: 0 0 auto;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background: var(--yoe-surface-soft);
+  overflow: hidden;
+}
+
+.yoe-buy-module .yoe-variant-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.yoe-buy-module .yoe-variant-card__name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--yoe-ink);
+}
+
+.yoe-buy-module .yoe-variant-card:hover {
+  border-color: var(--yoe-muted);
+}
+
+.yoe-buy-module .yoe-variant-card__input:checked + .yoe-variant-card {
+  border-color: var(--yoe-accent);
+  box-shadow: inset 0 0 0 1px var(--yoe-accent);
+}
+
+.yoe-buy-module .product-form__input label {
+  background: #fff !important;
+}
+
+.yoe-buy-module .product-form__input input[type='radio'] + label:hover {
+  background: #fff !important;
+}
+
+.yoe-buy-module .product-form__input input[type='radio']:checked + label {
+  background: #fff !important;
+  border-color: var(--yoe-accent);
+  box-shadow: inset 0 0 0 1px var(--yoe-accent);
+}
+
+.yoe-buy-module .yoe-variant-card__input:focus-visible + .yoe-variant-card {
+  outline: 2px solid var(--yoe-accent);
+  outline-offset: 2px;
+}
+
+.yoe-buy-module .yoe-variant-card__input.disabled + .yoe-variant-card {
+  opacity: 0.45;
+}
+
+/* ==========================================================================
+   2. LOOP widget - card layout (DESKTOP / rem)
+   ========================================================================== */
+
+.yoe-buy-module .loop-subscription-container {
+  margin: 0 0 1rem;
+}
+
+.yoe-buy-module .loop-selling-plan-fieldset {
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column;
+  gap: 0;
+}
+
+.yoe-buy-module .loop-selling-plan-fieldset-legend,
+.yoe-buy-module .loop-purchase-options-label {
+  padding: 0;
+}
+
+.yoe-buy-module #loop-one-time-purchase-option-at-top,
+.yoe-buy-module [id^="loop-product-variant-"],
+.yoe-buy-module .loop-one-time-purchase-option-position {
+  border: 0 !important;
+}
+
+/* one-time + subscription become grid cards */
+.yoe-buy-module .loop-one-time-purchase-option,
+.yoe-buy-module .loop-subscription-group {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 0.6rem;
+  row-gap: 0;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0.8rem 0.9rem !important;
+  border: 1.5px solid var(--yoe-line) !important;
+  border-radius: var(--yoe-radius) !important;
+  background: var(--yoe-surface);
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* grid placement of children */
+.yoe-buy-module .loop-subscription-group-radio,
+.yoe-buy-module .loop-one-time-purchase-option-radio {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.yoe-buy-module .loop-subscription-group-text,
+.yoe-buy-module .loop-one-time-purchase-option-labell {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.yoe-buy-module .loop-subscription-group-price-container,
+.yoe-buy-module .loop-one-time-purchase-option-price-container {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.yoe-buy-module .loop-subscription-group-discover-benefits {
+  grid-column: 2 / -1;
+  grid-row: 2;
+}
+
+.yoe-buy-module .loop-subscription-group-selling-plans-container {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
+/* discount badge for one-time sits with the label area */
+.yoe-buy-module .loop-one-time-purchase-option .loop-subscription-group-discount-badge {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+}
+
+/* custom radio - reset LOOP injected absolute/relative positioning */
+.yoe-buy-module .loop-one-time-purchase-option-radio,
+.yoe-buy-module .loop-subscription-group-radio {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  margin: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  border: 1.5px solid var(--yoe-muted) !important;
+  border-radius: 50% !important;
+  background: var(--yoe-surface) !important;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  align-self: center;
+}
+
+.yoe-buy-module .loop-one-time-purchase-option-radio:checked,
+.yoe-buy-module .loop-subscription-group-radio:checked {
+  position: relative !important;
+  border-color: var(--yoe-accent) !important;
+}
+
+/* titles */
+.yoe-buy-module .loop-one-time-purchase-option-labell,
+.yoe-buy-module .loop-subscription-group-labell {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  color: var(--yoe-ink) !important;
+  cursor: pointer;
+}
+
+.yoe-buy-module .loop-subscription-group-text {
+  display: flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* prices */
+.yoe-buy-module .loop-one-time-purchase-option-price-container,
+.yoe-buy-module .loop-subscription-group-price-container {
+  display: flex !important;
+  align-items: baseline;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.yoe-buy-module .loop-one-time-purchase-option-price-amountl,
+.yoe-buy-module .loop-subscription-group-price-amount {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: var(--yoe-ink) !important;
+}
+
+.yoe-buy-module .loop-one-time-purchase-option-price-amount-original,
+.yoe-buy-module .loop-subscription-group-price-amount-original,
+.yoe-buy-module .yoe-sub-strike {
+  font-size: 0.7rem !important;
+  color: var(--yoe-muted) !important;
+  text-decoration: line-through !important;
+}
+
+.yoe-buy-module .loop-one-time-purchase-option-price-quantity,
+.yoe-buy-module .loop-subscription-group-price-quantity {
+  font-size: 0.6rem !important;
+  color: var(--yoe-muted) !important;
+}
+
+/* discover benefits link (replaced by our Read more) */
+.yoe-buy-module .loop-subscription-group-discover-benefits {
+  display: none !important;
+}
+
+.yoe-buy-module .loop-subscription-group-discover-benefits a {
+  color: var(--yoe-muted);
+}
+
+/* delivery frequency dropdown - full width under the title */
+.yoe-buy-module .loop-subscription-group-selling-plans-container {
+  margin-top: 0.2rem;
+}
+
+.yoe-buy-module .loop-selling-plan-selector-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.6rem;
+  color: var(--yoe-muted);
+}
+
+.yoe-buy-module .loop-selling-plan-selector {
+  width: 100% !important;
+  padding: 0.5rem 0.6rem !important;
+  border: 1.5px solid var(--yoe-line) !important;
+  border-radius: 0 !important;
+  background: var(--yoe-surface) !important;
+  font-size: 0.7rem !important;
+  color: var(--yoe-ink) !important;
+  cursor: pointer;
+}
+
+/* discount badges (LOOP's + our computed .yoe-sub-badge) */
+.yoe-buy-module .yoe-sub-badge,
+.yoe-buy-module .loop-subscription-group-discount-badge:not(.loop-display-none),
+.yoe-buy-module .loop-one-time-purchase-option-price-container .loop-subscription-group-discount-badge:not(.loop-display-none) {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0;
+  background: var(--yoe-accent);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* selected state (class added by LOOP JS) */
+.yoe-buy-module .loop-selected-selling-plan-group {
+  border-color: var(--yoe-accent) !important;
+  box-shadow: none;
+  background: #fff;
+}
+
+/* ==========================================================================
+   3. Subscription benefits + free gifts (DESKTOP / rem)
+   ========================================================================== */
+
+.yoe-buy-module .yoe-sub-extras {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--yoe-line);
+}
+
+.yoe-buy-module .yoe-sub-benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.yoe-buy-module .yoe-sub-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--yoe-ink);
+}
+
+.yoe-buy-module .yoe-sub-benefits li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--yoe-accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.yoe-buy-module .yoe-sub-benefits-wrap {
+  position: relative;
+}
+
+.yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-benefits li {
+  padding-inline-end: 6rem;
+}
+
+.yoe-buy-module .yoe-sub-readmore {
+  margin-top: 0.5rem;
+}
+
+.yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-readmore {
+  margin-top: 0;
+}
+
+.yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-readmore__toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.yoe-buy-module .yoe-sub-readmore__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--yoe-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  width: fit-content;
+}
+
+.yoe-buy-module .yoe-sub-readmore__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.yoe-buy-module .yoe-sub-readmore__label--less {
+  display: none;
+}
+
+.yoe-buy-module .yoe-sub-readmore[open] .yoe-sub-readmore__label--more {
+  display: none;
+}
+
+.yoe-buy-module .yoe-sub-readmore[open] .yoe-sub-readmore__label--less {
+  display: inline;
+}
+
+.yoe-buy-module .yoe-sub-readmore__toggle::after {
+  content: "";
+  width: 0.7rem;
+  height: 0.7rem;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E") no-repeat center / contain;
+  transition: transform 0.2s ease;
+}
+
+.yoe-buy-module .yoe-sub-readmore[open] .yoe-sub-readmore__toggle::after {
+  transform: rotate(180deg);
+}
+
+.yoe-buy-module .yoe-sub-readmore__content {
+  margin-top: 0.5rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--yoe-ink);
+}
+
+.yoe-buy-module .yoe-sub-readmore__content ul {
+  margin: 0;
+  padding-inline-start: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.yoe-buy-module .yoe-sub-readmore__content p {
+  margin: 0 0 0.4rem;
+}
+
+.yoe-buy-module .yoe-sub-gifts {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--yoe-line);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.yoe-buy-module .yoe-sub-gifts__image {
+  flex: 0 0 auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+}
+
+.yoe-buy-module .yoe-sub-gifts__title {
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0;
+  background: var(--yoe-ink);
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.yoe-buy-module .yoe-sub-gifts__text {
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--yoe-ink);
+}
+
+/* ==========================================================================
+   4. Add to cart button (DESKTOP / rem)
+   ========================================================================== */
+
+.yoe-buy-module .product-form__submit {
+  width: 100%;
+  min-height: 2.7rem;
+  border-radius: 0;
+  background: var(--yoe-accent);
+  border-color: var(--yoe-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.yoe-buy-module .product-form__submit:hover:not([disabled]) {
+  filter: brightness(0.94);
+}
+
+.yoe-buy-module .product-form__submit .yoe-atc-price:not(:empty) {
+  margin-inline-start: 0.45rem;
+  font-weight: 700;
+}
+
+.yoe-buy-module .product-form__submit::after {
+  display: none;
+}
+
+/* ==========================================================================
+   5. MOBILE overrides (<= 768px / px)
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  .yoe-buy-module {
+    --yoe-radius: 0;
+  }
+
+  /* variant cards */
+  .yoe-buy-module .yoe-variant-cards__fieldset {
+    margin: 0 0 16px;
+  }
+
+  .yoe-buy-module .yoe-variant-cards__fieldset .form__label {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .yoe-buy-module .yoe-variant-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .yoe-buy-module .yoe-variant-card {
+    gap: 12px;
+    min-height: 64px;
+    padding: 12px 14px;
+    border-radius: 0;
+  }
+
+  .yoe-buy-module .yoe-variant-card__media {
+    width: 44px;
+    height: 44px;
+    border-radius: 0;
+  }
+
+  .yoe-buy-module .yoe-variant-card__name {
+    font-size: 15px;
+  }
+
+  /* loop cards */
+  .yoe-buy-module .loop-subscription-container {
+    margin: 0 0 16px;
+  }
+
+  .yoe-buy-module .loop-selling-plan-fieldset {
+    gap: 0;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option,
+  .yoe-buy-module .loop-subscription-group {
+    column-gap: 12px !important;
+    row-gap: 0 !important;
+    padding: 14px 14px !important;
+    border-radius: 0 !important;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option-radio,
+  .yoe-buy-module .loop-subscription-group-radio {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option-labell,
+  .yoe-buy-module .loop-subscription-group-labell {
+    font-size: 16px !important;
+  }
+
+  .yoe-buy-module .loop-subscription-group-text {
+    gap: 8px;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option-price-container,
+  .yoe-buy-module .loop-subscription-group-price-container {
+    gap: 8px;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option-price-amountl,
+  .yoe-buy-module .loop-subscription-group-price-amount {
+    font-size: 18px !important;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option-price-amount-original,
+  .yoe-buy-module .loop-subscription-group-price-amount-original,
+  .yoe-buy-module .yoe-sub-strike {
+    font-size: 13px !important;
+  }
+
+  .yoe-buy-module .loop-one-time-purchase-option-price-quantity,
+  .yoe-buy-module .loop-subscription-group-price-quantity {
+    font-size: 11px !important;
+  }
+
+  .yoe-buy-module .loop-subscription-group-discover-benefits {
+    font-size: 13px;
+  }
+
+  .yoe-buy-module .loop-subscription-group-selling-plans-container {
+    margin-top: 4px;
+  }
+
+  .yoe-buy-module .loop-selling-plan-selector-label {
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+
+  .yoe-buy-module .loop-selling-plan-selector {
+    padding: 10px 12px !important;
+    border-radius: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .yoe-buy-module .yoe-sub-badge,
+  .yoe-buy-module .loop-subscription-group-discount-badge:not(.loop-display-none) {
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  /* sub extras */
+  .yoe-buy-module .yoe-sub-extras {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .yoe-buy-module .yoe-sub-benefits {
+    gap: 6px;
+  }
+
+  .yoe-buy-module .yoe-sub-benefits li {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-benefits li {
+    padding-inline-end: 90px;
+  }
+
+  .yoe-buy-module .yoe-sub-benefits li::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  .yoe-buy-module .yoe-sub-readmore__toggle {
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .yoe-buy-module .yoe-sub-readmore__toggle::after {
+    width: 14px;
+    height: 14px;
+  }
+
+  .yoe-buy-module .yoe-sub-readmore__content {
+    font-size: 13px;
+  }
+
+  .yoe-buy-module .yoe-sub-gifts {
+    margin-top: 14px;
+    padding-top: 14px;
+    gap: 12px;
+  }
+
+  .yoe-buy-module .yoe-sub-gifts__image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .yoe-buy-module .yoe-sub-gifts__title {
+    margin-bottom: 4px;
+    padding: 3px 10px;
+    font-size: 11px;
+  }
+
+  .yoe-buy-module .yoe-sub-gifts__text {
+    font-size: 12px;
+  }
+
+  /* button */
+  .yoe-buy-module .product-form__submit {
+    min-height: 45px;
+    height: 45px;
+    font-size: 14px;
+  }
+
+  .yoe-buy-module .product-form__submit .yoe-atc-price:not(:empty) {
+    margin-inline-start: 6px;
+  }
+}

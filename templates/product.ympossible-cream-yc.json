@@ -96,7 +96,19 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
+            "show_gift_card_recipient": false,
+            "show_subscription_benefits": true,
+            "subscription_benefit_1": "Convenient delivery every 4 weeks",
+            "subscription_benefit_2": "Free shipping",
+            "subscription_benefit_3": "Cancel anytime",
+            "subscription_read_more_label": "Read more",
+            "subscription_reasons": "<ul><li>Enjoy 20% off on your Yoé subscriptions</li><li>Pause or cancel your subscription anytime</li><li>Adjust your cycle frequency anytime to suit your needs</li><li>Easily swap between our Ympossible Cream and Ympossible Light Cream</li><li>Free delivery on all auto-replenish cycles</li><li>To ensure your Yoé arrives before you run out, billing occurs 7 days prior</li></ul>",
+            "show_free_gifts": true,
+            "free_gifts_title": "Exclusive free gifts",
+            "free_gifts_text": "Get the Discovery Duo as a gift with your second order",
+            "free_gifts_product": "discovery-duo",
+            "lock_subscription_frequency": true,
+            "locked_frequency_match": "4 weeks"
           }
         },
         "shipping_note_pdp": {

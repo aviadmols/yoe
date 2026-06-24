@@ -91,13 +91,16 @@
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
         <div class="footer__left">
-          <div class="text-align-center-mobile">
+          <div class="text-align-center-mobile"{% if section.settings.show_ask_ai %} style="display:none;"{% endif %}>
           <svg xmlns="http://www.w3.org/2000/svg" width="46" height="56" viewBox="0 0 46 56" fill="none" class="logo">
             <path d="M14.8182 49.8501C15.9608 46.844 14.45 43.4808 11.4439 42.3383C8.43771 41.1957 5.07454 42.7065 3.93201 45.7126C2.78948 48.7188 4.30025 52.082 7.3064 53.2245C10.3125 54.367 13.6757 52.8563 14.8182 49.8501Z" fill="#CFCDC9"/>
             <path d="M19.9505 5.28403C19.5142 4.49915 18.9595 3.78663 18.3259 3.1596C16.7605 1.67974 14.669 0.38623 12.424 0.38623L0.0917969 0.390615C0.0961817 0.430078 0.098374 0.886095 0.100566 0.925558C0.657433 1.01545 1.20115 1.14699 1.72074 1.34211C3.61497 2.04806 5.12552 3.51915 6.10552 5.28622L25.8282 40.941C25.8282 40.941 27.9329 38.867 30.0903 36.7097C32.8461 33.9539 33.449 29.7072 31.5635 26.2959L19.9505 5.28403Z" fill="#CFCDC9"/>
             <path d="M44.7859 5.68085C43.2249 2.89432 40.4735 0.787438 37.5225 0.456387C37.2507 0.425693 34.291 0.38623 34.291 0.38623H27.5713C27.5757 0.427886 27.5779 0.883903 27.5801 0.923366C28.1369 1.01325 28.6806 1.1448 29.2002 1.33992C31.0945 2.04587 32.605 3.51696 33.585 5.28403C33.585 5.28403 33.6025 5.26868 33.6113 5.2621L41.1246 18.6729C45.7221 16.0969 47.362 10.2805 44.7859 5.68304V5.68085Z" fill="#CFCDC9"/>
           </svg>
       </div>
+          {%- if section.settings.show_ask_ai -%}
+            {%- render 'ask-ai-buttons' -%}
+          {%- endif -%}
           {%- if section.settings.newsletter_enable -%}
             <div class="footer__newsletter">
               <h3>{{ section.settings.newsletter_heading }}</h3>
@@ -381,6 +384,12 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "color_scheme",
       "label": "Color Scheme",
       "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ask_ai",
+      "default": true,
+      "label": "Show \"Ask AI\" block"
     },
     {
       "type": "checkbox",

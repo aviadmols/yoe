@@ -1,7 +1,7 @@
 {%- comment %}BSS Login{% endcomment -%}{%- assign bss_product__has_only_default_variant = false %} {% assign _variants_count = 0 %} {% assign bss_product__first_available_variant = nil %} {% assign bss_product__selected_variant = nil %} {% assign bss_product__selected_or_first_available_variant = nil %} {% assign use_variant = true %} {% for variant in product.variants %} {% capture var %} {% render 'bss-lock-condition', scope: 'subject', subject: variant, subject_parent: product, bss_lock_action: 'handle-variant-default' %} {% endcapture %} {% if var contains "true" %} {% continue %} {% endif %} {% assign _variants_count = _variants_count | plus: 1 %} {% if bss_product__first_available_variant == nil and variant.available %} {% assign bss_product__first_available_variant = variant %} {% endif %} {% if bss_product__selected_variant == nil and variant.selected %} {% assign bss_product__selected_variant = variant %} {% endif %} {% if variant == product.selected_or_first_available_variant %} {% assign bss_product__selected_or_first_available_variant = product.selected_or_first_available_variant %} {% endif %} {% endfor %} {% if _variants_count == 1 %} {% assign bss_product__has_only_default_variant = true %} {% endif %} {% if bss_product__selected_or_first_available_variant == nil %} {% assign bss_product__selected_or_first_available_variant = bss_product__first_available_variant %} {% endif -%}{%- comment %}BSS-Login{% endcomment -%}
 <section
         id="MainProduct-{{ section.id }}"
-        class="page-width main-product-section section-{{ section.id }}-padding{% if section.settings.custom_background_image != blank %} custom-background-gallery-delay{% endif %}{% render 'pdp-scroll-animate-class' %}"
+        class="page-width main-product-section section-{{ section.id }}-padding{% if section.settings.custom_background_image != blank %} custom-background-gallery-delay{% endif %}{% render 'pdp-scroll-animate-class', keep: true %}"
         data-section="{{ section.id }}"
 >
     {%- if section.settings.custom_background_image != blank -%}
@@ -12,6 +12,7 @@
         ></div>
     {%- endif -%}
     {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+    {{ 'yoe-buy-module.css' | asset_url | stylesheet_tag }}
     {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
     {{ 'component-price.css' | asset_url | stylesheet_tag }}
     {{ 'component-slider.css' | asset_url | stylesheet_tag }}
@@ -160,7 +161,7 @@
                     id="ProductInfo-{{ section.id }}"
                     data-section="{{ section.id }}"
                     data-url="{{ product.url }}"
-                    class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
+                    class="product__info-container yoe-buy-module{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
             >
                 {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
@@ -1003,6 +1004,10 @@
             {
               "value": "button",
               "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+            },
+            {
+              "value": "card",
+              "label": "Image cards"
             }
           ],
           "default": "button",
@@ -1028,6 +1033,98 @@
           "default": false,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        },
+        {
+          "type": "header",
+          "content": "Subscription card extras"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_subscription_benefits",
+          "default": false,
+          "label": "Show subscription benefits"
+        },
+        {
+          "type": "text",
+          "id": "subscription_benefit_1",
+          "label": "Benefit 1",
+          "default": "Convenient delivery"
+        },
+        {
+          "type": "text",
+          "id": "subscription_benefit_2",
+          "label": "Benefit 2",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "subscription_benefit_3",
+          "label": "Benefit 3",
+          "default": "Cancel anytime"
+        },
+        {
+          "type": "text",
+          "id": "subscription_read_more_label",
+          "label": "Read more label",
+          "default": "Read more"
+        },
+        {
+          "type": "text",
+          "id": "subscription_read_less_label",
+          "label": "Read less label",
+          "default": "Read less"
+        },
+        {
+          "type": "richtext",
+          "id": "subscription_reasons",
+          "label": "Read more content (subscription reasons)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_free_gifts",
+          "default": false,
+          "label": "Show free gifts"
+        },
+        {
+          "type": "text",
+          "id": "free_gifts_title",
+          "label": "Free gifts title",
+          "default": "Exclusive free gifts"
+        },
+        {
+          "type": "text",
+          "id": "free_gifts_text",
+          "label": "Free gifts text",
+          "default": "A free gift with your next delivery"
+        },
+        {
+          "type": "image_picker",
+          "id": "free_gifts_image",
+          "label": "Free gifts image"
+        },
+        {
+          "type": "product",
+          "id": "free_gifts_product",
+          "label": "Free gift product",
+          "info": "Its image is used for the free gift (overrides the image above)."
+        },
+        {
+          "type": "header",
+          "content": "Subscription frequency"
+        },
+        {
+          "type": "checkbox",
+          "id": "lock_subscription_frequency",
+          "default": false,
+          "label": "Lock delivery frequency",
+          "info": "Hides the frequency dropdown and forces the matching plan."
+        },
+        {
+          "type": "text",
+          "id": "locked_frequency_match",
+          "label": "Locked frequency text match",
+          "default": "4 weeks",
+          "info": "Selects the delivery option whose label contains this text."
         }
       ]
     },

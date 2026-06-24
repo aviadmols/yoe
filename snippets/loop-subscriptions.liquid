@@ -8,7 +8,7 @@
 
 <div class='loop-display-none'>Rendering loop-subscriptions</div>
 {%- if type contains 'product-widget' -%}
-		{% render 'loop-widget-custom' type: 'product-widget', product: product %}
+		{% render 'loop-widget-custom' type: 'product-widget', product: product, yoe_extras_html: yoe_extras_html %}
 {%- elsif type == 'customer-portal-link' -%}
 	{% assign locale = shop_locale.iso_code %}
 	{% if locale == null %}

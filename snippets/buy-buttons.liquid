@@ -53,6 +53,74 @@
   DO NOT modify this source code
   LOOP WIDGET CODE STARTS
 {% endcomment %}
+{%- liquid
+  assign show_sub_extras = false
+  if product.selling_plan_groups.size > 0
+    if block.settings.show_subscription_benefits or block.settings.show_free_gifts
+      assign show_sub_extras = true
+    endif
+  endif
+-%}
+{%- capture yoe_sub_extras_html -%}
+  {%- if show_sub_extras -%}
+    <div class="yoe-sub-extras">
+      {%- if block.settings.show_subscription_benefits -%}
+        <div class="yoe-sub-benefits-wrap">
+          <ul class="yoe-sub-benefits">
+            {%- if block.settings.subscription_benefit_1 != blank -%}
+              <li>{{ block.settings.subscription_benefit_1 | escape }}</li>
+            {%- endif -%}
+            {%- if block.settings.subscription_benefit_2 != blank -%}
+              <li>{{ block.settings.subscription_benefit_2 | escape }}</li>
+            {%- endif -%}
+            {%- if block.settings.subscription_benefit_3 != blank -%}
+              <li>{{ block.settings.subscription_benefit_3 | escape }}</li>
+            {%- endif -%}
+          </ul>
+          {%- if block.settings.subscription_reasons != blank -%}
+            <details class="yoe-sub-readmore">
+              <summary class="yoe-sub-readmore__toggle">
+                <span class="yoe-sub-readmore__label yoe-sub-readmore__label--more">{{ block.settings.subscription_read_more_label | default: 'Read more' | escape }}</span>
+                <span class="yoe-sub-readmore__label yoe-sub-readmore__label--less">{{ block.settings.subscription_read_less_label | default: 'Read less' | escape }}</span>
+              </summary>
+              <div class="yoe-sub-readmore__content rte">
+                {{ block.settings.subscription_reasons }}
+              </div>
+            </details>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if block.settings.show_free_gifts -%}
+        {%- liquid
+          assign gift_product = block.settings.free_gifts_product
+          assign gift_image = block.settings.free_gifts_image
+          if gift_product != blank
+            assign gift_image = gift_product.featured_image | default: gift_product.images.first | default: gift_image
+          endif
+        -%}
+        <div class="yoe-sub-gifts">
+          {%- if gift_image != blank -%}
+            {{ gift_image | image_url: width: 200 | image_tag:
+              loading: 'lazy',
+              widths: '100, 140, 200',
+              sizes: '100px',
+              class: 'yoe-sub-gifts__image',
+              alt: block.settings.free_gifts_title
+            }}
+          {%- endif -%}
+          <div class="yoe-sub-gifts__body">
+            {%- if block.settings.free_gifts_title != blank -%}
+              <span class="yoe-sub-gifts__title">{{ block.settings.free_gifts_title | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.free_gifts_text != blank -%}
+              <p class="yoe-sub-gifts__text">{{ block.settings.free_gifts_text | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
 {% assign template_exists = false %}
 {% capture template_content %}
     {% render 'loop-subscriptions', type: 'product-widget', product: product %}
@@ -63,11 +131,18 @@
 {% endif %}
 
 {% if template_exists %}
-  {% render 'loop-subscriptions', type: 'product-widget', product: product %}
+  {% render 'loop-subscriptions', type: 'product-widget', product: product, yoe_extras_html: yoe_sub_extras_html %}
 {% endif %}
 {% comment %}
   LOOP WIDGET CODE ENDS
 {% endcomment %}
+
+        {%- if product.selling_plan_groups.size > 0 and block.settings.lock_subscription_frequency -%}
+          <style>
+            #loop-subscription-container-{{ product.id }} .loop-subscription-group-selling-plans-container { display: none !important; }
+          </style>
+        {%- endif -%}
+
         <input
           type="hidden"
           name="id"
@@ -75,6 +150,120 @@
           disabled
           class="product-variant-id"
         >
+
+        <script>
+          (function () {
+            var pid = {{ product.id | json }};
+            var hasSub = {{ product.selling_plan_groups.size }} > 0;
+            var lockEnabled = {{ block.settings.lock_subscription_frequency | default: false | json }};
+            var matchText = {{ block.settings.locked_frequency_match | default: '4 weeks' | json }};
+            var rx = new RegExp(String(matchText).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+
+            var form, priceEl, subContainer, priceBlock;
+
+            function visibleText(root, sel) {
+              var found = '';
+              if (!root) return found;
+              root.querySelectorAll(sel).forEach(function (e) {
+                if (e.getBoundingClientRect().height > 0) found = e.textContent.trim();
+              });
+              return found;
+            }
+            function subscribeSelected() {
+              var one = document.getElementById('loop-one-time-purchase-' + pid);
+              return !(one && one.checked);
+            }
+
+            // ----- Add-to-cart button price -----
+            function currentPrice() {
+              if (hasSub && subContainer) {
+                if (!subscribeSelected()) {
+                  return visibleText(subContainer, '.loop-one-time-purchase-option-price-amountl');
+                }
+                return visibleText(subContainer, '.loop-subscription-group-price-amount');
+              }
+              var t = visibleText(priceBlock, '.loop-one-time-purchase-option-price-amountl');
+              if (t) return t;
+              return visibleText(priceBlock, '.price-item--sale, .price-item--regular');
+            }
+            function updatePrice() {
+              if (!priceEl) return;
+              var p = currentPrice();
+              if (p) p = p.replace(/US\$/g, '$');
+              priceEl.textContent = p ? p : '';
+            }
+
+            // ----- Subscription frequency lock -----
+            function desiredValue(container) {
+              var v = null;
+              container.querySelectorAll('.loop-selling-plan-selector').forEach(function (sel) {
+                var opt = Array.prototype.find.call(sel.options, function (o) { return rx.test(o.textContent); });
+                if (opt) v = opt.value;
+              });
+              return v;
+            }
+            // returns true when nothing more needs to be done
+            function applyLock() {
+              if (!lockEnabled || !hasSub || !subContainer) return true;
+              if (!subscribeSelected()) return true;
+              var desired = desiredValue(subContainer);
+              if (!desired) return true;
+              subContainer.querySelectorAll('.loop-selling-plan-selector').forEach(function (sel) {
+                if (sel.value !== desired) { sel.value = desired; }
+              });
+              var sp = form.querySelector('input[name="selling_plan"]');
+              if (sp && sp.value === desired) return true;
+              subContainer.querySelectorAll('.loop-selling-plan-selector').forEach(function (sel) {
+                sel.dispatchEvent(new Event('change', { bubbles: true }));
+              });
+              return false;
+            }
+
+            function tick() {
+              var lockDone = applyLock();
+              updatePrice();
+              return lockDone;
+            }
+
+            function init() {
+              form = document.querySelector('form[data-loop-product-id="' + pid + '"]');
+              if (!form) return;
+              priceEl = form.querySelector('.yoe-atc-price');
+              subContainer = document.getElementById('loop-subscription-container-' + pid);
+              priceBlock = document.getElementById('price-{{ section_id }}');
+
+              if (subContainer) {
+                new MutationObserver(updatePrice).observe(subContainer, { subtree: true, childList: true, characterData: true, attributes: true });
+              }
+              if (priceBlock) {
+                new MutationObserver(updatePrice).observe(priceBlock, { subtree: true, childList: true, characterData: true });
+              }
+
+              var tries = 0;
+              var iv = setInterval(function () {
+                tries++;
+                var lockDone = tick();
+                if (tries > 60 || (lockEnabled && lockDone)) clearInterval(iv);
+              }, 250);
+
+              document.addEventListener('change', function (e) {
+                if (!e.target) return;
+                var isVariant = e.target.name === 'id' || (e.target.closest && e.target.closest('variant-radios'));
+                if (e.target.name === 'loop_purchase_option' || isVariant) {
+                  setTimeout(function () { applyLock(); updatePrice(); }, 80);
+                }
+              });
+
+              updatePrice();
+            }
+
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', init);
+            } else {
+              init();
+            }
+          })();
+        </script>
 
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
@@ -105,6 +294,11 @@
               {%- else -%}
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
+            </span>
+            <span class="yoe-atc-price" aria-hidden="true">
+              {%- unless bss_product__selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                {{ bss_product__selected_or_first_available_variant.price | money | replace: 'US$', '$' }}
+              {%- endunless -%}
             </span>
             <div class="loading-overlay__spinner hidden">
               <svg

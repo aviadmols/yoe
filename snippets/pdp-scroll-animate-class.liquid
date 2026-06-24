@@ -1,6 +1,6 @@
 {%- liquid
   assign pdp_scroll_animate = false
-  if template.name == 'product'
+  if keep and template.name == 'product'
     if template.suffix == 'ympossible-cream-light-ycl' or template.suffix == 'ympossible-cream-yc'
       assign pdp_scroll_animate = true
     endif

@@ -47,7 +47,43 @@
     endfor
   -%}
 
-  {%- if block.settings.picker_type == 'button' -%}
+  {%- if block.settings.picker_type == 'card' -%}
+    {%- liquid
+      assign value_image = product.featured_image
+      for v in product.variants
+        if v.options[bss_options_index] == value and v.image
+          assign value_image = v.image
+          break
+        endif
+      endfor
+    -%}
+    <input
+      type="radio"
+      id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      name="{{ option.name }}"
+      value="{{ value | escape }}"
+      form="{{ product_form_id }}"
+      class="yoe-variant-card__input{% if option_disabled %} disabled{% endif %}"
+      {% if option.selected_value == value %}
+        checked
+      {% endif %}
+    >
+    <label class="yoe-variant-card" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+      {%- if value_image -%}
+        <span class="yoe-variant-card__media">
+          {{ value_image | image_url: width: 160 | image_tag:
+            loading: 'lazy',
+            widths: '80, 120, 160, 240',
+            sizes: '80px',
+            class: 'yoe-variant-card__image',
+            alt: value
+          }}
+        </span>
+      {%- endif -%}
+      <span class="yoe-variant-card__name">{{ value }}</span>
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+  {%- elsif block.settings.picker_type == 'button' -%}
     <input
       type="radio"
       id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"

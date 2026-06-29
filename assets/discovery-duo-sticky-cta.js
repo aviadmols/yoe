@@ -141,6 +141,76 @@
     });
   }
 
+  function initSelectionSync(sticky) {
+    var mainForm = document.querySelector('product-form form');
+    if (!mainForm || !mainForm.querySelector('.yoe-atc-price')) return;
+    var stickyForm = sticky.querySelector('form');
+    if (!stickyForm) return;
+
+    function syncPrice() {
+      var src = mainForm.querySelector('.yoe-atc-price');
+      var dst = sticky.querySelector('.dd-sticky-cta__price');
+      if (src && dst) {
+        var text = src.textContent.trim();
+        if (text) dst.textContent = text;
+      }
+    }
+
+    function syncSellingPlan() {
+      var src = mainForm.querySelector('input[name="selling_plan"]');
+      var value = src && src.value ? src.value : '';
+      var input = stickyForm.querySelector('input[name="selling_plan"][data-dd-selling-plan]');
+      if (value) {
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'selling_plan';
+          input.setAttribute('data-dd-selling-plan', '');
+          stickyForm.appendChild(input);
+        }
+        input.value = value;
+      } else if (input) {
+        input.parentNode.removeChild(input);
+      }
+    }
+
+    function syncVariant() {
+      var src = mainForm.querySelector('input[name="id"]');
+      var dst = stickyForm.querySelector('[data-dd-variant-id], input[name="id"]');
+      if (src && dst && src.value) dst.value = src.value;
+    }
+
+    function syncAll() {
+      syncVariant();
+      syncSellingPlan();
+      syncPrice();
+    }
+
+    var scheduled = false;
+    function schedule() {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(function () {
+        scheduled = false;
+        syncAll();
+      });
+    }
+
+    new MutationObserver(schedule).observe(mainForm, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true,
+    });
+    document.addEventListener('change', function (e) {
+      if (e.target && (e.target.name === 'loop_purchase_option' || e.target.name === 'id')) {
+        schedule();
+      }
+    });
+
+    syncAll();
+  }
+
   function initScrollReveal(sticky) {
     if (sticky.parentNode !== document.body) {
       document.body.appendChild(sticky);
@@ -210,6 +280,7 @@
 
     initScrollReveal(sticky);
     initVariantSync(sticky);
+    initSelectionSync(sticky);
     initAddToCartForm(sticky);
   }
 

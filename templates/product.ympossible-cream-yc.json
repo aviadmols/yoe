@@ -106,6 +106,7 @@
             "show_free_gifts": true,
             "free_gifts_title": "Exclusive free gifts",
             "free_gifts_text": "Get the Discovery Duo as a gift with your second order",
+            "free_gifts_value": "$86",
             "free_gifts_product": "discovery-duo",
             "lock_subscription_frequency": true,
             "locked_frequency_match": "4 weeks"

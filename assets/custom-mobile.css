@@ -995,9 +995,9 @@
     }
 
     .footer__left svg:not(.logo) {
-        width: 36.41px !IMPORTANT;
+        width: 36.41px !important;
         height: 35.306px !important;
-        margin-bottom: 40px;
+        margin-bottom: 0;
     }
 
     .product-form__input input[type=radio] + label {

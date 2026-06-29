@@ -111,8 +111,14 @@
   background: #fff !important;
 }
 
+.yoe-buy-module .product-form__input input[type='radio'] + label {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
 .yoe-buy-module .product-form__input input[type='radio'] + label:hover {
   background: #fff !important;
+  border-color: var(--yoe-accent) !important;
+  box-shadow: inset 0 0 0 1px var(--yoe-accent);
 }
 
 .yoe-buy-module .product-form__input input[type='radio']:checked + label {
@@ -467,6 +473,7 @@
 }
 
 .yoe-buy-module .yoe-sub-gifts {
+  position: relative;
   margin-top: 0.7rem;
   padding-top: 0.7rem;
   border-top: 1px dashed var(--yoe-line);
@@ -499,6 +506,23 @@
   margin: 0;
   font-size: 0.7rem;
   color: var(--yoe-ink);
+}
+
+.yoe-buy-module .yoe-sub-gifts__value {
+  position: absolute;
+  top: 0.7rem;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--yoe-accent);
+}
+
+.yoe-buy-module .yoe-sub-gifts__value s {
+  color: var(--yoe-muted);
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -706,6 +730,11 @@
   }
 
   .yoe-buy-module .yoe-sub-gifts__text {
+    font-size: 12px;
+  }
+
+  .yoe-buy-module .yoe-sub-gifts__value {
+    top: 14px;
     font-size: 12px;
   }
 

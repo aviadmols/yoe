@@ -99,6 +99,9 @@
           endif
         -%}
         <div class="yoe-sub-gifts">
+          {%- if block.settings.free_gifts_value != blank -%}
+            <span class="yoe-sub-gifts__value"><strong>FREE</strong> <s>{{ block.settings.free_gifts_value | escape }}</s></span>
+          {%- endif -%}
           {%- if gift_image != blank -%}
             {{ gift_image | image_url: width: 200 | image_tag:
               loading: 'lazy',

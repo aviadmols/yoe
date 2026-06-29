@@ -183,6 +183,15 @@ nav.header__inline-menu {
 .product__accordion .accordion__content ul > li{
     display: flex;
     align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 350;
+    line-height: 130%;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #666460;
+    font-variation-settings: 'wdth' 87;
+
 }
 
 @media (min-width: 769px) {
@@ -202,10 +211,17 @@ nav.header__inline-menu {
 
 @media (max-width: 767px) {
     .product__accordion .accordion__content ul > li {
-        font-size: 14px !important;
-        font-style: normal;
-        font-variation-settings: 'wdth' 87;
-        line-height: 1.4 !important;
+    font-size: 14px !important;
+    font-style: normal;
+    line-height: 1.4 !important;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 350;
+    line-height: 130%;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #666460;
+    font-variation-settings: 'wdth' 87;
     }
 }
 
@@ -4232,7 +4248,15 @@ display: none!important;
 }
 
 .accordion__content p {
-    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 350;
+    line-height: 130%;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #666460;
+    font-variation-settings: 'wdth' 87;
+
 }
 
 @media screen and (min-width: 990px) {

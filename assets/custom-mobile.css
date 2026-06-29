@@ -299,10 +299,17 @@
 
 
     .accordion__content p {
-        font-family: Open Sans;
         font-size: 14px !important;
-        font-weight: 400;
+        font-style: normal;
         line-height: 1.4 !important;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 350;
+        line-height: 130%;
+        letter-spacing: 0.01em;
+        text-align: left;
+        color: #666460;
+        font-variation-settings: 'wdth' 87;
     }
 
     .collapsible-content-wrapper-narrow {

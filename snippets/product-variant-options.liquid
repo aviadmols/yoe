@@ -97,8 +97,24 @@
         class="disabled"
       {% endif %}
     >
-    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-      {{ value -}}
+    {%- liquid
+      assign is_refill_pdp = false
+      if template.suffix == 'ympossible-cream-yc' or template.suffix == 'ympossible-cream-light-ycl'
+        assign is_refill_pdp = true
+      endif
+    -%}
+    <label class="{% if is_refill_pdp %}yoe-variant-btn{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+      {%- if is_refill_pdp -%}
+        {%- if value contains 'Refill' -%}
+          {% render 'icon-variant-refill' %}
+          <span class="yoe-variant-btn__text">Refill<small class="yoe-variant-btn__size">{{ value | remove: 'Refill' | strip }}</small></span>
+        {%- else -%}
+          {% render 'icon-variant-bottle' %}
+          <span class="yoe-variant-btn__text">Refillable Bottle<small class="yoe-variant-btn__size">{{ value }}</small></span>
+        {%- endif -%}
+      {%- else -%}
+        {{ value -}}
+      {%- endif -%}
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>
   {%- elsif block.settings.picker_type == 'dropdown' -%}

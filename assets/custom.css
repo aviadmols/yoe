@@ -1375,6 +1375,7 @@ div#shopify-section-template--20152377639160__custom_image_with_text_VEA8YL {
 
 fieldset.js.product-form__input {
     overflow: hidden;
+    display: flex;
 }
 
 .oke-w-header-content-block .oke-w-ratingAverageModule-count {

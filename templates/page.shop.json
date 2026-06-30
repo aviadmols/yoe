@@ -79,25 +79,6 @@
     "product_grid_RpyfHq": {
       "type": "product_grid",
       "blocks": {
-        "product_dDEQDQ": {
-          "type": "product",
-          "settings": {
-            "product": "discovery-duo",
-            "tagline": "Discover Our Heroes",
-            "size": "8ml + 8ml",
-            "background_image": "shopify://shop_images/Duo_ff310877-3a4c-44ea-a850-8709646bad5d.webp",
-            "show_cosmopolitan_icon": true,
-            "show_beauty_awards": true,
-            "show_snippets": true,
-            "show_snippets_right": true,
-            "show_snippets01": true,
-            "show_snippets01_right": false,
-            "hover_image": "shopify://shop_images/Duo_-_Gallery_-_3.webp",
-            "custom_text": "<p>Discovery Duo</p>",
-            "custom_url": "",
-            "price_type": "lowest"
-          }
-        },
         "product_i74TPT": {
           "type": "product",
           "settings": {
@@ -135,17 +116,37 @@
             "custom_url": "",
             "price_type": "highest"
           }
+        },
+        "product_dDEQDQ": {
+          "type": "product",
+          "settings": {
+            "product": "discovery-duo",
+            "tagline": "Discover Our Heroes",
+            "size": "8ml + 8ml",
+            "background_image": "shopify://shop_images/Duo_ff310877-3a4c-44ea-a850-8709646bad5d.webp",
+            "show_cosmopolitan_icon": true,
+            "show_beauty_awards": true,
+            "show_snippets": true,
+            "show_snippets_right": true,
+            "show_snippets01": true,
+            "show_snippets01_right": false,
+            "hover_image": "shopify://shop_images/Duo_-_Gallery_-_3.webp",
+            "custom_text": "<p>Discovery Duo</p>",
+            "custom_url": "",
+            "price_type": "lowest"
+          }
         }
       },
       "block_order": [
-        "product_dDEQDQ",
         "product_i74TPT",
-        "product_hRegyY"
+        "product_hRegyY",
+        "product_dDEQDQ"
       ],
       "settings": {
         "custom-class": "",
         "product-grid-heading": "",
-        "product-grid-sub-heading": ""
+        "product-grid-sub-heading": "",
+        "show_snippets_overlay": true
       }
     },
     "rich_text_pJwgAb": {
@@ -223,7 +224,8 @@
       "settings": {
         "custom-class": "",
         "product-grid-heading": "",
-        "product-grid-sub-heading": ""
+        "product-grid-sub-heading": "",
+        "show_snippets_overlay": true
       }
     }
   },

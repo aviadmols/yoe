@@ -4929,6 +4929,7 @@ span.afterpay-icon {
 
 .accordion summary {
     padding: 0.4rem 0 0.4rem !IMPORTANT;
+    border: none !important;
 }
 
 div#shopify-block-AbVo1Q0djeHV4YzNia__afterpay_on_site_messaging_payments_messaging_8qg9nF {

@@ -220,26 +220,6 @@
     "grid_product_cus_slider_zxWNz9": {
       "type": "grid-product-cus-slider",
       "blocks": {
-        "product_F8qhtk": {
-          "type": "product",
-          "settings": {
-            "product": "discovery-duo",
-            "tagline": "Rich & Light  Face Cream Set",
-            "size": "8ml + 8ml",
-            "show_cosmopolitan_icon": true,
-            "show_beauty_awards": true,
-            "show_snippets": true,
-            "show_snippets_right": false,
-            "show_snippets01": true,
-            "show_snippets01_right": false,
-            "show_snippets02": true,
-            "show_snippets02_right": false,
-            "hover_image": "shopify://shop_images/Duo_-_Gallery_-_3.webp",
-            "custom_text": "<p>Discovery Duo</p>",
-            "custom_url": "",
-            "price_type": "lowest"
-          }
-        },
         "product_GC86aJ": {
           "type": "product",
           "settings": {
@@ -276,6 +256,26 @@
             "show_snippets02_right": false,
             "hover_image": "shopify://shop_images/YCL_-_Hover.webp",
             "custom_text": "<p>YMPOSSIBLE CREAM <em>LIGHT</em></p>",
+            "custom_url": "",
+            "price_type": "lowest"
+          }
+        },
+        "product_F8qhtk": {
+          "type": "product",
+          "settings": {
+            "product": "discovery-duo",
+            "tagline": "Rich & Light  Face Cream Set",
+            "size": "8ml + 8ml",
+            "show_cosmopolitan_icon": true,
+            "show_beauty_awards": true,
+            "show_snippets": true,
+            "show_snippets_right": false,
+            "show_snippets01": true,
+            "show_snippets01_right": false,
+            "show_snippets02": true,
+            "show_snippets02_right": false,
+            "hover_image": "shopify://shop_images/Duo_-_Gallery_-_3.webp",
+            "custom_text": "<p>Discovery Duo</p>",
             "custom_url": "",
             "price_type": "lowest"
           }
@@ -322,9 +322,9 @@
         }
       },
       "block_order": [
-        "product_F8qhtk",
         "product_GC86aJ",
         "product_FwKXWM",
+        "product_F8qhtk",
         "product_8nRACw",
         "product_BBiy4F"
       ],

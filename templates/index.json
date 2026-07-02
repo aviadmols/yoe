@@ -12,6 +12,28 @@
     "slideshow_9Uzz9f": {
       "type": "slideshow",
       "blocks": {
+        "slide_wdLJaD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Yoe_memorial_day2_expanded_1.jpg",
+            "mobile_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_14.jpg",
+            "heading": "<strong>Start 20% OFF SITEWIDE | </strong>code: <strong>CELEBRATION</strong>",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all",
+            "text_below_button": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center",
+            "custom_slide_class": "valentine-slide",
+            "enable_promo_style": true
+          }
+        },
         "slide_7Cxd8R": {
           "type": "slide",
           "settings": {
@@ -32,29 +54,6 @@
             "text_alignment_mobile": "center",
             "custom_slide_class": "",
             "enable_promo_style": false
-          }
-        },
-        "slide_wdLJaD": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Yoe_memorial_day2_expanded_1.jpg",
-            "mobile_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_14.jpg",
-            "heading": "<strong>Start 20% OFF SITEWIDE | </strong>code: <strong>CELEBRATION</strong>",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "Shop Now",
-            "link": "shopify://collections/all",
-            "text_below_button": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center",
-            "custom_slide_class": "valentine-slide",
-            "enable_promo_style": true
           }
         },
         "slide_dUEVpF": {
@@ -148,8 +147,8 @@
         }
       },
       "block_order": [
-        "slide_7Cxd8R",
         "slide_wdLJaD",
+        "slide_7Cxd8R",
         "slide_dUEVpF",
         "slide_8Xfbid",
         "slide_XpN9Pi",

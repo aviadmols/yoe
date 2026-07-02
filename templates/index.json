@@ -38,11 +38,11 @@
           "type": "slide",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/valentine.png",
-            "mobile_image": "shopify://shop_images/9f1fbf0d068e33a90bbd606d0461c982497c274b.png",
-            "heading": "",
+            "image": "shopify://shop_images/Yoe_memorial_day2_expanded_1.jpg",
+            "mobile_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_14.jpg",
+            "heading": "<strong>Start 20% OFF SITEWIDE | </strong>code: <strong>CELEBRATION</strong>",
             "heading_size": "h1",
-            "subheading": "<h2 class=\"banner__above-heading\">\nValentine’s Limited\n</h2>\n<p></p><p class=\"regular-price\">Love, shared<br> thoughtfully.\n</p>\n<p class=\"sale-price\"><strong>20% OFF SITEWIDE</strong><br>\ncode: <strong>LOVE20</strong>\n</p>",
+            "subheading": "",
             "button_label": "Shop Now",
             "link": "shopify://collections/all",
             "text_below_button": "",
@@ -54,7 +54,7 @@
             "color_scheme": "",
             "text_alignment_mobile": "center",
             "custom_slide_class": "valentine-slide",
-            "enable_promo_style": false
+            "enable_promo_style": true
           }
         },
         "slide_dUEVpF": {

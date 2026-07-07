@@ -1,1 +1,265 @@
-{"sections":{"custom_button_section_adKJta":{"type":"Custom-Button-Section","blocks":{"button_6iMFLP":{"type":"button","settings":{"button_text":"Contact","link":"shopify:\/\/pages\/contact"}},"button_tgkYfc":{"type":"button","settings":{"button_text":"FAQs","link":"shopify:\/\/pages\/faqs"}},"button_fpijer":{"type":"button","settings":{"button_text":"Shipping & Returns","link":"shopify:\/\/pages\/shipping-returns"}}},"block_order":["button_6iMFLP","button_tgkYfc","button_fpijer"],"settings":{"title":""}},"main":{"type":"main-page","disabled":true,"settings":{"padding_top":0,"padding_bottom":28}},"collapsible_content_bhW6AR":{"type":"collapsible-content","blocks":{"collapsible_row_mgjgTw":{"type":"collapsible_row","settings":{"heading":"How much does shipping cost?","icon":"check_mark","row_content":"<p>You can enjoy free shipping in the USA. We provide shipping at no cost at all. Other countries may vary, please see the checkout to find shipping costs.<\/p>","page":""}},"collapsible_row_t73Br3":{"type":"collapsible_row","settings":{"heading":"Where do you ship?","icon":"check_mark","row_content":"<p>We ship to the U.S., UK and parts of EU (Excluding Alaska, Hawaii).<\/p>","page":""}},"collapsible_row_rHRVwV":{"type":"collapsible_row","settings":{"heading":"What forms of payment do you accept?","icon":"check_mark","row_content":"<p>We accept Visa, Master Card, American Express, Discover, Apple Pay and PayPal.<\/p>","page":""}},"collapsible_row_UXXEqk":{"type":"collapsible_row","settings":{"heading":"How do I cancel my order?","icon":"check_mark","row_content":"<p>You can cancel your order by opening your confirmation email. In addition, you can reach out to our customer service team at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\"><strong>support@yoeandco.com<\/strong><\/span><\/a><strong> <\/strong> Please let us know the reason for the cancellation. If your order has already been processed or shipped, please review our return policy.<\/p>","page":""}},"collapsible_row_jrCHjH":{"type":"collapsible_row","settings":{"heading":"How do I track my order?","icon":"check_mark","row_content":"<p>Once you place an order, you should receive a confirmation email which will include a custom order tracking number and a link to our tracking page on our website.<\/p><p>Tracking information can be delayed after your order is placed. It can take up to <strong>24-48 hours<\/strong> for you to get the order number. If you do not see any updates right away, feel free to reach our support team.<\/p>","page":""}},"collapsible_row_c4TcLV":{"type":"collapsible_row","settings":{"heading":"How do I update\/skip my subscription items?","icon":"check_mark","row_content":"<ol><li>Login into your account<\/li><li>Click subscriptions<\/li><li>Locate your subscription and click manage<\/li><li>Click change Items. Proceed to complete the steps to successfully update your subscription<\/li><\/ol>","page":""}},"collapsible_row_NENh7Y":{"type":"collapsible_row","settings":{"heading":"What do I do if my item(s) arrives damaged?","icon":"check_mark","row_content":"<p>We’re sorry your item(s) have damage! Not to worry! All of our products come with a complete guarantee, email us at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\">support@yoeandco.com<\/span><\/a> with images and an explanation and we will do our best to accommodate and get you a replacement for you to enjoy. While we may not be able to guarantee your exact order is replaced due to potential stock issues, we’ll be sure to resolve the situation as best we can!<\/p>","page":""}},"collapsible_row_A4LQwh":{"type":"collapsible_row","settings":{"heading":"When will I get my refund?","icon":"check_mark","row_content":"<p>Once your return has been processed, you will be notified through email when the refund has been issued. It typically takes <strong>7-10 business days<\/strong> for the refund to reflect in your account.<\/p>","page":""}},"collapsible_row_9nadGf":{"type":"collapsible_row","settings":{"heading":"How do I cancel my subscription?","icon":"check_mark","row_content":"<ol><li>Login into your account<\/li><li>Click subscriptions<\/li><li>Locate your subscription and click manage<\/li><li>Click cancel. Proceed to complete the steps to successfully cancel your subscription<\/li><\/ol>","page":""}},"collapsible_row_g47nQ4":{"type":"collapsible_row","settings":{"heading":"How do I make a return?","icon":"check_mark","row_content":"<p><strong>Return by mail<\/strong><\/p><p>Reach out to our customer support team at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\"><strong>support@yoeandco.com<\/strong><\/span><\/a>to understand the return process with your order number and details about the item you wish to return. Print the shipping label and drop off your return at a [FedEx <strong>shipping center]<\/strong> location.<\/p>","page":""}},"collapsible_row_na3hk7":{"type":"collapsible_row","settings":{"heading":"Can I use Ympossible Cream or Ympossible Cream Light morning and night?","icon":"check_mark","row_content":"<p>Yes. We recommend using our products morning and night.<\/p>","page":""}},"collapsible_row_DF8jnC":{"type":"collapsible_row","settings":{"heading":"Can I use the product while I'm pregnant or nursing?","icon":"check_mark","row_content":"<p>Yes, Yoé products are clinically and dermatologically tested, hypoallergenic, vegan, gluten-free, and suitable for all skin types, including sensitive skin. The Ympossible Cream and the Ympossible Cream Light do not contain retinol and are safe for use by pregnant and breastfeeding mothers.<\/p>","page":""}},"collapsible_row_K79Lrw":{"type":"collapsible_row","settings":{"heading":"Can I use this product with other skincare?","icon":"check_mark","row_content":"<p>Yes, we recommend using it on clean, dry skin. Follow Ympossible Cream or Ympossible Cream Light with your SPF for daytime.<\/p>","page":""}},"collapsible_row_J6r83L":{"type":"collapsible_row","settings":{"heading":"Are your products safe to use around the eyes?","icon":"check_mark","row_content":"<p>Yes, our products are safe to use around the eyes.<\/p>","page":""}},"collapsible_row_iVePar":{"type":"collapsible_row","settings":{"heading":"How long will the product last me?","icon":"check_mark","row_content":"<p>The 30 ml size should last about four weeks.<\/p>","page":""}},"collapsible_row_rCen7e":{"type":"collapsible_row","settings":{"heading":"Can a man use Ympossible Cream or Ympossible Cream Light after shaving his face?","icon":"check_mark","row_content":"<p>Yes, it is safe to use after shaving.<\/p>","page":""}},"collapsible_row_XT4ra3":{"type":"collapsible_row","settings":{"heading":"Are your products tested on animals?","icon":"check_mark","row_content":"<p>No. Yoé products are Leaping Bunny Certified.<\/p>","page":""}},"collapsible_row_9wVmTY":{"type":"collapsible_row","settings":{"heading":"What is the shelf life of your product?","icon":"check_mark","row_content":"<p>Opened products will remain effective for 12 months. Unopened product will remain effective for two years.<\/p>","page":""}}},"block_order":["collapsible_row_mgjgTw","collapsible_row_t73Br3","collapsible_row_rHRVwV","collapsible_row_UXXEqk","collapsible_row_jrCHjH","collapsible_row_c4TcLV","collapsible_row_NENh7Y","collapsible_row_A4LQwh","collapsible_row_9nadGf","collapsible_row_g47nQ4","collapsible_row_na3hk7","collapsible_row_DF8jnC","collapsible_row_K79Lrw","collapsible_row_J6r83L","collapsible_row_iVePar","collapsible_row_rCen7e","collapsible_row_XT4ra3","collapsible_row_9wVmTY"],"settings":{"caption":"","heading":"","heading_size":"h1","heading_alignment":"left","layout":"none","color_scheme":"","container_color_scheme":"","open_first_collapsible_row":false,"image_ratio":"adapt","desktop_layout":"image_second","padding_top":0,"padding_bottom":36}}},"order":["custom_button_section_adKJta","main","collapsible_content_bhW6AR"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_button_section_adKJta": {
+      "type": "Custom-Button-Section",
+      "blocks": {
+        "button_6iMFLP": {
+          "type": "button",
+          "settings": {
+            "button_text": "Contact",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "button_tgkYfc": {
+          "type": "button",
+          "settings": {
+            "button_text": "FAQs",
+            "link": "shopify://pages/faqs"
+          }
+        },
+        "button_fpijer": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shipping & Returns",
+            "link": "shopify://pages/shipping-returns"
+          }
+        }
+      },
+      "block_order": [
+        "button_6iMFLP",
+        "button_tgkYfc",
+        "button_fpijer"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 28
+      }
+    },
+    "collapsible_content_bhW6AR": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_mgjgTw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How much does shipping cost?",
+            "icon": "check_mark",
+            "row_content": "<p>You can enjoy free shipping in the USA. We provide shipping at no cost at all. Other countries may vary, please see the checkout to find shipping costs.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_t73Br3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where do you ship?",
+            "icon": "check_mark",
+            "row_content": "<p>We ship to the U.S., UK and parts of EU (Excluding Alaska, Hawaii).</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rHRVwV": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What forms of payment do you accept?",
+            "icon": "check_mark",
+            "row_content": "<p>We accept Visa, Master Card, American Express, Discover, Apple Pay and PayPal.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_UXXEqk": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I cancel my order?",
+            "icon": "check_mark",
+            "row_content": "<p>You can cancel your order by opening your confirmation email. In addition, you can reach out to our customer service team at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\"><strong>support@yoeandco.com</strong></span></a><strong> </strong> Please let us know the reason for the cancellation. If your order has already been processed or shipped, please review our return policy.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jrCHjH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I track my order?",
+            "icon": "check_mark",
+            "row_content": "<p>Once you place an order, you should receive a confirmation email which will include a custom order tracking number and a link to our tracking page on our website.</p><p>Tracking information can be delayed after your order is placed. It can take up to <strong>24-48 hours</strong> for you to get the order number. If you do not see any updates right away, feel free to reach our support team.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_c4TcLV": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I update/skip my subscription items?",
+            "icon": "check_mark",
+            "row_content": "<ol><li>Login into your account</li><li>Click subscriptions</li><li>Locate your subscription and click manage</li><li>Click change Items. Proceed to complete the steps to successfully update your subscription</li></ol>",
+            "page": ""
+          }
+        },
+        "collapsible_row_NENh7Y": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What do I do if my item(s) arrives damaged?",
+            "icon": "check_mark",
+            "row_content": "<p>We’re sorry your item(s) have damage! Not to worry! All of our products come with a complete guarantee, email us at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\">support@yoeandco.com</span></a> with images and an explanation and we will do our best to accommodate and get you a replacement for you to enjoy. While we may not be able to guarantee your exact order is replaced due to potential stock issues, we’ll be sure to resolve the situation as best we can!</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_A4LQwh": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When will I get my refund?",
+            "icon": "check_mark",
+            "row_content": "<p>Once your return has been processed, you will be notified through email when the refund has been issued. It typically takes <strong>7-10 business days</strong> for the refund to reflect in your account.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_9nadGf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I cancel my subscription?",
+            "icon": "check_mark",
+            "row_content": "<ol><li>Login into your account</li><li>Click subscriptions</li><li>Locate your subscription and click manage</li><li>Click cancel. Proceed to complete the steps to successfully cancel your subscription</li></ol>",
+            "page": ""
+          }
+        },
+        "collapsible_row_g47nQ4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I make a return?",
+            "icon": "check_mark",
+            "row_content": "<p><strong>Return by mail</strong></p><p>Reach out to our customer support team at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\"><strong>support@yoeandco.com</strong></span></a>to understand the return process with your order number and details about the item you wish to return. Print the shipping label and drop off your return at a [FedEx <strong>shipping center]</strong> location.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_na3hk7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I use Ympossible Cream or Ympossible Cream Light morning and night?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes. We recommend using our products morning and night.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DF8jnC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I use the product while I'm pregnant or nursing?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes, Yoé products are clinically and dermatologically tested, hypoallergenic, vegan, gluten-free, and suitable for all skin types, including sensitive skin. The Ympossible Cream and the Ympossible Cream Light do not contain retinol and are safe for use by pregnant and breastfeeding mothers.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_K79Lrw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I use this product with other skincare?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes, we recommend using it on clean, dry skin. Follow Ympossible Cream or Ympossible Cream Light with your SPF for daytime.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_J6r83L": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are your products safe to use around the eyes?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes, our products are safe to use around the eyes.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_iVePar": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long will the product last me?",
+            "icon": "check_mark",
+            "row_content": "<p>The 30 ml size should last about four weeks.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rCen7e": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can a man use Ympossible Cream or Ympossible Cream Light after shaving his face?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes, it is safe to use after shaving.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_XT4ra3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are your products tested on animals?",
+            "icon": "check_mark",
+            "row_content": "<p>No. Yoé products are Leaping Bunny Certified.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_9wVmTY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is the shelf life of your product?",
+            "icon": "check_mark",
+            "row_content": "<p>Opened products will remain effective for 12 months. Unopened product will remain effective for two years.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_mgjgTw",
+        "collapsible_row_t73Br3",
+        "collapsible_row_rHRVwV",
+        "collapsible_row_UXXEqk",
+        "collapsible_row_jrCHjH",
+        "collapsible_row_c4TcLV",
+        "collapsible_row_NENh7Y",
+        "collapsible_row_A4LQwh",
+        "collapsible_row_9nadGf",
+        "collapsible_row_g47nQ4",
+        "collapsible_row_na3hk7",
+        "collapsible_row_DF8jnC",
+        "collapsible_row_K79Lrw",
+        "collapsible_row_J6r83L",
+        "collapsible_row_iVePar",
+        "collapsible_row_rCen7e",
+        "collapsible_row_XT4ra3",
+        "collapsible_row_9wVmTY"
+      ],
+      "custom_css": [
+        "svg:first-child {display: none !important;}",
+        "summary {padding-top: 1rem!important; padding-bottom: 1rem !important;}"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_button_section_adKJta",
+    "main",
+    "collapsible_content_bhW6AR"
+  ]
+}

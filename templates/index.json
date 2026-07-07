@@ -172,6 +172,7 @@
       "blocks": {
         "quote_3PfQRz": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "title": "COSMOPOLITAN",
             "quote": "\"Behold: the rich-but-light skin - <br> soothing cream you didn’t know <br>  you were missing.\""

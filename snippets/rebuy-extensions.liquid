@@ -1,36 +1,53 @@
-<!-- Rebuy Speed Load Script -->
-<script async src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}"></script>
+<!-- Rebuy — load after idle / first interaction to reduce PDP main-thread cost -->
+<script>
+  (function () {
+    var loaded = false;
+    function loadRebuy() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}';
+      document.head.appendChild(s);
+    }
+    function onInteract() {
+      loadRebuy();
+    }
+    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (evt) {
+      window.addEventListener(evt, onInteract, { capture: true, passive: true, once: true });
+    });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadRebuy, { timeout: 3500 });
+    } else {
+      window.addEventListener('load', function () {
+        setTimeout(loadRebuy, 2000);
+      });
+    }
+  })();
+</script>
 
-<!--  Manual Widget Installs BELOW -->
+<!-- Manual Widget Installs -->
 {% if product %}
-<!-- PDP ATC Subscription Popup Upsell Widget Install -->
-<div data-rebuy-id="160086" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+  <!-- PDP ATC Subscription Popup Upsell -->
+  <div data-rebuy-id="160086" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+
+  {%- assign rebuy_handle = product.handle -%}
+  {%- if rebuy_handle == 'discovery-duo' -%}
+    <div data-rebuy-id="226673"></div>
+  {%- elsif rebuy_handle == 'ympossible-cream-light' -%}
+    <div data-rebuy-id="226663"></div>
+  {%- elsif rebuy_handle == 'ympossible-cream' -%}
+    <div data-rebuy-id="222377"></div>
+  {%- elsif rebuy_handle == 'ympossible-cream-light-refill' -%}
+    <div data-rebuy-id="226954"></div>
+  {%- elsif rebuy_handle == 'ympossible-cream-refill' -%}
+    <div data-rebuy-id="226951"></div>
+  {%- endif -%}
 {% endif %}
 
-<!-- Widget : Gift with Purchase ( DD) -->
-<div data-rebuy-id="226673"></div>
-<!-- End Widget : Gift with Purchase ( DD) -->
-<!-- Widget : Gift with Purchase (YCL) -->
-<div data-rebuy-id="226663"></div>
-<!-- End Widget : Gift with Purchase (YCL) -->
-<!-- Widget : Global - Gift with Purchase (YC) -->
-<div data-rebuy-id="222377"></div>
-<!-- End Widget : Global - Gift with Purchase (YC) -->
-<!-- Widget : Global - Free Gift (Mascara) -->
-{% comment %}<div data-rebuy-id="218438"></div>{% endcomment %}
-<!-- End Widget : Global - Free Gift (Mascara) -->
-<!-- Widget : Gift with Purchase (YCLR) -->
-<div data-rebuy-id="226954"></div>
-<!-- End Widget : Gift with Purchase (YCLR) -->
-<!-- Widget : Gift with Purchase ( YCR) -->
-<div data-rebuy-id="226951"></div>
-<!-- End Widget : Gift with Purchase ( YCR) -->
-
-
-{% if template == 'cart' %} 
+{% if template == 'cart' %}
  <script>
     window.addEventListener("load", function () {
-      // --- Reload after 3s on first cart load ---
       if (!sessionStorage.getItem("cartReloaded")) {
         sessionStorage.setItem("cartReloaded", "true");
         setTimeout(function () {
@@ -40,28 +57,23 @@
         sessionStorage.removeItem("cartReloaded");
       }
 
-      // --- Reload after 2s if quantity buttons or input are used ---
       function triggerReloadAfterDelay() {
-        clearTimeout(window.cartReloadTimeout); // Prevent multiple triggers
+        clearTimeout(window.cartReloadTimeout);
         window.cartReloadTimeout = setTimeout(function () {
           location.reload();
-        }, 3000); // 2 second delay
+        }, 3000);
       }
 
-      // Listen for clicks on quantity buttons
       document.querySelectorAll('.quantity__button').forEach(function (btn) {
         btn.addEventListener('click', triggerReloadAfterDelay);
       });
       document.querySelectorAll('.remove-item-btn').forEach(function (btn) {
         btn.addEventListener('click', triggerReloadAfterDelay);
       });
-      // Listen for changes in quantity input fields
       document.querySelectorAll('.quantity__input').forEach(function (input) {
         input.addEventListener('change', triggerReloadAfterDelay);
-
-        // Optional: for better UX, also catch when users type and leave input
         input.addEventListener('blur', triggerReloadAfterDelay);
       });
     });
-  </script> 
+  </script>
 {% endif %}

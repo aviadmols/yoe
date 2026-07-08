@@ -49,6 +49,15 @@
   (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 4rem)
 {%- endcapture -%}
 
+{%- liquid
+  assign img_loading = lazy
+  assign img_fetchpriority = nil
+  if lazy_load == false
+    assign img_loading = 'eager'
+    assign img_fetchpriority = 'high'
+  endif
+-%}
+
 <div
   class="product-media-container media-type-{{ media.media_type }} media-fit-{{ media_fit }} global-media-settings gradient{% if constrain_to_viewport %} constrain-height{% endif %}"
   style="--ratio: {{ media.aspect_ratio | default: 1.0 }}; --preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};"
@@ -57,10 +66,10 @@
     {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
       <span class="product__media-icon motion-reduce quick-add-hidden">{% render 'icon-play' %}</span>
       <div class="product__media media">
-        {{ media.preview_image | image_url: width: 1946 | image_tag:
-          loading: lazy,
+        {{ media.preview_image | image_url: width: 1206 | image_tag:
+          loading: img_loading,
           sizes: sizes,
-          widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
+          widths: '246, 493, 600, 713, 823, 990, 1100, 1206'
         }}
       </div>
       <a href="{% if media.media_type == 'video' %}{{ media.sources[1].url }}{% else %}{{ media | external_video_url }}{% endif %}" class="product__media-toggle">
@@ -68,10 +77,10 @@
       </a>
     {%- else -%}
       <div class="product__media media">
-        {{ media.preview_image | image_url: width: 1946 | image_tag:
-          loading: lazy,
+        {{ media.preview_image | image_url: width: 1206 | image_tag:
+          loading: img_loading,
           sizes: sizes,
-          widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
+          widths: '246, 493, 600, 713, 823, 990, 1100, 1206'
         }}
       </div>
     {%- endif -%}
@@ -102,12 +111,22 @@
       </svg>
     </div>
     <div class="product__media media media--transparent">
-      {{ media.preview_image | image_url: width: 1946 | image_tag:
-        class: image_class,
-        loading: lazy,
-        sizes: sizes,
-        widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
-      }}
+      {%- if img_fetchpriority != blank -%}
+        {{ media.preview_image | image_url: width: 1206 | image_tag:
+          class: image_class,
+          loading: img_loading,
+          fetchpriority: img_fetchpriority,
+          sizes: sizes,
+          widths: '246, 493, 600, 713, 823, 990, 1100, 1206'
+        }}
+      {%- else -%}
+        {{ media.preview_image | image_url: width: 1206 | image_tag:
+          class: image_class,
+          loading: img_loading,
+          sizes: sizes,
+          widths: '246, 493, 600, 713, 823, 990, 1100, 1206'
+        }}
+      {%- endif -%}
     </div>
     <button class="product__media-toggle quick-add-hidden product__media-zoom-{{ section.settings.image_zoom }}" type="button" aria-haspopup="dialog" data-media-id="{{ media.id }}">
       <span class="visually-hidden">
@@ -132,10 +151,10 @@
           {%- render 'icon-play' -%}
         {%- endif -%}
       </span>
-      {{ media.preview_image | image_url: width: 1946 | image_tag:
+      {{ media.preview_image | image_url: width: 1206 | image_tag:
         loading: lazy,
         sizes: sizes,
-        widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
+        widths: '246, 493, 600, 713, 823, 990, 1100, 1206'
       }}
     </button>
     <template>

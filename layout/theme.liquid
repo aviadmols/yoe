@@ -9,12 +9,39 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXWF7BPH');</script>
+<!-- Google Tag Manager — late-load after interact / idle to reduce main-thread work on first paint -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  (function () {
+    var loaded = false;
+    function loadGTM() {
+      if (loaded) return;
+      loaded = true;
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = document.getElementsByTagName('script')[0];
+      var j = document.createElement('script');
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KXWF7BPH';
+      f.parentNode.insertBefore(j, f);
+    }
+    function onInteract() {
+      loadGTM();
+      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (evt) {
+        window.removeEventListener(evt, onInteract, { capture: true });
+      });
+    }
+    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (evt) {
+      window.addEventListener(evt, onInteract, { capture: true, passive: true, once: true });
+    });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGTM, { timeout: 4000 });
+    } else {
+      window.addEventListener('load', function () {
+        setTimeout(loadGTM, 2500);
+      });
+    }
+  })();
+</script>
 <!-- End Google Tag Manager -->
 
     {%- if settings.favicon != blank -%}
@@ -26,8 +53,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {%- endunless -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..700;1,75..100,300..700&display=swap" rel="stylesheet"/>
 
     <title>
       {{ page_title }}
@@ -383,12 +409,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
-      <script type="text/javascript" id="loop-subscription-script" src="{{ 'loop-widget.js' | asset_url }}"></script>
+      <script type="text/javascript" id="loop-subscription-script" src="{{ 'loop-widget.js' | asset_url }}" defer></script>
       {{ 'slick.css' | asset_url | stylesheet_tag }}
 {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ 'slick.min.js' | asset_url }}"></script> 
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="{{ 'slick.min.js' | asset_url }}" defer></script> 
     
 
 
@@ -623,7 +649,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     </script>
 <script src="{{ 'custom-script.js' | asset_url }}" defer> </script>
-<script src="{{ 'swiper-bundle.min.js' | asset_url }}"> </script>
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
 
 {% comment %} Legacy JS files above - New bundled JS files below {% endcomment %}
 <script src="{{ 'main.js' | asset_url }}" defer></script>
@@ -633,39 +659,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="{{ 'homepage.js' | asset_url }}" defer></script>
 {% endif %}
 
-<!-- Add this in theme.liquid in head -->
-{{ 'slick.css' | asset_url | stylesheet_tag }}
-{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
-
-{{ 'slick.min.js' | asset_url | script_tag }}
-
-
 <script>
-  $(document).ready(function(){
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof window.jQuery === 'undefined' || !window.jQuery.fn || !window.jQuery.fn.slick) return;
+    var $ = window.jQuery;
     function initSlickSlider() {
+      var $grids = $('.product-slider .product-grid');
+      if (!$grids.length) return;
+
       if ($(window).width() >= 768) {
-        if (!$('.product-grid').hasClass('slick-initialized')) {
-          $('.product-grid').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            dots: true
-          });
-        }
+        $grids.each(function () {
+          var $grid = $(this);
+          if (!$grid.hasClass('slick-initialized')) {
+            $grid.slick({
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              arrows: true,
+              dots: true
+            });
+          }
+        });
       } else {
-        if ($('.product-grid').hasClass('slick-initialized')) {
-          $('.product-grid').slick('unslick');
-        }
+        $grids.each(function () {
+          var $grid = $(this);
+          if ($grid.hasClass('slick-initialized')) {
+            $grid.slick('unslick');
+          }
+        });
       }
     }
-
-    // Init on load
     initSlickSlider();
-
-    // Re-check on window resize
-    $(window).on('resize', function(){
-      initSlickSlider();
-    });
+    $(window).on('resize', initSlickSlider);
   });
 </script>
 

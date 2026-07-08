@@ -1571,10 +1571,11 @@ function getAddToCartButtonLoop(parentElement) {
 
 function getButtonTextLoop(isOneTimeOrder, productId) {
     if (!isOneTimeOrder) {
+        // Keep the same label for subscription as one-time purchase ("Add to cart")
         return (
             window?.loopPropsUI?.translationData
-                ?.widget_add_to_cart_button_for_subscription ||
-            "Add subscription to cart"
+                ?.widget_add_to_cart_button_for_one_time_purchase ||
+            "Add to cart"
         );
     } else if (!window.loopProps[productId]["variant"]["available"]) {
         return (

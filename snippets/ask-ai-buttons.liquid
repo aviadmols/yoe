@@ -59,11 +59,25 @@ Facts to use:
         </span>
       </a>
 
-      <a class="yoe-ask-ai__btn" href="https://gemini.google.com/prompt?q={{ ai_q }}" target="_blank" rel="noopener" title="Ask Gemini" aria-label="Ask Gemini">
-        <span class="yoe-ask-ai__icon" style="--ai-bg:#1b1c1d;">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="yoe-gemini-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4285f4"/><stop offset="0.5" stop-color="#9b72cb"/><stop offset="1" stop-color="#d96570"/></linearGradient></defs><path fill="url(#yoe-gemini-grad)" d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81 1.62-1.62 3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55 1.62 1.62 2.55 3.81Z"/></svg>
-        </span>
-      </a>
+     <button
+  type="button"
+  class="yoe-ask-ai__btn yoe-gemini-trigger"
+  title="Ask Gemini"
+  aria-label="Ask Gemini"
+>
+  <span class="yoe-ask-ai__icon" style="--ai-bg:#1b1c1d;">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <defs>
+        <linearGradient id="yoe-gemini-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#4285f4"/>
+          <stop offset="0.5" stop-color="#9b72cb"/>
+          <stop offset="1" stop-color="#d96570"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#yoe-gemini-grad)" d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81 1.62-1.62 3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55 1.62 1.62 2.55 3.81Z"/>
+    </svg>
+  </span>
+</button>
 
       <a class="yoe-ask-ai__btn" href="https://grok.com/?q={{ ai_q }}" target="_blank" rel="noopener" title="Ask Grok" aria-label="Ask Grok">
         <span class="yoe-ask-ai__icon" style="--ai-bg:#000000;">
@@ -80,7 +94,177 @@ Facts to use:
   </div>
 </div>
 
+<textarea id="yoe-gemini-prompt" hidden>{{ ai_prompt | strip }}</textarea>
+
+<div class="yoe-gemini-modal" id="yoe-gemini-modal" aria-hidden="true">
+  <div class="yoe-gemini-modal__backdrop"></div>
+
+  <div class="yoe-gemini-modal__content" role="dialog" aria-modal="true" aria-labelledby="yoe-gemini-title">
+    <button type="button" class="yoe-gemini-modal__close" aria-label="Close">×</button>
+
+    <span class="yoe-gemini-modal__icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <linearGradient id="yoe-gemini-modal-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4285f4"/>
+            <stop offset="0.5" stop-color="#9b72cb"/>
+            <stop offset="1" stop-color="#d96570"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#yoe-gemini-modal-grad)" d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81 1.62-1.62 3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55 1.62 1.62 2.55 3.81Z"/>
+      </svg>
+    </span>
+
+    <h3 id="yoe-gemini-title">Your prompt has been copied</h3>
+
+    <p>
+      Click below to open Gemini, then paste the copied prompt into the chat.
+    </p>
+
+    <a
+      href="https://gemini.google.com/app"
+      target="_blank"
+      rel="noopener"
+      class="yoe-gemini-modal__button"
+    >
+      Continue to Gemini
+    </a>
+
+    <span class="yoe-gemini-modal__hint">
+      Paste with Ctrl+V or Command+V
+    </span>
+  </div>
+</div>
+
 <style>
+
+  .yoe-ask-ai__btn {
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.yoe-gemini-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.yoe-gemini-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.yoe-gemini-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+}
+
+.yoe-gemini-modal__content {
+  position: relative;
+  z-index: 1;
+  width: min(440px, 100%);
+  padding: 38px 32px 32px;
+  border-radius: 20px;
+  background: #fff;
+  color: #151515;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  transform: translateY(15px) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.yoe-gemini-modal.is-open .yoe-gemini-modal__content {
+  transform: translateY(0) scale(1);
+}
+
+.yoe-gemini-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.yoe-gemini-modal__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 18px;
+  background: #f5f5f5;
+}
+
+.yoe-gemini-modal__icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.yoe-gemini-modal__content h3 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.yoe-gemini-modal__content p {
+  margin: 0 auto 24px;
+  max-width: 340px;
+  color: #5a5a5a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.yoe-gemini-modal__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: #151515;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.yoe-gemini-modal__button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.yoe-gemini-modal__hint {
+  display: block;
+  margin-top: 14px;
+  color: #888;
+  font-size: 13px;
+}
+
+body.yoe-gemini-modal-open {
+  overflow: hidden;
+}
   .yoe-ask-ai {
     box-sizing: border-box;
     display: inline-flex;
@@ -182,3 +366,71 @@ Facts to use:
     .yoe-ask-ai__icon svg { width: 26px; height: 26px; }
   }
 </style>
+
+<script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const trigger = document.querySelector('.yoe-gemini-trigger');
+  const modal = document.getElementById('yoe-gemini-modal');
+  const promptField = document.getElementById('yoe-gemini-prompt');
+
+  if (!trigger || !modal || !promptField) {
+    return;
+  }
+
+  const closeButton = modal.querySelector('.yoe-gemini-modal__close');
+  const backdrop = modal.querySelector('.yoe-gemini-modal__backdrop');
+
+  const copyText = async function(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+  };
+
+  const openModal = function() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('yoe-gemini-modal-open');
+  };
+
+  const closeModal = function() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('yoe-gemini-modal-open');
+  };
+
+  trigger.addEventListener('click', async function() {
+    const prompt = promptField.value.trim();
+
+    try {
+      await copyText(prompt);
+    } catch (error) {
+      return;
+    }
+
+    openModal();
+  });
+
+  closeButton.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+});
+</script>
+  </script>

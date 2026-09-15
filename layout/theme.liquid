@@ -67,7 +67,7 @@
     {% endif %}
 
     {%- comment -%} Noindex/nofollow: landing-page*, discovery LP2, and other non-SEO page templates. {%- endcomment -%}
-    {% if template.name == 'page' and (template.suffix contains 'landing-page' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
+    {% if template.name == 'page' and template.suffix contains 'landing-page' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' %}
       <meta name="robots" content="noindex, nofollow">
     {% endif %}
 
@@ -362,7 +362,7 @@
 {% endif %}
 
 {% comment %} Landing page–specific CSS and JS (loads on page.landing-page, page.landing-page-a, page.landing-page-b) {% endcomment %}
-{% if template.name == 'page' and (template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b') %}
+{% if template.name == 'page' and template.suffix == 'landing-page' or template.suffix == 'landing-page-a' or template.suffix == 'landing-page-b' %}
   {{ 'landing-page.css' | asset_url | stylesheet_tag }}
   <script type="module" src="{{ 'landing-page.js' | asset_url }}"></script>
 {% endif %}
@@ -370,11 +370,11 @@
   {{ 'checkout-cta-loading.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'landing-page-b-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
-{% if template.name == 'page' and template.suffix != blank and (template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
+{% if template.name == 'page' and template.suffix != blank and template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' %}
   {{ 'checkout-cta-loading.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'discovery-duo-cart.js' | asset_url }}" defer="defer"></script>
 {% endif %}
-{% if template.name == 'page' and (template.suffix contains 'discovery-duo-yc' or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') %}
+{% if template.name == 'page' and template.suffix contains 'discovery-duo-yc' or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' %}
   <style>{% render 'dd-yc-ycl-critical-css' %}</style>
   {{ 'discovery-duo-yc-ycl-preloader.css' | asset_url | stylesheet_tag }}
   {{ 'discovery-duo-yc-ycl-cta.css' | asset_url | stylesheet_tag }}
@@ -452,7 +452,7 @@
     <style class="loop-style"> {% render 'loop-widget.css' %} </style>
     
   <body class="template-{{ template | handle }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {% if content_for_header_capture contains 'previewBarInjector' %}admin-logged-in{% endif %} {% if customer %}customer-logged-in{% endif %}">
-    {%- if template.name == 'page' and (template.suffix contains 'discovery-duo-yc' or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') and request.design_mode == false -%}
+    {%- if template.name == 'page' and template.suffix contains 'discovery-duo-yc' or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' and request.design_mode == false -%}
       {% render 'dd-yc-ycl-preloader' %}
     {%- endif -%}
 <!-- Google Tag Manager (noscript) -->
@@ -481,7 +481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {{ content_for_layout }}
     </main>
 
-    {%- if template.name == 'page' and (template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2') -%}
+    {%- if template.name == 'page' and template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' -%}
       {{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
       {%- liquid
@@ -838,3 +838,50 @@ if (variantRadios.length > 0) {
 
  <script defer src="https://static.shopmy.us/Affiliates/sms_aff_clicktrack.js?domain=yoeandco.com&expires=30"></script> </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if template.name == 'page' and (template.suffix contains 'landing-page'
+    or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2')
+    %}"
+  to: "{% if template.name == 'page' and template.suffix contains 'landing-page' or
+    template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2'
+    %}"
+  position: 2973..3132
+- from: "{% if template.name == 'page' and (template.suffix == 'landing-page' or template.suffix
+    == 'landing-page-a' or template.suffix == 'landing-page-b') %}"
+  to: "{% if template.name == 'page' and template.suffix == 'landing-page' or template.suffix
+    == 'landing-page-a' or template.suffix == 'landing-page-b' %}"
+  position: 19663..19811
+- from: "{% if template.name == 'page' and template.suffix != blank and (template.suffix
+    contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix
+    == 'discovery-ycl-lp2') %}"
+  to: "{% if template.name == 'page' and template.suffix != blank and template.suffix
+    contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix
+    == 'discovery-ycl-lp2' %}"
+  position: 20188..20377
+- from: "{% if template.name == 'page' and (template.suffix contains 'discovery-duo-yc'
+    or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2'
+    or template.suffix == 'discovery-ycl-lp2') %}"
+  to: "{% if template.name == 'page' and template.suffix contains 'discovery-duo-yc'
+    or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2'
+    or template.suffix == 'discovery-ycl-lp2' %}"
+  position: 20536..20747
+- from: "{%- if template.name == 'page' and (template.suffix contains 'discovery-duo-yc'
+    or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2'
+    or template.suffix == 'discovery-ycl-lp2') and request.design_mode == false -%}"
+  to: "{%- if template.name == 'page' and template.suffix contains 'discovery-duo-yc'
+    or template.suffix contains 'discovery-duo-ycl' or template.suffix == 'discovery-yc-lp2'
+    or template.suffix == 'discovery-ycl-lp2' and request.design_mode == false -%}"
+  position: 24136..24382
+- from: "{%- if template.name == 'page' and (template.suffix contains 'discovery-duo'
+    or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2')
+    -%}"
+  to: "{%- if template.name == 'page' and template.suffix contains 'discovery-duo'
+    or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2'
+    -%}"
+  position: 26214..26376
+{% endcomment %}

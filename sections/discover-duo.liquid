@@ -188,8 +188,6 @@
       {% for block in section.blocks %}
         {% if block.type == 'award' %}
           <div class="award-item">
-            <img src="{{ block.settings.award_logo | img_url: 'master' }}" 
-                 alt="Award">
             <p>{{ block.settings.award_text }}</p>
           </div>
         {% endif %}

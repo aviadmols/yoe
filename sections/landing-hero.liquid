@@ -224,17 +224,6 @@
           Mobile  Figma: badge heights 94/98/104px, displayed at ~72px
           Desktop Figma: displayed at ~90-100px
         {%- endcomment -%}
-        {%- assign award_list = section.settings.awards -%}
-        {%- if award_list != blank and award_list.size > 0 -%}
-          <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-[22px] md:mb-[48px]">
-            {%- for badge_obj in award_list -%}
-              {%- if badge_obj.image.value != blank -%}
-                {{ badge_obj.image.value | image_url: width: 180 | image_tag: loading: 'eager', alt: '', class: 'h-[72px] md:h-[90px] lg:h-[100px] w-auto object-contain block' }}
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-
         {%- comment -%} Optional text badge (same style as Efficacy) – above headline {%- endcomment -%}
         {%- if section.settings.badge_text != blank -%}
           <span

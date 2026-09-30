@@ -62,7 +62,6 @@
 
 <div class="awards-mentions">
   <div class="award-section">
-    <img src="{{ section.settings.award_logo | img_url: 'medium' }}" alt="Award Logo">
 <div class="title_section">
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="288" height="103" viewBox="0 0 288 103" fill="none">
 <rect x="0.837891" y="0.740234" width="286.429" height="102.189" fill="url(#pattern0_0_291)"/>
@@ -80,7 +79,6 @@
   <div class="mentions">
     {% for block in section.blocks %}
       <div class="mention">
-   <img src="{{ block.settings.img  | img_url: '' }}" >
         <h3>{{ block.settings.source }}</h3>
         <p>{{ block.settings.mention_text }}</p>
       </div>

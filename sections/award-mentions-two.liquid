@@ -133,29 +133,6 @@
       {%- for block in section.blocks -%}
         {%- if block.type == 'award_card' -%}
           <div class="award-mentions-2__award-card" {{ block.shopify_attributes }}>
-            {%- if block.settings.badge_image != blank -%}
-              <div class="award-mentions-2__badge">
-                <img
-                  src="{{ block.settings.badge_image | image_url: width: 300 }}"
-                  alt="{{ block.settings.badge_image.alt | escape }}"
-                  loading="lazy"
-                  height="auto"
-                >
-              </div>
-            {%- endif -%}
-
-            {%- if block.settings.logo_image != blank -%}
-              <div class="award-mentions-2__logo">
-                <img
-                  src="{{ block.settings.logo_image | image_url: width: 400 }}"
-                  alt="{{ block.settings.logo_image.alt | escape }}"
-                  loading="lazy"
-                  width="200"
-                  height="auto"
-                >
-              </div>
-            {%- endif -%}
-
             {%- if block.settings.subheading != blank -%}
               <h3 class="award-mentions-2__subheading">{{ block.settings.subheading }}</h3>
             {%- endif -%}

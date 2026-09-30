@@ -221,40 +221,12 @@
             {% if product %}
                 {% assign sorted_variants = product.variants | sort: "price" | reverse %}
                 {% assign highest_price_variant = sorted_variants.first %}
-                {% if block.settings.badges != blank and block.settings.badges.size > 0 %}
-                    {% assign badge_list = block.settings.badges %}
-                {% else %}
-                    {% assign badge_list = section.settings.default_badges %}
-                {% endif %}
-
                 <article class="discover-product-card scroll-trigger animate--slide-in" style="--animation-order: {{ forloop.index0 | plus: 3 }};" {{ block.shopify_attributes }}>
                     <div class="discover-product-card__media">
                         {% if block.settings.product_image != blank %}
                             <img class="discover-product-card__product-image" src="{{ block.settings.product_image | img_url: 'master' }}" alt="{{ product.title | escape }}" width="189" height="240" loading="lazy">
                         {% elsif product.featured_image %}
                             <img class="discover-product-card__product-image" src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title | escape }}" width="189" height="240" loading="lazy">
-                        {% endif %}
-                        {% if badge_list != blank and badge_list.size > 0 %}
-                            <div class="discover-product-card__badges discover-product-card__badges--left">
-                                {% for badge_obj in badge_list %}
-                                    {% assign pos = badge_obj.position.value | downcase | strip | default: 'left' %}
-                                    {% if pos != 'right' and badge_obj.image.value != blank %}
-                                        <div class="discover-product-card__badge">
-                                            <img class="discover-product-card__badge-img" src="{{ badge_obj.image.value | image_url: width: 200 }}" alt="" width="120" height="120" loading="lazy">
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                            <div class="discover-product-card__badges discover-product-card__badges--right">
-                                {% for badge_obj in badge_list %}
-                                    {% assign pos = badge_obj.position.value | downcase | strip | default: 'left' %}
-                                    {% if pos == 'right' and badge_obj.image.value != blank %}
-                                        <div class="discover-product-card__badge">
-                                            <img class="discover-product-card__badge-img" src="{{ badge_obj.image.value | image_url: width: 200 }}" alt="" width="120" height="120" loading="lazy">
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
                         {% endif %}
                     </div>
                     <div class="discover-product-card__content rte quick-add-hidden mt-6">

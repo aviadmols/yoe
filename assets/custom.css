@@ -4845,6 +4845,12 @@ img.cosmopolitan-icon {
     max-width: 100%;
 }
 
+.snippets-overlay,
+.snippets-overlay-gallery,
+.awards-mentions .title_section > svg {
+    display: none !important;
+}
+
 .snippets-overlay-gallery.right-badge {
     left: auto !important;
     right: 2rem;

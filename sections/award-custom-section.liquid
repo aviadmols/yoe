@@ -56,12 +56,6 @@
             <div class="awards-list">
                 {% for block in section.blocks %}
                     <div class="award-item">
-                        {% if block.settings.award_logo != blank %}
-                            <img class="desktop-image-section" src="{{ block.settings.award_logo | image_url }}"
-                                 alt="{{ block.settings.award_title }}">
-                            <img class="mobile-image-section" src="{{ block.settings.mobile_award_logo | image_url }}"
-                                 alt="{{ block.settings.award_title }}">
-                        {% endif %}
                         {% if block.settings.award_title != blank %}
                             <h4>{{ block.settings.award_title }}</h4>
                         {% endif %}

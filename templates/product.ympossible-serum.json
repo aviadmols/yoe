@@ -177,7 +177,18 @@
         "padding_top": 0,
         "padding_bottom": 12,
         "hero_theme": "dark",
-        "hero_dark_background": "#3a0108"
+        "hero_dark_background": "#3a0108",
+        "custom_background_image": "shopify://shop_images/ys-hero-desktop-bg.png",
+        "desktop_gallery_image_1": "shopify://shop_images/01-ys-gallery-bottle.png",
+        "desktop_gallery_image_2": "shopify://shop_images/02-ys-gallery-one-concentrate.png",
+        "desktop_gallery_image_3": "shopify://shop_images/03-ys-gallery-reticode-diagram.png",
+        "desktop_gallery_image_4": "shopify://shop_images/04-ys-gallery-reticode-vs-retinol.png",
+        "desktop_gallery_image_5": "shopify://shop_images/05-ys-gallery-synergenius.png",
+        "desktop_gallery_image_6": "shopify://shop_images/06-ys-gallery-advanced-encapsulation.png",
+        "desktop_gallery_image_7": "shopify://shop_images/07-ys-gallery-routine-simplified.png",
+        "desktop_gallery_image_8": "shopify://shop_images/08-ys-gallery-clean-certifications.png",
+        "desktop_gallery_image_9": "shopify://shop_images/09-ys-gallery-how-to-use.png",
+        "desktop_gallery_image_10": "shopify://shop_images/10-ys-gallery-refill-system.png"
       }
     },
     "reticode_comparison": {
@@ -476,8 +487,8 @@
         "headline_prefix": "SynerGenius®",
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
-        "side_panel_desktop_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_12_7_2.jpg",
-        "side_panel_mobile_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_12_7_3.jpg",
+        "side_panel_desktop_image": "shopify://shop_images/ys-synergenius-panel-desktop.png",
+        "side_panel_mobile_image": "shopify://shop_images/ys-synergenius-panel-mobile.png",
         "side_panel_alt": "",
         "ingredients_list": "<p>{{ product.metafields.custom.ingredients_list | metafield_tag }}</p>",
         "ingredients_button_label": "See full ingredients list",
@@ -489,7 +500,7 @@
         "diagram_title_2": "Controlled release",
         "diagram_label_3": "Dermis",
         "diagram_title_3": "Targeted delivery within dermin",
-        "cta_product": "",
+        "cta_product": "ympossible-serum",
         "cta_product_secondary": "",
         "cta_go_to_checkout": false,
         "cta_apply_discount": false,
@@ -520,7 +531,7 @@
           "settings": {
             "title_1": "Reusable cap",
             "text_1": "made of minimum 50% post-consumer recycled content (PCR).",
-            "image": "shopify://shop_images/bottle_end_stopper.png",
+            "image": "shopify://shop_images/ys-sustainability-cap.png",
             "title_2": "No adhesives",
             "text_2": "Yoé emblem heat-fused into the cap, eliminating the need for adhesive."
           }
@@ -530,7 +541,7 @@
           "settings": {
             "title_1": "Metal-free",
             "text_1": "Metal-free spring within the pump optimized for recycling.",
-            "image": "shopify://shop_images/bottle_stopper_photo.png",
+            "image": "shopify://shop_images/ys-sustainability-pump.png",
             "title_2": "",
             "text_2": ""
           }
@@ -540,7 +551,7 @@
           "settings": {
             "title_1": "PCR GLASS",
             "text_1": "Glass bottles are composed of at minimum 50% PCR",
-            "image": "shopify://shop_images/feature_three_image.png",
+            "image": "shopify://shop_images/ys-sustainability-bottle.png",
             "title_2": "Refillable bottles",
             "text_2": "Made of minimum 50% post-consumer recycled content (PCR)"
           }
@@ -563,7 +574,7 @@
         "badge_mobile_3": "shopify://shop_images/Group_1000004788_1.png",
         "button_link": "",
         "button_text": "LEARN MORE ABOUT IMPACT",
-        "mobile_banner_image": "shopify://shop_images/Group_1000006318.jpg",
+        "mobile_banner_image": "shopify://shop_images/ys-sustainability-mobile-banner.png",
         "mobile_banner_alt": "",
         "section_heading": "",
         "feature_title_mobile_1": "NO ADHESIVES",
@@ -576,9 +587,9 @@
         "feature_text_mobile_4": "Production process optimized for a minimal carbon footprint.",
         "feature_title_mobile_5": "RECYCLABLE",
         "feature_text_mobile_5": "Designed for recyclability at end-of-life.",
-        "feature_image_1": "shopify://shop_images/mobile_outer_cap.png",
-        "feature_image_2": "shopify://shop_images/mobile_inner_cap.png",
-        "feature_image_3": "shopify://shop_images/stand_bottle.png",
+        "feature_image_1": "shopify://shop_images/ys-sustainability-cap.png",
+        "feature_image_2": "shopify://shop_images/ys-sustainability-pump.png",
+        "feature_image_3": "shopify://shop_images/ys-sustainability-bottle.png",
         "desktop_style": "large"
       }
     },
@@ -586,8 +597,8 @@
       "type": "two-column-image-section",
       "name": "Two Column Images",
       "settings": {
-        "left_image": "shopify://shop_images/vaiyulaw_yoe_urgent2972_expanded_1.jpg",
-        "right_image": "shopify://shop_images/06_YC_refill_Model_4.png",
+        "left_image": "shopify://shop_images/ys-two-column-left.jpg",
+        "right_image": "shopify://shop_images/ys-two-column-right.png",
         "layout_style": "pdp"
       }
     },
@@ -689,7 +700,7 @@
       "name": "Sticky CTA",
       "settings": {
         "scroll_threshold_vh": 100,
-        "cta_product": "",
+        "cta_product": "ympossible-serum",
         "cta_product_secondary": "",
         "cta_go_to_checkout": false,
         "cta_apply_discount": false,

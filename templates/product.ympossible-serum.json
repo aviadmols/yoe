@@ -23,7 +23,7 @@
         "benefit_icons_pdp": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'pdp-benefit-icons', icons: 'corrects,renews,lifts,blurs' %}"
+            "custom_liquid": "{% render 'pdp-benefit-icons', icons: 'blurs,renews,lifts,brightens' %}"
           }
         },
         "collapsible_tab_mKjhEM": {

@@ -250,8 +250,18 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     color: #fff !important;
   }
 
-  .main-product-section--dark .yoe-buy-module .yoe-variant-btn__icon--bottle {
+  .main-product-section--dark .yoe-buy-module .yoe-variant-btn__icon--bottle,
+  .main-product-section--dark .yoe-buy-module .yoe-variant-btn__icon--refill path {
     fill: #fff;
+  }
+
+  /* Subscription ticks and "Read more" use the red accent, which disappears on the red hero */
+  .main-product-section--dark .yoe-buy-module .yoe-sub-benefits li::before {
+    background: #fff;
+  }
+
+  .main-product-section--dark .yoe-buy-module .yoe-sub-readmore__toggle {
+    color: #fff;
   }
 
   .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option,

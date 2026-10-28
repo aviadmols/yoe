@@ -14,6 +14,7 @@
 {%- liquid
   assign hidden_media = product.media.first
   assign hidden_media_id = hidden_media.id
+  assign mobile_lead_image = section.settings.mobile_lead_image
   assign desktop_gallery_first_setting = 'desktop_gallery_image_1'
   assign desktop_gallery_first_image = section.settings[desktop_gallery_first_setting]
   assign desktop_gallery_count = 0
@@ -178,20 +179,40 @@
           class="product__media-item grid__item slider__slide medium-hide large-up-hide is-active{% if single_media_visible %} product__media-item--single{% endif %}"
           data-media-id="{{ section.id }}-{{ hidden_media.id }}"
         >
-          {% render 'product-thumbnail',
-            media: hidden_media,
-            media_count: media_count,
-            position: 1,
-            desktop_layout: section.settings.gallery_layout,
-            mobile_layout: section.settings.mobile_thumbnails,
-            loop: section.settings.enable_video_looping,
-            modal_id: section.id,
-            xr_button: true,
-            media_width: media_width,
-            media_fit: section.settings.media_fit,
-            constrain_to_viewport: section.settings.constrain_to_viewport,
-            lazy_load: false
-          %}
+          {%- if mobile_lead_image != blank -%}
+            <div
+              class="product-media-container media-type-image media-fit-{{ section.settings.media_fit }} global-media-settings gradient"
+              style="--ratio: {{ mobile_lead_image.aspect_ratio }}; --preview-ratio: {{ mobile_lead_image.aspect_ratio }};"
+            >
+              <div class="product__media media media--transparent">
+                {{
+                  mobile_lead_image
+                  | image_url: width: 1500
+                  | image_tag:
+                    loading: 'eager',
+                    fetchpriority: 'high',
+                    sizes: '100vw',
+                    widths: '390, 600, 780, 1000, 1200, 1500',
+                    alt: product.title
+                }}
+              </div>
+            </div>
+          {%- else -%}
+            {% render 'product-thumbnail',
+              media: hidden_media,
+              media_count: media_count,
+              position: 1,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: false
+            %}
+          {%- endif -%}
         </li>
       {%- endif -%}
 
@@ -244,6 +265,10 @@
       {%- assign visible_index = 0 -%}
       {%- for media in product.media -%}
         {%- if media.id == hidden_media_id -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- comment -%} The mobile lead image already opens the gallery; don't repeat it {%- endcomment -%}
+        {%- if mobile_lead_image != blank and media.preview_image.src == mobile_lead_image.src -%}
           {%- continue -%}
         {%- endif -%}
         {%- unless media.id == effective_featured_media.id -%}
@@ -420,8 +445,14 @@
               aria-controls="GalleryViewer-{{ section.id }}{{ id_append }}"
               aria-describedby="{{ lead_thumbnail_id }}"
             >
+              {%- liquid
+                assign lead_thumbnail_image = hidden_media.preview_image
+                if mobile_lead_image != blank
+                  assign lead_thumbnail_image = mobile_lead_image
+                endif
+              -%}
               {{
-                hidden_media.preview_image
+                lead_thumbnail_image
                 | image_url: width: 416
                 | image_tag:
                   loading: 'lazy',

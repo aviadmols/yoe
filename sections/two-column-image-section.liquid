@@ -3,6 +3,16 @@
   "name": "Two Column Images",
   "settings": [
     {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "pdp", "label": "Product page (spaced)" }
+      ],
+      "default": "default"
+    },
+    {
       "type": "image_picker",
       "id": "left_image",
       "label": "Left Image"
@@ -22,7 +32,7 @@
 }
 {% endschema %}
 
-<section class="two-column-images{% render 'pdp-scroll-animate-class' %}">
+<section class="two-column-images{% if section.settings.layout_style == 'pdp' %} two-column-images--pdp{% endif %}{% render 'pdp-scroll-animate-class' %}">
     <div class="page-width">
   <div class="container-section-image">
     {% if section.settings.left_image != blank %}
@@ -78,5 +88,43 @@ section.two-column-images .page-width {
     flex-direction: column;
     gap: 14px;
 }
+}
+
+/* Product page style (PDP Figma: desktop 20px = 1rem, mobile 375px) */
+@media (min-width: 768px) {
+  section.two-column-images--pdp .page-width {
+    max-width: none;
+    padding: 2.8rem 1.6rem 0 2.9rem;
+  }
+
+  .two-column-images--pdp .container-section-image {
+    gap: 2.15rem;
+  }
+
+  .two-column-images--pdp .image-col:first-child {
+    flex: 916;
+  }
+
+  .two-column-images--pdp .image-col:last-child {
+    flex: 871;
+  }
+
+  .two-column-images--pdp img {
+    height: 37.35rem;
+  }
+}
+
+@media (max-width: 767px) {
+  section.two-column-images--pdp {
+    background: #f7f6f5;
+  }
+
+  section.two-column-images--pdp .page-width {
+    padding: 40px 13px 0;
+  }
+
+  .two-column-images--pdp img {
+    height: 339px;
+  }
 }
 </style>

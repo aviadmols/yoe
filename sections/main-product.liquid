@@ -9,8 +9,9 @@
 {%- endif -%}
 <section
         id="MainProduct-{{ section.id }}"
-        class="page-width main-product-section section-{{ section.id }}-padding{% if section.settings.custom_background_image != blank %} custom-background-gallery-delay{% endif %}{% render 'pdp-scroll-animate-class', keep: true %}"
+        class="page-width main-product-section section-{{ section.id }}-padding{% if section.settings.custom_background_image != blank %} custom-background-gallery-delay{% endif %}{% if section.settings.hero_theme == 'dark' %} main-product-section--dark{% endif %}{% render 'pdp-scroll-animate-class', keep: true %}"
         data-section="{{ section.id }}"
+        {% if section.settings.hero_theme == 'dark' %}style="--pdp-dark-bg: {{ section.settings.hero_dark_background }};"{% endif %}
 >
     {%- if section.settings.custom_background_image != blank -%}
         <div
@@ -27,6 +28,9 @@
     {{ 'component-rating.css' | asset_url | stylesheet_tag }}
     {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
     {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+    {%- if section.settings.hero_theme == 'dark' -%}
+        {{ 'pdp-hero-dark.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
 
     {%- style -%}
         .section-{{ section.id }}-padding {
@@ -2283,6 +2287,27 @@
       "type": "image_picker",
       "id": "custom_background_image",
       "label": "Custom Background Image (Shows when first media is active)"
+    },
+    {
+      "type": "header",
+      "content": "Hero style"
+    },
+    {
+      "type": "select",
+      "id": "hero_theme",
+      "label": "Hero theme",
+      "options": [
+        { "value": "light", "label": "Light" },
+        { "value": "dark", "label": "Dark (transparent header, white text on desktop)" }
+      ],
+      "default": "light"
+    },
+    {
+      "type": "color",
+      "id": "hero_dark_background",
+      "label": "Dark hero background color",
+      "info": "Shown behind the gallery images while they load.",
+      "default": "#3a0108"
     }
   ]
 }

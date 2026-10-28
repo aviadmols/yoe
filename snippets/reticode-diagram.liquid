@@ -1,0 +1,85 @@
+{%- comment -%}
+  Skin-layer delivery diagram for the RetiCode comparison section.
+  Coordinates are taken 1:1 from the 1920px Figma frame (710 x 722 area), so the SVG
+  scales proportionally on every breakpoint.
+  Accepts: settings (section.settings of reticode-comparison)
+{%- endcomment -%}
+{%- liquid
+  assign cap_1_2 = settings.dg_caption_1_2 | newline_to_br | split: '<br />'
+  assign cap_2_2 = settings.dg_caption_2_2 | newline_to_br | split: '<br />'
+  assign cap_3_2 = settings.dg_caption_3_2 | newline_to_br | split: '<br />'
+  assign cap_1_3 = settings.dg_caption_1_3 | newline_to_br | split: '<br />'
+  assign cap_2_3 = settings.dg_caption_2_3 | newline_to_br | split: '<br />'
+  assign cap_3_3 = settings.dg_caption_3_3 | newline_to_br | split: '<br />'
+-%}
+<svg class="rc-diagram" viewBox="0 0 710 722" role="img" aria-label="{{ settings.diagram_alt | escape }}" xmlns="http://www.w3.org/2000/svg">
+  <g class="rc-diagram__grid" fill="none">
+    <line x1="270.5" y1="0" x2="270.5" y2="718"/>
+    <line x1="489.5" y1="0" x2="489.5" y2="718"/>
+    <path d="M55 236 Q380 200 705 238"/>
+    <path d="M55 490 C80 482 100 480 120 480 C160 480 190 501 230 501 C270 501 295 480 335 480 C375 480 400 501 440 501 C490 501 550 480 600 480 C650 480 680 495 705 501"/>
+  </g>
+
+  <g class="rc-diagram__heads" text-anchor="middle">
+    <text class="rc-diagram__head" x="159" y="26">{{ settings.dg_col_1_title | escape }}</text>
+    <text class="rc-diagram__sub" x="159" y="51">{{ settings.dg_col_1_sub | escape }}</text>
+    <text class="rc-diagram__head" x="382" y="26">{{ settings.dg_col_2_title | escape }}</text>
+    <text class="rc-diagram__sub" x="382" y="51">{{ settings.dg_col_2_sub | escape }}</text>
+    <text class="rc-diagram__head rc-diagram__head--accent" x="597" y="26">{{ settings.dg_col_3_title | escape }}</text>
+    <text class="rc-diagram__sub rc-diagram__sub--accent" x="597" y="51">{{ settings.dg_col_3_sub | escape }}</text>
+  </g>
+
+  <g class="rc-diagram__layers" text-anchor="middle">
+    <text transform="translate(19 143) rotate(-90)">{{ settings.dg_layer_1 | escape }}</text>
+    <text transform="translate(19 358) rotate(-90)">{{ settings.dg_layer_2 | escape }}</text>
+    <text transform="translate(19 596) rotate(-90)">{{ settings.dg_layer_3 | escape }}</text>
+  </g>
+
+  <g class="rc-diagram__dots">
+    {%- comment -%} Surface {%- endcomment -%}
+    <circle cx="89" cy="126" r="5.5"/><circle cx="139" cy="119" r="5.5"/><circle cx="190" cy="119" r="5.5"/><circle cx="237" cy="126" r="5.5"/>
+    <circle cx="116" cy="164" r="5.5"/><circle cx="167" cy="156" r="5.5"/><circle cx="214" cy="164" r="5.5"/>
+    <circle cx="306" cy="126" r="5.5"/><circle cx="357" cy="119" r="5.5"/><circle cx="407" cy="119" r="5.5"/><circle cx="454" cy="126" r="5.5"/>
+    <circle cx="334" cy="164" r="5.5"/><circle cx="384" cy="156" r="5.5"/><circle cx="431" cy="164" r="5.5"/>
+    {%- comment -%} Epidermis {%- endcomment -%}
+    <circle cx="115" cy="273" r="5.5"/><circle cx="166" cy="273" r="5.5"/><circle cx="216" cy="280" r="5.5"/>
+    <circle cx="138" cy="315" r="5.5"/><circle cx="188" cy="313" r="5.5"/>
+    <circle cx="332" cy="263" r="5.5"/><circle cx="383" cy="263" r="5.5"/><circle cx="433" cy="270" r="5.5"/>
+    <circle cx="354" cy="305" r="5.5"/><circle cx="406" cy="303" r="5.5"/>
+    {%- comment -%} Renewal {%- endcomment -%}
+    <circle cx="158" cy="574" r="5.5"/><circle cx="200" cy="603" r="5.5"/><circle cx="126" cy="622" r="5.5"/>
+    <circle cx="662" cy="536" r="5.5"/><circle cx="520" cy="637" r="5.5"/>
+  </g>
+
+  {%- comment -%} Encapsulated clusters {%- endcomment -%}
+  <g class="rc-diagram__capsule">
+    <circle class="rc-diagram__ring" cx="597" cy="136" r="60"/>
+    <circle class="rc-diagram__ring" cx="597" cy="341" r="60"/>
+    <circle class="rc-diagram__ring rc-diagram__ring--dotted" cx="602" cy="595" r="60"/>
+  </g>
+  <g class="rc-diagram__dots">
+    {%- for cy in (0..1) -%}
+      {%- if forloop.first -%}{%- assign y = 136 -%}{%- else -%}{%- assign y = 341 -%}{%- endif -%}
+      <circle cx="597" cy="{{ y | minus: 17 }}" r="4.5"/>
+      <circle cx="581" cy="{{ y | minus: 8 }}" r="4.5"/><circle cx="613" cy="{{ y | minus: 8 }}" r="4.5"/>
+      <circle cx="597" cy="{{ y }}" r="4.5"/>
+      <circle cx="581" cy="{{ y | plus: 9 }}" r="4.5"/><circle cx="613" cy="{{ y | plus: 9 }}" r="4.5"/>
+      <circle cx="597" cy="{{ y | plus: 18 }}" r="4.5"/>
+    {%- endfor -%}
+    <circle cx="602" cy="579" r="4.5"/><circle cx="587" cy="587" r="4.5"/>
+    <circle cx="587" cy="605" r="4.5"/><circle cx="618" cy="605" r="4.5"/><circle cx="602" cy="613" r="4.5"/>
+  </g>
+
+  <polyline class="rc-diagram__chevron" points="114,380 122,368 130,380"/>
+  <polyline class="rc-diagram__chevron" points="154,380 162,368 170,380"/>
+  <polyline class="rc-diagram__chevron" points="195,380 203,368 211,380"/>
+
+  <g class="rc-diagram__captions" text-anchor="middle">
+    <text x="163" y="426">{%- for line in cap_1_2 -%}<tspan x="163" dy="{% if forloop.first %}0{% else %}20{% endif %}">{{ line | strip | escape }}</tspan>{%- endfor -%}</text>
+    <text x="380" y="426">{%- for line in cap_2_2 -%}<tspan x="380" dy="{% if forloop.first %}0{% else %}20{% endif %}">{{ line | strip | escape }}</tspan>{%- endfor -%}</text>
+    <text class="rc-diagram__caption--accent" x="597" y="426">{%- for line in cap_3_2 -%}<tspan x="597" dy="{% if forloop.first %}0{% else %}20{% endif %}">{{ line | strip | escape }}</tspan>{%- endfor -%}</text>
+    <text x="163" y="696">{%- for line in cap_1_3 -%}<tspan x="163" dy="{% if forloop.first %}0{% else %}20{% endif %}">{{ line | strip | escape }}</tspan>{%- endfor -%}</text>
+    <text x="380" y="702">{%- for line in cap_2_3 -%}<tspan x="380" dy="{% if forloop.first %}0{% else %}20{% endif %}">{{ line | strip | escape }}</tspan>{%- endfor -%}</text>
+    <text class="rc-diagram__caption--accent" x="600" y="696">{%- for line in cap_3_3 -%}<tspan x="600" dy="{% if forloop.first %}0{% else %}20{% endif %}">{{ line | strip | escape }}</tspan>{%- endfor -%}</text>
+  </g>
+</svg>

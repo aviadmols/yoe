@@ -1,0 +1,659 @@
+/* RetiCode comparison (PDP)
+   Desktop: rem at the 20px = 1rem design ratio (1920px Figma frame).
+   Mobile: px from the 375px Figma frame. */
+
+.rc {
+  --rc-red: #bd1e18;
+  --rc-grey: #666460;
+  --rc-grey-bar: #858380;
+  background: #f7f6f5;
+  padding: calc(var(--rc-pt, 25) * 0.05rem) 0 calc(var(--rc-pb, 37) * 0.05rem);
+  color: var(--rc-grey);
+}
+
+.rc__card {
+  container-type: inline-size;
+  margin: 0 2.15rem;
+  padding: 3.3rem 5.35rem 5.8rem 4.9rem;
+  background: #fff;
+}
+
+.rc__title,
+.rc__subtitle,
+.rc__body,
+.rc__clinical-title {
+  margin: 0;
+  color: var(--rc-grey);
+  font-family: "Open Sans", sans-serif;
+}
+
+.rc__title {
+  font-size: 2.5rem;
+  font-weight: 351;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__subtitle {
+  margin-top: 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 401;
+  line-height: 1.2;
+  letter-spacing: 0.035rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__body {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 401;
+  line-height: 1.3;
+  letter-spacing: 0;
+  font-variation-settings: "wdth" 85;
+}
+
+/* Table + diagram */
+.rc__compare {
+  display: grid;
+  grid-template-columns: minmax(0, 718fr) 3.7rem 1px 6.05rem minmax(0, 710fr);
+  min-height: 38.4rem;
+  margin-top: 3rem;
+}
+
+.rc__table {
+  padding-left: 0.3rem;
+}
+
+.rc__row {
+  display: grid;
+  grid-template-columns: 12.7% 21.2% 31.2% minmax(0, 1fr);
+  align-items: center;
+  min-height: 5.5rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid #eee;
+  font-family: "Open Sans", sans-serif;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__row:last-child {
+  border-bottom: 0;
+}
+
+.rc__row--head {
+  min-height: 3.4rem;
+  padding: 0;
+  border-bottom: 0;
+}
+
+.rc__row--head .rc__cell--a,
+.rc__row--head .rc__cell--b {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+}
+
+.rc__row--head .rc__cell--a {
+  color: var(--rc-red);
+}
+
+.rc__row--head .rc__cell--b {
+  color: var(--rc-grey);
+}
+
+.rc__cell--icon {
+  display: flex;
+  align-items: center;
+  color: var(--rc-red);
+}
+
+.rc__icon {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+}
+
+.rc__cell--label {
+  color: var(--rc-red);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.rc__cell--a,
+.rc__cell--b {
+  font-size: 0.95rem;
+  font-weight: 401;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.rc__cell--a {
+  color: var(--rc-red);
+}
+
+.rc__cell--b {
+  color: var(--rc-grey-bar);
+}
+
+.rc__table {
+  grid-column: 1;
+}
+
+.rc__divider {
+  display: block;
+  grid-column: 3;
+  background: #d8d7d6;
+}
+
+.rc__diagram {
+  grid-column: 5;
+  align-self: start;
+}
+
+.rc__diagram-image,
+.rc-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.rc-diagram text {
+  font-family: "Open Sans", sans-serif;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc-diagram__grid line,
+.rc-diagram__grid path {
+  stroke: #c5c5c3;
+  stroke-width: 1.2;
+}
+
+.rc-diagram__head {
+  fill: var(--rc-grey-bar);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.rc-diagram__sub {
+  fill: var(--rc-grey-bar);
+  font-size: 19px;
+  font-weight: 401;
+}
+
+.rc-diagram__head--accent,
+.rc-diagram__sub--accent {
+  fill: var(--rc-red);
+  letter-spacing: 2px;
+}
+
+.rc-diagram__layers text {
+  fill: #9a9895;
+  font-size: 16px;
+  font-weight: 351;
+  letter-spacing: 4px;
+}
+
+.rc-diagram__dots circle {
+  fill: var(--rc-red);
+}
+
+.rc-diagram__ring {
+  fill: none;
+  stroke: var(--rc-grey);
+  stroke-width: 1;
+}
+
+.rc-diagram__ring--dotted {
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 0 9.42;
+}
+
+.rc-diagram__chevron {
+  fill: none;
+  stroke: var(--rc-grey);
+  stroke-width: 1.2;
+}
+
+.rc-diagram__captions text {
+  fill: var(--rc-grey-bar);
+  font-size: 18px;
+  font-weight: 401;
+}
+
+.rc-diagram__captions .rc-diagram__caption--accent {
+  fill: var(--rc-red);
+}
+
+/* Clinical bars */
+.rc__clinical {
+  position: relative;
+  margin-top: 2.5rem;
+  padding-top: 3.8rem;
+}
+
+.rc__clinical::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -3.4rem;
+  right: -3.85rem;
+  border-top: 1px solid #d2d1d0;
+}
+
+.rc__clinical-head {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+}
+
+.rc__clinical-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.095rem;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__clinical-title br {
+  display: none;
+}
+
+.rc__legend {
+  display: flex;
+  align-items: center;
+  gap: 1.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rc__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__legend-item::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.rc__legend-item--a {
+  color: var(--rc-red);
+  font-weight: 700;
+}
+
+.rc__legend-item--b {
+  color: var(--rc-grey-bar);
+  font-weight: 401;
+}
+
+.rc__stats {
+  display: grid;
+  grid-template-columns: minmax(0, 991fr) minmax(0, 638fr);
+  grid-template-rows: auto auto;
+  grid-auto-flow: column;
+  row-gap: 2.15rem;
+  margin-top: 2.35rem;
+}
+
+.rc__stat {
+  display: grid;
+  grid-template-columns: 9.25rem minmax(0, 1fr);
+  align-items: center;
+}
+
+.rc__stat-label {
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__stat-label strong {
+  color: var(--rc-grey);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.rc__stat-label span {
+  color: var(--rc-grey);
+  font-size: 0.75rem;
+  font-weight: 401;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.rc__bar {
+  position: relative;
+  width: calc(var(--rc-v) * 1.363cqw);
+  height: 1.35rem;
+}
+
+.rc__bar--a {
+  background: var(--rc-red);
+}
+
+.rc__bar--b {
+  background: var(--rc-grey-bar);
+}
+
+.rc__bar-value {
+  position: absolute;
+  top: 50%;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  font-family: "Open Sans", sans-serif;
+  line-height: 1;
+  font-variation-settings: "wdth" 85;
+}
+
+.rc__bar--a .rc__bar-value {
+  left: calc(100% + 1.3rem);
+  color: var(--rc-red);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.rc__bar--b .rc__bar-value {
+  left: calc(100% + 1.7rem);
+  color: var(--rc-grey-bar);
+  font-size: 0.6rem;
+  font-weight: 401;
+}
+
+/* Tablet: stack the table and the diagram */
+@media screen and (min-width: 750px) and (max-width: 1100px) {
+  .rc__compare {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .rc__table,
+  .rc__diagram {
+    grid-column: 1;
+  }
+
+  .rc__divider {
+    display: none;
+  }
+
+  .rc__diagram {
+    width: 100%;
+    max-width: 35.5rem;
+    margin: 3rem auto 0;
+  }
+
+  .rc__clinical-head {
+    flex-wrap: wrap;
+    gap: 1rem 2.75rem;
+  }
+
+  .rc__stats {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+}
+
+/* Mobile (375px design) */
+@media screen and (max-width: 749px) {
+  .rc {
+    padding: calc(var(--rc-pt-m, 15) * 1px) 0 calc(var(--rc-pb-m, 0) * 1px);
+  }
+
+  .rc__card {
+    margin: 0;
+    padding: 44px 0 32px;
+  }
+
+  .rc__header {
+    padding: 0 27px;
+  }
+
+  .rc__title {
+    font-size: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  .rc__subtitle {
+    margin-top: 6px;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+  }
+
+  .rc__body {
+    margin-top: 9px;
+    font-size: 9.7px;
+    line-height: 12px;
+  }
+
+  .rc__compare {
+    display: block;
+    margin-top: 27px;
+    padding-bottom: 0;
+  }
+
+  .rc__table {
+    padding-left: 0;
+  }
+
+  .rc__divider {
+    display: none;
+  }
+
+  /* Red / grey column fills and row rules are painted on the row so cells never show seams. */
+  .rc__row {
+    position: relative;
+    grid-template-columns: 60px 63px 124px minmax(0, 1fr);
+    align-items: stretch;
+    min-height: 50px;
+    padding: 0;
+    border-bottom: 0;
+    background: linear-gradient(90deg, var(--rc-red) 0 247px, #eeeef0 247px);
+  }
+
+  .rc__row::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0 247px, #e4e4e5 247px);
+  }
+
+  .rc__row--head::after,
+  .rc__row:last-child::after {
+    content: none;
+  }
+
+  .rc__cell {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    color: #fff;
+  }
+
+  .rc__cell--b {
+    padding: 6px 10px 6px 15px;
+    color: var(--rc-grey-bar);
+  }
+
+  .rc__row:last-child .rc__cell {
+    padding-bottom: 16px;
+  }
+
+  .rc__row:last-child {
+    min-height: 60px;
+  }
+
+  .rc__row--head {
+    min-height: 42px;
+  }
+
+  .rc__row--head .rc__cell {
+    padding: 14px 0 0;
+    border-bottom: 0;
+  }
+
+  .rc__row--head .rc__cell--b {
+    padding: 14px 10px 0 15px;
+  }
+
+  .rc__row--head .rc__cell--a,
+  .rc__row--head .rc__cell--b {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .rc__row--head .rc__cell--a {
+    color: #fff;
+  }
+
+  .rc__row--head .rc__cell--b {
+    color: var(--rc-grey-bar);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .rc__cell--icon {
+    justify-content: flex-start;
+    padding-left: 27px;
+    color: #fff;
+  }
+
+  .rc__icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .rc__cell--label {
+    padding-right: 6px;
+    color: #fff;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  .rc__cell--a {
+    color: #fff;
+    font-size: 11px;
+    line-height: 12px;
+  }
+
+  .rc__cell--b {
+    font-size: 9.5px;
+    line-height: 10px;
+  }
+
+  .rc__diagram {
+    margin: 28px 0 0 25px;
+    width: 317px;
+    max-width: calc(100% - 50px);
+  }
+
+  .rc__clinical {
+    margin-top: 41px;
+    padding-top: 39px;
+  }
+
+  .rc__clinical::before {
+    left: 0;
+    right: 0;
+    border-top-color: #e8e8e7;
+  }
+
+  .rc__clinical-head {
+    flex-direction: column-reverse;
+    gap: 18px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .rc__clinical-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.8px;
+  }
+
+  .rc__clinical-title br {
+    display: inline;
+  }
+
+  .rc__legend {
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .rc__legend-item {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .rc__legend-item::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  .rc__stats {
+    display: block;
+    margin: 6px 10px 0;
+  }
+
+  .rc__stat {
+    grid-template-columns: 103.5px minmax(0, 1fr);
+    min-height: 55px;
+    padding-left: 15px;
+    border-bottom: 1px solid #d2d1d0;
+  }
+
+  .rc__stat:last-child {
+    border-bottom: 0;
+  }
+
+  .rc__stat-label strong {
+    font-size: 10.5px;
+  }
+
+  .rc__stat-label span {
+    font-size: 7px;
+  }
+
+  .rc__bar {
+    width: calc(var(--rc-v) * 1.688cqw);
+    height: 15px;
+  }
+
+  .rc__bar--a .rc__bar-value {
+    left: calc(100% + 8px);
+    font-size: 9.5px;
+  }
+
+  .rc__bar--b .rc__bar-value {
+    left: calc(100% + 5px);
+    font-size: 6px;
+  }
+}

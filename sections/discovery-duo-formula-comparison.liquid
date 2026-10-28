@@ -1,12 +1,17 @@
 {{ 'discovery-duo-formula-comparison.css' | asset_url | stylesheet_tag }}
 
 {%- assign is_pdp_layout = false -%}
+{%- assign is_pdp_card = false -%}
 {%- if section.settings.layout_mode == 'pdp' -%}
   {%- assign is_pdp_layout = true -%}
+  {%- if section.settings.pdp_style == 'card' -%}
+    {%- assign is_pdp_card = true -%}
+    {{ 'discovery-duo-formula-comparison-card.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
 {%- endif -%}
 
 <section
-  class="dd-compare{% if is_pdp_layout %} dd-compare--pdp{% endif %}{% render 'pdp-scroll-animate-class' %}"
+  class="dd-compare{% if is_pdp_layout %} dd-compare--pdp{% endif %}{% if is_pdp_card %} dd-compare--pdp-card{% endif %}{% render 'pdp-scroll-animate-class' %}"
   style="--dd-compare-padding-top: {{ section.settings.padding_top }}px; --dd-compare-padding-bottom: {{ section.settings.padding_bottom }}px;"
   aria-label="{{ section.settings.headline_prefix | default: '14 biotech actives' | escape }}"
 >
@@ -262,6 +267,16 @@
         { "value": "pdp", "label": "Product page (split panel)" }
       ],
       "default": "lp"
+    },
+    {
+      "type": "select",
+      "id": "pdp_style",
+      "label": "Product page style",
+      "options": [
+        { "value": "default", "label": "Full width" },
+        { "value": "card", "label": "Card on grey background" }
+      ],
+      "default": "default"
     },
     { "type": "text", "id": "headline_prefix", "label": "Headline prefix", "default": "14 biotech actives." },
     { "type": "text", "id": "headline_accent", "label": "Headline accent", "default": "One Complex" },

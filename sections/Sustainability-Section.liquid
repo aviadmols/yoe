@@ -3,6 +3,16 @@
   "name": "Sustainability Section",
   "settings": [
     {
+      "type": "select",
+      "id": "desktop_style",
+      "label": "Desktop style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "large", "label": "Large (full-width grey, PDP)" }
+      ],
+      "default": "default"
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
@@ -221,7 +231,7 @@
   {%- endif -%}
 {%- endif -%}
 
-<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}{% render 'pdp-scroll-animate-class' %}">
+<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}{% if section.settings.desktop_style == 'large' %} sustainability-section--large{% endif %}{% render 'pdp-scroll-animate-class' %}">
     <div class="page-width">
         <div class="container-section-desktop">
             <div class="left-col">
@@ -856,5 +866,86 @@
         }
     }
 
+    /* Large desktop style (PDP Figma, 1920px frame: 20px = 1rem) */
+    @media (min-width: 1201px) {
+        .sustainability-section--large {
+            background: #f7f6f5;
+        }
+
+        .sustainability-section--large .page-width {
+            max-width: none;
+            margin: 0;
+            padding: 6.45rem 3.5rem 7.15rem 8.45rem;
+        }
+
+        .sustainability-section--large .container-section-desktop {
+            align-items: flex-start;
+        }
+
+        .sustainability-section--large .left-col h2 {
+            font-family: "Open Sans", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 351;
+            line-height: 1;
+            letter-spacing: 0.055rem;
+            font-variation-settings: "wdth" 85;
+        }
+
+        .sustainability-section--large .left-col p {
+            max-width: 21rem;
+            margin: 1.7rem 0 0;
+            font-size: 1rem;
+            font-weight: 401;
+            line-height: 1.5;
+            letter-spacing: 0.015rem;
+            font-variation-settings: "wdth" 85;
+        }
+
+        .sustainability-section--large .badges {
+            gap: 1.3rem;
+            margin: 3.05rem 0 0;
+        }
+
+        .sustainability-section--large .badges img {
+            height: 3.9rem;
+        }
+
+        .sustainability-section--large .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.3rem;
+            max-width: none;
+            height: 3.9rem;
+            margin-top: 3.7rem;
+            padding: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 401;
+            letter-spacing: 0.05rem;
+            font-variation-settings: "wdth" 85;
+        }
+
+        .sustainability-section--large .feature-item h4 {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.13rem;
+            font-variation-settings: "wdth" 85;
+        }
+
+        .sustainability-section--large .feature-item p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 401;
+            line-height: 1.25;
+            font-variation-settings: "wdth" 85;
+        }
+
+        .sustainability-section--large .feature-item p,
+        .sustainability-section--large .feature-item.featured-item-2 .content-section p {
+            max-width: 14rem;
+        }
+    }
 
 </style>

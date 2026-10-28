@@ -1,0 +1,421 @@
+{%- comment -%}
+  RetiCode™ comparison (PDP): headline, RetiCode vs. traditional retinol table,
+  skin-layer delivery diagram and clinical head-to-head bars.
+  Desktop sizes in rem (20px = 1rem at the 1920px design), mobile in px (375px design).
+{%- endcomment -%}
+{{ 'reticode-comparison.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="rc{% render 'pdp-scroll-animate-class' %}"
+  style="--rc-pt: {{ section.settings.padding_top }}; --rc-pb: {{ section.settings.padding_bottom }}; --rc-pt-m: {{ section.settings.padding_top_mobile }}; --rc-pb-m: {{ section.settings.padding_bottom_mobile }};"
+  aria-label="{{ section.settings.heading | strip_html | escape }}"
+>
+  <div class="rc__card">
+    <header class="rc__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="rc__title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="rc__subtitle">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <p class="rc__body">{{ section.settings.body | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="rc__compare">
+      <div class="rc__table" role="table" aria-label="{{ section.settings.col_a_label | strip_html | escape }} vs. {{ section.settings.col_b_label | escape }}">
+        <div class="rc__row rc__row--head" role="row">
+          <span class="rc__cell rc__cell--icon" aria-hidden="true"></span>
+          <span class="rc__cell rc__cell--label" aria-hidden="true"></span>
+          <span class="rc__cell rc__cell--a" role="columnheader">{{ section.settings.col_a_label }}</span>
+          <span class="rc__cell rc__cell--b" role="columnheader">{{ section.settings.col_b_label | escape }}</span>
+        </div>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'row' -%}
+            <div class="rc__row" role="row" {{ block.shopify_attributes }}>
+              <span class="rc__cell rc__cell--icon" aria-hidden="true">
+                {%- if block.settings.icon_image != blank -%}
+                  {{ block.settings.icon_image | image_url: width: 120 | image_tag: loading: 'lazy', class: 'rc__icon', alt: '' }}
+                {%- else -%}
+                  {% render 'reticode-icon', icon: block.settings.icon %}
+                {%- endif -%}
+              </span>
+              <span class="rc__cell rc__cell--label" role="rowheader">{{ block.settings.label | escape | newline_to_br }}</span>
+              <span class="rc__cell rc__cell--a" role="cell">{{ block.settings.text_a | escape | newline_to_br }}</span>
+              <span class="rc__cell rc__cell--b" role="cell">{{ block.settings.text_b | escape | newline_to_br }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <span class="rc__divider" aria-hidden="true"></span>
+
+      <div class="rc__diagram">
+        {%- if section.settings.diagram_image != blank -%}
+          {{ section.settings.diagram_image | image_url: width: 1440 | image_tag: loading: 'lazy', class: 'rc__diagram-image', alt: section.settings.diagram_alt }}
+        {%- else -%}
+          {% render 'reticode-diagram', settings: section.settings %}
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="rc__clinical">
+      <div class="rc__clinical-head">
+        {%- if section.settings.clinical_title != blank -%}
+          <h3 class="rc__clinical-title">{{ section.settings.clinical_title | escape | newline_to_br }}</h3>
+        {%- endif -%}
+        <ul class="rc__legend" role="list">
+          <li class="rc__legend-item rc__legend-item--a">{{ section.settings.legend_a }}</li>
+          <li class="rc__legend-item rc__legend-item--b">{{ section.settings.legend_b | escape }}</li>
+        </ul>
+      </div>
+
+      <div class="rc__stats">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="rc__stat" {{ block.shopify_attributes }}>
+              <div class="rc__stat-label">
+                <strong>{{ block.settings.label | escape }}</strong>
+                <span>{{ block.settings.caption | escape }}</span>
+              </div>
+              <div class="rc__stat-bars">
+                <div class="rc__bar rc__bar--a" style="--rc-v: {{ block.settings.value_a | abs }};">
+                  <span class="rc__bar-value">{{ block.settings.value_a_label | escape }}</span>
+                </div>
+                <div class="rc__bar rc__bar--b" style="--rc-v: {{ block.settings.value_b | abs }};">
+                  <span class="rc__bar-value">{{ block.settings.value_b_label | escape }}</span>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RetiCode comparison",
+  "tag": "div",
+  "class": "section-reticode-comparison",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "RETICODE™"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A NEXT-GENERATION BIO-RETINOID"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Engineered to activate skin's own renewal pathway, visibly restoring firmness and elasticity without irritation. Photo-stable, unlike traditional retinol."
+    },
+    {
+      "type": "header",
+      "content": "Comparison table"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "col_a_label",
+      "label": "Column A heading",
+      "default": "RETICODE™"
+    },
+    {
+      "type": "text",
+      "id": "col_b_label",
+      "label": "Column B heading",
+      "default": "Traditional Retinol"
+    },
+    {
+      "type": "header",
+      "content": "Diagram"
+    },
+    {
+      "type": "image_picker",
+      "id": "diagram_image",
+      "label": "Diagram image (optional)",
+      "info": "Replaces the built-in diagram."
+    },
+    {
+      "type": "text",
+      "id": "diagram_alt",
+      "label": "Diagram image alt text",
+      "default": "RetiCode encapsulated delivery compared with traditional retinol and bakuchiol"
+    },
+    {
+      "type": "text",
+      "id": "dg_col_1_title",
+      "label": "Column 1 title",
+      "default": "Traditional Retinol"
+    },
+    {
+      "type": "text",
+      "id": "dg_col_1_sub",
+      "label": "Column 1 subtitle",
+      "default": "Free active"
+    },
+    {
+      "type": "text",
+      "id": "dg_col_2_title",
+      "label": "Column 2 title",
+      "default": "Bakuchiol"
+    },
+    {
+      "type": "text",
+      "id": "dg_col_2_sub",
+      "label": "Column 2 subtitle",
+      "default": "Not a retinoid"
+    },
+    {
+      "type": "text",
+      "id": "dg_col_3_title",
+      "label": "Column 3 title",
+      "default": "RETICODE™"
+    },
+    {
+      "type": "text",
+      "id": "dg_col_3_sub",
+      "label": "Column 3 subtitle",
+      "default": "ENCAPSULATED"
+    },
+    {
+      "type": "text",
+      "id": "dg_layer_1",
+      "label": "Layer 1 label",
+      "default": "SURFACE"
+    },
+    {
+      "type": "text",
+      "id": "dg_layer_2",
+      "label": "Layer 2 label",
+      "default": "EPIDERMIS"
+    },
+    {
+      "type": "text",
+      "id": "dg_layer_3",
+      "label": "Layer 3 label",
+      "default": "RENEWAL"
+    },
+    {
+      "type": "textarea",
+      "id": "dg_caption_1_2",
+      "label": "Column 1 / layer 2 caption",
+      "default": "Redness, flaking,\nbarrier stress"
+    },
+    {
+      "type": "textarea",
+      "id": "dg_caption_2_2",
+      "label": "Column 2 / layer 2 caption",
+      "default": "Passes without\nirritation"
+    },
+    {
+      "type": "textarea",
+      "id": "dg_caption_3_2",
+      "label": "Column 3 / layer 2 caption",
+      "default": "Passes intact"
+    },
+    {
+      "type": "textarea",
+      "id": "dg_caption_1_3",
+      "label": "Column 1 / layer 3 caption",
+      "default": "Renewal,\nwith potential irritation"
+    },
+    {
+      "type": "textarea",
+      "id": "dg_caption_2_3",
+      "label": "Column 2 / layer 3 caption",
+      "default": "No retinoid renewal"
+    },
+    {
+      "type": "textarea",
+      "id": "dg_caption_3_3",
+      "label": "Column 3 / layer 3 caption",
+      "default": "Renewal,\nminimal irritation"
+    },
+    {
+      "type": "header",
+      "content": "Clinical results"
+    },
+    {
+      "type": "textarea",
+      "id": "clinical_title",
+      "label": "Title",
+      "default": "CLINICALLY MEASURED. HEAD-TO-HEAD AGAINST RETINOL."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "legend_a",
+      "label": "Legend A",
+      "default": "RetiCode™ 2%"
+    },
+    {
+      "type": "text",
+      "id": "legend_b",
+      "label": "Legend B",
+      "default": "Retinol 0.5%"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 37
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison row",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "irritation", "label": "Irritation" },
+            { "value": "daytime", "label": "Daytime use" },
+            { "value": "barrier", "label": "Barrier" },
+            { "value": "adjustment", "label": "Adjustment" },
+            { "value": "delivery", "label": "Delivery" },
+            { "value": "sensitive", "label": "Sensitive skin" }
+          ],
+          "default": "irritation"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Custom icon",
+          "info": "Replaces the built-in icon."
+        },
+        {
+          "type": "textarea",
+          "id": "label",
+          "label": "Label",
+          "default": "IRRITATION"
+        },
+        {
+          "type": "textarea",
+          "id": "text_a",
+          "label": "Column A text",
+          "default": "Minimal irritation"
+        },
+        {
+          "type": "textarea",
+          "id": "text_b",
+          "label": "Column B text",
+          "default": "May cause redness,\npeeling or purging"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Clinical stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "WRINKLE DEPTH"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "DAY 56"
+        },
+        {
+          "type": "number",
+          "id": "value_a",
+          "label": "Value A (bar length, %)",
+          "default": 20.6
+        },
+        {
+          "type": "text",
+          "id": "value_a_label",
+          "label": "Value A label",
+          "default": "-20.6%"
+        },
+        {
+          "type": "number",
+          "id": "value_b",
+          "label": "Value B (bar length, %)",
+          "default": 18.7
+        },
+        {
+          "type": "text",
+          "id": "value_b_label",
+          "label": "Value B label",
+          "default": "-18.7%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RetiCode comparison",
+      "blocks": [
+        { "type": "row", "settings": { "icon": "irritation", "label": "IRRITATION", "text_a": "Minimal irritation", "text_b": "May cause redness,\npeeling or purging" } },
+        { "type": "row", "settings": { "icon": "daytime", "label": "DAYTIME USE", "text_a": "Morning or night.\nSuitable for daytime use", "text_b": "May be light-sensitive.\nNighttime use often\nrecommended" } },
+        { "type": "row", "settings": { "icon": "barrier", "label": "BARRIER", "text_a": "Supports the barrier", "text_b": "May compromise\nthe barrier" } },
+        { "type": "row", "settings": { "icon": "adjustment", "label": "ADJUSTMENT", "text_a": "Daily use from day one", "text_b": "May need an\nadjustment period" } },
+        { "type": "row", "settings": { "icon": "delivery", "label": "DELIVERY", "text_a": "Encapsulated. Delivered\nintact where it works", "text_b": "Free active.\nMay degrades in light\nand air before it works" } },
+        { "type": "row", "settings": { "icon": "sensitive", "label": "SENSITIVE\nSKIN", "text_a": "Suited to\nsensitive skin", "text_b": "May not suit\nsensitive skin" } },
+        { "type": "stat", "settings": { "label": "WRINKLE DEPTH", "caption": "DAY 56", "value_a": 20.6, "value_a_label": "-20.6%", "value_b": 18.7, "value_b_label": "-18.7%" } },
+        { "type": "stat", "settings": { "label": "DARK SPOTS", "caption": "DAY 56", "value_a": 29.7, "value_a_label": "-29.7%", "value_b": 23.5, "value_b_label": "-23.5%" } },
+        { "type": "stat", "settings": { "label": "SKIN FIRMNESS", "caption": "DAY 28", "value_a": 8.2, "value_a_label": "+8.2%", "value_b": 7.7, "value_b_label": "+7.7%" } },
+        { "type": "stat", "settings": { "label": "SKIN ELASTICITY", "caption": "DAY 14", "value_a": 5.8, "value_a_label": "+5.8%", "value_b": 4.7, "value_b_label": "+4.7%" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Dark hero variant for main-product (section setting hero_theme: dark).
+   Used with the transparent "homepageheader" header (layout/theme.liquid).
+
+   Units follow yoe-buy-module.css:
+   - Desktop: rem (20px = 1rem at the 1920px design)
+   - Mobile (<= 749px): px (375px design)
+   ========================================================================== */
+
+/* --- Header over the hero (both breakpoints) --- */
+body:has(.main-product-section--dark) .header_sections .announcement-bar-section .utility-bar,
+body:has(.main-product-section--dark) .header_sections.homepageheader:not(.dark_header) .utility-bar--bottom-border {
+  background: #ab2920 !important;
+  border-bottom-color: #ab2920 !important;
+}
+
+body:has(.main-product-section--dark) .header_sections .announcement-bar__message,
+body:has(.main-product-section--dark) .header_sections .announcement-bar__message span {
+  color: #fff !important;
+}
+
+body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_sections .logo_svg path,
+body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_sections .header_to_div svg.symbol_svg path {
+  fill: #fff !important;
+}
+
+body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_sections .header__icon--menu .icon * {
+  stroke: #fff;
+}
+
+/* --- Hero background (fallback until the gallery / background image loads) --- */
+.page-width.main-product-section.main-product-section--dark {
+  background:
+    linear-gradient(180deg, transparent 0 83.2%, rgba(78, 2, 12, 0.94) 83.2%, rgba(44, 6, 10, 0.97) 100%),
+    radial-gradient(ellipse 34% 46% at 33% 80%, #ff8b81 0%, #e0343a 26%, #a6061b 55%, rgba(110, 0, 14, 0) 100%),
+    linear-gradient(90deg, #6c000e 0%, #5a000e 28%, #2c0507 72%, #1a0606 100%);
+  background-color: var(--pdp-dark-bg, #3a0108);
+}
+
+.main-product-section--dark .custom-background-overlay {
+  background-position: center top;
+}
+
+/* ==========================================================================
+   Desktop: white type on the dark hero
+   ========================================================================== */
+@media screen and (min-width: 750px) {
+  .main-product-section--dark {
+    max-width: none;
+    padding-bottom: 0;
+  }
+
+  .main-product-section--dark .product__info-wrapper.grid__item {
+    position: relative;
+    left: 2.85rem;
+    max-width: 29.85rem !important;
+    padding-top: calc(40px + 7.25rem);
+    padding-bottom: 1.5rem;
+  }
+
+  .main-product-section--dark .thumbnail-slider,
+  .main-product-section--dark span.explore {
+    margin-top: 4.6rem;
+  }
+
+  .main-product-section--dark span.explore {
+    left: 2.35rem;
+  }
+
+  .main-product-section--dark .thumbnail-slider .thumbnail {
+    width: 3.4rem !important;
+    height: 3.4rem !important;
+    margin-bottom: 1.05rem;
+    margin-left: 0.7rem;
+  }
+
+  /* Variant buttons (Figma: 114 x 39) */
+  .main-product-section--dark .yoe-buy-module .product-form__input label.yoe-variant-btn,
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio'] + label {
+    width: auto !important;
+    min-width: 5.7rem;
+    height: 1.95rem !important;
+    min-height: 0;
+    margin: 0 0.65rem 0 0;
+    padding: 0 1rem !important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8rem !important;
+    font-weight: 401;
+    font-variation-settings: "wdth" 85;
+  }
+
+  /* Purchase options (Figma: two 61px rows, regular 16px labels, no badges) */
+  .main-product-section--dark .yoe-buy-module .loop-subscription-container {
+    margin: -0.3rem 0 0;
+  }
+
+  .main-product-section--dark .yoe-buy-module [id^="loop-product-variant-"] {
+    margin-bottom: 0 !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position:not(:has(.loop-one-time-purchase-option)) {
+    display: none !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group {
+    min-height: 3.05rem;
+    padding: 0 1.2rem !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position {
+    margin-top: 0.4rem !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-labell,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-labell,
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-price-amountl,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-price-amount {
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 0.8rem !important;
+    font-weight: 401 !important;
+    letter-spacing: 0.02rem !important;
+    font-variation-settings: "wdth" 85;
+  }
+
+  .main-product-section--dark .yoe-buy-module .yoe-sub-strike,
+  .main-product-section--dark .yoe-buy-module .yoe-sub-badge,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-discount-badge,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-price-amount-original,
+  .main-product-section--dark .yoe-buy-module .product-form__submit .yoe-atc-price {
+    display: none !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__buttons {
+    margin-top: 0.15rem;
+  }
+
+  .main-product-section--dark .pdp-benefit-icons {
+    margin-top: 1.1rem;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__submit {
+    min-height: 3.2rem;
+  }
+
+  .main-product-section--dark .pdp-shipping-note {
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 401;
+    font-variation-settings: "wdth" 85;
+  }
+
+  .main-product-section--dark span.explore {
+    color: #fff;
+  }
+
+  .main-product-section--dark .product__info-wrapper,
+  .main-product-section--dark .product__info-wrapper .product__title h1,
+  .main-product-section--dark .product__info-wrapper .product__description,
+  .main-product-section--dark .product__info-wrapper .product__description *,
+  .main-product-section--dark .product__info-wrapper .accordion__title,
+  .main-product-section--dark .product__info-wrapper .icon-with-text__item span,
+  .main-product-section--dark .product__info-wrapper .pdp-benefit-icons__label,
+  .main-product-section--dark .product__info-wrapper .pdp-shipping-note,
+  .main-product-section--dark .product__info-wrapper .oke-w-ratingAverageModule-count,
+  .main-product-section--dark .product__info-wrapper .oke-w-reviews-count {
+    color: #fff !important;
+  }
+
+  .main-product-section--dark .product__title h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: 0.15rem;
+  }
+
+  /* Benefit icons: white, left aligned, compact (Figma desktop) */
+  .main-product-section--dark .pdp-benefit-icons {
+    justify-content: flex-start;
+    gap: 1.6rem;
+  }
+
+  .main-product-section--dark .pdp-benefit-icons__icon,
+  .main-product-section--dark .icon-with-text__item img {
+    filter: brightness(0) invert(1);
+  }
+
+  .main-product-section--dark .pdp-benefit-icons__icon {
+    width: 1.5rem;
+  }
+
+  .main-product-section--dark .pdp-benefit-icons__label {
+    font-size: 0.4rem;
+  }
+
+  /* Accordions */
+  .main-product-section--dark .product__accordion,
+  .main-product-section--dark .product__accordion details,
+  .main-product-section--dark .product__accordion summary {
+    border-color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .main-product-section--dark .product__accordion summary > svg path {
+    stroke: #fff;
+  }
+
+  .main-product-section--dark .custom-review-stars .oke-w-ratingAverageModule-rating,
+  .main-product-section--dark .custom-review-stars .oke-w-ratingAverageModule-rating * {
+    color: #fff !important;
+  }
+
+  /* Buy module re-mapped to white */
+  .main-product-section--dark .yoe-buy-module {
+    --yoe-ink: #fff;
+    --yoe-muted: rgba(255, 255, 255, 0.85);
+    --yoe-line: rgba(255, 255, 255, 0.75);
+    --yoe-surface: transparent;
+    --yoe-surface-soft: transparent;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__input label,
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio'] + label,
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio'] + label:hover {
+    background: transparent !important;
+    border: 1px solid #fff !important;
+    box-shadow: none !important;
+    color: #fff !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio']:checked + label {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: #fff !important;
+    box-shadow: none !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .yoe-variant-btn__size,
+  .main-product-section--dark .yoe-buy-module .yoe-variant-btn__text {
+    color: #fff !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .yoe-variant-btn__icon--bottle {
+    fill: #fff;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group,
+  .main-product-section--dark .yoe-buy-module .loop-selected-selling-plan-group {
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    background: transparent !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-radio,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-radio {
+    border-color: #fff !important;
+    background: transparent !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-radio:checked,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-radio:checked {
+    border-color: #fff !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-selling-plan-selector {
+    background: transparent !important;
+    color: #fff !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__submit {
+    background: #ab2920 !important;
+    border-color: #ab2920 !important;
+    color: #fff !important;
+  }
+
+  .main-product-section--dark .product__info-wrapper .oke-w-reviews-count,
+  .main-product-section--dark .product__info-wrapper a {
+    color: #fff;
+  }
+}
+
+/* ==========================================================================
+   Mobile (375px design): image under the transparent header, white info panel
+   ========================================================================== */
+@media screen and (max-width: 749px) {
+  .page-width.main-product-section.main-product-section--dark {
+    padding-top: 0 !important;
+    background: #fff !important;
+  }
+
+  /* Gallery starts under the transparent header; no pagination band (Figma) */
+  .main-product-section--dark .product {
+    padding-top: 0 !important;
+  }
+
+  .main-product-section--dark .product-media-container {
+    background: transparent;
+  }
+
+  .main-product-section--dark .dot-gallery {
+    display: none;
+  }
+
+  .main-product-section--dark .product__info-wrapper.grid__item {
+    margin-top: 0;
+    background: #fff;
+    padding-top: 22px;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  .main-product-section--dark .product__title h1 {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+  }
+
+  .main-product-section--dark .product__description h3 {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Variant buttons (Figma: 100 x 40, selected grey fill) */
+  .main-product-section--dark .yoe-buy-module .product-form__input label,
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio'] + label,
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio'] + label:hover {
+    width: auto !important;
+    min-width: 100px;
+    height: 40px !important;
+    margin: 0 11px 0 0;
+    padding: 0 18px !important;
+    border: 1px solid #666460 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    color: #666460 !important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px !important;
+    font-weight: 401;
+    font-variation-settings: "wdth" 85;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio']:checked + label {
+    background: #d2d1d0 !important;
+  }
+
+  /* Purchase options (Figma: 306 x 53 rows, 8px apart) */
+  .main-product-section--dark .yoe-buy-module [id^="loop-product-variant-"] {
+    margin-bottom: 0 !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position:not(:has(.loop-one-time-purchase-option)) {
+    display: none !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position {
+    margin-top: 8px !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group,
+  .main-product-section--dark .yoe-buy-module .loop-selected-selling-plan-group {
+    min-height: 53px;
+    padding: 0 30px 0 19px !important;
+    border: 1px solid #666460 !important;
+    background: #fff !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-labell,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-labell,
+  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-price-amountl,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-price-amount {
+    color: #666460 !important;
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 401 !important;
+    font-variation-settings: "wdth" 85;
+  }
+
+  .main-product-section--dark .yoe-buy-module .yoe-sub-strike,
+  .main-product-section--dark .yoe-buy-module .yoe-sub-badge,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-discount-badge,
+  .main-product-section--dark .yoe-buy-module .loop-subscription-group-price-amount-original,
+  .main-product-section--dark .yoe-buy-module .product-form__submit .yoe-atc-price {
+    display: none !important;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__buttons {
+    margin-top: 14px;
+  }
+
+  .main-product-section--dark .yoe-buy-module .product-form__submit {
+    min-height: 64px;
+    background: #ab2920 !important;
+    border-color: #ab2920 !important;
+  }
+
+  .main-product-section--dark .pdp-shipping-note {
+    margin-top: 20px;
+    padding-left: 5px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 11.5px;
+    font-weight: 401;
+    font-variation-settings: "wdth" 85;
+  }
+}

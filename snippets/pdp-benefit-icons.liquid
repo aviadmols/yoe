@@ -1,24 +1,18 @@
 {%- comment -%}
-  PDP benefit icons row (Firms / Hydrates / Smooths / Brightens).
+  PDP benefit icons row (default: Firms / Hydrates / Smooths / Brightens).
+  Accepts: icons (optional) - comma-separated list of firms, hydrates, smooths, brightens, renews, blurs
   Self-contained styling so no shared CSS is touched.
 {%- endcomment -%}
+{%- assign benefit_icons = icons | default: 'firms,hydrates,smooths,brightens' | split: ',' -%}
 <ul class="pdp-benefit-icons" role="list">
-  <li class="pdp-benefit-icons__item">
-    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-firms.svg' | asset_url }}" alt="Firms" loading="lazy" width="28" height="22">
-    <span class="pdp-benefit-icons__label">Firms</span>
-  </li>
-  <li class="pdp-benefit-icons__item">
-    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-hydrates.svg' | asset_url }}" alt="Hydrates" loading="lazy" width="28" height="22">
-    <span class="pdp-benefit-icons__label">Hydrates</span>
-  </li>
-  <li class="pdp-benefit-icons__item">
-    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-smooths.svg' | asset_url }}" alt="Smooths" loading="lazy" width="28" height="22">
-    <span class="pdp-benefit-icons__label">Smooths</span>
-  </li>
-  <li class="pdp-benefit-icons__item">
-    <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-brightens.svg' | asset_url }}" alt="Brightens" loading="lazy" width="28" height="22">
-    <span class="pdp-benefit-icons__label">Brightens</span>
-  </li>
+  {%- for benefit in benefit_icons -%}
+    {%- assign benefit_key = benefit | strip | downcase -%}
+    {%- assign benefit_label = benefit_key | capitalize -%}
+    <li class="pdp-benefit-icons__item">
+      <img class="pdp-benefit-icons__icon" src="{{ 'pdp-benefit-' | append: benefit_key | append: '.svg' | asset_url }}" alt="{{ benefit_label }}" loading="lazy" width="28" height="22">
+      <span class="pdp-benefit-icons__label">{{ benefit_label }}</span>
+    </li>
+  {%- endfor -%}
 </ul>
 
 <style>

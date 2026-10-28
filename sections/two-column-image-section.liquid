@@ -119,12 +119,29 @@ section.two-column-images .page-width {
     background: #f7f6f5;
   }
 
+  /* !important: custom.css forces 0 15px on this section at mobile */
   section.two-column-images--pdp .page-width {
-    padding: 40px 13px 0;
+    padding: 40px 13px 0 !important;
   }
 
+  .two-column-images--pdp .container-section-image {
+    gap: 13.5px;
+  }
+
+  /* Figma mobile: 349 x 339.5 frames, scaling with the screen width */
   .two-column-images--pdp img {
-    height: 339px;
+    height: auto;
+    aspect-ratio: 349 / 339.5;
+  }
+
+  /* Figma crops the second photo tight, eyes to lips (no ear) */
+  .two-column-images--pdp .image-col:last-child {
+    overflow: hidden;
+  }
+
+  .two-column-images--pdp .image-col:last-child img {
+    transform: scale(1.53);
+    transform-origin: 86% 43%;
   }
 }
 </style>

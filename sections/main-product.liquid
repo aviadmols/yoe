@@ -7,6 +7,9 @@
   elsif section.settings.custom_background_image != blank
     assign custom_bg_url = section.settings.custom_background_image | image_url: width: 1600
   endif
+
+  # Template copy (subtitle + description) wins over the product description in admin
+  assign product_description = section.settings.description_override | default: product.description
 -%}
 {%- if custom_bg_url != blank -%}
   <link
@@ -69,12 +72,19 @@
         }
 
         @media (min-width: 769px) {
-            .main-product-section {
-                overflow: hidden;
+            /* clip (not hidden) clips the same way but keeps position: sticky working */
+            .main-product-section,
+            body:has(.custom-background-overlay) .content-for-layout {
+                overflow: clip;
             }
 
+            /* Background stays one viewport tall and sticks while the info column scrolls, so
+               opening accordions (a taller section) never rescales the cover image. */
             .custom-background-overlay {
-              min-height: 54rem;
+              position: sticky;
+              top: 0;
+              height: 100vh;
+              margin-bottom: -100vh;
             }
         }
 
@@ -94,6 +104,27 @@
         }
         .custom-review-stars .oke-is-clickable {
             display: none;
+        }
+
+        .custom-review-stars:has(.oke-w-ratingAverageModule) .pdp-no-reviews {
+            display: none;
+        }
+
+        .pdp-no-reviews {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.2rem 0 0.4rem;
+            color: inherit;
+            font-size: 14px; /* Okendo's "Based on N reviews" */
+            text-decoration: underline;
+            text-underline-offset: 0.25em;
+        }
+
+        .pdp-no-reviews__stars {
+            display: inline-flex;
+            gap: 0.1rem;
+            color: #bd1e18;
         }
 
         @media screen and (min-width: 750px) {
@@ -201,9 +232,9 @@
                             </div>
 
                             {% comment %} Mobile description section {% endcomment %}
-                            {%- if product.description != blank -%}
+                            {%- if product_description != blank -%}
                                 <div class="product__description rte quick-add-hidden mobile-description" {{ block.shopify_attributes }}>
-                                    {{ product.description }}
+                                    {{ product_description }}
                                 </div>
                             {%- endif -%}
                             {% comment %} End here {% endcomment %}
@@ -213,6 +244,17 @@
 
                             <div class="custom-review-stars">
                                 {% render 'okendo-reviews-widget', product: product %}
+                                {%- comment -%} Okendo shows no rating row until a product has reviews (new products) {%- endcomment -%}
+                                {%- unless product.metafields.okendo.ReviewsWidgetSnippet contains 'oke-w-ratingAverageModule' -%}
+                                    <a class="pdp-no-reviews" href="#shopify-section-{{ section.id | replace: '__main', '__reviews' }}">
+                                        <span class="pdp-no-reviews__stars" aria-hidden="true">
+                                            {%- for i in (1..5) -%}
+                                                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                                            {%- endfor -%}
+                                        </span>
+                                        <span class="pdp-no-reviews__label">Be the first to review</span>
+                                    </a>
+                                {%- endunless -%}
                                 {% comment %} {% render 'okendo-reviews-product-rating-summary', product: product %} {% endcomment %}
                             </div>
 
@@ -293,9 +335,9 @@
 
                             </p>
                         {%- when 'description' -%}
-                            {%- if product.description != blank -%}
+                            {%- if product_description != blank -%}
                                 <div class="product__description rte quick-add-hidden desktop-description" {{ block.shopify_attributes }}>
-                                    {{ product.description }}
+                                    {{ product_description }}
                                 </div>
                             {%- endif -%}
                         {%- when 'sku' -%}
@@ -935,6 +977,45 @@
     })();
   </script>
 {%- endif -%}
+
+<script>
+  // Afterpay messaging is rendered with the one-time price; keep its amount in step with the
+  // purchase option (Loop subscription / one-time) and variant the shopper has selected.
+  (function () {
+    const section = document.getElementById('MainProduct-{{ section.id }}');
+    if (!section) return;
+
+    const toAmount = (el) => (el ? parseFloat(el.textContent.replace(/[^0-9.]/g, '')) : NaN);
+
+    function selectedAmount() {
+      const subRadio = section.querySelector('.loop-subscription-group-radio:checked');
+      if (subRadio) {
+        const group = subRadio.closest('.loop-subscription-group') || section;
+        return toAmount(group.querySelector('.loop-subscription-group-price-amount'));
+      }
+      return toAmount(section.querySelector('[class*="loop-one-time-purchase-option-price-amount"]'));
+    }
+
+    function sync() {
+      const amount = selectedAmount();
+      if (!(amount > 0)) return;
+      section.querySelectorAll('square-placement, afterpay-placement').forEach((placement) => {
+        if (placement.getAttribute('data-amount') !== String(amount)) placement.setAttribute('data-amount', amount);
+      });
+    }
+
+    let timer;
+    const later = () => {
+      clearTimeout(timer);
+      timer = setTimeout(sync, 150);
+    };
+    section.addEventListener('change', later);
+    section.addEventListener('click', later);
+    // Loop renders its options after load
+    new MutationObserver(later).observe(section, { childList: true, subtree: true, characterData: true });
+    window.addEventListener('load', later);
+  })();
+</script>
 
 {% schema %}
 {
@@ -2305,6 +2386,12 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "html",
+      "id": "description_override",
+      "label": "Description override",
+      "info": "Optional. Replaces the product description on this template (e.g. subtitle + copy)."
     },
     {
       "type": "header",

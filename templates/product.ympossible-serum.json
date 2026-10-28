@@ -23,7 +23,7 @@
         "benefit_icons_pdp": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'pdp-benefit-icons', icons: 'blurs,renews,firms,brightens' %}"
+            "custom_liquid": "{% render 'pdp-benefit-icons', icons: 'corrects,renews,lifts,blurs' %}"
           }
         },
         "collapsible_tab_mKjhEM": {
@@ -31,7 +31,7 @@
           "settings": {
             "heading": "Benefits",
             "icon": "none",
-            "content": "<ul><li>Instantly blurs the look of pores &amp; lines</li><li>Visibly lifts, firms &amp; smooths wrinkles</li><li>Renews skin for a more even tone</li><li>Delivers a radiant glow</li><li>Gentle enough for daily use on sensitive skin</li></ul>",
+            "content": "<ul><li>Instantly blurs pores + fine lines</li><li>Boosts renewal + collagen</li><li>Visibly firms + lifts</li><li>Smooths lines + wrinkles</li></ul>",
             "page": ""
           }
         },
@@ -62,7 +62,7 @@
             "heading_1": "Ewg Verified",
             "icon_2": "banana",
             "image_2": "shopify://shop_images/Group_1000004349_e2e44436-e08d-4a8d-9176-3d45c9955229.svg",
-            "heading_2": "leap bunny certified",
+            "heading_2": "leaping bunny certified",
             "icon_3": "bottle",
             "image_3": "shopify://shop_images/Group_1000004355_44c8c2b6-9f68-408c-895f-c81bc01e5b45.svg",
             "heading_3": "Vegan",
@@ -97,10 +97,10 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false,
-            "show_subscription_benefits": false,
+            "show_subscription_benefits": true,
             "subscription_benefit_1": "Convenient delivery every 4 weeks",
             "subscription_benefit_2": "Free shipping",
-            "subscription_benefit_3": "Cancel anytime",
+            "subscription_benefit_3": "Pause or cancel anytime",
             "subscription_read_more_label": "Read more",
             "subscription_read_less_label": "Read less",
             "subscription_reasons": "<ul><li>Enjoy 20% off on your Yoé subscriptions</li><li>Pause or cancel your subscription anytime</li><li>Adjust your cycle frequency anytime to suit your needs</li><li>Easily swap between our Ympossible Cream and Ympossible Light Cream</li><li>Free delivery on all auto-replenish cycles</li><li>To ensure your Yoé arrives before you run out, billing occurs 7 days prior</li></ul>",
@@ -190,7 +190,8 @@
         "desktop_gallery_image_7": "shopify://shop_images/07-ys-gallery-routine-simplified.png",
         "desktop_gallery_image_8": "shopify://shop_images/08-ys-gallery-clean-certifications.png",
         "desktop_gallery_image_9": "shopify://shop_images/09-ys-gallery-how-to-use.png",
-        "desktop_gallery_image_10": "shopify://shop_images/10-ys-gallery-refill-system.png"
+        "desktop_gallery_image_10": "shopify://shop_images/10-ys-gallery-refill-system.png",
+        "description_override": "<h3>Advanced Multi-Corrective Bio-Renewal Concentrate</h3><p>A potent treatment that instantly blurs the look of pores &amp; lines, visibly lifts, firms &amp; smooths wrinkles, and renews skin for a more even tone &amp; radiant glow. Gentle enough for daily use on sensitive skin.</p><p>Powered by RetiCode™, a next-generation bio-retinoid, and by SynerGenius®, our proprietary biotech complex, through advanced encapsulation technology that delivers actives deeper for visible results.</p>"
       }
     },
     "reticode_comparison": {
@@ -238,7 +239,7 @@
             "icon": "delivery",
             "label": "DELIVERY",
             "text_a": "Encapsulated. Delivered\nintact where it works",
-            "text_b": "Free active.\nMay degrades in light\nand air before it works"
+            "text_b": "Free active.\nMay degrade in light\nand air before it works"
           }
         },
         "row_sensitive": {
@@ -574,7 +575,7 @@
         "badge_mobile_1": "shopify://shop_images/Group_1000005039.png",
         "badge_mobile_2": "shopify://shop_images/Group_1000004787_1.png",
         "badge_mobile_3": "shopify://shop_images/Group_1000004788_1.png",
-        "button_link": "",
+        "button_link": "shopify://pages/the-impact",
         "button_text": "LEARN MORE ABOUT IMPACT",
         "mobile_banner_image": "shopify://shop_images/ys-sustainability-mobile-banner.png",
         "mobile_banner_alt": "",
@@ -684,7 +685,7 @@
         "okendo_reviews_widget_pHbKwp": {
           "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
-            "product": "{{ product.metafields.custom.reviews_widget.value.product.value }}",
+            "product": "ympossible-serum",
             "widget_type": "reviews_widget"
           }
         }

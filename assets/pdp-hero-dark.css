@@ -87,80 +87,10 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     object-fit: cover !important;
   }
 
-  /* Variant buttons (Figma: 114 x 39) */
-  .main-product-section--dark .yoe-buy-module .product-form__input label.yoe-variant-btn,
-  .main-product-section--dark .yoe-buy-module .product-form__input input[type='radio'] + label {
-    width: auto !important;
-    min-width: 5.7rem;
-    height: 1.95rem !important;
-    min-height: 0;
-    margin: 0 0.65rem 0 0;
-    padding: 0 1rem !important;
-    font-family: "Open Sans", sans-serif;
-    font-size: 0.8rem !important;
-    font-weight: 401;
-    font-variation-settings: "wdth" 85;
-  }
-
-  /* Purchase options (Figma: two 61px rows, regular 16px labels, no badges) */
-  .main-product-section--dark .yoe-buy-module .loop-subscription-container {
-    margin: -0.3rem 0 0;
-  }
-
-  .main-product-section--dark .yoe-buy-module [id^="loop-product-variant-"] {
-    margin-bottom: 0 !important;
-  }
+  /* Type sizes match the YC / YCL cover PDPs (no overrides here); only the colours change. */
 
   .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position:not(:has(.loop-one-time-purchase-option)) {
     display: none !important;
-  }
-
-  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option,
-  .main-product-section--dark .yoe-buy-module .loop-subscription-group {
-    min-height: 3.05rem;
-    padding: 0 1.2rem !important;
-  }
-
-  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position {
-    margin-top: 0.4rem !important;
-  }
-
-  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-labell,
-  .main-product-section--dark .yoe-buy-module .loop-subscription-group-labell,
-  .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-price-amountl,
-  .main-product-section--dark .yoe-buy-module .loop-subscription-group-price-amount {
-    font-family: "Open Sans", sans-serif !important;
-    font-size: 0.8rem !important;
-    font-weight: 401 !important;
-    letter-spacing: 0.02rem !important;
-    font-variation-settings: "wdth" 85;
-  }
-
-  .main-product-section--dark .yoe-buy-module .yoe-sub-strike,
-  .main-product-section--dark .yoe-buy-module .yoe-sub-badge,
-  .main-product-section--dark .yoe-buy-module .loop-subscription-group-discount-badge,
-  .main-product-section--dark .yoe-buy-module .loop-subscription-group-price-amount-original,
-  .main-product-section--dark .yoe-buy-module .product-form__submit .yoe-atc-price {
-    display: none !important;
-  }
-
-  .main-product-section--dark .yoe-buy-module .product-form__buttons {
-    margin-top: 0.15rem;
-  }
-
-  .main-product-section--dark .pdp-benefit-icons {
-    margin-top: 1.1rem;
-  }
-
-  .main-product-section--dark .yoe-buy-module .product-form__submit {
-    min-height: 3.2rem;
-  }
-
-  .main-product-section--dark .pdp-shipping-note {
-    margin-top: 1.2rem;
-    font-size: 0.8rem;
-    font-weight: 401;
-    font-variation-settings: "wdth" 85;
   }
 
   .main-product-section--dark span.explore {
@@ -180,30 +110,10 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     color: #fff !important;
   }
 
-  .main-product-section--dark .product__title h1 {
-    font-size: 2.2rem;
-    font-weight: 500;
-    letter-spacing: 0.15rem;
-  }
-
-  /* Benefit icons: white, left aligned, compact (Figma desktop) */
-  .main-product-section--dark .pdp-benefit-icons {
-    justify-content: flex-start;
-    gap: 1.6rem;
-  }
-
+  /* Benefit icons: white */
   .main-product-section--dark .pdp-benefit-icons__icon,
   .main-product-section--dark .icon-with-text__item img {
     filter: brightness(0) invert(1);
-  }
-
-  .main-product-section--dark .pdp-benefit-icons__icon {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  .main-product-section--dark .pdp-benefit-icons__label {
-    font-size: 0.4rem;
   }
 
   /* Accordions */
@@ -374,7 +284,8 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
   }
 
   .main-product-section--dark .product__info-wrapper .oke-w-reviews-count,
-  .main-product-section--dark .product__info-wrapper a {
+  .main-product-section--dark .product__info-wrapper a,
+  .main-product-section--dark .pdp-no-reviews__stars {
     color: #fff;
   }
 }

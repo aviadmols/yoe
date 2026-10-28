@@ -99,12 +99,20 @@
     >
     {%- liquid
       assign is_refill_pdp = false
-      if template.suffix == 'ympossible-cream-yc' or template.suffix == 'ympossible-cream-light-ycl'
+      if template.suffix == 'ympossible-cream-yc' or template.suffix == 'ympossible-cream-light-ycl' or template.suffix == 'ympossible-serum'
         assign is_refill_pdp = true
       endif
     -%}
     <label class="{% if is_refill_pdp %}yoe-variant-btn{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-      {%- if is_refill_pdp -%}
+      {%- if is_refill_pdp and template.suffix == 'ympossible-serum' -%}
+        {%- comment -%} Serum values are plain names (Full-Size / Refill), no size {%- endcomment -%}
+        {%- if value contains 'Refill' -%}
+          {% render 'icon-variant-refill' %}
+        {%- else -%}
+          {% render 'icon-variant-bottle' %}
+        {%- endif -%}
+        <span class="yoe-variant-btn__text">{{ value }}</span>
+      {%- elsif is_refill_pdp -%}
         {%- if value contains 'Refill' -%}
           {% render 'icon-variant-refill' %}
           <span class="yoe-variant-btn__text">Refill<small class="yoe-variant-btn__size">{{ value | remove: 'Refill' | strip }}</small></span>

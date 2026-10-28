@@ -1,22 +1,31 @@
 {%- comment %}BSS Login{% endcomment -%}{%- assign bss_product__has_only_default_variant = false %} {% assign _variants_count = 0 %} {% assign bss_product__first_available_variant = nil %} {% assign bss_product__selected_variant = nil %} {% assign bss_product__selected_or_first_available_variant = nil %} {% assign use_variant = true %} {% for variant in product.variants %} {% capture var %} {% render 'bss-lock-condition', scope: 'subject', subject: variant, subject_parent: product, bss_lock_action: 'handle-variant-default' %} {% endcapture %} {% if var contains "true" %} {% continue %} {% endif %} {% assign _variants_count = _variants_count | plus: 1 %} {% if bss_product__first_available_variant == nil and variant.available %} {% assign bss_product__first_available_variant = variant %} {% endif %} {% if bss_product__selected_variant == nil and variant.selected %} {% assign bss_product__selected_variant = variant %} {% endif %} {% if variant == product.selected_or_first_available_variant %} {% assign bss_product__selected_or_first_available_variant = product.selected_or_first_available_variant %} {% endif %} {% endfor %} {% if _variants_count == 1 %} {% assign bss_product__has_only_default_variant = true %} {% endif %} {% if bss_product__selected_or_first_available_variant == nil %} {% assign bss_product__selected_or_first_available_variant = bss_product__first_available_variant %} {% endif -%}{%- comment %}BSS-Login{% endcomment -%}
-{%- if section.settings.custom_background_image != blank -%}
+{%- liquid
+  # Theme-asset background (set in code) wins over the image picker
+  assign custom_bg_url = ''
+  if section.settings.custom_background_asset != blank
+    assign custom_bg_url = section.settings.custom_background_asset | asset_url
+  elsif section.settings.custom_background_image != blank
+    assign custom_bg_url = section.settings.custom_background_image | image_url: width: 1600
+  endif
+-%}
+{%- if custom_bg_url != blank -%}
   <link
     rel="preload"
     as="image"
-    href="{{ section.settings.custom_background_image | image_url: width: 1600 }}"
+    href="{{ custom_bg_url }}"
     fetchpriority="high"
   >
 {%- endif -%}
 <section
         id="MainProduct-{{ section.id }}"
-        class="page-width main-product-section section-{{ section.id }}-padding{% if section.settings.custom_background_image != blank %} custom-background-gallery-delay{% endif %}{% if section.settings.hero_theme == 'dark' %} main-product-section--dark{% endif %}{% render 'pdp-scroll-animate-class', keep: true %}"
+        class="page-width main-product-section section-{{ section.id }}-padding{% if custom_bg_url != blank %} custom-background-gallery-delay{% endif %}{% if section.settings.hero_theme == 'dark' %} main-product-section--dark{% endif %}{% render 'pdp-scroll-animate-class', keep: true %}"
         data-section="{{ section.id }}"
         {% if section.settings.hero_theme == 'dark' %}style="--pdp-dark-bg: {{ section.settings.hero_dark_background }};"{% endif %}
 >
-    {%- if section.settings.custom_background_image != blank -%}
+    {%- if custom_bg_url != blank -%}
         <div
                 class="custom-background-overlay"
-                style="background-image: url('{{ section.settings.custom_background_image | image_url: width: 1600 }}');"
+                style="background-image: url('{{ custom_bg_url }}');"
                 data-custom-bg="{{ section.id }}"
         ></div>
     {%- endif -%}
@@ -2365,6 +2374,12 @@
       "type": "image_picker",
       "id": "custom_background_image",
       "label": "Custom Background Image (Shows when first media is active)"
+    },
+    {
+      "type": "text",
+      "id": "custom_background_asset",
+      "label": "Custom background from theme assets",
+      "info": "File name in the theme's assets folder, e.g. ys-hero-desktop.jpg. Overrides the image above."
     },
     {
       "type": "header",

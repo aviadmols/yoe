@@ -24,30 +24,7 @@
     padding: 4.9rem 2rem 4.35rem 4.5rem;
   }
 
-  .dd-compare--pdp-card .dd-compare__header--pdp {
-    grid-template-columns: auto minmax(0, 31rem);
-    gap: 2.15rem;
-    margin: 0 0 3.65rem;
-  }
-
-  .dd-compare--pdp-card .dd-compare__headline--pdp {
-    font-family: "Open Sans", sans-serif;
-    font-size: 2.5rem;
-    font-weight: 351;
-    line-height: 1;
-    letter-spacing: 0;
-    font-variation-settings: "wdth" 85;
-  }
-
-  .dd-compare--pdp-card .dd-compare__body--pdp {
-    padding-top: 0;
-    letter-spacing: 0;
-    font-family: "Open Sans", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 401;
-    line-height: 1.2;
-    font-variation-settings: "wdth" 85;
-  }
+  /* Header (SYNERGENIUS® title + intro) keeps the base PDP type so it matches YC / YCL */
 
   .dd-compare--pdp-card .dd-compare__table {
     margin-left: 1.25rem;

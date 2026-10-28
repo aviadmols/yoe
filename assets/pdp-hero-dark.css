@@ -80,15 +80,11 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     margin-left: 0.7rem;
   }
 
-  /* Fill the square thumbnails; the first one is the landscape hero, framed on the bottle */
+  /* Fill the square thumbnails (the first one is the portrait hero) */
   .main-product-section--dark .thumbnail-slider .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover !important;
-  }
-
-  .main-product-section--dark .thumbnail-slider .thumbnail-list__item:first-child .thumbnail img {
-    object-position: 36% center;
   }
 
   /* Variant buttons (Figma: 114 x 39) */
@@ -203,6 +199,7 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
 
   .main-product-section--dark .pdp-benefit-icons__icon {
     width: 1.5rem;
+    height: 1.5rem;
   }
 
   .main-product-section--dark .pdp-benefit-icons__label {
@@ -224,8 +221,11 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     overflow: visible;
   }
 
+  .main-product-section--dark .product__accordion .accordion__content,
+  .main-product-section--dark .product__accordion .accordion__content p,
+  .main-product-section--dark .product__accordion .accordion__content span,
   .main-product-section--dark .product__accordion .accordion__content ul > li {
-    color: #fff;
+    color: #fff !important;
   }
 
   .main-product-section--dark .product__accordion .accordion__content ul li::before {
@@ -245,7 +245,8 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     height: 100vh;
     min-height: 0;
     margin-bottom: -100vh;
-    background-position: 36% top;
+    /* ys-hero-desktop.jpg is framed like the Figma: bottle centred at 32% across, 24-83% down */
+    background-position: 32% 40%;
     transition: opacity 0.6s ease; /* first load only; switching images is instant */
   }
 

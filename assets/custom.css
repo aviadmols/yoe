@@ -4608,6 +4608,12 @@ label.loop-selling-plan-selector-label {
         margin: 20px 0 -5rem;
     }
 
+    /* The -5rem above pulls the reviews row up beside the rating to sit next to "Write a review".
+       Widgets without that button (e.g. store-wide reviews) would overlap, so keep them stacked. */
+    .okeReviews.oke-w:not(:has(.oke-w-writeReview)) .oke-w-header-content-block.oke-w-header-content-block--oneThird {
+        margin-bottom: 1.5rem;
+    }
+
     .oke-w-header-content-block.oke-w-header-content-block--twoThirds.oke-w-header-content-block--left {
         display: none;
     }

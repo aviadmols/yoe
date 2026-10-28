@@ -179,7 +179,7 @@
         "hero_theme": "dark",
         "hero_dark_background": "#3a0108",
         "custom_background_image": "shopify://shop_images/ys-hero-desktop-bg.png",
-        "desktop_gallery_image_1": "shopify://shop_images/01-ys-gallery-bottle.png",
+        "desktop_gallery_image_1": "shopify://shop_images/ys-hero-desktop-bg.png",
         "desktop_gallery_image_2": "shopify://shop_images/02-ys-gallery-one-concentrate.png",
         "desktop_gallery_image_3": "shopify://shop_images/03-ys-gallery-reticode-diagram.png",
         "desktop_gallery_image_4": "shopify://shop_images/04-ys-gallery-reticode-vs-retinol.png",

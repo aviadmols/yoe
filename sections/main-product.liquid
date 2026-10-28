@@ -867,7 +867,19 @@
         revealGalleryAfterBackgroundReady();
 
         document.addEventListener('click', function(e) {
-            if (e.target.closest('.thumbnail-list__item') || e.target.closest('[data-media-id]')) {
+            const thumbnail = e.target.closest('.thumbnail-list__item');
+            if (thumbnail || e.target.closest('[data-media-id]')) {
+                // Dark hero: the first thumbnail is the hero itself (product on the red background).
+                const firstMedia = getFirstVisibleMedia();
+                if (
+                    thumbnail &&
+                    firstMedia &&
+                    thumbnail.dataset.target === firstMedia.dataset.mediaId &&
+                    mainProductSection?.classList.contains('main-product-section--dark')
+                ) {
+                    restoreInitialBackground();
+                    return;
+                }
                 disableInitialBackground();
             }
         });

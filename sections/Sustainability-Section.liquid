@@ -241,25 +241,25 @@
                 <p>{{ section.settings.description }}</p>
                 <div class="badges desktop-icon">
                     {% if section.settings.badge_1 != blank %}
-                        <img src="{{ section.settings.badge_1 | img_url: 'master' }}" alt="badge 1">
+                        <img src="{{ section.settings.badge_1 | image_url: width: 300 }}" loading="lazy" alt="badge 1">
                     {% endif %}
                     {% if section.settings.badge_2 != blank %}
-                        <img src="{{ section.settings.badge_2 | img_url: 'master' }}" alt="badge 2">
+                        <img src="{{ section.settings.badge_2 | image_url: width: 300 }}" loading="lazy" alt="badge 2">
                     {% endif %}
                     {% if section.settings.badge_3 != blank %}
-                        <img src="{{ section.settings.badge_3 | img_url: 'master' }}" alt="badge 3">
+                        <img src="{{ section.settings.badge_3 | image_url: width: 300 }}" loading="lazy" alt="badge 3">
                     {% endif %}
                 </div>
                 {% comment %} Mobile icons {% endcomment %}
                 <div class="badges mobile-icon">
                     {% if section.settings.badge_mobile_1 != blank %}
-                        <img src="{{ section.settings.badge_mobile_1 | img_url: 'master' }}" alt="badge 1">
+                        <img src="{{ section.settings.badge_mobile_1 | image_url: width: 300 }}" loading="lazy" alt="badge 1">
                     {% endif %}
                     {% if section.settings.badge_mobile_2 != blank %}
-                        <img src="{{ section.settings.badge_mobile_2 | img_url: 'master' }}" alt="badge 2">
+                        <img src="{{ section.settings.badge_mobile_2 | image_url: width: 300 }}" loading="lazy" alt="badge 2">
                     {% endif %}
                     {% if section.settings.badge_mobile_3 != blank %}
-                        <img src="{{ section.settings.badge_mobile_3 | img_url: 'master' }}" alt="badge 3">
+                        <img src="{{ section.settings.badge_mobile_3 | image_url: width: 300 }}" loading="lazy" alt="badge 3">
                     {% endif %}
                 </div>
                 {% comment %} End here {% endcomment %}
@@ -277,7 +277,10 @@
                             </div>
                         </div>
                         {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | img_url: 'master' }}"
+                            <img src="{{ block.settings.image | image_url: width: 1000 }}"
+                                 srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 700 }} 700w, {{ block.settings.image | image_url: width: 1000 }} 1000w, {{ block.settings.image | image_url: width: 1400 }} 1400w"
+                                 sizes="(min-width: 768px) 35vw, 100vw"
+                                 loading="lazy"
                                  alt="{{ block.settings.title_1 }}">
                         {% endif %}
                         <div class="feature-text">
@@ -329,13 +332,13 @@
                 </div>
                 <div class="feature-image">
                     {% if section.settings.feature_image_1 != blank %}
-                        <img src="{{ section.settings.feature_image_1 | img_url: 'master' }}" alt="Feature image 1">
+                        <img src="{{ section.settings.feature_image_1 | image_url: width: 800 }}" loading="lazy" alt="Feature image 1">
                     {% endif %}
                     {% if section.settings.feature_image_2 != blank %}
-                        <img src="{{ section.settings.feature_image_2 | img_url: 'master' }}" alt="Feature image 2">
+                        <img src="{{ section.settings.feature_image_2 | image_url: width: 800 }}" loading="lazy" alt="Feature image 2">
                     {% endif %}
                     {% if section.settings.feature_image_3 != blank %}
-                        <img src="{{ section.settings.feature_image_3 | img_url: 'master' }}" alt="Feature image 3">
+                        <img src="{{ section.settings.feature_image_3 | image_url: width: 800 }}" loading="lazy" alt="Feature image 3">
                     {% endif %}
                 </div>
             </div>

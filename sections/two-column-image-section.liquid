@@ -37,13 +37,13 @@
   <div class="container-section-image">
     {% if section.settings.left_image != blank %}
       <div class="image-col">
-        <img src="{{ section.settings.left_image | image_url }}" alt="Left Image">
+        <img src="{{ section.settings.left_image | image_url: width: 1200 }}" srcset="{{ section.settings.left_image | image_url: width: 600 }} 600w, {{ section.settings.left_image | image_url: width: 900 }} 900w, {{ section.settings.left_image | image_url: width: 1200 }} 1200w, {{ section.settings.left_image | image_url: width: 1600 }} 1600w" sizes="(min-width: 750px) 50vw, 100vw" loading="lazy" alt="Left Image">
       </div>
     {% endif %}
 
     {% if section.settings.right_image != blank %}
       <div class="image-col">
-        <img src="{{ section.settings.right_image | image_url }}" alt="Right Image">
+        <img src="{{ section.settings.right_image | image_url: width: 1200 }}" srcset="{{ section.settings.right_image | image_url: width: 600 }} 600w, {{ section.settings.right_image | image_url: width: 900 }} 900w, {{ section.settings.right_image | image_url: width: 1200 }} 1200w, {{ section.settings.right_image | image_url: width: 1600 }} 1600w" sizes="(min-width: 750px) 50vw, 100vw" loading="lazy" alt="Right Image">
       </div>
     {% endif %}
   </div>

@@ -197,7 +197,7 @@
                   <img src="https://cdn.shopify.com/s/files/1/0691/9959/3720/files/image002_1_1.png?v=1745347709"  style=" object-fit: contain; height: auto;min-height: 0;  min-width: 100%;">
                 </div>
             {% endif %}
-            <img class="slider_card_image" src="{{ block.settings.product_image | img_url: 'master' }}" alt="{{ block.settings.product_name }}">
+            <img class="slider_card_image" src="{{ block.settings.product_image | image_url: width: 800 }}" srcset="{{ block.settings.product_image | image_url: width: 400 }} 400w, {{ block.settings.product_image | image_url: width: 800 }} 800w" sizes="(min-width: 750px) 25vw, 70vw" loading="lazy" alt="{{ block.settings.product_name }}">
             <div class="product-name">{{ block.settings.product_name }}</div>
           </div>
         {% endfor %}

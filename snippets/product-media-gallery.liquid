@@ -184,7 +184,8 @@
               class="product-media-container media-type-image media-fit-{{ section.settings.media_fit }} global-media-settings gradient"
               style="--ratio: {{ mobile_lead_image.aspect_ratio }}; --preview-ratio: {{ mobile_lead_image.aspect_ratio }};"
             >
-              <div class="product__media media media--transparent">
+              <div class="product__modal-opener product__modal-opener--image" style="width: 100%;">
+              <div class="product__media media media--transparent" style="aspect-ratio: {{ mobile_lead_image.aspect_ratio }};">
                 {{
                   mobile_lead_image
                   | image_url: width: 1500
@@ -195,6 +196,7 @@
                     widths: '390, 600, 780, 1000, 1200, 1500',
                     alt: product.title
                 }}
+              </div>
               </div>
             </div>
           {%- else -%}

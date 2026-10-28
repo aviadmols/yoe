@@ -28,6 +28,12 @@ body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_secti
   stroke: #fff;
 }
 
+/* custom.css gives the scrolled header a light grey bar; over the dark hero that flashes
+   a grey band (with the white logo invisible) when scrolling back to the top. */
+body.scrolled:has(.main-product-section--dark) sticky-header header.header {
+  background: transparent !important;
+}
+
 /* --- Hero background (fallback until the gallery / background image loads) --- */
 .page-width.main-product-section.main-product-section--dark {
   background:
@@ -381,7 +387,7 @@ body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_secti
     background: #fff !important;
   }
 
-  /* Gallery starts under the transparent header; no pagination band (Figma) */
+  /* Gallery starts under the transparent header, full bleed; no pagination band (Figma) */
   .main-product-section--dark .product {
     padding-top: 0 !important;
   }
@@ -392,6 +398,14 @@ body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_secti
 
   .main-product-section--dark .dot-gallery {
     display: none;
+  }
+
+  /* The portrait hero and the landscape gallery slides share one strip; main-product sizes
+     the strip to the slide in view, so landscape slides don't leave a gap under them. */
+  .main-product-section--dark .product__media-list {
+    align-items: flex-start;
+    overflow-y: hidden;
+    transition: height 0.3s ease;
   }
 
   .main-product-section--dark .product__info-wrapper.grid__item {

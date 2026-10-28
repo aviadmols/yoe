@@ -898,6 +898,35 @@
   })();
 </script>
 
+{%- if section.settings.mobile_lead_image != blank -%}
+  <script>
+    // Mobile: the portrait lead image and the landscape gallery slides share one strip.
+    // Size the strip to the slide in view so landscape slides don't leave a gap under them.
+    (function () {
+      const list = document.querySelector('#GalleryViewer-{{ section.id }} .product__media-list');
+      if (!list) return;
+      const mq = window.matchMedia('(max-width: 749px)');
+
+      function fit() {
+        if (!mq.matches) {
+          list.style.height = '';
+          return;
+        }
+        const slides = Array.from(list.children).filter((li) => li.offsetParent !== null);
+        const center = list.scrollLeft + list.clientWidth / 2;
+        const current =
+          slides.find((li) => li.offsetLeft <= center && li.offsetLeft + li.offsetWidth > center) || slides[0];
+        if (current) list.style.height = `${current.offsetHeight}px`;
+      }
+
+      list.addEventListener('scroll', () => requestAnimationFrame(fit), { passive: true });
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      fit();
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",

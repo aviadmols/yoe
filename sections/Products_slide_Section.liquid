@@ -228,7 +228,13 @@
 </script>
 
 <style>
-  
+
+/* Full-bleed white band: <main> is capped at 2000px, so extend the background past it */
+.product_detail_related_product_sec {
+    box-shadow: 0 0 0 100vmax #fff;
+    clip-path: inset(0 -100vmax);
+}
+
 .snippets-overlay {
     position: absolute;
     z-index: 99;

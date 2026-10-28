@@ -932,6 +932,14 @@ class VariantSelects extends HTMLElement {
   updateMedia() {
     if (!this.currentVariant) return;
 
+    // Dark hero on desktop keeps its full-screen background; main-product restores it on variant change.
+    if (
+      window.matchMedia('(min-width: 750px)').matches &&
+      document.querySelector(`#MainProduct-${this.dataset.section}.main-product-section--dark [data-custom-bg]`)
+    ) {
+      return;
+    }
+
     const mediaGalleries = document.querySelectorAll(`[id^="MediaGallery-${this.dataset.section}"]`);
     const variantDesktopImage = this.getVariantDesktopImageData();
     if (variantDesktopImage && window.matchMedia('(min-width: 750px)').matches) {

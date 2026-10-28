@@ -203,6 +203,85 @@ body:has(.main-product-section--dark):not(.overflow-hidden-tablet) .header_secti
     stroke: #fff;
   }
 
+  .main-product-section--dark .product__accordion .accordion__content {
+    overflow: visible;
+  }
+
+  .main-product-section--dark .product__accordion .accordion__content ul > li {
+    color: #fff;
+  }
+
+  .main-product-section--dark .product__accordion .accordion__content ul li::before {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Hero image: sticky and viewport-sized, so opening accordions never rescales it.
+     overflow: clip (not hidden) clips the same way but doesn't break position: sticky. */
+  body:has(.main-product-section--dark) .content-for-layout,
+  .page-width.main-product-section.main-product-section--dark {
+    overflow: clip;
+  }
+
+  .main-product-section--dark .custom-background-overlay {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 0;
+    margin-bottom: -100vh;
+    background-position: 36% top;
+    transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease;
+  }
+
+  /* Gallery image open: keep the red scene behind it, softened, instead of the fallback gradient */
+  .main-product-section--dark.pdp-hero--gallery .custom-background-overlay {
+    filter: blur(2rem) brightness(0.75);
+    transform: scale(1.08);
+  }
+
+  /* Smooth first paint: keep the main image hidden until the background is in */
+  .main-product-section--dark .slider-right-thumnail {
+    transition: opacity 0.6s ease;
+  }
+
+  .main-product-section--dark.custom-background-gallery-delay:not(.custom-background-ready) .slider-right-thumnail {
+    opacity: 0;
+  }
+
+  /* Gallery: main image fills the space up to the product info, sticks, and sits centred in the viewport */
+  .main-product-section--dark .product .grid__item.product__media-wrapper {
+    min-height: 100vh;
+  }
+
+  .main-product-section--dark media-gallery.product__column-sticky {
+    position: relative;
+    top: 0;
+    height: 100%;
+  }
+
+  .main-product-section--dark media-gallery > slider-component.slider-right-thumnail {
+    position: sticky !important;
+    top: 0;
+    margin-top: -3rem; /* cancels the media wrapper's 3rem top margin (custom.css) */
+    /* custom.css shifts this with left: 6.3rem, which means something else under sticky */
+    left: auto;
+    margin-left: 6.3rem;
+    /* Reach the product info: the media column is 50% and the info (29.85rem) is centred in the
+       other half and shifted 2.85rem, so its left edge is 150% - 14.925rem + 2.85rem from here. */
+    width: calc(150% - 19rem);
+    flex-shrink: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 150px 1.5rem 30px;
+    box-sizing: border-box;
+  }
+
+  .main-product-section--dark media-gallery > slider-component.slider-right-thumnail .product__media-item {
+    max-width: calc((100vh - 180px) * 1.104);
+    margin: 0 auto;
+  }
+
   .main-product-section--dark .custom-review-stars .oke-w-ratingAverageModule-rating,
   .main-product-section--dark .custom-review-stars .oke-w-ratingAverageModule-rating * {
     color: #fff !important;

@@ -8,7 +8,8 @@
       "label": "Desktop style",
       "options": [
         { "value": "default", "label": "Default" },
-        { "value": "large", "label": "Large (full-width grey, PDP)" }
+        { "value": "large", "label": "Large (full-width grey, PDP)" },
+        { "value": "exploded", "label": "Exploded bottle (cap, pump, bottle)" }
       ],
       "default": "default"
     },
@@ -231,7 +232,7 @@
   {%- endif -%}
 {%- endif -%}
 
-<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}{% if section.settings.desktop_style == 'large' %} sustainability-section--large{% endif %}{% render 'pdp-scroll-animate-class' %}">
+<section class="sustainability-section{% if section.settings.mobile_banner_image != blank %} sustainability-section--has-mobile-banner{% endif %}{% if section.settings.desktop_style == 'large' or section.settings.desktop_style == 'exploded' %} sustainability-section--large{% endif %}{% if section.settings.desktop_style == 'exploded' %} sustainability-section--exploded{% endif %}{% render 'pdp-scroll-animate-class' %}">
     <div class="page-width">
         <div class="container-section-desktop">
             <div class="left-col">
@@ -285,6 +286,11 @@
                         </div>
                     </div>
                 {% endfor %}
+                {%- if section.settings.desktop_style == 'exploded' -%}
+                    {%- for i in (1..5) -%}
+                        <span class="sustainability-leader sustainability-leader--{{ i }}" aria-hidden="true"></span>
+                    {%- endfor -%}
+                {%- endif -%}
             </div>
         </div>
     </div>
@@ -946,6 +952,90 @@
         .sustainability-section--large .feature-item.featured-item-2 .content-section p {
             max-width: 14rem;
         }
+    }
+
+    /* Exploded style (YS Figma): cap / pump / bottle spaced apart, labels joined by leader lines.
+       Everything is placed in % of a fixed-ratio box, so the composition scales as one piece. */
+    @media (min-width: 768px) {
+        .sustainability-section--exploded .right-col {
+            position: relative;
+            display: block;
+            flex: 0 0 60%;
+            aspect-ratio: 1258 / 640;
+            margin-bottom: 3rem;
+        }
+
+        .sustainability-section--exploded .right-col .feature-item {
+            display: contents;
+        }
+
+        .sustainability-section--exploded .right-col .feature-item > .feature-text,
+        .sustainability-section--exploded .right-col .feature-item > img {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sustainability-section--exploded .right-col .feature-item > .feature-text {
+            width: 28%;
+            max-width: none;
+            text-align: left;
+        }
+
+        .sustainability-section--exploded .right-col .feature-item > img {
+            height: auto;
+            max-width: none;
+        }
+
+        .sustainability-section--exploded .right-col .content-section {
+            position: static;
+            width: auto;
+        }
+
+        .sustainability-section--exploded .right-col .featured-item-1 > .feature-text:first-child { left: 0; top: 0; }
+        .sustainability-section--exploded .right-col .featured-item-1 > img { left: 1.8%; top: 33.6%; width: 16.7%; }
+        .sustainability-section--exploded .right-col .featured-item-1 > .feature-text:last-child { left: 0; top: 82%; }
+
+        .sustainability-section--exploded .right-col .featured-item-2 > .feature-text:first-child { left: 34.8%; top: 0; }
+        .sustainability-section--exploded .right-col .featured-item-2 > img { left: 23.5%; top: 35.9%; width: 18.1%; }
+        .sustainability-section--exploded .right-col .featured-item-2 > .feature-text:last-child { display: none; }
+
+        .sustainability-section--exploded .right-col .featured-item-3 > .feature-text:first-child { left: 76.5%; top: 0; width: 27%; }
+        .sustainability-section--exploded .right-col .featured-item-3 > img { left: 42.9%; top: 37.8%; width: 53.6%; }
+        .sustainability-section--exploded .right-col .featured-item-3 > .feature-text:last-child { left: 54.6%; top: 82%; }
+
+        /* Leader lines come after the images in the DOM, so they paint on top of them */
+        .sustainability-leader {
+            position: absolute;
+            width: 1px;
+            background: #666460;
+        }
+
+        .sustainability-leader::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #666460;
+            transform: translateX(-50%);
+        }
+
+        .sustainability-leader--1,
+        .sustainability-leader--2,
+        .sustainability-leader--3 { top: 23.5%; }
+        .sustainability-leader--1::after,
+        .sustainability-leader--2::after,
+        .sustainability-leader--3::after { bottom: -3px; }
+        .sustainability-leader--4::after,
+        .sustainability-leader--5::after { top: -3px; }
+
+        .sustainability-leader--1 { left: 11.7%; height: 24.9%; }
+        .sustainability-leader--2 { left: 35.1%; height: 24.9%; }
+        .sustainability-leader--3 { left: 76.9%; height: 20.6%; }
+        .sustainability-leader--4 { left: 3.7%; top: 48.4%; height: 27.1%; }
+        .sustainability-leader--5 { left: 54.8%; top: 53.4%; height: 22.1%; }
     }
 
 </style>

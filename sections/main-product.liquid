@@ -834,8 +834,31 @@
         firstMedia.style.pointerEvents = 'auto';
       }
 
+      // Dark hero keeps the background (softened by CSS) behind gallery images.
+      if (mainProductSection?.classList.contains('main-product-section--dark')) {
+        mainProductSection.classList.add('pdp-hero--gallery');
+        return;
+      }
+
       customBg.classList.remove('active');
       refreshAwardOverlays();
+    }
+
+    // Dark hero: picking a variant goes back to the full-screen background, not the variant image.
+    function restoreInitialBackground() {
+      hasUserInteractedWithGallery = false;
+      mainProductSection?.classList.remove('pdp-hero--gallery');
+
+      const firstMedia = getFirstVisibleMedia();
+      const gallery = firstMedia?.closest('media-gallery');
+      if (firstMedia && gallery && !firstMedia.classList.contains('is-active')) {
+        firstMedia.parentElement.querySelectorAll('[data-media-id]').forEach((media) => media.classList.remove('is-active'));
+        firstMedia.classList.add('is-active');
+        const thumbnail = gallery.querySelector(`[data-target="${firstMedia.dataset.mediaId}"]`);
+        if (thumbnail) gallery.setActiveThumbnail?.(thumbnail);
+      }
+
+      showInitialBackgroundIfNeeded();
     }
 
     if(window.innerWidth > 768){
@@ -851,7 +874,11 @@
 
         document.addEventListener('change', function(e) {
             if (e.target.closest('variant-radios') || e.target.closest('variant-selects')) {
-                disableInitialBackground();
+                if (mainProductSection?.classList.contains('main-product-section--dark')) {
+                    restoreInitialBackground();
+                } else {
+                    disableInitialBackground();
+                }
             }
         });
     }

@@ -590,7 +590,7 @@
         "feature_image_1": "shopify://shop_images/ys-sustainability-cap.png",
         "feature_image_2": "shopify://shop_images/ys-sustainability-pump.png",
         "feature_image_3": "shopify://shop_images/ys-sustainability-bottle.png",
-        "desktop_style": "large"
+        "desktop_style": "exploded"
       }
     },
     "two_column_images": {

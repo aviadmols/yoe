@@ -6490,16 +6490,16 @@ body:not(.slideron) .header__icons--localization .localization-form__select .ico
         font-size: 18px;
     }
 }
-/* PDP info column: rem-scaled type follows the 1920px design, so keep a readable floor
-   on narrower desktops (no change at 1920px, where 0.78rem / 0.8rem are already larger). */
-@media (min-width: 768px) {
+/* PDP info column: in the 769–1190px band the root is fixed at 14px, so 0.78rem / 0.8rem
+   come out at ~11px. Readable sizes for that band (0.93rem = 13px, 0.86rem = 12px). */
+@media (max-width: 1190px) and (min-width: 769px) {
     .product__info-wrapper .product__description p,
     .product__info-wrapper .product__accordion .accordion__content p,
     .product__info-wrapper .product__accordion .accordion__content ul > li {
-        font-size: max(0.78rem, 13px);
+        font-size: 0.93rem;
     }
 
     .product__info-wrapper .product__accordion .summary__title h2.h4.accordion__title.inline-richtext {
-        font-size: max(0.8rem, 12px);
+        font-size: 0.86rem;
     }
 }

@@ -24,9 +24,9 @@
     padding: 4.9rem 2rem 4.35rem 4.5rem;
   }
 
-  /* Header (SYNERGENIUS® title + intro) keeps the base PDP type so it matches YC / YCL.
-     The intro sits beside the title while it has room for a compact block (2 lines at 1920px)
-     and drops under it at full width on narrower desktops, instead of a tall narrow column. */
+  /* Header (SYNERGENIUS® title + intro) follows the approved Serum frame (title 47.12px / 419,
+     intro at the table's 16px). The intro sits beside the title while it has room for a compact
+     block and drops under it at full width on narrower desktops, instead of a tall narrow column. */
   .dd-compare--pdp-card .dd-compare__header--pdp {
     display: flex;
     flex-wrap: wrap;
@@ -36,11 +36,18 @@
 
   .dd-compare--pdp-card .dd-compare__headline--pdp {
     flex: 0 0 auto;
+    font-size: 2.356rem; /* 47.12px */
+    font-weight: 419;
+    font-variation-settings: "wdth" 75;
   }
 
   .dd-compare--pdp-card .dd-compare__body--pdp {
     flex: 1 1 22rem;
     max-width: 36rem;
+    font-size: 0.8rem; /* 16px, same as the table benefits */
+    font-weight: 401;
+    line-height: 1.3;
+    font-variation-settings: "wdth" 85;
   }
 
   .dd-compare--pdp-card .dd-compare__table {

@@ -26,7 +26,8 @@
           <header class="dd-compare__header dd-compare__header--pdp">
             <h2 class="dd-compare__headline dd-compare__headline--pdp">
               {%- if section.settings.headline_prefix != blank -%}
-                <span>{{ section.settings.headline_prefix | escape }}</span>
+                {%- comment -%} Figma sets ® as a small raised mark beside the word {%- endcomment -%}
+                <span>{{ section.settings.headline_prefix | escape | replace: '®', '<sup class="dd-compare__reg">®</sup>' }}</span>
               {%- endif -%}
               {%- if section.settings.headline_accent != blank -%}
                 <span>{{ section.settings.headline_accent | escape }}</span>

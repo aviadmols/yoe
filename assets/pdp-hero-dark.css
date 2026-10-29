@@ -56,10 +56,10 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     padding-bottom: 0;
   }
 
+  /* Column width comes from custom.css (30.7rem / 600px) so the buy box matches YC / YCL */
   .main-product-section--dark .product__info-wrapper.grid__item {
     position: relative;
     left: 2.85rem;
-    max-width: 29.85rem !important;
     padding-top: calc(40px + 7.25rem);
     padding-bottom: 1.5rem;
   }
@@ -87,7 +87,24 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     object-fit: cover !important;
   }
 
-  /* Type sizes match the YC / YCL cover PDPs (no overrides here); only the colours change. */
+  /* Type sizes match the YC / YCL cover PDPs; weight and width follow the approved Serum frame. */
+  .main-product-section--dark .product__info-wrapper .product__title h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem; /* 40px */
+    letter-spacing: 0.09em;
+    font-weight: 538;
+    font-variation-settings: 'wdth' 80;
+  }
+
+  .main-product-section--dark .product__info-wrapper .product__description p {
+    font-weight: 413;
+    font-variation-settings: 'wdth' 87;
+  }
+
+  .main-product-section--dark .product__info-wrapper .product__accordion .summary__title h2.h4.accordion__title.inline-richtext {
+    font-weight: 655;
+    font-variation-settings: 'wdth' 75;
+  }
 
   .main-product-section--dark .yoe-buy-module .loop-one-time-purchase-option-position:not(:has(.loop-one-time-purchase-option)) {
     display: none !important;
@@ -328,6 +345,38 @@ body.scrolled:has(.main-product-section--dark) sticky-header header.header {
     align-items: flex-start;
     overflow-y: hidden;
     transition: height 0.3s ease;
+  }
+
+  /* Hero slide = exactly the viewport width (no Dawn bleed offsets) and the image covers it */
+  .main-product-section--dark .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .main-product-section--dark .product__media-wrapper slider-component.slider-right-thumnail {
+    min-width: 0; /* custom.css gives the strip calc(100% + 2rem) */
+  }
+
+  .main-product-section--dark .product__media-list {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .main-product-section--dark .product__media-item {
+    width: 100%;
+  }
+
+  .main-product-section--dark .product__media-item .product-media-container,
+  .main-product-section--dark .product__media-item .product__modal-opener,
+  .main-product-section--dark .product__media-item .media {
+    width: 100%;
+  }
+
+  .main-product-section--dark .product__media-wrapper .product-media-container.media-type-image .media > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center;
   }
 
   .main-product-section--dark .product__info-wrapper.grid__item {

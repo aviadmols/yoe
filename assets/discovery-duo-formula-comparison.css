@@ -34,6 +34,16 @@
   color: #666460;
 }
 
+/* ® beside the word: small and raised to the cap line (Figma) */
+.dd-compare__headline .dd-compare__reg {
+  position: relative;
+  top: -0.15em;
+  margin-left: 0.15em;
+  font-size: 0.5em;
+  line-height: 1;
+  vertical-align: top;
+}
+
 .dd-compare__body {
   max-width: 41rem;
   padding-top: 0.8rem; /* 16px */
@@ -728,6 +738,10 @@
     margin-inline-end: 3px;
   }
 
+  .dd-compare--pdp {
+    padding-bottom: 4.333rem; /* 52px under the ingredients button */
+  }
+
   .dd-compare--pdp .dd-compare__inner {
     padding: 0;
   }
@@ -740,12 +754,13 @@
     display: none;
   }
 
+  /* Mobile PDP (375px Figma frame, root 12px): values below are the frame's measurements */
   .dd-compare--pdp .dd-compare__side-panel--has-mobile {
     display: flex;
     order: -1;
     min-height: 0;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 3rem; /* 36px: heading cap line 40.5px under the panel */
     padding: 0;
     background: transparent;
   }
@@ -754,9 +769,9 @@
     width: 100%;
     max-width: 100%;
     min-height: 0;
-    aspect-ratio: auto;
+    aspect-ratio: 375 / 322;
     border-radius: 0;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .dd-compare--pdp .dd-compare__pdp-main {
@@ -764,18 +779,18 @@
   }
 
   .dd-compare--pdp .dd-compare__header--pdp {
-    margin: 0 0 10px;
-    padding-left: 10px;
+    margin: 0 0 1.5rem; /* 18px: table header rule 175.5px under the panel */
+    padding-left: 2.375rem; /* 28.5px */
     text-align: left;
   }
 
   .dd-compare--pdp .dd-compare__headline--pdp {
     max-width: 100%;
     color: #666460;
-    font-size: 28px;
+    font-size: 2.333rem; /* 28px: "SYNERGENIUS" = 164.6px wide, 29.47px tall in Figma */
     font-weight: 419;
-    line-height: 1.16;
-    letter-spacing: 2.79px;
+    line-height: 1.05;
+    letter-spacing: 0.2083rem; /* 2.5px */
     text-align: left;
     font-variation-settings: "wdth" 75;
   }
@@ -783,7 +798,13 @@
   .dd-compare--pdp .dd-compare__headline--pdp span {
     display: inline;
     color: #666460;
-    line-height: 1.2;
+    line-height: inherit;
+  }
+
+  .dd-compare--pdp .dd-compare__headline--pdp .dd-compare__reg {
+    top: -0.3em;
+    margin-left: 0.22em;
+    font-size: 0.65em;
   }
 
   /* Smaller second line only when there is an accent; a lone headline keeps the 28px above */
@@ -793,22 +814,22 @@
   }
 
   .dd-compare--pdp .dd-compare__body--pdp {
-    width: 330px;
-    max-width: calc(100% - 10px);
-    margin: 10px 0 0 0;
-    padding-bottom: 20px;
+    width: 27rem; /* 324px: two lines, ends at "encapsulation" like the Figma */
+    max-width: calc(100% - 1.875rem); /* 22.5px right margin */
+    margin: 0.583rem 0 0 0; /* 7px */
+    padding-bottom: 1.333rem; /* 16px */
     color: #666460;
-    font-size: 12px;
+    font-size: 0.833rem; /* 10px */
     font-weight: 430;
     line-height: 1.2;
     text-align: left;
-    font-variation-settings: "wdth" 85;
+    font-variation-settings: "wdth" 75;
   }
 
   .dd-compare--pdp .dd-compare__table {
     width: 340px;
     max-width: calc(100% - 36px);
-    margin: 21px auto 0;
+    margin: 2.208rem auto 0; /* 26.5px (collapses with the header margin): rule 175.5px under the panel */
     overflow: visible;
     border: 0;
     background: transparent;
@@ -822,32 +843,33 @@
     grid-template-columns: 116px 63px minmax(0, 1fr);
     column-gap: 11px;
     min-width: 0;
-    min-height: 40px;
+    min-height: 3rem; /* 36px rows */
     padding: 0 3px;
     border-bottom-width: 1px;
     border-color: rgba(102, 100, 96, 0.24);
   }
 
   .dd-compare--pdp .dd-compare__table-head {
-    min-height: 27px;
+    min-height: 2.25rem; /* 27px */
     padding-top: 0;
-    padding-bottom: 17px;
+    padding-bottom: 1.25rem; /* 15px: cap line 26.5px above the rule */
+    border-bottom: 1px solid rgba(102, 100, 96, 0.24);
     align-items: end;
     color: #666460;
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
+    font-size: 0.917rem; /* 11px; "BIOTECH ACTIVE" = 85.5px wide in Figma */
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.72px;
+    letter-spacing: 0;
     text-transform: uppercase;
-    font-variation-settings: "wdth" 85;
+    font-variation-settings: "wdth" 75;
   }
 
   .dd-compare--pdp .dd-compare__table-head span[role="columnheader"] {
-    font-size: 12px;
+    font-size: 0.917rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.72px;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
 
@@ -863,10 +885,10 @@
 
   .dd-compare--pdp .dd-compare__active-name {
     gap: 13px;
-    font-size: 10px;
+    font-size: 0.75rem; /* 9px; "VITAMIN C" = 48px wide in Figma */
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: 0.91px;
+    line-height: 1;
+    letter-spacing: 0.0758rem; /* 0.91px */
     text-transform: uppercase;
     font-variation-settings: "wdth" 85;
   }
@@ -878,14 +900,16 @@
   }
 
   .dd-compare--pdp .dd-compare__active-action {
-    width: 63px;
-    min-width: 63px;
-    min-height: 20px;
-    padding: 0 8px;
-    font-size: 9px;
+    box-sizing: border-box;
+    width: 5.25rem; /* 63px */
+    min-width: 5.25rem;
+    height: 1.667rem; /* 20px including the border */
+    min-height: 0;
+    padding: 0;
+    font-size: 0.75rem; /* 9px */
     font-weight: 400;
     line-height: 1;
-    letter-spacing: 0.36px;
+    letter-spacing: 0.1667rem; /* 2px: "RENEW" = 41.5px wide in Figma */
     text-transform: uppercase;
     font-variation-settings: "wdth" 80;
   }
@@ -897,26 +921,26 @@
   }
 
   .dd-compare--pdp .dd-compare__table-row span:last-child {
-    font-size: 10px;
+    font-size: 0.583rem; /* 7px; "Visibly firmer, lifted" = 66px wide in Figma */
     font-weight: 400;
     line-height: 1.1;
-    font-variation-settings: "wdth" 85;
+    font-variation-settings: "wdth" 75;
   }
 
   .dd-compare--pdp .dd-compare__ingredients-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 244px;
+    width: 20.25rem; /* 243px */
     max-width: calc(100% - 36px);
-    height: 51px;
-    margin: 24px auto 0;
+    height: 4.25rem; /* 51px */
+    margin: 2.917rem auto 0; /* 35px under the last rule */
     padding: 0;
     border: 1px solid #666460;
     background: transparent;
     color: #666460;
     font-family: "Open Sans Condensed", sans-serif;
-    font-size: 16px;
+    font-size: 1.333rem; /* 16px */
     font-weight: 660;
     line-height: 1.12;
     letter-spacing: 0.32px;

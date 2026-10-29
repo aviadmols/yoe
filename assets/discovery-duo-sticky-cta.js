@@ -221,6 +221,7 @@
 
     var visible = false;
     var ticking = false;
+    var mainCtaVisible = false;
     var isDesignMode = document.documentElement.classList.contains('shopify-design-mode');
 
     function getScrollY() {
@@ -234,6 +235,9 @@
     function setVisible(shouldShow) {
       if (isDesignMode) {
         shouldShow = window.matchMedia('(max-width: 749px)').matches;
+      } else if (mainCtaVisible) {
+        // Never show two Add to Cart buttons at once
+        shouldShow = false;
       }
       if (shouldShow === visible) return;
       visible = shouldShow;
@@ -267,6 +271,17 @@
         { threshold: [0, 0.01, 1] }
       );
       observer.observe(hero);
+    }
+
+    // PDP: hide the bar while the main Add to Cart button is on screen
+    var mainCta = document.querySelector('product-form button[name="add"]');
+    if (mainCta && typeof IntersectionObserver !== 'undefined' && !isDesignMode) {
+      new IntersectionObserver(function (entries) {
+        var entry = entries[0];
+        if (!entry) return;
+        mainCtaVisible = entry.isIntersecting;
+        updateFromScroll();
+      }).observe(mainCta);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });

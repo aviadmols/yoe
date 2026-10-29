@@ -451,6 +451,7 @@
   gap: 0.3rem;
   cursor: pointer;
   list-style: none;
+  white-space: nowrap;
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--yoe-accent);
@@ -744,8 +745,14 @@
     font-size: 12px;
   }
 
+  /* Room for the absolutely placed "Read more" toggle (~95px at 14px) so it never sits on the text;
+     only the first line shares its row with the toggle */
   .yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-benefits li {
-    padding-inline-end: 90px;
+    padding-inline-end: 0;
+  }
+
+  .yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-benefits li:first-child {
+    padding-inline-end: 108px;
   }
 
   .yoe-buy-module .yoe-sub-benefits li::before {

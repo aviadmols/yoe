@@ -163,6 +163,9 @@ if (!customElements.get('media-gallery')) {
           if (!this.mql.matches || this.elements.thumbnails) {
             activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
           }
+          // A variant change (prepend) keeps the shopper where they are, e.g. in the purchase options;
+          // only a gallery click scrolls the page back up to the media.
+          if (prepend) return;
           const activeMediaRect = activeMedia.getBoundingClientRect();
           if (activeMediaRect.top > -0.5) return;
           const top = activeMediaRect.top + window.scrollY;

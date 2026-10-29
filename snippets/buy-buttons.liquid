@@ -222,7 +222,35 @@
               return false;
             }
 
+            // ----- Keep the shopper's purchase option across variant changes -----
+            // Loop re-applies its default (subscription) on every variant change. Remember what the
+            // shopper picked (trusted clicks only, so Loop's own programmatic clicks don't count)
+            // and re-select one-time purchase when they had chosen it.
+            var wantsOneTime = false;
+            function trackPurchaseOption(e) {
+              if (!e.isTrusted || !subContainer || !subContainer.contains(e.target)) return;
+              if (e.target.closest('.loop-one-time-purchase-option')) wantsOneTime = true;
+              else if (e.target.closest('.loop-subscription-group')) wantsOneTime = false;
+            }
+            function keepPurchaseOption() {
+              var original = window.applyDefaultSelectionBasedOnLoopSettings;
+              if (typeof original !== 'function' || original.yoeKeepsPurchaseOption) return;
+              var patched = function (variant, productId) {
+                if (
+                  wantsOneTime &&
+                  String(productId) === String(pid) &&
+                  typeof window.defaultSelectOneTimePurchaseOptionLoop === 'function'
+                ) {
+                  return window.defaultSelectOneTimePurchaseOptionLoop(variant, productId);
+                }
+                return original.apply(this, arguments);
+              };
+              patched.yoeKeepsPurchaseOption = true;
+              window.applyDefaultSelectionBasedOnLoopSettings = patched;
+            }
+
             function tick() {
+              keepPurchaseOption();
               var lockDone = applyLock();
               updatePrice();
               return lockDone;
@@ -237,6 +265,8 @@
 
               if (subContainer) {
                 new MutationObserver(updatePrice).observe(subContainer, { subtree: true, childList: true, characterData: true, attributes: true });
+                document.addEventListener('click', trackPurchaseOption, true);
+                keepPurchaseOption();
               }
               if (priceBlock) {
                 new MutationObserver(updatePrice).observe(priceBlock, { subtree: true, childList: true, characterData: true });

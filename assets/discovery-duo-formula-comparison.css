@@ -786,7 +786,8 @@
     line-height: 1.2;
   }
 
-  .dd-compare--pdp .dd-compare__headline--pdp span:last-child {
+  /* Smaller second line only when there is an accent; a lone headline keeps the 28px above */
+  .dd-compare--pdp .dd-compare__headline--pdp span:last-child:not(:only-child) {
     font-size: 18px;
     letter-spacing: 1.81px;
   }

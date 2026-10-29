@@ -6490,3 +6490,16 @@ body:not(.slideron) .header__icons--localization .localization-form__select .ico
         font-size: 18px;
     }
 }
+/* PDP info column: rem-scaled type follows the 1920px design, so keep a readable floor
+   on narrower desktops (no change at 1920px, where 0.78rem / 0.8rem are already larger). */
+@media (min-width: 768px) {
+    .product__info-wrapper .product__description p,
+    .product__info-wrapper .product__accordion .accordion__content p,
+    .product__info-wrapper .product__accordion .accordion__content ul > li {
+        font-size: max(0.78rem, 13px);
+    }
+
+    .product__info-wrapper .product__accordion .summary__title h2.h4.accordion__title.inline-richtext {
+        font-size: max(0.8rem, 12px);
+    }
+}

@@ -993,7 +993,9 @@
         const group = subRadio.closest('.loop-subscription-group') || section;
         return toAmount(group.querySelector('.loop-subscription-group-price-amount'));
       }
-      return toAmount(section.querySelector('[class*="loop-one-time-purchase-option-price-amount"]'));
+      // Loop keeps the live one-time price in #loop-price-one-time (.…-amountl); the hidden
+      // "-amount-original" element still holds the price of the variant the page loaded with.
+      return toAmount(section.querySelector('.loop-one-time-purchase-option-price-amountl'));
     }
 
     function sync() {

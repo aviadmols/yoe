@@ -283,7 +283,10 @@
                 if (!e.target) return;
                 var isVariant = e.target.name === 'id' || (e.target.closest && e.target.closest('variant-radios'));
                 if (e.target.name === 'loop_purchase_option' || isVariant) {
-                  setTimeout(function () { applyLock(); updatePrice(); }, 80);
+                  // Loop falls back to its first frequency a moment after a variant change, so re-check until it settles
+                  [80, 300, 700, 1500, 3000].forEach(function (ms) {
+                    setTimeout(function () { applyLock(); updatePrice(); }, ms);
+                  });
                 }
               });
 

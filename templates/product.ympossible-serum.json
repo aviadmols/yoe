@@ -176,10 +176,7 @@
         "enable_video_looping": true,
         "padding_top": 0,
         "padding_bottom": 12,
-        "hero_theme": "dark",
-        "hero_dark_background": "#3a0108",
-        "custom_background_image": "shopify://shop_images/ys-hero-desktop-bg.png",
-        "custom_background_asset": "ys-hero-desktop.jpg",
+        "description_override": "<h3>Advanced Multi-Corrective Bio-Renewal Concentrate</h3><p>A potent treatment that instantly blurs the look of pores &amp; lines, visibly lifts, firms &amp; smooths wrinkles, and renews skin for a more even tone &amp; radiant glow. Gentle enough for daily use on sensitive skin.</p><p>Powered by RetiCode™, a next-generation bio-retinoid, and by SynerGenius®, our proprietary biotech complex, through advanced encapsulation technology that delivers actives deeper for visible results.</p>",
         "mobile_lead_image": "shopify://shop_images/00-ys-hero-mobile.png",
         "desktop_gallery_image_1": "shopify://shop_images/00-ys-hero-mobile.png",
         "desktop_gallery_image_2": "shopify://shop_images/02-ys-gallery-one-concentrate.png",
@@ -191,7 +188,10 @@
         "desktop_gallery_image_8": "shopify://shop_images/08-ys-gallery-clean-certifications.png",
         "desktop_gallery_image_9": "shopify://shop_images/09-ys-gallery-how-to-use.png",
         "desktop_gallery_image_10": "shopify://shop_images/10-ys-gallery-refill-system.png",
-        "description_override": "<h3>Advanced Multi-Corrective Bio-Renewal Concentrate</h3><p>A potent treatment that instantly blurs the look of pores &amp; lines, visibly lifts, firms &amp; smooths wrinkles, and renews skin for a more even tone &amp; radiant glow. Gentle enough for daily use on sensitive skin.</p><p>Powered by RetiCode™, a next-generation bio-retinoid, and by SynerGenius®, our proprietary biotech complex, through advanced encapsulation technology that delivers actives deeper for visible results.</p>"
+        "custom_background_image": "shopify://shop_images/ys-hero-desktop-bg.png",
+        "custom_background_asset": "ys-hero-desktop.jpg",
+        "hero_theme": "dark",
+        "hero_dark_background": "#3a0108"
       }
     },
     "reticode_comparison": {
@@ -314,6 +314,22 @@
         "body": "Engineered to activate skin's own renewal pathway, visibly restoring firmness and elasticity without irritation. Photo-stable, unlike traditional retinol.",
         "col_a_label": "RETICODE™",
         "col_b_label": "Traditional Retinol",
+        "diagram_alt": "RetiCode encapsulated delivery compared with traditional retinol and bakuchiol",
+        "dg_col_1_title": "Traditional Retinol",
+        "dg_col_1_sub": "Free active",
+        "dg_col_2_title": "Bakuchiol",
+        "dg_col_2_sub": "Not a retinoid",
+        "dg_col_3_title": "RETICODE™",
+        "dg_col_3_sub": "ENCAPSULATED",
+        "dg_layer_1": "SURFACE",
+        "dg_layer_2": "EPIDERMIS",
+        "dg_layer_3": "RENEWAL",
+        "dg_caption_1_2": "Redness, flaking,\nbarrier stress",
+        "dg_caption_2_2": "Passes without\nirritation",
+        "dg_caption_3_2": "Passes intact",
+        "dg_caption_1_3": "Renewal,\nwith potential irritation",
+        "dg_caption_2_3": "No retinoid renewal",
+        "dg_caption_3_3": "Renewal,\nminimal irritation",
         "clinical_title": "CLINICALLY MEASURED.\nHEAD-TO-HEAD AGAINST RETINOL.",
         "legend_a": "RetiCode™ 2%",
         "legend_b": "Retinol 0.5%",
@@ -487,13 +503,14 @@
       ],
       "settings": {
         "layout_mode": "pdp",
+        "pdp_style": "card",
         "headline_prefix": "SynerGenius®",
         "headline_accent": "",
         "body": "SynerGenius® is a proprietary biotech complex, powered by advanced encapsulation technology that delivers actives deeper for visible results beyond the surface.",
         "side_panel_desktop_image": "shopify://shop_images/ys-synergenius-panel-desktop.png",
         "side_panel_mobile_image": "shopify://shop_images/ys-synergenius-panel-mobile.png",
         "side_panel_alt": "",
-        "ingredients_list": "<p>{{ product.metafields.custom.ingredients_list | metafield_tag }}</p>",
+        "ingredients_list": "{{ product.metafields.custom.ingredients_list | metafield_tag }}",
         "ingredients_button_label": "See full ingredients list",
         "show_diagram": false,
         "diagram_alt": "SynerGenius delivery diagram",
@@ -516,14 +533,13 @@
         "cta_label": "",
         "cta_offer_display": "legacy",
         "cta_discount_text": "| 15% OFF",
-        "cta_compare_price": "$185",
+        "cta_compare_price": "$235",
         "cta_price": "$148",
         "trust_1": "",
         "trust_2": "",
         "trust_3": "",
         "padding_top": 0,
-        "padding_bottom": 0,
-        "pdp_style": "card"
+        "padding_bottom": 0
       }
     },
     "sustainability": {
@@ -567,6 +583,7 @@
       ],
       "name": "Sustainability Section",
       "settings": {
+        "desktop_style": "exploded",
         "heading": "SUSTAINABILITY",
         "description": "The Yoé production process and refillable packaging system are designed to minimize our carbon footprint and overall environmental impact throughout the product life cycle.",
         "badge_1": "shopify://shop_images/Group_1000004786.png",
@@ -592,17 +609,16 @@
         "feature_text_mobile_5": "Designed for recyclability at end-of-life.",
         "feature_image_1": "shopify://shop_images/ys-sustainability-cap.png",
         "feature_image_2": "shopify://shop_images/ys-sustainability-pump.png",
-        "feature_image_3": "shopify://shop_images/ys-sustainability-bottle.png",
-        "desktop_style": "exploded"
+        "feature_image_3": "shopify://shop_images/ys-sustainability-bottle.png"
       }
     },
     "two_column_images": {
       "type": "two-column-image-section",
       "name": "Two Column Images",
       "settings": {
+        "layout_style": "pdp",
         "left_image": "shopify://shop_images/ys-two-column-left.jpg",
-        "right_image": "shopify://shop_images/ys-two-column-right.png",
-        "layout_style": "pdp"
+        "right_image": "shopify://shop_images/ys-two-column-right.png"
       }
     },
     "you_might_also_like": {
@@ -713,7 +729,7 @@
         "cta_offer_display": "legacy",
         "cta_discount_text": "",
         "cta_compare_price": "",
-        "cta_price": "$185"
+        "cta_price": "$235"
       }
     }
   },

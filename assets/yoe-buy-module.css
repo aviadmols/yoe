@@ -752,7 +752,7 @@
   }
 
   .yoe-buy-module .yoe-sub-benefits-wrap .yoe-sub-benefits li:first-child {
-    padding-inline-end: 108px;
+    padding-inline-end: 9rem; /* 108px */
   }
 
   .yoe-buy-module .yoe-sub-benefits li::before {

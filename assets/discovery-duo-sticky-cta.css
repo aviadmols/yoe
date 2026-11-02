@@ -57,6 +57,11 @@
     padding-bottom: calc(85px + env(safe-area-inset-bottom, 0px));
   }
 
+  /* Anchor and focus jumps stop above the bar instead of underneath it */
+  html:has(body.dd-has-sticky-cta) {
+    scroll-padding-bottom: calc(7.083rem + env(safe-area-inset-bottom, 0px)); /* 85px */
+  }
+
   .dd-sticky-cta__form {
     margin: 0;
     width: 100%;

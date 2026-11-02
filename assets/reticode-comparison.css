@@ -467,7 +467,8 @@
   /* Red / grey column fills and row rules are painted on the row so cells never show seams. */
   .rc__row {
     position: relative;
-    grid-template-columns: 60px 63px 124px minmax(0, 1fr);
+    /* 54px 73px 120px: room between the longest label (ADJUSTMENT) and its value; same 247px red */
+    grid-template-columns: 4.5rem 6.083rem 10rem minmax(0, 1fr);
     align-items: stretch;
     min-height: 50px;
     padding: 0;

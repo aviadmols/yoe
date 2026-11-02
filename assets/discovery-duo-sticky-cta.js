@@ -221,7 +221,6 @@
 
     var visible = false;
     var ticking = false;
-    var mainCtaVisible = false;
     var isDesignMode = document.documentElement.classList.contains('shopify-design-mode');
 
     function getScrollY() {
@@ -232,10 +231,18 @@
       return (scrollVh / 100) * window.innerHeight;
     }
 
+    // PDP: measured on every check so it holds at any browser zoom and if the button is re-rendered
+    function isMainCtaOnScreen() {
+      var mainCta = document.querySelector('product-form button[name="add"]');
+      if (!mainCta) return false;
+      var rect = mainCta.getBoundingClientRect();
+      return rect.height > 0 && rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
     function setVisible(shouldShow) {
       if (isDesignMode) {
         shouldShow = window.matchMedia('(max-width: 749px)').matches;
-      } else if (mainCtaVisible) {
+      } else if (isMainCtaOnScreen()) {
         // Never show two Add to Cart buttons at once
         shouldShow = false;
       }
@@ -273,15 +280,10 @@
       observer.observe(hero);
     }
 
-    // PDP: hide the bar while the main Add to Cart button is on screen
+    // PDP: re-check when the main Add to Cart button moves without a scroll, e.g. an accordion opens
     var mainCta = document.querySelector('product-form button[name="add"]');
     if (mainCta && typeof IntersectionObserver !== 'undefined' && !isDesignMode) {
-      new IntersectionObserver(function (entries) {
-        var entry = entries[0];
-        if (!entry) return;
-        mainCtaVisible = entry.isIntersecting;
-        updateFromScroll();
-      }).observe(mainCta);
+      new IntersectionObserver(updateFromScroll).observe(mainCta);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });

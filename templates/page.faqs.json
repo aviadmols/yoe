@@ -153,15 +153,6 @@
             "page": ""
           }
         },
-        "collapsible_row_DF8jnC": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Can I use the product while I'm pregnant or nursing?",
-            "icon": "check_mark",
-            "row_content": "<p>Yes, Yoé products are clinically and dermatologically tested, hypoallergenic, vegan, gluten-free, and suitable for all skin types, including sensitive skin. The Ympossible Cream and the Ympossible Cream Light do not contain retinol and are safe for use by pregnant and breastfeeding mothers.</p>",
-            "page": ""
-          }
-        },
         "collapsible_row_K79Lrw": {
           "type": "collapsible_row",
           "settings": {
@@ -229,7 +220,6 @@
         "collapsible_row_9nadGf",
         "collapsible_row_g47nQ4",
         "collapsible_row_na3hk7",
-        "collapsible_row_DF8jnC",
         "collapsible_row_K79Lrw",
         "collapsible_row_J6r83L",
         "collapsible_row_iVePar",
@@ -239,7 +229,7 @@
       ],
       "custom_css": [
         "svg:first-child {display: none !important;}",
-        "summary {padding-top: 1rem!important; padding-bottom: 1rem !important;}"
+        "summary {padding-top: 1rem !important; padding-bottom: 1rem !important;}"
       ],
       "settings": {
         "caption": "",

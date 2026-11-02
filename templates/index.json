@@ -14,6 +14,7 @@
       "blocks": {
         "slide_wdLJaD": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Yoe_memorial_day2_expanded_1.jpg",
             "mobile_image": "shopify://shop_images/SMALL_YOE_by_DAN_PEREZ_14.jpg",
@@ -172,7 +173,6 @@
       "blocks": {
         "quote_3PfQRz": {
           "type": "quote",
-          "disabled": true,
           "settings": {
             "title": "COSMOPOLITAN",
             "quote": "\"Behold: the rich-but-light skin - <br> soothing cream you didn’t know <br>  you were missing.\""

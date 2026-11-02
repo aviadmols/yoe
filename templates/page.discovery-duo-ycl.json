@@ -841,9 +841,9 @@
         "collapsible_row_YCCKjJ": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Are these products suitable for sensitive skin or those who are pregnant or breastfeeding?",
+            "heading": "Are these products suitable for sensitive skin?",
             "icon": "none",
-            "row_content": "<ul><li><strong>Yes! Both the Ympossible Cream Light and Ympossible Cream Light are:  </strong></li><li>Dermatologist-tested and hypoallergenic.  </li><li>Safe for all skin types, including sensitive skin.  </li><li>Suitable for individuals who are pregnant or breastfeeding. </li></ul>",
+            "row_content": "<ul><li><strong>Yes! Both the Ympossible Cream Light and Ympossible Cream Light are:  </strong></li><li>Dermatologist-tested and hypoallergenic.  </li><li>Safe for all skin types, including sensitive skin.  </li></ul>",
             "page": ""
           }
         },
@@ -852,7 +852,7 @@
           "settings": {
             "heading": "Are these products clean and safe?",
             "icon": "none",
-            "row_content": "<ul><li><strong>Absolutely. Yoé’s products are:  </strong></li><li>Clinically and dermatologically tested.  </li><li>Hypoallergenic and safe for pregnant or breastfeeding individuals.  </li><li>Formulated without parabens, phthalates, synthetic fragrances and other harmful substances.  </li><li>EWG verified, Leaping Bunny Certified and vegan.</li></ul>",
+            "row_content": "<ul><li><strong>Absolutely. Yoé’s products are:  </strong></li><li>Clinically and dermatologically tested.  </li><li>Hypoallergenic.  </li><li>Formulated without parabens, phthalates, synthetic fragrances and other harmful substances.  </li><li>EWG verified, Leaping Bunny Certified and vegan.</li></ul>",
             "page": ""
           }
         },

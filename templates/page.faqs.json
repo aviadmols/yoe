@@ -86,7 +86,7 @@
           "settings": {
             "heading": "How do I cancel my order?",
             "icon": "check_mark",
-            "row_content": "<p>You can cancel your order by opening your confirmation email. In addition, you can reach out to our customer service team at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\"><strong>support@yoeandco.com</strong></span></a><strong> </strong> Please let us know the reason for the cancellation. If your order has already been processed or shipped, please review our return policy.</p>",
+            "row_content": "<p>You can cancel your order by opening your confirmation email. In addition, you can reach out to our customer service team at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\"><strong>@yoeandco.com</strong></span></a><strong> </strong>&nbsp;Please let us know the reason for the cancellation. If your order has already been processed or shipped, please review our return policy.</p>",
             "page": ""
           }
         },

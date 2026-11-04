@@ -113,7 +113,7 @@
           "settings": {
             "heading": "What do I do if my item(s) arrives damaged?",
             "icon": "check_mark",
-            "row_content": "<p>We’re sorry your item(s) have damage! Not to worry! All of our products come with a complete guarantee, email us at <a href=\"mailto:support@yoeandco.com\"><span style=\"text-decoration:underline\">support@yoeandco.com</span></a> with images and an explanation and we will do our best to accommodate and get you a replacement for you to enjoy. While we may not be able to guarantee your exact order is replaced due to potential stock issues, we’ll be sure to resolve the situation as best we can!</p>",
+            "row_content": "<p>We’re sorry your item(s) have damage! Not to worry! All of our products come with a complete guarantee, email us at <a href=\"mailto:good@yoeandco.com\" title=\"mailto:good@yoeandco.com\"><span style=\"text-decoration:underline\">Yoé - client care team</span></a> with images and an explanation and we will do our best to accommodate and get you a replacement for you to enjoy. While we may not be able to guarantee your exact order is replaced due to potential stock issues, we’ll be sure to resolve the situation as best we can!</p>",
             "page": ""
           }
         },
@@ -122,7 +122,7 @@
           "settings": {
             "heading": "When will I get my refund?",
             "icon": "check_mark",
-            "row_content": "<p>Once your return has been processed, you will be notified through email when the refund has been issued. It typically takes <strong>7-10 business days</strong> for the refund to reflect in your account.</p>",
+            "row_content": "<p>Once your return has been processed, you will be notified through email when the refund has been issued. As is processed through Shopify , It typically takes <strong>7-10 business days</strong> for the refund to reflect in your account.</p>",
             "page": ""
           }
         },

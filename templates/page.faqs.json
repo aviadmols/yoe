@@ -59,7 +59,7 @@
           "settings": {
             "heading": "How much does shipping cost?",
             "icon": "check_mark",
-            "row_content": "<p>You can enjoy free shipping in the USA. We provide shipping at no cost at all. Other countries may vary, please see the checkout to find shipping costs.</p>",
+            "row_content": "<p>In the continental US, we provide express shipping at no cost via FedEx. Other countries may vary, please see the checkout to find shipping costs.</p>",
             "page": ""
           }
         },

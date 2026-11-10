@@ -1,0 +1,54 @@
+{{ 'discovery-duo-bf.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-bf-reviews dd-bf-section"
+  style="--dd-bf-pt: {{ section.settings.padding_top }}; --dd-bf-pb: {{ section.settings.padding_bottom }}; --dd-bf-bg: {{ section.settings.background }};"
+>
+  <div class="dd-bf-reviews__inner">
+    {%- if section.settings.rating_value != blank -%}
+      <div class="dd-bf-reviews__rating">
+        <span class="dd-bf-reviews__rating-value">{{ section.settings.rating_value | escape }}</span>
+        <span class="dd-bf-reviews__rating-star" aria-hidden="true">{% render 'dd-reviews-star' %}</span>
+        <span class="visually-hidden">out of 5 stars</span>
+      </div>
+    {%- endif -%}
+
+    <ul class="dd-bf-reviews__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="dd-bf-review" {{ block.shopify_attributes }}>
+          <p class="dd-bf-review__stars" aria-label="5 out of 5 stars">★★★★★</p>
+          {%- if block.settings.title != blank -%}<p class="dd-bf-review__title">{{ block.settings.title | escape }}</p>{%- endif -%}
+          {%- if block.settings.quote != blank -%}<p class="dd-bf-review__quote">{{ block.settings.quote | escape }}</p>{%- endif -%}
+          {%- if block.settings.author != blank -%}<p class="dd-bf-review__author">{{ block.settings.author | escape }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BF – Reviews row",
+  "tag": "div",
+  "class": "section-dd-bf-reviews",
+  "settings": [
+    { "type": "text", "id": "rating_value", "label": "Rating", "default": "5.0" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 30 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 50 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "No fragrance" },
+        { "type": "textarea", "id": "quote", "label": "Review", "default": "Still feels special without needing perfume in it." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Bailey" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "BF – Reviews row" }]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+{{ 'discovery-duo-bf.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="dd-bf-refill dd-bf-section"
+  style="--dd-bf-pt: {{ section.settings.padding_top }}; --dd-bf-pb: {{ section.settings.padding_bottom }}; --dd-bf-bg: {{ section.settings.background }};"
+>
+  <div class="dd-bf-refill__inner">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="dd-bf-heading dd-bf-refill__heading">{{ section.settings.headline | escape }}</h2>
+    {%- endif -%}
+    {% render 'dd-bf-image',
+      image: section.settings.image,
+      asset: section.settings.image_asset,
+      mobile_image: section.settings.mobile_image,
+      mobile_asset: section.settings.mobile_image_asset,
+      width: 1800,
+      mobile_width: 1100,
+      class: 'dd-bf-refill__image',
+      alt: section.settings.image_alt
+    %}
+    {%- if section.settings.logos_image != blank or section.settings.logos_asset != blank -%}
+      <div class="dd-bf-refill__logos">
+        {% render 'dd-bf-image',
+          image: section.settings.logos_image,
+          asset: section.settings.logos_asset,
+          width: 800,
+          class: 'dd-bf-refill__logos-image',
+          alt: section.settings.logos_alt
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BF – Refillable",
+  "tag": "div",
+  "class": "section-dd-bf-refill",
+  "settings": [
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Refillable. Recyclable. Responsible." },
+    { "type": "image_picker", "id": "image", "label": "Desktop image" },
+    { "type": "text", "id": "image_asset", "label": "Desktop image fallback (theme asset)", "default": "bf-refill-desktop.webp" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "text", "id": "mobile_image_asset", "label": "Mobile image fallback (theme asset)", "default": "bf-refill-mobile.webp" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "Reusable cap with no adhesives, metal-free pump, PCR glass and PCR refillable bottles" },
+    { "type": "image_picker", "id": "logos_image", "label": "Logos image (desktop only)" },
+    { "type": "text", "id": "logos_asset", "label": "Logos fallback (theme asset)", "default": "bf-refill-logos.webp" },
+    { "type": "text", "id": "logos_alt", "label": "Logos alt text", "default": "1% for the Planet, FSC certified, 50% PCR, recyclable" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#f5f4f2" },
+    { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 30 }
+  ],
+  "presets": [{ "name": "BF – Refillable" }]
+}
+{% endschema %}

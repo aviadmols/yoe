@@ -1,0 +1,102 @@
+{%- comment -%}
+  Black Friday landing pages: responsive image with a theme-asset fallback.
+  An image chosen in the editor always wins; the asset filename is used when the picker is empty,
+  so the page renders before the files are uploaded to Shopify Files.
+
+  Params:
+    image          image_picker value (desktop / default)
+    asset          theme asset filename used when `image` is blank
+    mobile_image   optional image_picker value for <= 749px
+    mobile_asset   optional theme asset filename for <= 749px
+    width          max render width for image_url (default 1600)
+    mobile_width   max render width for the mobile source (default 800)
+    alt, class, loading ('lazy' default), fetchpriority, sizes
+{%- endcomment -%}
+
+{%- liquid
+  assign img_width = width | default: 1600
+  assign img_mobile_width = mobile_width | default: 800
+  assign img_loading = loading | default: 'lazy'
+  assign img_sizes = sizes | default: '100vw'
+
+  assign mobile_src = blank
+  if mobile_image != blank
+    assign mobile_src = mobile_image | image_url: width: img_mobile_width
+  elsif mobile_asset != blank
+    assign mobile_src = mobile_asset | asset_url
+  endif
+-%}
+
+{%- if image != blank or asset != blank -%}
+  {%- if mobile_src != blank -%}<picture>
+    <source media="(max-width: 749px)" srcset="{{ mobile_src }}">
+  {%- endif -%}
+  {%- if image != blank -%}
+    {%- assign img_alt = alt | default: image.alt -%}
+    {{ image | image_url: width: img_width | image_tag:
+      loading: img_loading,
+      fetchpriority: fetchpriority,
+      sizes: img_sizes,
+      class: class,
+      alt: img_alt
+    }}
+  {%- else -%}
+    {%- liquid
+      comment
+        Intrinsic sizes of the bundled bf-* assets (prevents layout shift).
+      endcomment
+      assign asset_dims = '120x120'
+      case asset
+        when 'bf-hero-desktop.webp'
+          assign asset_dims = '900x1600'
+        when 'bf-hero-mobile.webp'
+          assign asset_dims = '619x1100'
+        when 'bf-yc-before-after-desktop.webp'
+          assign asset_dims = '1530x1534'
+        when 'bf-yc-before-after-mobile.webp'
+          assign asset_dims = '1097x1100'
+        when 'bf-ycl-before-after-desktop.webp', 'bf-ycl-before-after-mobile.webp'
+          assign asset_dims = '820x728'
+        when 'bf-routine-desktop.webp'
+          assign asset_dims = '1400x225'
+        when 'bf-routine-mobile.webp'
+          assign asset_dims = '750x373'
+        when 'bf-yc-bottle.webp', 'bf-ycl-bottle.webp'
+          assign asset_dims = '1127x1600'
+        when 'bf-synergenius-diagram.webp'
+          assign asset_dims = '900x715'
+        when 'bf-yc-model.webp'
+          assign asset_dims = '546x637'
+        when 'bf-ycl-model.webp'
+          assign asset_dims = '900x1042'
+        when 'bf-refill-desktop.webp'
+          assign asset_dims = '1440x624'
+        when 'bf-refill-mobile.webp'
+          assign asset_dims = '1100x477'
+        when 'bf-refill-logos.webp'
+          assign asset_dims = '800x280'
+        when 'bf-active-niacinamide.webp'
+          assign asset_dims = '31x31'
+      endcase
+      if asset contains 'bf-active-'
+        unless asset == 'bf-active-niacinamide.webp'
+          assign asset_dims = '80x54'
+        endunless
+      elsif asset contains 'bf-icon-'
+        assign asset_dims = '64x64'
+      endif
+      assign asset_dim_parts = asset_dims | split: 'x'
+    -%}
+    <img
+      src="{{ asset | asset_url }}"
+      alt="{{ alt | escape }}"
+      width="{{ asset_dim_parts[0] }}"
+      height="{{ asset_dim_parts[1] }}"
+      class="{{ class }}"
+      loading="{{ img_loading }}"
+      {% if fetchpriority != blank %}fetchpriority="{{ fetchpriority }}"{% endif %}
+      decoding="async"
+    >
+  {%- endif -%}
+  {%- if mobile_src != blank -%}</picture>{%- endif -%}
+{%- endif -%}

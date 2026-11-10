@@ -1,0 +1,147 @@
+{{ 'discovery-duo-bf.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign mechanisms = section.blocks | where: 'type', 'mechanism'
+  assign actives = section.blocks | where: 'type', 'active'
+-%}
+
+<section
+  class="dd-bf-actives dd-bf-section"
+  style="--dd-bf-pt: {{ section.settings.padding_top }}; --dd-bf-pb: {{ section.settings.padding_bottom }}; --dd-bf-bg: {{ section.settings.background }};"
+>
+  <div class="dd-bf-container">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="dd-bf-heading">{{ section.settings.headline | escape | newline_to_br }}</h2>
+    {%- endif -%}
+    {%- if section.settings.body != blank -%}
+      <p class="dd-bf-actives__body">{{ section.settings.body | escape }}</p>
+    {%- endif -%}
+
+    <div class="dd-bf-actives__science">
+      {%- if section.settings.diagram_image != blank or section.settings.diagram_asset != blank -%}
+        <div class="dd-bf-actives__diagram">
+          {% render 'dd-bf-image',
+            image: section.settings.diagram_image,
+            asset: section.settings.diagram_asset,
+            width: 1200,
+            sizes: '(max-width: 749px) 100vw, 34vw',
+            class: 'dd-bf-actives__diagram-image',
+            alt: section.settings.diagram_alt
+          %}
+        </div>
+      {%- endif -%}
+
+      {%- if mechanisms.size > 0 -%}
+        <ul class="dd-bf-actives__mechanisms" role="list">
+          {%- for block in mechanisms -%}
+            <li class="dd-bf-actives__mechanism" {{ block.shopify_attributes }}>
+              {% render 'dd-bf-image',
+                image: block.settings.icon,
+                asset: block.settings.icon_asset,
+                width: 240,
+                class: 'dd-bf-actives__mechanism-icon',
+                alt: ''
+              %}
+              <p class="dd-bf-actives__mechanism-title">{{ block.settings.title | escape }}</p>
+              <p class="dd-bf-actives__mechanism-text">{{ block.settings.text | escape }}</p>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    {%- if actives.size > 0 -%}
+      {%- if section.settings.table_headline != blank -%}
+        <h3 class="dd-bf-heading dd-bf-heading--sub dd-bf-actives__table-heading">{{ section.settings.table_headline | escape | newline_to_br }}</h3>
+      {%- endif -%}
+      <div class="dd-bf-actives__table" role="table" aria-label="{{ section.settings.table_headline | escape }}">
+        <div class="dd-bf-actives__row dd-bf-actives__row--head" role="row">
+          <span class="dd-bf-actives__th" role="columnheader">{{ section.settings.col_active | escape }}</span>
+          <span class="dd-bf-actives__th dd-bf-actives__th--action" role="columnheader">{{ section.settings.col_action | escape }}</span>
+          <span class="dd-bf-actives__th" role="columnheader">{{ section.settings.col_benefits | escape }}</span>
+        </div>
+        {%- for block in actives -%}
+          <div class="dd-bf-actives__row" role="row" {{ block.shopify_attributes }}>
+            <span class="dd-bf-actives__name" role="cell">
+              {% render 'dd-bf-image',
+                image: block.settings.icon,
+                asset: block.settings.icon_asset,
+                width: 160,
+                class: 'dd-bf-actives__icon',
+                alt: ''
+              %}
+              <span>{{ block.settings.name | escape }}</span>
+            </span>
+            <span class="dd-bf-actives__action" role="cell"><span class="dd-bf-actives__pill">{{ block.settings.action | escape }}</span></span>
+            <span class="dd-bf-actives__benefit" role="cell">{{ block.settings.benefit | escape }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {% render 'dd-bf-cta', s: section.settings %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BF – Biotech actives",
+  "tag": "div",
+  "class": "section-dd-bf-actives",
+  "settings": [
+    { "type": "textarea", "id": "headline", "label": "Headline", "default": "Biotech actives. One complex" },
+    { "type": "text", "id": "body", "label": "Intro", "default": "SynerGenius® delivers actives beyond the surface, where skin renewal begins." },
+    { "type": "header", "content": "Diagram" },
+    { "type": "image_picker", "id": "diagram_image", "label": "Diagram image" },
+    { "type": "text", "id": "diagram_asset", "label": "Diagram fallback (theme asset)", "default": "bf-synergenius-diagram.webp" },
+    { "type": "text", "id": "diagram_alt", "label": "Diagram alt text", "default": "SynerGenius delivery diagram: advanced encapsulation at the surface, controlled release in the epidermis, targeted delivery in the dermis" },
+    { "type": "header", "content": "Table" },
+    { "type": "textarea", "id": "table_headline", "label": "Table headline", "default": "Bio-actives. One powerful formula." },
+    { "type": "text", "id": "col_active", "label": "Column 1", "default": "Biotech active" },
+    { "type": "text", "id": "col_action", "label": "Column 2", "default": "Action" },
+    { "type": "text", "id": "col_benefits", "label": "Column 3", "default": "Benefits" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_sale_text", "label": "Sale line above the button", "default": "Black Friday Sale · Save 20%" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Get award-winning cream" },
+    { "type": "text", "id": "cta_compare_price", "label": "Compare-at price (struck through)", "default": "$185" },
+    { "type": "text", "id": "cta_price", "label": "Sale price", "default": "$148" },
+    { "type": "product", "id": "cta_product", "label": "Product" },
+    { "type": "product", "id": "cta_product_secondary", "label": "Bonus product (optional)" },
+    { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": true },
+    { "type": "checkbox", "id": "cta_apply_discount", "label": "Apply discount code on checkout", "default": true },
+    { "type": "text", "id": "cta_checkout_discount_code", "label": "Discount code" },
+    { "type": "text", "id": "trust_1", "label": "Trust item 1", "default": "30-Day Money-Back" },
+    { "type": "text", "id": "trust_2", "label": "Trust item 2", "default": "Free Express Shipping" },
+    { "type": "text", "id": "trust_3", "label": "Trust item 3", "default": "Limited-Time Offer" },
+    { "type": "header", "content": "Section" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 50 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 50 }
+  ],
+  "blocks": [
+    {
+      "type": "mechanism",
+      "name": "Mechanism",
+      "limit": 4,
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "icon_asset", "label": "Icon fallback (theme asset)" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Shielded" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Each active protected at peak potency." }
+      ]
+    },
+    {
+      "type": "active",
+      "name": "Active",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Swatch" },
+        { "type": "text", "id": "icon_asset", "label": "Swatch fallback (theme asset)" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Vitamin C" },
+        { "type": "text", "id": "action", "label": "Action", "default": "Firm" },
+        { "type": "text", "id": "benefit", "label": "Benefit", "default": "Visibly firmer, lifted" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "BF – Biotech actives" }]
+}
+{% endschema %}

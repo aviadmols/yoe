@@ -1,0 +1,85 @@
+{{ 'discovery-duo-bf.css' | asset_url | stylesheet_tag }}
+
+{%- assign lines = section.blocks | where: 'type', 'line' -%}
+
+<section
+  class="dd-bf-offer dd-bf-section"
+  style="--dd-bf-pt: {{ section.settings.padding_top }}; --dd-bf-pb: {{ section.settings.padding_bottom }}; --dd-bf-bg: {{ section.settings.background }};"
+>
+  <div class="dd-bf-offer__card">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="dd-bf-offer__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 class="dd-bf-offer__title">{{ section.settings.title | escape | newline_to_br }}</h2>
+    {%- endif -%}
+    {%- if section.settings.sale_text != blank -%}
+      <p class="dd-bf-offer__sale">{{ section.settings.sale_text | escape }}</p>
+    {%- endif -%}
+
+    {%- if lines.size > 0 -%}
+      <dl class="dd-bf-offer__lines">
+        {%- for block in lines -%}
+          <div class="dd-bf-offer__line" {{ block.shopify_attributes }}>
+            <dt>{{ block.settings.label | escape }}</dt>
+            <dd>{{ block.settings.value | escape }}</dd>
+          </div>
+        {%- endfor -%}
+      </dl>
+    {%- endif -%}
+
+    {%- if section.settings.total_label != blank or section.settings.total_value != blank -%}
+      <div class="dd-bf-offer__total">
+        <span class="dd-bf-offer__total-label">{{ section.settings.total_label | escape }}</span>
+        <span class="dd-bf-offer__total-value">{{ section.settings.total_value | escape }}</span>
+      </div>
+    {%- endif -%}
+
+    {% render 'dd-bf-cta', s: section.settings, show_trust: false, modifier: 'dd-bf-cta--offer' %}
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="dd-bf-offer__footnote">{{ section.settings.footnote | escape | newline_to_br }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BF – Offer card",
+  "tag": "div",
+  "class": "section-dd-bf-offer",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Badge", "default": "Limited-time offer" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "Try Ympossible\nCream." },
+    { "type": "text", "id": "sale_text", "label": "Sale line", "default": "Black Friday Sale · Save 20%" },
+    { "type": "text", "id": "total_label", "label": "Total label", "default": "Your Black Friday Price" },
+    { "type": "text", "id": "total_value", "label": "Total value", "default": "$148" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Try Ympossible Cream" },
+    { "type": "text", "id": "cta_compare_price", "label": "Compare-at price (struck through)", "default": "$185" },
+    { "type": "text", "id": "cta_price", "label": "Sale price", "default": "$148" },
+    { "type": "product", "id": "cta_product", "label": "Product" },
+    { "type": "product", "id": "cta_product_secondary", "label": "Bonus product (optional)" },
+    { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": true },
+    { "type": "checkbox", "id": "cta_apply_discount", "label": "Apply discount code on checkout", "default": true },
+    { "type": "text", "id": "cta_checkout_discount_code", "label": "Discount code" },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "Free shipping | 30-day refund\nNo subscription" },
+    { "type": "header", "content": "Section" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#f7f6f5" },
+    { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 30 }
+  ],
+  "blocks": [
+    {
+      "type": "line",
+      "name": "Price line",
+      "limit": 6,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Ympossible Cream 30ml" },
+        { "type": "text", "id": "value", "label": "Value", "default": "$185" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "BF – Offer card" }]
+}
+{% endschema %}

@@ -1,0 +1,129 @@
+{{ 'discovery-duo-bf.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign certs = section.blocks | where: 'type', 'cert'
+  assign stats = section.blocks | where: 'type', 'stat'
+  assign without_items = section.settings.without_list | newline_to_br | split: '<br />'
+-%}
+
+<section
+  class="dd-bf-standards"
+  style="--dd-bf-pt: {{ section.settings.padding_top }}; --dd-bf-pb: {{ section.settings.padding_bottom }};"
+>
+  <div class="dd-bf-standards__grid">
+    <div class="dd-bf-standards__content">
+      {%- if section.settings.headline != blank -%}
+        <h2 class="dd-bf-heading">{{ section.settings.headline | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheadline != blank -%}
+        <p class="dd-bf-standards__sub">{{ section.settings.subheadline | escape | newline_to_br }}</p>
+      {%- endif -%}
+
+      {%- if certs.size > 0 -%}
+        <ul class="dd-bf-standards__certs" role="list">
+          {%- for block in certs -%}
+            <li class="dd-bf-standards__cert" {{ block.shopify_attributes }}>
+              {% render 'dd-bf-image',
+                image: block.settings.icon,
+                asset: block.settings.icon_asset,
+                width: 200,
+                class: 'dd-bf-standards__cert-icon',
+                alt: ''
+              %}
+              <span>{{ block.settings.label | escape }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if without_items.size > 0 and section.settings.without_list != blank -%}
+        <div class="dd-bf-standards__without">
+          {%- if section.settings.without_heading != blank -%}
+            <p class="dd-bf-standards__without-heading">{{ section.settings.without_heading | escape }}</p>
+          {%- endif -%}
+          <ul class="dd-bf-standards__without-list" role="list">
+            {%- for item in without_items -%}
+              {%- assign item_text = item | strip -%}
+              {%- if item_text != blank -%}
+                <li>{{ item_text | escape }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="dd-bf-standards__aside">
+      <div class="dd-bf-standards__panel">
+        <div class="dd-bf-standards__panel-copy">
+          {%- if section.settings.panel_eyebrow != blank -%}
+            <p class="dd-bf-standards__panel-eyebrow">{{ section.settings.panel_eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- for block in stats -%}
+            <div class="dd-bf-standards__stat" {{ block.shopify_attributes }}>
+              <p class="dd-bf-standards__stat-value">{{ block.settings.value | escape }}</p>
+              <p class="dd-bf-standards__stat-text">{{ block.settings.text | escape | newline_to_br }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="dd-bf-standards__model">
+          {% render 'dd-bf-image',
+            image: section.settings.image,
+            asset: section.settings.image_asset,
+            width: 1000,
+            sizes: '(max-width: 749px) 50vw, 20vw',
+            class: 'dd-bf-standards__model-image',
+            alt: section.settings.image_alt
+          %}
+        </div>
+      </div>
+      {%- if section.settings.disclaimer != blank -%}
+        <p class="dd-bf-standards__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BF – Our standards",
+  "tag": "div",
+  "class": "section-dd-bf-standards",
+  "settings": [
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Our standards." },
+    { "type": "textarea", "id": "subheadline", "label": "Subheadline", "default": "Clinically tested. Fragrance-free. Suitable for sensitive skin." },
+    { "type": "text", "id": "without_heading", "label": "Formulated without – heading", "default": "Formulated without" },
+    { "type": "textarea", "id": "without_list", "label": "Formulated without – one per line", "default": "Parabens\nPhthalates\nPetroleum\nMineral Oil\nPolyethylene Glycol\nParaffin\nSodium Laureth Sulfate\nTalc\nEssential Oils\nPalm Oil\nSynthetic Fragrances\nArtificial Dyes\nKnown Endocrine Disruptors" },
+    { "type": "header", "content": "Red panel" },
+    { "type": "text", "id": "panel_eyebrow", "label": "Eyebrow", "default": "After 4 weeks" },
+    { "type": "image_picker", "id": "image", "label": "Model image (transparent PNG)" },
+    { "type": "text", "id": "image_asset", "label": "Model image fallback (theme asset)", "default": "bf-yc-model.webp" },
+    { "type": "text", "id": "image_alt", "label": "Model image alt text" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "Consumer perceptions of 26 participants aged 35 to 63 were assessed after 1 and 4 weeks of twice-daily application." },
+    { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "cert",
+      "name": "Certification",
+      "limit": 9,
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "icon_asset", "label": "Icon fallback (theme asset)" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Vegan" }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "96%" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "agree skin looks softer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "BF – Our standards" }]
+}
+{% endschema %}

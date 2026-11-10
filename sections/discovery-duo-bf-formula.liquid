@@ -1,0 +1,119 @@
+{{ 'discovery-duo-bf.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign benefits = section.blocks | where: 'type', 'benefit'
+-%}
+
+<section
+  class="dd-bf-formula dd-bf-section{% if section.settings.mobile_image_large %} dd-bf-formula--mobile-large{% endif %}"
+  style="--dd-bf-pt: {{ section.settings.padding_top }}; --dd-bf-pb: {{ section.settings.padding_bottom }}; --dd-bf-bg: {{ section.settings.background }};"
+>
+  <div class="dd-bf-container">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="dd-bf-heading">{{ section.settings.headline | escape | newline_to_br }}</h2>
+    {%- endif -%}
+
+    <div class="dd-bf-formula__product">
+      <div class="dd-bf-formula__image-wrap">
+        {% render 'dd-bf-image',
+          image: section.settings.image,
+          asset: section.settings.image_asset,
+          width: 900,
+          sizes: '(max-width: 749px) 60vw, 12vw',
+          class: 'dd-bf-formula__image',
+          alt: section.settings.title
+        %}
+      </div>
+
+      <div class="dd-bf-formula__info">
+        {%- if section.settings.title != blank -%}
+          <h3 class="dd-bf-formula__title">{{ section.settings.title | escape }}</h3>
+        {%- endif -%}
+        {%- if section.settings.rating != blank -%}
+          <p class="dd-bf-formula__rating"><span class="dd-bf-formula__stars" aria-hidden="true">★★★★★</span> <span>{{ section.settings.rating | escape }}</span><span class="visually-hidden"> out of 5 stars</span></p>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="dd-bf-formula__subtitle">{{ section.settings.subtitle | escape | newline_to_br }}</p>
+        {%- endif -%}
+        {%- if benefits.size > 0 -%}
+          <ul class="dd-bf-formula__benefits" role="list">
+            {%- for block in benefits -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.routine_title != blank or section.settings.routine_image != blank or section.settings.routine_asset != blank -%}
+      <div class="dd-bf-formula__routine">
+        {%- if section.settings.routine_title != blank -%}
+          <h3 class="dd-bf-formula__routine-title">{{ section.settings.routine_title | escape | newline_to_br }}</h3>
+        {%- endif -%}
+        {% render 'dd-bf-image',
+          image: section.settings.routine_image,
+          asset: section.settings.routine_asset,
+          mobile_image: section.settings.routine_mobile_image,
+          mobile_asset: section.settings.routine_mobile_asset,
+          width: 1600,
+          mobile_width: 800,
+          class: 'dd-bf-formula__routine-image',
+          alt: section.settings.routine_alt
+        %}
+      </div>
+    {%- endif -%}
+
+    {% render 'dd-bf-cta', s: section.settings %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BF – Product formula",
+  "tag": "div",
+  "class": "section-dd-bf-formula",
+  "settings": [
+    { "type": "textarea", "id": "headline", "label": "Headline", "default": "One formula.\nClinically proven results." },
+    { "type": "header", "content": "Product" },
+    { "type": "image_picker", "id": "image", "label": "Product image" },
+    { "type": "text", "id": "image_asset", "label": "Product image fallback (theme asset)", "default": "bf-yc-bottle.webp" },
+    { "type": "checkbox", "id": "mobile_image_large", "label": "Large product image on mobile", "default": true },
+    { "type": "text", "id": "title", "label": "Product name", "default": "Ympossible Cream" },
+    { "type": "text", "id": "rating", "label": "Rating", "default": "5.0" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle (red)", "default": "Ultra-rich · Age-defying\nAdvanced repair" },
+    { "type": "header", "content": "Routine (optional)" },
+    { "type": "textarea", "id": "routine_title", "label": "Routine title", "default": "Simplify your skincare routine" },
+    { "type": "image_picker", "id": "routine_image", "label": "Routine desktop image" },
+    { "type": "text", "id": "routine_asset", "label": "Routine desktop fallback (theme asset)", "default": "bf-routine-desktop.webp" },
+    { "type": "image_picker", "id": "routine_mobile_image", "label": "Routine mobile image" },
+    { "type": "text", "id": "routine_mobile_asset", "label": "Routine mobile fallback (theme asset)", "default": "bf-routine-mobile.webp" },
+    { "type": "text", "id": "routine_alt", "label": "Routine alt text", "default": "One cream replaces serum, barrier cream, vitamin C, primer, peptide, cream, night mask, toner, brightening and anti-aging products" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_sale_text", "label": "Sale line above the button", "default": "Black Friday Sale · Save 20%" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Get award-winning cream" },
+    { "type": "text", "id": "cta_compare_price", "label": "Compare-at price (struck through)", "default": "$185" },
+    { "type": "text", "id": "cta_price", "label": "Sale price", "default": "$148" },
+    { "type": "product", "id": "cta_product", "label": "Product" },
+    { "type": "product", "id": "cta_product_secondary", "label": "Bonus product (optional)" },
+    { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": true },
+    { "type": "checkbox", "id": "cta_apply_discount", "label": "Apply discount code on checkout", "default": true },
+    { "type": "text", "id": "cta_checkout_discount_code", "label": "Discount code" },
+    { "type": "text", "id": "trust_1", "label": "Trust item 1", "default": "30-Day Money-Back" },
+    { "type": "text", "id": "trust_2", "label": "Trust item 2", "default": "Free Express Shipping" },
+    { "type": "text", "id": "trust_3", "label": "Trust item 3", "default": "Limited-Time Offer" },
+    { "type": "header", "content": "Section" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#f7f6f5" },
+    { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 50 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 50 }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 8,
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Firms + Lifts" }]
+    }
+  ],
+  "presets": [{ "name": "BF – Product formula" }]
+}
+{% endschema %}

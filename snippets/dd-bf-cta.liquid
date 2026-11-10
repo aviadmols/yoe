@@ -1,0 +1,83 @@
+{%- comment -%}
+  Black Friday landing pages: sale line + checkout button (label | compare | price | arrow) + trust row.
+  Uses the Discovery Duo checkout flow (assets/discovery-duo-cart.js) when go_checkout is true.
+
+  Params:
+    s          section.settings (reads the cta_* and trust_* keys below)
+    align      'center' (default) or 'left'
+    show_trust default true
+    modifier   extra class on the wrapper
+
+  Settings read from s:
+    cta_sale_text, cta_label, cta_compare_price, cta_price, cta_product, cta_product_secondary,
+    cta_go_to_checkout, cta_apply_discount, cta_checkout_discount_code, trust_1, trust_2, trust_3
+{%- endcomment -%}
+
+{%- liquid
+  assign cta_align = align | default: 'center'
+  assign cta_product = s.cta_product
+  assign cta_variant = cta_product.selected_or_first_available_variant
+
+  assign compare_text = s.cta_compare_price | strip
+  if compare_text == blank and cta_product != blank and cta_product.compare_at_price > cta_product.price
+    assign compare_text = cta_product.compare_at_price | money_without_trailing_zeros
+  endif
+
+  assign price_text = s.cta_price | strip
+  if price_text == blank and cta_product != blank
+    assign price_text = cta_product.price | money_without_trailing_zeros
+  endif
+
+  assign trust_visible = true
+  if show_trust == false
+    assign trust_visible = false
+  endif
+-%}
+
+<div class="dd-bf-cta dd-bf-cta--{{ cta_align }}{% if modifier != blank %} {{ modifier }}{% endif %}">
+  {%- if s.cta_sale_text != blank -%}
+    <p class="dd-bf-cta__sale">{{ s.cta_sale_text | escape }}</p>
+  {%- endif -%}
+
+  {%- if s.cta_label != blank -%}
+    <form
+      class="dd-bf-cta__form"
+      method="post"
+      action="{{ routes.cart_add_url }}"
+      {% if s.cta_go_to_checkout %}data-dd-checkout{% endif %}
+      {% render 'dd-cta-checkout-attrs', apply_discount: s.cta_apply_discount, discount_code: s.cta_checkout_discount_code %}
+    >
+      {% render 'dd-cta-cart-inputs',
+        primary_product: cta_product,
+        secondary_product: s.cta_product_secondary,
+        include_secondary: true
+      %}
+      <button class="dd-bf-cta__btn" type="submit"{% if cta_variant == blank %} disabled{% endif %}>
+        <span class="dd-bf-cta__label">{{ s.cta_label | escape }}</span>
+        {%- if compare_text != blank or price_text != blank -%}
+          <span class="dd-bf-cta__prices">
+            {%- if compare_text != blank -%}
+              <span class="dd-bf-cta__compare"><span class="visually-hidden">Regular price </span>{{ compare_text | escape }}</span>
+            {%- endif -%}
+            {%- if price_text != blank -%}
+              <span class="dd-bf-cta__price"><span class="visually-hidden">Sale price </span>{{ price_text | escape }}</span>
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+        <svg class="dd-bf-cta__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true" focusable="false">
+          <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  {%- endif -%}
+
+  {%- if trust_visible -%}
+    {%- if s.trust_1 != blank or s.trust_2 != blank or s.trust_3 != blank -%}
+      <ul class="dd-bf-cta__trust" role="list">
+        {%- if s.trust_1 != blank -%}<li>{{ s.trust_1 | escape }}</li>{%- endif -%}
+        {%- if s.trust_2 != blank -%}<li>{{ s.trust_2 | escape }}</li>{%- endif -%}
+        {%- if s.trust_3 != blank -%}<li>{{ s.trust_3 | escape }}</li>{%- endif -%}
+      </ul>
+    {%- endif -%}
+  {%- endif -%}
+</div>

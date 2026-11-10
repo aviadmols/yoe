@@ -14,8 +14,8 @@
         asset: section.settings.image_asset,
         mobile_image: section.settings.mobile_image,
         mobile_asset: section.settings.mobile_image_asset,
-        width: 1400,
-        mobile_width: 800,
+        width: 2400,
+        mobile_width: 1200,
         sizes: '(max-width: 749px) 100vw, 50vw',
         loading: 'eager',
         fetchpriority: 'high',
@@ -33,7 +33,14 @@
       {%- endif -%}
 
       {%- if section.settings.headline != blank -%}
-        <h2 class="dd-bf-hero__headline">{{ section.settings.headline | escape }}</h2>
+        <h2 class="dd-bf-hero__headline">
+          {%- if section.settings.headline_mobile != blank -%}
+            <span class="dd-bf-only-desktop">{{ section.settings.headline | escape }}</span>
+            <span class="dd-bf-only-mobile">{{ section.settings.headline_mobile | escape }}</span>
+          {%- else -%}
+            {{ section.settings.headline | escape }}
+          {%- endif -%}
+        </h2>
       {%- endif -%}
 
       {%- if section.settings.subheadline != blank -%}
@@ -116,6 +123,7 @@
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "badge_text", "label": "Badge", "default": "Clinically proven" },
     { "type": "text", "id": "headline", "label": "Headline", "default": "Visibly firms, plumps, and reduces fine lines and wrinkles" },
+    { "type": "text", "id": "headline_mobile", "label": "Headline on mobile (optional)", "info": "Leave empty to use the headline above." },
     { "type": "text", "id": "subheadline", "label": "Subheadline (red)", "default": "All in one formula." },
     { "type": "header", "content": "CTA" },
     { "type": "text", "id": "cta_sale_text", "label": "Sale line above the button", "default": "Black Friday Sale · Save 20%" },

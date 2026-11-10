@@ -11,7 +11,7 @@
 >
   <div class="dd-bf-container">
     {%- if section.settings.headline != blank -%}
-      <h2 class="dd-bf-heading">{{ section.settings.headline | escape | newline_to_br }}</h2>
+      <h2 class="dd-bf-heading">{{ section.settings.headline | escape | replace: '. ', '.<br class="dd-bf-mbr"> ' | newline_to_br }}</h2>
     {%- endif -%}
     {%- if section.settings.body != blank -%}
       <p class="dd-bf-actives__body">{{ section.settings.body | escape }}</p>
@@ -52,7 +52,7 @@
 
     {%- if actives.size > 0 -%}
       {%- if section.settings.table_headline != blank -%}
-        <h3 class="dd-bf-heading dd-bf-heading--sub dd-bf-actives__table-heading">{{ section.settings.table_headline | escape | newline_to_br }}</h3>
+        <h3 class="dd-bf-heading dd-bf-heading--sub dd-bf-actives__table-heading">{{ section.settings.table_headline | escape | replace: '. ', '.<br class="dd-bf-mbr"> ' | newline_to_br }}</h3>
       {%- endif -%}
       <div class="dd-bf-actives__table" role="table" aria-label="{{ section.settings.table_headline | escape }}">
         <div class="dd-bf-actives__row dd-bf-actives__row--head" role="row">

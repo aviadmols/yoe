@@ -13,6 +13,9 @@
   --dd-bf-panel: #8f160f;
   --dd-bf-cream: #f7f6f5;
   font-family: "Open Sans", sans-serif;
+  /* The theme also loads static Open Sans faces at 100% width. Asking for 75% makes the
+     browser pick the variable face, so the "wdth" values below actually apply. */
+  font-stretch: 75%;
   color: var(--dd-bf-text);
 }
 
@@ -40,7 +43,7 @@
 .dd-bf-heading {
   color: var(--dd-bf-red);
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.83rem;
   font-weight: 400;
   line-height: 1.16;
   letter-spacing: 0.06em;
@@ -49,7 +52,7 @@
 }
 
 .dd-bf-heading--sub {
-  font-size: 2.1rem;
+  font-size: 2.22rem;
 }
 
 /* ---------------------------------------------------------------
@@ -70,29 +73,29 @@
 .dd-bf-cta__sale {
   margin: 0 0 0.9rem;
   color: var(--dd-bf-red);
-  font-size: 1.681rem;
+  font-size: 2.02rem;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.016em;
   text-transform: uppercase;
-  font-variation-settings: "wdth" 75;
+  font-variation-settings: "wdth" 80;
 }
 
 .dd-bf-cta__form {
   width: 100%;
-  max-width: 37.8rem;
+  max-width: 38.3rem;
   margin: 0;
 }
 
 .dd-bf-cta--hero .dd-bf-cta__form {
-  max-width: 35.6rem;
+  max-width: 36rem;
 }
 
 .dd-bf-cta__btn {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 4.6rem;
+  min-height: 4.75rem;
   margin: 0;
   padding: 0.6rem 2.6rem 0.6rem 1.95rem;
   border: 0;
@@ -123,7 +126,7 @@
 }
 
 .dd-bf-cta__label {
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   font-weight: 660;
   line-height: 1.11;
   letter-spacing: 0.02em;
@@ -140,7 +143,7 @@
 
 .dd-bf-cta__compare {
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1.31rem;
   font-weight: 400;
   line-height: 1.11;
 }
@@ -156,7 +159,7 @@
 }
 
 .dd-bf-cta__price {
-  font-size: 1.45rem;
+  font-size: 1.58rem;
   font-weight: 700;
   line-height: 1.11;
 }
@@ -175,7 +178,7 @@
 
 .dd-bf-cta__btn.is-loading {
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   font-weight: 660;
   letter-spacing: 0.02em;
 }
@@ -189,7 +192,7 @@
   padding: 0;
   list-style: none;
   color: var(--dd-bf-text);
-  font-size: 0.985rem;
+  font-size: 1.09rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.027em;
@@ -198,6 +201,7 @@
 
 .dd-bf-cta--left .dd-bf-cta__trust {
   justify-content: flex-start;
+  font-size: 0.985rem;
 }
 
 .dd-bf-cta__trust li {
@@ -267,7 +271,7 @@
 
 .dd-bf-hero__image {
   object-fit: cover;
-  object-position: 50% 64%;
+  object-position: 50% 54%;
 }
 
 .dd-bf-hero__image-title {
@@ -291,10 +295,10 @@
   align-items: center;
   justify-content: center;
   min-height: 3.4rem;
-  padding: 0.2rem 2.55rem;
+  padding: 0.2rem 2.14rem;
   background-color: var(--dd-bf-red);
   color: #ffffff;
-  font-size: 1.681rem;
+  font-size: 1.78rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: 0.05em;
@@ -306,7 +310,7 @@
   max-width: 34rem;
   margin-top: 2.6rem !important;
   color: var(--dd-bf-text);
-  font-size: 2.282rem;
+  font-size: 2.33rem;
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: 0.02em;
@@ -315,9 +319,9 @@
 }
 
 .dd-bf-hero__subheadline {
-  margin-top: 3.6rem !important;
+  margin-top: 4.15rem !important;
   color: var(--dd-bf-red);
-  font-size: 1.681rem;
+  font-size: 2.03rem;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.016em;
@@ -327,12 +331,12 @@
 
 .dd-bf-cta--hero {
   width: 100%;
-  margin-top: 3.4rem;
+  margin-top: 2.85rem;
 }
 
 .dd-bf-hero__orders {
   margin-top: 1.1rem !important;
-  font-size: 1.15rem;
+  font-size: 1.24rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.02em;
@@ -353,7 +357,7 @@
   padding: 0;
   border: 0;
   color: var(--dd-bf-text);
-  font-size: 2.07rem;
+  font-size: 2.34rem;
   font-style: normal;
   font-weight: 300;
   line-height: 1.12;
@@ -374,7 +378,7 @@
 
 .dd-bf-hero__social {
   margin-top: 1.5rem !important;
-  font-size: 1.15rem;
+  font-size: 1.27rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.01em;
@@ -386,7 +390,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 3.4rem;
+  height: 3.9rem;
   overflow: hidden;
   background-color: var(--dd-bf-red);
   color: #ffffff;
@@ -412,7 +416,7 @@
 }
 
 .dd-bf-press__item {
-  font-size: 1.097rem;
+  font-size: 1.28rem;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.03em;
@@ -422,7 +426,7 @@
 
 .dd-bf-press__sep {
   margin: 0 0.75rem;
-  font-size: 1.097rem;
+  font-size: 1.28rem;
   font-weight: 700;
 }
 
@@ -450,7 +454,7 @@
   grid-template-rows: auto 1fr;
   column-gap: 5.9rem;
   align-items: start;
-  margin-top: 4.2rem;
+  margin-top: 3.9rem;
 }
 
 .dd-bf-results__intro {
@@ -460,7 +464,7 @@
 
 .dd-bf-results__product {
   color: var(--dd-bf-red);
-  font-size: 2.5rem;
+  font-size: 2.82rem;
   font-weight: 400;
   line-height: 1.16;
   letter-spacing: 0.06em;
@@ -470,7 +474,7 @@
 
 .dd-bf-results__awards {
   margin-top: 1.3rem !important;
-  font-size: 1.1rem;
+  font-size: 1.18rem;
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.01em;
@@ -479,6 +483,8 @@
 
 .dd-bf-results__media {
   grid-area: media;
+  margin-right: 0;
+  transform: translateX(-1.6rem);
 }
 
 .dd-bf-results__image {
@@ -492,15 +498,15 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.4rem 1.6rem;
-  margin: 1.6rem 0 0;
+  margin: 0.95rem 0 0 -0.7rem;
   padding: 0 0 0 0.2rem;
   list-style: none;
 }
 
 .dd-bf-results__stat-top {
-  max-width: 16rem;
+  max-width: 15rem;
   min-height: 2.6em;
-  font-size: 0.989rem;
+  font-size: 1.16rem;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.01em;
@@ -508,9 +514,9 @@
 }
 
 .dd-bf-results__stat-value {
-  margin-top: 1rem !important;
+  margin-top: 0.8rem !important;
   color: var(--dd-bf-red);
-  font-size: 3.709rem;
+  font-size: 3.97rem;
   font-weight: 300;
   line-height: 1.19;
   letter-spacing: -0.011em;
@@ -518,13 +524,13 @@
 }
 
 .dd-bf-results__stat-bottom {
-  margin-top: 0.6rem !important;
+  margin-top: 1rem !important;
   color: rgba(102, 100, 96, 0.85);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  font-variation-settings: "wdth" 80;
+  font-variation-settings: "wdth" 100;
 }
 
 .dd-bf-results__disclaimer {
@@ -552,9 +558,9 @@
 .dd-bf-results__review-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem 6rem;
-  max-width: 73rem;
-  margin: 1.9rem auto 0;
+  gap: 2rem 8.5rem;
+  max-width: none;
+  margin: 1.9rem -0.9rem 0;
   padding: 0 0 0 0.3rem;
   list-style: none;
 }
@@ -562,14 +568,14 @@
 /* Review (shared by results pair + reviews row) */
 .dd-bf-review__stars {
   color: var(--dd-bf-red);
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   line-height: 1;
   letter-spacing: 0.08em;
 }
 
 .dd-bf-review__title {
   margin-top: 1rem !important;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.041em;
@@ -579,7 +585,7 @@
 
 .dd-bf-review__quote {
   margin-top: 1rem !important;
-  font-size: 0.798rem;
+  font-size: 0.88rem;
   font-weight: 413;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -589,7 +595,7 @@
 .dd-bf-review__author {
   margin-top: 1.1rem !important;
   color: rgba(102, 100, 96, 0.55);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.038em;
@@ -597,23 +603,23 @@
 }
 
 .dd-bf-review--large .dd-bf-review__stars {
-  font-size: 1.25rem;
+  font-size: 1.37rem;
 }
 
 .dd-bf-review--large .dd-bf-review__title {
   margin-top: 1.1rem !important;
-  font-size: 1rem;
+  font-size: 1.12rem;
 }
 
 .dd-bf-review--large .dd-bf-review__quote {
   margin-top: 1.2rem !important;
-  font-size: 1.2rem;
+  font-size: 1.32rem;
   line-height: 1.4;
 }
 
 .dd-bf-review--large .dd-bf-review__author {
   margin-top: 1.9rem !important;
-  font-size: 0.95rem;
+  font-size: 1.04rem;
   color: rgba(102, 100, 96, 0.75);
 }
 
@@ -629,8 +635,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4.4rem;
+  gap: 2.55rem;
   margin-top: 4.5rem;
+  padding-left: 3.6rem;
 }
 
 .dd-bf-formula__image-wrap {
@@ -652,7 +659,7 @@
 }
 
 .dd-bf-formula__title {
-  font-size: 1.45rem;
+  font-size: 1.92rem;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.06em;
@@ -663,7 +670,7 @@
 .dd-bf-formula__rating {
   margin-top: 1rem !important;
   color: var(--dd-bf-red);
-  font-size: 1.13rem;
+  font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.2;
   font-variation-settings: "wdth" 80;
@@ -678,7 +685,7 @@
 .dd-bf-formula__subtitle {
   margin-top: 1.6rem !important;
   color: var(--dd-bf-red);
-  font-size: 1.13rem;
+  font-size: 1.56rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.06em;
@@ -698,20 +705,20 @@
 .dd-bf-formula__benefits li {
   padding: 0.2rem 0 0.2rem 0.95rem;
   border-left: 1px solid var(--dd-bf-text);
-  font-size: 0.885rem;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  font-variation-settings: "wdth" 80;
+  font-variation-settings: "wdth" 88;
 }
 
 .dd-bf-formula__routine {
-  margin-top: 4.3rem;
+  margin-top: 4rem;
   text-align: center;
 }
 
 .dd-bf-formula__routine-title {
-  font-size: 1.45rem;
+  font-size: 1.9rem;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.06em;
@@ -724,11 +731,11 @@
   width: 100%;
   max-width: 70rem;
   height: auto;
-  margin: 2.6rem auto 0;
+  margin: 2rem auto 0;
 }
 
 .dd-bf-formula .dd-bf-cta {
-  margin-top: 3.4rem;
+  margin-top: 2.8rem;
 }
 
 /* ---------------------------------------------------------------
@@ -739,7 +746,7 @@
   margin-top: 1.7rem !important;
   color: rgba(102, 100, 96, 0.85);
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.49;
   letter-spacing: 0.027em;
@@ -787,18 +794,18 @@
 
 .dd-bf-actives__mechanism-title {
   margin-top: 1.4rem !important;
-  font-size: 1.149rem;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   font-variation-settings: "wdth" 85;
 }
 
 .dd-bf-actives__mechanism-text {
-  max-width: 13rem;
+  max-width: 12.5rem;
   margin-top: 1.1rem !important;
-  font-size: 1.149rem;
+  font-size: 1.31rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.01em;
@@ -810,16 +817,16 @@
 }
 
 .dd-bf-actives__table {
-  max-width: 70rem;
+  max-width: 72.4rem;
   margin: 1.4rem auto 0;
   border: 1px solid #dedcd9;
 }
 
 .dd-bf-actives__row {
   display: grid;
-  grid-template-columns: 27.5rem 12.5rem minmax(0, 1fr);
+  grid-template-columns: 25.6rem 12.5rem minmax(0, 1fr);
   align-items: center;
-  min-height: 3.22rem;
+  min-height: 3.35rem;
   padding: 0.2rem 1.6rem;
   border-top: 1px solid #dedcd9;
 }
@@ -831,7 +838,7 @@
 
 .dd-bf-actives__th {
   padding-left: 1.4rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.1em;
@@ -849,10 +856,10 @@
   display: flex;
   align-items: center;
   gap: 1.65rem;
-  font-size: 0.851rem;
+  font-size: 1.03rem;
   font-weight: 700;
   line-height: 1.09;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   font-variation-settings: "wdth" 85;
 }
@@ -875,8 +882,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 8.45rem;
-  min-height: 1.85rem;
+  width: 8.8rem;
+  min-height: 2rem;
   padding: 0.2rem 0.5rem;
   background-color: var(--dd-bf-red);
   color: #ffffff;
@@ -889,12 +896,12 @@
 }
 
 .dd-bf-actives__benefit {
-  padding-left: 2.5rem;
-  font-size: 0.95rem;
+  padding-left: 3.4rem;
+  font-size: 1.12rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.01em;
-  font-variation-settings: "wdth" 80;
+  font-variation-settings: "wdth" 85;
 }
 
 .dd-bf-actives .dd-bf-cta {
@@ -935,7 +942,7 @@
   display: grid;
   grid-template-columns: repeat(3, 16.3rem);
   justify-content: center;
-  gap: 3.7rem 0;
+  gap: 5.2rem 0;
   margin: 5.6rem 0 0;
   padding: 0;
   list-style: none;
@@ -956,8 +963,8 @@
 
 .dd-bf-standards__cert-icon {
   display: block;
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 3.15rem;
+  height: 3.15rem;
   object-fit: contain;
 }
 
@@ -979,7 +986,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0 0.3rem;
-  max-width: 36rem;
+  max-width: 32rem;
   margin: 1.8rem auto 0;
   padding: 0;
   list-style: none;
@@ -1017,7 +1024,7 @@
 }
 
 .dd-bf-standards__panel-eyebrow {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.06em;
@@ -1030,12 +1037,12 @@
 }
 
 .dd-bf-standards__stat + .dd-bf-standards__stat {
-  margin-top: 2.4rem;
+  margin-top: 2.1rem;
 }
 
 .dd-bf-standards__stat-value {
   color: #f7f6f5;
-  font-size: 5.569rem;
+  font-size: 5.3rem;
   font-weight: 300;
   line-height: 0.94;
   letter-spacing: -0.007em;
@@ -1043,8 +1050,8 @@
 }
 
 .dd-bf-standards__stat-text {
-  max-width: 11rem;
-  margin-top: 2rem !important;
+  max-width: 10rem;
+  margin-top: 1.7rem !important;
   color: #f7f6f5;
   font-size: 1.25rem;
   font-weight: 400;
@@ -1126,6 +1133,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  max-width: 69.6rem;
 }
 
 .dd-bf-reviews .dd-bf-review__title {
@@ -1149,10 +1157,10 @@
 .dd-bf-refill__image {
   display: block;
   width: 100%;
-  max-width: 88rem;
+  max-width: none;
   height: auto;
   margin: 1.8rem auto 0;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .dd-bf-refill__logos {
@@ -1161,7 +1169,7 @@
 
 .dd-bf-refill__logos-image {
   display: block;
-  width: 28rem;
+  width: 30.8rem;
   height: auto;
   margin: 0 auto;
 }
@@ -1176,20 +1184,20 @@
 }
 
 .dd-bf-offer__card {
-  max-width: 28.7rem;
+  max-width: 33.2rem;
   margin: 0 auto;
-  padding: 2.4rem 1.75rem 2.4rem;
+  padding: 2.7rem 2rem 2.8rem;
   background-color: #ffffff;
   text-align: center;
 }
 
 .dd-bf-offer__eyebrow {
   display: inline-block;
-  min-width: 12rem;
-  padding: 0.25rem 1rem;
+  min-width: 16.2rem;
+  padding: 0.35rem 1rem;
   background-color: var(--dd-bf-red);
   color: #ffffff;
-  font-size: 0.949rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -1200,23 +1208,26 @@
 .dd-bf-offer__title {
   margin-top: 1.1rem !important;
   color: var(--dd-bf-red);
-  font-size: 1.747rem;
+  font-size: 2.2rem;
   font-weight: 400;
   line-height: 1.16;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-variation-settings: "wdth" 75;
+  max-width: 16rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dd-bf-offer__sale {
-  margin-top: 2.1rem !important;
+  margin-top: 3rem !important;
   color: var(--dd-bf-red);
-  font-size: 1.35rem;
+  font-size: 1.9rem;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.016em;
   text-transform: uppercase;
-  font-variation-settings: "wdth" 75;
+  font-variation-settings: "wdth" 80;
 }
 
 .dd-bf-offer__lines {
@@ -1229,8 +1240,8 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.75rem 0;
-  font-size: 0.953rem;
+  padding: 1.1rem 0;
+  font-size: 1.12rem;
   font-weight: 400;
   line-height: 1.19;
   letter-spacing: 0.028em;
@@ -1255,14 +1266,14 @@
 }
 
 .dd-bf-offer__total-label {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
 
 .dd-bf-offer__total-value {
-  font-size: 1.85rem;
+  font-size: 2.25rem;
   font-weight: 400;
   line-height: 1;
   font-variation-settings: "wdth" 80;
@@ -1273,20 +1284,20 @@
 }
 
 .dd-bf-cta--offer .dd-bf-cta__btn {
-  min-height: 3.3rem;
+  min-height: 4.75rem;
   padding: 0.6rem 0.95rem;
 }
 
 .dd-bf-cta--offer .dd-bf-cta__label {
-  font-size: 1.05rem;
+  font-size: 1.27rem;
 }
 
 .dd-bf-cta--offer .dd-bf-cta__compare {
-  font-size: 1.05rem;
+  font-size: 1.27rem;
 }
 
 .dd-bf-cta--offer .dd-bf-cta__price {
-  font-size: 1.3rem;
+  font-size: 1.56rem;
 }
 
 .dd-bf-cta--offer .dd-bf-cta__prices {
@@ -1295,11 +1306,109 @@
 
 .dd-bf-offer__footnote {
   margin-top: 1.3rem !important;
-  font-size: 0.873rem;
+  font-size: 1.05rem;
   font-weight: 400;
   line-height: 1.69;
   letter-spacing: 0.031em;
   font-variation-settings: "wdth" 85;
+}
+
+.dd-bf-offer__sep {
+  margin: 0 0.55rem;
+}
+
+/* ---------------------------------------------------------------
+ * FAQ
+ * ------------------------------------------------------------- */
+
+.dd-bf-faq__inner {
+  max-width: 85.7rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.dd-bf-faq__list {
+  margin-top: 2.75rem;
+  border-bottom: 1px solid #dcdad6;
+}
+
+.dd-bf-faq__item {
+  border-top: 1px solid #dcdad6;
+}
+
+.dd-bf-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.3rem 2.6rem 1.3rem 1rem;
+  color: var(--dd-bf-text);
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.63rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.005em;
+  font-variation-settings: "wdth" 88;
+}
+
+.dd-bf-faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.dd-bf-faq__question:focus-visible {
+  outline: 2px solid var(--dd-bf-text);
+  outline-offset: 2px;
+}
+
+.dd-bf-faq__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 0.92rem;
+  height: 0.92rem;
+}
+
+.dd-bf-faq__icon::before,
+.dd-bf-faq__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.dd-bf-faq__icon::after {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.dd-bf-faq__item[open] .dd-bf-faq__icon::after {
+  transform: rotate(0deg);
+}
+
+.dd-bf-faq__answer {
+  padding: 0 2.6rem 2.8rem 1rem;
+  margin-top: -0.3rem;
+  font-size: 1.44rem;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: 0.005em;
+  font-variation-settings: "wdth" 85;
+}
+
+.dd-bf-faq__answer :where(p, ul, ol) {
+  margin: 0;
+  padding: 0;
+}
+
+.dd-bf-faq__answer ul {
+  list-style: none;
+}
+
+.dd-bf-faq__answer ul li::before {
+  content: "\2022\00a0";
 }
 
 /* ===============================================================
@@ -1361,7 +1470,7 @@
 
   .dd-bf-cta__sale {
     margin-bottom: 11px;
-    font-size: 20px;
+    font-size: 21px;
     text-align: center;
   }
 
@@ -1413,7 +1522,7 @@
     justify-content: center;
     gap: 8px;
     margin-top: 11px;
-    font-size: 10.5px;
+    font-size: 11.75px;
     letter-spacing: 0.1px;
   }
 
@@ -1423,7 +1532,7 @@
   }
 
   .dd-bf-hero__top-headline {
-    font-size: 36px;
+    font-size: 38px;
     line-height: 1.25;
     letter-spacing: 1.4px;
   }
@@ -1449,7 +1558,7 @@
 
   .dd-bf-hero__content {
     align-items: stretch;
-    padding: 31px 24px 22px;
+    padding: 24px 24px 22px;
     background-color: var(--dd-bf-cream);
   }
 
@@ -1457,30 +1566,30 @@
     align-self: center;
     min-height: 39px;
     padding: 4px 25px;
-    font-size: 20px;
+    font-size: 21.2px;
   }
 
   .dd-bf-hero__headline {
     max-width: none;
-    margin-top: 26px !important;
-    font-size: 25px;
+    margin-top: 22.5px !important;
+    font-size: 26.7px;
     line-height: 1.38;
     letter-spacing: 0.4px;
   }
 
   .dd-bf-hero__subheadline {
-    margin-top: 22px !important;
-    font-size: 20px;
+    margin-top: 19px !important;
+    font-size: 24.8px;
     text-align: center;
   }
 
   .dd-bf-cta--hero {
-    margin-top: 34px;
+    margin-top: 32px;
   }
 
   .dd-bf-hero__orders {
     margin-top: 12px !important;
-    font-size: 14px;
+    font-size: 15.3px;
     text-align: center;
   }
 
@@ -1491,7 +1600,7 @@
   }
 
   .dd-bf-hero__press-quote {
-    font-size: 22px;
+    font-size: 28.8px;
     line-height: 1.2;
   }
 
@@ -1504,8 +1613,9 @@
 
   .dd-bf-hero__social {
     margin-top: 18px !important;
-    font-size: 13.5px;
-    text-align: center;
+    font-size: 14.6px;
+    text-align: left;
+    padding-left: 18px;
   }
 
   .dd-bf-press {
@@ -1526,20 +1636,24 @@
     display: flex;
     flex-direction: column;
     margin-top: 18px;
+    align-items: stretch;
   }
 
   .dd-bf-results__product {
-    font-size: 22px;
+    font-size: 24.5px;
     letter-spacing: 1.3px;
   }
 
   .dd-bf-results__awards {
     margin-top: 16px !important;
-    font-size: 12.5px;
+    font-size: 13.6px;
   }
 
   .dd-bf-results__media {
-    margin-top: 22px;
+    width: 100%;
+    max-width: 305px;
+    margin: 22px auto 0;
+    transform: none;
   }
 
   .dd-bf-results__disclaimer--desktop {
@@ -1548,33 +1662,35 @@
 
   .dd-bf-results__disclaimer--mobile {
     display: block;
-    margin-top: 28px !important;
-    font-size: 10px;
-  }
-
-  .dd-bf-results__stats {
-    gap: 26px 12px;
-    margin-top: 26px;
-    padding: 0;
-  }
-
-  .dd-bf-results__stat-top {
+    margin-top: 48px !important;
     font-size: 12px;
   }
 
+  .dd-bf-results__stats {
+    gap: 40px 12px;
+    margin-top: 26px;
+    padding: 0;
+    margin-left: 0;
+  }
+
+  .dd-bf-results__stat-top {
+    font-size: 14px;
+    max-width: none;
+  }
+
   .dd-bf-results__stat-value {
-    margin-top: 14px !important;
+    margin-top: 24px !important;
     font-size: 40px;
     letter-spacing: -0.5px;
   }
 
   .dd-bf-results__stat-bottom {
-    margin-top: 6px !important;
+    margin-top: 9.5px !important;
     font-size: 11px;
   }
 
   .dd-bf-results__reviews {
-    margin-top: 30px;
+    margin-top: 21.5px;
   }
 
   .dd-bf-results__review-list {
@@ -1582,25 +1698,27 @@
     gap: 34px;
     margin-top: 20px;
     padding: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .dd-bf-review--large .dd-bf-review__stars {
-    font-size: 16px;
+    font-size: 16.8px;
   }
 
   .dd-bf-review--large .dd-bf-review__title {
-    margin-top: 12px !important;
-    font-size: 13px;
+    margin-top: 10px !important;
+    font-size: 14.7px;
   }
 
   .dd-bf-review--large .dd-bf-review__quote {
-    margin-top: 14px !important;
-    font-size: 15px;
+    margin-top: 12.5px !important;
+    font-size: 16.5px;
   }
 
   .dd-bf-review--large .dd-bf-review__author {
-    margin-top: 14px !important;
-    font-size: 12px;
+    margin-top: 16px !important;
+    font-size: 13.8px;
   }
 
   .dd-bf-results .dd-bf-cta {
@@ -1611,7 +1729,8 @@
   .dd-bf-formula__product {
     flex-direction: column;
     gap: 0;
-    margin-top: 26px;
+    margin-top: -13px;
+    padding-left: 0;
   }
 
   .dd-bf-formula__image-wrap {
@@ -1619,32 +1738,32 @@
   }
 
   .dd-bf-formula__image {
-    height: 170px;
+    height: 438px;
   }
 
   .dd-bf-formula--mobile-large .dd-bf-formula__image {
-    height: 280px;
+    height: 438px;
   }
 
   .dd-bf-formula__info {
     width: 100%;
-    margin-top: 30px;
+    margin-top: -1px;
     text-align: center;
   }
 
   .dd-bf-formula__title {
-    font-size: 22px;
+    font-size: 27px;
     letter-spacing: 0.6px;
   }
 
   .dd-bf-formula__rating {
     margin-top: 12px !important;
-    font-size: 16px;
+    font-size: 19.6px;
   }
 
   .dd-bf-formula__subtitle {
     margin-top: 22px !important;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0.6px;
     line-height: 1.35;
   }
@@ -1657,7 +1776,7 @@
   }
 
   .dd-bf-formula__benefits li {
-    padding: 3px 0 3px 10px;
+    padding: 6px 0 6px 10px;
     font-size: 14px;
   }
 
@@ -1666,14 +1785,17 @@
   }
 
   .dd-bf-formula__routine-title {
-    font-size: 20px;
+    font-size: 26px;
     line-height: 1.25;
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .dd-bf-formula__routine-image {
     width: calc(100% + 24px);
     max-width: none;
-    margin: 24px -12px 0;
+    margin: 34px -12px 0;
   }
 
   .dd-bf-formula .dd-bf-cta {
@@ -1683,7 +1805,7 @@
   /* Actives */
   .dd-bf-actives__body {
     margin-top: 14px !important;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.4;
   }
 
@@ -1698,18 +1820,19 @@
   }
 
   .dd-bf-actives__mechanism-icon {
-    height: 44px;
+    height: 54.5px;
   }
 
   .dd-bf-actives__mechanism-title {
     margin-top: 16px !important;
-    font-size: 12.2px;
-    letter-spacing: 1.2px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
   }
 
   .dd-bf-actives__mechanism-text {
     margin-top: 8px !important;
-    font-size: 12px;
+    font-size: 13.5px;
+    max-width: 140px;
   }
 
   .dd-bf-actives__table-heading {
@@ -1727,22 +1850,23 @@
   }
 
   .dd-bf-actives__row {
-    grid-template-columns: 30px minmax(0, 1fr) auto;
+    grid-template-columns: 45px minmax(0, 1fr) auto;
     grid-template-areas:
       "icon name action"
       "icon benefit benefit";
     align-items: start;
-    column-gap: 12px;
-    row-gap: 6px;
+    column-gap: 15px;
+    row-gap: 12px;
     min-height: 0;
-    padding: 12px 0 16px;
+    padding: 15px 0 30px;
     border-top: 1px solid #dedcd9;
   }
 
   .dd-bf-actives__name {
     display: contents;
-    font-size: 10px;
+    font-size: 14px;
     letter-spacing: 0.6px;
+    font-variation-settings: "wdth" 82;
   }
 
   .dd-bf-actives__name > span {
@@ -1756,8 +1880,8 @@
   }
 
   .dd-bf-actives__icon {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     margin-top: 2px;
   }
 
@@ -1766,17 +1890,18 @@
   }
 
   .dd-bf-actives__pill {
-    width: 74px;
-    min-height: 16px;
-    font-size: 8.5px;
+    width: 65px;
+    min-height: 24px;
+    font-size: 11.5px;
   }
 
   .dd-bf-actives__benefit {
     grid-area: benefit;
     padding-left: 0;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.45;
     color: rgba(102, 100, 96, 0.85);
+    font-variation-settings: "wdth" 84;
   }
 
   .dd-bf-actives .dd-bf-cta {
@@ -1797,34 +1922,37 @@
   }
 
   .dd-bf-standards__sub {
-    margin-top: 16px !important;
-    font-size: 13px;
+    margin-top: 25px !important;
+    font-size: 14.3px;
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .dd-bf-standards__certs {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 30px 8px;
-    margin-top: 32px;
+    gap: 44px 8px;
+    margin-top: 41px;
   }
 
   .dd-bf-standards__cert {
     gap: 10px;
-    font-size: 9px;
+    font-size: 10.7px;
     letter-spacing: 0.4px;
   }
 
   .dd-bf-standards__cert-icon {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
   }
 
   .dd-bf-standards__without {
-    margin-top: 40px;
+    margin-top: 79px;
     text-align: left;
   }
 
   .dd-bf-standards__without-heading {
-    font-size: 13px;
+    font-size: 15.2px;
     font-weight: 700;
     letter-spacing: 0.8px;
   }
@@ -1836,16 +1964,17 @@
   .dd-bf-standards__without-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px 8px;
+    gap: 25px 8px;
     max-width: none;
-    margin-top: 18px;
-    font-size: 10px;
+    margin-top: 20px;
+    font-size: 12.2px;
     line-height: 1.35;
+    grid-auto-rows: minmax(33px, auto);
   }
 
   .dd-bf-standards__without-list li {
     position: relative;
-    padding-left: 13px;
+    padding-left: 20px;
     white-space: normal;
   }
 
@@ -1856,11 +1985,11 @@
   }
 
   .dd-bf-standards__aside {
-    margin-top: 42px;
+    margin-top: 56px;
   }
 
   .dd-bf-standards__panel {
-    min-height: 345px;
+    min-height: 350px;
   }
 
   .dd-bf-standards__model-image {
@@ -1873,7 +2002,7 @@
   }
 
   .dd-bf-standards__panel-eyebrow {
-    font-size: 10px;
+    font-size: 12.3px;
   }
 
   .dd-bf-standards__stat,
@@ -1882,19 +2011,19 @@
   }
 
   .dd-bf-standards__stat-value {
-    font-size: 46px;
+    font-size: 52.5px;
   }
 
   .dd-bf-standards__stat-text {
-    max-width: 130px;
-    margin-top: 10px !important;
-    font-size: 12.3px;
+    max-width: 125px;
+    margin-top: 18px !important;
+    font-size: 15.2px;
   }
 
   .dd-bf-standards__disclaimer {
-    margin-top: 12px !important;
+    margin-top: 16px !important;
     padding: 0 24px;
-    font-size: 9px;
+    font-size: 12.5px;
   }
 
   /* Reviews row */
@@ -1908,7 +2037,7 @@
   }
 
   .dd-bf-reviews__rating-value {
-    font-size: 40px;
+    font-size: 43px;
   }
 
   .dd-bf-reviews__rating-star svg {
@@ -1918,28 +2047,29 @@
 
   .dd-bf-reviews__list {
     grid-template-columns: 1fr;
-    gap: 24px;
-    margin-top: 24px;
+    gap: 26px;
+    margin-top: 36px;
+    max-width: none;
   }
 
   .dd-bf-reviews .dd-bf-review__title {
     min-height: 0;
-    margin-top: 8px !important;
-    font-size: 12px;
+    margin-top: 10px !important;
+    font-size: 14.7px;
   }
 
   .dd-bf-reviews .dd-bf-review__stars {
-    font-size: 12px;
+    font-size: 16.4px;
   }
 
   .dd-bf-reviews .dd-bf-review__quote {
-    margin-top: 10px !important;
-    font-size: 13px;
+    margin-top: 13px !important;
+    font-size: 15.5px;
   }
 
   .dd-bf-reviews .dd-bf-review__author {
-    margin-top: 10px !important;
-    font-size: 10px;
+    margin-top: 15px !important;
+    font-size: 12.3px;
   }
 
   /* Refill */
@@ -1973,13 +2103,14 @@
   .dd-bf-offer__eyebrow {
     min-width: 189px;
     padding: 4px 12px;
-    font-size: 12px;
+    font-size: 12.4px;
   }
 
   .dd-bf-offer__title {
     margin-top: 16px !important;
-    font-size: 30px;
+    font-size: 28.3px;
     letter-spacing: 1.2px;
+    max-width: 220px;
   }
 
   .dd-bf-offer__sale {
@@ -1989,12 +2120,12 @@
 
   .dd-bf-offer__lines {
     margin-top: 20px;
-    padding-bottom: 16px;
+    padding-bottom: 21px;
   }
 
   .dd-bf-offer__line {
-    padding: 12px 0;
-    font-size: 14px;
+    padding: 17px 0;
+    font-size: 13.2px;
   }
 
   .dd-bf-offer__total {
@@ -2002,7 +2133,7 @@
   }
 
   .dd-bf-offer__total-label {
-    font-size: 16px;
+    font-size: 15.2px;
   }
 
   .dd-bf-offer__total-value {
@@ -2010,7 +2141,7 @@
   }
 
   .dd-bf-cta--offer {
-    margin-top: 20px;
+    margin-top: 39px;
   }
 
   .dd-bf-cta--offer .dd-bf-cta__btn {
@@ -2031,7 +2162,90 @@
 
   .dd-bf-offer__footnote {
     margin-top: 16px !important;
-    font-size: 12.5px;
+    font-size: 12px;
     line-height: 1.5;
+  }
+
+  /* Two-line footnote on mobile: the last segment drops to its own line */
+  .dd-bf-offer__sep {
+    margin: 0 4px;
+  }
+
+  .dd-bf-offer__sep:nth-last-child(2) {
+    display: none;
+  }
+
+  .dd-bf-standards__stat + .dd-bf-standards__stat {
+    margin-top: 32px;
+  }
+
+  /* Cross-sell (no routine block): tighter gap under the heading, smaller benefits */
+  .dd-bf-formula:not(:has(.dd-bf-formula__routine)) .dd-bf-formula__product {
+    margin-top: -35px;
+  }
+
+  .dd-bf-formula:has(.dd-bf-formula__routine) .dd-bf-formula__benefits li {
+    font-size: 17px;
+  }
+
+  .dd-bf-offer__seg:last-child {
+    display: block;
+  }
+
+  /* Top headline breaks after "SALE" as in the design */
+  .dd-bf-hero__top-headline {
+    max-width: 270px;
+    margin: 0 auto;
+  }
+
+  /* FAQ */
+  .dd-bf-faq__inner {
+    padding: 0 24px;
+  }
+
+  .dd-bf-faq__list {
+    margin-top: 30px;
+  }
+
+  .dd-bf-faq__question {
+    padding: 12px 28px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.38;
+    letter-spacing: 0;
+    font-variation-settings: "wdth" 80;
+  }
+
+  .dd-bf-faq__icon {
+    display: none;
+  }
+
+  .dd-bf-faq__answer {
+    margin-top: 0;
+    padding: 14px 0 34px;
+    font-size: 16.25px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-variation-settings: "wdth" 84;
+  }
+}
+
+/* Copy shown on one breakpoint only (e.g. a shorter mobile headline) */
+.dd-bf-only-mobile,
+.dd-bf-mbr {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .dd-bf-only-desktop {
+    display: none;
+  }
+
+  .dd-bf-only-mobile {
+    display: inline;
+  }
+
+  .dd-bf-mbr {
+    display: inline;
   }
 }

@@ -38,7 +38,13 @@
     {% render 'dd-bf-cta', s: section.settings, show_trust: false, modifier: 'dd-bf-cta--offer' %}
 
     {%- if section.settings.footnote != blank -%}
-      <p class="dd-bf-offer__footnote">{{ section.settings.footnote | escape | newline_to_br }}</p>
+      {%- assign footnote_parts = section.settings.footnote | split: ' | ' -%}
+      <p class="dd-bf-offer__footnote">
+        {%- for part in footnote_parts -%}
+          {%- unless forloop.first -%}<span class="dd-bf-offer__sep" aria-hidden="true">|</span>{%- endunless -%}
+          <span class="dd-bf-offer__seg">{{ part | strip | escape }}</span>
+        {%- endfor -%}
+      </p>
     {%- endif -%}
   </div>
 </section>
@@ -63,7 +69,7 @@
     { "type": "checkbox", "id": "cta_go_to_checkout", "label": "Go directly to checkout", "default": true },
     { "type": "checkbox", "id": "cta_apply_discount", "label": "Apply discount code on checkout", "default": true },
     { "type": "text", "id": "cta_checkout_discount_code", "label": "Discount code" },
-    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "Free shipping | 30-day refund\nNo subscription" },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "Free shipping | 30-day refund | No subscription" },
     { "type": "header", "content": "Section" },
     { "type": "color", "id": "background", "label": "Background", "default": "#f7f6f5" },
     { "type": "range", "id": "padding_top", "label": "Top padding (desktop rem ×10)", "min": 0, "max": 100, "step": 2, "default": 40 },

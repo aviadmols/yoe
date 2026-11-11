@@ -274,6 +274,11 @@
   object-position: 50% 54%;
 }
 
+.dd-bf-hero__media--contain .dd-bf-hero__image {
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
 .dd-bf-hero__image-title {
   position: absolute;
   top: 3.9rem;
@@ -1548,6 +1553,10 @@
 
   .dd-bf-hero__image {
     object-position: 50% 58%;
+  }
+
+  .dd-bf-hero__media--contain .dd-bf-hero__image {
+    object-position: 50% 50%;
   }
 
   .dd-bf-hero__image-title {

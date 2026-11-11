@@ -8,7 +8,7 @@
   {%- endif -%}
 
   <div class="dd-bf-hero__split">
-    <div class="dd-bf-hero__media">
+    <div class="dd-bf-hero__media{% if section.settings.image_fit == 'contain' %} dd-bf-hero__media--contain{% endif %}"{% if section.settings.media_bg != blank %} style="background-color: {{ section.settings.media_bg }};"{% endif %}>
       {% render 'dd-bf-image',
         image: section.settings.image,
         asset: section.settings.image_asset,
@@ -119,7 +119,18 @@
     { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
     { "type": "text", "id": "mobile_image_asset", "label": "Mobile image fallback (theme asset)", "default": "bf-hero-mobile.webp" },
     { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "Yoé creams and refills on black gift boxes with a red ribbon" },
-    { "type": "text", "id": "image_title", "label": "Title on the image", "default": "Black Friday Sale" },
+    { "type": "text", "id": "image_title", "label": "Title on the image", "default": "Black Friday Sale", "info": "Leave empty when the text is part of the image." },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        { "value": "cover", "label": "Fill (crop edges)" },
+        { "value": "contain", "label": "Fit (show whole image)" }
+      ],
+      "default": "cover"
+    },
+    { "type": "color", "id": "media_bg", "label": "Image background", "info": "Shown around the image in Fit mode. Match the image edge color." },
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "badge_text", "label": "Badge", "default": "Clinically proven" },
     { "type": "text", "id": "headline", "label": "Headline", "default": "Visibly firms, plumps, and reduces fine lines and wrinkles" },

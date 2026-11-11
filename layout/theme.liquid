@@ -481,6 +481,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {{ content_for_layout }}
     </main>
 
+    {%- comment -%} BF pages (-bf suffix) have their own Sticky CTA section with the BF code; skip this fallback bar there. {%- endcomment -%}
+    {%- unless template.suffix contains '-bf' -%}
     {%- if template.name == 'page' and template.suffix contains 'discovery-duo' or template.suffix == 'discovery-yc-lp2' or template.suffix == 'discovery-ycl-lp2' -%}
       {{ 'discovery-duo-sticky-cta.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'discovery-duo-sticky-cta.js' | asset_url }}" defer="defer"></script>
@@ -548,6 +550,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         cta_price: dd_sticky_price
       %}
     {%- endif -%}
+    {%- endunless -%}
 
     {% sections 'footer-group' %}
 

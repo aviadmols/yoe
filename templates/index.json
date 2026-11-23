@@ -17,7 +17,7 @@
           "settings": {
             "image": "shopify://shop_images/Hero_-_Mothers_Day_-_Option_13_3_ec49d05c-8205-41ca-a688-6fafbd83863a.jpg",
             "mobile_image": "shopify://shop_images/black-friday-spacial-sale-mb.jpg",
-            "heading": "<strong>BLACKFRIDAY &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 20% OFF SITEWIDE | </strong>code: BLACKFRIDAY20",
+            "heading": "<strong>BLACKFRIDAY|20% OFF SITEWIDE</strong>|code: BLACKFRIDAY20",
             "heading_size": "h1",
             "subheading": "",
             "button_label": "Shop Now",
@@ -153,6 +153,9 @@
         "slide_8Xfbid",
         "slide_XpN9Pi",
         "slide_kV4gqK"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.valentine-slide.slide--promo-style .banner__heading.inline-richtext.h1 {align-self: flex-start; text-align: left; margin-top: -18px; font-size: clamp(18px, 5vw, 22px); line-height: 1.1; letter-spacing: 1px; }}"
       ],
       "name": "t:sections.slideshow.presets.name",
       "settings": {
